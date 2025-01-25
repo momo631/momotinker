@@ -1,0 +1,12 @@
+{
+  "type": "tconstruct:melting",
+  "ingredient": {
+    "item": "momotinker:laomo"
+  },
+  "result": {
+    "fluid": "momotinker:molten_laomo",
+    "amount": 90
+  },
+  "temperature": 6200,
+  "time": 20
+}

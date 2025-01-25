@@ -1,0 +1,35 @@
+这部分是材料注册了
+三个文件夹内文件名要一致
+
+definition是材料注册部分
+
+tier是材料的等级
+craftable是是否能手搓
+hidden是是否隐藏
+sortOrder一般不用动这个
+
+stats是是否生成这个部件和这个部件的属性，这里我给了一个星野的案例(这个是基本覆盖了所有部件)你可以照抄
+
+traits下面是对应部件对应的词条，和其一个部件给的词条等级
+这里依旧给一个星野当案例
+
+如果你要限制部件就要用perstat参数
+比如下面这个就是限制了绑定结位置
+
+
+"perStat": {
+    "tconstruct:binding": [
+      {
+        "name": "cti:alienmatter",
+        "level": 1
+      },
+      {
+        "name": "cti:abelisures",
+        "level": 1
+      },
+      {
+        "name": "cti:roxylightning",
+        "level": 1
+      }
+    ],
+  }

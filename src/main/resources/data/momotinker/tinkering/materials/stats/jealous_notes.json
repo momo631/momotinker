@@ -1,0 +1,40 @@
+{
+  "stats": {
+    "tconstruct:binding": {},
+    "tconstruct:handle": {
+      "durability": 3,
+      "mining_speed": -0.6,
+      "melee_speed": 1.2,
+      "melee_damage": 3
+    },
+    "tconstruct:head": {
+      "durability": 6666,
+      "mining_speed": 6,
+      "mining_tier": "minecraft:netherite",
+      "melee_attack": 12
+    },
+    "tconstruct:limb": {
+      "durability": 6666,
+      "draw_speed": 0.6,
+      "velocity": 3.0,
+      "accuracy": 3.0
+    },
+    "tconstruct:grip": {
+      "durability": 3.0,
+      "accuracy": 3.0,
+      "melee_damage": 3.0
+    },
+    "tinkers_ingenuity:laser_medium": {
+      "laser_range": 6,
+      "cooldown": 0.6
+    },
+    "tinkers_ingenuity:curio_extra": {},
+    "tinkers_ingenuity:curio_main": {
+      "movement_speed": 0.3,
+      "armor": 1.2,
+      "toughness": 0.9,
+      "attack": 1.2,
+      "arrow_damage": 1.2
+    }
+  }
+}

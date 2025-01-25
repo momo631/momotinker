@@ -1,0 +1,159 @@
+{
+  "block.momotinker.laomo_block": "牢墨块",
+
+  "effect.momotinker.hongwen": "红温",
+  "effect.momotinker.none": "忘阙人",
+  "effect.momotinker.end": "引渡人",
+  "effect.momotinker.beswallow": "待吞食者",
+  "effect.momotinker.beswallowed": "已被吞食",
+  "effect.momotinker.wildheart": "狂徒之心",
+  "effect.momotinker.lostsoul": "失魂",
+  "effect.momotinker.arrogant": "狂妄",
+
+  "fluid.momotinker.molten_laomo": "熔融牢墨",
+
+  "item.momotinker.laomo": "牢墨",
+  "item.momotinker.interdimensional_crystal": "天外来晶",
+
+  "item.momotinker.arriving_at_the_other_shore": "\u00A74现彼岸\u00A7",
+  "momotinker.item.tooltip.arriving_at_the_other_shore1": "\u00A77万千逝物，皆渡彼岸\u00A7",
+
+  "item.momotinker.heartsteel": "§6如钢之心§",
+  "momotinker.item.tooltip.heartsteel1": "§2坚若钢铁§",
+
+  "item.momotinker.spirit_visage": "§a生命的洪流§",
+  "momotinker.item.tooltip.spirit_visage1": "§a抖擞精神§",
+
+  "item.momotinker.gluttony_core": "§2暴食之核§",
+  "momotinker.item.tooltip.gluttony_core1": "§2以尔灵魂，铸吾血肉§",
+
+  "item.momotinker.greedy_contract": "§9贪婪契约§",
+  "momotinker.item.tooltip.greedy_contract1": "§9以尔灵魂，铸吾财贯§",
+
+  "item.momotinker.lust_mirror": "§5色欲魔镜§",
+  "momotinker.item.tooltip.lust_mirror1": "§5以尔精骨，铸吾满欲§",
+
+  "item.momotinker.arrogance_proof": "§c傲慢之证§",
+  "momotinker.item.tooltip.arrogance_proof1": "§c以尔孱击，铸吾兵甲§",
+
+  "item.momotinker.rage_stone_statue": "§8暴怒石像§",
+  "momotinker.item.tooltip.rage_stone_statue1": "§8以尔鲜血，铸吾久年§",
+
+  "item.momotinker.lazy_grail": "§6怠惰圣杯§",
+  "momotinker.item.tooltip.lazy_grail1": "§6以尔乏困，铸吾清魄§",
+
+  "item.momotinker.jealous_notes": "§e嫉妒笔记§",
+  "momotinker.item.tooltip.jealous_notes1": "§e以尔富资，铸吾薄怨§",
+
+  "fluid.momotinker.molten_laomo_bucket": "熔融牢墨桶",
+
+  "itemGroup.momotinker.materials": "牢墨模组-材料",
+
+  "material.momotinker.laomo": "工具牢墨",
+  "material.momotinker.laomo.encyclopedia": "大百科上的内容",
+  "material.momotinker.laomo.flavor": "tconjei悬浮显示和对应等级宝典的内容",
+  "material.momotinker.arriving_at_the_other_shore": "彼岸",
+  "material.momotinker.arriving_at_the_other_shore.encyclopedia": "§4万千事物，皆归尘土§",
+  "material.momotinker.heartsteel": "心钢",
+  "material.momotinker.heartsteel.encyclopedia": "§2稳若城墙§",
+  "material.momotinker.spirit_visage": "生命洪流",
+  "material.momotinker.spirit_visage.encyclopedia": "§a生生不息§",
+  "material.momotinker.gluttony_core": "暴食",
+  "material.momotinker.gluttony_core.encyclopedia": "§2饥饿永不消失§",
+  "material.momotinker.greedy_contract": "贪婪",
+  "material.momotinker.greedy_contract.encyclopedia": "§9所求永不满足§",
+  "material.momotinker.lust_mirror": "色欲",
+  "material.momotinker.lust_mirror.encyclopedia": "§5纵欲永不止歇§",
+  "material.momotinker.arrogance_proof": "傲慢",
+  "material.momotinker.arrogance_proof.encyclopedia": "§c自傲永不移处§",
+  "material.momotinker.rage_stone_statue": "暴怒",
+  "material.momotinker.rage_stone_statue.encyclopedia": "§0愤恨永不消散§",
+  "material.momotinker.lazy_grail": "怠惰",
+  "material.momotinker.lazy_grail.encyclopedia": "§6世急永不缠身§",
+  "material.momotinker.jealous_notes": "嫉妒",
+  "material.momotinker.jealous_notes.encyclopedia": "§e妒怨永不祛除§",
+
+  "modifier.momotinker.laomochuji": "牢墨出击",
+  "modifier.momotinker.laomochuji.flavor": "词条标题",
+  "modifier.momotinker.laomochuji.description": "详细描述",
+
+  "modifier.momotinker.lethe": "忘川语",
+  "modifier.momotinker.lethe.flavor": "§4所忆之物，为无§",
+  "modifier.momotinker.lethe.description": "在背包里时免疫除“引渡人”的一切效果，攻击为敌人附加最高层数为词条等级数+6的“忘阙人”效果\n§4[忘阙人]§:每游戏刻清除其他一切效果，并降低层数乘6%的最大生命值",
+
+  "modifier.momotinker.huangquan": "浸黄泉",
+  "modifier.momotinker.huangquan.flavor": "§7所渡之处,为无§",
+  "modifier.momotinker.huangquan.description": "血量低于60%时提升攻击力，数值为已损失生命值*6，获得“引渡人”效果时攻击将无视防御且该增伤涨至双倍",
+
+  "modifier.momotinker.red": "轮回色",
+  "modifier.momotinker.red.flavor": "§4所归之景，为无§",
+  "modifier.momotinker.red.description": "常态下感知周围敌对生物，按下按键后自身获得15秒的“引渡人”效果，且该种类的工具进入90秒冷却\n§7[引渡人]§:观察的一切景象都将褪色，在持续时间内对大范围内生物附加12层“忘阙人”效果，血量无法超过1点且生命暂时无法恢复",
+
+  "modifier.momotinker.firmheart": "坚心",
+  "modifier.momotinker.firmheart.flavor": "§2心坚如钢§",
+  "modifier.momotinker.firmheart.description": "对一定范围的敌对生物进行充能，5层时攻击消耗充能造成格外自身最大生命值*4的伤害，并永久增长持有该武器时的最大生命值（每次0.2%，远程武器增伤与生命增长减半），每个生物存在60秒冷却",
+
+  "modifier.momotinker.wildhearts": "自然之力",
+  "modifier.momotinker.wildhearts.flavor": "§2狂野般生长§",
+  "modifier.momotinker.wildhearts.description": "穿戴时提升20点最大生命值，若最大生命值超过80则每过8秒获得持续8秒“狂徒之心”效果，效果持续期间若受到伤害则效果消失\n§a[狂徒之心]§:每秒恢复最大生命值的10%",
+
+  "modifier.momotinker.infinitevitality": "无限活力",
+  "modifier.momotinker.infinitevitality.flavor": "§a活力如嫩芽§",
+  "modifier.momotinker.infinitevitality.description": "穿戴时受到的任何治疗效果都将增加25%（同名只生效一次）",
+
+  "modifier.momotinker.feast": "盛宴",
+  "modifier.momotinker.feast.flavor": "§2弱肉强食§",
+  "modifier.momotinker.feast.description":"获得此武器所击杀生物中生命上限最高生物的百分比生命，数值为10%+5%*词条等级",
+
+  "modifier.momotinker.overeatingsin": "尽噬之罪",
+  "modifier.momotinker.overeatingsin.flavor": "§2无尽吞食之代价:饥饿无休§",
+  "modifier.momotinker.overeatingsin.description": "在背包内时受到的任何治疗效果都将减少50%（同名词条只生效一次）",
+
+  "modifier.momotinker.intendingplunder": "贪夺",
+  "modifier.momotinker.intendingplunder.flavor": "§9掠夺一切§",
+  "modifier.momotinker.intendingplunder.description": "每级增加击杀生物掉落物的50%数量",
+
+  "modifier.momotinker.overweightingwealthsin": "尽掠之罪",
+  "modifier.momotinker.overweightingwealthsin.flavor": "§1无尽掠夺之代价:黄金之重§",
+  "modifier.momotinker.overweightingwealthsin.description": "减少词条等级*20%的攻击速度",
+
+  "modifier.momotinker.vehementdesire": "强欲",
+  "modifier.momotinker.vehementdesire.flavor": "§5深入骨髓§",
+  "modifier.momotinker.vehementdesire.description": "击中时赋予20秒词条等级的“失魂”效果，在目标0护甲时获得40%*词条等级（远程减半）的增伤，目标护甲越高增伤越低，到达30*词条等级时增伤为0",
+
+  "modifier.momotinker.overindulgencesin": "尽纵之罪",
+  "modifier.momotinker.overindulgencesin.flavor": "§5无尽纵欲之代价:骨肉痛寒§",
+  "modifier.momotinker.overindulgencesin.description": "在背包时每刻获得20秒词条等级的“失魂”效果\n§d[失魂]§:每层降低20%总护甲",
+
+  "modifier.momotinker.dominate": "支配",
+  "modifier.momotinker.dominate.flavor": "§c傲视一切§",
+  "modifier.momotinker.dominate.description": "每级获得叠乘的30%大部分属性加成，受到最大生命低于自身最大生命一定百分比的怪物攻击时只受到70%的伤害，数值为总等级*20%（同名只生效一次）",
+
+  "modifier.momotinker.overdisdainsin": "尽蔑之罪",
+  "modifier.momotinker.overdisdainsin.flavor": "§4无尽蔑视之代价:身命具薄§",
+  "modifier.momotinker.overdisdainsin.description": "穿戴或主副手持有时每刻获得20秒词条总等级的“狂妄”效果\n§4[狂妄]§:每层降低10%最大生命值",
+
+  "modifier.momotinker.drinkblood": "饮血",
+  "modifier.momotinker.drinkblood.flavor": "§8刀尖舔血§",
+  "modifier.momotinker.drinkblood.description": "攻击时若血量大于最大生命的10%，则会消耗最大生命的10%并获得等级*60%的增伤，在造成伤害时恢复实际伤害的30%*等级的血量，若血量不足则不消耗且增伤与恢复降至10%*等级（远程增伤恢复全程为10%*等级且不消耗血量）",
+
+  "modifier.momotinker.overangersin": "尽愤之罪",
+  "modifier.momotinker.overangersin.flavor": "§8无尽愤恨之代价:怒焰蚀身§",
+  "modifier.momotinker.overangersin.description": "主手持有时增加10%*词条等级受到的任何伤害",
+
+  "modifier.momotinker.unstained": "不染",
+  "modifier.momotinker.unstained.flavor": "§6尘事皆云§",
+  "modifier.momotinker.unstained.description": "在背包时免疫一切中性与负面效果（除七罪系列效果），穿戴或主副手持有时提供闪避攻击的几率，数值为总词条数*10%，最高为80%（同名只生效一次）",
+
+  "modifier.momotinker.overcowardicesin": "尽怠之罪",
+  "modifier.momotinker.overcowardicesin.flavor": "§6无尽怯怠之代价:微力予战§",
+  "modifier.momotinker.overcowardicesin.description": "穿戴或主副手持有时减少造成的伤害，数值为总词条*5%，最高为40%（同名只生效一次）",
+
+  "modifier.momotinker.grudgeothers": "妒外",
+  "modifier.momotinker.grudgeothers.flavor": "§e深恶痛疾§",
+  "modifier.momotinker.grudgeothers.description": "攻击时若自己某个部位未装备护甲的同时目标存在装备，则会清除对方该部位护甲并掉落在自己所在位置（不对玩家生效）;攻击血量上限比自己高的目标时会根据差值增加攻击力，数值为10%*词条等级*血量上限差值（最大为100*词条等级^2）",
+
+  "modifier.momotinker.overenvysin": "尽妒之罪",
+  "modifier.momotinker.overenvysin.flavor": "§e无尽妒怨之代价:临微浅恶§",
+  "modifier.momotinker.overenvysin.description": "攻击血量上限自身低的目标时会根据差值减少攻击力，数值为5%*词条等级*血量上限差值（最低时攻击不造成伤害）"
+}

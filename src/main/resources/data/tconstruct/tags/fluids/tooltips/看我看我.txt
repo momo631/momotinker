@@ -1,0 +1,6 @@
+这个地方设置熔融物品显示xxx锭xxx碎片xxx宝石的
+gem_large表示9合1的宝石(钻石等)
+gem_small表示4合1的宝石(紫水晶等等)
+metal(常规金属)
+slime粘液球
+soup碗装的

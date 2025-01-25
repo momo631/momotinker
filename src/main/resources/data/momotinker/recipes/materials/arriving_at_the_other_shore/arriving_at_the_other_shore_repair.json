@@ -1,0 +1,9 @@
+{
+  "type": "tconstruct:material",
+  "ingredient": {
+    "item": "momotinker:arriving_at_the_other_shore"
+  },
+  "value": 1,
+  "needed": 1,
+  "material": "momotinker:arriving_at_the_other_shore"
+}

@@ -1,0 +1,9 @@
+{
+  "type": "tconstruct:casting_basin",
+  "fluid": {
+    "fluid": "momotinker:molten_laomo",
+    "amount": 810
+  },
+  "result": "momotinker:laomo_block",
+  "cooling_time": 165
+}

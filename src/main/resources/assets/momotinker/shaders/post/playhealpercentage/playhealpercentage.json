@@ -1,0 +1,25 @@
+{
+  "targets": [
+    "a"
+  ],
+  "passes": [
+    {
+      "name": "color_convolve",
+      "intarget": "minecraft:main",
+      "outtarget": "a",
+      "uniforms": [
+        {
+          "name": "Saturation",
+          "values": [
+            0.05
+          ]
+        }
+      ]
+    },
+    {
+      "name": "blit",
+      "intarget": "a",
+      "outtarget": "minecraft:main"
+    }
+  ]
+}

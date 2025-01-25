@@ -1,0 +1,16 @@
+{
+  "default": [
+    {
+      "name": "momotinker:lethe",
+      "level": 1
+    },
+    {
+      "name": "momotinker:huangquan",
+      "level": 1
+    },
+    {
+      "name": "momotinker:red",
+      "level": 1
+    }
+  ]
+}

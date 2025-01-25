@@ -1,0 +1,38 @@
+{
+  "material.momotinker": {
+    "laomo": "#596d99",
+    "arriving_at_the_other_shore": "#ff0000",
+    "heartsteel": "#fb6d2c",
+    "gluttony_core": "#1FA300",
+    "spirit_visage": "#7CE531",
+    "greedy_contract": "#0228FF",
+    "lust_mirror": "#A433B5",
+    "arrogance_proof": "#FF4040",
+    "rage_stone_statue": "#2D2D2D",
+    "lazy_grail": "#EE9200",
+    "jealous_notes": "#EFFF1F"
+  },
+  "modifier.momotinker": {
+    "laomochuji": "#596d99",
+    "lethe": "#bd0808",
+    "huangquan": "#b8b8b8",
+    "red": "#ff0000",
+    "firmheart": "#18952d",
+    "feast": "#1FA300",
+    "overeatingsin": "#105200",
+    "wildhearts": "#9E682E",
+    "infinitevitality": "#7CFE69",
+    "intendingplunder": "#0228FF",
+    "overweightingwealthsin": "#00137D",
+    "vehementdesire": "#A433B5",
+    "overindulgencesin": "#6D2875",
+    "dominate": "#FF4040",
+    "overdisdainsin": "#B70000",
+    "drinkblood": "#5E5E5E",
+    "overangersin": "#2D2D2D",
+    "unstained": "#FFAF00",
+    "overcowardicesin": "#E47700",
+    "grudgeothers": "#EFFF1F",
+    "overenvysin": "#D8C800"
+  }
+}

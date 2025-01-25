@@ -1,0 +1,12 @@
+{
+  "default": [
+    {
+      "name": "momotinker:feast",
+      "level": 1
+    },
+    {
+      "name": "momotinker:overeatingsin",
+      "level": 1
+    }
+  ]
+}

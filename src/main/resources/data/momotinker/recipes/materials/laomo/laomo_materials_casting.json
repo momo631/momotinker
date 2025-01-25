@@ -1,0 +1,9 @@
+{
+  "type": "tconstruct:material_fluid",
+  "fluid": {
+    "name": "momotinker:molten_laomo",
+    "amount": 90
+  },
+  "temperature": 6300,
+  "output": "momotinker:laomo"
+}
