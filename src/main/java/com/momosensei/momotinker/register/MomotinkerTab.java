@@ -18,7 +18,7 @@ public class MomotinkerTab {
         }
     };
 
-
+/*
 
     public static final CreativeModeTab BLOCKS = new CreativeModeTab("momotinker.blocks") {
         @Override
@@ -27,4 +27,6 @@ public class MomotinkerTab {
         }
     };
     public MomotinkerTab(){}
+
+ */
 }

@@ -1,7 +1,6 @@
 package com.momosensei.momotinker.register;
 
 import com.momosensei.momotinker.Items.*;
-import net.minecraft.world.item.BlockItem;
 import net.minecraft.world.item.Item;
 import net.minecraftforge.registries.DeferredRegister;
 import net.minecraftforge.registries.ForgeRegistries;
@@ -11,7 +10,9 @@ import static com.momosensei.momotinker.Momotinker.MOD_ID;
 
 
 public class MomotinkerItem {
-    public MomotinkerItem(){}
+    public MomotinkerItem() {
+    }
+
     public static final DeferredRegister<Item> ITEMS = DeferredRegister.create(ForgeRegistries.ITEMS, MOD_ID);
 
     //物品锭什么的注册照着复制就行，如果有单独类改new Item的Item字段为你的类名，tab为创造模式显示栏，在哪个栏位显示
@@ -29,5 +30,7 @@ public class MomotinkerItem {
     public static final RegistryObject<Item> jealous_notes = ITEMS.register("jealous_notes", () -> new jealous_notes(new Item.Properties().tab(MomotinkerTab.MATERIALS)));
 
     //方块类要这样,略有变动
+    /*
     public static final RegistryObject<BlockItem> Laomo_block = ITEMS.register("laomo_block", () -> new BlockItem(MomotinkerBlock.Laomo_block.get(), new Item.Properties().tab(MomotinkerTab.BLOCKS)));
+     */
 }
