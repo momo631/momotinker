@@ -1,0 +1,12 @@
+{
+  "type": "tconstruct:melting",
+  "ingredient": {
+    "item": "momotinker:lust_mirror"
+  },
+  "result": {
+    "fluid": "momotinker:molten_lust_mirror",
+    "amount": 90
+  },
+  "temperature": 6666,
+  "time": 66
+}

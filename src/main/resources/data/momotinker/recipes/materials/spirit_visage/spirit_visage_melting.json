@@ -1,0 +1,12 @@
+{
+  "type": "tconstruct:melting",
+  "ingredient": {
+    "item": "momotinker:spirit_visage"
+  },
+  "result": {
+    "fluid": "momotinker:molten_spirit_visage",
+    "amount": 90
+  },
+  "temperature": 6666,
+  "time": 66
+}

@@ -1,0 +1,9 @@
+{
+  "type": "tconstruct:material_fluid",
+  "fluid": {
+    "name": "momotinker:molten_lust_mirror",
+    "amount": 90
+  },
+  "temperature": 6666,
+  "output": "momotinker:lust_mirror"
+}

@@ -1,0 +1,9 @@
+{
+  "type": "tconstruct:material_melting",
+  "input": "momotinker:jealous_notes",
+  "temperature": 6666,
+  "result": {
+    "fluid": "momotinker:molten_jealous_notes",
+    "amount": 90
+  }
+}

@@ -1,0 +1,9 @@
+{
+  "type": "tconstruct:material_fluid",
+  "fluid": {
+    "name": "momotinker:molten_lazy_grail",
+    "amount": 90
+  },
+  "temperature": 6666,
+  "output": "momotinker:lazy_grail"
+}

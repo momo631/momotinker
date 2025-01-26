@@ -1,0 +1,13 @@
+{
+  "type": "tconstruct:casting_table",
+  "cast": {
+    "tag": "tconstruct:casts/multi_use/ingot"
+  },
+  "cast_consumed": false,
+  "fluid": {
+    "name": "momotinker:molten_spirit_visage",
+    "amount": 90
+  },
+  "result": "momotinker:spirit_visage",
+  "cooling_time": 66
+}

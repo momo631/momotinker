@@ -11,6 +11,28 @@
   "effect.momotinker.arrogant": "狂妄",
 
   "fluid.momotinker.molten_laomo": "熔融牢墨",
+  "fluid.momotinker.molten_arriving_at_the_other_shore": "熔融彼岸",
+  "fluid.momotinker.molten_heartsteel": "熔融心钢",
+  "fluid.momotinker.molten_spirit_visage": "熔融生命洪流",
+  "fluid.momotinker.molten_gluttony_core": "熔融暴食",
+  "fluid.momotinker.molten_greedy_contract": "熔融贪婪",
+  "fluid.momotinker.molten_lust_mirror": "熔融色欲",
+  "fluid.momotinker.molten_arrogance_proof": "熔融傲慢",
+  "fluid.momotinker.molten_rage_stone_statue": "熔融暴怒",
+  "fluid.momotinker.molten_lazy_grail": "熔融怠惰",
+  "fluid.momotinker.molten_jealous_notes": "熔融嫉妒",
+
+  "item.momotinker.molten_laomo_bucket": "熔融牢墨桶",
+  "item.momotinker.molten_arriving_at_the_other_shore_bucket": "熔融彼岸桶",
+  "item.momotinker.molten_heartsteel_bucket": "熔融心钢桶",
+  "item.momotinker.molten_spirit_visage_bucket": "熔融生命洪流桶",
+  "item.momotinker.molten_gluttony_core_bucket": "熔融暴食桶",
+  "item.momotinker.molten_greedy_contract_bucket": "熔融贪婪桶",
+  "item.momotinker.molten_lust_mirror_bucket": "熔融色欲桶",
+  "item.momotinker.molten_arrogance_proof_bucket": "熔融傲慢桶",
+  "item.momotinker.molten_rage_stone_statue_bucket": "熔融暴怒桶",
+  "item.momotinker.molten_lazy_grail_bucket": "熔融怠惰桶",
+  "item.momotinker.molten_jealous_notes_bucket": "熔融嫉妒桶",
 
   "item.momotinker.laomo": "牢墨",
   "item.momotinker.interdimensional_crystal": "天外来晶",
@@ -44,8 +66,6 @@
 
   "item.momotinker.jealous_notes": "§e嫉妒笔记§",
   "momotinker.item.tooltip.jealous_notes1": "§e以尔富资，铸吾薄怨§",
-
-  "fluid.momotinker.molten_laomo_bucket": "熔融牢墨桶",
 
   "itemGroup.momotinker.materials": "牢墨模组-材料",
 

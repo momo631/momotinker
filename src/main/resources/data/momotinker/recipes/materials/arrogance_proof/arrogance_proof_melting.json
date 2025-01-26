@@ -1,0 +1,12 @@
+{
+  "type": "tconstruct:melting",
+  "ingredient": {
+    "item": "momotinker:arrogance_proof"
+  },
+  "result": {
+    "fluid": "momotinker:molten_arrogance_proof",
+    "amount": 90
+  },
+  "temperature": 6666,
+  "time": 66
+}

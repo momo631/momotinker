@@ -1,0 +1,12 @@
+{
+  "type": "tconstruct:melting",
+  "ingredient": {
+    "item": "momotinker:gluttony_core"
+  },
+  "result": {
+    "fluid": "momotinker:molten_gluttony_core",
+    "amount": 90
+  },
+  "temperature": 6666,
+  "time": 66
+}

@@ -1,0 +1,12 @@
+{
+  "type": "tconstruct:melting",
+  "ingredient": {
+    "item": "momotinker:rage_stone_statue"
+  },
+  "result": {
+    "fluid": "momotinker:molten_rage_stone_statue",
+    "amount": 90
+  },
+  "temperature": 6666,
+  "time": 66
+}

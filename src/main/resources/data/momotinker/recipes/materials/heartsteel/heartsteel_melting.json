@@ -1,0 +1,12 @@
+{
+  "type": "tconstruct:melting",
+  "ingredient": {
+    "item": "momotinker:heartsteel"
+  },
+  "result": {
+    "fluid": "momotinker:molten_heartsteel",
+    "amount": 90
+  },
+  "temperature": 6666,
+  "time": 66
+}

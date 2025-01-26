@@ -1,0 +1,9 @@
+{
+  "type": "tconstruct:material_fluid",
+  "fluid": {
+    "name": "momotinker:molten_arrogance_proof",
+    "amount": 90
+  },
+  "temperature": 6666,
+  "output": "momotinker:arrogance_proof"
+}
