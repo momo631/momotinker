@@ -1,6 +1,6 @@
 package com.momosensei.momotinker.register;
 
-import com.momosensei.momotinker.Modifiers.PlasmaSaber.*;
+import com.momosensei.momotinker.Modifiers.modifiers.*;
 import slimeknights.tconstruct.library.modifiers.util.ModifierDeferredRegister;
 import slimeknights.tconstruct.library.modifiers.util.StaticModifier;
 

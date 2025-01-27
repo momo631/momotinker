@@ -4,6 +4,6 @@
     "name": "momotinker:molten_greedy_contract",
     "amount": 90
   },
-  "temperature": 6666,
+  "temperature": 1500,
   "output": "momotinker:greedy_contract"
 }

@@ -1,7 +1,7 @@
 {
   "type": "tconstruct:material_melting",
   "input": "momotinker:heartsteel",
-  "temperature": 6666,
+  "temperature": 1500,
   "result": {
     "fluid": "momotinker:molten_heartsteel",
     "amount": 90

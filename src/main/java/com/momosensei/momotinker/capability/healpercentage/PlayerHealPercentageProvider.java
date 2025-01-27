@@ -36,7 +36,7 @@ public class PlayerHealPercentageProvider implements ICapabilityProvider, INBTSe
         }
         else
         {
-            return lazyOptional.empty();
+            return LazyOptional.empty();
         }
     }
 

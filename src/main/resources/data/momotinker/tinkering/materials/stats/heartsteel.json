@@ -16,25 +16,13 @@
     "tconstruct:limb": {
       "durability": 3200,
       "draw_speed": 0.4,
-      "velocity": 1.0,
-      "accuracy": 1.0
+      "velocity": 0.8,
+      "accuracy": 2
     },
     "tconstruct:grip": {
-      "durability": 1.0,
-      "accuracy": 1.0,
-      "melee_damage": 1.0
-    },
-    "tinkers_ingenuity:laser_medium": {
-      "laser_range": 8,
-      "cooldown": 0.8
-    },
-    "tinkers_ingenuity:curio_extra": {},
-    "tinkers_ingenuity:curio_main": {
-      "movement_speed": 0.2,
-      "armor": 0.2,
-      "toughness": 0.2,
-      "attack": 0.2,
-      "arrow_damage": 0.2
+      "durability": 3.2,
+      "accuracy": 3.2,
+      "melee_damage": 8
     }
   }
 }

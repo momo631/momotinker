@@ -171,7 +171,7 @@
 
   "modifier.momotinker.grudgeothers": "妒外",
   "modifier.momotinker.grudgeothers.flavor": "§e深恶痛疾§",
-  "modifier.momotinker.grudgeothers.description": "攻击时若自己某个部位未装备护甲的同时目标存在装备，则会清除对方该部位护甲并掉落在自己所在位置（不对玩家生效）;攻击血量上限比自己高的目标时会根据差值增加攻击力，数值为10%*词条等级*血量上限差值（最大为100*词条等级^2）",
+  "modifier.momotinker.grudgeothers.description": "攻击时若自己某个部位未装备护甲的同时目标存在装备，则会清除对方该部位护甲并掉落在自己所在位置（不对玩家与匠魂盔甲生效）;攻击血量上限比自己高的目标时会根据差值增加攻击力，数值为10%*词条等级*血量上限差值（最大为100*词条等级^2）",
 
   "modifier.momotinker.overenvysin": "尽妒之罪",
   "modifier.momotinker.overenvysin.flavor": "§e无尽妒怨之代价:临微浅恶§",

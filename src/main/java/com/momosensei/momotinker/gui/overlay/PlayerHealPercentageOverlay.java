@@ -23,12 +23,12 @@ public class PlayerHealPercentageOverlay {
 
     public static IGuiOverlay PLAYER_HEAL_PERCENTAGE = ((gui, poseStack, partialTick, width, height) -> {
         Player player = Minecraft.getInstance().player;
-        if (player != null && player.hasEffect(MomotinkerEffects.End.get())) {
+        if (player != null && player.getEffect(MomotinkerEffects.End.get())!=null && player.hasEffect(MomotinkerEffects.End.get())) {
             Minecraft.getInstance().tell(() -> Minecraft.getInstance().gameRenderer.loadEffect(PLAYER_HEAL_PERCENTAGE_SHADER));
         }
         else
         {
-            if (player != null && !(player.hasEffect(MomotinkerEffects.End.get()))) {
+            if (player != null && player.getEffect(MomotinkerEffects.End.get())!=null && !(player.hasEffect(MomotinkerEffects.End.get()))) {
                 Minecraft.getInstance().tell(() -> Minecraft.getInstance().gameRenderer.shutdownEffect());
             }
         }
