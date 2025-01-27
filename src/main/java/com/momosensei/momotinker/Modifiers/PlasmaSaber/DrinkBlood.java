@@ -38,7 +38,7 @@ public class DrinkBlood extends momomodifier {
         LivingEntity attacker =context.getAttacker();
         if (attacker instanceof Player player&&target != null&& modifier.getLevel() > 0) {
             float a = modifier.getLevel();
-            if (attacker.getHealth() > attacker.getMaxHealth()*0.100001f){
+            if (attacker.getHealth() > attacker.getMaxHealth()*0.1000000000000000000000000001f){
                 attacker.hurt(DamageSource.OUT_OF_WORLD.bypassArmor().bypassMagic().bypassInvul().bypassEnchantments(), attacker.getMaxHealth()*0.1f);
                 return damage * (1F + a*0.6F);
             }

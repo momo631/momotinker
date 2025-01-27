@@ -39,7 +39,7 @@ public class Lethe extends momomodifier {
             if (target.getEffect(MomotinkerEffects.None.get()) != null && target.getEffect(MomotinkerEffects.None.get()).getAmplifier() < modifier.getLevel() + 6) {
                 target.addEffect(new MobEffectInstance(MomotinkerEffects.None.get(), 300, target.getEffect(MomotinkerEffects.None.get()).getAmplifier() + 1, false, false));
             } else target.addEffect(new MobEffectInstance(MomotinkerEffects.None.get(), 300, 1*modifier.getLevel(), false, false));
-            if (target.getEffect(MomotinkerEffects.None.get()).getDuration() < 300) {
+            if (target.getEffect(MomotinkerEffects.None.get()) != null &&target.getEffect(MomotinkerEffects.None.get()).getDuration() < 300) {
                 target.addEffect(new MobEffectInstance(MomotinkerEffects.None.get(), 300, target.getEffect(MomotinkerEffects.None.get()).getAmplifier()*1, false, false));
             }
         }
@@ -51,7 +51,7 @@ public class Lethe extends momomodifier {
             if (target.getEffect(MomotinkerEffects.None.get()) != null && target.getEffect(MomotinkerEffects.None.get()).getAmplifier() < modifier.getLevel() + 6) {
                 target.addEffect(new MobEffectInstance(MomotinkerEffects.None.get(), 300, target.getEffect(MomotinkerEffects.None.get()).getAmplifier() + 1, false, false));
             } else target.addEffect(new MobEffectInstance(MomotinkerEffects.None.get(), 300, modifier.getLevel()-1, false, false));
-            if (target.getEffect(MomotinkerEffects.None.get()).getDuration() < 300) {
+            if (target.getEffect(MomotinkerEffects.None.get()) != null && target.getEffect(MomotinkerEffects.None.get()).getDuration() < 300) {
                 target.addEffect(new MobEffectInstance(MomotinkerEffects.None.get(), 300, target.getEffect(MomotinkerEffects.None.get()).getAmplifier()*1, false, false));
             }
         }

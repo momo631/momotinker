@@ -30,7 +30,7 @@ public class GrudgeOthers extends momomodifier {
     private void livinghurtevent(LivingHurtEvent event) {
         LivingEntity entity = event.getEntity();
         Entity holder = event.getSource().getEntity();
-        if ( holder instanceof Player player && entity != null &&!(entity instanceof Player)) {
+        if (holder instanceof Player player && entity != null && !(entity instanceof Player)) {
             if (ModifierUtil.getModifierLevel(player.getItemBySlot(EquipmentSlot.MAINHAND), MomotinkerModifiers.grudgeothers.getId())>0) {
                 if (!player.hasItemInSlot(EquipmentSlot.HEAD)){
                     ItemStack a = new ItemStack(entity.getItemBySlot(EquipmentSlot.HEAD).getItem());

@@ -89,14 +89,14 @@ public class Firmheart extends momomodifier {
         }
         if (entity.tickCount % 20 == 0 && entity instanceof ServerPlayer && modifierEntry.getLevel() > 0) {
             for (LivingEntity e : entity.level.getEntitiesOfClass(LivingEntity.class, entity.getBoundingBox().inflate((double) 10.0F), (ex) -> ex instanceof Enemy)) {
-                if (!e.hasEffect(MomotinkerEffects.BeSwallowed.get()) && e.getEffect(MomotinkerEffects.BeSwallow.get()).getAmplifier() < 4 && e.hasEffect(MomotinkerEffects.BeSwallow.get())) {
+                if (e.getEffect(MomotinkerEffects.BeSwallow.get())!=null&&!e.hasEffect(MomotinkerEffects.BeSwallowed.get()) && e.hasEffect(MomotinkerEffects.BeSwallow.get())&& e.getEffect(MomotinkerEffects.BeSwallow.get()).getAmplifier() < 4 ) {
                     e.addEffect(new MobEffectInstance(MomotinkerEffects.BeSwallow.get(), 120, e.getEffect(MomotinkerEffects.BeSwallow.get()).getAmplifier() + 1, false, false));
                 }
             }
         }
         if (entity.tickCount % 20 == 0 && entity instanceof ServerPlayer && modifierEntry.getLevel() > 0) {
             for (LivingEntity e : entity.level.getEntitiesOfClass(LivingEntity.class, entity.getBoundingBox().inflate((double) 10.0F), (ex) -> ex instanceof Enemy)) {
-                if (!e.hasEffect(MomotinkerEffects.BeSwallowed.get()) && e.getEffect(MomotinkerEffects.BeSwallow.get()).getAmplifier() == 4) {
+                if (e.getEffect(MomotinkerEffects.BeSwallow.get())!=null&&!e.hasEffect(MomotinkerEffects.BeSwallowed.get()) && e.getEffect(MomotinkerEffects.BeSwallow.get()).getAmplifier() == 4) {
                     e.addEffect(new MobEffectInstance(MomotinkerEffects.BeSwallow.get(), 120, 4, false, false));
                 }
             }
