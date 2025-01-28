@@ -28,7 +28,7 @@ public class PlayerHealPercentageOverlay {
         }
         else
         {
-            if (player != null && player.getEffect(MomotinkerEffects.End.get())!=null && !(player.hasEffect(MomotinkerEffects.End.get()))) {
+            if (player != null  && !(player.hasEffect(MomotinkerEffects.End.get()))) {
                 Minecraft.getInstance().tell(() -> Minecraft.getInstance().gameRenderer.shutdownEffect());
             }
         }
