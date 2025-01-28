@@ -10,9 +10,13 @@ import net.minecraft.world.effect.MobEffectInstance;
 import net.minecraft.world.entity.EquipmentSlot;
 import net.minecraftforge.network.NetworkEvent;
 import slimeknights.tconstruct.library.tools.helper.ModifierUtil;
+import slimeknights.tconstruct.library.tools.nbt.ModDataNBT;
+import slimeknights.tconstruct.library.tools.nbt.ToolStack;
 
 import java.util.Random;
 import java.util.function.Supplier;
+
+import static com.momosensei.momotinker.Modifiers.modifiers.Red.ender;
 
 public class KeyInputEndPKT {
     public int key;
@@ -40,8 +44,9 @@ public class KeyInputEndPKT {
             Random random = new Random();
             int randomIndex = random.nextInt(array.length);
             if (player != null && ModifierUtil.getModifierLevel(player.getMainHandItem(), MomotinkerModifiers.red.getId()) > 0) {
-                if (!player.getCooldowns().isOnCooldown(player.getItemBySlot(EquipmentSlot.MAINHAND).getItem())) {
-                    player.getCooldowns().addCooldown((player.getItemBySlot(EquipmentSlot.MAINHAND).getItem()), 1800);
+                ModDataNBT tooldata = ToolStack.from(player.getItemBySlot(EquipmentSlot.MAINHAND)).getPersistentData();
+                if (tooldata.getFloat(ender)==0) {
+                    tooldata.putFloat(ender, tooldata.getFloat(ender)+90);
                     player.addEffect(new MobEffectInstance(MomotinkerEffects.End.get(), 300));
                     player.sendSystemMessage(Component.literal(array[randomIndex]).withStyle(ChatFormatting.DARK_RED));
                 }

@@ -68,10 +68,10 @@ public class Huangquan extends momomodifier {
             float var = (player.getMaxHealth() - player.getHealth())*6;
             if (target != null&&player.getHealth()<player.getMaxHealth()*0.6F) {
                 if (!(player.hasEffect(MomotinkerEffects.End.get()))) {
-                    arrow.setBaseDamage(arrow.getBaseDamage() + var);
+                    arrow.setBaseDamage(arrow.getBaseDamage() + var*0.25);
                 }
                 if (player.getEffect(MomotinkerEffects.End.get())!=null &&player.hasEffect(MomotinkerEffects.End.get())) {
-                    arrow.setBaseDamage(arrow.getBaseDamage() + var*2);
+                    arrow.setBaseDamage(arrow.getBaseDamage() + var*0.5);
                 }
             }
         }

@@ -103,11 +103,11 @@
 
   "modifier.momotinker.huangquan": "浸黄泉",
   "modifier.momotinker.huangquan.flavor": "§7所渡之处,为无§",
-  "modifier.momotinker.huangquan.description": "血量低于60%时提升攻击力，数值为已损失生命值*6，获得“引渡人”效果时攻击将无视防御且该增伤涨至双倍",
+  "modifier.momotinker.huangquan.description": "血量低于60%时提升攻击力，数值为已损失生命值*6，获得“引渡人”效果时攻击将无视防御且该增伤涨至双倍（远程的增伤效率为25%）",
 
   "modifier.momotinker.red": "轮回色",
   "modifier.momotinker.red.flavor": "§4所归之景，为无§",
-  "modifier.momotinker.red.description": "常态下感知周围敌对生物，按下按键后自身获得15秒的“引渡人”效果，且该种类的工具进入90秒冷却\n§7[引渡人]§:观察的一切景象都将褪色，在持续时间内对大范围内生物附加12层“忘阙人”效果，血量无法超过1点且生命暂时无法恢复",
+  "modifier.momotinker.red.description": "常态下感知周围敌对生物，按下按键后自身获得15秒的“引渡人”效果，且该工具进入90秒冷却\n§7[引渡人]§:观察的一切景象都将褪色，在持续时间内对大范围内生物附加12层“忘阙人”效果，自身血量无法超过1点且生命暂时无法恢复",
 
   "modifier.momotinker.firmheart": "坚心",
   "modifier.momotinker.firmheart.flavor": "§2心坚如钢§",
