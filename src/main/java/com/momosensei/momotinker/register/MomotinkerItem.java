@@ -17,7 +17,7 @@ public class MomotinkerItem {
 
     //物品锭什么的注册照着复制就行，如果有单独类改new Item的Item字段为你的类名，tab为创造模式显示栏，在哪个栏位显示
     public static final RegistryObject<Item> laomo = ITEMS.register("laomo", () -> new Item(new Item.Properties().tab(MomotinkerTab.MATERIALS)));
-    public static final RegistryObject<Item> interdimensional_crystal = ITEMS.register("interdimensional_crystal", () -> new Item(new Item.Properties().tab(MomotinkerTab.MATERIALS)));
+    public static final RegistryObject<Item> interdimensional_crystal = ITEMS.register("interdimensional_crystal", () -> new interdimensional_crystal(new Item.Properties().tab(MomotinkerTab.MATERIALS)));
     public static final RegistryObject<Item> arriving_at_the_other_shore = ITEMS.register("arriving_at_the_other_shore", () -> new arriving_at_the_other_shore(new Item.Properties().tab(MomotinkerTab.MATERIALS)));
     public static final RegistryObject<Item> spirit_visage = ITEMS.register("spirit_visage", () -> new spirit_visage(new Item.Properties().tab(MomotinkerTab.MATERIALS)));
     public static final RegistryObject<Item> heartsteel = ITEMS.register("heartsteel", () -> new heartsteel(new Item.Properties().tab(MomotinkerTab.MATERIALS)));

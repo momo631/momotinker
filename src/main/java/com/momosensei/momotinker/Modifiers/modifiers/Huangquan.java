@@ -3,6 +3,7 @@ package com.momosensei.momotinker.Modifiers.modifiers;
 import com.momosensei.momotinker.register.MomotinkerEffects;
 import com.momosensei.momotinker.register.MomotinkerModifiers;
 import net.minecraft.ChatFormatting;
+import net.minecraft.server.level.ServerPlayer;
 import net.minecraft.world.entity.Entity;
 import net.minecraft.world.entity.EquipmentSlot;
 import net.minecraft.world.entity.LivingEntity;
@@ -48,7 +49,7 @@ public class Huangquan extends momomodifier {
     @Override
     public float getMeleeDamage(@Nonnull IToolStackView tool, ModifierEntry modifier, @Nonnull ToolAttackContext context, float baseDamage, float damage) {
         LivingEntity attacker =context.getAttacker();
-        if (attacker instanceof Player player){
+        if (attacker instanceof ServerPlayer player){
             float var = (player.getMaxHealth() - player.getHealth())*6;
             if (player.getHealth()<player.getMaxHealth()*0.6F) {
                 if (!(player.hasEffect(MomotinkerEffects.End.get()))) {
@@ -64,7 +65,7 @@ public class Huangquan extends momomodifier {
 
     @Override
     public boolean onProjectileHitEntity(ModifierNBT modifiers, NamespacedNBT persistentData, ModifierEntry modifier, Projectile projectile, EntityHitResult hit, @javax.annotation.Nullable LivingEntity attacker, @javax.annotation.Nullable LivingEntity target) {
-        if (attacker instanceof Player player && projectile instanceof AbstractArrow arrow){
+        if (attacker instanceof ServerPlayer player && projectile instanceof AbstractArrow arrow){
             float var = (player.getMaxHealth() - player.getHealth())*6;
             if (target != null&&player.getHealth()<player.getMaxHealth()*0.6F) {
                 if (!(player.hasEffect(MomotinkerEffects.End.get()))) {

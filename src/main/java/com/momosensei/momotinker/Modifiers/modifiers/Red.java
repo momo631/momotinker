@@ -56,7 +56,7 @@ public class Red extends momomodifier {
     public void addTooltip(IToolStackView tool, ModifierEntry modifierEntry, @org.jetbrains.annotations.Nullable Player player, List<Component> tooltip, TooltipKey tooltipKey, TooltipFlag tooltipFlag) {
         if (player != null) {
             ModDataNBT tooldata = tool.getPersistentData();
-            tooltip.add(net.minecraft.network.chat.Component.translatable("技能冷却还剩" + (tooldata.getFloat(ender))+"秒").withStyle(ChatFormatting.DARK_RED));
+            tooltip.add(net.minecraft.network.chat.Component.translatable("[轮回色]的冷却还剩" + (tooldata.getFloat(ender))+"秒").withStyle(ChatFormatting.DARK_RED));
         }
     }
 }

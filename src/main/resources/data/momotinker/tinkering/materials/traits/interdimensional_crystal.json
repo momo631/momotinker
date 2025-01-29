@@ -1,7 +1,11 @@
 {
   "default": [
     {
-      "name": "momotinker:firmheart",
+      "name": "momotinker:fallingstars",
+      "level": 1
+    },
+    {
+      "name": "momotinker:unknownreturnee",
       "level": 1
     }
   ]

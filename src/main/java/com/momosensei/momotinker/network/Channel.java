@@ -1,6 +1,6 @@
 package com.momosensei.momotinker.network;
 
-import com.momosensei.momotinker.network.packet.servertoplay.KeyInputEndPKT;
+import com.momosensei.momotinker.network.packet.servertoplay.KeyInputPKT;
 import net.minecraft.resources.ResourceLocation;
 import net.minecraftforge.network.NetworkDirection;
 import net.minecraftforge.network.NetworkRegistry;
@@ -24,10 +24,10 @@ public class Channel {
                 .simpleChannel();
         INSTACNE = net;
 
-        net.messageBuilder(KeyInputEndPKT.class,id(), NetworkDirection.PLAY_TO_SERVER)
-                .decoder(KeyInputEndPKT::decode)
-                .encoder(KeyInputEndPKT::encode)
-                .consumerMainThread(KeyInputEndPKT::handlePacket)
+        net.messageBuilder(KeyInputPKT.class,id(), NetworkDirection.PLAY_TO_SERVER)
+                .decoder(KeyInputPKT::decode)
+                .encoder(KeyInputPKT::encode)
+                .consumerMainThread(KeyInputPKT::handlePacket)
                 .add();
     }
     public static <MSG> void sendToServer(MSG message){

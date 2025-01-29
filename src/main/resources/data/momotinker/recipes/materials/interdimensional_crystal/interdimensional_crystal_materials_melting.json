@@ -1,0 +1,9 @@
+{
+  "type": "tconstruct:material_melting",
+  "input": "momotinker:interdimensional_crystal",
+  "temperature": 1500,
+  "result": {
+    "fluid": "momotinker:molten_interdimensional_crystal",
+    "amount": 90
+  }
+}

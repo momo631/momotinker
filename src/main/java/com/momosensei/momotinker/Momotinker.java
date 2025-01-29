@@ -25,6 +25,7 @@ public class Momotinker {
         MomotinkerFluid.FLUIDS.register(eventBus);
         MomotinkerBlock.BLOCK.register(eventBus);
         MomotinkerEffects.EFFECT.register(eventBus);
+        MomotinkerEntities.ENTITIES.register(eventBus);
     }
     //Resourcelocation
     public static ResourceLocation getResource(String id) {

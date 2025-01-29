@@ -9,6 +9,8 @@
   "effect.momotinker.wildheart": "狂徒之心",
   "effect.momotinker.lostsoul": "失魂",
   "effect.momotinker.arrogant": "狂妄",
+  "effect.momotinker.fallingpreparation": "落星（准备）",
+  "effect.momotinker.fallingstar": "落星",
 
   "fluid.momotinker.molten_laomo": "熔融牢墨",
   "fluid.momotinker.molten_arriving_at_the_other_shore": "熔融彼岸",
@@ -21,6 +23,7 @@
   "fluid.momotinker.molten_rage_stone_statue": "熔融暴怒",
   "fluid.momotinker.molten_lazy_grail": "熔融怠惰",
   "fluid.momotinker.molten_jealous_notes": "熔融嫉妒",
+  "fluid.momotinker.molten_interdimensional_crystal": "熔融苍星",
 
   "item.momotinker.molten_laomo_bucket": "熔融牢墨桶",
   "item.momotinker.molten_arriving_at_the_other_shore_bucket": "熔融彼岸桶",
@@ -33,9 +36,12 @@
   "item.momotinker.molten_rage_stone_statue_bucket": "熔融暴怒桶",
   "item.momotinker.molten_lazy_grail_bucket": "熔融怠惰桶",
   "item.momotinker.molten_jealous_notes_bucket": "熔融嫉妒桶",
+  "item.momotinker.molten_interdimensional_crystal_bucket": "熔融苍星桶",
 
   "item.momotinker.laomo": "牢墨",
-  "item.momotinker.interdimensional_crystal": "天外来晶",
+
+  "item.momotinker.interdimensional_crystal": "§d天外来星§",
+  "momotinker.item.tooltip.interdimensional_crystal1": "§d自天堂归来§",
 
   "item.momotinker.arriving_at_the_other_shore": "\u00A74现彼岸\u00A7",
   "momotinker.item.tooltip.arriving_at_the_other_shore1": "\u00A77万千逝物，皆渡彼岸\u00A7",
@@ -92,6 +98,8 @@
   "material.momotinker.lazy_grail.encyclopedia": "§6世急永不缠身§",
   "material.momotinker.jealous_notes": "嫉妒",
   "material.momotinker.jealous_notes.encyclopedia": "§e妒怨永不祛除§",
+  "material.momotinker.interdimensional_crystal": "苍星",
+  "material.momotinker.interdimensional_crystal.encyclopedia": "§d自天堂归来§",
 
   "modifier.momotinker.laomochuji": "牢墨出击",
   "modifier.momotinker.laomochuji.flavor": "词条标题",
@@ -107,7 +115,7 @@
 
   "modifier.momotinker.red": "轮回色",
   "modifier.momotinker.red.flavor": "§4所归之景，为无§",
-  "modifier.momotinker.red.description": "常态下感知周围敌对生物，按下按键后自身获得15秒的“引渡人”效果，且该工具进入90秒冷却\n§7[引渡人]§:观察的一切景象都将褪色，在持续时间内对大范围内生物附加12层“忘阙人”效果，自身血量无法超过1点且生命暂时无法恢复",
+  "modifier.momotinker.red.description": "常态下感知周围敌对生物，按下技能按键后自身获得15秒的“引渡人”效果，且该工具进入90秒冷却\n§7[引渡人]§:观察的一切景象都将褪色，在持续时间内对大范围内生物附加12层“忘阙人”效果，自身血量无法超过1点且生命暂时无法恢复",
 
   "modifier.momotinker.firmheart": "坚心",
   "modifier.momotinker.firmheart.flavor": "§2心坚如钢§",
@@ -147,7 +155,7 @@
 
   "modifier.momotinker.dominate": "支配",
   "modifier.momotinker.dominate.flavor": "§c傲视一切§",
-  "modifier.momotinker.dominate.description": "每级获得叠乘的30%大部分属性加成，受到最大生命低于自身最大生命一定百分比的怪物攻击时只受到70%的伤害，数值为总等级*20%（同名只生效一次）",
+  "modifier.momotinker.dominate.description": "每级获得叠乘的50%大部分属性加成，受到最大生命低于自身最大生命一定百分比的怪物攻击时只受到70%的伤害，数值为总等级*20%（同名只生效一次）",
 
   "modifier.momotinker.overdisdainsin": "尽蔑之罪",
   "modifier.momotinker.overdisdainsin.flavor": "§4无尽蔑视之代价:身命具薄§",
@@ -175,5 +183,13 @@
 
   "modifier.momotinker.overenvysin": "尽妒之罪",
   "modifier.momotinker.overenvysin.flavor": "§e无尽妒怨之代价:临微浅恶§",
-  "modifier.momotinker.overenvysin.description": "攻击血量上限自身低的目标时会根据差值减少攻击力，数值为5%*词条等级*血量上限差值（最低时攻击不造成伤害）"
+  "modifier.momotinker.overenvysin.description": "攻击血量上限自身低的目标时会根据差值减少攻击力，数值为5%*词条等级*血量上限差值（最低时攻击不造成伤害）",
+
+  "modifier.momotinker.fallingstars": "苍穹落星",
+  "modifier.momotinker.fallingstars.flavor": "§d当流星于此降临§",
+  "modifier.momotinker.fallingstars.description": "按下技能按键后升往空中，在第一次按下的3秒内再次按下会获得1秒的“落星”效果，且该工具获得120秒冷却（若未使用第二段技能则只有30秒冷却）\n§d[落星]§:向视角方向快速冲刺并在碰撞方块或击中实体时停止，停止时产生爆炸对范围内生物造成词条等级*100（若击中实体则格外增加词条等级*武器近战攻击一次的伤害）的爆炸类型伤害，飞行时间越长伤害越高（在飞行15刻时最高，数值为400%）",
+
+  "modifier.momotinker.unknownreturnee": "未知归来者",
+  "modifier.momotinker.unknownreturnee.flavor": "§d“\\---.. ..--- -.-. -..\\--... .- --... ----.”§",
+  "modifier.momotinker.unknownreturnee.description": "造成的伤害减少20%*词条等级，但会随机增加伤害，范围为词条等级*（10%——100%）"
 }

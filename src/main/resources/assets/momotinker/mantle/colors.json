@@ -3,14 +3,15 @@
     "laomo": "#596d99",
     "arriving_at_the_other_shore": "#ff0000",
     "heartsteel": "#fb6d2c",
-    "gluttony_core": "#1FA300",
     "spirit_visage": "#7CE531",
+    "gluttony_core": "#1FA300",
     "greedy_contract": "#0228FF",
     "lust_mirror": "#A433B5",
     "arrogance_proof": "#FF4040",
     "rage_stone_statue": "#2D2D2D",
     "lazy_grail": "#EE9200",
-    "jealous_notes": "#EFFF1F"
+    "jealous_notes": "#EFFF1F",
+    "interdimensional_crystal": "#C972FF"
   },
   "modifier.momotinker": {
     "laomochuji": "#596d99",
@@ -33,6 +34,8 @@
     "unstained": "#FFAF00",
     "overcowardicesin": "#E47700",
     "grudgeothers": "#EFFF1F",
-    "overenvysin": "#D8C800"
+    "overenvysin": "#D8C800",
+    "fallingstars": "#E1C0FF",
+    "unknownreturnee": "#C972FF"
   }
 }

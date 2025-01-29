@@ -19,5 +19,7 @@ public class MomotinkerEffects  {
     public static final RegistryObject<MobEffect> WildHeart = EFFECT.register("wildheart",  WildHeart::new);
     public static final RegistryObject<MobEffect> LostSoul = EFFECT.register("lostsoul",  LostSoul::new);
     public static final RegistryObject<MobEffect> Arrogant = EFFECT.register("arrogant",  Arrogant::new);
+    public static final RegistryObject<MobEffect> FallingPreparation = EFFECT.register("fallingpreparation",  FallingPreparation::new);
+    public static final RegistryObject<MobEffect> FallingStar = EFFECT.register("fallingstar",  FallingStar::new);
 
 }

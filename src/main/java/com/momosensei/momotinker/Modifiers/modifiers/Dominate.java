@@ -29,19 +29,19 @@ public class Dominate extends momomodifier {
     @Override
     public void addToolStats(IToolContext context, ModifierEntry modifier, ModifierStatsBuilder builder) {
         if (modifier.getLevel() > 0) {
-            ToolStats.DURABILITY.multiply(builder, Math.pow(1.3, modifier.getLevel()));
-            ToolStats.ATTACK_SPEED.multiply(builder, Math.pow(1.3, modifier.getLevel()));
-            ToolStats.ATTACK_DAMAGE.multiply(builder, Math.pow(1.3, modifier.getLevel()));
-            ToolStats.ACCURACY.multiply(builder, Math.pow(1.3, modifier.getLevel()));
-            ToolStats.DRAW_SPEED.multiply(builder, Math.pow(1.3, modifier.getLevel()));
-            ToolStats.VELOCITY.multiply(builder, Math.pow(1.3, modifier.getLevel()));
-            ToolStats.MINING_SPEED.multiply(builder, Math.pow(1.3, modifier.getLevel()));
-            ToolStats.ARMOR.multiply(builder, Math.pow(1.3, modifier.getLevel()));
-            ToolStats.ARMOR_TOUGHNESS.multiply(builder, Math.pow(1.3, modifier.getLevel()));
-            ToolStats.PROJECTILE_DAMAGE.multiply(builder, Math.pow(1.3, modifier.getLevel()));
-            ToolStats.KNOCKBACK_RESISTANCE.multiply(builder, Math.pow(1.3, modifier.getLevel()));
-            ToolStats.BLOCK_AMOUNT.multiply(builder, Math.pow(1.3, modifier.getLevel()));
-            ToolStats.BLOCK_ANGLE.multiply(builder, Math.pow(1.3, modifier.getLevel()));
+            ToolStats.DURABILITY.multiply(builder, Math.pow(1.5, modifier.getLevel()));
+            ToolStats.ATTACK_SPEED.multiply(builder, Math.pow(1.5, modifier.getLevel()));
+            ToolStats.ATTACK_DAMAGE.multiply(builder, Math.pow(1.5, modifier.getLevel()));
+            ToolStats.ACCURACY.multiply(builder, Math.pow(1.5, modifier.getLevel()));
+            ToolStats.DRAW_SPEED.multiply(builder, Math.pow(1.5, modifier.getLevel()));
+            ToolStats.VELOCITY.multiply(builder, Math.pow(1.5, modifier.getLevel()));
+            ToolStats.MINING_SPEED.multiply(builder, Math.pow(1.5, modifier.getLevel()));
+            ToolStats.ARMOR.multiply(builder, Math.pow(1.5, modifier.getLevel()));
+            ToolStats.ARMOR_TOUGHNESS.multiply(builder, Math.pow(1.5, modifier.getLevel()));
+            ToolStats.PROJECTILE_DAMAGE.multiply(builder, Math.pow(1.5, modifier.getLevel()));
+            ToolStats.KNOCKBACK_RESISTANCE.multiply(builder, Math.pow(1.5, modifier.getLevel()));
+            ToolStats.BLOCK_AMOUNT.multiply(builder, Math.pow(1.5, modifier.getLevel()));
+            ToolStats.BLOCK_ANGLE.multiply(builder, Math.pow(1.5, modifier.getLevel()));
         }
     }
 

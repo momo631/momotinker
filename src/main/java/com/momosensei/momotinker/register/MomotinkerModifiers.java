@@ -35,5 +35,7 @@ public class MomotinkerModifiers {
     public static final StaticModifier<OverCowardiceSin> overcowardicesin=MODIFIERS.register("overcowardicesin", OverCowardiceSin::new);
     public static final StaticModifier<GrudgeOthers> grudgeothers=MODIFIERS.register("grudgeothers", GrudgeOthers::new);
     public static final StaticModifier<OverEnvySin> overenvysin=MODIFIERS.register("overenvysin", OverEnvySin::new);
+    public static final StaticModifier<FallingStars> fallingstars=MODIFIERS.register("fallingstars", FallingStars::new);
+    public static final StaticModifier<UnknownReturnee> unknownreturnee=MODIFIERS.register("unknownreturnee", UnknownReturnee::new);
 
 }

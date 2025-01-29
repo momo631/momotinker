@@ -43,5 +43,6 @@ public class MomotinkerFluid{
     public static final FluidObject<ForgeFlowingFluid> molten_rage_stone_statue = register("molten_rage_stone_statue", 5859);
     public static final FluidObject<ForgeFlowingFluid> molten_lazy_grail = register("molten_lazy_grail", 5858);
     public static final FluidObject<ForgeFlowingFluid> molten_jealous_notes = register("molten_jealous_notes", 5857);
+    public static final FluidObject<ForgeFlowingFluid> molten_interdimensional_crystal = register("molten_interdimensional_crystal", 5856);
 
 }
