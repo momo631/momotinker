@@ -1,5 +1,5 @@
 {
-  "block.momotinker.laomo_block": "牢墨块",
+  "block.momotinker.laomo_block": "墨块",
 
   "effect.momotinker.hongwen": "红温",
   "effect.momotinker.none": "忘阙人",
@@ -12,7 +12,7 @@
   "effect.momotinker.fallingpreparation": "落星（准备）",
   "effect.momotinker.fallingstar": "落星",
 
-  "fluid.momotinker.molten_laomo": "熔融牢墨",
+  "fluid.momotinker.molten_laomo": "熔融墨",
   "fluid.momotinker.molten_arriving_at_the_other_shore": "熔融彼岸",
   "fluid.momotinker.molten_heartsteel": "熔融心钢",
   "fluid.momotinker.molten_spirit_visage": "熔融生命洪流",
@@ -25,7 +25,7 @@
   "fluid.momotinker.molten_jealous_notes": "熔融嫉妒",
   "fluid.momotinker.molten_interdimensional_crystal": "熔融苍星",
 
-  "item.momotinker.molten_laomo_bucket": "熔融牢墨桶",
+  "item.momotinker.molten_laomo_bucket": "熔融墨桶",
   "item.momotinker.molten_arriving_at_the_other_shore_bucket": "熔融彼岸桶",
   "item.momotinker.molten_heartsteel_bucket": "熔融心钢桶",
   "item.momotinker.molten_spirit_visage_bucket": "熔融生命洪流桶",
@@ -38,7 +38,7 @@
   "item.momotinker.molten_jealous_notes_bucket": "熔融嫉妒桶",
   "item.momotinker.molten_interdimensional_crystal_bucket": "熔融苍星桶",
 
-  "item.momotinker.laomo": "牢墨",
+  "item.momotinker.laomo": "墨",
 
   "item.momotinker.interdimensional_crystal": "§d天外来星§",
   "momotinker.item.tooltip.interdimensional_crystal1": "§d自天堂归来§",
@@ -95,9 +95,9 @@
   "momotinker.item.tooltip.jealous_notes2": "§e按住“shift”查看获取§",
   "momotinker.item.tooltip.jealous_notes3": "§e在身上未装备任何护甲且受到装备任意护甲的生物的攻击时，会将主手上的书与笔转换为此物品§",
 
-  "itemGroup.momotinker.materials": "牢墨模组-材料",
+  "itemGroup.momotinker.materials": "墨工坊模组-材料",
 
-  "material.momotinker.laomo": "工具牢墨",
+  "material.momotinker.laomo": "墨",
   "material.momotinker.laomo.encyclopedia": "大百科上的内容",
   "material.momotinker.laomo.flavor": "tconjei悬浮显示和对应等级宝典的内容",
   "material.momotinker.arriving_at_the_other_shore": "彼岸",
