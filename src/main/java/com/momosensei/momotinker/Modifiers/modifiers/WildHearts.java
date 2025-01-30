@@ -2,20 +2,23 @@ package com.momosensei.momotinker.Modifiers.modifiers;
 
 import com.momosensei.momotinker.Momotinker;
 import com.momosensei.momotinker.register.MomotinkerEffects;
+import net.minecraft.ChatFormatting;
 import net.minecraft.network.chat.Component;
 import net.minecraft.resources.ResourceLocation;
 import net.minecraft.server.level.ServerPlayer;
 import net.minecraft.world.effect.MobEffectInstance;
-import net.minecraft.world.entity.Entity;
 import net.minecraft.world.entity.EquipmentSlot;
 import net.minecraft.world.entity.LivingEntity;
 import net.minecraft.world.entity.ai.attributes.Attribute;
 import net.minecraft.world.entity.ai.attributes.AttributeModifier;
 import net.minecraft.world.entity.ai.attributes.Attributes;
+import net.minecraft.world.entity.player.Player;
 import net.minecraft.world.item.ItemStack;
+import net.minecraft.world.item.TooltipFlag;
 import net.minecraft.world.level.Level;
 import net.minecraftforge.common.MinecraftForge;
 import net.minecraftforge.event.entity.living.LivingHurtEvent;
+import slimeknights.mantle.client.TooltipKey;
 import slimeknights.tconstruct.library.modifiers.Modifier;
 import slimeknights.tconstruct.library.modifiers.ModifierEntry;
 import slimeknights.tconstruct.library.tools.item.armor.ModifiableArmorItem;
@@ -24,6 +27,7 @@ import slimeknights.tconstruct.library.tools.nbt.ModDataNBT;
 import slimeknights.tconstruct.library.tools.nbt.ToolStack;
 
 import javax.annotation.Nullable;
+import java.util.List;
 import java.util.UUID;
 import java.util.function.BiConsumer;
 
@@ -33,6 +37,7 @@ public class WildHearts extends momomodifier {
     }
 
     private static final ResourceLocation wildheart = Momotinker.getResource("wildheart");
+    private static final ResourceLocation wildheartcooldown = Momotinker.getResource("wildheartcooldown");
 
     @Override
     public boolean isNoLevels() {
@@ -42,6 +47,7 @@ public class WildHearts extends momomodifier {
     @Override
     public @Nullable Component onRemoved(IToolStackView iToolStackView, Modifier modifier) {
         iToolStackView.getPersistentData().remove(wildheart);
+        iToolStackView.getPersistentData().remove(wildheartcooldown);
         return null;
     }
 
@@ -71,8 +77,14 @@ public class WildHearts extends momomodifier {
             for (ItemStack stack : player.getInventory().armor) {
                 if (stack.getItem() instanceof ModifiableArmorItem) {
                     ToolStack tool = ToolStack.from(stack);
-                    if (tool.getModifierLevel(this) > 0 && entity.tickCount % 160 == 0 && entity.getMaxHealth() > 80) {
-                        entity.addEffect(new MobEffectInstance(MomotinkerEffects.WildHeart.get(), 160));
+                    if (tool.getModifierLevel(this) > 0 ) {
+                        ModDataNBT a = iToolStackView.getPersistentData();
+                        if (entity.getMaxHealth() > 80&&a.getFloat(wildheartcooldown)==0) {
+                            entity.addEffect(new MobEffectInstance(MomotinkerEffects.WildHeart.get(), 20));
+                        }
+                        if (entity.tickCount % 20 == 0 &&a.getFloat(wildheartcooldown)>0.1){
+                            a.putFloat(wildheartcooldown,a.getFloat(wildheartcooldown)-1);
+                        }
                     }
                 }
             }
@@ -81,9 +93,36 @@ public class WildHearts extends momomodifier {
 
     private void livinghurtevent(LivingHurtEvent event) {
         LivingEntity living = event.getEntity();
-        Entity entity =event.getSource().getEntity();
-        if (living.getEffect(MomotinkerEffects.WildHeart.get()) != null && entity != null && event.getSource() != null && living.hasEffect(MomotinkerEffects.WildHeart.get())) {
-            living.removeEffect(MomotinkerEffects.WildHeart.get());
+        ModDataNBT a = ToolStack.from(living.getItemBySlot(EquipmentSlot.HEAD)).getPersistentData();
+        ModDataNBT b = ToolStack.from(living.getItemBySlot(EquipmentSlot.CHEST)).getPersistentData();
+        ModDataNBT c = ToolStack.from(living.getItemBySlot(EquipmentSlot.LEGS)).getPersistentData();
+        ModDataNBT d = ToolStack.from(living.getItemBySlot(EquipmentSlot.FEET)).getPersistentData();
+        if (living instanceof Player player) {
+            if (living.getEffect(MomotinkerEffects.WildHeart.get()) != null && living.hasEffect(MomotinkerEffects.WildHeart.get())) {
+                living.removeEffect(MomotinkerEffects.WildHeart.get());
+                a.putFloat(wildheartcooldown,8);
+                b.putFloat(wildheartcooldown,8);
+                c.putFloat(wildheartcooldown,8);
+                d.putFloat(wildheartcooldown,8);
+            }
+            if (a.getFloat(wildheartcooldown)>0){
+                a.putFloat(wildheartcooldown,8);
+            }
+            if (b.getFloat(wildheartcooldown)>0){
+                b.putFloat(wildheartcooldown,8);
+            }
+            if (c.getFloat(wildheartcooldown)>0){
+                c.putFloat(wildheartcooldown,8);
+            }
+            if (d.getFloat(wildheartcooldown)>0){
+                d.putFloat(wildheartcooldown,8);
+            }
+        }
+    }
+    public void addTooltip(IToolStackView tool, ModifierEntry modifierEntry, @org.jetbrains.annotations.Nullable Player player, List<Component> tooltip, TooltipKey tooltipKey, TooltipFlag tooltipFlag) {
+        if (player != null) {
+            ModDataNBT tooldata = tool.getPersistentData();
+            tooltip.add(net.minecraft.network.chat.Component.translatable("[狂徒之心]的冷却还剩" + (tooldata.getFloat(wildheartcooldown))+"秒").withStyle(ChatFormatting.GREEN));
         }
     }
 }

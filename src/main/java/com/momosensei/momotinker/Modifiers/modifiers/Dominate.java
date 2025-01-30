@@ -48,7 +48,7 @@ public class Dominate extends momomodifier {
     private void livinghurtevent(LivingHurtEvent event) {
         LivingEntity living = event.getEntity();
         Entity entity=event.getSource().getEntity();
-        int a = ModifierUtil.getModifierLevel(living.getItemBySlot(EquipmentSlot.MAINHAND), MomotinkerModifiers.dominate.getId())
+        int a =   ModifierUtil.getModifierLevel(living.getItemBySlot(EquipmentSlot.MAINHAND), MomotinkerModifiers.dominate.getId())
                 + ModifierUtil.getModifierLevel(living.getItemBySlot(EquipmentSlot.OFFHAND), MomotinkerModifiers.dominate.getId())
                 + ModifierUtil.getModifierLevel(living.getItemBySlot(EquipmentSlot.HEAD), MomotinkerModifiers.dominate.getId())
                 + ModifierUtil.getModifierLevel(living.getItemBySlot(EquipmentSlot.CHEST), MomotinkerModifiers.dominate.getId())

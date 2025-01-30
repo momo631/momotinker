@@ -42,18 +42,17 @@ public class FallingStars extends momomodifier {
     @Override
     public void onInventoryTick(IToolStackView iToolStackView, ModifierEntry modifierEntry, Level level, LivingEntity entity, int index, boolean b, boolean b1, ItemStack itemStack) {
         if (entity instanceof ServerPlayer player) {
-            player.level.getEntities(player, player.getBoundingBox().inflate(10, 10, 10));
             if (player.getEffect(MomotinkerEffects.FallingStar.get()) != null && player.isOnGround()) {
+                float a = (float) 20 / player.getEffect(MomotinkerEffects.FallingStar.get()).getDuration();
                 List<Mob> list = player.level.getEntitiesOfClass(Mob.class, player.getBoundingBox().inflate(10));
-                float a = (float) 20 /player.getEffect(MomotinkerEffects.FallingStar.get()).getDuration();
                 for (Mob mob : list) {
                     if (mob != null) {
-                        if (a<4) {
+                        if (a < 4) {
                             mob.invulnerableTime = 0;
                             mob.hurt(DamageSource.explosion(player), (modifierEntry.getLevel() * 100) * a);
                             player.removeEffect(MomotinkerEffects.FallingStar.get());
                         }
-                        if (a>4){
+                        if (a > 4) {
                             mob.invulnerableTime = 0;
                             mob.hurt(DamageSource.explosion(player), (modifierEntry.getLevel() * 100) * 4);
                             player.removeEffect(MomotinkerEffects.FallingStar.get());
