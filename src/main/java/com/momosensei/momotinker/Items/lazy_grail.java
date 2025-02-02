@@ -2,8 +2,6 @@ package com.momosensei.momotinker.Items;
 
 
 import net.minecraft.ChatFormatting;
-import net.minecraft.client.gui.screens.Screen;
-import net.minecraft.network.chat.Component;
 import net.minecraft.world.item.Item;
 import net.minecraft.world.item.ItemStack;
 import net.minecraft.world.item.TooltipFlag;
@@ -20,12 +18,13 @@ public class lazy_grail extends Item {
 
     @Override
     public void appendHoverText(@NotNull ItemStack stack, @Nullable Level level, List<net.minecraft.network.chat.Component> list, @NotNull TooltipFlag flag) {
-        if (Screen.hasShiftDown()) {
-            list.add(Component.translatable("momotinker.item.tooltip.lazy_grail3").withStyle(ChatFormatting.GOLD));
-        }else{
+//        if (Screen.hasShiftDown()) {
+//            list.add(Component.translatable("momotinker.item.tooltip.lazy_grail3").withStyle(ChatFormatting.GOLD));
+//        }else{
             list.add(net.minecraft.network.chat.Component.translatable("momotinker.item.tooltip.lazy_grail1").withStyle(ChatFormatting.GOLD));
-            list.add(net.minecraft.network.chat.Component.translatable("momotinker.item.tooltip.lazy_grail2").withStyle(ChatFormatting.GOLD));
-        }super.appendHoverText(stack, level, list, flag);
+//            list.add(net.minecraft.network.chat.Component.translatable("momotinker.item.tooltip.lazy_grail2").withStyle(ChatFormatting.GOLD));
+//        }
+        super.appendHoverText(stack, level, list, flag);
     }
 
 }
