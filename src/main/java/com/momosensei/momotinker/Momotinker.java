@@ -1,6 +1,6 @@
 package com.momosensei.momotinker;
 
-import com.momosensei.momotinker.event.LivingEvents;
+//import com.momosensei.momotinker.event.LivingEvents;
 import com.momosensei.momotinker.register.*;
 import net.minecraft.resources.ResourceLocation;
 import net.minecraftforge.common.MinecraftForge;
@@ -20,7 +20,7 @@ public class Momotinker {
         //注册表之类的东西
         //如果你新稿了别的注册表记得这边填一下
         IEventBus eventBus = FMLJavaModLoadingContext.get().getModEventBus();
-        MinecraftForge.EVENT_BUS.register(new LivingEvents());
+        //MinecraftForge.EVENT_BUS.register(new LivingEvents());
         MinecraftForge.EVENT_BUS.register(this);
         MomotinkerItem.ITEMS.register(eventBus);
         MomotinkerModifiers.MODIFIERS.register(eventBus);
