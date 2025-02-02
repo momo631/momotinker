@@ -4,6 +4,6 @@
     "name": "momotinker:molten_heartsteel",
     "amount": 90
   },
-  "temperature": 6000,
+  "temperature": 1500,
   "output": "momotinker:heartsteel"
 }

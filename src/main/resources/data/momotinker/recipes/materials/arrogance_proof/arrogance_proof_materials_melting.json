@@ -1,7 +1,7 @@
 {
   "type": "tconstruct:material_melting",
   "input": "momotinker:arrogance_proof",
-  "temperature": 6000,
+  "temperature": 1500,
   "result": {
     "fluid": "momotinker:molten_arrogance_proof",
     "amount": 90

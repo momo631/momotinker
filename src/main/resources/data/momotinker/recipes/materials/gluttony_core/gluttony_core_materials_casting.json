@@ -4,6 +4,6 @@
     "name": "momotinker:molten_gluttony_core",
     "amount": 90
   },
-  "temperature": 6000,
+  "temperature": 1500,
   "output": "momotinker:gluttony_core"
 }
