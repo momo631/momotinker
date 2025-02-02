@@ -1,7 +1,6 @@
 package com.momosensei.momotinker.Items;
 
 import net.minecraft.ChatFormatting;
-import net.minecraft.client.gui.screens.Screen;
 import net.minecraft.network.chat.Component;
 import net.minecraft.world.item.BlockItem;
 import net.minecraft.world.item.ItemStack;
@@ -19,12 +18,12 @@ public class dimensional_prism extends BlockItem {
 
     @Override
     public void appendHoverText(@NotNull ItemStack itemstack, Level world, @NotNull List<Component> list, @NotNull TooltipFlag flag) {
-        if (Screen.hasShiftDown()) {
-            list.add(Component.translatable("momotinker.block.tooltip.dimensional_prism3").withStyle(ChatFormatting.AQUA));
-        }else{
+//        if (Screen.hasShiftDown()) {
+//            list.add(Component.translatable("momotinker.block.tooltip.dimensional_prism3").withStyle(ChatFormatting.AQUA));
+//        }else{
             list.add(Component.translatable("momotinker.block.tooltip.dimensional_prism1").withStyle(ChatFormatting.AQUA));
-            list.add(Component.translatable("momotinker.block.tooltip.dimensional_prism2").withStyle(ChatFormatting.AQUA));
-        }
+//            list.add(Component.translatable("momotinker.block.tooltip.dimensional_prism2").withStyle(ChatFormatting.AQUA));
+//        }
         super.appendHoverText(itemstack, world, list, flag);
     }
 

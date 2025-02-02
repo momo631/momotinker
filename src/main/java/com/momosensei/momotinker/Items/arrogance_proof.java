@@ -2,8 +2,6 @@ package com.momosensei.momotinker.Items;
 
 
 import net.minecraft.ChatFormatting;
-import net.minecraft.client.gui.screens.Screen;
-import net.minecraft.network.chat.Component;
 import net.minecraft.world.item.Item;
 import net.minecraft.world.item.ItemStack;
 import net.minecraft.world.item.TooltipFlag;
@@ -20,11 +18,12 @@ public class arrogance_proof extends Item {
 
     @Override
     public void appendHoverText(@NotNull ItemStack stack, @Nullable Level level, List<net.minecraft.network.chat.Component> list, @NotNull TooltipFlag flag) {
-        if (Screen.hasShiftDown()) {
-            list.add(Component.translatable("momotinker.item.tooltip.arrogance_proof3").withStyle(ChatFormatting.RED));
-        }else{
+//       if (Screen.hasShiftDown()) {
+//            list.add(Component.translatable("momotinker.item.tooltip.arrogance_proof3").withStyle(ChatFormatting.RED));
+//        }else{
             list.add(net.minecraft.network.chat.Component.translatable("momotinker.item.tooltip.arrogance_proof1").withStyle(ChatFormatting.RED));
-            list.add(net.minecraft.network.chat.Component.translatable("momotinker.item.tooltip.arrogance_proof2").withStyle(ChatFormatting.RED));
-        }super.appendHoverText(stack, level, list, flag);
+//            list.add(net.minecraft.network.chat.Component.translatable("momotinker.item.tooltip.arrogance_proof2").withStyle(ChatFormatting.RED));
+//        }
+        super.appendHoverText(stack, level, list, flag);
     }
 }

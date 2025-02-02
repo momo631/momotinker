@@ -1,17 +1,13 @@
 package com.momosensei.momotinker;
 
 import com.momosensei.momotinker.event.LivingEvents;
-import com.momosensei.momotinker.network.Channel;
 import com.momosensei.momotinker.register.*;
 import net.minecraft.resources.ResourceLocation;
 import net.minecraftforge.common.MinecraftForge;
 import net.minecraftforge.eventbus.api.IEventBus;
 import net.minecraftforge.fml.common.Mod;
-import net.minecraftforge.fml.event.lifecycle.FMLCommonSetupEvent;
 import net.minecraftforge.fml.javafmlmod.FMLJavaModLoadingContext;
-import org.jetbrains.annotations.NotNull;
 import slimeknights.tconstruct.library.tools.capability.TinkerDataCapability;
-
 
 @Mod(Momotinker.MOD_ID)
 @Mod.EventBusSubscriber(
@@ -32,9 +28,7 @@ public class Momotinker {
         MomotinkerBlock.BLOCK.register(eventBus);
         MomotinkerEffects.EFFECT.register(eventBus);
         MomotinkerEntities.ENTITIES.register(eventBus);
-        IEventBus bus = FMLJavaModLoadingContext.get().getModEventBus();
     }
-
     //Resourcelocation
     public static ResourceLocation getResource(String id) {
         return new ResourceLocation("momotinker", id);
@@ -42,15 +36,8 @@ public class Momotinker {
     public static <T> TinkerDataCapability.TinkerDataKey<T> createKey(String name) {
         return TinkerDataCapability.TinkerDataKey.of(getResource(name));
     }
-    private void commonSetup(FMLCommonSetupEvent event) {
-        Channel.init();
-    }
     //生成键名用的
     public static String makeDescriptionId(String type, String name) {
         return type + ".momotinker." + name;
-    }
-
-    public static ResourceLocation id(@NotNull String path) {
-        return new ResourceLocation(Momotinker.MOD_ID, path);
     }
 }
