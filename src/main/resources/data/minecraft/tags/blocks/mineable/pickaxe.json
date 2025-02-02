@@ -1,6 +1,7 @@
 {
   "replace": false,
   "values": [
-    "momotinker:laomo_block"
+    "momotinker:laomo_block",
+    "momotinker:dimensional_prism"
   ]
 }

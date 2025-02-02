@@ -11,7 +11,8 @@
     "rage_stone_statue": "#2D2D2D",
     "lazy_grail": "#EE9200",
     "jealous_notes": "#EFFF1F",
-    "interdimensional_crystal": "#C972FF"
+    "interdimensional_crystal": "#C972FF",
+    "dimensional_prism": "#98F6FF"
   },
   "modifier.momotinker": {
     "laomochuji": "#596d99",
@@ -36,6 +37,8 @@
     "grudgeothers": "#EFFF1F",
     "overenvysin": "#D8C800",
     "fallingstars": "#E1C0FF",
-    "unknownreturnee": "#C972FF"
+    "unknownreturnee": "#C972FF",
+    "overcrystalline": "#96B0FF",
+    "crystallization": "#C497FF"
   }
 }

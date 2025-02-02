@@ -1,7 +1,7 @@
 {
   "type": "tconstruct:material_melting",
   "input": "momotinker:arriving_at_the_other_shore",
-  "temperature": 1500,
+  "temperature": 6000,
   "result": {
     "fluid": "momotinker:molten_arriving_at_the_other_shore",
     "amount": 90

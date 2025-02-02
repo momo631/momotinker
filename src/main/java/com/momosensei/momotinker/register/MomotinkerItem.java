@@ -1,6 +1,7 @@
 package com.momosensei.momotinker.register;
 
 import com.momosensei.momotinker.Items.*;
+import net.minecraft.world.item.BlockItem;
 import net.minecraft.world.item.Item;
 import net.minecraftforge.registries.DeferredRegister;
 import net.minecraftforge.registries.ForgeRegistries;
@@ -30,7 +31,8 @@ public class MomotinkerItem {
     public static final RegistryObject<Item> jealous_notes = ITEMS.register("jealous_notes", () -> new jealous_notes(new Item.Properties().tab(MomotinkerTab.MATERIALS)));
 
     //方块类要这样,略有变动
-    /*
-    public static final RegistryObject<BlockItem> Laomo_block = ITEMS.register("laomo_block", () -> new BlockItem(MomotinkerBlock.Laomo_block.get(), new Item.Properties().tab(MomotinkerTab.BLOCKS)));
-     */
+
+    public static final RegistryObject<BlockItem> Laomo_block = ITEMS.register("laomo_block", () -> new BlockItem(MomotinkerBlock.Laomo_block.get(), new Item.Properties().tab(MomotinkerTab.MATERIALS)));
+    public static final RegistryObject<BlockItem> dimensional_prism = ITEMS.register("dimensional_prism", () -> new dimensional_prism(MomotinkerBlock.dimensional_prism.get(), new Item.Properties().tab(MomotinkerTab.MATERIALS)));
+
 }

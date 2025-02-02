@@ -1,0 +1,9 @@
+{
+  "type": "tconstruct:casting_basin",
+  "fluid": {
+    "fluid": "momotinker:molten_dimensional_prism",
+    "amount": 90
+  },
+  "result": "momotinker:dimensional_prism",
+  "cooling_time": 165
+}

@@ -1,0 +1,9 @@
+{
+  "type": "tconstruct:material",
+  "ingredient": {
+    "item": "momotinker:dimensional_prism"
+  },
+  "value": 1,
+  "needed": 1,
+  "material": "momotinker:dimensional_prism"
+}

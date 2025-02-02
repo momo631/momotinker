@@ -1,0 +1,12 @@
+{
+  "type": "tconstruct:melting",
+  "ingredient": {
+    "item": "momotinker:dimensional_prism"
+  },
+  "result": {
+    "fluid": "momotinker:molten_dimensional_prism",
+    "amount": 90
+  },
+  "temperature": 6000,
+  "time": 120
+}

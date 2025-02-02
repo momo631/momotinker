@@ -19,7 +19,6 @@ public class MomotinkerTab {
     };
 
 /*
-
     public static final CreativeModeTab BLOCKS = new CreativeModeTab("momotinker.blocks") {
         @Override
         public  ItemStack makeIcon() {
@@ -27,6 +26,5 @@ public class MomotinkerTab {
         }
     };
     public MomotinkerTab(){}
-
- */
+*/
 }

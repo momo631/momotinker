@@ -1,0 +1,6 @@
+{
+  "parent": "block/cube_all",
+  "textures": {
+    "all": "momotinker:block/dimensional_prism"
+  }
+}

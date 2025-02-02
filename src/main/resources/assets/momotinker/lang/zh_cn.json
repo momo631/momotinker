@@ -1,6 +1,11 @@
 {
   "block.momotinker.laomo_block": "墨块",
 
+  "block.momotinker.dimensional_prism": "§b次元棱镜§",
+  "momotinker.block.tooltip.dimensional_prism1": "§b异次元空间的碎片§",
+  "momotinker.block.tooltip.dimensional_prism2": "§b按住“shift”查看获取§",
+  "momotinker.block.tooltip.dimensional_prism3": "§b暂时莫得§",
+
   "effect.momotinker.hongwen": "红温",
   "effect.momotinker.none": "忘阙人",
   "effect.momotinker.end": "引渡人",
@@ -24,6 +29,7 @@
   "fluid.momotinker.molten_lazy_grail": "熔融怠惰",
   "fluid.momotinker.molten_jealous_notes": "熔融嫉妒",
   "fluid.momotinker.molten_interdimensional_crystal": "熔融苍星",
+  "fluid.momotinker.molten_dimensional_prism": "熔融次元棱镜",
 
   "item.momotinker.molten_laomo_bucket": "熔融墨桶",
   "item.momotinker.molten_arriving_at_the_other_shore_bucket": "熔融彼岸桶",
@@ -37,6 +43,7 @@
   "item.momotinker.molten_lazy_grail_bucket": "熔融怠惰桶",
   "item.momotinker.molten_jealous_notes_bucket": "熔融嫉妒桶",
   "item.momotinker.molten_interdimensional_crystal_bucket": "熔融苍星桶",
+  "item.momotinker.molten_dimensional_prism_bucket": "熔融次元棱镜桶",
 
   "item.momotinker.laomo": "墨",
 
@@ -122,6 +129,8 @@
   "material.momotinker.jealous_notes.encyclopedia": "§e妒怨永不祛除§",
   "material.momotinker.interdimensional_crystal": "苍星",
   "material.momotinker.interdimensional_crystal.encyclopedia": "§d自天堂归来§",
+  "material.momotinker.dimensional_prism": "次元棱镜",
+  "material.momotinker.dimensional_prism.encyclopedia": "§b补阙，然后趋近完美§",
 
   "modifier.momotinker.laomochuji": "牢墨出击",
   "modifier.momotinker.laomochuji.flavor": "词条标题",
@@ -209,9 +218,17 @@
 
   "modifier.momotinker.fallingstars": "苍穹落星",
   "modifier.momotinker.fallingstars.flavor": "§d当流星于此降临§",
-  "modifier.momotinker.fallingstars.description": "按下技能按键后升往空中，在第一次按下的3秒内再次按下会获得1秒的“落星”效果，且该工具获得120秒冷却（若未使用第二段技能则只有30秒冷却）\n§d[落星]§:向视角方向快速冲刺并在碰撞方块或击中实体时停止，停止时产生爆炸对范围内生物造成词条等级*100（若击中实体则格外增加词条等级*武器近战攻击一次的伤害）的爆炸类型伤害，飞行时间越长伤害越高（在飞行15刻时最高，数值为400%）",
+  "modifier.momotinker.fallingstars.description": "按下技能按键后升往空中，并在之后3秒内再次按下会获得1秒的“落星”效果，且该工具获得120秒冷却（若未使用第二段技能则只有30秒）\n§d[落星]§:向视角方向快速冲刺并在碰撞方块或击中实体时停止，停止时产生爆炸对范围内生物造成词条等级*100（若击中实体则格外增加词条等级*武器近战攻击一次的伤害）的爆炸类型伤害（不破坏方块），飞行时间越长伤害越高（在飞行15刻时最高，数值为400%）",
 
   "modifier.momotinker.unknownreturnee": "未知归来者",
   "modifier.momotinker.unknownreturnee.flavor": "§d“\\---.. ..--- -.-. -..\\--... .- --... ----.”§",
-  "modifier.momotinker.unknownreturnee.description": "造成的伤害减少20%*词条等级，但会随机增加伤害，范围为词条等级*（10%——100%）"
+  "modifier.momotinker.unknownreturnee.description": "造成的伤害减少20%*词条等级，但会随机增加伤害，范围为词条等级*（10%——100%）",
+
+  "modifier.momotinker.overcrystalline": "超晶态",
+  "modifier.momotinker.overcrystalline.flavor": "跳脱次元",
+  "modifier.momotinker.overcrystalline.description": "伤害修正为1.225^强化点数的倍率（远程为1.1^强化点数）",
+
+  "modifier.momotinker.crystallization": "晶体进化",
+  "modifier.momotinker.crystallization.flavor": "趋近完美",
+  "modifier.momotinker.crystallization.description": "主手持有且副手持有次元棱镜时按下技能按键可消耗1个副手物品进行强化，当前强化等级越高成功概率越低，强化等级高到一定程度时失败会受到惩罚，强化等级大于等于14时会有粉碎的风险！"
 }

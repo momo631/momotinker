@@ -37,5 +37,8 @@ public class MomotinkerModifiers {
     public static final StaticModifier<OverEnvySin> overenvysin=MODIFIERS.register("overenvysin", OverEnvySin::new);
     public static final StaticModifier<FallingStars> fallingstars=MODIFIERS.register("fallingstars", FallingStars::new);
     public static final StaticModifier<UnknownReturnee> unknownreturnee=MODIFIERS.register("unknownreturnee", UnknownReturnee::new);
+    public static final StaticModifier<Test> test=MODIFIERS.register("test", Test::new);
+    public static final StaticModifier<OverCrystalline> overcrystalline=MODIFIERS.register("overcrystalline", OverCrystalline::new);
+    public static final StaticModifier<Crystallization> crystallization=MODIFIERS.register("crystallization", Crystallization::new);
 
 }
