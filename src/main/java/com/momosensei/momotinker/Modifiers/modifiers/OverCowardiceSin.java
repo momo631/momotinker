@@ -15,8 +15,8 @@ import slimeknights.tconstruct.library.modifiers.ModifierEntry;
 import slimeknights.tconstruct.library.tools.context.ToolAttackContext;
 import slimeknights.tconstruct.library.tools.helper.ModifierUtil;
 import slimeknights.tconstruct.library.tools.nbt.IToolStackView;
+import slimeknights.tconstruct.library.tools.nbt.ModDataNBT;
 import slimeknights.tconstruct.library.tools.nbt.ModifierNBT;
-import slimeknights.tconstruct.library.tools.nbt.NamespacedNBT;
 
 import javax.annotation.Nonnull;
 import java.util.List;
@@ -46,7 +46,7 @@ public class OverCowardiceSin extends momomodifier {
     }
 
     @Override
-    public boolean onProjectileHitEntity(ModifierNBT modifiers, NamespacedNBT persistentData, ModifierEntry modifier, Projectile projectile, EntityHitResult hit, @javax.annotation.Nullable LivingEntity attacker, @javax.annotation.Nullable LivingEntity target) {
+    public boolean onProjectileHitEntity(ModifierNBT modifiers, ModDataNBT persistentData, ModifierEntry modifier, Projectile projectile, EntityHitResult hit, @javax.annotation.Nullable LivingEntity attacker, @javax.annotation.Nullable LivingEntity target) {
         if (target!=null&&attacker != null && projectile instanceof AbstractArrow arrow) {
             int a =   ModifierUtil.getModifierLevel(attacker.getItemBySlot(EquipmentSlot.MAINHAND), MomotinkerModifiers.overcowardicesin.getId())
                     + ModifierUtil.getModifierLevel(attacker.getItemBySlot(EquipmentSlot.OFFHAND), MomotinkerModifiers.overcowardicesin.getId())
