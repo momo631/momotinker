@@ -2,7 +2,7 @@ package com.momosensei.momotinker.register;
 
 import com.momosensei.momotinker.Momotinker;
 import net.minecraft.sounds.SoundEvents;
-import net.minecraft.world.level.material.Material;
+import net.minecraft.world.level.material.MapColor;
 import net.minecraftforge.common.SoundActions;
 import net.minecraftforge.fluids.FluidType;
 import net.minecraftforge.fluids.ForgeFlowingFluid;
@@ -27,7 +27,7 @@ public class MomotinkerFluid{
     }
 
     private static FlowingFluidObject<ForgeFlowingFluid> register(String name, int temp) {
-        return FLUIDS.register(name).type(hot(name).temperature(temp).lightLevel(12)).block(Material.LAVA, 15).bucket().flowing();
+        return FLUIDS.register(name).type(hot(name).temperature(temp).lightLevel(12)).block(MapColor.NONE,15).bucket().flowing();
     }
 
     //复制这行，只改<ForgeFlowingFluid>后的命名空间，和register里面的"xxxx"即可,temp一般用不上，瞎填就行
