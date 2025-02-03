@@ -14,7 +14,7 @@ public class MomotinkerModifiers {
     //2不要和其他模组的重复，可大写可小写,用于引用
     //3只能小写，并且影响你zh_cn的键名
     //一般建议2,3写一样的
-    public static final StaticModifier<LaoMoChuJi> laomochuji=MODIFIERS.register("laomochuji", LaoMoChuJi::new);   //测试
+//    public static final StaticModifier<LaoMoChuJi> laomochuji=MODIFIERS.register("laomochuji", LaoMoChuJi::new);   //测试
     public static final StaticModifier<Lethe> lethe=MODIFIERS.register("lethe", Lethe::new);
     public static final StaticModifier<Huangquan> huangquan=MODIFIERS.register("huangquan", Huangquan::new);
     public static final StaticModifier<Red> red=MODIFIERS.register("red", Red::new);

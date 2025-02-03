@@ -42,7 +42,7 @@ public class Red extends momomodifier {
     @Override
     public void onInventoryTick(IToolStackView iToolStackView, ModifierEntry modifierEntry, Level level, LivingEntity entity, int index, boolean b, boolean b1, ItemStack itemStack) {
         if (entity instanceof ServerPlayer) {
-            for (LivingEntity e : entity.level.getEntitiesOfClass(LivingEntity.class, entity.getBoundingBox().inflate((double) 20.0F), (ex) -> ex instanceof Enemy)) {
+            for (LivingEntity e : entity.level().getEntitiesOfClass(LivingEntity.class, entity.getBoundingBox().inflate((double) 20.0F), (ex) -> ex instanceof Enemy)) {
                 e.addEffect(new MobEffectInstance(MobEffects.GLOWING, 120));
             }
         }

@@ -19,8 +19,8 @@ import slimeknights.tconstruct.library.modifiers.ModifierEntry;
 import slimeknights.tconstruct.library.tools.context.ToolAttackContext;
 import slimeknights.tconstruct.library.tools.helper.ModifierUtil;
 import slimeknights.tconstruct.library.tools.nbt.IToolStackView;
+import slimeknights.tconstruct.library.tools.nbt.ModDataNBT;
 import slimeknights.tconstruct.library.tools.nbt.ModifierNBT;
-import slimeknights.tconstruct.library.tools.nbt.NamespacedNBT;
 
 import javax.annotation.Nonnull;
 import java.util.List;
@@ -41,7 +41,7 @@ public class Huangquan extends momomodifier {
         if (a instanceof ServerPlayer player &&event.getEntity()!=null&&player.getEffect(MomotinkerEffects.End.get())!=null &&player.hasEffect(MomotinkerEffects.End.get())) {
             if (ModifierUtil.getModifierLevel(player.getItemBySlot(EquipmentSlot.MAINHAND), MomotinkerModifiers.huangquan.getId()) > 0) {
                 event.getEntity().invulnerableTime = 0;
-                event.getSource().bypassArmor().bypassMagic().bypassInvul().bypassEnchantments();
+                event.getEntity().level().damageSources().fellOutOfWorld();
                 event.getEntity().invulnerableTime = 0;
             }
         }
@@ -65,7 +65,7 @@ public class Huangquan extends momomodifier {
     }
 
     @Override
-    public boolean onProjectileHitEntity(ModifierNBT modifiers, NamespacedNBT persistentData, ModifierEntry modifier, Projectile projectile, EntityHitResult hit, @javax.annotation.Nullable LivingEntity attacker, @javax.annotation.Nullable LivingEntity target) {
+    public boolean onProjectileHitEntity(ModifierNBT modifiers, ModDataNBT persistentData, ModifierEntry modifier, Projectile projectile, EntityHitResult hit, @javax.annotation.Nullable LivingEntity attacker, @javax.annotation.Nullable LivingEntity target) {
         if (attacker instanceof ServerPlayer player && projectile instanceof AbstractArrow arrow){
             float var = (player.getMaxHealth() - player.getHealth())*6;
             if (target != null&&player.getHealth()<player.getMaxHealth()*0.6F) {
