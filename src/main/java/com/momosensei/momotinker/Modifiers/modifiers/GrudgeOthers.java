@@ -1,10 +1,10 @@
 package com.momosensei.momotinker.Modifiers.modifiers;
 
 import com.momosensei.momotinker.register.MomotinkerModifiers;
+import net.minecraft.server.level.ServerPlayer;
 import net.minecraft.world.entity.Entity;
 import net.minecraft.world.entity.EquipmentSlot;
 import net.minecraft.world.entity.LivingEntity;
-import net.minecraft.world.entity.Mob;
 import net.minecraft.world.entity.player.Player;
 import net.minecraft.world.entity.projectile.AbstractArrow;
 import net.minecraft.world.entity.projectile.Projectile;
@@ -12,12 +12,14 @@ import net.minecraft.world.item.ItemStack;
 import net.minecraft.world.phys.EntityHitResult;
 import net.minecraftforge.common.MinecraftForge;
 import net.minecraftforge.event.entity.living.LivingHurtEvent;
+import slimeknights.tconstruct.common.TinkerTags;
 import slimeknights.tconstruct.library.modifiers.ModifierEntry;
 import slimeknights.tconstruct.library.tools.context.ToolAttackContext;
 import slimeknights.tconstruct.library.tools.helper.ModifierUtil;
 import slimeknights.tconstruct.library.tools.nbt.IToolStackView;
 import slimeknights.tconstruct.library.tools.nbt.ModDataNBT;
 import slimeknights.tconstruct.library.tools.nbt.ModifierNBT;
+import slimeknights.tconstruct.library.tools.nbt.ToolStack;
 
 import javax.annotation.Nonnull;
 
@@ -30,22 +32,30 @@ public class GrudgeOthers extends momomodifier {
     private void livinghurtevent(LivingHurtEvent event) {
         LivingEntity entity = event.getEntity();
         Entity holder = event.getSource().getEntity();
-        if (holder instanceof Player player && entity instanceof Mob mob) {
+        IToolStackView a1 = ToolStack.from(entity.getItemBySlot(EquipmentSlot.HEAD));
+        IToolStackView b1 = ToolStack.from(entity.getItemBySlot(EquipmentSlot.CHEST));
+        IToolStackView c1 = ToolStack.from(entity.getItemBySlot(EquipmentSlot.LEGS));
+        IToolStackView d1 = ToolStack.from(entity.getItemBySlot(EquipmentSlot.FEET));
+        if (holder instanceof Player player && !(entity instanceof ServerPlayer)) {
             if (ModifierUtil.getModifierLevel(player.getItemBySlot(EquipmentSlot.MAINHAND), MomotinkerModifiers.grudgeothers.getId())>0) {
-                if (!player.hasItemInSlot(EquipmentSlot.HEAD)){
-                    mob.setDropChance(EquipmentSlot.HEAD, 1);
+                if (!player.hasItemInSlot(EquipmentSlot.HEAD)&&!a1.hasTag(TinkerTags.Items.ARMOR)){
+                    ItemStack a = new ItemStack(entity.getItemBySlot(EquipmentSlot.HEAD).getItem());
+                    ModifierUtil.dropItem(holder, a);
                     entity.setItemSlot(EquipmentSlot.HEAD, ItemStack.EMPTY);
                 }
-                if (!player.hasItemInSlot(EquipmentSlot.CHEST)){
-                    mob.setDropChance(EquipmentSlot.CHEST, 1);
+                if (!player.hasItemInSlot(EquipmentSlot.CHEST)&&!b1.hasTag(TinkerTags.Items.ARMOR)){
+                    ItemStack b = new ItemStack(entity.getItemBySlot(EquipmentSlot.CHEST).getItem());
+                    ModifierUtil.dropItem(holder, b);
                     entity.setItemSlot(EquipmentSlot.CHEST, ItemStack.EMPTY);
                 }
-                if (!player.hasItemInSlot(EquipmentSlot.LEGS)){
-                    mob.setDropChance(EquipmentSlot.LEGS, 1);
+                if (!player.hasItemInSlot(EquipmentSlot.LEGS)&&!c1.hasTag(TinkerTags.Items.ARMOR)){
+                    ItemStack c = new ItemStack(entity.getItemBySlot(EquipmentSlot.LEGS).getItem());
+                    ModifierUtil.dropItem(holder, c);
                     entity.setItemSlot(EquipmentSlot.LEGS, ItemStack.EMPTY);
                 }
-                if (!player.hasItemInSlot(EquipmentSlot.FEET)){
-                    mob.setDropChance(EquipmentSlot.FEET, 1);
+                if (!player.hasItemInSlot(EquipmentSlot.FEET)&&!d1.hasTag(TinkerTags.Items.ARMOR)){
+                    ItemStack d = new ItemStack(entity.getItemBySlot(EquipmentSlot.FEET).getItem());
+                    ModifierUtil.dropItem(holder, d);
                     entity.setItemSlot(EquipmentSlot.FEET, ItemStack.EMPTY);
                 }
             }
