@@ -15,7 +15,6 @@ import slimeknights.tconstruct.library.tools.context.ToolAttackContext;
 import slimeknights.tconstruct.library.tools.nbt.IToolStackView;
 import slimeknights.tconstruct.library.tools.nbt.ModDataNBT;
 import slimeknights.tconstruct.library.tools.nbt.ModifierNBT;
-import slimeknights.tconstruct.library.tools.nbt.NamespacedNBT;
 
 import javax.annotation.Nonnull;
 import javax.annotation.Nullable;
@@ -47,7 +46,7 @@ public class OverCrystalline extends momomodifier {
         return damage;
     }
     @Override
-    public boolean onProjectileHitEntity(ModifierNBT modifiers, NamespacedNBT persistentData, ModifierEntry modifier, Projectile projectile, EntityHitResult hit, @javax.annotation.Nullable LivingEntity attacker, @javax.annotation.Nullable LivingEntity target) {
+    public boolean onProjectileHitEntity(ModifierNBT modifiers, ModDataNBT persistentData, ModifierEntry modifier, Projectile projectile, EntityHitResult hit, @javax.annotation.Nullable LivingEntity attacker, @javax.annotation.Nullable LivingEntity target) {
         if (target != null&&attacker instanceof ServerPlayer player && projectile instanceof AbstractArrow arrow){
             int a = (int)persistentData.getFloat(crystallization);
             int b = (int)1.1^a;
