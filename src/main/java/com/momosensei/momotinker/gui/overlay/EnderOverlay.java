@@ -11,20 +11,20 @@ import net.minecraft.resources.ResourceLocation;
 import net.minecraft.world.entity.player.Player;
 import net.minecraftforge.client.gui.overlay.IGuiOverlay;
 
-public class EnderOverlay {
+public class PlayerHealPercentageOverlay {
 
 
-    public EnderOverlay() {
+    public PlayerHealPercentageOverlay() {
     }
 
     public final Minecraft minecraft = Minecraft.getInstance();
-    public static final ResourceLocation ENDER_SHADER = new ResourceLocation("momotinker", "/shaders/post/ender/ender.json");
-    public static final ResourceLocation ENDER_TEXTURE = new ResourceLocation("momotinker", "/textures/gui/overlay/end.png");
+    public static final ResourceLocation PLAYER_HEAL_PERCENTAGE_SHADER = new ResourceLocation("momotinker", "/shaders/post/playhealpercentage/playhealpercentage.json");
+    public static final ResourceLocation PLAYER_HEAL_PERCENTAGE_TEXTURE = new ResourceLocation("momotinker", "/textures/gui/overlay/end.png");
 
-    public static IGuiOverlay ENDER = ((gui, poseStack, partialTick, width, height) -> {
+    public static IGuiOverlay PLAYER_HEAL_PERCENTAGE = ((gui, poseStack, partialTick, width, height) -> {
         Player player = Minecraft.getInstance().player;
         if (player != null && player.getEffect(MomotinkerEffects.End.get())!=null && player.hasEffect(MomotinkerEffects.End.get())) {
-            Minecraft.getInstance().tell(() -> Minecraft.getInstance().gameRenderer.loadEffect(ENDER_SHADER));
+            Minecraft.getInstance().tell(() -> Minecraft.getInstance().gameRenderer.loadEffect(PLAYER_HEAL_PERCENTAGE_SHADER));
         }
         else
         {
@@ -33,9 +33,9 @@ public class EnderOverlay {
             }
         }
 
-        gui.setupOverlayRenderState(true, false, ENDER_TEXTURE);
-        RenderSystem.enableTexture();
-        renderOverlay(poseStack);
+        gui.setupOverlayRenderState(true, false);
+        RenderSystem.setShaderTexture(0,PLAYER_HEAL_PERCENTAGE_TEXTURE);
+        renderOverlay(poseStack.pose());
 
     });
 
