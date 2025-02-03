@@ -17,8 +17,8 @@ import slimeknights.tconstruct.library.modifiers.ModifierEntry;
 import slimeknights.tconstruct.library.tools.context.ToolAttackContext;
 import slimeknights.tconstruct.library.tools.helper.ModifierUtil;
 import slimeknights.tconstruct.library.tools.nbt.IToolStackView;
-import slimeknights.tconstruct.library.tools.nbt.ModDataNBT;
 import slimeknights.tconstruct.library.tools.nbt.ModifierNBT;
+import slimeknights.tconstruct.library.tools.nbt.NamespacedNBT;
 import slimeknights.tconstruct.library.tools.nbt.ToolStack;
 
 import javax.annotation.Nonnull;
@@ -32,30 +32,22 @@ public class GrudgeOthers extends momomodifier {
     private void livinghurtevent(LivingHurtEvent event) {
         LivingEntity entity = event.getEntity();
         Entity holder = event.getSource().getEntity();
-        IToolStackView a1 = ToolStack.from(entity.getItemBySlot(EquipmentSlot.HEAD));
-        IToolStackView b1 = ToolStack.from(entity.getItemBySlot(EquipmentSlot.CHEST));
-        IToolStackView c1 = ToolStack.from(entity.getItemBySlot(EquipmentSlot.LEGS));
-        IToolStackView d1 = ToolStack.from(entity.getItemBySlot(EquipmentSlot.FEET));
-        if (holder instanceof Player player && !(entity instanceof ServerPlayer)) {
+        if (holder instanceof Player player && entity instanceof Mob mob) {
             if (ModifierUtil.getModifierLevel(player.getItemBySlot(EquipmentSlot.MAINHAND), MomotinkerModifiers.grudgeothers.getId())>0) {
-                if (!player.hasItemInSlot(EquipmentSlot.HEAD)&&!a1.hasTag(TinkerTags.Items.ARMOR)){
-                    ItemStack a = new ItemStack(entity.getItemBySlot(EquipmentSlot.HEAD).getItem());
-                    ModifierUtil.dropItem(holder, a);
+                if (!player.hasItemInSlot(EquipmentSlot.HEAD)){
+                    mob.setDropChance(EquipmentSlot.HEAD, 1);
                     entity.setItemSlot(EquipmentSlot.HEAD, ItemStack.EMPTY);
                 }
-                if (!player.hasItemInSlot(EquipmentSlot.CHEST)&&!b1.hasTag(TinkerTags.Items.ARMOR)){
-                    ItemStack b = new ItemStack(entity.getItemBySlot(EquipmentSlot.CHEST).getItem());
-                    ModifierUtil.dropItem(holder, b);
+                if (!player.hasItemInSlot(EquipmentSlot.CHEST)){
+                    mob.setDropChance(EquipmentSlot.CHEST, 1);
                     entity.setItemSlot(EquipmentSlot.CHEST, ItemStack.EMPTY);
                 }
-                if (!player.hasItemInSlot(EquipmentSlot.LEGS)&&!c1.hasTag(TinkerTags.Items.ARMOR)){
-                    ItemStack c = new ItemStack(entity.getItemBySlot(EquipmentSlot.LEGS).getItem());
-                    ModifierUtil.dropItem(holder, c);
+                if (!player.hasItemInSlot(EquipmentSlot.LEGS)){
+                    mob.setDropChance(EquipmentSlot.LEGS, 1);
                     entity.setItemSlot(EquipmentSlot.LEGS, ItemStack.EMPTY);
                 }
-                if (!player.hasItemInSlot(EquipmentSlot.FEET)&&!d1.hasTag(TinkerTags.Items.ARMOR)){
-                    ItemStack d = new ItemStack(entity.getItemBySlot(EquipmentSlot.FEET).getItem());
-                    ModifierUtil.dropItem(holder, d);
+                if (!player.hasItemInSlot(EquipmentSlot.FEET)){
+                    mob.setDropChance(EquipmentSlot.FEET, 1);
                     entity.setItemSlot(EquipmentSlot.FEET, ItemStack.EMPTY);
                 }
             }
@@ -86,7 +78,7 @@ public class GrudgeOthers extends momomodifier {
     }
 
     @Override
-    public boolean onProjectileHitEntity(ModifierNBT modifiers, ModDataNBT persistentData, ModifierEntry modifier, Projectile projectile, EntityHitResult hit, @javax.annotation.Nullable LivingEntity attacker, @javax.annotation.Nullable LivingEntity target) {
+    public boolean onProjectileHitEntity(ModifierNBT modifiers, NamespacedNBT persistentData, ModifierEntry modifier, Projectile projectile, EntityHitResult hit, @javax.annotation.Nullable LivingEntity attacker, @javax.annotation.Nullable LivingEntity target) {
         if (target != null && modifier.getLevel() > 0) {
             if (attacker instanceof Player player && projectile instanceof AbstractArrow arrow ) {
                 float a = modifier.getLevel();
