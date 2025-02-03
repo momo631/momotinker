@@ -1,13 +1,9 @@
 package com.momosensei.momotinker.Modifiers.modifiers;
 
-import com.c2h6s.etstlib.entity.specialDamageSources.LegacyDamageSource;
-import com.c2h6s.etstlib.tool.hooks.ModifyDamageSourceModifierHook;
 import com.momosensei.momotinker.register.MomotinkerEffects;
 import com.momosensei.momotinker.register.MomotinkerModifiers;
 import net.minecraft.ChatFormatting;
-import net.minecraft.network.chat.Component;
 import net.minecraft.server.level.ServerPlayer;
-import net.minecraft.world.InteractionHand;
 import net.minecraft.world.entity.Entity;
 import net.minecraft.world.entity.EquipmentSlot;
 import net.minecraft.world.entity.LivingEntity;
@@ -16,6 +12,8 @@ import net.minecraft.world.entity.projectile.AbstractArrow;
 import net.minecraft.world.entity.projectile.Projectile;
 import net.minecraft.world.item.TooltipFlag;
 import net.minecraft.world.phys.EntityHitResult;
+import net.minecraftforge.common.MinecraftForge;
+import net.minecraftforge.event.entity.living.LivingAttackEvent;
 import slimeknights.mantle.client.TooltipKey;
 import slimeknights.tconstruct.library.modifiers.ModifierEntry;
 import slimeknights.tconstruct.library.tools.context.ToolAttackContext;
@@ -28,8 +26,9 @@ import javax.annotation.Nonnull;
 import java.util.List;
 
 
-public class Huangquan extends momomodifier implements ModifyDamageSourceModifierHook {
+public class Huangquan extends momomodifier {
     public Huangquan() {
+        MinecraftForge.EVENT_BUS.addListener(this::livinghurtevent);
     }
 
     @Override
@@ -37,26 +36,15 @@ public class Huangquan extends momomodifier implements ModifyDamageSourceModifie
         return true;
     }
 
-    @Override
-    public LegacyDamageSource modifyDamageSource(IToolStackView tool, ModifierEntry entry, LivingEntity attacker, InteractionHand hand, Entity target, EquipmentSlot sourceSlot, boolean isFullyCharged, boolean isExtraAttack, boolean isCritical, LegacyDamageSource source) {
-        if (attacker instanceof ServerPlayer player && target != null && player.getEffect(MomotinkerEffects.End.get()) != null && player.hasEffect(MomotinkerEffects.End.get())) {
+    public void livinghurtevent(LivingAttackEvent event) {
+        Entity a = event.getSource().getEntity();
+        if (a instanceof ServerPlayer player &&event.getEntity()!=null&&player.getEffect(MomotinkerEffects.End.get())!=null &&player.hasEffect(MomotinkerEffects.End.get())) {
             if (ModifierUtil.getModifierLevel(player.getItemBySlot(EquipmentSlot.MAINHAND), MomotinkerModifiers.huangquan.getId()) > 0) {
-                target.invulnerableTime=0;
-                return source.setBypassArmor().setBypassInvul().setBypassInvulnerableTime().setBypassMagic().setBypassEnchantment().setBypassShield();
+                event.getEntity().invulnerableTime = 0;
+                event.getEntity().level().damageSources().fellOutOfWorld();
+                event.getEntity().invulnerableTime = 0;
             }
         }
-        return source;
-    }
-
-    @Override
-    public LegacyDamageSource modifyArrowDamageSource(ModifierNBT modifiers, ModDataNBT persistentData, ModifierEntry modifier, AbstractArrow arrow, @org.jetbrains.annotations.Nullable LivingEntity attacker, @org.jetbrains.annotations.Nullable LivingEntity target, LegacyDamageSource source) {
-        if (attacker instanceof ServerPlayer player&& arrow!=null && target != null && player.getEffect(MomotinkerEffects.End.get()) != null && player.hasEffect(MomotinkerEffects.End.get())) {
-            if (ModifierUtil.getModifierLevel(player.getItemBySlot(EquipmentSlot.MAINHAND), MomotinkerModifiers.huangquan.getId()) > 0) {
-                target.invulnerableTime=0;
-                return source.setBypassArmor().setBypassInvul().setBypassInvulnerableTime().setBypassMagic().setBypassEnchantment().setBypassShield();
-            }
-        }
-        return source;
     }
 
     @Override
@@ -92,8 +80,8 @@ public class Huangquan extends momomodifier implements ModifyDamageSourceModifie
         return false;
     }
 
-    @Override
-    public void addTooltip(IToolStackView tool, ModifierEntry modifierEntry, @org.jetbrains.annotations.Nullable Player player, List<Component> tooltip, TooltipKey tooltipKey, TooltipFlag tooltipFlag) {
+
+    public void addTooltip(IToolStackView tool, ModifierEntry modifierEntry, @org.jetbrains.annotations.Nullable Player player, List<net.minecraft.network.chat.Component> tooltip, TooltipKey tooltipKey, TooltipFlag tooltipFlag) {
         if (player != null) {
             float var = player.getMaxHealth() - player.getHealth();
             tooltip.add(net.minecraft.network.chat.Component.translatable("当前已损失生命" + var).withStyle(ChatFormatting.DARK_RED));

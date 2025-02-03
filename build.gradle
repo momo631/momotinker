@@ -4,10 +4,9 @@ plugins {
     id 'maven-publish'
     id 'net.minecraftforge.gradle' version '[6.0,6.2)'
     id 'org.parchmentmc.librarian.forgegradle' version '1.+'
-    id 'org.spongepowered.mixin' version '0.7.+'
 }
 
-version = "1.20.1-1.0"
+version = "1.20.1"
 group = "com.momosensei.momotinker"
 
 base {
@@ -84,11 +83,8 @@ minecraft {
         }
 
         client {
-            workingDirectory project.file('run')
-            property 'forge.logging.markers', 'REGISTRIES' //SCAN, REGISTRYDUMP
-            property 'forge.logging.console.level', 'debug'
-            property 'forge.enabledGameTestNamespaces', mod_id
-            mods { "${mod_id}" { source sourceSets.main } }
+            // Comma-separated list of namespaces to load gametests from. Empty = all namespaces.
+            property 'forge.enabledGameTestNamespaces', "momotinker"
         }
 
         server {
@@ -128,20 +124,13 @@ repositories {
             includeGroup "mezz.jei"
         }
     }
-    maven { url = "https://maven.kosmx.dev/" }
-    flatDir {
-        dir 'libs'
-    }
 }
 
 dependencies {
     minecraft "net.minecraftforge:forge:${minecraft_version}-${forge_version}"
     implementation fg.deobf("slimeknights.mantle:Mantle:${minecraft_version}-${mantle_version}")
     implementation fg.deobf("slimeknights.tconstruct:TConstruct:${minecraft_version}-${tic_version}")
-    annotationProcessor "org.spongepowered:mixin:${mixin_version}:processor"
-    implementation fg.deobf("dev.kosmx.player-anim:player-animation-lib-forge:${player_animator_version}")
     runtimeOnly fg.deobf("mezz.jei:jei-${jei_mc_version}-forge:${jei_version}")
-    implementation fileTree(dir: 'lib', includes: ['*.jar'])
 }
 
 // This block of code expands all declared replace properties in the specified resource targets.
@@ -155,7 +144,6 @@ tasks.named('processResources', ProcessResources).configure {
             loader_version_range: loader_version_range,
             mod_id: mod_id, mod_name: mod_name, mod_license: mod_license, mod_version: mod_version,
             mod_authors: mod_authors, mod_description: mod_description,
-            player_animator_version: player_animator_version,
     ]
     inputs.properties replaceProperties
 
@@ -174,8 +162,7 @@ tasks.named('jar', Jar).configure {
                 'Implementation-Title'    : project.name,
                 'Implementation-Version'  : project.jar.archiveVersion,
                 'Implementation-Vendor'   : 'momosensei',
-                'Implementation-Timestamp': new Date().format("yyyy-MM-dd'T'HH:mm:ssZ"),
-                "MixinConfigs"            : "mixins.${mod_id}.json"
+                'Implementation-Timestamp': new Date().format("yyyy-MM-dd'T'HH:mm:ssZ")
         ])
     }
 
@@ -199,14 +186,9 @@ publishing {
         maven {
             url "file://${project.projectDir}/mcmodsrepo"
         }
-
     }
 }
 
-tasks.withType(JavaCompile).configureEach {options.encoding = 'UTF-8'
-}
-
-mixin {
-    add sourceSets.main, 'momotinker.refmap.json'
-    config 'mixins.momotinker.json'
+tasks.withType(JavaCompile).configureEach {
+    options.encoding = 'UTF-8' // Use the UTF-8 charset for Java compilation
 }
