@@ -1,18 +1,6 @@
 package com.momosensei.momotinker.Modifiers.modifiers;
 
-import net.minecraft.world.damagesource.DamageSource;
-import net.minecraft.world.entity.Entity;
-import net.minecraft.world.entity.LivingEntity;
-import net.minecraft.world.entity.monster.Zombie;
-import slimeknights.tconstruct.library.modifiers.Modifier;
-import slimeknights.tconstruct.library.modifiers.ModifierEntry;
-import slimeknights.tconstruct.library.modifiers.ModifierHooks;
-import slimeknights.tconstruct.library.modifiers.hook.combat.MeleeDamageModifierHook;
-import slimeknights.tconstruct.library.module.ModuleHookMap;
-import slimeknights.tconstruct.library.tools.context.ToolAttackContext;
-import slimeknights.tconstruct.library.tools.nbt.IToolStackView;
-
-
+/*
 //extend为继承的类,需要至少保证为匠魂的那个Modifier
 //你也可以换成你自己的超类那样更方便
 //implements后面跟上接口，比如近战伤害就用这个MeleeDamageModifierHook
@@ -56,4 +44,4 @@ public class LaoMoChuJi extends Modifier implements MeleeDamageModifierHook {
         //这个就是修改返回的伤害，必须要浮点数
         return v + 114514F;
     }
-}
+}*/

@@ -4,12 +4,8 @@ import com.momosensei.momotinker.register.MomotinkerEffects;
 import net.minecraft.core.particles.ParticleTypes;
 import net.minecraft.server.level.ServerLevel;
 import net.minecraft.server.level.ServerPlayer;
-import net.minecraft.world.damagesource.DamageSource;
 import net.minecraft.world.effect.MobEffectCategory;
 import net.minecraft.world.entity.LivingEntity;
-import net.minecraft.world.entity.Mob;
-
-import java.util.List;
 
 public class A extends StaticEffect {
     public A() {
@@ -18,7 +14,7 @@ public class A extends StaticEffect {
 
     @Override
     public void applyEffectTick(LivingEntity living, int amplifier) {
-        if (living instanceof ServerPlayer player && player.level instanceof ServerLevel serverLevel&&living.getEffect(MomotinkerEffects.A.get())!=null) {
+        if (living instanceof ServerPlayer player && player.level() instanceof ServerLevel serverLevel&&living.getEffect(MomotinkerEffects.A.get())!=null) {
             for (int i = 0; i <= 360; i++) {
                 double rad = i * 0.017453292519943295;
                 double r = 4D;
@@ -31,12 +27,7 @@ public class A extends StaticEffect {
                 if (a > 10) {
                     serverLevel.sendParticles(ParticleTypes.REVERSE_PORTAL, player.getX(), player.getY(), player.getZ(), 15, x / 2, r / 2, z / 2, 2);
                 }
-                List<Mob> list = player.level.getEntitiesOfClass(Mob.class, player.getBoundingBox().inflate(x, r, z));
-                for (Mob mob : list) {
-                    if (mob != null) {
-                        mob.hurt(DamageSource.explosion(player), 4);
-                    }
-                }
+                
             }
         }
     }

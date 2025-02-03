@@ -33,9 +33,9 @@ public class PlayerHealPercentageOverlay {
             }
         }
 
-        gui.setupOverlayRenderState(true, false, PLAYER_HEAL_PERCENTAGE_TEXTURE);
-        RenderSystem.enableTexture();
-        renderOverlay(poseStack);
+        gui.setupOverlayRenderState(true, false);
+        RenderSystem.setShaderTexture(0,PLAYER_HEAL_PERCENTAGE_TEXTURE);
+        renderOverlay(poseStack.pose());
 
     });
 

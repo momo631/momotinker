@@ -3,7 +3,6 @@ package com.momosensei.momotinker.Modifiers.modifiers;
 import com.momosensei.momotinker.register.MomotinkerModifiers;
 import net.minecraft.ChatFormatting;
 import net.minecraft.network.chat.Component;
-import net.minecraft.world.damagesource.DamageSource;
 import net.minecraft.world.entity.Entity;
 import net.minecraft.world.entity.EquipmentSlot;
 import net.minecraft.world.entity.LivingEntity;
@@ -19,8 +18,8 @@ import slimeknights.tconstruct.library.modifiers.ModifierEntry;
 import slimeknights.tconstruct.library.tools.context.ToolAttackContext;
 import slimeknights.tconstruct.library.tools.helper.ModifierUtil;
 import slimeknights.tconstruct.library.tools.nbt.IToolStackView;
+import slimeknights.tconstruct.library.tools.nbt.ModDataNBT;
 import slimeknights.tconstruct.library.tools.nbt.ModifierNBT;
-import slimeknights.tconstruct.library.tools.nbt.NamespacedNBT;
 
 import javax.annotation.Nonnull;
 import java.util.List;
@@ -38,7 +37,8 @@ public class DrinkBlood extends momomodifier {
         if (attacker instanceof Player player&&target != null&& modifier.getLevel() > 0) {
             float a = modifier.getLevel();
             if (attacker.getHealth() > attacker.getMaxHealth()*0.10000001f){
-                attacker.hurt(DamageSource.OUT_OF_WORLD.bypassArmor().bypassMagic().bypassInvul().bypassEnchantments(), attacker.getMaxHealth()*0.1f);
+                attacker.hurt(attacker.level().damageSources().fellOutOfWorld(),attacker.getMaxHealth()*0.1f);
+                attacker.invulnerableTime = 0;
                 return damage * (1F + a*0.6F);
             }
             if (attacker.getHealth() < attacker.getMaxHealth()*0.1f){
@@ -49,7 +49,7 @@ public class DrinkBlood extends momomodifier {
     }
 
     @Override
-    public boolean onProjectileHitEntity(ModifierNBT modifiers, NamespacedNBT persistentData, ModifierEntry modifier, Projectile projectile, EntityHitResult hit, @javax.annotation.Nullable LivingEntity attacker, @javax.annotation.Nullable LivingEntity target) {
+    public boolean onProjectileHitEntity(ModifierNBT modifiers, ModDataNBT persistentData, ModifierEntry modifier, Projectile projectile, EntityHitResult hit, @javax.annotation.Nullable LivingEntity attacker, @javax.annotation.Nullable LivingEntity target) {
         if (target != null && modifier.getLevel() > 0) {
             if (attacker instanceof Player player && projectile instanceof AbstractArrow arrow ) {
                 float a = modifier.getLevel();
