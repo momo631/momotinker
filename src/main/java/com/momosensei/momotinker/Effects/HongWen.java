@@ -1,8 +1,6 @@
 package com.momosensei.momotinker.Effects;
 
-import net.minecraft.world.damagesource.DamageSource;
 import net.minecraft.world.effect.MobEffectCategory;
-import net.minecraft.world.entity.LivingEntity;
 
 
 //先继承那个预设好的超类
@@ -19,7 +17,7 @@ public class HongWen extends StaticEffect{
 
 
     //这个就是药水刻期间对实体的效果
-
+/*
     @Override
     public void applyEffectTick(LivingEntity living, int amplifier) {
         //living 是生物形参
@@ -51,5 +49,5 @@ public class HongWen extends StaticEffect{
 
 //            living.hurt(DamageSource.playerAttack((Player) living).bypassArmor().bypassMagic().bypassInvul().bypassEnchantments(),3 * amplifier);
         }
-    }
+    }*/
 }

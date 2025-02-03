@@ -24,7 +24,10 @@ import slimeknights.mantle.client.TooltipKey;
 import slimeknights.tconstruct.library.modifiers.Modifier;
 import slimeknights.tconstruct.library.modifiers.ModifierEntry;
 import slimeknights.tconstruct.library.tools.context.ToolAttackContext;
-import slimeknights.tconstruct.library.tools.nbt.*;
+import slimeknights.tconstruct.library.tools.nbt.IToolStackView;
+import slimeknights.tconstruct.library.tools.nbt.ModDataNBT;
+import slimeknights.tconstruct.library.tools.nbt.ModifierNBT;
+import slimeknights.tconstruct.library.tools.nbt.ToolStack;
 
 import javax.annotation.Nonnull;
 import javax.annotation.Nullable;
@@ -63,7 +66,7 @@ public class Firmheart extends momomodifier {
     }
 
     @Override
-    public boolean onProjectileHitEntity(ModifierNBT modifiers, NamespacedNBT persistentData, ModifierEntry modifier, Projectile projectile, EntityHitResult hit, @Nullable LivingEntity attacker, @Nullable LivingEntity target) {
+    public boolean onProjectileHitEntity(ModifierNBT modifiers, ModDataNBT persistentData, ModifierEntry modifier, Projectile projectile, EntityHitResult hit, @Nullable LivingEntity attacker, @Nullable LivingEntity target) {
         if (target == null) {
             return true;
         }
@@ -80,21 +83,21 @@ public class Firmheart extends momomodifier {
     @Override
     public void onInventoryTick(IToolStackView iToolStackView, ModifierEntry modifierEntry, Level level, LivingEntity entity, int index, boolean b, boolean b1, ItemStack itemStack) {
         if (entity instanceof ServerPlayer && modifierEntry.getLevel() > 0) {
-            for (LivingEntity e : entity.level.getEntitiesOfClass(LivingEntity.class, entity.getBoundingBox().inflate((double) 10.0F), (ex) -> ex instanceof Enemy)) {
+            for (LivingEntity e : entity.level().getEntitiesOfClass(LivingEntity.class, entity.getBoundingBox().inflate((double) 10.0F), (ex) -> ex instanceof Enemy)) {
                 if (!e.hasEffect(MomotinkerEffects.BeSwallow.get()) && !e.hasEffect(MomotinkerEffects.BeSwallowed.get())) {
                     e.addEffect(new MobEffectInstance(MomotinkerEffects.BeSwallow.get(), 120, 0, false, false));
                 }
             }
         }
         if (entity.tickCount % 20 == 0 && entity instanceof ServerPlayer && modifierEntry.getLevel() > 0) {
-            for (LivingEntity e : entity.level.getEntitiesOfClass(LivingEntity.class, entity.getBoundingBox().inflate((double) 10.0F), (ex) -> ex instanceof Enemy)) {
+            for (LivingEntity e : entity.level().getEntitiesOfClass(LivingEntity.class, entity.getBoundingBox().inflate((double) 10.0F), (ex) -> ex instanceof Enemy)) {
                 if (e.getEffect(MomotinkerEffects.BeSwallow.get())!=null&&!e.hasEffect(MomotinkerEffects.BeSwallowed.get()) && e.hasEffect(MomotinkerEffects.BeSwallow.get())&& e.getEffect(MomotinkerEffects.BeSwallow.get()).getAmplifier() < 4 ) {
                     e.addEffect(new MobEffectInstance(MomotinkerEffects.BeSwallow.get(), 120, e.getEffect(MomotinkerEffects.BeSwallow.get()).getAmplifier() + 1, false, false));
                 }
             }
         }
         if (entity.tickCount % 20 == 0 && entity instanceof ServerPlayer && modifierEntry.getLevel() > 0) {
-            for (LivingEntity e : entity.level.getEntitiesOfClass(LivingEntity.class, entity.getBoundingBox().inflate((double) 10.0F), (ex) -> ex instanceof Enemy)) {
+            for (LivingEntity e : entity.level().getEntitiesOfClass(LivingEntity.class, entity.getBoundingBox().inflate((double) 10.0F), (ex) -> ex instanceof Enemy)) {
                 if (e.getEffect(MomotinkerEffects.BeSwallow.get())!=null&&!e.hasEffect(MomotinkerEffects.BeSwallowed.get()) && e.getEffect(MomotinkerEffects.BeSwallow.get()).getAmplifier() == 4) {
                     e.addEffect(new MobEffectInstance(MomotinkerEffects.BeSwallow.get(), 120, 4, false, false));
                 }

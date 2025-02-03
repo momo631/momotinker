@@ -11,8 +11,8 @@ import net.minecraft.world.phys.EntityHitResult;
 import slimeknights.tconstruct.library.modifiers.ModifierEntry;
 import slimeknights.tconstruct.library.tools.context.ToolAttackContext;
 import slimeknights.tconstruct.library.tools.nbt.IToolStackView;
+import slimeknights.tconstruct.library.tools.nbt.ModDataNBT;
 import slimeknights.tconstruct.library.tools.nbt.ModifierNBT;
-import slimeknights.tconstruct.library.tools.nbt.NamespacedNBT;
 
 import java.util.Collection;
 
@@ -45,7 +45,7 @@ public class Lethe extends momomodifier {
         return knockback;
     }
     @Override
-    public boolean onProjectileHitEntity(ModifierNBT modifiers, NamespacedNBT persistentData, ModifierEntry modifier, Projectile projectile, EntityHitResult hit, @javax.annotation.Nullable LivingEntity attacker, @javax.annotation.Nullable LivingEntity target) {
+    public boolean onProjectileHitEntity(ModifierNBT modifiers, ModDataNBT persistentData, ModifierEntry modifier, Projectile projectile, EntityHitResult hit, @javax.annotation.Nullable LivingEntity attacker, @javax.annotation.Nullable LivingEntity target) {
         if (target != null && modifier.getLevel() > 0) {
             if (target.getEffect(MomotinkerEffects.None.get()) != null && target.getEffect(MomotinkerEffects.None.get()).getAmplifier() < modifier.getLevel() + 5) {
                 target.addEffect(new MobEffectInstance(MomotinkerEffects.None.get(), 300, target.getEffect(MomotinkerEffects.None.get()).getAmplifier() + 1, false, false));

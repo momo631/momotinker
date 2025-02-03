@@ -9,7 +9,6 @@ import net.minecraft.resources.ResourceLocation;
 import net.minecraft.server.level.ServerLevel;
 import net.minecraft.server.level.ServerPlayer;
 import net.minecraft.sounds.SoundEvents;
-import net.minecraft.world.damagesource.DamageSource;
 import net.minecraft.world.entity.LivingEntity;
 import net.minecraft.world.entity.Mob;
 import net.minecraft.world.entity.player.Player;
@@ -42,25 +41,25 @@ public class FallingStars extends momomodifier {
     @Override
     public void onInventoryTick(IToolStackView iToolStackView, ModifierEntry modifierEntry, Level level, LivingEntity entity, int index, boolean b, boolean b1, ItemStack itemStack) {
         if (entity instanceof ServerPlayer player) {
-            if (player.getEffect(MomotinkerEffects.FallingStar.get()) != null && player.isOnGround()) {
+            if (player.getEffect(MomotinkerEffects.FallingStar.get()) != null && player.onGround()) {
                 float a = (float) 20 / player.getEffect(MomotinkerEffects.FallingStar.get()).getDuration();
-                List<Mob> list = player.level.getEntitiesOfClass(Mob.class, player.getBoundingBox().inflate(10));
+                List<Mob> list = player.level().getEntitiesOfClass(Mob.class, player.getBoundingBox().inflate(10));
                 for (Mob mob : list) {
                     if (mob != null) {
                         if (a < 4) {
                             mob.invulnerableTime = 0;
-                            mob.hurt(DamageSource.explosion(player), (modifierEntry.getLevel() * 100) * a);
+                            mob.hurt(mob.level().damageSources().explosion(player,mob), (modifierEntry.getLevel() * 100) * a);
                             player.removeEffect(MomotinkerEffects.FallingStar.get());
                         }
                         if (a > 4) {
                             mob.invulnerableTime = 0;
-                            mob.hurt(DamageSource.explosion(player), (modifierEntry.getLevel() * 100) * 4);
+                            mob.hurt(mob.level().damageSources().explosion(player,mob), (modifierEntry.getLevel() * 100) * 4);
                             player.removeEffect(MomotinkerEffects.FallingStar.get());
                         }
                     }
                 }
                 player.playSound(SoundEvents.GENERIC_EXPLODE, 1, 5);
-                if (player.level instanceof ServerLevel serverLevel) {
+                if (player.level() instanceof ServerLevel serverLevel) {
                     serverLevel.sendParticles(ParticleTypes.EXPLOSION_EMITTER, player.getX(), player.getY(), player.getZ(), 20, 5, 5, 5, 0);
                 }
             }
@@ -77,23 +76,23 @@ public class FallingStars extends momomodifier {
         if (attacker instanceof ServerPlayer player){
             if (player.getEffect(MomotinkerEffects.FallingStar.get()) != null) {
                 float a = (float) 20 /player.getEffect(MomotinkerEffects.FallingStar.get()).getDuration();
-                List<Mob> list = player.level.getEntitiesOfClass(Mob.class, player.getBoundingBox().inflate(10));
+                List<Mob> list = player.level().getEntitiesOfClass(Mob.class, player.getBoundingBox().inflate(10));
                 for (Mob mob : list) {
                     if (mob != null) {
                         if (a<4) {
                             mob.invulnerableTime = 0;
-                            mob.hurt(DamageSource.explosion(player), (modifier.getLevel() * (100+damage)) * a);
+                            mob.hurt(mob.level().damageSources().explosion(player,mob), (modifier.getLevel() * (100+damage)) * a);
                             player.removeEffect(MomotinkerEffects.FallingStar.get());
                         }
                         if (a>4){
                             mob.invulnerableTime = 0;
-                            mob.hurt(DamageSource.explosion(player), (modifier.getLevel() * (100+damage)) * 4);
+                            mob.hurt(mob.level().damageSources().explosion(player,mob), (modifier.getLevel() * (100+damage)) * 4);
                             player.removeEffect(MomotinkerEffects.FallingStar.get());
                         }
                     }
                 }
                 player.playSound(SoundEvents.GENERIC_EXPLODE, 1, 1);
-                if (player.level instanceof ServerLevel serverLevel) {
+                if (player.level() instanceof ServerLevel serverLevel) {
                     serverLevel.sendParticles(ParticleTypes.EXPLOSION_EMITTER, player.getX(), player.getY(), player.getZ(), 20, 5, 5, 5, 0);
                 }
             }

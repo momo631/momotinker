@@ -19,7 +19,7 @@ public class FallingPreparation extends StaticEffect {
     public void applyEffectTick(LivingEntity living, int amplifier) {
         if (living instanceof Player) {
             living.hasImpulse = true;
-            if (living.isOnGround()) {
+            if (living.onGround()) {
                 living.setPos(living.position().add(0, 1, 0));
             }
 
@@ -29,7 +29,7 @@ public class FallingPreparation extends StaticEffect {
                     Mth.lerp(.5f, living.getDeltaMovement().z, 0)
             ));
             living.invulnerableTime = 20;
-            if (living instanceof ServerPlayer player && player.level instanceof ServerLevel serverLevel && living.getEffect(MomotinkerEffects.FallingPreparation.get()) != null) {
+            if (living instanceof ServerPlayer player && player.level() instanceof ServerLevel serverLevel && living.getEffect(MomotinkerEffects.FallingPreparation.get()) != null) {
                 for (int i = 0; i <= 360; i++) {
                     double rad = i * 0.017453292519943295;
                     double r = 4D;

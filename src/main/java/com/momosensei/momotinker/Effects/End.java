@@ -22,7 +22,7 @@ public class End extends StaticEffect{
         }
 
         if (living instanceof Player&&living.hasEffect(MomotinkerEffects.End.get())) {
-            for (LivingEntity e : living.level.getEntitiesOfClass(LivingEntity.class, living.getBoundingBox().inflate(80.0F), (ex) -> ex instanceof Enemy)) {
+            for (LivingEntity e : living.level().getEntitiesOfClass(LivingEntity.class, living.getBoundingBox().inflate(80.0F), (ex) -> ex instanceof Enemy)) {
                 e.addEffect(new MobEffectInstance(MomotinkerEffects.None.get(), 300, 12, false, false));
             }
         }
