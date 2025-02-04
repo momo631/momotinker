@@ -27,23 +27,23 @@ public class MomotinkerFluid{
     }
 
     private static FlowingFluidObject<ForgeFlowingFluid> register(String name, int temp) {
-        return FLUIDS.register(name).type(hot(name).temperature(temp).lightLevel(12)).block(MapColor.NONE,15).bucket().flowing();
+        return FLUIDS.register(name).type(hot(name).temperature(temp).lightLevel(12)).block(MapColor.FIRE,15).bucket().flowing();
     }
 
     //复制这行，只改<ForgeFlowingFluid>后的命名空间，和register里面的"xxxx"即可,temp一般用不上，瞎填就行
     //材质和model什么的在数据包(resourcepacks）部分
-    public static final FluidObject<ForgeFlowingFluid> molten_laomo = register("molten_laomo", 5867);
-    public static final FluidObject<ForgeFlowingFluid> molten_arriving_at_the_other_shore = register("molten_arriving_at_the_other_shore", 5866);
-    public static final FluidObject<ForgeFlowingFluid> molten_spirit_visage = register("molten_spirit_visage", 5865);
-    public static final FluidObject<ForgeFlowingFluid> molten_heartsteel = register("molten_heartsteel", 5864);
-    public static final FluidObject<ForgeFlowingFluid> molten_gluttony_core = register("molten_gluttony_core", 5863);
-    public static final FluidObject<ForgeFlowingFluid> molten_greedy_contract = register("molten_greedy_contract", 5862);
-    public static final FluidObject<ForgeFlowingFluid> molten_lust_mirror = register("molten_lust_mirror", 5861);
-    public static final FluidObject<ForgeFlowingFluid> molten_arrogance_proof = register("molten_arrogance_proof", 5860);
-    public static final FluidObject<ForgeFlowingFluid> molten_rage_stone_statue = register("molten_rage_stone_statue", 5859);
-    public static final FluidObject<ForgeFlowingFluid> molten_lazy_grail = register("molten_lazy_grail", 5858);
-    public static final FluidObject<ForgeFlowingFluid> molten_jealous_notes = register("molten_jealous_notes", 5857);
-    public static final FluidObject<ForgeFlowingFluid> molten_interdimensional_crystal = register("molten_interdimensional_crystal", 5856);
-    public static final FluidObject<ForgeFlowingFluid> molten_dimensional_prism = register("molten_dimensional_prism", 5855);
+    public static final FluidObject<ForgeFlowingFluid> molten_laomo = register("molten_laomo", 1000);
+    public static final FluidObject<ForgeFlowingFluid> molten_arriving_at_the_other_shore = register("molten_arriving_at_the_other_shore", 1000);
+    public static final FluidObject<ForgeFlowingFluid> molten_spirit_visage = register("molten_spirit_visage", 1000);
+    public static final FluidObject<ForgeFlowingFluid> molten_heartsteel = register("molten_heartsteel", 1000);
+    public static final FluidObject<ForgeFlowingFluid> molten_gluttony_core = register("molten_gluttony_core", 1000);
+    public static final FluidObject<ForgeFlowingFluid> molten_greedy_contract = register("molten_greedy_contract", 1000);
+    public static final FluidObject<ForgeFlowingFluid> molten_lust_mirror = register("molten_lust_mirror", 1000);
+    public static final FluidObject<ForgeFlowingFluid> molten_arrogance_proof = register("molten_arrogance_proof", 1000);
+    public static final FluidObject<ForgeFlowingFluid> molten_rage_stone_statue = register("molten_rage_stone_statue", 1000);
+    public static final FluidObject<ForgeFlowingFluid> molten_lazy_grail = register("molten_lazy_grail", 1000);
+    public static final FluidObject<ForgeFlowingFluid> molten_jealous_notes = register("molten_jealous_notes", 1000);
+    public static final FluidObject<ForgeFlowingFluid> molten_interdimensional_crystal = register("molten_interdimensional_crystal", 1000);
+    public static final FluidObject<ForgeFlowingFluid> molten_dimensional_prism = register("molten_dimensional_prism", 1000);
 
 }
