@@ -1,5 +1,6 @@
 package com.momosensei.momotinker.Modifiers.modifiers;
 
+import com.momosensei.momotinker.entity.LegacyDamageSource;
 import com.momosensei.momotinker.register.MomotinkerEffects;
 import com.momosensei.momotinker.register.MomotinkerModifiers;
 import net.minecraft.ChatFormatting;
@@ -41,7 +42,7 @@ public class Huangquan extends momomodifier {
         if (a instanceof ServerPlayer player &&event.getEntity()!=null&&player.getEffect(MomotinkerEffects.End.get())!=null &&player.hasEffect(MomotinkerEffects.End.get())) {
             if (ModifierUtil.getModifierLevel(player.getItemBySlot(EquipmentSlot.MAINHAND), MomotinkerModifiers.huangquan.getId()) > 0) {
                 event.getEntity().invulnerableTime = 0;
-                event.getEntity().level().damageSources().fellOutOfWorld();
+                event.getEntity().hurt(LegacyDamageSource.mobAttack(event.getEntity()),event.getAmount());
                 event.getEntity().invulnerableTime = 0;
             }
         }
