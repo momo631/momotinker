@@ -39,7 +39,7 @@ public class Huangquan extends momomodifier {
 
     public void livinghurtevent(LivingAttackEvent event) {
         Entity a = event.getSource().getEntity();
-        if (a instanceof ServerPlayer player &&event.getEntity()!=null&&player.getEffect(MomotinkerEffects.End.get())!=null &&player.hasEffect(MomotinkerEffects.End.get())) {
+        if (a instanceof ServerPlayer player &&event.getEntity() !=null&& event.getEntity()!= player &&player.getEffect(MomotinkerEffects.End.get())!=null &&player.hasEffect(MomotinkerEffects.End.get())) {
             if (ModifierUtil.getModifierLevel(player.getItemBySlot(EquipmentSlot.MAINHAND), MomotinkerModifiers.huangquan.getId()) > 0) {
                 event.getEntity().invulnerableTime = 0;
                 event.getEntity().hurt(LegacyDamageSource.mobAttack(event.getEntity()),event.getAmount());
