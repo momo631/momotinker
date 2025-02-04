@@ -1,5 +1,6 @@
 package com.momosensei.momotinker.Modifiers.modifiers;
 
+import com.momosensei.momotinker.entity.LegacyDamageSource;
 import com.momosensei.momotinker.register.MomotinkerModifiers;
 import net.minecraft.ChatFormatting;
 import net.minecraft.network.chat.Component;
@@ -36,8 +37,8 @@ public class DrinkBlood extends momomodifier {
         LivingEntity attacker =context.getAttacker();
         if (attacker instanceof Player player&&target != null&& modifier.getLevel() > 0) {
             float a = modifier.getLevel();
-            if (attacker.getHealth() > attacker.getMaxHealth()*0.10000001f){
-                attacker.hurt(attacker.level().damageSources().fellOutOfWorld(),attacker.getMaxHealth()*0.1f);
+            if (attacker.getHealth() > attacker.getMaxHealth()*0.1f&&attacker.getHealth() != attacker.getMaxHealth()*0.1f){
+                attacker.hurt(LegacyDamageSource.mobAttack(attacker),attacker.getMaxHealth()*0.1f);
                 attacker.invulnerableTime = 0;
                 return damage * (1F + a*0.6F);
             }
@@ -63,7 +64,7 @@ public class DrinkBlood extends momomodifier {
         Entity entity=event.getSource().getEntity();
         if (entity instanceof LivingEntity attacker){
             int a = ModifierUtil.getModifierLevel(attacker.getItemBySlot(EquipmentSlot.MAINHAND), MomotinkerModifiers.drinkblood.getId());
-            if (attacker.getHealth() > attacker.getMaxHealth()*0.10000001f && a > 0){
+            if (attacker.getHealth() > attacker.getMaxHealth()*0.1f&&attacker.getHealth() != attacker.getMaxHealth()*0.1f && a > 0){
                 attacker.heal(event.getAmount() * a * 0.3f);
             }
             if (attacker.getHealth() < attacker.getMaxHealth()*0.1f && a > 0){
