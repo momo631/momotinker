@@ -25,8 +25,8 @@ public class MomotinkerTab {
     //label里面的会影响zh_cn里面的本地化键名
     //如果你要开新类型像我这样往下派生就行
     public static final DeferredRegister<CreativeModeTab> CREATIVE_MODE_TABS = DeferredRegister.create(Registries.CREATIVE_MODE_TAB, Momotinker.MOD_ID);
-    public static final String EXAMPLE_MOD_TAB_STRING = "materials";
-    public static final Supplier<CreativeModeTab> MATERIALS = CREATIVE_MODE_TABS.register("materials", () -> CreativeModeTab.builder()
+    public static final String EXAMPLE_MOD_TAB_STRING = "itemGroup.momotinker.materials";
+    public static final Supplier<CreativeModeTab> MATERIALS = CREATIVE_MODE_TABS.register("momotinker.materials", () -> CreativeModeTab.builder()
             .withTabsBefore(CreativeModeTabs.COMBAT)
             .title(Component.translatable(EXAMPLE_MOD_TAB_STRING))
             .icon(() -> MomotinkerItem.laomo.get().getDefaultInstance())
