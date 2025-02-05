@@ -9,6 +9,8 @@ import net.minecraftforge.fml.common.Mod;
 import net.minecraftforge.fml.javafmlmod.FMLJavaModLoadingContext;
 import slimeknights.tconstruct.library.tools.capability.TinkerDataCapability;
 
+import static com.momosensei.momotinker.register.MomotinkerTab.CREATIVE_MODE_TABS;
+
 @Mod(Momotinker.MOD_ID)
 @Mod.EventBusSubscriber(
         bus = Mod.EventBusSubscriber.Bus.MOD
@@ -32,8 +34,20 @@ public class Momotinker {
         MomotinkerLootModifiers.register(eventBus);
         IEventBus bus = FMLJavaModLoadingContext.get().getModEventBus();
         ModLoadingContext.get().registerConfig(ModConfig.Type.COMMON, MomotinkerConfig.spec);
-    }
 
+    }
+    @SubscribeEvent
+    static void gatherData(final GatherDataEvent event) {
+        DataGenerator generator = event.getGenerator();
+        PackOutput packOutput = generator.getPackOutput();
+        ExistingFileHelper existingFileHelper = event.getExistingFileHelper();
+        CompletableFuture<HolderLookup.Provider> lookupProvider = event.getLookupProvider();
+        RegistrySetBuilder registrySetBuilder = new RegistrySetBuilder();
+        MomoDamageTypeProvider.register(registrySetBuilder);
+        boolean server = event.includeServer();
+        DatapackBuiltinEntriesProvider datapackRegistryProvider = new DatapackBuiltinEntriesProvider(packOutput, lookupProvider, registrySetBuilder, Set.of(MOD_ID));
+        generator.addProvider(server, new MomoDamageTypeTagProvider(packOutput, datapackRegistryProvider.getRegistryProvider(), existingFileHelper));
+    }
     //Resourcelocation
     public static ResourceLocation getResource(String id) {
         return new ResourceLocation("momotinker", id);
