@@ -6,9 +6,7 @@ import com.momosensei.momotinker.register.*;
 import net.minecraft.resources.ResourceLocation;
 import net.minecraftforge.common.MinecraftForge;
 import net.minecraftforge.eventbus.api.IEventBus;
-import net.minecraftforge.fml.ModLoadingContext;
 import net.minecraftforge.fml.common.Mod;
-import net.minecraftforge.fml.config.ModConfig;
 import net.minecraftforge.fml.event.lifecycle.FMLCommonSetupEvent;
 import net.minecraftforge.fml.javafmlmod.FMLJavaModLoadingContext;
 import org.jetbrains.annotations.NotNull;
@@ -22,10 +20,11 @@ import slimeknights.tconstruct.library.tools.capability.TinkerDataCapability;
 
 public class Momotinker {
     public static final String MOD_ID = "momotinker"; //是你的模组名，需要英文
-    public Momotinker() {
+    public Momotinker(FMLJavaModLoadingContext context) {
         //注册表之类的东西
         //如果你新稿了别的注册表记得这边填一下
-        IEventBus eventBus = FMLJavaModLoadingContext.get().getModEventBus();
+        IEventBus eventBus = context.getModEventBus();
+        CREATIVE_MODE_TABS.register(eventBus);
         MinecraftForge.EVENT_BUS.register(new LivingEvents());
         MinecraftForge.EVENT_BUS.register(this);
         MomotinkerItem.ITEMS.register(eventBus);
