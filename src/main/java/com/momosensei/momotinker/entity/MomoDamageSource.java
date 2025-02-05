@@ -15,49 +15,49 @@ import org.jetbrains.annotations.Nullable;
 
 import java.util.ArrayList;
 
-public class LegacyDamageSource extends DamageSource {
+public class MomoDamageSource extends DamageSource {
     public ArrayList<ResourceKey<DamageType>> damageTypes = new ArrayList<>();
 
-    public LegacyDamageSource(Holder<DamageType> holder, @Nullable Entity directEntity, @Nullable Entity causingEntity, @Nullable Vec3 sourcePos) {
+    public MomoDamageSource(Holder<DamageType> holder, @Nullable Entity directEntity, @Nullable Entity causingEntity, @Nullable Vec3 sourcePos) {
         super(holder, directEntity, causingEntity, sourcePos);
     }
 
-    public LegacyDamageSource(DamageSource source) {
+    public MomoDamageSource(DamageSource source) {
         this(source.typeHolder(), source.getDirectEntity(), source.getEntity(), source.sourcePositionRaw());
     }
 
-    public static LegacyDamageSource mobAttack(@NotNull LivingEntity living) {
-        return new LegacyDamageSource(living.damageSources().mobAttack(living)).setBypassArmor().setBypassInvul().setBypassInvulnerableTime().setBypassMagic().setBypassEnchantment().setBypassShield();
+    public static MomoDamageSource mobHurt(@NotNull LivingEntity living) {
+        return new MomoDamageSource(living.damageSources().mobAttack(living)).setBypassArmor().setBypassInvul().setBypassInvulnerableTime().setBypassMagic().setBypassEnchantment().setBypassShield();
     }
 
-    public LegacyDamageSource setBypassInvulnerableTime() {
+    public MomoDamageSource setBypassInvulnerableTime() {
         this.damageTypes.add(ResourceKey.create(Registries.DAMAGE_TYPE, DamageTypeTags.BYPASSES_COOLDOWN.location()));
         return this;
     }
 
-    public LegacyDamageSource setBypassArmor() {
+    public MomoDamageSource setBypassArmor() {
         damageTypes.add(ResourceKey.create(Registries.DAMAGE_TYPE, DamageTypeTags.BYPASSES_ARMOR.location()));
         return this;
     }
 
-    public LegacyDamageSource setBypassInvul() {
+    public MomoDamageSource setBypassInvul() {
         damageTypes.add(ResourceKey.create(Registries.DAMAGE_TYPE, DamageTypeTags.BYPASSES_INVULNERABILITY.location()));
         return this;
     }
 
-    public LegacyDamageSource setBypassMagic() {
+    public MomoDamageSource setBypassMagic() {
         damageTypes.add(ResourceKey.create(Registries.DAMAGE_TYPE, DamageTypeTags.BYPASSES_RESISTANCE.location()));
         damageTypes.add(ResourceKey.create(Registries.DAMAGE_TYPE, DamageTypeTags.BYPASSES_EFFECTS.location()));
         return this;
     }
 
-    public LegacyDamageSource setBypassEnchantment() {
+    public MomoDamageSource setBypassEnchantment() {
         damageTypes.add(ResourceKey.create(Registries.DAMAGE_TYPE, DamageTypeTags.BYPASSES_ENCHANTMENTS.location()));
         damageTypes.add(ResourceKey.create(Registries.DAMAGE_TYPE, DamageTypeTags.AVOIDS_GUARDIAN_THORNS.location()));
         return this;
     }
 
-    public LegacyDamageSource setBypassShield() {
+    public MomoDamageSource setBypassShield() {
         damageTypes.add(ResourceKey.create(Registries.DAMAGE_TYPE, DamageTypeTags.BYPASSES_SHIELD.location()));
         return this;
     }
