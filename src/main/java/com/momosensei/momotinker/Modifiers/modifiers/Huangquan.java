@@ -1,9 +1,10 @@
 package com.momosensei.momotinker.Modifiers.modifiers;
 
-import com.momosensei.momotinker.entity.LegacyDamageSource;
+import com.momosensei.momotinker.entity.MomoDamageSource;
 import com.momosensei.momotinker.register.MomotinkerEffects;
 import com.momosensei.momotinker.register.MomotinkerModifiers;
 import net.minecraft.ChatFormatting;
+import net.minecraft.network.chat.Component;
 import net.minecraft.server.level.ServerPlayer;
 import net.minecraft.world.entity.Entity;
 import net.minecraft.world.entity.EquipmentSlot;
@@ -27,7 +28,7 @@ import javax.annotation.Nonnull;
 import java.util.List;
 
 
-public class Huangquan extends momomodifier {
+public class Huangquan extends momomodifier{
     public Huangquan() {
         MinecraftForge.EVENT_BUS.addListener(this::livinghurtevent);
     }
@@ -39,10 +40,10 @@ public class Huangquan extends momomodifier {
 
     public void livinghurtevent(LivingHurtEvent event) {
         Entity a = event.getSource().getEntity();
-        if (a instanceof ServerPlayer player &&event.getEntity() !=null &&player.getEffect(MomotinkerEffects.End.get())!=null &&player.hasEffect(MomotinkerEffects.End.get())) {
+        if (a instanceof ServerPlayer player && event.getEntity() != null && player.getEffect(MomotinkerEffects.End.get()) != null && player.hasEffect(MomotinkerEffects.End.get())) {
             if (ModifierUtil.getModifierLevel(player.getItemBySlot(EquipmentSlot.MAINHAND), MomotinkerModifiers.huangquan.getId()) > 0) {
                 event.getEntity().invulnerableTime = 0;
-                event.getEntity().hurt(LegacyDamageSource.mobAttack(event.getEntity()),event.getAmount());
+                event.getEntity().hurt(MomoDamageSource.mobHurt(player), event.getAmount());
                 event.getEntity().invulnerableTime = 0;
             }
         }
@@ -81,8 +82,8 @@ public class Huangquan extends momomodifier {
         return false;
     }
 
-
-    public void addTooltip(IToolStackView tool, ModifierEntry modifierEntry, @org.jetbrains.annotations.Nullable Player player, List<net.minecraft.network.chat.Component> tooltip, TooltipKey tooltipKey, TooltipFlag tooltipFlag) {
+    @Override
+    public void addTooltip(IToolStackView tool, ModifierEntry modifierEntry, @org.jetbrains.annotations.Nullable Player player, List<Component> tooltip, TooltipKey tooltipKey, TooltipFlag tooltipFlag) {
         if (player != null) {
             float var = player.getMaxHealth() - player.getHealth();
             tooltip.add(net.minecraft.network.chat.Component.translatable("当前已损失生命" + var).withStyle(ChatFormatting.DARK_RED));
