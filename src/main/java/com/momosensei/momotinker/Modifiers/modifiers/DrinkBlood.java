@@ -1,6 +1,6 @@
 package com.momosensei.momotinker.Modifiers.modifiers;
 
-import com.momosensei.momotinker.entity.LegacyDamageSource;
+import com.momosensei.momotinker.entity.MomoDamageSource;
 import com.momosensei.momotinker.register.MomotinkerModifiers;
 import net.minecraft.ChatFormatting;
 import net.minecraft.network.chat.Component;
@@ -38,7 +38,7 @@ public class DrinkBlood extends momomodifier {
         if (attacker instanceof Player player&&target != null&& modifier.getLevel() > 0) {
             float a = modifier.getLevel();
             if (attacker.getHealth() > attacker.getMaxHealth()*0.1f&&attacker.getHealth() != attacker.getMaxHealth()*0.1f){
-                attacker.hurt(LegacyDamageSource.mobAttack(attacker),attacker.getMaxHealth()*0.1f);
+                attacker.hurt(MomoDamageSource.mobHurt(attacker),attacker.getMaxHealth()*0.1f);
                 attacker.invulnerableTime = 0;
                 return damage * (1F + a*0.6F);
             }
