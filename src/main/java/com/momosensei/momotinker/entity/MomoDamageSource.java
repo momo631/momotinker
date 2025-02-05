@@ -29,9 +29,7 @@ public class MomoDamageSource extends DamageSource {
     public static MomoDamageSource mobHurt(@NotNull LivingEntity living) {
         return new MomoDamageSource(living.damageSources().mobAttack(living)).setBypassArmor().setBypassInvul().setBypassInvulnerableTime().setBypassMagic().setBypassEnchantment().setBypassShield();
     }
-    public static MomoDamageSource playerHurt(@NotNull LivingEntity living) {
-        return new MomoDamageSource(living.damageSources().mobAttack(living));
-    }
+
     public MomoDamageSource setBypassInvulnerableTime() {
         this.damageTypes.add(ResourceKey.create(Registries.DAMAGE_TYPE, DamageTypeTags.BYPASSES_COOLDOWN.location()));
         return this;
