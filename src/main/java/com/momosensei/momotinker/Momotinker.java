@@ -1,13 +1,27 @@
 package com.momosensei.momotinker;
 
+
+import com.momosensei.momotinker.entity.MomoDamageTypeProvider;
+import com.momosensei.momotinker.entity.MomoDamageTypeTagProvider;
 import com.momosensei.momotinker.event.LivingEvents;
 import com.momosensei.momotinker.register.*;
+import net.minecraft.core.HolderLookup;
+import net.minecraft.core.RegistrySetBuilder;
+import net.minecraft.data.DataGenerator;
+import net.minecraft.data.PackOutput;
 import net.minecraft.resources.ResourceLocation;
 import net.minecraftforge.common.MinecraftForge;
+import net.minecraftforge.common.data.DatapackBuiltinEntriesProvider;
+import net.minecraftforge.common.data.ExistingFileHelper;
+import net.minecraftforge.data.event.GatherDataEvent;
 import net.minecraftforge.eventbus.api.IEventBus;
+import net.minecraftforge.eventbus.api.SubscribeEvent;
 import net.minecraftforge.fml.common.Mod;
 import net.minecraftforge.fml.javafmlmod.FMLJavaModLoadingContext;
 import slimeknights.tconstruct.library.tools.capability.TinkerDataCapability;
+
+import java.util.Set;
+import java.util.concurrent.CompletableFuture;
 
 import static com.momosensei.momotinker.register.MomotinkerTab.CREATIVE_MODE_TABS;
 
@@ -31,6 +45,19 @@ public class Momotinker {
         MomotinkerBlock.BLOCK.register(eventBus);
         MomotinkerEffects.EFFECT.register(eventBus);
         MomotinkerEntities.ENTITIES.register(eventBus);
+
+    }
+    @SubscribeEvent
+    static void gatherData(final GatherDataEvent event) {
+        DataGenerator generator = event.getGenerator();
+        PackOutput packOutput = generator.getPackOutput();
+        ExistingFileHelper existingFileHelper = event.getExistingFileHelper();
+        CompletableFuture<HolderLookup.Provider> lookupProvider = event.getLookupProvider();
+        RegistrySetBuilder registrySetBuilder = new RegistrySetBuilder();
+        MomoDamageTypeProvider.register(registrySetBuilder);
+        boolean server = event.includeServer();
+        DatapackBuiltinEntriesProvider datapackRegistryProvider = new DatapackBuiltinEntriesProvider(packOutput, lookupProvider, registrySetBuilder, Set.of(MOD_ID));
+        generator.addProvider(server, new MomoDamageTypeTagProvider(packOutput, datapackRegistryProvider.getRegistryProvider(), existingFileHelper));
     }
     //Resourcelocation
     public static ResourceLocation getResource(String id) {
