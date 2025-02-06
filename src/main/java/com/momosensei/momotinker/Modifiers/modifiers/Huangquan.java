@@ -43,7 +43,7 @@ public class Huangquan extends momomodifier{
         if (a instanceof ServerPlayer player && event.getEntity() != null && player.getEffect(MomotinkerEffects.End.get()) != null && player.hasEffect(MomotinkerEffects.End.get())) {
             if (ModifierUtil.getModifierLevel(player.getItemBySlot(EquipmentSlot.MAINHAND), MomotinkerModifiers.huangquan.getId()) > 0) {
                 event.getEntity().invulnerableTime = 0;
-                event.getEntity().hurt(MomoDamageSource.mobHurt(player), event.getAmount());
+                event.getEntity().hurt(MomoDamageSource.mobHurt(event.getEntity()), event.getAmount());
                 event.getEntity().invulnerableTime = 0;
             }
         }
@@ -52,7 +52,7 @@ public class Huangquan extends momomodifier{
     @Override
     public float getMeleeDamage(@Nonnull IToolStackView tool, ModifierEntry modifier, @Nonnull ToolAttackContext context, float baseDamage, float damage) {
         LivingEntity attacker =context.getAttacker();
-        if (attacker instanceof ServerPlayer player){
+        if (attacker instanceof ServerPlayer player&&context.getLivingTarget()!=null){
             float var = (player.getMaxHealth() - player.getHealth())*6;
             if (player.getHealth()<player.getMaxHealth()*0.6F) {
                 if (!(player.hasEffect(MomotinkerEffects.End.get()))) {
