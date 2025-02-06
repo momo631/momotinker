@@ -52,7 +52,7 @@ public class Huangquan extends momomodifier{
     @Override
     public float getMeleeDamage(@Nonnull IToolStackView tool, ModifierEntry modifier, @Nonnull ToolAttackContext context, float baseDamage, float damage) {
         LivingEntity attacker =context.getAttacker();
-        if (attacker instanceof ServerPlayer player&&context.getLivingTarget()!=null){
+        if (attacker instanceof ServerPlayer player){
             float var = (player.getMaxHealth() - player.getHealth())*6;
             if (player.getHealth()<player.getMaxHealth()*0.6F) {
                 if (!(player.hasEffect(MomotinkerEffects.End.get()))) {
