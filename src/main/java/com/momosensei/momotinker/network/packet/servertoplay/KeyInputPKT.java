@@ -65,7 +65,10 @@ public class KeyInputPKT {
                 }
                 if (falldate.getFloat(falling) > 27 && falldate.getFloat(falling) < 30) {
                     player.addEffect(new MobEffectInstance(MomotinkerEffects.FallingStar.get(), 20));
-                    falldate.putFloat(falling, falldate.getFloat(falling) + 90);
+                    falldate.putFloat(falling, falldate.getFloat(falling) + 120);
+                    if (player.getEffect(MomotinkerEffects.FallingPreparation.get())!=null&&player.hasEffect(MomotinkerEffects.FallingPreparation.get())){
+                        player.removeEffect(MomotinkerEffects.FallingPreparation.get());
+                    }
                 }
             }
 

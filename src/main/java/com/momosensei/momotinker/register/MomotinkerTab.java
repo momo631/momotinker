@@ -18,6 +18,12 @@ public class MomotinkerTab {
         }
     };
 
+    public static final CreativeModeTab TOOLS = new CreativeModeTab("momotinker.tools") {
+        @Override
+        public ItemStack makeIcon() {
+            return MomotinkerItem.trigger_blade.get().getRenderTool();
+        }
+    };
 /*
     public static final CreativeModeTab BLOCKS = new CreativeModeTab("momotinker.blocks") {
         @Override

@@ -67,7 +67,7 @@
     },
     "momotinker:ionizer": {
       "cooldown": 40,
-      "plasmarange": 35,
+      "triggerrange": 35,
       "damagemultiplier": 6.5
     },
     "tinkers_ingenuity:battery": {

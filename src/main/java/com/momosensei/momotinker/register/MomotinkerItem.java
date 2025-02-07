@@ -1,11 +1,14 @@
 package com.momosensei.momotinker.register;
 
 import com.momosensei.momotinker.Items.*;
+import com.momosensei.momotinker.tool.MomoToolDefinitions;
+import com.momosensei.momotinker.tool.trigger_blade;
 import net.minecraft.world.item.BlockItem;
 import net.minecraft.world.item.Item;
 import net.minecraftforge.registries.DeferredRegister;
 import net.minecraftforge.registries.ForgeRegistries;
 import net.minecraftforge.registries.RegistryObject;
+import slimeknights.tconstruct.library.tools.item.ModifiableItem;
 
 import static com.momosensei.momotinker.Momotinker.MOD_ID;
 
@@ -13,7 +16,7 @@ import static com.momosensei.momotinker.Momotinker.MOD_ID;
 public class MomotinkerItem {
     public MomotinkerItem() {
     }
-
+    private static final Item.Properties TOOL =(new Item.Properties().tab(MomotinkerTab.TOOLS).stacksTo(1));
     public static final DeferredRegister<Item> ITEMS = DeferredRegister.create(ForgeRegistries.ITEMS, MOD_ID);
 
     //物品锭什么的注册照着复制就行，如果有单独类改new Item的Item字段为你的类名，tab为创造模式显示栏，在哪个栏位显示
@@ -29,6 +32,8 @@ public class MomotinkerItem {
     public static final RegistryObject<Item> rage_stone_statue = ITEMS.register("rage_stone_statue", () -> new rage_stone_statue(new Item.Properties().tab(MomotinkerTab.MATERIALS)));
     public static final RegistryObject<Item> lazy_grail = ITEMS.register("lazy_grail", () -> new lazy_grail(new Item.Properties().tab(MomotinkerTab.MATERIALS)));
     public static final RegistryObject<Item> jealous_notes = ITEMS.register("jealous_notes", () -> new jealous_notes(new Item.Properties().tab(MomotinkerTab.MATERIALS)));
+    public static final RegistryObject<ModifiableItem> trigger_blade = ITEMS.register("trigger_blade", () -> new trigger_blade(TOOL, MomoToolDefinitions.TROGGER_BLADE));
+    public static final RegistryObject<Item> trigger_slash = ITEMS.register("trigger_slash", ()->new Item(new Item.Properties()));
 
     //方块类要这样,略有变动
 

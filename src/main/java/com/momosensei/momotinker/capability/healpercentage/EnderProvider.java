@@ -12,16 +12,16 @@ import net.minecraftforge.common.util.LazyOptional;
 import org.jetbrains.annotations.NotNull;
 import org.jetbrains.annotations.Nullable;
 
-public class PlayerHealPercentageProvider implements ICapabilityProvider, INBTSerializable {
+public class EnderProvider implements ICapabilityProvider, INBTSerializable {
 
-    private PlayerHealPercentage playerHealPercentage;
+    private Ender Ender;
 
-    private static final Capability<PlayerHealPercentage>PLAYER_HEAL_PERCENTAGE_CAPABILITY = CapabilityManager.get(new CapabilityToken<>() {});
+    private static final Capability<Ender>ENDER_CAPABILITY = CapabilityManager.get(new CapabilityToken<>() {});
 
-    private final LazyOptional<PlayerHealPercentage>lazyOptional = LazyOptional.of(() -> this.playerHealPercentage);
+    private final LazyOptional<Ender>lazyOptional = LazyOptional.of(() -> this.Ender);
 
-    public PlayerHealPercentageProvider(){
-        this.playerHealPercentage = new PlayerHealPercentage();
+    public EnderProvider(){
+        this.Ender = new Ender();
     }
 
     @Override
@@ -31,7 +31,7 @@ public class PlayerHealPercentageProvider implements ICapabilityProvider, INBTSe
 
     @Override
     public @NotNull <T> LazyOptional<T> getCapability(@NotNull Capability<T> cap) {
-        if (cap == PLAYER_HEAL_PERCENTAGE_CAPABILITY){
+        if (cap == ENDER_CAPABILITY){
             return lazyOptional.cast();
         }
         else
@@ -43,12 +43,12 @@ public class PlayerHealPercentageProvider implements ICapabilityProvider, INBTSe
     @Override
     public Tag serializeNBT() {
         var tag = new CompoundTag();
-        playerHealPercentage.saveNBTData(tag);
+        Ender.saveNBTData(tag);
         return tag;
     }
 
     @Override
     public void deserializeNBT(Tag tag) {
-        playerHealPercentage.loadNBTData((CompoundTag) tag);
+        Ender.loadNBTData((CompoundTag) tag);
     }
 }

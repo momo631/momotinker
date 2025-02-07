@@ -2,11 +2,11 @@ package com.momosensei.momotinker.capability.healpercentage;
 
 import net.minecraft.nbt.CompoundTag;
 
-public class PlayerHealPercentage {
+public class Ender {
 
     private int healpercentage;
 
-    public PlayerHealPercentage(){
+    public Ender(){
         this.healpercentage = 0;
     }
 

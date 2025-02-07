@@ -1,0 +1,25 @@
+{
+    "parts": [
+        {
+            "path": "momotinker:item/tool/trigger_blade/blade",
+            "stat_type": "tconstruct:head"
+        },
+        {
+            "path": "momotinker:item/tool/trigger_blade/excitation_device",
+            "stat_type": "tconstruct:limb"
+        },
+        {
+            "path": "momotinker:item/tool/trigger_blade/tough_handle_1",
+            "stat_type": "tconstruct:handle"
+        },
+        {
+            "path": "momotinker:item/tool/trigger_blade/sheath_body",
+            "stat_type": "tconstruct:grip"
+        },
+        {
+            "path": "momotinker:item/tool/trigger_blade/tough_handle_2",
+            "stat_type": "tconstruct:handle"
+        }
+    ],
+    "replace": false
+}
