@@ -1,7 +1,8 @@
 package com.momosensei.momotinker.entity;
 
 
-import net.minecraft.world.damagesource.DamageSource;
+import com.momosensei.momotinker.util.attackUtil;
+import net.minecraft.world.InteractionHand;
 import net.minecraft.world.entity.Entity;
 import net.minecraft.world.entity.EntityType;
 import net.minecraft.world.entity.player.Player;
@@ -11,6 +12,7 @@ import net.minecraft.world.level.Level;
 import net.minecraft.world.phys.AABB;
 import net.minecraft.world.phys.Vec3;
 import slimeknights.tconstruct.library.tools.nbt.ToolStack;
+import slimeknights.tconstruct.library.utils.Util;
 
 import java.util.List;
 
@@ -25,7 +27,7 @@ public class TriggerSlashEntity extends Projectile {
     public TriggerSlashEntity(EntityType<? extends Projectile> p_37248_, Level p_37249_, ItemStack slash) {
         super(p_37248_, p_37249_);
         this.Slash = slash;
-        this.angle = 10;
+        this.angle = -30;
     }
     public ItemStack getSlash(){
         return this.Slash;
@@ -65,9 +67,11 @@ public class TriggerSlashEntity extends Projectile {
             AABB aabb = this.getBoundingBox().expandTowards(vec3.scale(2)).expandTowards(vec3.scale(-1)).expandTowards(new Vec3(0,dy,0).cross(vec3)).expandTowards(new Vec3(0,-dy,0).cross(vec3));
             List<Entity> ls0 = this.level.getEntitiesOfClass(Entity.class, aabb);
             for (Entity targets : ls0) {
-                targets.invulnerableTime = 0;
-                targets.hurt(DamageSource.playerAttack(player),damage);
-                targets.invulnerableTime = 0;
+                if (targets!=getOwner()) {
+                    targets.invulnerableTime = 0;
+                    attackUtil.attackEntity(this.tool, player, InteractionHand.MAIN_HAND, targets, ()->1, true, Util.getSlotType(InteractionHand.MAIN_HAND), this.damage, false, true, true, true);
+                    targets.invulnerableTime = 0;
+                }
             }
         }
     }

@@ -4,8 +4,8 @@
       "type": "tconstruct:part_stats",
       "parts": [
         "tconstruct:broad_blade",
-        "tconstruct:grip",
-        "tconstruct:limb",
+        "tconstruct:bow_grip",
+        "tconstruct:bow_limb",
         {
           "item": "tconstruct:tough_handle",
           "scale": 0.5
@@ -46,20 +46,13 @@
       ]
     },
     {
-      "type": "tconstruct:base_stats",
-      "stats": {
-        "tconstruct:attack_damage": 4,
-        "tconstruct:attack_speed": 1.2,
-        "tconstruct:durability": 4,
-        "tconstruct:velocity": 1,
-        "tconstruct:accuracy": 1
-      }
-    },
-    {
       "type": "tconstruct:multiply_stats",
       "multipliers": {
         "tconstruct:attack_damage": 0.8,
-        "tconstruct:durability": 2.75
+        "tconstruct:durability": 1.5,
+        "tconstruct:attack_speed": 1.2,
+        "tconstruct:velocity": 1,
+        "tconstruct:accuracy": 1
       }
     },
     {
@@ -68,15 +61,6 @@
         "abilities": 2,
         "upgrades": 3
       }
-    },
-    {
-      "type": "tconstruct:traits",
-      "traits": [
-        {
-          "level": 1,
-          "name": "tconstruct:tank"
-        }
-      ]
     }
   ]
 }

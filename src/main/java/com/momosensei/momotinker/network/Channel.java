@@ -24,7 +24,7 @@ public class Channel {
 
     public static void init() {
         INSTANCE.registerMessage(id++, triggerSlashPacket.class, triggerSlashPacket::encode, triggerSlashPacket::decode, triggerSlashPacket::handle);
-        INSTANCE.messageBuilder(KeyInputPKT.class,id(), NetworkDirection.PLAY_TO_SERVER).decoder(KeyInputPKT::decode).encoder(KeyInputPKT::encode).consumerMainThread(KeyInputPKT::handlePacket).add();
+        INSTANCE.messageBuilder(KeyInputPKT.class,id++, NetworkDirection.PLAY_TO_SERVER).decoder(KeyInputPKT::decode).encoder(KeyInputPKT::encode).consumerMainThread(KeyInputPKT::handlePacket).add();
     }
 
     public static <MSG> void sendToServer(MSG msg){

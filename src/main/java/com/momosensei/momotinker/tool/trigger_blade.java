@@ -2,8 +2,6 @@ package com.momosensei.momotinker.tool;
 
 
 import com.momosensei.momotinker.entity.TriggerSlashEntity;
-import com.momosensei.momotinker.network.Channel;
-import com.momosensei.momotinker.network.packet.servertoplay.triggerSlashPacket;
 import com.momosensei.momotinker.register.MomotinkerEntities;
 import com.momosensei.momotinker.register.MomotinkerItem;
 import net.minecraft.ChatFormatting;
@@ -52,7 +50,7 @@ public class trigger_blade extends ModifiableItem {
     }
 
     public UseAnim getUseAnimation(ItemStack stack) {
-        return UseAnim.CROSSBOW;
+        return UseAnim.BOW;
     }
 
     public int getUseDuration(ItemStack stack) {
@@ -64,7 +62,6 @@ public class trigger_blade extends ModifiableItem {
             int i = this.getUseDuration(stack) - duration;
             if (i >= 30) {
                 createSlash(player);
-                Channel.INSTANCE.sendToServer(new triggerSlashPacket(player.getId()));
             }
         }
     }
@@ -121,7 +118,7 @@ public class trigger_blade extends ModifiableItem {
         slash.setOwner(player);
         slash.setToolstack(tool);
         slash.setDeltaMovement(player.getLookAngle());
-        slash.setPos(player.getX()+x*1.5,player.getY()+0.6*player.getBbHeight()+y*1.5,player.getZ()+z*3);
+        slash.setPos(player.getX()+x*1.5,player.getY()+0.5*player.getBbHeight()+y*1.5,player.getZ()+z*3);
         level.addFreshEntity(slash);
         ToolDamageUtil.damageAnimated(tool,1,player, InteractionHand.MAIN_HAND);
     }
@@ -133,9 +130,8 @@ public class trigger_blade extends ModifiableItem {
         return MomotinkerEntities.trigger_slash.get();
     }
     public static float getDamageMultiplier(ToolStack tool){
-        float a = tool.getStats().get(ACCURACY);
-        float b = RANDOM.nextInt((int) (a*100));
-        return tool.getStats().get(ToolStats.ATTACK_DAMAGE)+(1F+0.002F*b+0.1F*tool.getStats().get(ToolStats.VELOCITY));
+        float b = RANDOM.nextInt((int) (tool.getStats().get(ACCURACY)*100));
+        return tool.getStats().get(ToolStats.ATTACK_DAMAGE)*(1F+0.005F*b+0.2F*tool.getStats().get(ToolStats.VELOCITY));
     }
     public static boolean checkOffHand(Player player){
         return player!=null&& !(player.getOffhandItem().getItem() instanceof IModifiable);
@@ -153,11 +149,10 @@ public class trigger_blade extends ModifiableItem {
             builder.add(ToolStats.ATTACK_DAMAGE);
             builder.add(ToolStats.ATTACK_SPEED);
         }
-        if (tool.hasTag(TinkerTags.Items.ARMOR)) {
             builder.add(ToolStats.VELOCITY);
             builder.add(ACCURACY);
             builder.addAllFreeSlots();
-        }
+
         if (!checkOffHand(player)){
             builder.add(Component.translatable("momotinker.tool.tooltip.offhand_hastool").withStyle(ChatFormatting.RED));
         }

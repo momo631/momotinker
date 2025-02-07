@@ -16,7 +16,7 @@ public class ForgeEventListener {
     @SubscribeEvent
     public static void onKeyInput(InputEvent.Key event) {
         if (key.KeyBinding.KEY.consumeClick()) {
-            Channel.sendToServer(new KeyInputPKT());
+            Channel.INSTANCE.sendToServer(new KeyInputPKT());
         }
     }
 }

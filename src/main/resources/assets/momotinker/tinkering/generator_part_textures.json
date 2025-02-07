@@ -2,23 +2,43 @@
     "parts": [
         {
             "path": "momotinker:item/tool/trigger_blade/blade",
-            "stat_type": "tconstruct:head"
+            "stat_type": "tconstruct:binding"
+        },
+        {
+            "path": "momotinker:item/tool/trigger_blade/broken_blade",
+            "stat_type": "tconstruct:binding"
+        },
+        {
+            "path": "momotinker:item/tool/trigger_blade/large/broken_blade",
+            "stat_type": "tconstruct:binding"
         },
         {
             "path": "momotinker:item/tool/trigger_blade/excitation_device",
-            "stat_type": "tconstruct:limb"
+            "stat_type": "tconstruct:binding"
         },
         {
             "path": "momotinker:item/tool/trigger_blade/tough_handle_1",
-            "stat_type": "tconstruct:handle"
+            "stat_type": "tconstruct:binding"
         },
         {
             "path": "momotinker:item/tool/trigger_blade/sheath_body",
-            "stat_type": "tconstruct:grip"
+            "stat_type": "tconstruct:binding"
         },
         {
             "path": "momotinker:item/tool/trigger_blade/tough_handle_2",
-            "stat_type": "tconstruct:handle"
+            "stat_type": "tconstruct:binding"
+        },
+        {
+            "path": "momotinker:item/tool/trigger_blade/large/blade",
+            "stat_type": "tconstruct:binding"
+        },
+        {
+            "path": "momotinker:item/tool/trigger_blade/large/tough_handle_1",
+            "stat_type": "tconstruct:binding"
+        },
+        {
+            "path": "momotinker:item/tool/trigger_blade/large/tough_handle_2",
+            "stat_type": "tconstruct:binding"
         }
     ],
     "replace": false

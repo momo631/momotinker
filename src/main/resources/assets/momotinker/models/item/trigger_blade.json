@@ -2,25 +2,30 @@
   "loader": "tconstruct:tool",
   "parent": "forge:item/default-tool",
   "textures": {
-    "blade": "momotinker:item/tool/trigger_blade/blade/blade",
-    "handle1": "momotinker:item/tool/trigger_blade/tough_handle_1/tough_handle_1",
-    "handle2": "momotinker:item/tool/trigger_blade/tough_handle_2/tough_handle_2",
-    "grip": "momotinker:item/tool/trigger_blade/sheath_body/sheath_body",
-    "limb": "momotinker:item/tool/trigger_blade/excitation_device/excitation_device",
-    "broken_blade": "momotinker:item/tool/trigger_blade/broken_blade/broken_blade",
+    "blade": "momotinker:item/tool/trigger_blade/blade",
+    "tough_handle_1": "momotinker:item/tool/trigger_blade/tough_handle_1",
+    "tough_handle_2": "momotinker:item/tool/trigger_blade/tough_handle_2",
+    "sheath_body": "momotinker:item/tool/trigger_blade/sheath_body",
+    "excitation_device": "momotinker:item/tool/trigger_blade/excitation_device",
+    "broken_blade": "momotinker:item/tool/trigger_blade/broken_blade",
 
-    "large_blade": "momotinker:item/tool/trigger_blade/large/blade/blade",
-    "large_handle1": "momotinker:item/tool/trigger_blade/large/tough_handle_1/tough_handle_1",
-    "large_handle2": "momotinker:item/tool/trigger_blade/large/tough_handle_2/tough_handle_2",
-    "large_grip": "momotinker:item/tool/trigger_blade/large/sheath_body/sheath_body",
-    "large_limb": "momotinker:item/tool/trigger_blade/large/excitation_device/excitation_device",
-    "large_broken_blade": "momotinker:item/tool/trigger_blade/large/broken_blade/broken_blade"
+    "large_blade": "momotinker:item/tool/trigger_blade/large/blade",
+    "large_tough_handle_1": "momotinker:item/tool/trigger_blade/large/tough_handle_1",
+    "large_tough_handle_2": "momotinker:item/tool/trigger_blade/large/tough_handle_2",
+    "large_sheath_body": "momotinker:item/tool/trigger_blade/large/sheath_body",
+    "large_excitation_device": "momotinker:item/tool/trigger_blade/large/excitation_device",
+    "large_broken_blade": "momotinker:item/tool/trigger_blade/large/broken_blade"
   },
-  "modifier_roots": [
-  "momotinker:item/tool/trigger_blade/modifiers/"
-  ],
+  "modifier_roots": {
+    "small": [
+      "momotinker:item/tool/trigger_blade/modifiers/"
+    ],
+    "large": [
+      "momotinker:item/tool/trigger_blade/large/modifiers/"
+    ]
+  },
   "large": true,
-  "large_offset": [-2, 2],
+  "large_offset": [6, -6],
   "parts": [
     {
       "name": "blade",
@@ -28,20 +33,20 @@
       "broken": "broken_blade"
     },
     {
-      "name": "handle_1",
-      "index": 1
-    },
-    {
-      "name": "handle_2",
-      "index": 2
-    },
-    {
-      "name": "sheath_body",
+      "name": "tough_handle_1",
       "index": 3
     },
     {
-      "name": "excitation_device",
+      "name": "tough_handle_2",
       "index": 4
+    },
+    {
+      "name": "sheath_body",
+      "index": 1
+    },
+    {
+      "name": "excitation_device",
+      "index": 2
     }
   ]
 }

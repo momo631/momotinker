@@ -102,6 +102,12 @@
   "momotinker.item.tooltip.jealous_notes2": "§e按住“shift”查看获取§",
   "momotinker.item.tooltip.jealous_notes3": "§e在身上未装备任何护甲且受到装备任意护甲的生物的攻击时，会将主手上的书与笔转换为此物品§",
 
+  "itemGroup.momotinker.tools": "墨工坊模组-工具",
+
+  "item.momotinker.trigger_blade": "扳机长刀",
+  "item.momotinker.trigger_blade.description": "拥有特殊攻击手段的近战武器，使用时副手不能有其它工具。右键可进行蓄力，蓄力完成后松开可发出斩击，造成范围爆发伤害。\n每点初速度增加斩击伤害20%。\n精密度会随机增加伤害，每点使能随机到的最大值提升50%",
+  "momotinker.tool.tooltip.offhand_hastool": "错误:副手有工具",
+
   "itemGroup.momotinker.materials": "墨工坊模组-材料",
 
   "material.momotinker.laomo": "墨",

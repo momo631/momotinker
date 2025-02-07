@@ -74,7 +74,7 @@ public class KeyInputPKT {
 
             if (player != null && ModifierUtil.getModifierLevel(player.getMainHandItem(), MomotinkerModifiers.crystallization.getId()) > 0) {
                 ModDataNBT crystallizationdate = ToolStack.from(player.getItemBySlot(EquipmentSlot.MAINHAND)).getPersistentData();
-                if (player.getItemBySlot(EquipmentSlot.OFFHAND).is(MomotinkerItem.dimensional_prism.get())) {
+                if (player.getItemBySlot(EquipmentSlot.OFFHAND).is(MomotinkerItem.dimensional_prism.get())&&!player.getCooldowns().isOnCooldown(player.getMainHandItem().getItem())) {
                     int a = (int) crystallizationdate.getFloat(crystallization);
                     int b = RANDOM.nextInt(a + 4);
                     player.getItemBySlot(EquipmentSlot.OFFHAND).setCount(player.getItemBySlot(EquipmentSlot.OFFHAND).getCount() - 1);
@@ -98,7 +98,7 @@ public class KeyInputPKT {
                         player.setItemSlot(EquipmentSlot.MAINHAND, ItemStack.EMPTY);
                         player.sendSystemMessage(Component.translatable("强化失败！装备碎掉了。。。").withStyle(ChatFormatting.RED));
                     }
-                    player.getCooldowns().addCooldown(player.getMainHandItem().getItem(), 20);
+                    player.getCooldowns().addCooldown(player.getMainHandItem().getItem(), 10);
                 }
             }
             if (player != null && ModifierUtil.getModifierLevel(player.getMainHandItem(), MomotinkerModifiers.test.getId()) > 0) {
