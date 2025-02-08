@@ -33,7 +33,7 @@ public class MomotinkerItem {
     public static final RegistryObject<Item> lazy_grail = ITEMS.register("lazy_grail", () -> new lazy_grail(new Item.Properties().tab(MomotinkerTab.MATERIALS)));
     public static final RegistryObject<Item> jealous_notes = ITEMS.register("jealous_notes", () -> new jealous_notes(new Item.Properties().tab(MomotinkerTab.MATERIALS)));
     public static final RegistryObject<ModifiableItem> trigger_blade = ITEMS.register("trigger_blade", () -> new trigger_blade(TOOL, MomoToolDefinitions.TROGGER_BLADE));
-    public static final RegistryObject<Item> trigger_slash = ITEMS.register("trigger_slash", ()->new Item(new Item.Properties()));
+    public static final RegistryObject<Item> trigger_slash_a = ITEMS.register("trigger_slash", ()->new Item(new Item.Properties()));
 
     //方块类要这样,略有变动
 

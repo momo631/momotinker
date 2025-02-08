@@ -2,6 +2,8 @@ package com.momosensei.momotinker.tool;
 
 
 import com.momosensei.momotinker.entity.TriggerSlashEntity;
+import com.momosensei.momotinker.network.Channel;
+import com.momosensei.momotinker.network.packet.servertoplay.triggerSlashPacket;
 import com.momosensei.momotinker.register.MomotinkerEntities;
 import com.momosensei.momotinker.register.MomotinkerItem;
 import net.minecraft.ChatFormatting;
@@ -50,7 +52,7 @@ public class trigger_blade extends ModifiableItem {
     }
 
     public UseAnim getUseAnimation(ItemStack stack) {
-        return UseAnim.BOW;
+        return UseAnim.CROSSBOW;
     }
 
     public int getUseDuration(ItemStack stack) {
@@ -61,7 +63,7 @@ public class trigger_blade extends ModifiableItem {
         if (livingEntity instanceof ServerPlayer player) {
             int i = this.getUseDuration(stack) - duration;
             if (i >= 30) {
-                createSlash(player);
+                Channel.INSTANCE.sendToServer(new triggerSlashPacket(player.getId()));
             }
         }
     }
@@ -117,17 +119,18 @@ public class trigger_blade extends ModifiableItem {
         slash.damage=damage;
         slash.setOwner(player);
         slash.setToolstack(tool);
+        slash.noPhysics = false;
         slash.setDeltaMovement(player.getLookAngle());
-        slash.setPos(player.getX()+x*1.5,player.getY()+0.5*player.getBbHeight()+y*1.5,player.getZ()+z*3);
+        slash.setPos(player.getX()+x*2,player.getY()+0.7*player.getBbHeight()+y*1.5,player.getZ()+z*2);
         level.addFreshEntity(slash);
         ToolDamageUtil.damageAnimated(tool,1,player, InteractionHand.MAIN_HAND);
     }
     public static ItemStack getSlash(int index){
-        return new ItemStack(MomotinkerItem.trigger_slash.get());
+        return new ItemStack(MomotinkerItem.trigger_slash_a.get());
     }
 
     public static EntityType<TriggerSlashEntity> getSlashType(int index){
-        return MomotinkerEntities.trigger_slash.get();
+        return MomotinkerEntities.trigger_slash_a.get();
     }
     public static float getDamageMultiplier(ToolStack tool){
         float b = RANDOM.nextInt((int) (tool.getStats().get(ACCURACY)*100));

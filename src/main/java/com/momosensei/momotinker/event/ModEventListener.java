@@ -33,7 +33,7 @@ public class ModEventListener {
     }
     @SubscribeEvent
     static void registerRenderers(EntityRenderersEvent.RegisterRenderers event) {
-        event.registerEntityRenderer(MomotinkerEntities.trigger_slash.get(), triggerSlashRenderer::new);
+        event.registerEntityRenderer(MomotinkerEntities.trigger_slash_a.get(), triggerSlashRenderer::new);
     }
         @SubscribeEvent
     public static void onKeyRegister(RegisterKeyMappingsEvent event) {

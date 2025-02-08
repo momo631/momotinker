@@ -27,7 +27,7 @@ public class TriggerSlashEntity extends Projectile {
     public TriggerSlashEntity(EntityType<? extends Projectile> p_37248_, Level p_37249_, ItemStack slash) {
         super(p_37248_, p_37249_);
         this.Slash = slash;
-        this.angle = -30;
+        this.angle = -40;
     }
     public ItemStack getSlash(){
         return this.Slash;

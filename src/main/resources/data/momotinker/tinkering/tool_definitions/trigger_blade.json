@@ -3,15 +3,15 @@
     {
       "type": "tconstruct:part_stats",
       "parts": [
-        "tconstruct:broad_blade",
+        "tconstruct:tough_handle",
         "tconstruct:bow_grip",
         "tconstruct:bow_limb",
         {
-          "item": "tconstruct:tough_handle",
+          "item": "tconstruct:large_plate",
           "scale": 0.5
         },
         {
-          "item": "tconstruct:tough_handle",
+          "item": "tconstruct:broad_blade",
           "scale": 0.5
         }
       ]
@@ -50,7 +50,7 @@
       "multipliers": {
         "tconstruct:attack_damage": 0.8,
         "tconstruct:durability": 1.5,
-        "tconstruct:attack_speed": 1.2,
+        "tconstruct:attack_speed": 1.6,
         "tconstruct:velocity": 1,
         "tconstruct:accuracy": 1
       }
@@ -61,6 +61,10 @@
         "abilities": 2,
         "upgrades": 3
       }
+    },
+    {
+      "type": "tconstruct:sweep_melee",
+      "range": 2
     }
   ]
 }

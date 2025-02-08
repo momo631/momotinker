@@ -1,7 +1,7 @@
 {
   "parent": "item/generated",
   "textures": {
-    "layer0": "momotinker:projectile/trigger_slash"
+    "layer0": "momotinker:entity/trigger_slash_a"
   },
   "display": {
     "ground": {
