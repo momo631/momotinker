@@ -21,6 +21,7 @@ import net.minecraft.world.item.TooltipFlag;
 import net.minecraft.world.item.UseAnim;
 import net.minecraft.world.level.Level;
 import net.minecraft.world.level.block.state.BlockState;
+import org.jetbrains.annotations.NotNull;
 import org.jetbrains.annotations.Nullable;
 import slimeknights.mantle.client.TooltipKey;
 import slimeknights.tconstruct.common.TinkerTags;
@@ -51,12 +52,12 @@ public class trigger_blade extends ModifiableItem {
         return !player.isCreative();
     }
 
-    public UseAnim getUseAnimation(ItemStack stack) {
-        return UseAnim.CROSSBOW;
-    }
-
     public int getUseDuration(ItemStack stack) {
         return 72000;
+    }
+
+    public @NotNull UseAnim getUseAnimation(ItemStack stack) {
+        return UseAnim.BOW;
     }
 
     public void releaseUsing(ItemStack stack, Level level, LivingEntity livingEntity, int duration) {

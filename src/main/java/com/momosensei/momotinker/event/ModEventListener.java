@@ -35,7 +35,8 @@ public class ModEventListener {
     static void registerRenderers(EntityRenderersEvent.RegisterRenderers event) {
         event.registerEntityRenderer(MomotinkerEntities.trigger_slash_a.get(), triggerSlashRenderer::new);
     }
-        @SubscribeEvent
+
+    @SubscribeEvent
     public static void onKeyRegister(RegisterKeyMappingsEvent event) {
         event.register(key.KeyBinding.KEY);
         Channel.init();

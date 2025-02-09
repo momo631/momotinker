@@ -9,7 +9,9 @@ import net.minecraftforge.eventbus.api.IEventBus;
 import net.minecraftforge.fml.common.Mod;
 import net.minecraftforge.fml.event.lifecycle.FMLCommonSetupEvent;
 import net.minecraftforge.fml.javafmlmod.FMLJavaModLoadingContext;
+import org.jetbrains.annotations.NotNull;
 import slimeknights.tconstruct.library.tools.capability.TinkerDataCapability;
+
 
 @Mod(Momotinker.MOD_ID)
 @Mod.EventBusSubscriber(
@@ -30,6 +32,7 @@ public class Momotinker {
         MomotinkerBlock.BLOCK.register(eventBus);
         MomotinkerEffects.EFFECT.register(eventBus);
         MomotinkerEntities.ENTITIES.register(eventBus);
+
     }
     //Resourcelocation
     public static ResourceLocation getResource(String id) {
@@ -44,5 +47,9 @@ public class Momotinker {
     //生成键名用的
     public static String makeDescriptionId(String type, String name) {
         return type + ".momotinker." + name;
+    }
+
+    public static ResourceLocation id(@NotNull String path) {
+        return new ResourceLocation(Momotinker.MOD_ID, path);
     }
 }
