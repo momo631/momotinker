@@ -45,11 +45,11 @@ public class TriggerBladeHUD {
         int amount = Mth.clamp((int) (perc*8),0,8);
         int x =width/2;
         int y = height/2;
-        if (player.getItemBySlot(EquipmentSlot.MAINHAND).is(trigger_blade.get())) {
+
             RenderSystem.setShader(GameRenderer::getPositionShader);
             RenderSystem.setShaderColor(1, 1, 1, 1);
             RenderSystem.setShaderTexture(0, Texture.get(amount));
             GuiComponent.blit(poseStack, x - 9, y - 8, 0, 0, 17, 17, 17, 17);
-        }
+
     });
 }
