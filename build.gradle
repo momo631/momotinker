@@ -28,7 +28,7 @@ apply plugin: 'org.parchmentmc.librarian.forgegradle'
 
 //版本号
 
-version = '1.0'
+version = '1.19.2.Noformula'
 group = 'com.momosensei.momotinker' // http://maven.apache.org/guides/mini/guide-naming-conventions.html
 archivesBaseName = 'momotinker'
 
