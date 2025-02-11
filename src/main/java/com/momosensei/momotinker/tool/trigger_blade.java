@@ -3,6 +3,7 @@ package com.momosensei.momotinker.tool;
 
 import com.momosensei.momotinker.entity.TriggerSlashEntity;
 import com.momosensei.momotinker.network.Channel;
+import com.momosensei.momotinker.network.packet.servertoplay.TriggerBladeCharge;
 import com.momosensei.momotinker.network.packet.servertoplay.triggerSlashPacket;
 import com.momosensei.momotinker.register.MomotinkerEntities;
 import com.momosensei.momotinker.register.MomotinkerItem;
@@ -10,6 +11,7 @@ import net.minecraft.ChatFormatting;
 import net.minecraft.core.BlockPos;
 import net.minecraft.network.chat.Component;
 import net.minecraft.server.level.ServerPlayer;
+import net.minecraft.util.Mth;
 import net.minecraft.world.InteractionHand;
 import net.minecraft.world.InteractionResultHolder;
 import net.minecraft.world.entity.EntityType;
@@ -18,10 +20,8 @@ import net.minecraft.world.entity.LivingEntity;
 import net.minecraft.world.entity.player.Player;
 import net.minecraft.world.item.ItemStack;
 import net.minecraft.world.item.TooltipFlag;
-import net.minecraft.world.item.UseAnim;
 import net.minecraft.world.level.Level;
 import net.minecraft.world.level.block.state.BlockState;
-import org.jetbrains.annotations.NotNull;
 import org.jetbrains.annotations.Nullable;
 import slimeknights.mantle.client.TooltipKey;
 import slimeknights.tconstruct.common.TinkerTags;
@@ -56,16 +56,22 @@ public class trigger_blade extends ModifiableItem {
         return 72000;
     }
 
-    public @NotNull UseAnim getUseAnimation(ItemStack stack) {
-        return UseAnim.BOW;
+    @Override
+    public void onUseTick(Level level, LivingEntity living, ItemStack stack, int chargeRemaining) {
+        if ( living instanceof ServerPlayer player) {
+            float perc = Mth.clamp((float) (this.getUseDuration(stack) - chargeRemaining) / 30,0,1);
+            Channel.sendToPlayer(new TriggerBladeCharge(perc),player);
+        }
     }
 
+    @Override
     public void releaseUsing(ItemStack stack, Level level, LivingEntity livingEntity, int duration) {
         if (livingEntity instanceof ServerPlayer player) {
             int i = this.getUseDuration(stack) - duration;
             if (i >= 30) {
                 Channel.INSTANCE.sendToServer(new triggerSlashPacket(player.getId()));
             }
+            Channel.sendToPlayer(new TriggerBladeCharge(0),player);
         }
     }
 

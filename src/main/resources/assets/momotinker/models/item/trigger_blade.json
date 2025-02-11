@@ -18,35 +18,19 @@
   },
   "modifier_roots": {
     "small": [
-      "momotinker:item/tool/trigger_blade/modifiers/"
+      "momotinker:item/tool/trigger_blade/modifiers/modifiers/"
     ],
     "large": [
-      "momotinker:item/tool/trigger_blade/large/modifiers/"
+      "momotinker:item/tool/trigger_blade/large/modifiers/modifiers/"
     ]
   },
   "large": true,
   "large_offset": [6, -6],
   "parts": [
-    {
-      "name": "blade",
-      "index": 0,
-      "broken": "broken_blade"
-    },
-    {
-      "name": "tough_handle_1",
-      "index": 3
-    },
-    {
-      "name": "tough_handle_2",
-      "index": 4
-    },
-    {
-      "name": "sheath_body",
-      "index": 1
-    },
-    {
-      "name": "excitation_device",
-      "index": 2
-    }
+    {"name": "blade", "index": 0, "broken": "broken_blade"},
+    {"name": "sheath_body", "index": 1},
+    {"name": "excitation_device", "index": 2},
+    {"name": "tough_handle_1", "index": 3},
+    {"name": "tough_handle_2", "index": 4}
   ]
 }

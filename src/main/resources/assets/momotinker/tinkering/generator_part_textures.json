@@ -39,6 +39,34 @@
         {
             "path": "momotinker:item/tool/trigger_blade/large/tough_handle_2",
             "stat_type": "tconstruct:binding"
+        },
+        {
+            "path": "momotinker:item/tool/trigger_blade/large/blade_1",
+            "stat_type": "tconstruct:binding"
+        },
+        {
+            "path": "momotinker:item/tool/trigger_blade/large/blade_3",
+            "stat_type": "tconstruct:binding"
+        },
+        {
+            "path": "momotinker:item/tool/trigger_blade/large/excitation_device_1",
+            "stat_type": "tconstruct:binding"
+        },
+        {
+            "path": "momotinker:item/tool/trigger_blade/large/excitation_device_2",
+            "stat_type": "tconstruct:binding"
+        },
+        {
+            "path": "momotinker:item/tool/trigger_blade/large/excitation_device_3",
+            "stat_type": "tconstruct:binding"
+        },
+        {
+            "path": "momotinker:item/tool/trigger_blade/large/broken_blade_1",
+            "stat_type": "tconstruct:binding"
+        },
+        {
+            "path": "momotinker:item/tool/trigger_blade/large/broken_blade_3",
+            "stat_type": "tconstruct:binding"
         }
     ],
     "replace": false

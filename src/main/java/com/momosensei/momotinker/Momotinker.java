@@ -32,8 +32,9 @@ public class Momotinker {
         MomotinkerBlock.BLOCK.register(eventBus);
         MomotinkerEffects.EFFECT.register(eventBus);
         MomotinkerEntities.ENTITIES.register(eventBus);
-
+        IEventBus bus = FMLJavaModLoadingContext.get().getModEventBus();
     }
+
     //Resourcelocation
     public static ResourceLocation getResource(String id) {
         return new ResourceLocation("momotinker", id);
