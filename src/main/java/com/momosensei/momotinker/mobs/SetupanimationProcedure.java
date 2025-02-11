@@ -7,9 +7,11 @@ import dev.kosmx.playerAnim.api.layered.ModifierLayer;
 import dev.kosmx.playerAnim.minecraftApi.PlayerAnimationAccess;
 import dev.kosmx.playerAnim.minecraftApi.PlayerAnimationFactory;
 import dev.kosmx.playerAnim.minecraftApi.PlayerAnimationRegistry;
+import net.minecraft.client.player.AbstractClientPlayer;
 import net.minecraft.network.FriendlyByteBuf;
 import net.minecraft.network.chat.Component;
 import net.minecraft.resources.ResourceLocation;
+import net.minecraft.server.level.ServerPlayer;
 import net.minecraft.world.entity.player.Player;
 import net.minecraft.world.level.Level;
 import net.minecraftforge.api.distmarker.Dist;
@@ -64,7 +66,7 @@ public class SetupanimationProcedure {
 			context.enqueueWork(() -> {
 				Level level = context.getSender().level;
 				if (level.getEntity(message.target) != null) {
-					Player player = (Player) level.getEntity(message.target);
+					ServerPlayer player = (ServerPlayer) level.getEntity(message.target);
 					setAnimationClientside(player, message.animation.getString(), message.override);
 				}
 			});
@@ -79,7 +81,7 @@ public class SetupanimationProcedure {
 
 	@OnlyIn(Dist.CLIENT)
 	public static void setAnimationClientside(Player player, String anim, boolean override) {
-		if (player instanceof net.minecraft.client.player.AbstractClientPlayer player_) {
+		if (player instanceof AbstractClientPlayer player_) {
 			var animation = (ModifierLayer<IAnimation>) PlayerAnimationAccess.getPlayerAssociatedData(player_).get(new ResourceLocation("momotinker", "player_animation"));
             if (animation != null &&override) {
                 animation.setAnimation(new KeyframeAnimationPlayer(PlayerAnimationRegistry.getAnimation(new ResourceLocation("momotinker", anim))));
