@@ -27,6 +27,7 @@ import slimeknights.mantle.client.TooltipKey;
 import slimeknights.tconstruct.common.TinkerTags;
 import slimeknights.tconstruct.library.modifiers.ModifierEntry;
 import slimeknights.tconstruct.library.modifiers.ModifierHooks;
+import slimeknights.tconstruct.library.modifiers.hook.display.TooltipModifierHook;
 import slimeknights.tconstruct.library.tools.definition.ToolDefinition;
 import slimeknights.tconstruct.library.tools.helper.ToolDamageUtil;
 import slimeknights.tconstruct.library.tools.helper.TooltipBuilder;
@@ -59,7 +60,7 @@ public class trigger_blade extends ModifiableItem {
     public void onUseTick(Level level, LivingEntity living, ItemStack stack, int chargeRemaining) {
         if ( living instanceof ServerPlayer player) {
             float perc = Mth.clamp((float) (this.getUseDuration(stack) - chargeRemaining) / 30,0,1);
-            Channel.INSTANCE.sendToServer(new TriggerBladeCharge(perc));
+            Channel.sendToPlayer(new TriggerBladeCharge(perc),player);
         }
     }
 
@@ -70,7 +71,7 @@ public class trigger_blade extends ModifiableItem {
             if (i >= 30) {
                 Channel.INSTANCE.sendToServer(new triggerSlashPacket(player.getId()));
             }
-            Channel.INSTANCE.sendToServer(new TriggerBladeCharge(0));
+            Channel.sendToPlayer(new TriggerBladeCharge(0),player);
         }
     }
 
@@ -169,7 +170,7 @@ public class trigger_blade extends ModifiableItem {
         Iterator var7 = tool.getModifierList().iterator();
         while(var7.hasNext()) {
             ModifierEntry entry = (ModifierEntry)var7.next();
-            entry.getHook(ModifierHooks.TOOLTIP).addTooltip(tool, entry, player, tooltips, key, tooltipFlag);
+            ((TooltipModifierHook)entry.getHook(ModifierHooks.TOOLTIP)).addTooltip(tool, entry, player, tooltips, key, tooltipFlag);
         }
         return tooltips;
     }

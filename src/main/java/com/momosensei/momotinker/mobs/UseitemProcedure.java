@@ -4,9 +4,9 @@ import com.momosensei.momotinker.network.Channel;
 import net.minecraft.network.Connection;
 import net.minecraft.network.chat.Component;
 import net.minecraft.server.level.ServerLevel;
-import net.minecraft.server.level.ServerPlayer;
 import net.minecraft.world.entity.Entity;
 import net.minecraft.world.entity.EquipmentSlot;
+import net.minecraft.world.entity.player.Player;
 import net.minecraft.world.level.LevelAccessor;
 import net.minecraftforge.event.entity.living.LivingEntityUseItemEvent;
 import net.minecraftforge.eventbus.api.Event;
@@ -24,7 +24,7 @@ import static com.momosensei.momotinker.register.MomotinkerItem.trigger_blade;
 public class UseitemProcedure {
 	@SubscribeEvent
 	public static void onUseItemStart(LivingEntityUseItemEvent.Start event) {
-		if (event != null && event.getEntity() instanceof ServerPlayer && event.getEntity().getItemBySlot(EquipmentSlot.MAINHAND).is(trigger_blade.get())) {
+		if (event != null && event.getEntity() != null&& event.getEntity().getItemBySlot(EquipmentSlot.MAINHAND).is(trigger_blade.get())) {
 			execute(event, event.getEntity().level, event.getEntity());
 		}
 	}
@@ -37,10 +37,10 @@ public class UseitemProcedure {
 		if (entity == null)
 			return;
 		if (world.isClientSide()) {
-			SetupanimationProcedure.setAnimationClientside((ServerPlayer) entity, "slashanimation", true);
+			SetupanimationProcedure.setAnimationClientside((Player) entity, "slashanimation", true);
 		}
 		if (!world.isClientSide()) {
-			if (entity instanceof ServerPlayer && world instanceof ServerLevel srvLvl_) {
+			if (entity instanceof Player && world instanceof ServerLevel srvLvl_) {
 				List<Connection> connections = srvLvl_.getServer().getConnection().getConnections();
 				synchronized (connections) {
 					Iterator<Connection> iterator = connections.iterator();

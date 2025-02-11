@@ -65,12 +65,12 @@
   "item.momotinker.spirit_visage": "§a生命的洪流§",
   "momotinker.item.tooltip.spirit_visage1": "§a抖擞精神§",
   "momotinker.item.tooltip.spirit_visage2": "§a按住“shift”查看获取§",
-  "momotinker.item.tooltip.spirit_visage3": "§a用骨粉催熟任意树苗时有2%的概率掉落在玩家所在位置§",
+  "momotinker.item.tooltip.spirit_visage3": "§a用骨粉催熟任意树苗时有10%的概率掉落在玩家所在位置§",
 
   "item.momotinker.gluttony_core": "§2暴食之核§",
   "momotinker.item.tooltip.gluttony_core1": "§2以尔灵魂，铸吾血肉§",
   "momotinker.item.tooltip.gluttony_core2": "§2按住“shift”查看获取§",
-  "momotinker.item.tooltip.gluttony_core3": "§2青蛙击杀史莱姆时有10%的概率掉落在青蛙所在位置§",
+  "momotinker.item.tooltip.gluttony_core3": "§2青蛙击杀史莱姆时有25%的概率掉落在青蛙所在位置§",
 
   "item.momotinker.greedy_contract": "§9贪婪契约§",
   "momotinker.item.tooltip.greedy_contract1": "§9以尔灵魂，铸吾财贯§",

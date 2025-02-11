@@ -29,7 +29,8 @@ public class TriggerBladeHUD {
     public static ResourceLocation Texture8 = new ResourceLocation(Momotinker.MOD_ID,"/textures/gui/overlay/gui_trigger_blade_8.png");
     public static List<ResourceLocation> Texture = List.of(Texture0,Texture1,Texture2,Texture3,Texture4,Texture5,Texture6,Texture7,Texture8);
     public static IGuiOverlay TRIGGER_BLADE = ((gui, poseStack, partialTick, width, height) -> {
-        Player player = Minecraft.getInstance().player;
+        Minecraft minecraft = Minecraft.getInstance();
+        Player player = minecraft.player;
         if (player == null){
             return;
         }

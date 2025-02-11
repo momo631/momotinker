@@ -84,7 +84,7 @@ public class LivingEvents {
         }
         if(event.getEntity() instanceof Slime slime){
             if (event.getSource().getEntity() instanceof Frog){
-                int b = RANDOM.nextInt(10);
+                int b = RANDOM.nextInt(4);
                 if (b==1) {
                     ItemStack a = new ItemStack(MomotinkerItem.gluttony_core.get());
                     ModifierUtil.dropItem(event.getSource().getEntity(), a);
@@ -129,7 +129,7 @@ public class LivingEvents {
     }
     private void onBonemealEvent(BonemealEvent event) {
         if (event.getBlock().getBlock() instanceof SaplingBlock){
-            int b = RANDOM.nextInt(50);
+            int b = RANDOM.nextInt(10);
             if (b==1) {
                 ItemStack a = new ItemStack(MomotinkerItem.spirit_visage.get());
                 ModifierUtil.dropItem(event.getEntity(), a);

@@ -30,7 +30,7 @@ public class ModEventListener {
     public static void registerOverlay(RegisterGuiOverlaysEvent event) {
         if (FMLEnvironment.dist == Dist.CLIENT) {
             event.registerAbove(VanillaGuiOverlay.HOTBAR.id(), "ender", EnderOverlay.ENDER);
-            event.registerAbove(VanillaGuiOverlay.HOTBAR.id(), "trigger_blade", TriggerBladeHUD.TRIGGER_BLADE);
+            event.registerAboveAll( "trigger_blade", TriggerBladeHUD.TRIGGER_BLADE);
         }
     }
     @SubscribeEvent
