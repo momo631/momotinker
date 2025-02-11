@@ -18,10 +18,10 @@
   },
   "modifier_roots": {
     "small": [
-      "momotinker:item/tool/trigger_blade/modifiers/modifiers/"
+      "momotinker:item/tool/trigger_blade/modifiers/"
     ],
     "large": [
-      "momotinker:item/tool/trigger_blade/large/modifiers/modifiers/"
+      "momotinker:item/tool/trigger_blade/large/modifiers/"
     ]
   },
   "large": true,
