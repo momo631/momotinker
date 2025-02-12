@@ -1,6 +1,5 @@
-package com.momosensei.momotinker.event;
+package com.momosensei.momotinker.mobs;
 
-import com.momosensei.momotinker.mobs.SetupanimationProcedure;
 import com.momosensei.momotinker.network.Channel;
 import net.minecraft.network.Connection;
 import net.minecraft.network.chat.Component;
@@ -14,23 +13,19 @@ import net.minecraftforge.eventbus.api.Event;
 import net.minecraftforge.eventbus.api.SubscribeEvent;
 import net.minecraftforge.fml.common.Mod;
 import net.minecraftforge.network.NetworkDirection;
-import slimeknights.tconstruct.library.tools.helper.ModifierUtil;
 
 import javax.annotation.Nullable;
 import java.util.Iterator;
 import java.util.List;
 
-import static com.momosensei.momotinker.register.MomotinkerItem.trigger_blade;
+import static com.momosensei.momotinker.register.MomotinkerTools.trigger_blade;
 
 @Mod.EventBusSubscriber
 public class UseitemoffProcedure {
 	@SubscribeEvent
 	public static void onUseItemStop(LivingEntityUseItemEvent.Stop event) {
 		if (event != null && event.getEntity() != null&& event.getEntity().getItemBySlot(EquipmentSlot.MAINHAND).is(trigger_blade.get())) {
-			int a = ModifierUtil.getModifierLevel(event.getEntity().getMainHandItem(), MomotinkerModifiers.crimsonqueen.getId());
-			if (a==0) {
-				execute(event, event.getEntity().level, event.getEntity());
-			}
+			execute(event, event.getEntity().level(), event.getEntity());
 		}
 	}
 

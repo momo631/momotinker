@@ -3,6 +3,7 @@ package com.momosensei.momotinker.register;
 import com.momosensei.momotinker.Items.*;
 import net.minecraft.world.item.BlockItem;
 import net.minecraft.world.item.Item;
+import net.minecraftforge.eventbus.api.IEventBus;
 import net.minecraftforge.registries.DeferredRegister;
 import net.minecraftforge.registries.ForgeRegistries;
 import net.minecraftforge.registries.RegistryObject;
@@ -13,7 +14,6 @@ import static com.momosensei.momotinker.Momotinker.MOD_ID;
 public class MomotinkerItem {
     public MomotinkerItem() {
     }
-
     public static final DeferredRegister<Item> ITEMS = DeferredRegister.create(ForgeRegistries.ITEMS, MOD_ID);
     public static void register(IEventBus eventBus) {
         ITEMS.register(eventBus);
@@ -41,7 +41,7 @@ public class MomotinkerItem {
 
     //方块类要这样,略有变动
 
-    public static final RegistryObject<BlockItem> Laomo_block = ITEMS.register("laomo_block", () -> new BlockItem(MomotinkerBlock.Laomo_block.get(), new Item.Properties().tab(MomotinkerTab.MATERIALS)));
-    public static final RegistryObject<BlockItem> dimensional_prism = ITEMS.register("dimensional_prism", () -> new dimensional_prism(MomotinkerBlock.dimensional_prism.get(), new Item.Properties().tab(MomotinkerTab.MATERIALS)));
+    public static final RegistryObject<BlockItem> Laomo_block = ITEMS.register("laomo_block", () -> new BlockItem(MomotinkerBlock.Laomo_block.get(), new Item.Properties()));
+    public static final RegistryObject<BlockItem> dimensional_prism = ITEMS.register("dimensional_prism", () -> new dimensional_prism(MomotinkerBlock.dimensional_prism.get(), new Item.Properties()));
 
 }
