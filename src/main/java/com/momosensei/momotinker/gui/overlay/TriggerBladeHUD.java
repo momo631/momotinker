@@ -1,9 +1,8 @@
-package com.momosensei.momotinker.gui.overlay;
+package com.momosensei.momotinker.mobs;
 
 
 import com.mojang.blaze3d.systems.RenderSystem;
 import com.momosensei.momotinker.Momotinker;
-import com.momosensei.momotinker.mobs.TriggerBladeDrawtime;
 import net.minecraft.client.Minecraft;
 import net.minecraft.client.renderer.GameRenderer;
 import net.minecraft.resources.ResourceLocation;
