@@ -35,6 +35,6 @@ public class MomotinkerTables extends MomotinkerMod {
         output.accept(MomotinkerItem.jealous_notes.get());
         output.accept(MomotinkerItem.interdimensional_crystal.get());
         output.accept(MomotinkerItem.dimensional_prism.get());
-        output.accept(MomotinkerItem.trigger_slash_a.get());
+
     }
 }

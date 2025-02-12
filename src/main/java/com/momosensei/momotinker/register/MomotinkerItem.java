@@ -32,7 +32,7 @@ public class MomotinkerItem {
     public static final RegistryObject<Item> rage_stone_statue = ITEMS.register("rage_stone_statue", () -> new rage_stone_statue(MomotinkerTables.material()));
     public static final RegistryObject<Item> lazy_grail = ITEMS.register("lazy_grail", () -> new lazy_grail(MomotinkerTables.material()));
     public static final RegistryObject<Item> jealous_notes = ITEMS.register("jealous_notes", () -> new jealous_notes(MomotinkerTables.material()));
-    public static final RegistryObject<Item> trigger_slash_a = ITEMS.register("trigger_slash_a", () -> new Item(MomotinkerTables.material()));
+    public static final RegistryObject<Item> trigger_slash_a = ITEMS.register("trigger_slash_a", () -> new Item(new Item.Properties()));
 
     //方块类要这样,略有变动
 
