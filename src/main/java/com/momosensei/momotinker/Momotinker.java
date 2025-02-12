@@ -9,6 +9,8 @@ import net.minecraftforge.fml.common.Mod;
 import net.minecraftforge.fml.javafmlmod.FMLJavaModLoadingContext;
 import slimeknights.tconstruct.library.tools.capability.TinkerDataCapability;
 
+import static com.momosensei.momotinker.register.MomotinkerTab.CREATIVE_MODE_TABS;
+
 @Mod(Momotinker.MOD_ID)
 @Mod.EventBusSubscriber(
         bus = Mod.EventBusSubscriber.Bus.MOD
@@ -17,8 +19,7 @@ import slimeknights.tconstruct.library.tools.capability.TinkerDataCapability;
 public class Momotinker {
     public static final String MOD_ID = "momotinker"; //是你的模组名，需要英文
     public Momotinker(FMLJavaModLoadingContext context) {
-        //注册表之类的东西
-        //如果你新稿了别的注册表记得这边填一下
+        IEventBus bus = FMLJavaModLoadingContext.get().getModEventBus();
         IEventBus eventBus = context.getModEventBus();
         CREATIVE_MODE_TABS.register(eventBus);
         MinecraftForge.EVENT_BUS.register(new LivingEvents());
@@ -32,6 +33,7 @@ public class Momotinker {
         MomotinkerLootModifiers.register(eventBus);
         IEventBus bus = FMLJavaModLoadingContext.get().getModEventBus();
         ModLoadingContext.get().registerConfig(ModConfig.Type.COMMON, MomotinkerConfig.spec);
+
     }
 
     //Resourcelocation
@@ -40,9 +42,6 @@ public class Momotinker {
     }
     public static <T> TinkerDataCapability.TinkerDataKey<T> createKey(String name) {
         return TinkerDataCapability.TinkerDataKey.of(getResource(name));
-    }
-    private void commonSetup(FMLCommonSetupEvent event) {
-        Channel.init();
     }
     //生成键名用的
     public static String makeDescriptionId(String type, String name) {

@@ -7,7 +7,6 @@ import com.momosensei.momotinker.network.packet.TriggerBladeCharge;
 import com.momosensei.momotinker.network.packet.triggerSlashPacket;
 import com.momosensei.momotinker.register.MomotinkerEntities;
 import com.momosensei.momotinker.register.MomotinkerItem;
-import com.momosensei.momotinker.register.MomotinkerModifiers;
 import net.minecraft.ChatFormatting;
 import net.minecraft.core.BlockPos;
 import net.minecraft.network.chat.Component;
@@ -46,8 +45,6 @@ import slimeknights.tconstruct.tools.modifiers.upgrades.ranged.ScopeModifier;
 import java.util.Iterator;
 import java.util.List;
 
-import static com.momosensei.momotinker.Modifiers.modifiers.CrimsonQueen.crimsonlayers;
-import static com.momosensei.momotinker.Modifiers.modifiers.CrimsonQueen.crimsontime;
 import static slimeknights.tconstruct.TConstruct.RANDOM;
 import static slimeknights.tconstruct.library.modifiers.hook.interaction.GeneralInteractionModifierHook.KEY_DRAWTIME;
 import static slimeknights.tconstruct.library.tools.stat.ToolStats.ACCURACY;
@@ -191,10 +188,11 @@ public class trigger_blade extends ModifiableItem {
         ToolDamageUtil.damageAnimated(tool,1,player, InteractionHand.MAIN_HAND);
     }
     public static ItemStack getSlash(int index){
-       return new ItemStack(MomotinkerItem.trigger_slash_a.get());
+        return new ItemStack(MomotinkerItem.trigger_slash_a.get());
     }
-    public static EntityType<TriggerSlashEntity> getSlashType(int index) {
-       return MomotinkerEntities.trigger_slash_a.get();
+
+    public static EntityType<TriggerSlashEntity> getSlashType(int index){
+        return MomotinkerEntities.trigger_slash_a.get();
     }
     public static float getDamageMultiplier(ToolStack tool) {
         float b = RANDOM.nextInt((int) (tool.getStats().get(ACCURACY) * 100));

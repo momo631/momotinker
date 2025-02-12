@@ -8,8 +8,8 @@ import slimeknights.tconstruct.library.tools.stat.FloatToolStat;
 import slimeknights.tconstruct.library.tools.stat.ToolStatId;
 import slimeknights.tconstruct.library.tools.stat.ToolStats;
 
-public class MomoToolDefinitions {
-    public MomoToolDefinitions() {
+public class MomotinkerToolDefinitions {
+    public MomotinkerToolDefinitions() {
     }
     public static final FloatToolStat SLASH_COLOR = ToolStats.register(new FloatToolStat(name("slash_color"), -3135232, 0.0F, 0.0F, 11));
 
@@ -18,4 +18,6 @@ public class MomoToolDefinitions {
     }
     public static final ToolDefinition TROGGER_BLADE = ToolDefinition.create(MomotinkerItem.trigger_blade);
     public static final ToolDefinition DIVINE_PUNISHMENT_SPEAR = ToolDefinition.create(MomotinkerItem.divine_punishment_spear);
+    public static final ToolDefinition TRIGGER_BLADE = ToolDefinition.create(MomotinkerTools.trigger_blade);
+
 }

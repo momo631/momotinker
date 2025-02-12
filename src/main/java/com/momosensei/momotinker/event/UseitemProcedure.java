@@ -2,7 +2,6 @@ package com.momosensei.momotinker.event;
 
 import com.momosensei.momotinker.mobs.SetupanimationProcedure;
 import com.momosensei.momotinker.network.Channel;
-import com.momosensei.momotinker.register.MomotinkerModifiers;
 import net.minecraft.network.Connection;
 import net.minecraft.network.chat.Component;
 import net.minecraft.server.level.ServerLevel;
