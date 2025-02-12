@@ -1,15 +1,11 @@
 package com.momosensei.momotinker.event;
 
-import com.momosensei.momotinker.capability.ender.EnderProvider;
-import com.momosensei.momotinker.gui.overlay.CensoredHUD;
+import com.momosensei.momotinker.capability.healpercentage.EnderProvider;
 import com.momosensei.momotinker.gui.overlay.EnderOverlay;
 import com.momosensei.momotinker.key.key;
 import com.momosensei.momotinker.mobs.TriggerBladeHUD;
 import com.momosensei.momotinker.network.Channel;
-import com.momosensei.momotinker.register.MomotinkerEntities;
-import com.momosensei.momotinker.renderer.triggerSlashRenderer;
 import net.minecraftforge.api.distmarker.Dist;
-import net.minecraftforge.client.event.EntityRenderersEvent;
 import net.minecraftforge.client.event.RegisterGuiOverlaysEvent;
 import net.minecraftforge.client.event.RegisterKeyMappingsEvent;
 import net.minecraftforge.client.gui.overlay.VanillaGuiOverlay;
@@ -31,14 +27,10 @@ public class ModEventListener {
     public static void registerOverlay(RegisterGuiOverlaysEvent event) {
         if (FMLEnvironment.dist == Dist.CLIENT) {
             event.registerAbove(VanillaGuiOverlay.HOTBAR.id(), "ender", EnderOverlay.ENDER);
-            event.registerAboveAll( "bbb", CensoredHUD.CENSORED);
-            event.registerAboveAll( "trigger_blade", TriggerBladeHUD.TRIGGER_BLADE_HUD);
+            event.registerAboveAll( "trigger_blade_hud", TriggerBladeHUD.TRIGGER_BLADE_HUD);
         }
     }
-    @SubscribeEvent
-    static void registerRenderers(EntityRenderersEvent.RegisterRenderers event) {
-        event.registerEntityRenderer(MomotinkerEntities.trigger_slash_a.get(), triggerSlashRenderer::new);
-    }
+
 
     @SubscribeEvent
     public static void onKeyRegister(RegisterKeyMappingsEvent event) {
