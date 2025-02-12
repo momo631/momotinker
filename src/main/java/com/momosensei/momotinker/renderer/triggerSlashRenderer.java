@@ -13,7 +13,6 @@ import net.minecraft.resources.ResourceLocation;
 import net.minecraft.util.Mth;
 import net.minecraft.world.inventory.InventoryMenu;
 import net.minecraft.world.item.ItemDisplayContext;
-import org.jetbrains.annotations.NotNull;
 
 import static com.momosensei.momotinker.entity.TriggerSlashEntity.getMold;
 
@@ -46,7 +45,7 @@ public class triggerSlashRenderer extends EntityRenderer<TriggerSlashEntity> {
     }
 
     @Override
-    public @NotNull ResourceLocation getTextureLocation(@NotNull TriggerSlashEntity entity) {
+    public ResourceLocation getTextureLocation(TriggerSlashEntity entity) {
         return InventoryMenu.BLOCK_ATLAS;
     }
 }
