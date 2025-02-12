@@ -7,5 +7,4 @@ public class B extends StaticEffect {
         super(MobEffectCategory.NEUTRAL, 16769263);
     }
 
-
 }
