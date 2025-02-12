@@ -5,10 +5,7 @@ import com.momosensei.momotinker.gui.overlay.EnderOverlay;
 import com.momosensei.momotinker.key.key;
 import com.momosensei.momotinker.mobs.TriggerBladeHUD;
 import com.momosensei.momotinker.network.Channel;
-import com.momosensei.momotinker.register.MomotinkerEntities;
-import com.momosensei.momotinker.renderer.triggerSlashRenderer;
 import net.minecraftforge.api.distmarker.Dist;
-import net.minecraftforge.client.event.EntityRenderersEvent;
 import net.minecraftforge.client.event.RegisterGuiOverlaysEvent;
 import net.minecraftforge.client.event.RegisterKeyMappingsEvent;
 import net.minecraftforge.client.gui.overlay.VanillaGuiOverlay;
@@ -33,10 +30,6 @@ public class ModEventListener {
             event.registerAboveAll( "bbb", CensoredHUD.CENSORED);
             event.registerAboveAll( "trigger_blade", TriggerBladeHUD.TRIGGER_BLADE);
         }
-    }
-    @SubscribeEvent
-    static void registerRenderers(EntityRenderersEvent.RegisterRenderers event) {
-        event.registerEntityRenderer(MomotinkerEntities.trigger_slash_a.get(), triggerSlashRenderer::new);
     }
 
     @SubscribeEvent
