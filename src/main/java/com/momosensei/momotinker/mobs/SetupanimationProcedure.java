@@ -62,7 +62,7 @@ public class SetupanimationProcedure {
 		public static void handler(CModAnimationMessage message, Supplier<NetworkEvent.Context> contextSupplier) {
 			NetworkEvent.Context context = contextSupplier.get();
 			context.enqueueWork(() -> {
-				Level level = context.getSender().level;
+				Level level = context.getSender().level();
 				if (level.getEntity(message.target) != null) {
 					Player player = (Player) level.getEntity(message.target);
 					setAnimationClientside(player, message.animation.getString(), message.override);

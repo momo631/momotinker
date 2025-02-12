@@ -18,14 +18,14 @@ import javax.annotation.Nullable;
 import java.util.Iterator;
 import java.util.List;
 
-import static com.momosensei.momotinker.register.MomotinkerItem.trigger_blade;
+import static com.momosensei.momotinker.register.MomotinkerTools.trigger_blade;
 
 @Mod.EventBusSubscriber
 public class UseitemProcedure {
 	@SubscribeEvent
 	public static void onUseItemStart(LivingEntityUseItemEvent.Start event) {
 		if (event != null && event.getEntity() != null&& event.getEntity().getItemBySlot(EquipmentSlot.MAINHAND).is(trigger_blade.get())) {
-			execute(event, event.getEntity().level, event.getEntity());
+			execute(event, event.getEntity().level(), event.getEntity());
 		}
 	}
 

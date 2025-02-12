@@ -33,9 +33,9 @@ public class EnderOverlay {
             }
         }
 
-        gui.setupOverlayRenderState(true, false, ENDER_TEXTURE);
-        RenderSystem.enableTexture();
-        renderOverlay(poseStack);
+        gui.setupOverlayRenderState(true, false);
+        RenderSystem.setShaderTexture(0,ENDER_TEXTURE);
+        renderOverlay(poseStack.pose());
 
     });
 

@@ -65,7 +65,7 @@ public class TriggerSlashEntity extends Projectile {
             Vec3 vec3 = new Vec3(rayVec3.x, rayVec3.y, rayVec3.z);
             double dy = vec3.y +offset.y+0.5;
             AABB aabb = this.getBoundingBox().expandTowards(vec3.scale(2)).expandTowards(vec3.scale(-1)).expandTowards(new Vec3(0,dy,0).cross(vec3)).expandTowards(new Vec3(0,-dy,0).cross(vec3));
-            List<Entity> ls0 = this.level.getEntitiesOfClass(Entity.class, aabb);
+            List<Entity> ls0 = this.level().getEntitiesOfClass(Entity.class, aabb);
             for (Entity targets : ls0) {
                 if (targets!=getOwner()) {
                     targets.invulnerableTime = 0;

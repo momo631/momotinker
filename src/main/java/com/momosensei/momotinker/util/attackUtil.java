@@ -59,7 +59,7 @@ public class attackUtil {
         if (tool.isBroken() || !tool.hasTag(TinkerTags.Items.MELEE)) {
             return false;
         }
-        if (attackerLiving.level.isClientSide || !targetEntity.isAttackable() || targetEntity.skipAttackInteraction(attackerLiving)) {
+        if (attackerLiving.level().isClientSide || !targetEntity.isAttackable() || targetEntity.skipAttackInteraction(attackerLiving)) {
             return true;
         }
         LivingEntity targetLiving = getLivingEntity(targetEntity);
@@ -73,7 +73,7 @@ public class attackUtil {
         float cooldown = (float)cooldownFunction.getAsDouble();
         boolean fullyCharged = cooldown > 0.9f;
 
-        boolean isCritical = (!isExtraAttack && fullyCharged && attackerLiving.fallDistance > 0.0F && !attackerLiving.isOnGround() && !attackerLiving.onClimbable()
+        boolean isCritical = (!isExtraAttack && fullyCharged && attackerLiving.fallDistance > 0.0F && !attackerLiving.onGround() && !attackerLiving.onClimbable()
                 && !attackerLiving.isInWater() && !attackerLiving.hasEffect(MobEffects.BLINDNESS)
                 && !attackerLiving.isPassenger() && targetLiving != null && !attackerLiving.isSprinting())||SetCritical;
 
@@ -158,7 +158,7 @@ public class attackUtil {
 
         if (!didHit) {
             if (!isExtraAttack) {
-                attackerLiving.level.playSound(null, attackerLiving.getX(), attackerLiving.getY(), attackerLiving.getZ(), SoundEvents.PLAYER_ATTACK_NODAMAGE, attackerLiving.getSoundSource(), 1.0F, 1.0F);
+                attackerLiving.level().playSound(null, attackerLiving.getX(), attackerLiving.getY(), attackerLiving.getZ(), SoundEvents.PLAYER_ATTACK_NODAMAGE, attackerLiving.getSoundSource(), 1.0F, 1.0F);
             }
             for (ModifierEntry entry : modifiers) {
                 entry.getHook(ModifierHooks.MELEE_HIT).failedMeleeHit(tool, entry, context, damage);
@@ -195,9 +195,9 @@ public class attackUtil {
             if (isMagic) {
                 attackerPlayer.magicCrit(targetEntity);
             }
-            attackerLiving.level.playSound(null, attackerLiving.getX(), attackerLiving.getY(), attackerLiving.getZ(), sound, attackerLiving.getSoundSource(), 1.0F, 1.0F);
+            attackerLiving.level().playSound(null, attackerLiving.getX(), attackerLiving.getY(), attackerLiving.getZ(), sound, attackerLiving.getSoundSource(), 1.0F, 1.0F);
         }
-        if (damageDealt > 2.0F && attackerLiving.level instanceof ServerLevel server) {
+        if (damageDealt > 2.0F && attackerLiving.level() instanceof ServerLevel server) {
             int particleCount = (int)(damageDealt * 0.5f);
             server.sendParticles(ParticleTypes.DAMAGE_INDICATOR, targetEntity.getX(), targetEntity.getY(0.5), targetEntity.getZ(), particleCount, 0.1, 0, 0.1, 0.2);
         }
@@ -224,7 +224,7 @@ public class attackUtil {
 
         if (attackerPlayer != null) {
             if (targetLiving != null) {
-                if (!attackerLiving.level.isClientSide && !isExtraAttack) {
+                if (!attackerLiving.level().isClientSide && !isExtraAttack) {
                     ItemStack held = attackerLiving.getItemBySlot(sourceSlot);
                     if (!held.isEmpty()) {
                         held.hurtEnemy(targetLiving, attackerPlayer);

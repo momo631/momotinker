@@ -4,7 +4,6 @@ package com.momosensei.momotinker.mobs;
 import com.mojang.blaze3d.systems.RenderSystem;
 import com.momosensei.momotinker.Momotinker;
 import net.minecraft.client.Minecraft;
-import net.minecraft.client.gui.GuiComponent;
 import net.minecraft.client.renderer.GameRenderer;
 import net.minecraft.resources.ResourceLocation;
 import net.minecraft.util.Mth;
@@ -15,7 +14,8 @@ import slimeknights.tconstruct.library.tools.nbt.ToolStack;
 
 import java.util.List;
 
-import static com.momosensei.momotinker.register.MomotinkerItem.trigger_blade;
+import static com.momosensei.momotinker.register.MomotinkerTools.trigger_blade;
+
 
 public class TriggerBladeHUD {
     public static ResourceLocation Texture0 = new ResourceLocation(Momotinker.MOD_ID,"/textures/gui/overlay/gui_trigger_blade_0.png");
@@ -28,7 +28,7 @@ public class TriggerBladeHUD {
     public static ResourceLocation Texture7 = new ResourceLocation(Momotinker.MOD_ID,"/textures/gui/overlay/gui_trigger_blade_7.png");
     public static ResourceLocation Texture8 = new ResourceLocation(Momotinker.MOD_ID,"/textures/gui/overlay/gui_trigger_blade_8.png");
     public static List<ResourceLocation> Texture = List.of(Texture0,Texture1,Texture2,Texture3,Texture4,Texture5,Texture6,Texture7,Texture8);
-    public static IGuiOverlay TRIGGER_BLADE = ((gui, poseStack, partialTick, width, height) -> {
+    public static IGuiOverlay TRIGGER_BLADE_HUD = ((gui, poseStack, partialTick, width, height) -> {
         Minecraft minecraft = Minecraft.getInstance();
         Player player = minecraft.player;
         if (player == null){
@@ -48,6 +48,6 @@ public class TriggerBladeHUD {
         RenderSystem.setShader(GameRenderer::getPositionShader);
         RenderSystem.setShaderColor(1,1,1,1);
         RenderSystem.setShaderTexture(0,Texture.get(amount));
-        GuiComponent.blit(poseStack,x-9,y-8,0,0,17,17,17,17);
+        poseStack.blit(Texture.get(amount),x-9,y-8,0,0,17,17,17,17);
     });
 }
