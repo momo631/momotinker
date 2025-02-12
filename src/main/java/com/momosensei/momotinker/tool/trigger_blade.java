@@ -7,13 +7,10 @@ import com.momosensei.momotinker.network.packet.TriggerBladeCharge;
 import com.momosensei.momotinker.network.packet.triggerSlashPacket;
 import com.momosensei.momotinker.register.MomotinkerEntities;
 import com.momosensei.momotinker.register.MomotinkerItem;
-import com.momosensei.momotinker.register.MomotinkerModifiers;
-import com.momosensei.momotinker.register.MomotinkerToolDefinitions;
 import net.minecraft.ChatFormatting;
 import net.minecraft.core.BlockPos;
 import net.minecraft.network.chat.Component;
 import net.minecraft.server.level.ServerPlayer;
-import net.minecraft.stats.Stats;
 import net.minecraft.util.Mth;
 import net.minecraft.world.InteractionHand;
 import net.minecraft.world.InteractionResultHolder;
@@ -31,6 +28,7 @@ import slimeknights.mantle.client.TooltipKey;
 import slimeknights.tconstruct.common.TinkerTags;
 import slimeknights.tconstruct.library.modifiers.ModifierEntry;
 import slimeknights.tconstruct.library.modifiers.ModifierHooks;
+import slimeknights.tconstruct.library.modifiers.hook.display.TooltipModifierHook;
 import slimeknights.tconstruct.library.tools.definition.ToolDefinition;
 import slimeknights.tconstruct.library.tools.helper.ModifierUtil;
 import slimeknights.tconstruct.library.tools.helper.ToolDamageUtil;
@@ -41,15 +39,11 @@ import slimeknights.tconstruct.library.tools.nbt.ModDataNBT;
 import slimeknights.tconstruct.library.tools.nbt.ToolStack;
 import slimeknights.tconstruct.library.tools.stat.ToolStats;
 import slimeknights.tconstruct.tools.modifiers.ability.interaction.BlockingModifier;
-import slimeknights.tconstruct.tools.modifiers.upgrades.ranged.ScopeModifier;
 
 import java.util.Iterator;
 import java.util.List;
 
-import static com.momosensei.momotinker.Modifiers.modifiers.CrimsonQueen.crimsonlayers;
-import static com.momosensei.momotinker.Modifiers.modifiers.CrimsonQueen.crimsontime;
 import static slimeknights.tconstruct.TConstruct.RANDOM;
-import static slimeknights.tconstruct.library.modifiers.hook.interaction.GeneralInteractionModifierHook.KEY_DRAWTIME;
 import static slimeknights.tconstruct.library.tools.stat.ToolStats.ACCURACY;
 
 public class trigger_blade extends ModifiableItem {
@@ -72,47 +66,27 @@ public class trigger_blade extends ModifiableItem {
     public void onUseTick(Level level, LivingEntity living, ItemStack stack, int chargeRemaining) {
         if ( living instanceof ServerPlayer player) {
             int a = ModifierUtil.getModifierLevel(player.getMainHandItem(), MomotinkerModifiers.crimsonqueen.getId());
-            int b = ModifierUtil.getModifierLevel(player.getMainHandItem(), MomotinkerModifiers.yamato.getId());
             if (a==0) {
-                if (b==0) {
-                    float perc = Mth.clamp((float) (this.getUseDuration(stack) - chargeRemaining) / 30, 0, 1);
-                    Channel.sendToPlayer(new TriggerBladeCharge(perc), player);
-                }
-                if (b>0) {
-                    float perc = Mth.clamp((float) (this.getUseDuration(stack) - chargeRemaining) / 20, 0, 1);
-                    Channel.sendToPlayer(new TriggerBladeCharge(perc), player);
-                }
+                float perc = Mth.clamp((float) (this.getUseDuration(stack) - chargeRemaining) / 30, 0, 1);
+                Channel.sendToPlayer(new TriggerBladeCharge(perc), player);
             }
         }
     }
 
     @Override
     public void releaseUsing(ItemStack stack, Level level, LivingEntity livingEntity, int duration) {
-        ScopeModifier.stopScoping(livingEntity);
-        ToolStack tool = ToolStack.from(stack);
-        if (tool.isBroken()){
-            tool.getPersistentData().remove(KEY_DRAWTIME);
-            return;
-        }
         if (livingEntity instanceof ServerPlayer player) {
             ModDataNBT dataNBT = ToolStack.from(stack).getPersistentData();
             int i = this.getUseDuration(stack) - duration;
             int a = ModifierUtil.getModifierLevel(player.getMainHandItem(), MomotinkerModifiers.crimsonqueen.getId());
-            int b = ModifierUtil.getModifierLevel(player.getMainHandItem(), MomotinkerModifiers.yamato.getId());
             if (a==0) {
-                if (b==0&&i >= 30) {
+                if (i >= 30) {
                     Channel.INSTANCE.sendToServer(new triggerSlashPacket(player.getId()));
-                }
-                if (b>0&&i >= 20){
-                    Channel.INSTANCE.sendToServer(new triggerSlashPacket(player.getId()));
-                    if (i>24){
-                        player.getCooldowns().addCooldown(player.getMainHandItem().getItem(), 20);
-                    }
                 }
                 Channel.sendToPlayer(new TriggerBladeCharge(0),player);
             }
             if (a>0) {
-                if ( i >= 0 && i <= 9) {
+                if ( i >= 0 && i <= 15) {
                     if (dataNBT.getFloat(crimsonlayers)<3){
                         dataNBT.putFloat(crimsonlayers, dataNBT.getFloat(crimsonlayers) + 1);
                         dataNBT.putFloat(crimsontime, 20);
@@ -121,22 +95,14 @@ public class trigger_blade extends ModifiableItem {
                         dataNBT.putFloat(crimsontime, 20);
                     }
                 }
-                if ( i >= 3 && i <= 6) {
-                    dataNBT.putFloat(crimsonlayers, 3);
-                    dataNBT.putFloat(crimsontime, 20);
-                }
             }
-            player.awardStat(Stats.ITEM_USED.get(this));
-            ToolDamageUtil.damageAnimated(tool,1,player);
         }
-        tool.getPersistentData().remove(KEY_DRAWTIME);
     }
 
     public InteractionResultHolder<ItemStack> use(Level level, Player player, InteractionHand hand) {
         ItemStack stack = player.getItemInHand(hand);
-        ToolStack tool = ToolStack.from(stack);
-        tool.getPersistentData().putInt(KEY_DRAWTIME,30);
         player.startUsingItem(hand);
+        ToolStack tool = ToolStack.from(stack);
         if (!checkOffHand(player)){
             return InteractionResultHolder.fail(stack);
         }
@@ -174,9 +140,9 @@ public class trigger_blade extends ModifiableItem {
             return;
         }
         float damage = getDamageMultiplier(tool);
-        ItemStack color = getSlash(tool.getStats().getInt(MomotinkerToolDefinitions.SLASH_COLOR));
-        Level level =player.level();
-        EntityType<TriggerSlashEntity> entityType = getSlashType(tool.getStats().getInt(MomotinkerToolDefinitions.SLASH_COLOR));
+        ItemStack color = getSlash(tool.getStats().getInt(MomoToolDefinitions.SLASH_COLOR));
+        Level level =player.getLevel();
+        EntityType<TriggerSlashEntity> entityType = getSlashType(tool.getStats().getInt(MomoToolDefinitions.SLASH_COLOR));
         TriggerSlashEntity slash =new TriggerSlashEntity(entityType,level,color);
         double x =player.getLookAngle().x;
         double y =player.getLookAngle().y;
@@ -197,16 +163,9 @@ public class trigger_blade extends ModifiableItem {
     public static EntityType<TriggerSlashEntity> getSlashType(int index){
         return MomotinkerEntities.trigger_slash_a.get();
     }
-    public static float getDamageMultiplier(ToolStack tool) {
-        float b = RANDOM.nextInt((int) (tool.getStats().get(ACCURACY) * 100));
-        int a = tool.getModifierLevel(MomotinkerModifiers.yamato.getId());
-        if (a == 0) {
-            return tool.getStats().get(ToolStats.ATTACK_DAMAGE) * (1F + 0.005F * b + 0.2F * tool.getStats().get(ToolStats.VELOCITY));
-        }
-        if (a>0){
-            return tool.getStats().get(ToolStats.ATTACK_DAMAGE) * (1F + 0.005F * b + 0.2F * tool.getStats().get(ToolStats.VELOCITY))*0.5F;
-        }
-        return getDamageMultiplier(tool);
+    public static float getDamageMultiplier(ToolStack tool){
+        float b = RANDOM.nextInt((int) (tool.getStats().get(ACCURACY)*100));
+        return tool.getStats().get(ToolStats.ATTACK_DAMAGE)*(1F+0.005F*b+0.2F*tool.getStats().get(ToolStats.VELOCITY));
     }
     public static boolean checkOffHand(Player player){
         return player!=null&& !player.hasItemInSlot(EquipmentSlot.OFFHAND);
@@ -235,7 +194,7 @@ public class trigger_blade extends ModifiableItem {
         Iterator var7 = tool.getModifierList().iterator();
         while(var7.hasNext()) {
             ModifierEntry entry = (ModifierEntry)var7.next();
-            entry.getHook(ModifierHooks.TOOLTIP).addTooltip(tool, entry, player, tooltips, key, tooltipFlag);
+            ((TooltipModifierHook)entry.getHook(ModifierHooks.TOOLTIP)).addTooltip(tool, entry, player, tooltips, key, tooltipFlag);
         }
         return tooltips;
     }
