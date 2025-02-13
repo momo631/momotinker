@@ -19,9 +19,9 @@ import static com.momosensei.momotinker.entity.TriggerSlashEntity.getMold;
 public class triggerSlashRenderer extends EntityRenderer<TriggerSlashEntity> {
 
     private final ItemRenderer itemRenderer;
-    public triggerSlashRenderer(EntityRendererProvider.Context p_174008_) {
-        super(p_174008_);
-        this.itemRenderer=p_174008_.getItemRenderer();
+    public triggerSlashRenderer(EntityRendererProvider.Context context) {
+        super(context);
+        this.itemRenderer=context.getItemRenderer();
     }
     public void render(TriggerSlashEntity entity, float entityYaw, float partialTicks, PoseStack matrixStackIn, MultiBufferSource bufferIn, int packedLightIn) {
         if (entity.tickCount >= 0 || !(this.entityRenderDispatcher.camera.getEntity().distanceToSqr(entity) < 12.25D)) {
