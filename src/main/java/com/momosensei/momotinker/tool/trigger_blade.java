@@ -31,7 +31,6 @@ import slimeknights.tconstruct.library.modifiers.ModifierHooks;
 import slimeknights.tconstruct.library.tools.definition.ToolDefinition;
 import slimeknights.tconstruct.library.tools.helper.ToolDamageUtil;
 import slimeknights.tconstruct.library.tools.helper.TooltipBuilder;
-import slimeknights.tconstruct.library.tools.item.IModifiable;
 import slimeknights.tconstruct.library.tools.item.ModifiableItem;
 import slimeknights.tconstruct.library.tools.nbt.IToolStackView;
 import slimeknights.tconstruct.library.tools.nbt.ToolStack;
@@ -144,7 +143,7 @@ public class trigger_blade extends ModifiableItem {
         return tool.getStats().get(ToolStats.ATTACK_DAMAGE)*(1F+0.005F*b+0.2F*tool.getStats().get(ToolStats.VELOCITY));
     }
     public static boolean checkOffHand(Player player){
-        return player!=null&& !(player.getOffhandItem().getItem() instanceof IModifiable);
+        return player!=null&& !player.hasItemInSlot(EquipmentSlot.OFFHAND);
     }
     public List<Component> getStatInformation(IToolStackView tool, @Nullable Player player, List<Component> tooltips, TooltipKey key, TooltipFlag tooltipFlag) {
         tooltips = this.getTriggerBladeStats(tool, player, tooltips, key, tooltipFlag);
