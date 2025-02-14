@@ -2,7 +2,6 @@ package com.momosensei.momotinker.event;
 
 
 import com.momosensei.momotinker.Momotinker;
-import com.momosensei.momotinker.register.MomotinkerConfig;
 import com.momosensei.momotinker.register.MomotinkerItem;
 import net.minecraft.resources.ResourceLocation;
 import net.minecraft.server.level.ServerPlayer;
@@ -91,7 +90,7 @@ public class LivingEvents {
         }
         if(event.getEntity() instanceof Slime slime){
             if (event.getSource().getEntity() instanceof Frog){
-                int b = RANDOM.nextInt(10);
+                int b = RANDOM.nextInt(4);
                 if (b==1) {
                     ItemStack a = new ItemStack(MomotinkerItem.gluttony_core.get());
                     ModifierUtil.dropItem(event.getSource().getEntity(), a);
@@ -135,8 +134,8 @@ public class LivingEvents {
         }
     }
     private void onBonemealEvent(BonemealEvent event) {
-        if (event.getBlock().getBlock() instanceof SaplingBlock&&event.getEntity() instanceof  ServerPlayer){
-            int b = RANDOM.nextInt(50);
+        if (event.getBlock().getBlock() instanceof SaplingBlock){
+            int b = RANDOM.nextInt(10);
             if (b==1) {
                 ItemStack a = new ItemStack(MomotinkerItem.spirit_visage.get());
                 ModifierUtil.dropItem(event.getEntity(), a);
