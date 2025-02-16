@@ -56,7 +56,6 @@ public class trigger_blade extends ModifiableItem {
     public int getUseDuration(ItemStack stack) {
         return 72000;
     }
-
     @Override
     public UseAnim getUseAnimation(ItemStack stack) {
         return BlockingModifier.blockWhileCharging(ToolStack.from(stack), UseAnim.CUSTOM);

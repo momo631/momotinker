@@ -32,19 +32,5 @@
     {"name": "excitation_device", "index": 2},
     {"name": "tough_handle_1", "index": 3},
     {"name": "tough_handle_2", "index": 4}
-  ],
-  "overrides": [
-    {
-      "predicate": {"tconstruct:charge": 0.3 },
-      "model": "momotinker:item/tool/trigger_blade/charge"
-    },
-    {
-      "predicate": {"tconstruct:charge": 0.6 },
-      "model": "momotinker:item/tool/trigger_blade/chargea"
-    },
-    {
-      "predicate": {"tconstruct:charge": 1.0 },
-      "model": "momotinker:item/tool/trigger_blade/chargeaa"
-    }
   ]
 }
