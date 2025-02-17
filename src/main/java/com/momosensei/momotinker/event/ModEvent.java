@@ -30,14 +30,14 @@ public class ModEvent {
             }
         }
     }
-    @SubscribeEvent(priority = EventPriority.LOWEST)
+    @SubscribeEvent
     public static void addCustomTrades(VillagerTradesEvent event) {
         if (event.getType() != null) {
             Int2ObjectMap<List<VillagerTrades.ItemListing>> trades = event.getTrades();
             ItemStack a = new ItemStack(MomotinkerItem.greedy_contract.get());
             int villagerLevel = 5;
             trades.get(villagerLevel).add((trader, rand) -> new MerchantOffer(
-                    new ItemStack(Items.EMERALD, 128), a, 1, 0, 0.1f));
+                    new ItemStack(Items.EMERALD_BLOCK, 16), a, 1, 0, 0.1f));
         }
     }
 }
