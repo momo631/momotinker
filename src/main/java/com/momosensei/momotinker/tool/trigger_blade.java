@@ -3,8 +3,8 @@ package com.momosensei.momotinker.tool;
 
 import com.momosensei.momotinker.entity.TriggerSlashEntity;
 import com.momosensei.momotinker.network.Channel;
-import com.momosensei.momotinker.network.packet.servertoplay.TriggerBladeCharge;
-import com.momosensei.momotinker.network.packet.servertoplay.triggerSlashPacket;
+import com.momosensei.momotinker.network.packet.TriggerBladeCharge;
+import com.momosensei.momotinker.network.packet.triggerSlashPacket;
 import com.momosensei.momotinker.register.MomotinkerEntities;
 import com.momosensei.momotinker.register.MomotinkerItem;
 import net.minecraft.ChatFormatting;

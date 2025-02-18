@@ -1,9 +1,9 @@
 package com.momosensei.momotinker.network;
 
-import com.momosensei.momotinker.network.packet.servertoplay.CensoredCharge;
-import com.momosensei.momotinker.network.packet.servertoplay.KeyInputPKT;
-import com.momosensei.momotinker.network.packet.servertoplay.TriggerBladeCharge;
-import com.momosensei.momotinker.network.packet.servertoplay.triggerSlashPacket;
+import com.momosensei.momotinker.network.packet.CensoredCharge;
+import com.momosensei.momotinker.network.packet.KeyInputPKT;
+import com.momosensei.momotinker.network.packet.TriggerBladeCharge;
+import com.momosensei.momotinker.network.packet.triggerSlashPacket;
 import net.minecraft.network.FriendlyByteBuf;
 import net.minecraft.resources.ResourceLocation;
 import net.minecraft.server.level.ServerPlayer;

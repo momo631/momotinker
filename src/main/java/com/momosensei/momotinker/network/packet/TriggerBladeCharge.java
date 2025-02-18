@@ -1,4 +1,4 @@
-package com.momosensei.momotinker.network.packet.servertoplay;
+package com.momosensei.momotinker.network.packet;
 
 import net.minecraft.network.FriendlyByteBuf;
 import net.minecraftforge.network.NetworkEvent;

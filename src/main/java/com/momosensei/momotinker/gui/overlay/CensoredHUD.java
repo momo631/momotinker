@@ -3,7 +3,7 @@ package com.momosensei.momotinker.gui.overlay;
 
 import com.mojang.blaze3d.systems.RenderSystem;
 import com.momosensei.momotinker.Momotinker;
-import com.momosensei.momotinker.network.packet.servertoplay.Censoreddatatime;
+import com.momosensei.momotinker.mobs.Censoreddatatime;
 import net.minecraft.client.Minecraft;
 import net.minecraft.client.gui.GuiComponent;
 import net.minecraft.client.renderer.GameRenderer;

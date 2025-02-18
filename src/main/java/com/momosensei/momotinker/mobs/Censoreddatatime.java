@@ -1,4 +1,4 @@
-package com.momosensei.momotinker.network.packet.servertoplay;
+package com.momosensei.momotinker.mobs;
 
 public class Censoreddatatime {
     public static float censoreddata;

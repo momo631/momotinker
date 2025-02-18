@@ -1,7 +1,7 @@
 package com.momosensei.momotinker.Effects;
 
 import com.momosensei.momotinker.network.Channel;
-import com.momosensei.momotinker.network.packet.servertoplay.CensoredCharge;
+import com.momosensei.momotinker.network.packet.CensoredCharge;
 import net.minecraft.world.effect.MobEffectCategory;
 import net.minecraft.world.entity.LivingEntity;
 

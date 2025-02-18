@@ -16,6 +16,7 @@
   "effect.momotinker.arrogant": "狂妄",
   "effect.momotinker.fallingpreparation": "落星（准备）",
   "effect.momotinker.fallingstar": "落星",
+  "effect.momotinker.censored": "??????????",
 
   "fluid.momotinker.molten_laomo": "熔融墨",
   "fluid.momotinker.molten_arriving_at_the_other_shore": "熔融彼岸",
@@ -220,7 +221,7 @@
 
   "modifier.momotinker.overenvysin": "尽妒之罪",
   "modifier.momotinker.overenvysin.flavor": "§e无尽妒怨之代价:临微浅恶§",
-  "modifier.momotinker.overenvysin.description": "攻击血量上限自身低的目标时会根据差值减少攻击力，数值为5%*词条等级*血量上限差值（最低时攻击不造成伤害）",
+  "modifier.momotinker.overenvysin.description": "攻击血量上限比自身低的目标时会根据差值减少攻击力，数值为5%*词条等级*血量上限差值（最低时攻击不造成伤害）",
 
   "modifier.momotinker.fallingstars": "苍穹落星",
   "modifier.momotinker.fallingstars.flavor": "§d当流星于此降临§",
