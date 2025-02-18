@@ -49,6 +49,10 @@ public class Channel {
     public static <MSG> void sendToPlayer(MSG msg, ServerPlayer player){
         INSTANCE.send(PacketDistributor.PLAYER.with(()->player),msg);
     }
+    public static <MSG> void sendToClient(MSG msg){
+        INSTANCE.send(PacketDistributor.ALL.noArg(), msg);
+    }
+
     private static final String PROTOCOL_VERSION = "1";
     public static final SimpleChannel PACKET_HANDLER = NetworkRegistry.newSimpleChannel(new ResourceLocation(MOD_ID, MOD_ID), () -> PROTOCOL_VERSION, PROTOCOL_VERSION::equals, PROTOCOL_VERSION::equals);
     private static int messageID = 0;

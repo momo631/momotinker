@@ -1,6 +1,7 @@
 package com.momosensei.momotinker.event;
 
 import com.momosensei.momotinker.capability.healpercentage.EnderProvider;
+import com.momosensei.momotinker.gui.overlay.BBBOverlay;
 import com.momosensei.momotinker.gui.overlay.EnderOverlay;
 import com.momosensei.momotinker.key.key;
 import com.momosensei.momotinker.mobs.TriggerBladeHUD;
@@ -30,6 +31,7 @@ public class ModEventListener {
     public static void registerOverlay(RegisterGuiOverlaysEvent event) {
         if (FMLEnvironment.dist == Dist.CLIENT) {
             event.registerAbove(VanillaGuiOverlay.HOTBAR.id(), "ender", EnderOverlay.ENDER);
+            event.registerAboveAll( "bbb", BBBOverlay.BBB);
             event.registerAboveAll( "trigger_blade", TriggerBladeHUD.TRIGGER_BLADE);
         }
     }

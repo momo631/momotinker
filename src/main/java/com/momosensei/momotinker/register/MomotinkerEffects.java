@@ -23,5 +23,6 @@ public class MomotinkerEffects  {
     public static final RegistryObject<MobEffect> FallingStar = EFFECT.register("fallingstar",  FallingStar::new);
     public static final RegistryObject<MobEffect> A = EFFECT.register("a",  A::new);
     public static final RegistryObject<MobEffect> B = EFFECT.register("b",  B::new);
+    public static final RegistryObject<MobEffect> C = EFFECT.register("c",  C::new);
 
 }

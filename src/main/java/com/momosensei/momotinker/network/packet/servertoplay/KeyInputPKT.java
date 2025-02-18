@@ -102,7 +102,7 @@ public class KeyInputPKT {
                 }
             }
             if (player != null && ModifierUtil.getModifierLevel(player.getMainHandItem(), MomotinkerModifiers.test.getId()) > 0) {
-                player.addEffect(new MobEffectInstance(MomotinkerEffects.A.get(), 100));
+                player.addEffect(new MobEffectInstance(MomotinkerEffects.B.get(), 100));
             }
 
         });
