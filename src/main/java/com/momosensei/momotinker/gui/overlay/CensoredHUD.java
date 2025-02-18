@@ -3,7 +3,7 @@ package com.momosensei.momotinker.gui.overlay;
 
 import com.mojang.blaze3d.systems.RenderSystem;
 import com.momosensei.momotinker.Momotinker;
-import com.momosensei.momotinker.register.MomotinkerEffects;
+import com.momosensei.momotinker.network.packet.servertoplay.Censoreddatatime;
 import net.minecraft.client.Minecraft;
 import net.minecraft.client.gui.GuiComponent;
 import net.minecraft.client.renderer.GameRenderer;
@@ -16,8 +16,8 @@ import java.util.List;
 
 import static slimeknights.tconstruct.TConstruct.RANDOM;
 
-public class BBBOverlay {
-    public BBBOverlay(){}
+public class CensoredHUD {
+    public CensoredHUD(){}
     public static ResourceLocation Texture0 = new ResourceLocation(Momotinker.MOD_ID,"/textures/gui/overlay/gui_censored_0.png");
     public static ResourceLocation Texture1 = new ResourceLocation(Momotinker.MOD_ID,"/textures/gui/overlay/gui_censored_1.png");
     public static ResourceLocation Texture2 = new ResourceLocation(Momotinker.MOD_ID,"/textures/gui/overlay/gui_censored_2.png");
@@ -28,14 +28,18 @@ public class BBBOverlay {
     public static ResourceLocation Texture7 = new ResourceLocation(Momotinker.MOD_ID,"/textures/gui/overlay/gui_censored_7.png");
     public static ResourceLocation Texture8 = new ResourceLocation(Momotinker.MOD_ID,"/textures/gui/overlay/gui_censored_8.png");
     public static List<ResourceLocation> Texture = List.of(Texture0,Texture1,Texture2,Texture3,Texture4,Texture5,Texture6,Texture7,Texture8);
-    public static IGuiOverlay BBB = ((gui, poseStack, partialTick, width, height) -> {
+    public static IGuiOverlay CENSORED = ((gui, poseStack, partialTick, width, height) -> {
         Minecraft minecraft = Minecraft.getInstance();
         Player player = minecraft.player;
+        float b = Censoreddatatime.getCensoreddata();
+        if (b==0){
+            return;
+        }
         if (player == null) {
             return;
         }
-        if (!player.hasEffect(MomotinkerEffects.C.get())){
-            return;
+        if (b>0&&player.tickCount%20==0){
+            Censoreddatatime.setCensoreddata(b-1);
         }
         int i = RANDOM.nextInt(9);
         int amount = Mth.clamp(i, 0, 8);

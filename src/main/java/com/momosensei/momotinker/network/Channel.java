@@ -1,5 +1,6 @@
 package com.momosensei.momotinker.network;
 
+import com.momosensei.momotinker.network.packet.servertoplay.CensoredCharge;
 import com.momosensei.momotinker.network.packet.servertoplay.KeyInputPKT;
 import com.momosensei.momotinker.network.packet.servertoplay.TriggerBladeCharge;
 import com.momosensei.momotinker.network.packet.servertoplay.triggerSlashPacket;
@@ -39,6 +40,7 @@ public class Channel {
         INSTANCE.registerMessage(id++, triggerSlashPacket.class, triggerSlashPacket::encode, triggerSlashPacket::decode, triggerSlashPacket::handle);
         INSTANCE.messageBuilder(KeyInputPKT.class,id++, NetworkDirection.PLAY_TO_SERVER).decoder(KeyInputPKT::decode).encoder(KeyInputPKT::encode).consumerMainThread(KeyInputPKT::handlePacket).add();
         INSTANCE.messageBuilder(TriggerBladeCharge.class,id++, NetworkDirection.PLAY_TO_CLIENT).decoder(TriggerBladeCharge::new).encoder(TriggerBladeCharge::encode).consumerMainThread(TriggerBladeCharge::handle).add();
+        INSTANCE.messageBuilder(CensoredCharge.class,id++, NetworkDirection.PLAY_TO_CLIENT).decoder(CensoredCharge::new).encoder(CensoredCharge::toByte).consumerMainThread(CensoredCharge::handle).add();
 
     }
 
