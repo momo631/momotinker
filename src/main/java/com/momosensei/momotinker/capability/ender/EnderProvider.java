@@ -1,4 +1,4 @@
-package com.momosensei.momotinker.capability.healpercentage;
+package com.momosensei.momotinker.capability.ender;
 
 import net.minecraft.core.Direction;
 import net.minecraft.nbt.CompoundTag;

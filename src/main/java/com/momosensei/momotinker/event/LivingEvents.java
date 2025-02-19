@@ -45,10 +45,10 @@ public class LivingEvents {
     private static final ResourceLocation ragetest = Momotinker.getResource("ragetest");
 
     private void livinghurtevent(LivingHurtEvent event) {
-        boolean config1 = MomotinkerConfig.arriving_at_the_other_shore.get();
         Entity a = event.getEntity();
         Entity b = event.getSource().getEntity();
-        if (config1) {
+        boolean configa = MomotinkerConfig.arriving_at_the_other_shore.get();
+        if (configa) {
             if (a instanceof ServerPlayer player && player.getHealth() <= 1) {
                 if (event.getAmount() > player.getMaxHealth() && player.isAlive()) {
                     ItemStack a1 = new ItemStack(MomotinkerItem.arriving_at_the_other_shore.get());
@@ -56,8 +56,8 @@ public class LivingEvents {
                 }
             }
         }
-        boolean config2 = MomotinkerConfig.jealous_notes.get();
-        if (config2) {
+        boolean configb = MomotinkerConfig.jealous_notes.get();
+        if (configb) {
             if (a instanceof ServerPlayer player && b instanceof LivingEntity entity && player.getItemBySlot(EquipmentSlot.MAINHAND).is(Items.WRITABLE_BOOK)) {
                 if (!player.hasItemInSlot(EquipmentSlot.HEAD) && !player.hasItemInSlot(EquipmentSlot.CHEST) && !player.hasItemInSlot(EquipmentSlot.LEGS) && !player.hasItemInSlot(EquipmentSlot.FEET)) {
                     if (entity.hasItemInSlot(EquipmentSlot.HEAD) || entity.hasItemInSlot(EquipmentSlot.CHEST) || entity.hasItemInSlot(EquipmentSlot.LEGS) || entity.hasItemInSlot(EquipmentSlot.FEET)) {
@@ -72,15 +72,15 @@ public class LivingEvents {
 
     private void onEntityDeath(LivingDeathEvent event) {
         if (event.getEntity() instanceof Warden warden) {
-            boolean config3 = MomotinkerConfig.heartsteel.get();
-            if (config3) {
+            boolean configa = MomotinkerConfig.heartsteel.get();
+            if (configa) {
                 if (event.getSource().getEntity() instanceof IronGolem) {
                     ItemStack a = new ItemStack(MomotinkerItem.heartsteel.get());
                     ModifierUtil.dropItem(event.getSource().getEntity(), a);
                 }
             }
-            boolean config4 = MomotinkerConfig.arrogance_proof.get();
-            if (config4) {
+            boolean configb = MomotinkerConfig.arrogance_proof.get();
+            if (configb) {
                 if (event.getSource().getEntity() instanceof ServerPlayer player) {
                     if (!player.hasItemInSlot(EquipmentSlot.HEAD) && !player.hasItemInSlot(EquipmentSlot.CHEST) && !player.hasItemInSlot(EquipmentSlot.LEGS) && !player.hasItemInSlot(EquipmentSlot.FEET)) {
                         ItemStack a = new ItemStack(MomotinkerItem.arrogance_proof.get());
@@ -89,8 +89,8 @@ public class LivingEvents {
                 }
             }
         }
-        boolean config5 = MomotinkerConfig.interdimensional_crystal.get();
-        if (config5) {
+        boolean configc = MomotinkerConfig.interdimensional_crystal.get();
+        if (configc) {
             if (event.getEntity() instanceof WitherBoss wither) {
                 if (wither.getOnPos().getY() >= 300) {
                     ItemStack a = new ItemStack(MomotinkerItem.interdimensional_crystal.get());
@@ -98,8 +98,8 @@ public class LivingEvents {
                 }
             }
         }
-        boolean config6 = MomotinkerConfig.gluttony_core.get();
-        if (config6) {
+        boolean configd = MomotinkerConfig.gluttony_core.get();
+        if (configd) {
             if (event.getEntity() instanceof Slime slime) {
                 if (event.getSource().getEntity() instanceof Frog) {
                     int b = RANDOM.nextInt(10);
@@ -110,8 +110,8 @@ public class LivingEvents {
                 }
             }
         }
-        boolean config7 = MomotinkerConfig.rage_stone_statue.get();
-        if (config7) {
+        boolean confige = MomotinkerConfig.rage_stone_statue.get();
+        if (confige) {
             if (event.getSource().getEntity() instanceof Wolf wolf) {
                 if (event.getEntity() instanceof Sheep sheep) {
                     ModDataNBT a = ModDataNBT.readFromNBT(event.getSource().getEntity().getPersistentData());
@@ -133,8 +133,8 @@ public class LivingEvents {
     }
 
     private void onBabyEntitySpawnEvent(BabyEntitySpawnEvent event) {
-        boolean config8 = MomotinkerConfig.lust_mirror.get();
-        if (config8) {
+        boolean config = MomotinkerConfig.lust_mirror.get();
+        if (config) {
             if (event.getParentA() != null && event.getParentB() != null && event.getChild() != null) {
                 ModDataNBT a = ModDataNBT.readFromNBT(event.getParentA().getPersistentData());
                 ModDataNBT b = ModDataNBT.readFromNBT(event.getParentB().getPersistentData());
@@ -153,8 +153,8 @@ public class LivingEvents {
         }
     }
     private void onBonemealEvent(BonemealEvent event) {
-        boolean config9 = MomotinkerConfig.spirit_visage.get();
-        if (config9) {
+        boolean config = MomotinkerConfig.spirit_visage.get();
+        if (config) {
             if (event.getBlock().getBlock() instanceof SaplingBlock && event.getEntity() instanceof ServerPlayer) {
                 int b = RANDOM.nextInt(50);
                 if (b == 1) {
@@ -165,8 +165,8 @@ public class LivingEvents {
         }
     }
     private void onSleepingTimeCheckEvent(SleepingTimeCheckEvent event) {
-        boolean config10 = MomotinkerConfig.lazy_grail.get();
-        if (config10) {
+        boolean config = MomotinkerConfig.lazy_grail.get();
+        if (config) {
             if (event.getEntity() instanceof ServerPlayer player) {
                 if (player.getEffect(MobEffects.MOVEMENT_SLOWDOWN) != null && player.getEffect(MobEffects.WEAKNESS) != null) {
                     if (player.isSleepingLongEnough() && player.hasEffect(MobEffects.MOVEMENT_SLOWDOWN) && player.hasEffect(MobEffects.WEAKNESS)) {

@@ -2,6 +2,7 @@ package com.momosensei.momotinker.register;
 
 import com.momosensei.momotinker.Items.*;
 import com.momosensei.momotinker.tool.MomoToolDefinitions;
+import com.momosensei.momotinker.tool.divine_punishment_spear;
 import com.momosensei.momotinker.tool.trigger_blade;
 import net.minecraft.world.item.BlockItem;
 import net.minecraft.world.item.Item;
@@ -34,6 +35,7 @@ public class MomotinkerItem {
     public static final RegistryObject<Item> jealous_notes = ITEMS.register("jealous_notes", () -> new jealous_notes(new Item.Properties().tab(MomotinkerTab.MATERIALS)));
     public static final RegistryObject<ModifiableItem> trigger_blade = ITEMS.register("trigger_blade", () -> new trigger_blade(TOOL, MomoToolDefinitions.TROGGER_BLADE));
     public static final RegistryObject<Item> trigger_slash_a = ITEMS.register("trigger_slash", ()->new Item(new Item.Properties()));
+    public static final RegistryObject<ModifiableItem> divine_punishment_spear = ITEMS.register("divine_punishment_spear", () -> new divine_punishment_spear(TOOL, MomoToolDefinitions.DIVINE_PUNISHMENT_SPEAR));
 
     //方块类要这样,略有变动
 

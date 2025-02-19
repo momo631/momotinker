@@ -1,25 +1,25 @@
-package com.momosensei.momotinker.capability.healpercentage;
+package com.momosensei.momotinker.capability.ender;
 
 import net.minecraft.nbt.CompoundTag;
 
 public class Ender {
 
-    private int healpercentage;
+    private int ender;
 
     public Ender(){
-        this.healpercentage = 0;
+        this.ender = 0;
     }
 
-    public int getHealpercentage() {
-        return healpercentage;
+    public int getender() {
+        return ender;
     }
 
-    public void setHealpercentage(int healpercentage) {
-        this.healpercentage = healpercentage;
+    public void setender(int ender) {
+        this.ender = ender;
     }
 
     public void increace(int i){
-        healpercentage += i;
+        ender += i;
     }
 
     public void increace(){
@@ -27,8 +27,8 @@ public class Ender {
     }
 
     public boolean decreace(int d){
-        if (healpercentage >= d){
-            healpercentage -= d;
+        if (ender >= d){
+            ender -= d;
             return true;
         }
         else return false;
@@ -39,11 +39,11 @@ public class Ender {
     }
 
     public void saveNBTData(CompoundTag compoundTag){
-        compoundTag.putInt("healpercentage",healpercentage);
+        compoundTag.putInt("ender",ender);
     }
 
     public void loadNBTData(CompoundTag compoundTag){
-        healpercentage = compoundTag.getInt("healpercentage");
+        ender = compoundTag.getInt("ender");
     }
 
     public static float getPercentage() {

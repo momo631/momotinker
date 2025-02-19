@@ -9,5 +9,6 @@ import net.minecraft.world.item.Item;
 
 public class MomotinkerTags {
     public static final TagKey<Item> TRIGGER_BLADE = ItemTags.create(new ResourceLocation(Momotinker.MOD_ID,"modifiable/trigger_blade"));
+    public static final TagKey<Item> DIVINE_PUNISHMENT_SPEAR = ItemTags.create(new ResourceLocation(Momotinker.MOD_ID,"modifiable/divine_punishment_spear"));
 
 }

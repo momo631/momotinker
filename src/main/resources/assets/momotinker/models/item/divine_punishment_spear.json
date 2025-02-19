@@ -1,0 +1,36 @@
+{
+  "loader": "tconstruct:tool",
+  "parent": "forge:item/default-tool",
+  "textures": {
+    "spear_head": "momotinker:item/tool/divine_punishment_spear/spear_head",
+    "spear_body": "momotinker:item/tool/divine_punishment_spear/spear_body",
+    "tough_handle_1": "momotinker:item/tool/divine_punishment_spear/tough_handle_1",
+    "tough_handle_2": "momotinker:item/tool/divine_punishment_spear/tough_handle_2",
+    "tough_handle_3": "momotinker:item/tool/divine_punishment_spear/tough_handle_3",
+    "broken_spear_head": "momotinker:item/tool/divine_punishment_spear/broken_spear_head",
+
+    "large_spear_head": "momotinker:item/tool/divine_punishment_spear/large/spear_head",
+    "large_spear_body": "momotinker:item/tool/divine_punishment_spear/large/spear_body",
+    "large_tough_handle_1": "momotinker:item/tool/divine_punishment_spear/large/tough_handle_1",
+    "large_tough_handle_2": "momotinker:item/tool/divine_punishment_spear/large/tough_handle_2",
+    "large_tough_handle_3": "momotinker:item/tool/divine_punishment_spear/large/tough_handle_3",
+    "large_broken_spear_head": "momotinker:item/tool/divine_punishment_spear/large/broken_spear_head"
+  },
+  "modifier_roots": {
+    "small": [
+      "momotinker:item/tool/divine_punishment_spear/modifiers/"
+    ],
+    "large": [
+      "momotinker:item/tool/divine_punishment_spear/large/modifiers/"
+    ]
+  },
+  "large": true,
+  "large_offset": [-7, 7],
+  "parts": [
+    {"name": "spear_head", "index": 0, "broken": "broken_spear_head"},
+    {"name": "spear_body", "index": 1},
+    {"name": "tough_handle_1", "index": 2},
+    {"name": "tough_handle_2", "index": 3},
+    {"name": "tough_handle_3", "index": 4}
+  ]
+}

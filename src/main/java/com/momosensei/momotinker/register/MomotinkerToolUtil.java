@@ -20,6 +20,7 @@ public class MomotinkerToolUtil {
     public static void clientSetupEvent(FMLClientSetupEvent event) {
         event.enqueueWork(() -> {
             TinkerItemProperties.registerToolProperties(MomotinkerItem.trigger_blade.get().asItem());
+            TinkerItemProperties.registerToolProperties(MomotinkerItem.divine_punishment_spear.get().asItem());
         });
     }
 }

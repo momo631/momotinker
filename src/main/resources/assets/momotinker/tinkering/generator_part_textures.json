@@ -39,6 +39,57 @@
         {
             "path": "momotinker:item/tool/trigger_blade/large/tough_handle_2",
             "stat_type": "tconstruct:binding"
+        },
+
+
+
+        {
+            "path": "momotinker:item/tool/divine_punishment_spear/spear_head",
+            "stat_type": "tconstruct:binding"
+        },
+        {
+            "path": "momotinker:item/tool/divine_punishment_spear/large/spear_head",
+            "stat_type": "tconstruct:binding"
+        },
+        {
+            "path": "momotinker:item/tool/divine_punishment_spear/broken_spear_head",
+            "stat_type": "tconstruct:binding"
+        },
+        {
+            "path": "momotinker:item/tool/divine_punishment_spear/large/broken_spear_head",
+            "stat_type": "tconstruct:binding"
+        },
+        {
+            "path": "momotinker:item/tool/divine_punishment_spear/spear_body",
+            "stat_type": "tconstruct:binding"
+        },
+        {
+            "path": "momotinker:item/tool/divine_punishment_spear/large/spear_body",
+            "stat_type": "tconstruct:binding"
+        },
+        {
+            "path": "momotinker:item/tool/divine_punishment_spear/tough_handle_1",
+            "stat_type": "tconstruct:binding"
+        },
+        {
+            "path": "momotinker:item/tool/divine_punishment_spear/tough_handle_2",
+            "stat_type": "tconstruct:binding"
+        },
+        {
+            "path": "momotinker:item/tool/divine_punishment_spear/tough_handle_3",
+            "stat_type": "tconstruct:binding"
+        },
+        {
+            "path": "momotinker:item/tool/divine_punishment_spear/large/tough_handle_1",
+            "stat_type": "tconstruct:binding"
+        },
+        {
+            "path": "momotinker:item/tool/divine_punishment_spear/large/tough_handle_2",
+            "stat_type": "tconstruct:binding"
+        },
+        {
+            "path": "momotinker:item/tool/divine_punishment_spear/large/tough_handle_3",
+            "stat_type": "tconstruct:binding"
         }
     ],
     "replace": false
