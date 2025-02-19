@@ -1,5 +1,6 @@
 package com.momosensei.momotinker.event;
 
+import com.momosensei.momotinker.register.MomotinkerConfig;
 import com.momosensei.momotinker.register.MomotinkerItem;
 import com.momosensei.momotinker.register.MomotinkerModifiers;
 import it.unimi.dsi.fastutil.ints.Int2ObjectMap;
@@ -32,12 +33,15 @@ public class ModEvent {
     }
     @SubscribeEvent
     public static void addCustomTrades(VillagerTradesEvent event) {
-        if (event.getType() != null) {
-            Int2ObjectMap<List<VillagerTrades.ItemListing>> trades = event.getTrades();
-            ItemStack a = new ItemStack(MomotinkerItem.greedy_contract.get());
-            int villagerLevel = 5;
-            trades.get(villagerLevel).add((trader, rand) -> new MerchantOffer(
-                    new ItemStack(Items.EMERALD_BLOCK, 16), a, 1, 0, 0.1f));
+        boolean config = MomotinkerConfig.greedy_contract.get();
+        if (config) {
+            if (event.getType() != null) {
+                Int2ObjectMap<List<VillagerTrades.ItemListing>> trades = event.getTrades();
+                ItemStack a = new ItemStack(MomotinkerItem.greedy_contract.get());
+                int villagerLevel = 5;
+                trades.get(villagerLevel).add((trader, rand) -> new MerchantOffer(
+                        new ItemStack(Items.EMERALD_BLOCK, 16), a, 1, 0, 0.1f));
+            }
         }
     }
 }
