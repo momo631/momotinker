@@ -32,6 +32,8 @@
   "fluid.momotinker.molten_interdimensional_crystal": "熔融苍星",
   "fluid.momotinker.molten_dimensional_prism": "熔融次元棱镜",
   "fluid.momotinker.molten_dim_dark_gold": "熔融黯淡玄金",
+  "fluid.momotinker.molten_stained_blood_gold": "熔融染血玄金",
+  "fluid.momotinker.molten_starry_mysterious_gold": "熔融星辰玄金",
 
   "item.momotinker.molten_laomo_bucket": "熔融墨桶",
   "item.momotinker.molten_arriving_at_the_other_shore_bucket": "熔融彼岸桶",
@@ -47,6 +49,8 @@
   "item.momotinker.molten_interdimensional_crystal_bucket": "熔融苍星桶",
   "item.momotinker.molten_dimensional_prism_bucket": "熔融次元棱镜桶",
   "item.momotinker.molten_dim_dark_gold_bucket": "熔融黯淡玄金桶",
+  "item.momotinker.molten_stained_blood_gold_bucket": "熔融染血玄金桶",
+  "item.momotinker.molten_starry_mysterious_gold_bucket": "熔融星辰玄金桶",
 
   "item.momotinker.laomo": "墨",
 
@@ -108,6 +112,12 @@
   "item.momotinker.dim_dark_gold": "黯淡玄金锭",
   "momotinker.item.tooltip.dim_dark_gold1": "来自远古的神秘金属，其身上的荣光与辉煌已被时间掩埋",
 
+  "item.momotinker.stained_blood_gold": "染血玄金锭",
+  "momotinker.item.tooltip.stained_blood_gold1": "",
+
+  "item.momotinker.starry_mysterious_gold": "星辰玄金锭",
+  "momotinker.item.tooltip.starry_mysterious_gold1": "",
+
   "itemGroup.momotinker.tools": "墨工坊模组-工具",
 
   "item.momotinker.trigger_blade": "扳机长刀",
@@ -149,6 +159,10 @@
   "material.momotinker.dimensional_prism.encyclopedia": "§b补阙，然后趋近完美§",
   "material.momotinker.dim_dark_gold": "黯淡玄金",
   "material.momotinker.dim_dark_gold.encyclopedia": "正如星辰陨落成流星划过天边，闪耀如群星的精妙造物也早已蒙上灰尘，但...",
+  "material.momotinker.stained_blood_gold": "染血玄金",
+  "material.momotinker.stained_blood_gold.encyclopedia": "",
+  "material.momotinker.starry_mysterious_gold": "星辰玄金",
+  "material.momotinker.starry_mysterious_gold.encyclopedia": "",
 
   "modifier.momotinker.laomochuji": "牢墨出击",
   "modifier.momotinker.laomochuji.flavor": "词条标题",

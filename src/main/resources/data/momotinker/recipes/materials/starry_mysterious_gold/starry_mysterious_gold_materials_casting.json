@@ -1,0 +1,9 @@
+{
+  "type": "tconstruct:material_fluid",
+  "fluid": {
+    "name": "momotinker:molten_starry_mysterious_gold",
+    "amount": 90
+  },
+  "temperature": 1500,
+  "output": "momotinker:starry_mysterious_gold"
+}

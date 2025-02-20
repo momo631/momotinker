@@ -46,5 +46,7 @@ public class MomotinkerFluid{
     public static final FluidObject<ForgeFlowingFluid> molten_interdimensional_crystal = register("molten_interdimensional_crystal", 5856);
     public static final FluidObject<ForgeFlowingFluid> molten_dimensional_prism = register("molten_dimensional_prism", 5855);
     public static final FluidObject<ForgeFlowingFluid> molten_dim_dark_gold = register("molten_dim_dark_gold", 5855);
+    public static final FluidObject<ForgeFlowingFluid> molten_stained_blood_gold = register("molten_stained_blood_gold", 5855);
+    public static final FluidObject<ForgeFlowingFluid> molten_starry_mysterious_gold = register("molten_starry_mysterious_gold", 5855);
 
 }

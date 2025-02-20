@@ -2,12 +2,25 @@ package com.momosensei.momotinker.Modifiers.modifiers;
 
 
 import net.minecraft.world.entity.LivingEntity;
+import net.minecraft.world.item.ItemStack;
+import net.minecraft.world.level.Level;
 import org.jetbrains.annotations.Nullable;
+import slimeknights.tconstruct.library.materials.definition.MaterialId;
+import slimeknights.tconstruct.library.materials.definition.MaterialVariant;
+import slimeknights.tconstruct.library.materials.definition.MaterialVariantId;
 import slimeknights.tconstruct.library.modifiers.ModifierEntry;
 import slimeknights.tconstruct.library.tools.nbt.IToolContext;
 import slimeknights.tconstruct.library.tools.nbt.IToolStackView;
+import slimeknights.tconstruct.library.tools.nbt.MaterialNBT;
+import slimeknights.tconstruct.library.tools.nbt.ToolStack;
 import slimeknights.tconstruct.library.tools.stat.ModifierStatsBuilder;
 import slimeknights.tconstruct.library.tools.stat.ToolStats;
+
+import java.util.ArrayList;
+import java.util.List;
+
+import static com.momosensei.momotinker.tool.divine_punishment_spear.degenerate;
+import static com.momosensei.momotinker.tool.divine_punishment_spear.sanctification;
 
 public class SuperancientMetals extends momomodifier{
     public SuperancientMetals() {
@@ -42,5 +55,35 @@ public class SuperancientMetals extends momomodifier{
             return (int) (amount * 0.5f);
         }
         return amount;
+    }
+    public void modifierOnInventoryTick(IToolStackView tool, ModifierEntry modifier, Level level, LivingEntity livingEntity, int itemSlot, boolean isSelected, boolean isCorrectSlot, ItemStack itemStack) {
+        if (tool.getPersistentData().getFloat(sanctification)==500){
+            EvolutionTool((ToolStack) tool);
+        }
+        if (tool.getPersistentData().getFloat(degenerate)==100){
+            HiddenEvolutionTool((ToolStack) tool);
+        }
+    }
+    public void EvolutionTool(ToolStack tool){
+        int length = tool.getMaterials().size();
+        List<MaterialVariant> list=new ArrayList<>(List.of());
+        for (int i=0;i<length;i++){
+            list.add(MaterialVariant.of(MaterialVariantId.create(new MaterialId("momotinker:starry_mysterious_gold"),"default")));
+        }
+        MaterialNBT nbt = new MaterialNBT(list);
+        tool.setMaterials(nbt);
+        tool.setDamage(0);
+        tool.rebuildStats();
+    }
+    public void HiddenEvolutionTool(ToolStack tool){
+        int length = tool.getMaterials().size();
+        List<MaterialVariant> list=new ArrayList<>(List.of());
+        for (int i=0;i<length;i++){
+            list.add(MaterialVariant.of(MaterialVariantId.create(new MaterialId("momotinker:stained_blood_gold"),"default")));
+        }
+        MaterialNBT nbt = new MaterialNBT(list);
+        tool.setMaterials(nbt);
+        tool.setDamage(0);
+        tool.rebuildStats();
     }
 }

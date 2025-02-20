@@ -1,0 +1,12 @@
+{
+  "type": "tconstruct:melting",
+  "ingredient": {
+    "item": "momotinker:stained_blood_gold"
+  },
+  "result": {
+    "fluid": "momotinker:molten_stained_blood_gold",
+    "amount": 90
+  },
+  "temperature": 1500,
+  "time": 66
+}
