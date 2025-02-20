@@ -16,8 +16,8 @@ import java.util.List;
 public class A extends StaticEffect {
     public A() {
         super(MobEffectCategory.BENEFICIAL, 16769263);
-        super.addAttributeModifier(Attributes.ARMOR, "F62FAE71-81FF-C7C6-321A-9EAE5730DA42", 1F, AttributeModifier.Operation.MULTIPLY_TOTAL);
-        super.addAttributeModifier(Attributes.ARMOR_TOUGHNESS, "E512D0A8-EF5A-1052-2E84-A8ED78069C72", 0.6F, AttributeModifier.Operation.MULTIPLY_TOTAL);
+        super.addAttributeModifier(Attributes.ARMOR, "F62FAE71-81FF-C7C6-321A-9EAE5730DA42", +1, AttributeModifier.Operation.MULTIPLY_TOTAL);
+        super.addAttributeModifier(Attributes.ARMOR_TOUGHNESS, "E512D0A8-EF5A-1052-2E84-A8ED78069C72", +0.6, AttributeModifier.Operation.MULTIPLY_TOTAL);
 
     }
     @Override

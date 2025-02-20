@@ -251,6 +251,10 @@
   "modifier.momotinker.crystallization.description": "主手持有且副手持有次元棱镜时按下技能按键可消耗1个副手物品进行强化，当前强化等级越高成功概率越低，强化等级高到一定程度时失败会受到惩罚，强化等级大于等于14时会有粉碎的风险！",
 
   "modifier.momotinker.frombrilliance": "古代神兵",
-  "modifier.momotinker.frombrilliance.flavor": "来自辉煌的时代",
-  "modifier.momotinker.frombrilliance.description": "达成某种条件可使武器进化"
+  "modifier.momotinker.frombrilliance.flavor": "§e来自辉煌的时代§",
+  "modifier.momotinker.frombrilliance.description": "达成某种条件可使武器进化！",
+
+  "modifier.momotinker.superancientmetals": "超古代金属",
+  "modifier.momotinker.superancientmetals.flavor": "来自古代的奇特金属，表面看起来平平无奇",
+  "modifier.momotinker.superancientmetals.description": "工具的耐久消耗降低50%，大部分属性增加30%，可能会因为某些情况产生进化"
 }
