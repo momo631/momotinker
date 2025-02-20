@@ -75,6 +75,10 @@
         {
           "name": "tconstruct:reach",
           "level": 3
+        },
+        {
+          "name": "momotinker:frombrilliance",
+          "level": 1
         }
       ]
     }

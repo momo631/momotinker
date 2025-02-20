@@ -1,0 +1,42 @@
+{
+  "name": "minecraft:chests/ancient_city",
+  "pools": [
+    {
+      "entries": [
+        {
+          "type": "minecraft:item",
+          "functions": [
+            {
+              "function": "tconstruct:add_tool_data",
+              "materials": [
+                {
+                  "type": "tconstruct:fixed",
+                  "material": "momotinker:dim_dark_gold"
+                },
+                {
+                  "type": "tconstruct:fixed",
+                  "material": "momotinker:dim_dark_gold"
+                },
+                {
+                  "type": "tconstruct:fixed",
+                  "material": "momotinker:dim_dark_gold"
+                },
+                {
+                  "type": "tconstruct:fixed",
+                  "material": "momotinker:dim_dark_gold"
+                },
+                {
+                  "type": "tconstruct:fixed",
+                  "material": "momotinker:dim_dark_gold"
+                }
+              ]
+            }
+          ],
+          "name": "momotinker:divine_punishment_spear",
+          "weight": 100
+        }
+      ],
+      "name": "main"
+    }
+  ]
+}

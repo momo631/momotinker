@@ -36,6 +36,7 @@ public class MomotinkerItem {
     public static final RegistryObject<ModifiableItem> trigger_blade = ITEMS.register("trigger_blade", () -> new trigger_blade(TOOL, MomoToolDefinitions.TROGGER_BLADE));
     public static final RegistryObject<Item> trigger_slash_a = ITEMS.register("trigger_slash", ()->new Item(new Item.Properties()));
     public static final RegistryObject<ModifiableItem> divine_punishment_spear = ITEMS.register("divine_punishment_spear", () -> new divine_punishment_spear(TOOL, MomoToolDefinitions.DIVINE_PUNISHMENT_SPEAR));
+    public static final RegistryObject<Item> dim_dark_gold = ITEMS.register("dim_dark_gold", () -> new dim_dark_gold(new Item.Properties().tab(MomotinkerTab.MATERIALS)));
 
     //方块类要这样,略有变动
 

@@ -1,0 +1,6 @@
+{
+  "parent": "item/generated",
+  "textures": {
+    "layer0": "momotinker:item/dim_dark_gold"
+  }
+}

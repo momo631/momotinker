@@ -1,0 +1,90 @@
+{
+  "stats": {
+    "tconstruct:binding": {},
+    "tconstruct:handle": {
+      "durability": 1.7,
+      "mining_speed": 1.7,
+      "melee_speed": 1.2,
+      "melee_damage": 1.2
+    },
+    "tconstruct:head": {
+      "durability": 2024,
+      "mining_speed": 3,
+      "mining_tier": "minecraft:netherite",
+      "melee_attack": 6
+    },
+    "tconstruct:limb": {
+      "durability": 2024,
+      "draw_speed": 0.3,
+      "velocity": 8,
+      "accuracy": 1.2
+    },
+    "tconstruct:grip": {
+      "durability": 1.7,
+      "accuracy": 2.0,
+      "melee_damage": 5.0
+    },
+    "tconstruct:maille": {},
+    "tconstruct:plating_helmet": {
+      "armor": 5.0,
+      "durability": 1024,
+      "knockback_resistance": 0.2,
+      "toughness": 4.0
+    },
+    "tconstruct:plating_chestplate": {
+      "armor": 10.0,
+      "durability": 1948,
+      "knockback_resistance": 0.2,
+      "toughness": 7.0
+    },
+    "tconstruct:plating_leggings": {
+      "armor": 7.0,
+      "durability": 1560,
+      "knockback_resistance": 0.2,
+      "toughness": 5.0
+    },
+    "tconstruct:plating_boots": {
+      "armor": 5.0,
+      "durability": 1135,
+      "knockback_resistance": 0.2,
+      "toughness": 5.0
+    },
+    "tconstruct:plating_shield": {
+      "durability": 1200,
+      "knockback_resistance": 0.4,
+      "toughness": 5
+    },
+    "tinkersinnovation:shield_plate": {
+      "durability": 1780,
+      "armor": 6.0,
+      "toughness": 4,
+      "knockback_resistance": 0.4,
+      "block_amount": 2.0,
+      "shield_amount": 15
+    },
+    "momotinker:fluid_chamber": {
+      "fluid_capacity": 72000
+    },
+    "momotinker:ionizer": {
+      "cooldown": 40,
+      "triggerrange": 35,
+      "damagemultiplier": 6.5
+    },
+    "tinkers_ingenuity:battery": {
+      "energy_capacity": 64000,
+      "durability": 0.2
+    },
+    "tinkers_ingenuity:laser_medium": {
+      "laser_range": 35,
+      "cooldown": 1.1
+    },
+    "tinkers_ingenuity:curio_extra": {},
+    "tinkers_ingenuity:curio_main": {
+      "movement_speed": 0.2,
+      "armor": 2.5,
+      "toughness": 2.5,
+      "attack": 1.5,
+      "arrow_damage": 1.5
+    }
+  }
+}

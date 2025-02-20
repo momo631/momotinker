@@ -40,5 +40,6 @@ public class MomotinkerModifiers {
     public static final StaticModifier<Test> test=MODIFIERS.register("test", Test::new);
     public static final StaticModifier<OverCrystalline> overcrystalline=MODIFIERS.register("overcrystalline", OverCrystalline::new);
     public static final StaticModifier<Crystallization> crystallization=MODIFIERS.register("crystallization", Crystallization::new);
+    public static final StaticModifier<FromBrilliance> frombrilliance=MODIFIERS.register("frombrilliance", FromBrilliance::new);
 
 }

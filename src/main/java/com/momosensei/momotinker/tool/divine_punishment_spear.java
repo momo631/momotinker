@@ -38,7 +38,7 @@ public class divine_punishment_spear extends ModifiableItem {
         Entity a = event.getEntity();
         Entity b = event.getSource().getEntity();
         if (b instanceof Player player&&a!=null&&!checkOffHand(player)){
-            event.setAmount(0.5F);
+            event.setAmount(0.5F*event.getAmount());
         }
     }
     public boolean canAttackBlock(BlockState blockState, Level level, BlockPos blockPos, Player player) {
@@ -53,7 +53,7 @@ public class divine_punishment_spear extends ModifiableItem {
 
     public boolean mineBlock(ItemStack stack, Level level, BlockState blockState, BlockPos blockPos, LivingEntity entity) {
         if ((double) blockState.getDestroySpeed(level, blockPos) != 0.0D) {
-            stack.hurtAndBreak(2, entity, (entity1) -> {
+            stack.hurtAndBreak(100, entity, (entity1) -> {
                 entity1.broadcastBreakEvent(EquipmentSlot.MAINHAND);
             });
         }

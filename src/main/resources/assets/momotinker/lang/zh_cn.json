@@ -31,6 +31,7 @@
   "fluid.momotinker.molten_jealous_notes": "熔融嫉妒",
   "fluid.momotinker.molten_interdimensional_crystal": "熔融苍星",
   "fluid.momotinker.molten_dimensional_prism": "熔融次元棱镜",
+  "fluid.momotinker.molten_dim_dark_gold": "熔融黯淡玄金",
 
   "item.momotinker.molten_laomo_bucket": "熔融墨桶",
   "item.momotinker.molten_arriving_at_the_other_shore_bucket": "熔融彼岸桶",
@@ -45,6 +46,7 @@
   "item.momotinker.molten_jealous_notes_bucket": "熔融嫉妒桶",
   "item.momotinker.molten_interdimensional_crystal_bucket": "熔融苍星桶",
   "item.momotinker.molten_dimensional_prism_bucket": "熔融次元棱镜桶",
+  "item.momotinker.molten_dim_dark_gold_bucket": "熔融黯淡玄金桶",
 
   "item.momotinker.laomo": "墨",
 
@@ -103,13 +105,16 @@
   "momotinker.item.tooltip.jealous_notes2": "§e按住“shift”查看获取§",
   "momotinker.item.tooltip.jealous_notes3": "§e在身上未装备任何护甲且受到装备任意护甲的生物的攻击时，会将主手上的书与笔转换为此物品§",
 
+  "item.momotinker.dim_dark_gold": "黯淡玄金锭",
+  "momotinker.item.tooltip.dim_dark_gold1": "来自远古的神秘金属，其身上的荣光与辉煌已被时间掩埋",
+
   "itemGroup.momotinker.tools": "墨工坊模组-工具",
 
   "item.momotinker.trigger_blade": "扳机长刀",
   "item.momotinker.trigger_blade.description": "拥有特殊攻击手段的近战武器，使用时副手不能有其它物品。右键可进行蓄力，蓄力完成后松开可发出斩击，造成范围爆发伤害。\n每点初速度增加斩击伤害20%。\n精密度会随机增加伤害，每点使能随机到的最大值提升50%",
 
   "item.momotinker.divine_punishment_spear": "天谴之矛",
-  "item.momotinker.divine_punishment_spear.description": "古代神兵系列\n超高攻速与攻击距离的单体型近战武器，使用时若副手有其他物品造成的伤害会减半，可以在古城奖励中获得。\n[古代神兵]:玩家无法自主锻造，可以在某些地点以战利品的形式获得固定材料的该工具，完成对应神兵任务时可以进化",
+  "item.momotinker.divine_punishment_spear.description": "超高攻速与攻击距离的单体型近战武器，使用时若副手有其他物品造成的伤害会减半，可以在古城奖励中获得。\n[古代神兵]:玩家无法自主锻造，可以在某些地点获得黯淡玄金部件的工具，完成对应神兵任务时可以进化",
 
   "momotinker.tool.tooltip.offhand_hastool": "错误:副手有物品",
 
@@ -142,6 +147,8 @@
   "material.momotinker.interdimensional_crystal.encyclopedia": "§d自天堂归来§",
   "material.momotinker.dimensional_prism": "次元棱镜",
   "material.momotinker.dimensional_prism.encyclopedia": "§b补阙，然后趋近完美§",
+  "material.momotinker.dim_dark_gold": "黯淡玄金",
+  "material.momotinker.dim_dark_gold.encyclopedia": "正如星辰陨落成流星划过天边，闪耀如群星的精妙造物也早已蒙上灰尘，但...",
 
   "modifier.momotinker.laomochuji": "牢墨出击",
   "modifier.momotinker.laomochuji.flavor": "词条标题",
@@ -241,5 +248,9 @@
 
   "modifier.momotinker.crystallization": "晶体进化",
   "modifier.momotinker.crystallization.flavor": "趋近完美",
-  "modifier.momotinker.crystallization.description": "主手持有且副手持有次元棱镜时按下技能按键可消耗1个副手物品进行强化，当前强化等级越高成功概率越低，强化等级高到一定程度时失败会受到惩罚，强化等级大于等于14时会有粉碎的风险！"
+  "modifier.momotinker.crystallization.description": "主手持有且副手持有次元棱镜时按下技能按键可消耗1个副手物品进行强化，当前强化等级越高成功概率越低，强化等级高到一定程度时失败会受到惩罚，强化等级大于等于14时会有粉碎的风险！",
+
+  "modifier.momotinker.frombrilliance": "古代神兵",
+  "modifier.momotinker.frombrilliance.flavor": "来自辉煌的时代",
+  "modifier.momotinker.frombrilliance.description": "达成某种条件可使武器进化"
 }

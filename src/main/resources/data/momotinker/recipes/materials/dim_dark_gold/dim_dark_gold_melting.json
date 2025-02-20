@@ -1,0 +1,12 @@
+{
+  "type": "tconstruct:melting",
+  "ingredient": {
+    "item": "momotinker:dim_dark_gold"
+  },
+  "result": {
+    "fluid": "momotinker:molten_dim_dark_gold",
+    "amount": 90
+  },
+  "temperature": 1500,
+  "time": 66
+}
