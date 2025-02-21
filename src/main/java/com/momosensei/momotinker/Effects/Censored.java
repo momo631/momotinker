@@ -14,7 +14,7 @@ public class Censored extends StaticEffect {
 
     @Override
     public void applyEffectTick(LivingEntity living, int amplifier) {
-        List<LivingEntity> list = living.level.getEntitiesOfClass(LivingEntity.class, living.getBoundingBox().inflate(10));
+        List<LivingEntity> list = living.level().getEntitiesOfClass(LivingEntity.class, living.getBoundingBox().inflate(10));
         for (LivingEntity entity : list) {
             if (entity != null) {
                 Channel.sendToClient(new CensoredCharge(5));
