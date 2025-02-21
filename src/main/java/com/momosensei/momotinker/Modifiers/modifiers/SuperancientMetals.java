@@ -60,7 +60,7 @@ public class SuperancientMetals extends momomodifier{
         if (tool.getPersistentData().getFloat(sanctification)==500){
             EvolutionTool((ToolStack) tool);
         }
-        if (tool.getPersistentData().getFloat(degenerate)==100){
+        if (tool.getPersistentData().getFloat(degenerate)==1){
             HiddenEvolutionTool((ToolStack) tool);
         }
     }
@@ -78,8 +78,8 @@ public class SuperancientMetals extends momomodifier{
     public void HiddenEvolutionTool(ToolStack tool){
         int length = tool.getMaterials().size();
         List<MaterialVariant> list=new ArrayList<>(List.of());
-        for (int i=0;i<length;i++){
-            list.add(MaterialVariant.of(MaterialVariantId.create(new MaterialId("momotinker:stained_blood_gold"),"default")));
+        for (int i = 0; i < length; i++) {
+            list.add(MaterialVariant.of(MaterialVariantId.create(new MaterialId("momotinker:stained_blood_gold"), "default")));
         }
         MaterialNBT nbt = new MaterialNBT(list);
         tool.setMaterials(nbt);

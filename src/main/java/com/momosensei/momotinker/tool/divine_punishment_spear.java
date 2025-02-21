@@ -99,7 +99,7 @@ public class divine_punishment_spear extends ModifiableItem {
 
     public boolean mineBlock(ItemStack stack, Level level, BlockState blockState, BlockPos blockPos, LivingEntity entity) {
         if ((double) blockState.getDestroySpeed(level, blockPos) != 0.0D) {
-            stack.hurtAndBreak(100, entity, (entity1) -> {
+            stack.hurtAndBreak(1, entity, (entity1) -> {
                 entity1.broadcastBreakEvent(EquipmentSlot.MAINHAND);
             });
         }
@@ -123,7 +123,7 @@ public class divine_punishment_spear extends ModifiableItem {
             builder.add(ToolStats.ATTACK_SPEED);
         }
         builder.addAllFreeSlots();
-        if (a.getFloat(sanctification)<500) {
+        if (a.getFloat(sanctification)<500&&a.getFloat(degenerate)<100) {
             builder.add(Component.translatable("古代神兵任务:击杀500只亡灵生物。当前击杀数为" + a.getFloat(sanctification)).withStyle(ChatFormatting.GOLD));
         }
         if (a.getFloat(sanctification)==500) {

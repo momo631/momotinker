@@ -14,8 +14,8 @@
     "interdimensional_crystal": "#C972FF",
     "dimensional_prism": "#98F6FF",
     "dim_dark_gold": "#574A1E",
-    "stained_blood_gold": "#574A1E",
-    "starry_mysterious_gold": "#574A1E"
+    "stained_blood_gold": "#AF3423",
+    "starry_mysterious_gold": "#FEFB00"
   },
   "modifier.momotinker": {
     "laomochuji": "#596d99",
@@ -44,6 +44,7 @@
     "overcrystalline": "#96B0FF",
     "crystallization": "#C497FF",
     "frombrilliance": "#534B2F",
-    "superancientmetals": "#FFD824"
+    "superancientmetals": "#FFD824",
+    "superancientmetalsreal": "#FBCB00"
   }
 }
