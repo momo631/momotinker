@@ -76,7 +76,7 @@ public class SuperancientMetalsReal extends momomodifier{
             }
             if (c.getFloat(degenerate)==100) {
                 a.invulnerableTime=0;
-                event.getEntity().hurt(MomoDamageSource.playerHurt(event.getEntity()).setBypassArmor(), event.getAmount()*0.5F);
+                event.getEntity().hurt(MomoDamageSource.mobHurt(event.getEntity()).setBypassArmor(), event.getAmount()*0.5F);
                 a.invulnerableTime=0;
             }
         }
