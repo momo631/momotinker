@@ -1,8 +1,7 @@
-package com.momosensei.momotinker.tool;
+package com.momosensei.momotinker.register;
 
 
 import com.momosensei.momotinker.Momotinker;
-import com.momosensei.momotinker.register.MomotinkerItem;
 import slimeknights.tconstruct.library.tools.definition.ToolDefinition;
 import slimeknights.tconstruct.library.tools.stat.FloatToolStat;
 import slimeknights.tconstruct.library.tools.stat.ToolStatId;
@@ -16,8 +15,7 @@ public class MomotinkerToolDefinitions {
     private static ToolStatId name(String name) {
         return new ToolStatId(Momotinker.MOD_ID, name);
     }
-    public static final ToolDefinition TROGGER_BLADE = ToolDefinition.create(MomotinkerItem.trigger_blade);
-    public static final ToolDefinition DIVINE_PUNISHMENT_SPEAR = ToolDefinition.create(MomotinkerItem.divine_punishment_spear);
+    public static final ToolDefinition DIVINE_PUNISHMENT_SPEAR = ToolDefinition.create(MomotinkerTools.divine_punishment_spear);
     public static final ToolDefinition TRIGGER_BLADE = ToolDefinition.create(MomotinkerTools.trigger_blade);
 
 }

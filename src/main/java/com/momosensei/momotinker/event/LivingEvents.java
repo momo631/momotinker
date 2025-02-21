@@ -2,6 +2,7 @@ package com.momosensei.momotinker.event;
 
 
 import com.momosensei.momotinker.Momotinker;
+import com.momosensei.momotinker.register.MomotinkerConfig;
 import com.momosensei.momotinker.register.MomotinkerItem;
 import net.minecraft.resources.ResourceLocation;
 import net.minecraft.server.level.ServerPlayer;
