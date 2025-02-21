@@ -6,6 +6,9 @@ import net.minecraft.server.level.ServerLevel;
 import net.minecraft.server.level.ServerPlayer;
 import net.minecraft.world.effect.MobEffectCategory;
 import net.minecraft.world.entity.LivingEntity;
+import net.minecraft.world.entity.Mob;
+
+import java.util.List;
 
 public class A extends StaticEffect {
     public A() {
@@ -27,7 +30,12 @@ public class A extends StaticEffect {
                 if (a > 10) {
                     serverLevel.sendParticles(ParticleTypes.REVERSE_PORTAL, player.getX(), player.getY(), player.getZ(), 15, x / 2, r / 2, z / 2, 2);
                 }
-                
+                List<Mob> list = player.level().getEntitiesOfClass(Mob.class, player.getBoundingBox().inflate(x, r, z));
+                for (Mob mob : list) {
+                    if (mob != null) {
+                        mob.hurt(mob.level().damageSources().explosion(player,mob), 4);
+                    }
+                }
             }
         }
     }
