@@ -68,17 +68,17 @@ public class SuperancientMetalsReal extends momomodifier{
         Entity b = event.getSource().getEntity();
         if (b instanceof Player player&&a!=null){
             ModDataNBT c = ToolStack.from(player.getItemBySlot(EquipmentSlot.MAINHAND)).getPersistentData();
-            if (c.getFloat(sanctification)==500&&a instanceof Mob mob&&!mob.getTags().contains("beconquered")) {
-                mob.addTag("beconquered");
+            if (c.getFloat(sanctification)==500&&a instanceof Mob mob&&!mob.getTags().contains("BeConquered")) {
+                mob.addTag("BeConquered");
+            }
+            if (a.getTags().contains("BeConquered")) {
+                event.setAmount(event.getAmount() * 1.5F);
             }
             if (c.getFloat(degenerate)==100) {
                 a.invulnerableTime=0;
-                event.getEntity().hurt(MomoDamageSource.playerHurt(event.getEntity()).setBypassArmor(), event.getAmount()*0.5F);
+                event.getEntity().hurt(MomoDamageSource.mobHurt(event.getEntity()).setBypassArmor(), event.getAmount()*0.5F);
                 a.invulnerableTime=0;
             }
-        }
-        if (a!=null&&a.getTags().contains("beconquered")) {
-            event.setAmount(event.getAmount() * 1.3F);
         }
     }
 
@@ -86,11 +86,11 @@ public class SuperancientMetalsReal extends momomodifier{
         ModDataNBT c = tool.getPersistentData();
         if (c.getFloat(degenerate)==100) {
             tooltip.add(net.minecraft.network.chat.Component.translatable("古代神兵认证:天谴之矛-染血").withStyle(ChatFormatting.DARK_RED));
-            tooltip.add(net.minecraft.network.chat.Component.translatable("此工具攻击造成格外50%无视护甲且不造成无敌帧的伤害").withStyle(ChatFormatting.DARK_RED));
+            tooltip.add(net.minecraft.network.chat.Component.translatable("此工具攻击造成格外无视护甲且不造成无敌帧的伤害").withStyle(ChatFormatting.DARK_RED));
         }
         if (c.getFloat(sanctification)==500) {
             tooltip.add(net.minecraft.network.chat.Component.translatable("古代神兵认证:天谴之矛-星辰").withStyle(ChatFormatting.YELLOW));
-            tooltip.add(net.minecraft.network.chat.Component.translatable("此武器攻击怪物会永久添加“被征服者”的标记，此怪物受到的任何伤害会修正为130%").withStyle(ChatFormatting.YELLOW));
+            tooltip.add(net.minecraft.network.chat.Component.translatable("此武器攻击怪物会永久添加“被征服者”的标记，此怪物受到的任何伤害会修正为150%").withStyle(ChatFormatting.YELLOW));
         }
     }
 }

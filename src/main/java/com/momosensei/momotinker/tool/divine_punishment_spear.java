@@ -1,10 +1,10 @@
 package com.momosensei.momotinker.tool;
 
 
-import com.c2h6s.etstlib.entity.specialDamageSources.LegacyDamageSource;
 import com.momosensei.momotinker.Momotinker;
+import com.momosensei.momotinker.entity.MomoDamageSource;
+import com.momosensei.momotinker.register.MomotinkerItem;
 import com.momosensei.momotinker.register.MomotinkerModifiers;
-import com.momosensei.momotinker.register.MomotinkerTools;
 import net.minecraft.ChatFormatting;
 import net.minecraft.core.BlockPos;
 import net.minecraft.network.chat.Component;
@@ -52,7 +52,7 @@ public class divine_punishment_spear extends ModifiableItem {
 
     private void onEntityDeath(LivingDeathEvent event) {
         if (event.getSource().getEntity() instanceof Player player&&event.getEntity()!=null) {
-            if (player.getItemBySlot(EquipmentSlot.MAINHAND).is(MomotinkerTools.divine_punishment_spear.get())&& ModifierUtil.getModifierLevel(player.getItemBySlot(EquipmentSlot.MAINHAND), MomotinkerModifiers.frombrilliance.getId())>0){
+            if (player.getItemBySlot(EquipmentSlot.MAINHAND).is(MomotinkerItem.divine_punishment_spear.get())&& ModifierUtil.getModifierLevel(player.getItemBySlot(EquipmentSlot.MAINHAND), MomotinkerModifiers.frombrilliance.getId())>0){
                 ModDataNBT a = ToolStack.from(player.getItemBySlot(EquipmentSlot.MAINHAND)).getPersistentData();
                 if (event.getEntity().getMobType() == MobType.UNDEAD&&a.getFloat(sanctification)<500&&a.getFloat(degenerate)<100){
                     a.putFloat(sanctification, a.getFloat(sanctification) + 1);
@@ -74,11 +74,11 @@ public class divine_punishment_spear extends ModifiableItem {
             }
             if (ModifierUtil.getModifierLevel(player.getItemBySlot(EquipmentSlot.MAINHAND), MomotinkerModifiers.frombrilliance.getId())>0) {
                 if (c.getFloat(sanctification) == 500) {
-                    a.hurt(LegacyDamageSource.indirectMagic(player).setBypassMagic(), event.getAmount() * 0.25F);
+                    a.hurt(MomoDamageSource.mobHurt(event.getEntity()).setBypassMagic(), event.getAmount() * 0.25F);
                 }
                 if (c.getFloat(degenerate) == 100) {
                     if (player.getItemBySlot(EquipmentSlot.MAINHAND).getDamageValue() == 0) {
-                        player.heal(event.getAmount() * 0.5F);
+                        player.heal(event.getAmount() * 0.2F);
                     }
                     if (player.getItemBySlot(EquipmentSlot.MAINHAND).getDamageValue() > 0 && player.getItemBySlot(EquipmentSlot.MAINHAND).getDamageValue() != 0) {
                         player.getItemBySlot(EquipmentSlot.MAINHAND).setDamageValue((int) (player.getItemBySlot(EquipmentSlot.MAINHAND).getDamageValue() - (event.getAmount() * 0.01F)));
