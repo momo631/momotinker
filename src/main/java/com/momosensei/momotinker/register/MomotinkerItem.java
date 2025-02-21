@@ -1,45 +1,47 @@
 package com.momosensei.momotinker.register;
 
 import com.momosensei.momotinker.Items.*;
+import com.momosensei.momotinker.tool.divine_punishment_spear;
+import com.momosensei.momotinker.tool.trigger_blade;
 import net.minecraft.world.item.BlockItem;
 import net.minecraft.world.item.Item;
 import net.minecraftforge.eventbus.api.IEventBus;
 import net.minecraftforge.registries.DeferredRegister;
 import net.minecraftforge.registries.ForgeRegistries;
 import net.minecraftforge.registries.RegistryObject;
+import slimeknights.tconstruct.library.tools.item.ModifiableItem;
 
 import static com.momosensei.momotinker.Momotinker.MOD_ID;
+import static com.momosensei.momotinker.register.MomotinkerMod.UNSTACKABLE_PROPS;
 
 
 public class MomotinkerItem {
     public MomotinkerItem() {
     }
-    private static final Item.Properties TOOL =(new Item.Properties().tab(MomotinkerTab.TOOLS).stacksTo(1));
     public static final DeferredRegister<Item> ITEMS = DeferredRegister.create(ForgeRegistries.ITEMS, MOD_ID);
     public static void register(IEventBus eventBus) {
         ITEMS.register(eventBus);
     }
 
     //物品锭什么的注册照着复制就行，如果有单独类改new Item的Item字段为你的类名，tab为创造模式显示栏，在哪个栏位显示
-    public static final RegistryObject<Item> laomo = ITEMS.register("laomo", () -> new Item(new Item.Properties().tab(MomotinkerTab.MATERIALS)));
-    public static final RegistryObject<Item> interdimensional_crystal = ITEMS.register("interdimensional_crystal", () -> new interdimensional_crystal(new Item.Properties().tab(MomotinkerTab.MATERIALS)));
-    public static final RegistryObject<Item> arriving_at_the_other_shore = ITEMS.register("arriving_at_the_other_shore", () -> new arriving_at_the_other_shore(new Item.Properties().tab(MomotinkerTab.MATERIALS)));
-    public static final RegistryObject<Item> spirit_visage = ITEMS.register("spirit_visage", () -> new spirit_visage(new Item.Properties().tab(MomotinkerTab.MATERIALS)));
-    public static final RegistryObject<Item> heartsteel = ITEMS.register("heartsteel", () -> new heartsteel(new Item.Properties().tab(MomotinkerTab.MATERIALS)));
-    public static final RegistryObject<Item> gluttony_core = ITEMS.register("gluttony_core", () -> new gluttony_core(new Item.Properties().tab(MomotinkerTab.MATERIALS)));
-    public static final RegistryObject<Item> greedy_contract = ITEMS.register("greedy_contract", () -> new greedy_contract(new Item.Properties().tab(MomotinkerTab.MATERIALS)));
-    public static final RegistryObject<Item> lust_mirror = ITEMS.register("lust_mirror", () -> new lust_mirror(new Item.Properties().tab(MomotinkerTab.MATERIALS)));
-    public static final RegistryObject<Item> arrogance_proof = ITEMS.register("arrogance_proof", () -> new arrogance_proof(new Item.Properties().tab(MomotinkerTab.MATERIALS)));
-    public static final RegistryObject<Item> rage_stone_statue = ITEMS.register("rage_stone_statue", () -> new rage_stone_statue(new Item.Properties().tab(MomotinkerTab.MATERIALS)));
-    public static final RegistryObject<Item> lazy_grail = ITEMS.register("lazy_grail", () -> new lazy_grail(new Item.Properties().tab(MomotinkerTab.MATERIALS)));
-    public static final RegistryObject<Item> jealous_notes = ITEMS.register("jealous_notes", () -> new jealous_notes(new Item.Properties().tab(MomotinkerTab.MATERIALS)));
-    public static final RegistryObject<ModifiableItem> trigger_blade = ITEMS.register("trigger_blade", () -> new trigger_blade(TOOL, MomoToolDefinitions.TROGGER_BLADE));
-    public static final RegistryObject<ModifiableItem> divine_punishment_spear = ITEMS.register("divine_punishment_spear", () -> new divine_punishment_spear(TOOL, MomoToolDefinitions.DIVINE_PUNISHMENT_SPEAR));
-    public static final RegistryObject<Item> dim_dark_gold = ITEMS.register("dim_dark_gold", () -> new dim_dark_gold(new Item.Properties().tab(MomotinkerTab.MATERIALS)));
-    public static final RegistryObject<Item> stained_blood_gold = ITEMS.register("stained_blood_gold", () -> new stained_blood_gold(new Item.Properties().tab(MomotinkerTab.MATERIALS)));
-    public static final RegistryObject<Item> starry_mysterious_gold = ITEMS.register("starry_mysterious_gold", () -> new starry_mysterious_gold(new Item.Properties().tab(MomotinkerTab.MATERIALS)));
-
-    public static final RegistryObject<Item> trigger_slash_a = ITEMS.register("trigger_slash_a", ()->new Item(new Item.Properties()));
+    public static final RegistryObject<Item> laomo = ITEMS.register("laomo", () -> new Item(MomotinkerTables.material()));
+    public static final RegistryObject<Item> interdimensional_crystal = ITEMS.register("interdimensional_crystal", () -> new interdimensional_crystal(MomotinkerTables.material()));
+    public static final RegistryObject<Item> arriving_at_the_other_shore = ITEMS.register("arriving_at_the_other_shore", () -> new arriving_at_the_other_shore(MomotinkerTables.material()));
+    public static final RegistryObject<Item> spirit_visage = ITEMS.register("spirit_visage", () -> new spirit_visage(MomotinkerTables.material()));
+    public static final RegistryObject<Item> heartsteel = ITEMS.register("heartsteel", () -> new heartsteel(MomotinkerTables.material()));
+    public static final RegistryObject<Item> gluttony_core = ITEMS.register("gluttony_core", () -> new gluttony_core(MomotinkerTables.material()));
+    public static final RegistryObject<Item> greedy_contract = ITEMS.register("greedy_contract", () -> new greedy_contract(MomotinkerTables.material()));
+    public static final RegistryObject<Item> lust_mirror = ITEMS.register("lust_mirror", () -> new lust_mirror(MomotinkerTables.material()));
+    public static final RegistryObject<Item> arrogance_proof = ITEMS.register("arrogance_proof", () -> new arrogance_proof(MomotinkerTables.material()));
+    public static final RegistryObject<Item> rage_stone_statue = ITEMS.register("rage_stone_statue", () -> new rage_stone_statue(MomotinkerTables.material()));
+    public static final RegistryObject<Item> lazy_grail = ITEMS.register("lazy_grail", () -> new lazy_grail(MomotinkerTables.material()));
+    public static final RegistryObject<Item> jealous_notes = ITEMS.register("jealous_notes", () -> new jealous_notes(MomotinkerTables.material()));
+    public static final RegistryObject<ModifiableItem> trigger_blade = ITEMS.register("trigger_blade", () -> new trigger_blade(UNSTACKABLE_PROPS, MomotinkerToolDefinitions.TRIGGER_BLADE));
+    public static final RegistryObject<Item> trigger_slash_a = ITEMS.register("trigger_slash", ()->new Item(new Item.Properties()));
+    public static final RegistryObject<ModifiableItem> divine_punishment_spear = ITEMS.register("divine_punishment_spear", () -> new divine_punishment_spear(UNSTACKABLE_PROPS,MomotinkerToolDefinitions.DIVINE_PUNISHMENT_SPEAR));
+    public static final RegistryObject<Item> dim_dark_gold = ITEMS.register("dim_dark_gold", () -> new dim_dark_gold(MomotinkerTables.material()));
+    public static final RegistryObject<Item> stained_blood_gold = ITEMS.register("stained_blood_gold", () -> new stained_blood_gold(MomotinkerTables.material()));
+    public static final RegistryObject<Item> starry_mysterious_gold = ITEMS.register("starry_mysterious_gold", () -> new starry_mysterious_gold(MomotinkerTables.material()));
 
     //方块类要这样,略有变动
 

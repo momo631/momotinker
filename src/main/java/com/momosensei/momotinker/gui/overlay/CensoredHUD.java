@@ -5,7 +5,6 @@ import com.mojang.blaze3d.systems.RenderSystem;
 import com.momosensei.momotinker.Momotinker;
 import com.momosensei.momotinker.mobs.Censoreddatatime;
 import net.minecraft.client.Minecraft;
-import net.minecraft.client.gui.GuiComponent;
 import net.minecraft.client.renderer.GameRenderer;
 import net.minecraft.resources.ResourceLocation;
 import net.minecraft.util.Mth;
@@ -46,6 +45,6 @@ public class CensoredHUD {
         RenderSystem.setShader(GameRenderer::getPositionShader);
         RenderSystem.setShaderColor(1, 1, 1, 1);
         RenderSystem.setShaderTexture(0, Texture.get(amount));
-        GuiComponent.blit(poseStack, 0, 0, 0, 0, width, height, width, height);
+        poseStack.blit(Texture.get(amount), 0, 0, 0, 0, width, height, width, height);
     });
 }

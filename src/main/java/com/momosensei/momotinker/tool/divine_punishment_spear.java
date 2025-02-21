@@ -2,13 +2,13 @@ package com.momosensei.momotinker.tool;
 
 
 import com.momosensei.momotinker.Momotinker;
+import com.momosensei.momotinker.entity.MomoDamageSource;
 import com.momosensei.momotinker.register.MomotinkerItem;
 import com.momosensei.momotinker.register.MomotinkerModifiers;
 import net.minecraft.ChatFormatting;
 import net.minecraft.core.BlockPos;
 import net.minecraft.network.chat.Component;
 import net.minecraft.resources.ResourceLocation;
-import net.minecraft.world.damagesource.DamageSource;
 import net.minecraft.world.entity.Entity;
 import net.minecraft.world.entity.EquipmentSlot;
 import net.minecraft.world.entity.LivingEntity;
@@ -74,7 +74,7 @@ public class divine_punishment_spear extends ModifiableItem {
             }
             if (ModifierUtil.getModifierLevel(player.getItemBySlot(EquipmentSlot.MAINHAND), MomotinkerModifiers.frombrilliance.getId())>0) {
                 if (c.getFloat(sanctification) == 500) {
-                    a.hurt(DamageSource.MAGIC.bypassMagic(), event.getAmount() * 0.25F);
+                    a.hurt(MomoDamageSource.mobHurt(event.getEntity()).setBypassMagic(), event.getAmount() * 0.25F);
                 }
                 if (c.getFloat(degenerate) == 100) {
                     if (player.getItemBySlot(EquipmentSlot.MAINHAND).getDamageValue() == 0) {
