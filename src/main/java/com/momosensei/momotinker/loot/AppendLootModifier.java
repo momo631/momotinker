@@ -28,7 +28,7 @@ public class AppendLootModifier extends LootModifier {
     @Override
     protected @NotNull ObjectArrayList<ItemStack> doApply(ObjectArrayList<ItemStack> generatedLoot, LootContext context) {
         ResourceLocation path = new ResourceLocation(resourceLocationKey);
-        var lootTable = context.getLevel().getServer().getLootTables().get(path);
+        var lootTable = context.getLevel().getServer().getLootData().getLootTable(path);
         ObjectArrayList<ItemStack> objectarraylist = new ObjectArrayList<>();
         lootTable.getRandomItems(context, objectarraylist::add);
 
