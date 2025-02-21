@@ -1,6 +1,8 @@
 package com.momosensei.momotinker.Modifiers.modifiers;
 
 
+import com.momosensei.momotinker.Momotinker;
+import net.minecraft.resources.ResourceLocation;
 import net.minecraft.world.entity.LivingEntity;
 import net.minecraft.world.item.ItemStack;
 import net.minecraft.world.level.Level;
@@ -16,15 +18,16 @@ import slimeknights.tconstruct.library.tools.nbt.ToolStack;
 import slimeknights.tconstruct.library.tools.stat.ModifierStatsBuilder;
 import slimeknights.tconstruct.library.tools.stat.ToolStats;
 
-import java.util.ArrayList;
-import java.util.List;
-
 import static com.momosensei.momotinker.tool.divine_punishment_spear.degenerate;
 import static com.momosensei.momotinker.tool.divine_punishment_spear.sanctification;
 
 public class SuperancientMetals extends momomodifier{
     public SuperancientMetals() {
     }
+    public static final ResourceLocation authentication = Momotinker.getResource("authentication");
+    public static final MaterialVariantId id_dim_dark_gold = MaterialVariantId.create(new MaterialId("momotinker","dim_dark_gold"),"default");
+    public static final MaterialVariantId id_stained_blood_gold = MaterialVariantId.create(new MaterialId("momotinker","stained_blood_gold"),"default");
+    public static final MaterialVariantId id_starry_mysterious_gold = MaterialVariantId.create(new MaterialId("momotinker","starry_mysterious_gold"),"default");
 
     @Override
     public boolean isNoLevels() {
@@ -34,19 +37,19 @@ public class SuperancientMetals extends momomodifier{
     @Override
     public void addToolStats(IToolContext context, ModifierEntry modifier, ModifierStatsBuilder builder) {
         if (modifier.getLevel() > 0) {
-            ToolStats.DURABILITY.multiply(builder, 1.3);
-            ToolStats.ATTACK_SPEED.multiply(builder, 1.3);
-            ToolStats.ATTACK_DAMAGE.multiply(builder, 1.3);
-            ToolStats.ACCURACY.multiply(builder, 1.3);
-            ToolStats.DRAW_SPEED.multiply(builder, 1.3);
-            ToolStats.VELOCITY.multiply(builder, 1.3);
-            ToolStats.MINING_SPEED.multiply(builder, 1.3);
-            ToolStats.ARMOR.multiply(builder, 1.3);
-            ToolStats.ARMOR_TOUGHNESS.multiply(builder, 1.3);
-            ToolStats.PROJECTILE_DAMAGE.multiply(builder, 1.3);
-            ToolStats.KNOCKBACK_RESISTANCE.multiply(builder, 1.3);
-            ToolStats.BLOCK_AMOUNT.multiply(builder, 1.3);
-            ToolStats.BLOCK_ANGLE.multiply(builder, 1.3);
+            ToolStats.DURABILITY.multiply(builder, 1.2);
+            ToolStats.ATTACK_SPEED.multiply(builder, 1.2);
+            ToolStats.ATTACK_DAMAGE.multiply(builder, 1.2);
+            ToolStats.ACCURACY.multiply(builder, 1.2);
+            ToolStats.DRAW_SPEED.multiply(builder, 1.2);
+            ToolStats.VELOCITY.multiply(builder, 1.2);
+            ToolStats.MINING_SPEED.multiply(builder, 1.2);
+            ToolStats.ARMOR.multiply(builder, 1.2);
+            ToolStats.ARMOR_TOUGHNESS.multiply(builder, 1.2);
+            ToolStats.PROJECTILE_DAMAGE.multiply(builder, 1.2);
+            ToolStats.KNOCKBACK_RESISTANCE.multiply(builder, 1.2);
+            ToolStats.BLOCK_AMOUNT.multiply(builder, 1.2);
+            ToolStats.BLOCK_ANGLE.multiply(builder, 1.2);
         }
     }
     @Override
@@ -56,34 +59,51 @@ public class SuperancientMetals extends momomodifier{
         }
         return amount;
     }
+
     public void modifierOnInventoryTick(IToolStackView tool, ModifierEntry modifier, Level level, LivingEntity livingEntity, int itemSlot, boolean isSelected, boolean isCorrectSlot, ItemStack itemStack) {
+        if (tool.getPersistentData().getFloat(degenerate)==100){
+            setHeatLevel(tool,1);
+        }
         if (tool.getPersistentData().getFloat(sanctification)==500){
-            EvolutionTool((ToolStack) tool);
-        }
-        if (tool.getPersistentData().getFloat(degenerate)==1){
-            HiddenEvolutionTool((ToolStack) tool);
+            setHeatLevel(tool,2);
         }
     }
-    public void EvolutionTool(ToolStack tool){
-        int length = tool.getMaterials().size();
-        List<MaterialVariant> list=new ArrayList<>(List.of());
-        for (int i=0;i<length;i++){
-            list.add(MaterialVariant.of(MaterialVariantId.create(new MaterialId("momotinker:starry_mysterious_gold"),"default")));
-        }
-        MaterialNBT nbt = new MaterialNBT(list);
-        tool.setMaterials(nbt);
-        tool.setDamage(0);
-        tool.rebuildStats();
+    public static int getPersistentLevel(IToolStackView tool){
+        int a = tool.getPersistentData().getInt(authentication);
+        return getLevel(a);
     }
-    public void HiddenEvolutionTool(ToolStack tool){
-        int length = tool.getMaterials().size();
-        List<MaterialVariant> list=new ArrayList<>(List.of());
-        for (int i = 0; i < length; i++) {
-            list.add(MaterialVariant.of(MaterialVariantId.create(new MaterialId("momotinker:stained_blood_gold"), "default")));
+    public static int getLevel(int a){
+        if (a==1){
+            return 1;
         }
-        MaterialNBT nbt = new MaterialNBT(list);
-        tool.setMaterials(nbt);
-        tool.setDamage(0);
-        tool.rebuildStats();
+        else if (a==2){
+            return 2;
+        }
+        else return 0;
+    }
+    public static void setHeat(IToolStackView tool,int heat){
+        tool.getPersistentData().putInt(authentication, heat);
+        EvolutionTool((ToolStack) tool);
+    }
+    public static void setHeatLevel(IToolStackView tool,int heatLevel){
+        switch (heatLevel){
+            default -> setHeat(tool,0);
+            case 1 -> setHeat(tool,1);
+            case 2 -> setHeat(tool,2);
+        }
+    }
+    public static void EvolutionTool(ToolStack tool) {
+        MaterialNBT materials = tool.getMaterials();
+        int Level =Math.min(2,getPersistentLevel(tool));
+        for (int i = 0; i < materials.size(); i++) {
+            MaterialVariant variant = materials.get(i);
+            if (variant.getVariant().getId().getPath().equals("dim_dark_gold") && variant.getVariant().getId().getNamespace().equals("momotinker")) {
+                switch (Level) {
+                    default -> tool.replaceMaterial(i, id_dim_dark_gold);
+                    case 1 -> tool.replaceMaterial(i, id_stained_blood_gold);
+                    case 2 -> tool.replaceMaterial(i, id_starry_mysterious_gold);
+                }
+            }
+        }
     }
 }

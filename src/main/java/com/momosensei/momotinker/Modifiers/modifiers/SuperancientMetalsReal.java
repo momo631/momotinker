@@ -1,14 +1,18 @@
 package com.momosensei.momotinker.Modifiers.modifiers;
 
 
+import net.minecraft.ChatFormatting;
+import net.minecraft.network.chat.Component;
 import net.minecraft.world.entity.Entity;
 import net.minecraft.world.entity.EquipmentSlot;
 import net.minecraft.world.entity.LivingEntity;
 import net.minecraft.world.entity.Mob;
 import net.minecraft.world.entity.player.Player;
+import net.minecraft.world.item.TooltipFlag;
 import net.minecraftforge.common.MinecraftForge;
 import net.minecraftforge.event.entity.living.LivingHurtEvent;
 import org.jetbrains.annotations.Nullable;
+import slimeknights.mantle.client.TooltipKey;
 import slimeknights.tconstruct.library.modifiers.ModifierEntry;
 import slimeknights.tconstruct.library.tools.nbt.IToolContext;
 import slimeknights.tconstruct.library.tools.nbt.IToolStackView;
@@ -16,6 +20,8 @@ import slimeknights.tconstruct.library.tools.nbt.ModDataNBT;
 import slimeknights.tconstruct.library.tools.nbt.ToolStack;
 import slimeknights.tconstruct.library.tools.stat.ModifierStatsBuilder;
 import slimeknights.tconstruct.library.tools.stat.ToolStats;
+
+import java.util.List;
 
 import static com.momosensei.momotinker.tool.divine_punishment_spear.degenerate;
 import static com.momosensei.momotinker.tool.divine_punishment_spear.sanctification;
@@ -72,6 +78,18 @@ public class SuperancientMetalsReal extends momomodifier{
                 event.getSource().bypassArmor();
                 a.invulnerableTime=0;
             }
+        }
+    }
+
+    public void addTooltip(IToolStackView tool, ModifierEntry modifierEntry, @org.jetbrains.annotations.Nullable Player player, List<Component> tooltip, TooltipKey tooltipKey, TooltipFlag tooltipFlag) {
+        ModDataNBT c = tool.getPersistentData();
+        if (c.getFloat(degenerate)==100) {
+            tooltip.add(net.minecraft.network.chat.Component.translatable("古代神兵认证:天谴之矛-染血").withStyle(ChatFormatting.DARK_RED));
+            tooltip.add(net.minecraft.network.chat.Component.translatable("此工具攻击将无视护甲且不造成无敌帧").withStyle(ChatFormatting.DARK_RED));
+        }
+        if (c.getFloat(sanctification)==500) {
+            tooltip.add(net.minecraft.network.chat.Component.translatable("古代神兵认证:天谴之矛-星辰").withStyle(ChatFormatting.YELLOW));
+            tooltip.add(net.minecraft.network.chat.Component.translatable("此武器攻击怪物会永久添加“被征服者”的标记，此怪物受到的任何伤害会修正为150%").withStyle(ChatFormatting.YELLOW));
         }
     }
 }
