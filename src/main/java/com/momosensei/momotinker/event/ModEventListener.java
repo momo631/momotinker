@@ -2,8 +2,8 @@ package com.momosensei.momotinker.event;
 
 import com.momosensei.momotinker.capability.healpercentage.EnderProvider;
 import com.momosensei.momotinker.gui.overlay.EnderOverlay;
+import com.momosensei.momotinker.gui.overlay.TriggerBladeHUD;
 import com.momosensei.momotinker.key.key;
-import com.momosensei.momotinker.mobs.TriggerBladeHUD;
 import com.momosensei.momotinker.network.Channel;
 import com.momosensei.momotinker.register.MomotinkerEntities;
 import com.momosensei.momotinker.renderer.triggerSlashRenderer;

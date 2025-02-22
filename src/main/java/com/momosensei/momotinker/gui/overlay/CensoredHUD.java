@@ -40,7 +40,7 @@ public class CensoredHUD {
         if (b>0&&player.tickCount%20==0){
             Censoreddatatime.setCensoreddata(b-1);
         }
-        int i = RANDOM.nextInt(9);
+        int i = RANDOM.nextInt(8);
         int amount = Mth.clamp(i, 0, 8);
         RenderSystem.setShader(GameRenderer::getPositionShader);
         RenderSystem.setShaderColor(1, 1, 1, 1);
