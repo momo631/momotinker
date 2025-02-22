@@ -1,9 +1,6 @@
 package com.momosensei.momotinker.network;
 
-import com.momosensei.momotinker.network.packet.CensoredCharge;
-import com.momosensei.momotinker.network.packet.KeyInputPKT;
-import com.momosensei.momotinker.network.packet.TriggerBladeCharge;
-import com.momosensei.momotinker.network.packet.triggerSlashPacket;
+import com.momosensei.momotinker.network.packet.*;
 import net.minecraft.network.FriendlyByteBuf;
 import net.minecraft.resources.ResourceLocation;
 import net.minecraft.server.level.ServerPlayer;
@@ -39,6 +36,7 @@ public class Channel {
     public static void init() {
         INSTANCE.registerMessage(id++, triggerSlashPacket.class, triggerSlashPacket::encode, triggerSlashPacket::decode, triggerSlashPacket::handle);
         INSTANCE.messageBuilder(KeyInputPKT.class,id++, NetworkDirection.PLAY_TO_SERVER).decoder(KeyInputPKT::decode).encoder(KeyInputPKT::encode).consumerMainThread(KeyInputPKT::handlePacket).add();
+        INSTANCE.messageBuilder(KeyAInputPKT.class,id++, NetworkDirection.PLAY_TO_SERVER).decoder(KeyAInputPKT::decode).encoder(KeyAInputPKT::encode).consumerMainThread(KeyAInputPKT::handlePacket).add();
         INSTANCE.messageBuilder(TriggerBladeCharge.class,id++, NetworkDirection.PLAY_TO_CLIENT).decoder(TriggerBladeCharge::new).encoder(TriggerBladeCharge::encode).consumerMainThread(TriggerBladeCharge::handle).add();
         INSTANCE.messageBuilder(CensoredCharge.class,id++, NetworkDirection.PLAY_TO_CLIENT).decoder(CensoredCharge::new).encoder(CensoredCharge::toByte).consumerMainThread(CensoredCharge::handle).add();
 

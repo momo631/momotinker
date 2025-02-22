@@ -275,5 +275,9 @@
 
   "modifier.momotinker.superancientmetalsreal": "超古代金属-解放",
   "modifier.momotinker.superancientmetalsreal.flavor": "来自古代的奇特金属，因古代神兵的苏醒而展现独特姿态",
-  "modifier.momotinker.superancientmetalsreal.description": "工具的耐久消耗降低90%，大部分属性增加50%，会根据古代神兵的觉醒结果提供独特效果"
+  "modifier.momotinker.superancientmetalsreal.description": "工具的耐久消耗降低90%，大部分属性增加50%，会根据古代神兵的觉醒结果提供独特效果",
+
+  "modifier.momotinker.crimsonqueen": "绯红女皇",
+  "modifier.momotinker.crimsonqueen.flavor": "扳机长刀专属强化:机动剑",
+  "modifier.momotinker.crimsonqueen.description": "失去原本的斩击，取而代之的是在右键后一定时机松开会给武器充能20秒，存在充能时攻击会消耗层数使本次攻击修正为150%并无视护甲，最多可存在3层，时间耗尽层数减一，切换武器时层数清零"
 }

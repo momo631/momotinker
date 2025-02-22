@@ -2,6 +2,7 @@ package com.momosensei.momotinker.event;
 
 import com.momosensei.momotinker.mobs.SetupanimationProcedure;
 import com.momosensei.momotinker.network.Channel;
+import com.momosensei.momotinker.register.MomotinkerModifiers;
 import net.minecraft.network.Connection;
 import net.minecraft.network.chat.Component;
 import net.minecraft.server.level.ServerLevel;
@@ -14,6 +15,7 @@ import net.minecraftforge.eventbus.api.Event;
 import net.minecraftforge.eventbus.api.SubscribeEvent;
 import net.minecraftforge.fml.common.Mod;
 import net.minecraftforge.network.NetworkDirection;
+import slimeknights.tconstruct.library.tools.helper.ModifierUtil;
 
 import javax.annotation.Nullable;
 import java.util.Iterator;
@@ -26,7 +28,10 @@ public class UseitemProcedure {
 	@SubscribeEvent
 	public static void onUseItemStart(LivingEntityUseItemEvent.Start event) {
 		if (event != null && event.getEntity() != null&& event.getEntity().getItemBySlot(EquipmentSlot.MAINHAND).is(trigger_blade.get())) {
-			execute(event, event.getEntity().level, event.getEntity());
+			int a = ModifierUtil.getModifierLevel(event.getEntity().getMainHandItem(), MomotinkerModifiers.crimsonqueen.getId());
+			if (a==0) {
+				execute(event, event.getEntity().level, event.getEntity());
+			}
 		}
 	}
 

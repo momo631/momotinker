@@ -1,0 +1,12 @@
+{
+  "type": "tconstruct:modifier_salvage",
+  "tools":[
+    {
+      "tag": "momotinker:trigger_blade"
+    }
+  ],
+  "slots": {
+    "upgrades": 1
+  },
+  "modifier": "momotinker:crimsonqueen"
+}

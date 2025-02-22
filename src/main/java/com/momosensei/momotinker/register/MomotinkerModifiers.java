@@ -43,5 +43,6 @@ public class MomotinkerModifiers {
     public static final StaticModifier<FromBrilliance> frombrilliance=MODIFIERS.register("frombrilliance", FromBrilliance::new);
     public static final StaticModifier<SuperancientMetals> superancientmetals=MODIFIERS.register("superancientmetals", SuperancientMetals::new);
     public static final StaticModifier<SuperancientMetalsReal> superancientmetalsreal=MODIFIERS.register("superancientmetalsreal", SuperancientMetalsReal::new);
+    public static final StaticModifier<CrimsonQueen> crimsonqueen=MODIFIERS.register("crimsonqueen", CrimsonQueen::new);
 
 }

@@ -1,0 +1,22 @@
+{
+  "type": "tconstruct:modifier",
+  "allow_crystal": true,
+  "inputs": [
+    {
+      "item": "minecraft:cod"
+    },
+    {
+      "item": "minecraft:kelp"
+    }
+  ],
+  "level": {
+    "max": 1
+  },
+  "result": "momotinker:crimsonqueen",
+  "slots": {
+    "upgrades": 1
+  },
+  "tools": {
+    "item": "momotinker:trigger_blade"
+  }
+}

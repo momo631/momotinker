@@ -43,6 +43,7 @@ public class ModEventListener {
     @SubscribeEvent
     public static void onKeyRegister(RegisterKeyMappingsEvent event) {
         event.register(key.KeyBinding.KEY);
+        event.register(key.KeyBinding.KEYA);
         Channel.init();
     }
 }

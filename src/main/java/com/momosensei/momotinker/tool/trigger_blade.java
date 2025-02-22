@@ -7,6 +7,7 @@ import com.momosensei.momotinker.network.packet.TriggerBladeCharge;
 import com.momosensei.momotinker.network.packet.triggerSlashPacket;
 import com.momosensei.momotinker.register.MomotinkerEntities;
 import com.momosensei.momotinker.register.MomotinkerItem;
+import com.momosensei.momotinker.register.MomotinkerModifiers;
 import net.minecraft.ChatFormatting;
 import net.minecraft.core.BlockPos;
 import net.minecraft.network.chat.Component;
@@ -30,10 +31,12 @@ import slimeknights.tconstruct.library.modifiers.ModifierEntry;
 import slimeknights.tconstruct.library.modifiers.ModifierHooks;
 import slimeknights.tconstruct.library.modifiers.hook.display.TooltipModifierHook;
 import slimeknights.tconstruct.library.tools.definition.ToolDefinition;
+import slimeknights.tconstruct.library.tools.helper.ModifierUtil;
 import slimeknights.tconstruct.library.tools.helper.ToolDamageUtil;
 import slimeknights.tconstruct.library.tools.helper.TooltipBuilder;
 import slimeknights.tconstruct.library.tools.item.ModifiableItem;
 import slimeknights.tconstruct.library.tools.nbt.IToolStackView;
+import slimeknights.tconstruct.library.tools.nbt.ModDataNBT;
 import slimeknights.tconstruct.library.tools.nbt.ToolStack;
 import slimeknights.tconstruct.library.tools.stat.ToolStats;
 import slimeknights.tconstruct.tools.modifiers.ability.interaction.BlockingModifier;
@@ -41,6 +44,8 @@ import slimeknights.tconstruct.tools.modifiers.ability.interaction.BlockingModif
 import java.util.Iterator;
 import java.util.List;
 
+import static com.momosensei.momotinker.Modifiers.modifiers.CrimsonQueen.crimsonlayers;
+import static com.momosensei.momotinker.Modifiers.modifiers.CrimsonQueen.crimsontime;
 import static slimeknights.tconstruct.TConstruct.RANDOM;
 import static slimeknights.tconstruct.library.tools.stat.ToolStats.ACCURACY;
 
@@ -63,19 +68,37 @@ public class trigger_blade extends ModifiableItem {
     @Override
     public void onUseTick(Level level, LivingEntity living, ItemStack stack, int chargeRemaining) {
         if ( living instanceof ServerPlayer player) {
-            float perc = Mth.clamp((float) (this.getUseDuration(stack) - chargeRemaining) / 30,0,1);
-            Channel.sendToPlayer(new TriggerBladeCharge(perc),player);
+            int a = ModifierUtil.getModifierLevel(player.getMainHandItem(), MomotinkerModifiers.crimsonqueen.getId());
+            if (a==0) {
+                float perc = Mth.clamp((float) (this.getUseDuration(stack) - chargeRemaining) / 30, 0, 1);
+                Channel.sendToPlayer(new TriggerBladeCharge(perc), player);
+            }
         }
     }
 
     @Override
     public void releaseUsing(ItemStack stack, Level level, LivingEntity livingEntity, int duration) {
         if (livingEntity instanceof ServerPlayer player) {
+            ModDataNBT dataNBT = ToolStack.from(stack).getPersistentData();
             int i = this.getUseDuration(stack) - duration;
-            if (i >= 30) {
-                Channel.INSTANCE.sendToServer(new triggerSlashPacket(player.getId()));
+            int a = ModifierUtil.getModifierLevel(player.getMainHandItem(), MomotinkerModifiers.crimsonqueen.getId());
+            if (a==0) {
+                if (i >= 30) {
+                    Channel.INSTANCE.sendToServer(new triggerSlashPacket(player.getId()));
+                }
+                Channel.sendToPlayer(new TriggerBladeCharge(0),player);
             }
-            Channel.sendToPlayer(new TriggerBladeCharge(0),player);
+            if (a>0) {
+                if ( i >= 0 && i <= 15) {
+                    if (dataNBT.getFloat(crimsonlayers)<3){
+                        dataNBT.putFloat(crimsonlayers, dataNBT.getFloat(crimsonlayers) + 1);
+                        dataNBT.putFloat(crimsontime, 20);
+                    }
+                    if (dataNBT.getFloat(crimsonlayers) == 3) {
+                        dataNBT.putFloat(crimsontime, 20);
+                    }
+                }
+            }
         }
     }
 
@@ -137,11 +160,10 @@ public class trigger_blade extends ModifiableItem {
         ToolDamageUtil.damageAnimated(tool,1,player, InteractionHand.MAIN_HAND);
     }
     public static ItemStack getSlash(int index){
-        return new ItemStack(MomotinkerItem.trigger_slash_a.get());
+       return new ItemStack(MomotinkerItem.trigger_slash_a.get());
     }
-
-    public static EntityType<TriggerSlashEntity> getSlashType(int index){
-        return MomotinkerEntities.trigger_slash_a.get();
+    public static EntityType<TriggerSlashEntity> getSlashType(int index) {
+       return MomotinkerEntities.trigger_slash_a.get();
     }
     public static float getDamageMultiplier(ToolStack tool){
         float b = RANDOM.nextInt((int) (tool.getStats().get(ACCURACY)*100));
