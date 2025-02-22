@@ -3,8 +3,8 @@ package com.momosensei.momotinker.tool;
 
 import com.momosensei.momotinker.Momotinker;
 import com.momosensei.momotinker.entity.MomoDamageSource;
-import com.momosensei.momotinker.register.MomotinkerItem;
 import com.momosensei.momotinker.register.MomotinkerModifiers;
+import com.momosensei.momotinker.register.MomotinkerTools;
 import net.minecraft.ChatFormatting;
 import net.minecraft.core.BlockPos;
 import net.minecraft.network.chat.Component;
@@ -52,7 +52,7 @@ public class divine_punishment_spear extends ModifiableItem {
 
     private void onEntityDeath(LivingDeathEvent event) {
         if (event.getSource().getEntity() instanceof Player player&&event.getEntity()!=null) {
-            if (player.getItemBySlot(EquipmentSlot.MAINHAND).is(MomotinkerItem.divine_punishment_spear.get())&& ModifierUtil.getModifierLevel(player.getItemBySlot(EquipmentSlot.MAINHAND), MomotinkerModifiers.frombrilliance.getId())>0){
+            if (player.getItemBySlot(EquipmentSlot.MAINHAND).is(MomotinkerTools.divine_punishment_spear.get())&& ModifierUtil.getModifierLevel(player.getItemBySlot(EquipmentSlot.MAINHAND), MomotinkerModifiers.frombrilliance.getId())>0){
                 ModDataNBT a = ToolStack.from(player.getItemBySlot(EquipmentSlot.MAINHAND)).getPersistentData();
                 if (event.getEntity().getMobType() == MobType.UNDEAD&&a.getFloat(sanctification)<500&&a.getFloat(degenerate)<100){
                     a.putFloat(sanctification, a.getFloat(sanctification) + 1);
