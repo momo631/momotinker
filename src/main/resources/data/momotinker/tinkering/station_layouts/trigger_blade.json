@@ -15,26 +15,6 @@
     },
     {
       "filter": {
-        "item": "tconstruct:large_plate"
-      },
-      "icon": "tconstruct:large_plate",
-      "translation_key": "item.tconstruct.large_plate",
-      "x": 45,
-      "y": 40
-    },
-    {
-      "filter": {
-        "item": "tconstruct:tough_handle"
-      },
-      "icon": "tconstruct:tough_handle",
-      "translation_key": "item.tconstruct.tough_handle",
-      "x": 60,
-      "y": 20
-    },
-
-
-    {
-      "filter": {
         "item": "tconstruct:bow_grip"
       },
       "icon": "tconstruct:bow_grip",
@@ -51,6 +31,24 @@
       "translation_key": "item.tconstruct.bow_limb",
       "x": 25,
       "y": 30
+    },
+    {
+      "filter": {
+        "item": "tconstruct:large_plate"
+      },
+      "icon": "tconstruct:large_plate",
+      "translation_key": "item.tconstruct.large_plate",
+      "x": 45,
+      "y": 40
+    },
+    {
+      "filter": {
+        "item": "tconstruct:tough_handle"
+      },
+      "icon": "tconstruct:tough_handle",
+      "translation_key": "item.tconstruct.tough_handle",
+      "x": 60,
+      "y": 20
     }
   ],
   "sortIndex": 0,
