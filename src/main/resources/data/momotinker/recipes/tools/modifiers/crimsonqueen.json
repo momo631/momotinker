@@ -3,10 +3,24 @@
   "allow_crystal": true,
   "inputs": [
     {
-      "item": "minecraft:cod"
+      "item": "minecraft:netherite_ingot",
+      "amount_needed": 1
     },
     {
-      "item": "minecraft:kelp"
+      "item": "minecraft:coal_block",
+      "amount_needed": 8
+    },
+    {
+      "item": "minecraft:flint_and_steel",
+      "amount_needed": 1
+    },
+    {
+      "item": "minecraft:redstone_block",
+      "amount_needed": 8
+    },
+    {
+      "item": "minecraft:netherite_ingot",
+      "amount_needed": 1
     }
   ],
   "level": {
