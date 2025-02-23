@@ -10,7 +10,7 @@
     "broken_blade": "momotinker:item/tool/trigger_blade/broken_blade",
 
     "large_blade": "momotinker:item/tool/trigger_blade/large/blade",
-    "large_sheath_body": "momotinker:item/tool/trigger_blade/large/sheath_body",
+    "large_sheath_body": "momotinker:item/tool/trigger_blade/large/1/2/sheath_body_2",
     "large_excitation_device": "momotinker:item/tool/trigger_blade/large/excitation_device",
     "large_tough_handle_1": "momotinker:item/tool/trigger_blade/large/tough_handle_1",
     "large_tough_handle_2": "momotinker:item/tool/trigger_blade/large/tough_handle_2",
@@ -21,6 +21,7 @@
       "momotinker:item/tool/trigger_blade/modifiers/"
     ],
     "large": [
+      "momotinker:item/tool/trigger_blade/large/modifiers/2/",
       "momotinker:item/tool/trigger_blade/large/modifiers/"
     ]
   },
@@ -32,19 +33,5 @@
     {"name": "excitation_device", "index": 2},
     {"name": "tough_handle_1", "index": 3},
     {"name": "tough_handle_2", "index": 4}
-  ],
-  "overrides": [
-    {
-      "predicate": { "tconstruct:charge": 0.3 },
-      "model": "momotinker:item/tool/trigger_blade/a"
-    },
-    {
-      "predicate": { "tconstruct:charge": 0.6 },
-      "model": "momotinker:item/tool/trigger_blade/b"
-    },
-    {
-      "predicate": { "tconstruct:charge": 1.0  },
-      "model": "momotinker:item/tool/trigger_blade/c"
-    }
   ]
 }

@@ -21,10 +21,6 @@
             "stat_type": "tconstruct:binding"
         },
         {
-            "path": "momotinker:item/tool/trigger_blade/sheath_body",
-            "stat_type": "tconstruct:binding"
-        },
-        {
             "path": "momotinker:item/tool/trigger_blade/tough_handle_2",
             "stat_type": "tconstruct:binding"
         },
@@ -38,6 +34,22 @@
         },
         {
             "path": "momotinker:item/tool/trigger_blade/large/tough_handle_2",
+            "stat_type": "tconstruct:binding"
+        },
+        {
+            "path": "momotinker:item/tool/trigger_blade/sheath_body",
+            "stat_type": "tconstruct:binding"
+        },
+        {
+            "path": "momotinker:item/tool/trigger_blade/large/1/sheath_body_1",
+            "stat_type": "tconstruct:binding"
+        },
+        {
+            "path": "momotinker:item/tool/trigger_blade/large/1/2/sheath_body_2",
+            "stat_type": "tconstruct:binding"
+        },
+        {
+            "path": "momotinker:item/tool/trigger_blade/large/1/2/3/sheath_body_3",
             "stat_type": "tconstruct:binding"
         },
 

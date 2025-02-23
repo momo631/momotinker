@@ -21,7 +21,7 @@
       "momotinker:item/tool/trigger_blade/modifiers/"
     ],
     "large": [
-      "momotinker:item/tool/trigger_blade/large/modifiers/"
+      "momotinker:item/tool/trigger_blade/large/modifiers/3/"
     ]
   },
   "large": true,
@@ -32,19 +32,5 @@
     {"name": "excitation_device", "index": 2},
     {"name": "tough_handle_1", "index": 3},
     {"name": "tough_handle_2", "index": 4}
-  ],
-  "overrides": [
-    {
-      "predicate": { "tconstruct:charge": 0.3 },
-      "model": "momotinker:item/tool/trigger_blade/a"
-    },
-    {
-      "predicate": { "tconstruct:charge": 0.6 },
-      "model": "momotinker:item/tool/trigger_blade/b"
-    },
-    {
-      "predicate": { "tconstruct:charge": 1.0  },
-      "model": "momotinker:item/tool/trigger_blade/c"
-    }
   ]
 }
