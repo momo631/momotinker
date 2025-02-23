@@ -84,7 +84,7 @@ public class CrimsonQueen extends momomodifier {
                 if (c.getFloat(crimsonlayers) >= 1) {
                     a.invulnerableTime = 0;
                     event.setAmount(event.getAmount() * 1.5F);
-                    a.hurt(MomoDamageSource.playerHurt(a).setBypassArmor(),event.getAmount());
+                    a.hurt(MomoDamageSource.playerHurt(a).setBypassArmor(),event.getAmount()*0.5F);
                     a.invulnerableTime = 0;
                     c.putFloat(crimsonlayers, c.getFloat(crimsonlayers) - 1);
                     c.putFloat(crimsontime, 20);
