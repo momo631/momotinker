@@ -18,13 +18,16 @@ import net.minecraftforge.common.data.ExistingFileHelper;
 import net.minecraftforge.data.event.GatherDataEvent;
 import net.minecraftforge.eventbus.api.IEventBus;
 import net.minecraftforge.eventbus.api.SubscribeEvent;
+import net.minecraftforge.fml.ModLoadingContext;
 import net.minecraftforge.fml.common.Mod;
+import net.minecraftforge.fml.config.ModConfig;
 import net.minecraftforge.fml.javafmlmod.FMLJavaModLoadingContext;
 import slimeknights.tconstruct.library.tools.capability.TinkerDataCapability;
-import slimeknights.tconstruct.library.utils.Util;
 
 import java.util.Set;
 import java.util.concurrent.CompletableFuture;
+
+import static slimeknights.tconstruct.TConstruct.makeTranslationKey;
 
 @Mod(Momotinker.MOD_ID)
 @Mod.EventBusSubscriber(
@@ -44,6 +47,8 @@ public class Momotinker {
         MomotinkerBlock.BLOCK.register(eventBus);
         MomotinkerEffects.EFFECT.register(eventBus);
         MomotinkerEntities.ENTITIES.register(eventBus);
+        MomotinkerLootModifiers.register(eventBus);
+        ModLoadingContext.get().registerConfig(ModConfig.Type.COMMON, MomotinkerConfig.spec);
         bus.register(new MomotinkerTools());
         MomotinkerTables.initRegisters();
 
@@ -67,14 +72,12 @@ public class Momotinker {
     public static <T> TinkerDataCapability.TinkerDataKey<T> createKey(String name) {
         return TinkerDataCapability.TinkerDataKey.of(getResource(name));
     }
-    public static MutableComponent makeTranslation(String base, String name) {
-        return Component.translatable(makeTranslationKey(base, name));
-    }
-    public static String makeTranslationKey(String base, String name) {
-        return Util.makeTranslationKey(base, getResource(name));
-    }
     //生成键名用的
     public static String makeDescriptionId(String type, String name) {
         return type + ".momotinker." + name;
+    }
+
+    public static MutableComponent makeTranslation(String base, String name) {
+        return Component.translatable(makeTranslationKey(base, name));
     }
 }
