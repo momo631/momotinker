@@ -1,24 +1,24 @@
 package com.momosensei.momotinker.Modifiers.modifiers;
 
 
-import com.momosensei.momotinker.entity.MomoDamageSource;
+import com.c2h6s.etstlib.entity.specialDamageSources.LegacyDamageSource;
 import net.minecraft.ChatFormatting;
 import net.minecraft.network.chat.Component;
+import net.minecraft.server.level.ServerPlayer;
+import net.minecraft.world.InteractionHand;
 import net.minecraft.world.entity.Entity;
 import net.minecraft.world.entity.EquipmentSlot;
 import net.minecraft.world.entity.LivingEntity;
 import net.minecraft.world.entity.Mob;
 import net.minecraft.world.entity.player.Player;
+import net.minecraft.world.entity.projectile.AbstractArrow;
 import net.minecraft.world.item.TooltipFlag;
 import net.minecraftforge.common.MinecraftForge;
 import net.minecraftforge.event.entity.living.LivingHurtEvent;
 import org.jetbrains.annotations.Nullable;
 import slimeknights.mantle.client.TooltipKey;
 import slimeknights.tconstruct.library.modifiers.ModifierEntry;
-import slimeknights.tconstruct.library.tools.nbt.IToolContext;
-import slimeknights.tconstruct.library.tools.nbt.IToolStackView;
-import slimeknights.tconstruct.library.tools.nbt.ModDataNBT;
-import slimeknights.tconstruct.library.tools.nbt.ToolStack;
+import slimeknights.tconstruct.library.tools.nbt.*;
 import slimeknights.tconstruct.library.tools.stat.ModifierStatsBuilder;
 import slimeknights.tconstruct.library.tools.stat.ToolStats;
 
@@ -74,19 +74,36 @@ public class SuperancientMetalsReal extends momomodifier{
             if (a.getTags().contains("BeConquered")) {
                 event.setAmount(event.getAmount() * 1.5F);
             }
+        }
+    }
+    @Override
+    public LegacyDamageSource modifyDamageSource(IToolStackView tool, ModifierEntry entry, LivingEntity attacker, InteractionHand hand, Entity target, EquipmentSlot sourceSlot, boolean isFullyCharged, boolean isExtraAttack, boolean isCritical, LegacyDamageSource source) {
+        ModDataNBT c = tool.getPersistentData();
+        if (attacker instanceof ServerPlayer player && target != null) {
             if (c.getFloat(degenerate)==100) {
-                a.invulnerableTime=0;
-                event.getEntity().hurt(MomoDamageSource.playerHurt(event.getEntity()).setBypassArmor(), event.getAmount()*0.5F);
-                a.invulnerableTime=0;
+                target.invulnerableTime=0;
+                return source.setBypassArmor();
             }
         }
+        return source;
+    }
+
+    @Override
+    public LegacyDamageSource modifyArrowDamageSource(ModifierNBT modifiers, ModDataNBT persistentData, ModifierEntry modifier, AbstractArrow arrow, @org.jetbrains.annotations.Nullable LivingEntity attacker, @org.jetbrains.annotations.Nullable LivingEntity target, LegacyDamageSource source) {
+        if (attacker instanceof ServerPlayer player&&arrow!=null && target != null) {
+            if (persistentData.getFloat(degenerate)==100) {
+                target.invulnerableTime=0;
+                return source.setBypassArmor();
+            }
+        }
+        return source;
     }
 
     public void addTooltip(IToolStackView tool, ModifierEntry modifierEntry, @org.jetbrains.annotations.Nullable Player player, List<Component> tooltip, TooltipKey tooltipKey, TooltipFlag tooltipFlag) {
         ModDataNBT c = tool.getPersistentData();
         if (c.getFloat(degenerate)==100) {
             tooltip.add(net.minecraft.network.chat.Component.translatable("古代神兵认证:天谴之矛-染血").withStyle(ChatFormatting.DARK_RED));
-            tooltip.add(net.minecraft.network.chat.Component.translatable("此工具攻击造成格外50%无视护甲且不造成无敌帧的伤害").withStyle(ChatFormatting.DARK_RED));
+            tooltip.add(net.minecraft.network.chat.Component.translatable("此工具攻击将无视护甲且不造成无敌帧").withStyle(ChatFormatting.DARK_RED));
         }
         if (c.getFloat(sanctification)==500) {
             tooltip.add(net.minecraft.network.chat.Component.translatable("古代神兵认证:天谴之矛-星辰").withStyle(ChatFormatting.YELLOW));

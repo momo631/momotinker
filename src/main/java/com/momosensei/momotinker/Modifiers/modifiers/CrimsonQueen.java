@@ -1,8 +1,8 @@
 package com.momosensei.momotinker.Modifiers.modifiers;
 
 
+import com.c2h6s.etstlib.entity.specialDamageSources.LegacyDamageSource;
 import com.momosensei.momotinker.Momotinker;
-import com.momosensei.momotinker.entity.MomoDamageSource;
 import com.momosensei.momotinker.network.Channel;
 import com.momosensei.momotinker.network.packet.TriggerBladeCharge;
 import com.momosensei.momotinker.register.MomotinkerModifiers;
@@ -12,10 +12,12 @@ import net.minecraft.resources.ResourceLocation;
 import net.minecraft.server.level.ServerLevel;
 import net.minecraft.server.level.ServerPlayer;
 import net.minecraft.util.Mth;
+import net.minecraft.world.InteractionHand;
 import net.minecraft.world.entity.Entity;
 import net.minecraft.world.entity.EquipmentSlot;
 import net.minecraft.world.entity.LivingEntity;
 import net.minecraft.world.entity.player.Player;
+import net.minecraft.world.entity.projectile.AbstractArrow;
 import net.minecraft.world.item.ItemStack;
 import net.minecraft.world.level.Level;
 import net.minecraftforge.common.MinecraftForge;
@@ -25,13 +27,14 @@ import slimeknights.tconstruct.library.modifiers.ModifierEntry;
 import slimeknights.tconstruct.library.tools.helper.ModifierUtil;
 import slimeknights.tconstruct.library.tools.nbt.IToolStackView;
 import slimeknights.tconstruct.library.tools.nbt.ModDataNBT;
+import slimeknights.tconstruct.library.tools.nbt.ModifierNBT;
 import slimeknights.tconstruct.library.tools.nbt.ToolStack;
 
 import javax.annotation.Nullable;
 
 import static com.momosensei.momotinker.register.MomotinkerTools.trigger_blade;
 
-public class CrimsonQueen extends momomodifier {
+public class CrimsonQueen extends momomodifier  {
     public CrimsonQueen() {
         MinecraftForge.EVENT_BUS.addListener(this::livinghurtevent);
     }
@@ -84,12 +87,27 @@ public class CrimsonQueen extends momomodifier {
                 if (c.getFloat(crimsonlayers) >= 1) {
                     a.invulnerableTime = 0;
                     event.setAmount(event.getAmount() * 1.5F);
-                    a.hurt(MomoDamageSource.playerHurt(a).setBypassArmor(),event.getAmount()*0.5F);
                     a.invulnerableTime = 0;
                     c.putFloat(crimsonlayers, c.getFloat(crimsonlayers) - 1);
                     c.putFloat(crimsontime, 20);
                 }
             }
         }
+    }
+    @Override
+    public LegacyDamageSource modifyDamageSource(IToolStackView tool, ModifierEntry entry, LivingEntity attacker, InteractionHand hand, Entity target, EquipmentSlot sourceSlot, boolean isFullyCharged, boolean isExtraAttack, boolean isCritical, LegacyDamageSource source) {
+        ModDataNBT c = tool.getPersistentData();
+        if (attacker!=null&&c.getFloat(crimsonlayers)>0) {
+            return source.setBypassArmor();
+        }
+        return source;
+    }
+
+    @Override
+    public LegacyDamageSource modifyArrowDamageSource(ModifierNBT modifiers, ModDataNBT persistentData, ModifierEntry modifier, AbstractArrow arrow, @org.jetbrains.annotations.Nullable LivingEntity attacker, @org.jetbrains.annotations.Nullable LivingEntity target, LegacyDamageSource source) {
+        if (attacker != null&&persistentData.getFloat(crimsonlayers)>0) {
+            return source.setBypassArmor();
+        }
+        return source;
     }
 }
