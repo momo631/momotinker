@@ -86,7 +86,7 @@ public class SuperancientMetalsReal extends momomodifier{
         ModDataNBT c = tool.getPersistentData();
         if (c.getFloat(degenerate)==100) {
             tooltip.add(net.minecraft.network.chat.Component.translatable("古代神兵认证:天谴之矛-染血").withStyle(ChatFormatting.DARK_RED));
-            tooltip.add(net.minecraft.network.chat.Component.translatable("此工具攻击造成格外无视护甲且不造成无敌帧的伤害").withStyle(ChatFormatting.DARK_RED));
+            tooltip.add(net.minecraft.network.chat.Component.translatable("此工具攻击造成格外50%无视护甲且不造成无敌帧的伤害").withStyle(ChatFormatting.DARK_RED));
         }
         if (c.getFloat(sanctification)==500) {
             tooltip.add(net.minecraft.network.chat.Component.translatable("古代神兵认证:天谴之矛-星辰").withStyle(ChatFormatting.YELLOW));
