@@ -15,7 +15,7 @@ public class MomoDamageTypeProvider implements RegistrySetBuilder.RegistryBootst
     }
     @Override
     public void run(BootstapContext<DamageType> context) {
-        context.register(OVER, new DamageType(prefix("over"), 1f));
+        context.register(OVER, new DamageType(prefix("over"), 0.1f));
     }
 
 }
