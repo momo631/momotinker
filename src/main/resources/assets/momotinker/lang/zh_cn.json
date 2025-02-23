@@ -175,7 +175,7 @@
 
   "modifier.momotinker.huangquan": "浸黄泉",
   "modifier.momotinker.huangquan.flavor": "§7所渡之处,为无§",
-  "modifier.momotinker.huangquan.description": "血量低于60%时提升攻击力，数值为已损失生命值*6，获得“引渡人”效果时该增伤涨至双倍（远程的增伤效率为25%），且攻击会格外造成一次50%无视防御的伤害",
+  "modifier.momotinker.huangquan.description": "血量低于60%时提升攻击力，数值为已损失生命值*6，获得“引渡人”效果时该增伤涨至双倍（远程的增伤效率为25%），且攻击会无视防御",
 
   "modifier.momotinker.red": "轮回色",
   "modifier.momotinker.red.flavor": "§4所归之景，为无§",
@@ -279,5 +279,5 @@
 
   "modifier.momotinker.crimsonqueen": "绯红女皇",
   "modifier.momotinker.crimsonqueen.flavor": "扳机长刀专属强化:机动剑",
-  "modifier.momotinker.crimsonqueen.description": "失去原本的斩击，取而代之的是在右键后一定时机松开会给武器充能20秒，存在充能时攻击会消耗层数使本次攻击修正为150%，无视无敌帧并格外造成50%无视护甲的伤害，最多可存在3层，时间耗尽层数减一，切换武器时层数清零"
+  "modifier.momotinker.crimsonqueen.description": "失去原本的斩击，取而代之的是在右键后一定时机松开会给武器充能20秒，存在充能时攻击会消耗层数使本次攻击修正为150%并无视护甲，最多可存在3层，时间耗尽层数减一，切换武器时层数清零"
 }
