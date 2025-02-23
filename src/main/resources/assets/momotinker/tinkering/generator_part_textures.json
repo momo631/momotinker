@@ -41,15 +41,15 @@
             "stat_type": "tconstruct:binding"
         },
         {
-            "path": "momotinker:item/tool/trigger_blade/large/1/sheath_body_1",
+            "path": "momotinker:item/tool/trigger_blade/large/sheath_body_1",
             "stat_type": "tconstruct:binding"
         },
         {
-            "path": "momotinker:item/tool/trigger_blade/large/1/2/sheath_body_2",
+            "path": "momotinker:item/tool/trigger_blade/large/sheath_body_2",
             "stat_type": "tconstruct:binding"
         },
         {
-            "path": "momotinker:item/tool/trigger_blade/large/1/2/3/sheath_body_3",
+            "path": "momotinker:item/tool/trigger_blade/large/sheath_body_3",
             "stat_type": "tconstruct:binding"
         },
 

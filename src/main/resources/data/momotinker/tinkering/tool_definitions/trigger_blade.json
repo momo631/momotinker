@@ -14,7 +14,8 @@
           "scale": 0.5
         },
         "tconstruct:tough_handle"
-      ]
+      ],
+      "primary_part": 0
     },
     {
       "type": "tconstruct:default_materials",
@@ -44,7 +45,7 @@
           "tier": 1
         }
       ]
-    }
+    },
     {
       "type": "tconstruct:multiply_stats",
       "multipliers": {

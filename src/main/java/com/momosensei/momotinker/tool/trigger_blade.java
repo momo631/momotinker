@@ -12,6 +12,7 @@ import net.minecraft.ChatFormatting;
 import net.minecraft.core.BlockPos;
 import net.minecraft.network.chat.Component;
 import net.minecraft.server.level.ServerPlayer;
+import net.minecraft.stats.Stats;
 import net.minecraft.util.Mth;
 import net.minecraft.world.InteractionHand;
 import net.minecraft.world.InteractionResultHolder;
@@ -29,6 +30,7 @@ import slimeknights.mantle.client.TooltipKey;
 import slimeknights.tconstruct.common.TinkerTags;
 import slimeknights.tconstruct.library.modifiers.ModifierEntry;
 import slimeknights.tconstruct.library.modifiers.ModifierHooks;
+import slimeknights.tconstruct.library.modifiers.hook.build.ConditionalStatModifierHook;
 import slimeknights.tconstruct.library.modifiers.hook.display.TooltipModifierHook;
 import slimeknights.tconstruct.library.tools.definition.ToolDefinition;
 import slimeknights.tconstruct.library.tools.helper.ModifierUtil;
@@ -40,6 +42,7 @@ import slimeknights.tconstruct.library.tools.nbt.ModDataNBT;
 import slimeknights.tconstruct.library.tools.nbt.ToolStack;
 import slimeknights.tconstruct.library.tools.stat.ToolStats;
 import slimeknights.tconstruct.tools.modifiers.ability.interaction.BlockingModifier;
+import slimeknights.tconstruct.tools.modifiers.upgrades.ranged.ScopeModifier;
 
 import java.util.Iterator;
 import java.util.List;
@@ -47,6 +50,7 @@ import java.util.List;
 import static com.momosensei.momotinker.Modifiers.modifiers.CrimsonQueen.crimsonlayers;
 import static com.momosensei.momotinker.Modifiers.modifiers.CrimsonQueen.crimsontime;
 import static slimeknights.tconstruct.TConstruct.RANDOM;
+import static slimeknights.tconstruct.library.modifiers.hook.interaction.GeneralInteractionModifierHook.KEY_DRAWTIME;
 import static slimeknights.tconstruct.library.tools.stat.ToolStats.ACCURACY;
 
 public class trigger_blade extends ModifiableItem {
@@ -69,6 +73,7 @@ public class trigger_blade extends ModifiableItem {
     public void onUseTick(Level level, LivingEntity living, ItemStack stack, int chargeRemaining) {
         if ( living instanceof ServerPlayer player) {
             int a = ModifierUtil.getModifierLevel(player.getMainHandItem(), MomotinkerModifiers.crimsonqueen.getId());
+
             if (a==0) {
                 float perc = Mth.clamp((float) (this.getUseDuration(stack) - chargeRemaining) / 30, 0, 1);
                 Channel.sendToPlayer(new TriggerBladeCharge(perc), player);
@@ -78,7 +83,9 @@ public class trigger_blade extends ModifiableItem {
 
     @Override
     public void releaseUsing(ItemStack stack, Level level, LivingEntity livingEntity, int duration) {
+        ScopeModifier.stopScoping(livingEntity);
         if (livingEntity instanceof ServerPlayer player) {
+            ToolStack tool = ToolStack.from(stack);
             ModDataNBT dataNBT = ToolStack.from(stack).getPersistentData();
             int i = this.getUseDuration(stack) - duration;
             int a = ModifierUtil.getModifierLevel(player.getMainHandItem(), MomotinkerModifiers.crimsonqueen.getId());
@@ -99,6 +106,8 @@ public class trigger_blade extends ModifiableItem {
                     }
                 }
             }
+            player.awardStat(Stats.ITEM_USED.get(this));
+            tool.getPersistentData().remove(KEY_DRAWTIME);
         }
     }
 
@@ -110,11 +119,15 @@ public class trigger_blade extends ModifiableItem {
             return InteractionResultHolder.fail(stack);
         }
         if (tool.isBroken()){
+            tool.getPersistentData().remove(KEY_DRAWTIME);
             return InteractionResultHolder.fail(stack);
         }
         if (!tool.isBroken()) {
             return InteractionResultHolder.pass(stack);
         }
+        int drawTime = (int) (80/ ConditionalStatModifierHook.getModifiedStat(tool,player,ToolStats.ATTACK_SPEED));
+        tool.getPersistentData().putInt(KEY_DRAWTIME,drawTime);
+        player.startUsingItem(hand);
         return InteractionResultHolder.consume(stack);
     }
 
