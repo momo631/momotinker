@@ -1,6 +1,6 @@
 {
   "loader": "tconstruct:tool",
-  "parent": "forge:item/default-tool",
+  "parent": "momotinker:item/base/trigger_blade",
   "textures": {
     "blade": "momotinker:item/tool/trigger_blade/blade",
     "sheath_body": "momotinker:item/tool/trigger_blade/sheath_body",
@@ -9,24 +9,24 @@
     "tough_handle_2": "momotinker:item/tool/trigger_blade/tough_handle_2",
     "broken_blade": "momotinker:item/tool/trigger_blade/broken_blade",
 
-    "large_blade": "momotinker:item/tool/trigger_blade/large/blade",
-    "large_sheath_body": "momotinker:item/tool/trigger_blade/large/sheath_body_2",
-    "large_excitation_device": "momotinker:item/tool/trigger_blade/large/excitation_device",
-    "large_tough_handle_1": "momotinker:item/tool/trigger_blade/large/tough_handle_1",
-    "large_tough_handle_2": "momotinker:item/tool/trigger_blade/large/tough_handle_2",
-    "large_broken_blade": "momotinker:item/tool/trigger_blade/large/broken_blade"
+    "large_blade": "momotinker:item/tool/trigger_blade/large/1/blade_1",
+    "large_sheath_body": "momotinker:item/tool/trigger_blade/large/1/sheath_body_1",
+    "large_excitation_device": "momotinker:item/tool/trigger_blade/large/1/excitation_device_1",
+    "large_tough_handle_1": "momotinker:item/tool/trigger_blade/large/1/tough_handle_1_1",
+    "large_tough_handle_2": "momotinker:item/tool/trigger_blade/large/1/tough_handle_2_1",
+    "large_broken_blade": "momotinker:item/tool/trigger_blade/large/1/broken_blade_1"
   },
   "modifier_roots": {
     "small": [
       "momotinker:item/tool/trigger_blade/modifiers/"
     ],
     "large": [
-      "momotinker:item/tool/trigger_blade/large/modifiers/2/",
-      "momotinker:item/tool/trigger_blade/large/modifiers/"
+      "momotinker:item/tool/trigger_blade/large/modifiers/",
+      "momotinker:item/tool/trigger_blade/large/modifiers/1/"
     ]
   },
   "large": true,
-  "large_offset": [6, -6],
+  "large_offset": [19, -19],
   "parts": [
     {"name": "blade", "index": 0, "broken": "broken_blade"},
     {"name": "sheath_body", "index": 1},

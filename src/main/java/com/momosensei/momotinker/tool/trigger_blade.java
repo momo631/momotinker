@@ -30,7 +30,6 @@ import slimeknights.mantle.client.TooltipKey;
 import slimeknights.tconstruct.common.TinkerTags;
 import slimeknights.tconstruct.library.modifiers.ModifierEntry;
 import slimeknights.tconstruct.library.modifiers.ModifierHooks;
-import slimeknights.tconstruct.library.modifiers.hook.build.ConditionalStatModifierHook;
 import slimeknights.tconstruct.library.modifiers.hook.display.TooltipModifierHook;
 import slimeknights.tconstruct.library.tools.definition.ToolDefinition;
 import slimeknights.tconstruct.library.tools.helper.ModifierUtil;
@@ -106,8 +105,9 @@ public class trigger_blade extends ModifiableItem {
                     }
                 }
             }
-            player.awardStat(Stats.ITEM_USED.get(this));
             tool.getPersistentData().remove(KEY_DRAWTIME);
+            ToolDamageUtil.damageAnimated(tool,1,player);
+            player.awardStat(Stats.ITEM_USED.get(this));
         }
     }
 
@@ -125,8 +125,7 @@ public class trigger_blade extends ModifiableItem {
         if (!tool.isBroken()) {
             return InteractionResultHolder.pass(stack);
         }
-        int drawTime = (int) (80/ ConditionalStatModifierHook.getModifiedStat(tool,player,ToolStats.ATTACK_SPEED));
-        tool.getPersistentData().putInt(KEY_DRAWTIME,drawTime);
+        tool.getPersistentData().putInt(KEY_DRAWTIME,30);
         player.startUsingItem(hand);
         return InteractionResultHolder.consume(stack);
     }

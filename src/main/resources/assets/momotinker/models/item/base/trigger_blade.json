@@ -1,0 +1,10 @@
+{
+  "parent": "forge:item/default",
+  "gui_light": "front",
+  "display": {
+    "thirdperson_righthand": {
+      "rotation": [ -70, 275, -15 ],
+      "scale": [ 1.6, 1.6, 1.6 ]
+    }
+  }
+}

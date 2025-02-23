@@ -35,16 +35,16 @@
   ],
   "overrides": [
     {
-      "predicate": { "tconstruct:charge": 0.3 },
-      "model": "momotinker:item/tool/trigger_blade/a"
+      "predicate": { "tconstruct:charging": 1 },
+      "model": "momotinker:item/tool/trigger_blade/pulling_1"
     },
     {
-      "predicate": { "tconstruct:charge": 0.6 },
-      "model": "momotinker:item/tool/trigger_blade/b"
+      "predicate": { "tconstruct:charging": 1, "tconstruct:charge": 0.6 },
+      "model": "momotinker:item/tool/trigger_blade/pulling_2"
     },
     {
-      "predicate": { "tconstruct:charge": 1.0  },
-      "model": "momotinker:item/tool/trigger_blade/c"
+      "predicate": { "tconstruct:charging": 1, "tconstruct:charge": 1.0 },
+      "model": "momotinker:item/tool/trigger_blade/pulling_3"
     }
   ]
 }

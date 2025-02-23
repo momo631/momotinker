@@ -41,15 +41,51 @@
             "stat_type": "tconstruct:binding"
         },
         {
-            "path": "momotinker:item/tool/trigger_blade/large/sheath_body_1",
+            "path": "momotinker:item/tool/trigger_blade/large/1/sheath_body_1",
             "stat_type": "tconstruct:binding"
         },
         {
-            "path": "momotinker:item/tool/trigger_blade/large/sheath_body_2",
+            "path": "momotinker:item/tool/trigger_blade/large/1/2/sheath_body_2",
             "stat_type": "tconstruct:binding"
         },
         {
-            "path": "momotinker:item/tool/trigger_blade/large/sheath_body_3",
+            "path": "momotinker:item/tool/trigger_blade/large/1/2/3/sheath_body_3",
+            "stat_type": "tconstruct:binding"
+        },
+        {
+            "path": "momotinker:item/tool/trigger_blade/large/1/excitation_device_1",
+            "stat_type": "tconstruct:binding"
+        },
+        {
+            "path": "momotinker:item/tool/trigger_blade/large/1/2/excitation_device_2",
+            "stat_type": "tconstruct:binding"
+        },
+        {
+            "path": "momotinker:item/tool/trigger_blade/large/1/2/3/excitation_device_3",
+            "stat_type": "tconstruct:binding"
+        },
+        {
+            "path": "momotinker:item/tool/trigger_blade/large/1/blade_1",
+            "stat_type": "tconstruct:binding"
+        },
+        {
+            "path": "momotinker:item/tool/trigger_blade/large/1/2/blade_2",
+            "stat_type": "tconstruct:binding"
+        },
+        {
+            "path": "momotinker:item/tool/trigger_blade/large/1/2/3/blade_3",
+            "stat_type": "tconstruct:binding"
+        },
+        {
+            "path": "momotinker:item/tool/trigger_blade/large/1/tough_handle_1_1",
+            "stat_type": "tconstruct:binding"
+        },
+        {
+            "path": "momotinker:item/tool/trigger_blade/large/1/tough_handle_2_2",
+            "stat_type": "tconstruct:binding"
+        },
+        {
+            "path": "momotinker:item/tool/trigger_blade/large/1/broken_blade_1",
             "stat_type": "tconstruct:binding"
         },
 
