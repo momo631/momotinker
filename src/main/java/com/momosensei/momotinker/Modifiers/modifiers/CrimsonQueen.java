@@ -38,6 +38,11 @@ public class CrimsonQueen extends momomodifier {
     public static final ResourceLocation crimsonlayers = Momotinker.getResource("crimsonlayers");
 
     @Override
+    public boolean isNoLevels() {
+        return true;
+    }
+
+    @Override
     public @Nullable Component onRemoved(IToolStackView iToolStackView, Modifier modifier) {
         iToolStackView.getPersistentData().remove(crimsontime);
         return null;
@@ -58,6 +63,8 @@ public class CrimsonQueen extends momomodifier {
                         a.putFloat(crimsontime, 20);
                     }
                 }
+                float perc = Mth.clamp(a.getFloat(crimsontime) / 20, 0, 1);
+                Channel.sendToClient(new TriggerBladeCharge(perc));
             }
             if (ModifierUtil.getModifierLevel(player.getMainHandItem(), MomotinkerModifiers.crimsonqueen.getId()) == 0) {
                 a.putFloat(crimsonlayers, 0);
@@ -65,8 +72,6 @@ public class CrimsonQueen extends momomodifier {
             if (a.getFloat(crimsonlayers)==0){
                 a.putFloat(crimsontime,0);
             }
-            float perc = Mth.clamp(a.getFloat(crimsontime) / 20, 0, 1);
-            Channel.sendToClient(new TriggerBladeCharge(perc));
         }
     }
     private void livinghurtevent(LivingHurtEvent event) {
