@@ -27,7 +27,7 @@ public class A extends StaticEffect {
 
     @Override
     public void applyEffectTick(LivingEntity living, int amplifier) {
-        if (living instanceof ServerPlayer player && player.level instanceof ServerLevel serverLevel&&living.getEffect(MomotinkerEffects.A.get())!=null) {
+        if (living instanceof ServerPlayer player && player.level() instanceof ServerLevel serverLevel&&living.getEffect(MomotinkerEffects.A.get())!=null) {
             for (int i = 0; i <= 360; i++) {
                 double rad = i * 0.017453292519943295;
                 double r = 4D;
@@ -44,7 +44,7 @@ public class A extends StaticEffect {
                 }
                 if (living.getEffect(MomotinkerEffects.A.get()).getDuration()>0&&living.tickCount%100==0){
                     serverLevel.sendParticles(ParticleTypes.DRAGON_BREATH, player.getX(), player.getY(), player.getZ(), 2, 0, 0, 0, 1.5);
-                    List<Mob> list = player.level.getEntitiesOfClass(Mob.class, player.getBoundingBox().inflate(4));
+                    List<Mob> list = player.level().getEntitiesOfClass(Mob.class, player.getBoundingBox().inflate(4));
                     for (Mob mob : list) {
                         if (mob != null) {
                             Vec3 vec = mob.position().subtract(living.position()).normalize().scale(0.004+0.003*amplifier);
