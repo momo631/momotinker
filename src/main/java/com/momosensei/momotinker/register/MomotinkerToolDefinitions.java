@@ -16,5 +16,6 @@ public class MomotinkerToolDefinitions {
         return new ToolStatId(Momotinker.MOD_ID, name);
     }
     public static final ToolDefinition TRIGGER_BLADE = ToolDefinition.create(MomotinkerTools.trigger_blade);
+    public static final ToolDefinition DIVINE_PUNISHMENT_SPEAR = ToolDefinition.create(MomotinkerTools.divine_punishment_spear);
 
 }

@@ -44,7 +44,7 @@
           "tier": 1
         }
       ]
-    }
+    },
     {
       "type": "tconstruct:multiply_stats",
       "multipliers": {

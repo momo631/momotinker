@@ -1,6 +1,8 @@
 package com.momosensei.momotinker.event;
 
-import com.momosensei.momotinker.capability.healpercentage.EnderProvider;
+
+import com.momosensei.momotinker.capability.ender.EnderProvider;
+import com.momosensei.momotinker.gui.overlay.CensoredHUD;
 import com.momosensei.momotinker.gui.overlay.EnderOverlay;
 import com.momosensei.momotinker.gui.overlay.TriggerBladeHUD;
 import com.momosensei.momotinker.key.key;
@@ -31,7 +33,7 @@ public class ModEventListener {
         if (FMLEnvironment.dist == Dist.CLIENT) {
             event.registerAbove(VanillaGuiOverlay.HOTBAR.id(), "ender", EnderOverlay.ENDER);
             event.registerAboveAll( "censored_hud", CensoredHUD.CENSORED);
-            event.registerAboveAll( "trigger_blade_hud", TriggerBladeHUD.TRIGGER_BLADE);
+            event.registerAboveAll( "trigger_blade_hud", TriggerBladeHUD.TRIGGER_BLADE_HUD);
         }
     }
     @SubscribeEvent
