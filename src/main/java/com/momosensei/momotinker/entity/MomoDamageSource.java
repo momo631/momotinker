@@ -17,7 +17,10 @@ import java.util.ArrayList;
 
 public class MomoDamageSource extends DamageSource {
     public ArrayList<ResourceKey<DamageType>> damageTypes = new ArrayList<>();
-
+    private boolean setBypassArmor;
+    private boolean bypassInvul;
+    private boolean bypassMagic;
+    private boolean bypassEnchantments;
     public MomoDamageSource(Holder<DamageType> holder, @Nullable Entity directEntity, @Nullable Entity causingEntity, @Nullable Vec3 sourcePos) {
         super(holder, directEntity, causingEntity, sourcePos);
     }
