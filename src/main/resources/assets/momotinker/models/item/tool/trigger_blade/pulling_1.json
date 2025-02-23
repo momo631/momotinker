@@ -26,7 +26,7 @@
     ]
   },
   "large": true,
-  "large_offset": [19, -19],
+  "large_offset": [18, -18],
   "parts": [
     {"name": "blade", "index": 0, "broken": "broken_blade"},
     {"name": "sheath_body", "index": 1},

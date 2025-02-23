@@ -11,7 +11,7 @@
 
     "large_blade": "momotinker:item/tool/trigger_blade/large/1/2/3/blade_3",
     "large_sheath_body": "momotinker:item/tool/trigger_blade/large/1/2/3/sheath_body_3",
-    "large_excitation_device": "momotinker:item/tool/trigger_blade/1/2/3/large/excitation_device_3",
+    "large_excitation_device": "momotinker:item/tool/trigger_blade/large/1/2/3/excitation_device_3",
     "large_tough_handle_1": "momotinker:item/tool/trigger_blade/large/1/tough_handle_1_1",
     "large_tough_handle_2": "momotinker:item/tool/trigger_blade/large/1/tough_handle_2_1",
     "large_broken_blade": "momotinker:item/tool/trigger_blade/large/1/broken_blade_1"
@@ -26,7 +26,7 @@
     ]
   },
   "large": true,
-  "large_offset": [19, -19],
+  "large_offset": [18, -18],
   "parts": [
     {"name": "blade", "index": 0, "broken": "broken_blade"},
     {"name": "sheath_body", "index": 1},

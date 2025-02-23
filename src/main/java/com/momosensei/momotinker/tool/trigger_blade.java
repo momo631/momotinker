@@ -83,8 +83,12 @@ public class trigger_blade extends ModifiableItem {
     @Override
     public void releaseUsing(ItemStack stack, Level level, LivingEntity livingEntity, int duration) {
         ScopeModifier.stopScoping(livingEntity);
+        ToolStack tool = ToolStack.from(stack);
+        if (tool.isBroken()){
+            tool.getPersistentData().remove(KEY_DRAWTIME);
+            return;
+        }
         if (livingEntity instanceof ServerPlayer player) {
-            ToolStack tool = ToolStack.from(stack);
             ModDataNBT dataNBT = ToolStack.from(stack).getPersistentData();
             int i = this.getUseDuration(stack) - duration;
             int a = ModifierUtil.getModifierLevel(player.getMainHandItem(), MomotinkerModifiers.crimsonqueen.getId());
@@ -105,28 +109,26 @@ public class trigger_blade extends ModifiableItem {
                     }
                 }
             }
-            tool.getPersistentData().remove(KEY_DRAWTIME);
-            ToolDamageUtil.damageAnimated(tool,1,player);
             player.awardStat(Stats.ITEM_USED.get(this));
+            ToolDamageUtil.damageAnimated(tool,1,player);
         }
+        tool.getPersistentData().remove(KEY_DRAWTIME);
     }
 
     public InteractionResultHolder<ItemStack> use(Level level, Player player, InteractionHand hand) {
         ItemStack stack = player.getItemInHand(hand);
-        player.startUsingItem(hand);
         ToolStack tool = ToolStack.from(stack);
+        tool.getPersistentData().putInt(KEY_DRAWTIME,30);
+        player.startUsingItem(hand);
         if (!checkOffHand(player)){
             return InteractionResultHolder.fail(stack);
         }
         if (tool.isBroken()){
-            tool.getPersistentData().remove(KEY_DRAWTIME);
             return InteractionResultHolder.fail(stack);
         }
         if (!tool.isBroken()) {
             return InteractionResultHolder.pass(stack);
         }
-        tool.getPersistentData().putInt(KEY_DRAWTIME,30);
-        player.startUsingItem(hand);
         return InteractionResultHolder.consume(stack);
     }
 

@@ -73,10 +73,6 @@
             "stat_type": "tconstruct:binding"
         },
         {
-            "path": "momotinker:item/tool/trigger_blade/large/1/2/3/blade_3",
-            "stat_type": "tconstruct:binding"
-        },
-        {
             "path": "momotinker:item/tool/trigger_blade/large/1/tough_handle_1_1",
             "stat_type": "tconstruct:binding"
         },
