@@ -75,17 +75,18 @@ public class CrimsonQueen extends momomodifier {
         }
     }
     private void livinghurtevent(LivingHurtEvent event) {
-        Entity a = event.getEntity();
+        LivingEntity a = event.getEntity();
         Entity b = event.getSource().getEntity();
-        if (b instanceof Player player&&a!=null&&ModifierUtil.getModifierLevel(player.getMainHandItem(), MomotinkerModifiers.crimsonqueen.getId()) > 0){
+        if (b instanceof Player player&&a!=null) {
             ModDataNBT c = ToolStack.from(player.getItemBySlot(EquipmentSlot.MAINHAND)).getPersistentData();
-            if (c.getFloat(crimsonlayers)>=1){
-                a.invulnerableTime=0;
-
-                event.setAmount(event.getAmount()*1.5F);
-                a.invulnerableTime=0;
-                c.putFloat(crimsonlayers,c.getFloat(crimsonlayers)-1);
-                c.putFloat(crimsontime,20);
+            if (ModifierUtil.getModifierLevel(player.getMainHandItem(), MomotinkerModifiers.crimsonqueen.getId()) > 0) {
+                if (c.getFloat(crimsonlayers) >= 1) {
+                    a.invulnerableTime = 0;
+                    event.setAmount(event.getAmount() * 1.5F);
+                    a.invulnerableTime = 0;
+                    c.putFloat(crimsonlayers, c.getFloat(crimsonlayers) - 1);
+                    c.putFloat(crimsontime, 20);
+                }
             }
         }
     }
