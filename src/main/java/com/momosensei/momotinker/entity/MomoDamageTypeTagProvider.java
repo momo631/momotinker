@@ -4,12 +4,14 @@ import com.momosensei.momotinker.Momotinker;
 import net.minecraft.core.HolderLookup;
 import net.minecraft.data.PackOutput;
 import net.minecraft.data.tags.DamageTypeTagsProvider;
-import net.minecraft.tags.DamageTypeTags;
 import net.minecraftforge.common.data.ExistingFileHelper;
 import org.jetbrains.annotations.NotNull;
 import org.jetbrains.annotations.Nullable;
 
 import java.util.concurrent.CompletableFuture;
+
+import static com.momosensei.momotinker.entity.MomoDamageTypes.OVER;
+import static net.minecraft.tags.DamageTypeTags.*;
 
 public class MomoDamageTypeTagProvider extends DamageTypeTagsProvider {
     public MomoDamageTypeTagProvider(PackOutput packOutput, CompletableFuture<HolderLookup.Provider> lookup, @Nullable ExistingFileHelper existingFileHelper) {
@@ -19,14 +21,14 @@ public class MomoDamageTypeTagProvider extends DamageTypeTagsProvider {
     @SuppressWarnings("unchecked")
     @Override
         protected void addTags(HolderLookup.@NotNull Provider provider) {
-        tag(DamageTypeTags.BYPASSES_ARMOR).add(MomoDamageTypes.OVER);
-        tag(DamageTypeTags.BYPASSES_SHIELD).add(MomoDamageTypes.OVER);
-        tag(DamageTypeTags.BYPASSES_INVULNERABILITY).add(MomoDamageTypes.OVER);
-        tag(DamageTypeTags.BYPASSES_COOLDOWN).add(MomoDamageTypes.OVER);
-        tag(DamageTypeTags.BYPASSES_EFFECTS).add(MomoDamageTypes.OVER);
-        tag(DamageTypeTags.BYPASSES_ENCHANTMENTS).add(MomoDamageTypes.OVER);
-        tag(DamageTypeTags.BYPASSES_RESISTANCE).add(MomoDamageTypes.OVER);
-        tag(DamageTypeTags.AVOIDS_GUARDIAN_THORNS).add(MomoDamageTypes.OVER);
+        tag(BYPASSES_ARMOR).add(OVER);
+        tag(BYPASSES_SHIELD).add(OVER);
+        tag(BYPASSES_INVULNERABILITY).add(OVER);
+        tag(BYPASSES_COOLDOWN).add(OVER);
+        tag(BYPASSES_EFFECTS).add(OVER);
+        tag(BYPASSES_ENCHANTMENTS).add(OVER);
+        tag(BYPASSES_RESISTANCE).add(OVER);
+        tag(AVOIDS_GUARDIAN_THORNS).add(OVER);
 
     }
 }
