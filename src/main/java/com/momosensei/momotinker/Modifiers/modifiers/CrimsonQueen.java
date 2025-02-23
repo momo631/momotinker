@@ -2,6 +2,7 @@ package com.momosensei.momotinker.Modifiers.modifiers;
 
 
 import com.momosensei.momotinker.Momotinker;
+import com.momosensei.momotinker.entity.MomoDamageSource;
 import com.momosensei.momotinker.network.Channel;
 import com.momosensei.momotinker.network.packet.TriggerBladeCharge;
 import com.momosensei.momotinker.register.MomotinkerModifiers;
@@ -83,6 +84,7 @@ public class CrimsonQueen extends momomodifier {
                 if (c.getFloat(crimsonlayers) >= 1) {
                     a.invulnerableTime = 0;
                     event.setAmount(event.getAmount() * 1.5F);
+                    a.hurt(MomoDamageSource.playerHurt(a).setBypassArmor(),event.getAmount());
                     a.invulnerableTime = 0;
                     c.putFloat(crimsonlayers, c.getFloat(crimsonlayers) - 1);
                     c.putFloat(crimsontime, 20);
