@@ -35,7 +35,7 @@
   ],
   "overrides": [
     {
-      "predicate": { "tconstruct:charging": 1 },
+      "predicate": { "tconstruct:charging": 1},
       "model": "momotinker:item/tool/trigger_blade/pulling_1"
     },
     {

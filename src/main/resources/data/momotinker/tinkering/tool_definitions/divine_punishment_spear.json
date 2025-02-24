@@ -13,15 +13,15 @@
         },
         {
           "item": "tconstruct:tough_handle",
-          "scale": 0.6
+          "scale": 0.4
         },
         {
           "item": "tconstruct:tough_handle",
-          "scale": 0.6
+          "scale": 0.4
         },
         {
           "item": "tconstruct:tough_handle",
-          "scale": 0.6
+          "scale": 0.4
         }
       ]
     },
@@ -57,9 +57,9 @@
     {
       "type": "tconstruct:multiply_stats",
       "multipliers": {
-        "tconstruct:attack_damage": 1,
+        "tconstruct:attack_damage": 0.8,
         "tconstruct:durability": 1.2,
-        "tconstruct:attack_speed": 2
+        "tconstruct:attack_speed": 3
       }
     },
     {

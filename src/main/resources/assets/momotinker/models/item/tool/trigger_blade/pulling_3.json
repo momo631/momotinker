@@ -9,12 +9,12 @@
     "tough_handle_2": "momotinker:item/tool/trigger_blade/tough_handle_2",
     "broken_blade": "momotinker:item/tool/trigger_blade/broken_blade",
 
-    "large_blade": "momotinker:item/tool/trigger_blade/large/1/2/3/blade_3",
-    "large_sheath_body": "momotinker:item/tool/trigger_blade/large/1/2/3/sheath_body_3",
-    "large_excitation_device": "momotinker:item/tool/trigger_blade/large/1/2/3/excitation_device_3",
-    "large_tough_handle_1": "momotinker:item/tool/trigger_blade/large/1/tough_handle_1_1",
-    "large_tough_handle_2": "momotinker:item/tool/trigger_blade/large/1/tough_handle_2_1",
-    "large_broken_blade": "momotinker:item/tool/trigger_blade/large/1/broken_blade_1"
+    "large_blade": "momotinker:item/tool/trigger_blade/large/charge_1/charge_2/charge_3/blade_3",
+    "large_sheath_body": "momotinker:item/tool/trigger_blade/large/charge_1/charge_2/charge_3/sheath_body_3",
+    "large_excitation_device": "momotinker:item/tool/trigger_blade/large/charge_1/charge_2/charge_3/excitation_device_3",
+    "large_tough_handle_1": "momotinker:item/tool/trigger_blade/large/charge_1/tough_handle_1_1",
+    "large_tough_handle_2": "momotinker:item/tool/trigger_blade/large/charge_1/tough_handle_2_1",
+    "large_broken_blade": "momotinker:item/tool/trigger_blade/large/charge_1/broken_blade_1"
   },
   "modifier_roots": {
     "small": [
@@ -22,7 +22,7 @@
     ],
     "large": [
       "momotinker:item/tool/trigger_blade/large/modifiers/",
-      "momotinker:item/tool/trigger_blade/large/modifiers/3/"
+      "momotinker:item/tool/trigger_blade/large/modifiers/charge_1/charge_2/charge_3/"
     ]
   },
   "large": true,
