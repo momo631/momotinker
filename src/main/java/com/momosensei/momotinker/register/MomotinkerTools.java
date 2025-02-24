@@ -2,6 +2,7 @@ package com.momosensei.momotinker.register;
 
 
 import com.momosensei.momotinker.Momotinker;
+import com.momosensei.momotinker.tool.divine_punishment_spear;
 import com.momosensei.momotinker.tool.trigger_blade;
 import net.minecraft.world.item.CreativeModeTab;
 import net.minecraft.world.item.ItemStack;
@@ -36,11 +37,12 @@ public final class MomotinkerTools extends MomotinkerTables {
                     .build());
 
     public static final ItemObject<ModifiableItem> trigger_blade = ITEMS.register("trigger_blade", () -> new trigger_blade(UNSTACKABLE_PROPS, MomotinkerToolDefinitions.TRIGGER_BLADE));
+    public static final ItemObject<ModifiableItem> divine_punishment_spear = ITEMS.register("divine_punishment_spear", () -> new divine_punishment_spear(UNSTACKABLE_PROPS, MomotinkerToolDefinitions.DIVINE_PUNISHMENT_SPEAR));
 
     private static void addTabItems(CreativeModeTab.ItemDisplayParameters itemDisplayParameters, CreativeModeTab.Output tab) {
         Consumer<ItemStack> output = tab::accept;
         acceptTool(output, trigger_blade);
-
+        acceptTool(output, divine_punishment_spear);
     }
     private static void acceptTool(Consumer<ItemStack> output, Supplier<? extends IModifiable> tool) {
         ToolBuildHandler.addVariants(output, tool.get(), "");
