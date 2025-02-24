@@ -7,11 +7,13 @@ import com.momosensei.momotinker.network.packet.TriggerBladeCharge;
 import com.momosensei.momotinker.network.packet.triggerSlashPacket;
 import com.momosensei.momotinker.register.MomotinkerEntities;
 import com.momosensei.momotinker.register.MomotinkerItem;
+import com.momosensei.momotinker.register.MomotinkerModifiers;
 import com.momosensei.momotinker.register.MomotinkerToolDefinitions;
 import net.minecraft.ChatFormatting;
 import net.minecraft.core.BlockPos;
 import net.minecraft.network.chat.Component;
 import net.minecraft.server.level.ServerPlayer;
+import net.minecraft.stats.Stats;
 import net.minecraft.util.Mth;
 import net.minecraft.world.InteractionHand;
 import net.minecraft.world.InteractionResultHolder;
@@ -30,10 +32,12 @@ import slimeknights.tconstruct.common.TinkerTags;
 import slimeknights.tconstruct.library.modifiers.ModifierEntry;
 import slimeknights.tconstruct.library.modifiers.ModifierHooks;
 import slimeknights.tconstruct.library.tools.definition.ToolDefinition;
+import slimeknights.tconstruct.library.tools.helper.ModifierUtil;
 import slimeknights.tconstruct.library.tools.helper.ToolDamageUtil;
 import slimeknights.tconstruct.library.tools.helper.TooltipBuilder;
 import slimeknights.tconstruct.library.tools.item.ModifiableItem;
 import slimeknights.tconstruct.library.tools.nbt.IToolStackView;
+import slimeknights.tconstruct.library.tools.nbt.ModDataNBT;
 import slimeknights.tconstruct.library.tools.nbt.ToolStack;
 import slimeknights.tconstruct.library.tools.stat.ToolStats;
 import slimeknights.tconstruct.tools.modifiers.ability.interaction.BlockingModifier;
@@ -41,7 +45,10 @@ import slimeknights.tconstruct.tools.modifiers.ability.interaction.BlockingModif
 import java.util.Iterator;
 import java.util.List;
 
+import static com.momosensei.momotinker.Modifiers.modifiers.CrimsonQueen.crimsonlayers;
+import static com.momosensei.momotinker.Modifiers.modifiers.CrimsonQueen.crimsontime;
 import static slimeknights.tconstruct.TConstruct.RANDOM;
+import static slimeknights.tconstruct.library.modifiers.hook.interaction.GeneralInteractionModifierHook.KEY_DRAWTIME;
 import static slimeknights.tconstruct.library.tools.stat.ToolStats.ACCURACY;
 
 public class trigger_blade extends ModifiableItem {
@@ -63,26 +70,53 @@ public class trigger_blade extends ModifiableItem {
     @Override
     public void onUseTick(Level level, LivingEntity living, ItemStack stack, int chargeRemaining) {
         if ( living instanceof ServerPlayer player) {
-            float perc = Mth.clamp((float) (this.getUseDuration(stack) - chargeRemaining) / 30,0,1);
-            Channel.sendToPlayer(new TriggerBladeCharge(perc),player);
+            int a = ModifierUtil.getModifierLevel(player.getMainHandItem(), MomotinkerModifiers.crimsonqueen.getId());
+            if (a==0) {
+                float perc = Mth.clamp((float) (this.getUseDuration(stack) - chargeRemaining) / 30, 0, 1);
+                Channel.sendToPlayer(new TriggerBladeCharge(perc), player);
+            }
         }
     }
 
     @Override
     public void releaseUsing(ItemStack stack, Level level, LivingEntity livingEntity, int duration) {
         if (livingEntity instanceof ServerPlayer player) {
-            int i = this.getUseDuration(stack) - duration;
-            if (i >= 30) {
-                Channel.INSTANCE.sendToServer(new triggerSlashPacket(player.getId()));
+            ToolStack tool = ToolStack.from(stack);
+            ModDataNBT dataNBT = ToolStack.from(stack).getPersistentData();
+            if (tool.isBroken()) {
+                tool.getPersistentData().remove(KEY_DRAWTIME);
+                return;
             }
-            Channel.sendToPlayer(new TriggerBladeCharge(0),player);
+            int i = this.getUseDuration(stack) - duration;
+            int a = ModifierUtil.getModifierLevel(player.getMainHandItem(), MomotinkerModifiers.crimsonqueen.getId());
+            if (a==0) {
+                if (i >= 30) {
+                    Channel.INSTANCE.sendToServer(new triggerSlashPacket(player.getId()));
+                }
+                Channel.sendToPlayer(new TriggerBladeCharge(0),player);
+            }
+            if (a>0) {
+                if ( i >= 0 && i <= 15) {
+                    if (dataNBT.getFloat(crimsonlayers)<3){
+                        dataNBT.putFloat(crimsonlayers, dataNBT.getFloat(crimsonlayers) + 1);
+                        dataNBT.putFloat(crimsontime, 20);
+                    }
+                    if (dataNBT.getFloat(crimsonlayers) == 3) {
+                        dataNBT.putFloat(crimsontime, 20);
+                    }
+                }
+            }
+            tool.getPersistentData().remove(KEY_DRAWTIME);
+            ToolDamageUtil.damageAnimated(tool,1,player);
+            player.awardStat(Stats.ITEM_USED.get(this));
         }
     }
 
     public InteractionResultHolder<ItemStack> use(Level level, Player player, InteractionHand hand) {
         ItemStack stack = player.getItemInHand(hand);
-        player.startUsingItem(hand);
         ToolStack tool = ToolStack.from(stack);
+        tool.getPersistentData().putInt(KEY_DRAWTIME,30);
+        player.startUsingItem(hand);
         if (!checkOffHand(player)){
             return InteractionResultHolder.fail(stack);
         }

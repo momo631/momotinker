@@ -6,12 +6,16 @@ import com.momosensei.momotinker.register.*;
 import net.minecraft.network.chat.Component;
 import net.minecraft.network.chat.MutableComponent;
 import net.minecraft.resources.ResourceLocation;
+import net.minecraftforge.api.distmarker.Dist;
 import net.minecraftforge.common.MinecraftForge;
 import net.minecraftforge.eventbus.api.IEventBus;
+import net.minecraftforge.eventbus.api.SubscribeEvent;
 import net.minecraftforge.fml.ModLoadingContext;
 import net.minecraftforge.fml.common.Mod;
 import net.minecraftforge.fml.config.ModConfig;
+import net.minecraftforge.fml.event.lifecycle.FMLClientSetupEvent;
 import net.minecraftforge.fml.javafmlmod.FMLJavaModLoadingContext;
+import slimeknights.tconstruct.library.client.model.TinkerItemProperties;
 import slimeknights.tconstruct.library.tools.capability.TinkerDataCapability;
 
 import static slimeknights.tconstruct.TConstruct.makeTranslationKey;
@@ -54,5 +58,16 @@ public class Momotinker {
 
     public static MutableComponent makeTranslation(String base, String name) {
         return Component.translatable(makeTranslationKey(base, name));
+    }
+
+    @Mod.EventBusSubscriber(modid = MOD_ID, bus = Mod.EventBusSubscriber.Bus.MOD, value = Dist.CLIENT)
+    public static class ClientModEvents {
+        @SubscribeEvent
+        public static void onClientSetup(FMLClientSetupEvent event) {
+            event.enqueueWork(() -> {
+                TinkerItemProperties.registerBrokenProperty(MomotinkerTools.trigger_blade.get());
+                TinkerItemProperties.registerToolProperties(MomotinkerTools.trigger_blade.get());
+            });
+        }
     }
 }
