@@ -39,7 +39,7 @@
       "model": "momotinker:item/tool/trigger_blade/pulling_1"
     },
     {
-      "predicate": { "tconstruct:charging": 1, "tconstruct:charge": 0.6 },
+      "predicate": { "tconstruct:charging": 1, "tconstruct:charge": 0.4 },
       "model": "momotinker:item/tool/trigger_blade/pulling_2"
     },
     {
