@@ -1,6 +1,7 @@
 package com.momosensei.momotinker.Modifiers.modifiers;
 
 import com.momosensei.momotinker.Momotinker;
+import com.momosensei.momotinker.register.MomotinkerConfig;
 import com.momosensei.momotinker.register.MomotinkerEffects;
 import net.minecraft.ChatFormatting;
 import net.minecraft.network.chat.Component;
@@ -79,7 +80,8 @@ public class WildHearts extends momomodifier {
                     ToolStack tool = ToolStack.from(stack);
                     if (tool.getModifierLevel(this) > 0 ) {
                         ModDataNBT a = iToolStackView.getPersistentData();
-                        if (entity.getMaxHealth() > 80&&a.getFloat(wildheartcooldown)==0) {
+                        int c = MomotinkerConfig.spirit_visage_limit.get();
+                        if (entity.getMaxHealth() > c&&a.getFloat(wildheartcooldown)==0) {
                             entity.addEffect(new MobEffectInstance(MomotinkerEffects.WildHeart.get(), 20));
                         }
                         if (entity.tickCount % 20 == 0 &&a.getFloat(wildheartcooldown)>0.1){

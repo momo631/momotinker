@@ -12,6 +12,8 @@ public class MomotinkerConfig {
             .define("jealous_notes_is_special_acquisition",true);
     public static final ForgeConfigSpec.BooleanValue heartsteel=builder.comment("heartsteel")
             .define("heartsteel_is_special_acquisition",true);
+    public static final ForgeConfigSpec.IntValue heartsteel_life_limit=builder.comment("heartsteel_life_limit")
+            .defineInRange("heartsteel_life_limit_max",1000000,0,Integer.MAX_VALUE);
     public static final ForgeConfigSpec.BooleanValue arrogance_proof=builder.comment("arrogance_proof")
             .define("arrogance_proof_is_special_acquisition",true);
     public static final ForgeConfigSpec.BooleanValue interdimensional_crystal=builder.comment("interdimensional_crystal")
@@ -24,6 +26,8 @@ public class MomotinkerConfig {
             .define("lust_mirror_is_special_acquisition",true);
     public static final ForgeConfigSpec.BooleanValue spirit_visage=builder.comment("spirit_visage")
             .define("spirit_visage_is_special_acquisition",true);
+    public static final ForgeConfigSpec.IntValue spirit_visage_limit=builder.comment("spirit_visage_life_limit")
+            .defineInRange("spirit_visage_life_limit_max",80,0,Integer.MAX_VALUE);
     public static final ForgeConfigSpec.BooleanValue lazy_grail=builder.comment("lazy_grail")
             .define("lazy_grail_is_special_acquisition",true);
     public static final ForgeConfigSpec.BooleanValue greedy_contract=builder.comment("greedy_contract")

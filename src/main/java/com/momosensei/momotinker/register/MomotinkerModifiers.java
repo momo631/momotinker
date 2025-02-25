@@ -44,5 +44,8 @@ public class MomotinkerModifiers {
     public static final StaticModifier<SuperancientMetals> superancientmetals=MODIFIERS.register("superancientmetals", SuperancientMetals::new);
     public static final StaticModifier<SuperancientMetalsReal> superancientmetalsreal=MODIFIERS.register("superancientmetalsreal", SuperancientMetalsReal::new);
     public static final StaticModifier<CrimsonQueen> crimsonqueen=MODIFIERS.register("crimsonqueen", CrimsonQueen::new);
+    public static final StaticModifier<Berserk> berserk=MODIFIERS.register("berserk", Berserk::new);
+    public static final StaticModifier<Yamato> yamato=MODIFIERS.register("yamato", Yamato::new);
+    public static final StaticModifier<StarCloudChain> starcloudchain=MODIFIERS.register("starcloudchain", StarCloudChain::new);
 
 }

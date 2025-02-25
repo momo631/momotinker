@@ -78,7 +78,7 @@ public class divine_punishment_spear extends ModifiableItem {
                 }
                 if (c.getFloat(degenerate) == 100) {
                     if (player.getItemBySlot(EquipmentSlot.MAINHAND).getDamageValue() == 0) {
-                        player.heal(event.getAmount() * 0.2F);
+                        player.heal(event.getAmount() * 0.5F);
                     }
                     if (player.getItemBySlot(EquipmentSlot.MAINHAND).getDamageValue() > 0 && player.getItemBySlot(EquipmentSlot.MAINHAND).getDamageValue() != 0) {
                         player.getItemBySlot(EquipmentSlot.MAINHAND).setDamageValue((int) (player.getItemBySlot(EquipmentSlot.MAINHAND).getDamageValue() - (event.getAmount() * 0.01F)));

@@ -72,10 +72,16 @@ public class trigger_blade extends ModifiableItem {
     public void onUseTick(Level level, LivingEntity living, ItemStack stack, int chargeRemaining) {
         if ( living instanceof ServerPlayer player) {
             int a = ModifierUtil.getModifierLevel(player.getMainHandItem(), MomotinkerModifiers.crimsonqueen.getId());
-
+            int b = ModifierUtil.getModifierLevel(player.getMainHandItem(), MomotinkerModifiers.yamato.getId());
             if (a==0) {
-                float perc = Mth.clamp((float) (this.getUseDuration(stack) - chargeRemaining) / 30, 0, 1);
-                Channel.sendToPlayer(new TriggerBladeCharge(perc), player);
+                if (b==0) {
+                    float perc = Mth.clamp((float) (this.getUseDuration(stack) - chargeRemaining) / 30, 0, 1);
+                    Channel.sendToPlayer(new TriggerBladeCharge(perc), player);
+                }
+                if (b>0) {
+                    float perc = Mth.clamp((float) (this.getUseDuration(stack) - chargeRemaining) / 20, 0, 1);
+                    Channel.sendToPlayer(new TriggerBladeCharge(perc), player);
+                }
             }
         }
     }
@@ -92,14 +98,21 @@ public class trigger_blade extends ModifiableItem {
             ModDataNBT dataNBT = ToolStack.from(stack).getPersistentData();
             int i = this.getUseDuration(stack) - duration;
             int a = ModifierUtil.getModifierLevel(player.getMainHandItem(), MomotinkerModifiers.crimsonqueen.getId());
+            int b = ModifierUtil.getModifierLevel(player.getMainHandItem(), MomotinkerModifiers.yamato.getId());
             if (a==0) {
-                if (i >= 30) {
+                if (b==0&&i >= 30) {
                     Channel.INSTANCE.sendToServer(new triggerSlashPacket(player.getId()));
+                }
+                if (b>0&&i >= 20){
+                    Channel.INSTANCE.sendToServer(new triggerSlashPacket(player.getId()));
+                    if (i>24){
+                        player.getCooldowns().addCooldown(player.getMainHandItem().getItem(), 20);
+                    }
                 }
                 Channel.sendToPlayer(new TriggerBladeCharge(0),player);
             }
             if (a>0) {
-                if ( i >= 0 && i <= 15) {
+                if ( i >= 0 && i <= 9) {
                     if (dataNBT.getFloat(crimsonlayers)<3){
                         dataNBT.putFloat(crimsonlayers, dataNBT.getFloat(crimsonlayers) + 1);
                         dataNBT.putFloat(crimsontime, 20);
@@ -107,6 +120,10 @@ public class trigger_blade extends ModifiableItem {
                     if (dataNBT.getFloat(crimsonlayers) == 3) {
                         dataNBT.putFloat(crimsontime, 20);
                     }
+                }
+                if ( i >= 3 && i <= 6) {
+                    dataNBT.putFloat(crimsonlayers, 3);
+                    dataNBT.putFloat(crimsontime, 20);
                 }
             }
             player.awardStat(Stats.ITEM_USED.get(this));
@@ -179,9 +196,16 @@ public class trigger_blade extends ModifiableItem {
     public static EntityType<TriggerSlashEntity> getSlashType(int index) {
        return MomotinkerEntities.trigger_slash_a.get();
     }
-    public static float getDamageMultiplier(ToolStack tool){
-        float b = RANDOM.nextInt((int) (tool.getStats().get(ACCURACY)*100));
-        return tool.getStats().get(ToolStats.ATTACK_DAMAGE)*(1F+0.005F*b+0.2F*tool.getStats().get(ToolStats.VELOCITY));
+    public static float getDamageMultiplier(ToolStack tool) {
+        float b = RANDOM.nextInt((int) (tool.getStats().get(ACCURACY) * 100));
+        int a = tool.getModifierLevel(MomotinkerModifiers.yamato.getId());
+        if (a == 0) {
+            return tool.getStats().get(ToolStats.ATTACK_DAMAGE) * (1F + 0.005F * b + 0.2F * tool.getStats().get(ToolStats.VELOCITY));
+        }
+        if (a>0){
+            return tool.getStats().get(ToolStats.ATTACK_DAMAGE) * (1F + 0.005F * b + 0.2F * tool.getStats().get(ToolStats.VELOCITY))*0.5F;
+        }
+        return getDamageMultiplier(tool);
     }
     public static boolean checkOffHand(Player player){
         return player!=null&& !player.hasItemInSlot(EquipmentSlot.OFFHAND);

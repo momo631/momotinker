@@ -1,6 +1,7 @@
 package com.momosensei.momotinker.Modifiers.modifiers;
 
 import com.momosensei.momotinker.Momotinker;
+import com.momosensei.momotinker.register.MomotinkerConfig;
 import com.momosensei.momotinker.register.MomotinkerEffects;
 import net.minecraft.ChatFormatting;
 import net.minecraft.network.chat.Component;
@@ -105,7 +106,13 @@ public class Firmheart extends momomodifier {
     @Override
     public void addAttributes(IToolStackView iToolStackView, ModifierEntry modifierEntry, EquipmentSlot equipmentSlot, BiConsumer<Attribute, AttributeModifier> biConsumer) {
         ModDataNBT tooldata = iToolStackView.getPersistentData();
-        biConsumer.accept(Attributes.MAX_HEALTH, new AttributeModifier(UUID.fromString("318662D1-A6BF-38C8-5AB6-04B7F7BCC619"), Attributes.MAX_HEALTH.getDescriptionId(), (double)tooldata.getFloat(swallow), AttributeModifier.Operation.ADDITION));
+        int a = MomotinkerConfig.heartsteel_life_limit.get();
+        if (tooldata.getFloat(swallow)<a) {
+            biConsumer.accept(Attributes.MAX_HEALTH, new AttributeModifier(UUID.fromString("318662D1-A6BF-38C8-5AB6-04B7F7BCC619"), Attributes.MAX_HEALTH.getDescriptionId(), (double) tooldata.getFloat(swallow), AttributeModifier.Operation.ADDITION));
+        }
+        if (tooldata.getFloat(swallow)>=a) {
+            biConsumer.accept(Attributes.MAX_HEALTH, new AttributeModifier(UUID.fromString("E0977AF5-A93A-B1CB-887F-AC5C1077301E"), Attributes.MAX_HEALTH.getDescriptionId(), a, AttributeModifier.Operation.ADDITION));
+        }
     }
 
     public void addTooltip(IToolStackView tool, ModifierEntry modifierEntry, @org.jetbrains.annotations.Nullable Player player, List<net.minecraft.network.chat.Component> tooltip, TooltipKey tooltipKey, TooltipFlag tooltipFlag) {
