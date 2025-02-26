@@ -3,6 +3,7 @@ package com.momosensei.momotinker.tool;
 
 import com.momosensei.momotinker.Momotinker;
 import com.momosensei.momotinker.network.Channel;
+import com.momosensei.momotinker.network.packet.SpearEntityPacket;
 import com.momosensei.momotinker.network.packet.TriggerBladeCharge;
 import com.momosensei.momotinker.register.MomotinkerItem;
 import com.momosensei.momotinker.register.MomotinkerModifiers;
@@ -155,6 +156,7 @@ public class divine_punishment_spear extends ModifiableItem {
             ToolDamageUtil.damageAnimated(tool,1,player);
             if (livingEntity instanceof ServerPlayer player1){
                 Channel.sendToPlayer(new TriggerBladeCharge(0), player1);
+                Channel.INSTANCE.sendToServer(new SpearEntityPacket(player.getId()));
             }
         }
         tool.getPersistentData().remove(KEY_DRAWTIME);
