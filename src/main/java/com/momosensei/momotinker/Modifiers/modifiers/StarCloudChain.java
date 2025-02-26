@@ -22,7 +22,7 @@ public class StarCloudChain extends momomodifier {
         Entity b = event.getSource().getEntity();
         if (b instanceof Player player&&a instanceof Mob){
             int c = ModifierUtil.getModifierLevel(player.getMainHandItem(), MomotinkerModifiers.starcloudchain.getId());
-            if (!a.getTags().contains("starchain")) {
+            if (c>0&&!a.getTags().contains("starchain")) {
                 a.addTag("starchain");
             }
             if (c>0) {

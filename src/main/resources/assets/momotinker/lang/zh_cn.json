@@ -283,7 +283,7 @@
 
   "modifier.momotinker.berserk": "狂暴化",
   "modifier.momotinker.berserk.flavor": "彻底疯狂",
-  "modifier.momotinker.berserk.description": "按下按键切换普通与狂暴两种状态，狂暴状态下造成伤害与承受的伤害修正为140%+20%*词条等级",
+  "modifier.momotinker.berserk.description": "按下按键切换普通与狂暴两种状态，狂暴状态下主手持有此工具时造成伤害与承受的伤害修正为140%+20%*词条等级",
 
   "modifier.momotinker.yamato": "次元斩",
   "modifier.momotinker.yamato.flavor": "扳机长刀专属强化:阎魔刀",
