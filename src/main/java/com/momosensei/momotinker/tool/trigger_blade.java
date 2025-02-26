@@ -41,6 +41,7 @@ import slimeknights.tconstruct.library.tools.nbt.ModDataNBT;
 import slimeknights.tconstruct.library.tools.nbt.ToolStack;
 import slimeknights.tconstruct.library.tools.stat.ToolStats;
 import slimeknights.tconstruct.tools.modifiers.ability.interaction.BlockingModifier;
+import slimeknights.tconstruct.tools.modifiers.upgrades.ranged.ScopeModifier;
 
 import java.util.Iterator;
 import java.util.List;
@@ -80,23 +81,31 @@ public class trigger_blade extends ModifiableItem {
 
     @Override
     public void releaseUsing(ItemStack stack, Level level, LivingEntity livingEntity, int duration) {
+        ScopeModifier.stopScoping(livingEntity);
+        ToolStack tool = ToolStack.from(stack);
+        if (tool.isBroken()){
+            tool.getPersistentData().remove(KEY_DRAWTIME);
+            return;
+        }
         if (livingEntity instanceof ServerPlayer player) {
-            ToolStack tool = ToolStack.from(stack);
             ModDataNBT dataNBT = ToolStack.from(stack).getPersistentData();
-            if (tool.isBroken()) {
-                tool.getPersistentData().remove(KEY_DRAWTIME);
-                return;
-            }
             int i = this.getUseDuration(stack) - duration;
             int a = ModifierUtil.getModifierLevel(player.getMainHandItem(), MomotinkerModifiers.crimsonqueen.getId());
+            int b = ModifierUtil.getModifierLevel(player.getMainHandItem(), MomotinkerModifiers.yamato.getId());
             if (a==0) {
-                if (i >= 30) {
+                if (b==0&&i >= 30) {
                     Channel.INSTANCE.sendToServer(new triggerSlashPacket(player.getId()));
+                }
+                if (b>0&&i >= 20){
+                    Channel.INSTANCE.sendToServer(new triggerSlashPacket(player.getId()));
+                    if (i>24){
+                        player.getCooldowns().addCooldown(player.getMainHandItem().getItem(), 20);
+                    }
                 }
                 Channel.sendToPlayer(new TriggerBladeCharge(0),player);
             }
             if (a>0) {
-                if ( i >= 0 && i <= 15) {
+                if ( i >= 0 && i <= 9) {
                     if (dataNBT.getFloat(crimsonlayers)<3){
                         dataNBT.putFloat(crimsonlayers, dataNBT.getFloat(crimsonlayers) + 1);
                         dataNBT.putFloat(crimsontime, 20);
@@ -105,11 +114,15 @@ public class trigger_blade extends ModifiableItem {
                         dataNBT.putFloat(crimsontime, 20);
                     }
                 }
+                if ( i >= 3 && i <= 6) {
+                    dataNBT.putFloat(crimsonlayers, 3);
+                    dataNBT.putFloat(crimsontime, 20);
+                }
             }
-            tool.getPersistentData().remove(KEY_DRAWTIME);
-            ToolDamageUtil.damageAnimated(tool,1,player);
             player.awardStat(Stats.ITEM_USED.get(this));
+            ToolDamageUtil.damageAnimated(tool,1,player);
         }
+        tool.getPersistentData().remove(KEY_DRAWTIME);
     }
 
     public InteractionResultHolder<ItemStack> use(Level level, Player player, InteractionHand hand) {
@@ -177,9 +190,16 @@ public class trigger_blade extends ModifiableItem {
     public static EntityType<TriggerSlashEntity> getSlashType(int index){
         return MomotinkerEntities.trigger_slash_a.get();
     }
-    public static float getDamageMultiplier(ToolStack tool){
-        float b = RANDOM.nextInt((int) (tool.getStats().get(ACCURACY)*100));
-        return tool.getStats().get(ToolStats.ATTACK_DAMAGE)*(1F+0.005F*b+0.2F*tool.getStats().get(ToolStats.VELOCITY));
+    public static float getDamageMultiplier(ToolStack tool) {
+        float b = RANDOM.nextInt((int) (tool.getStats().get(ACCURACY) * 100));
+        int a = tool.getModifierLevel(MomotinkerModifiers.yamato.getId());
+        if (a == 0) {
+            return tool.getStats().get(ToolStats.ATTACK_DAMAGE) * (1F + 0.005F * b + 0.2F * tool.getStats().get(ToolStats.VELOCITY));
+        }
+        if (a>0){
+            return tool.getStats().get(ToolStats.ATTACK_DAMAGE) * (1F + 0.005F * b + 0.2F * tool.getStats().get(ToolStats.VELOCITY))*0.5F;
+        }
+        return getDamageMultiplier(tool);
     }
     public static boolean checkOffHand(Player player){
         return player!=null&& !player.hasItemInSlot(EquipmentSlot.OFFHAND);

@@ -175,7 +175,7 @@
 
   "modifier.momotinker.huangquan": "浸黄泉",
   "modifier.momotinker.huangquan.flavor": "§7所渡之处,为无§",
-  "modifier.momotinker.huangquan.description": "血量低于60%时提升攻击力，数值为已损失生命值*6，获得“引渡人”效果时该增伤涨至双倍（远程的增伤效率为25%），且攻击会无视防御",
+  "modifier.momotinker.huangquan.description": "血量低于60%时提升攻击力，数值为已损失生命值*6，获得“引渡人”效果时攻击将无视防御且该增伤涨至双倍（远程的增伤效率为25%）",
 
   "modifier.momotinker.red": "轮回色",
   "modifier.momotinker.red.flavor": "§4所归之景，为无§",
@@ -183,11 +183,11 @@
 
   "modifier.momotinker.firmheart": "坚心",
   "modifier.momotinker.firmheart.flavor": "§2心坚如钢§",
-  "modifier.momotinker.firmheart.description": "对一定范围的敌对生物进行充能，5层时攻击消耗充能造成格外自身最大生命值*4的伤害，并永久增长持有该武器时的最大生命值（每次0.2%，远程武器增伤与生命增长减半），每个生物存在60秒冷却",
+  "modifier.momotinker.firmheart.description": "对一定范围的敌对生物进行充能，5层时攻击消耗充能造成格外自身最大生命值*4的伤害，并永久增长持有该武器时的最大生命值（每次0.2%，远程武器增伤与生命增长减半），每个生物存在60秒冷却（默认加成上限为100万）",
 
   "modifier.momotinker.wildhearts": "自然之力",
   "modifier.momotinker.wildhearts.flavor": "§2狂野般生长§",
-  "modifier.momotinker.wildhearts.description": "穿戴时提升20点最大生命值，若最大生命值超过80则获得“狂徒之心”效果，效果持续期间若受到伤害则效果消失并进入8秒冷却，冷却期间受到伤害则重新冷却（同名只生效一次）\n§a[狂徒之心]§:每秒恢复最大生命值的10%",
+  "modifier.momotinker.wildhearts.description": "穿戴时提升20点最大生命值，若最大生命值超过一定值（默认80）则获得“狂徒之心”效果，效果持续期间若受到伤害则效果消失并进入8秒冷却，冷却期间受到伤害则重新冷却（同名只生效一次）\n§a[狂徒之心]§:每秒恢复最大生命值的10%",
 
   "modifier.momotinker.infinitevitality": "无限活力",
   "modifier.momotinker.infinitevitality.flavor": "§a活力如嫩芽§",
@@ -279,5 +279,17 @@
 
   "modifier.momotinker.crimsonqueen": "绯红女皇",
   "modifier.momotinker.crimsonqueen.flavor": "扳机长刀专属强化:机动剑",
-  "modifier.momotinker.crimsonqueen.description": "失去原本的斩击，取而代之的是在右键后一定时机松开会给武器充能20秒，存在充能时攻击会消耗层数使本次攻击修正为150%并无视护甲，最多可存在3层，时间耗尽层数减一，切换武器时层数清零"
+  "modifier.momotinker.crimsonqueen.description": "失去原本的斩击，取而代之的是在右键后一定时机松开会给武器充能20秒，存在充能时攻击会消耗层数使本次攻击修正为150%并无视护甲，最多可存在3层（若触发完美判定则直接获得3层），时间耗尽层数减一，切换武器时层数清零",
+
+  "modifier.momotinker.berserk": "狂暴化",
+  "modifier.momotinker.berserk.flavor": "彻底疯狂",
+  "modifier.momotinker.berserk.description": "按下按键切换普通与狂暴两种状态，狂暴状态下主手持有此工具时造成伤害与承受的伤害修正为140%+20%*词条等级",
+
+  "modifier.momotinker.yamato": "次元斩",
+  "modifier.momotinker.yamato.flavor": "扳机长刀专属强化:阎魔刀",
+  "modifier.momotinker.yamato.description": "斩击蓄力时间略微缩短且斩击变为50%伤害的4连击，使用后武器会陷入1秒的冷却，若在恰好蓄力完成以及其一定时机内释放则不会冷却",
+
+  "modifier.momotinker.starcloudchain": "星云连锁",
+  "modifier.momotinker.starcloudchain.flavor": "如星座般",
+  "modifier.momotinker.starcloudchain.description": "攻击怪物会添加“星链”标记，以自身为中心一定范围内攻击带有该标记的怪物时，其他拥有该标记的怪物会受到此次攻击的50%+10%*词条等级的伤害（范围为10+5*词条等级的方形区域）"
 }

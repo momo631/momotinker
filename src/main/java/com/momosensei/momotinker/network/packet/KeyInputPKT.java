@@ -18,6 +18,7 @@ import slimeknights.tconstruct.library.tools.nbt.ToolStack;
 import java.util.Random;
 import java.util.function.Supplier;
 
+import static com.momosensei.momotinker.Modifiers.modifiers.Berserk.berserker;
 import static com.momosensei.momotinker.Modifiers.modifiers.FallingStars.falling;
 import static com.momosensei.momotinker.Modifiers.modifiers.OverCrystalline.crystallization;
 import static com.momosensei.momotinker.Modifiers.modifiers.Red.ender;
@@ -101,8 +102,18 @@ public class KeyInputPKT {
                     player.getCooldowns().addCooldown(player.getMainHandItem().getItem(), 10);
                 }
             }
-
-
+            if (player != null && ModifierUtil.getModifierLevel(player.getMainHandItem(), MomotinkerModifiers.berserk.getId()) > 0) {
+                ModDataNBT berserkdate = ToolStack.from(player.getItemBySlot(EquipmentSlot.MAINHAND)).getPersistentData();
+                if (!player.getCooldowns().isOnCooldown(player.getMainHandItem().getItem())) {
+                    if (berserkdate.getFloat(berserker)==1){
+                        berserkdate.putFloat(berserker,0);
+                    }else
+                    if (berserkdate.getFloat(berserker)==0){
+                        berserkdate.putFloat(berserker,1);
+                    }
+                    player.getCooldowns().addCooldown(player.getMainHandItem().getItem(), 10);
+                }
+            }
         });
         context.setPacketHandled(true);
     }

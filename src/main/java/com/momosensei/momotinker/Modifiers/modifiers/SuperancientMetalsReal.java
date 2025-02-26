@@ -71,9 +71,9 @@ public class SuperancientMetalsReal extends momomodifier{
             if (c.getFloat(sanctification)==500&&a instanceof Mob mob&&!mob.getTags().contains("BeConquered")) {
                 mob.addTag("BeConquered");
             }
-            if (a.getTags().contains("BeConquered")) {
-                event.setAmount(event.getAmount() * 1.5F);
-            }
+        }
+        if (a!=null&&a.getTags().contains("beconquered")) {
+            event.setAmount(event.getAmount() * 1.5F);
         }
     }
     @Override
