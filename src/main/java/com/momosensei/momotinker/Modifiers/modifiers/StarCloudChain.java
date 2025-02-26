@@ -1,8 +1,8 @@
 package com.momosensei.momotinker.Modifiers.modifiers;
 
 
+import com.c2h6s.etstlib.entity.specialDamageSources.LegacyDamageSource;
 import com.momosensei.momotinker.register.MomotinkerModifiers;
-import net.minecraft.world.damagesource.DamageSource;
 import net.minecraft.world.entity.Entity;
 import net.minecraft.world.entity.Mob;
 import net.minecraft.world.entity.player.Player;
@@ -26,10 +26,10 @@ public class StarCloudChain extends momomodifier {
                 a.addTag("starchain");
             }
             if (c>0) {
-                List<Mob> list = player.level.getEntitiesOfClass(Mob.class, player.getBoundingBox().inflate(10 + 5 * c));
+                List<Mob> list = player.level().getEntitiesOfClass(Mob.class, player.getBoundingBox().inflate(10 + 5 * c));
                 for (Mob mob : list) {
                     if (mob != null&&mob.getTags().contains("starchain")) {
-                        mob.hurt(DamageSource.playerAttack(player),event.getAmount()*(0.5F+0.1F*c));
+                        mob.hurt(LegacyDamageSource.playerAttack(player),event.getAmount()*(0.5F+0.1F*c));
                     }
                 }
             }

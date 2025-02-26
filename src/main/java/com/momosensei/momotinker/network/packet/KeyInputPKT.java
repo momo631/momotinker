@@ -1,4 +1,4 @@
-package com.momosensei.momotinker.network.packet.servertoplay;
+package com.momosensei.momotinker.network.packet;
 
 import com.momosensei.momotinker.register.MomotinkerEffects;
 import com.momosensei.momotinker.register.MomotinkerItem;
@@ -101,9 +101,7 @@ public class KeyInputPKT {
                     player.getCooldowns().addCooldown(player.getMainHandItem().getItem(), 10);
                 }
             }
-            if (player != null && ModifierUtil.getModifierLevel(player.getMainHandItem(), MomotinkerModifiers.test.getId()) > 0) {
-                player.addEffect(new MobEffectInstance(MomotinkerEffects.B.get(), 100));
-            }
+
 
         });
         context.setPacketHandled(true);
