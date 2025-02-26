@@ -2,12 +2,19 @@ package com.momosensei.momotinker.tool;
 
 
 import com.momosensei.momotinker.Momotinker;
+import com.momosensei.momotinker.network.Channel;
+import com.momosensei.momotinker.network.packet.TriggerBladeCharge;
 import com.momosensei.momotinker.register.MomotinkerItem;
 import com.momosensei.momotinker.register.MomotinkerModifiers;
 import net.minecraft.ChatFormatting;
 import net.minecraft.core.BlockPos;
 import net.minecraft.network.chat.Component;
 import net.minecraft.resources.ResourceLocation;
+import net.minecraft.server.level.ServerPlayer;
+import net.minecraft.stats.Stats;
+import net.minecraft.util.Mth;
+import net.minecraft.world.InteractionHand;
+import net.minecraft.world.InteractionResultHolder;
 import net.minecraft.world.damagesource.DamageSource;
 import net.minecraft.world.entity.Entity;
 import net.minecraft.world.entity.EquipmentSlot;
@@ -17,6 +24,7 @@ import net.minecraft.world.entity.npc.Villager;
 import net.minecraft.world.entity.player.Player;
 import net.minecraft.world.item.ItemStack;
 import net.minecraft.world.item.TooltipFlag;
+import net.minecraft.world.item.UseAnim;
 import net.minecraft.world.level.Level;
 import net.minecraft.world.level.block.state.BlockState;
 import net.minecraftforge.common.MinecraftForge;
@@ -28,17 +36,23 @@ import slimeknights.mantle.client.TooltipKey;
 import slimeknights.tconstruct.common.TinkerTags;
 import slimeknights.tconstruct.library.modifiers.ModifierEntry;
 import slimeknights.tconstruct.library.modifiers.ModifierHooks;
+import slimeknights.tconstruct.library.modifiers.hook.display.TooltipModifierHook;
 import slimeknights.tconstruct.library.tools.definition.ToolDefinition;
 import slimeknights.tconstruct.library.tools.helper.ModifierUtil;
+import slimeknights.tconstruct.library.tools.helper.ToolDamageUtil;
 import slimeknights.tconstruct.library.tools.helper.TooltipBuilder;
 import slimeknights.tconstruct.library.tools.item.ModifiableItem;
 import slimeknights.tconstruct.library.tools.nbt.IToolStackView;
 import slimeknights.tconstruct.library.tools.nbt.ModDataNBT;
 import slimeknights.tconstruct.library.tools.nbt.ToolStack;
 import slimeknights.tconstruct.library.tools.stat.ToolStats;
+import slimeknights.tconstruct.tools.modifiers.ability.interaction.BlockingModifier;
+import slimeknights.tconstruct.tools.modifiers.upgrades.ranged.ScopeModifier;
 
 import java.util.Iterator;
 import java.util.List;
+
+import static slimeknights.tconstruct.library.modifiers.hook.interaction.GeneralInteractionModifierHook.KEY_DRAWTIME;
 
 public class divine_punishment_spear extends ModifiableItem {
     public divine_punishment_spear(Properties properties, ToolDefinition toolDefinition) {
@@ -98,11 +112,66 @@ public class divine_punishment_spear extends ModifiableItem {
 
     public boolean mineBlock(ItemStack stack, Level level, BlockState blockState, BlockPos blockPos, LivingEntity entity) {
         if ((double) blockState.getDestroySpeed(level, blockPos) != 0.0D) {
-            stack.hurtAndBreak(2, entity, (entity1) -> {
+            stack.hurtAndBreak(1, entity, (entity1) -> {
                 entity1.broadcastBreakEvent(EquipmentSlot.MAINHAND);
             });
         }
         return true;
+    }
+    public InteractionResultHolder<ItemStack> use(Level level, Player player, InteractionHand hand) {
+        ItemStack stack = player.getItemInHand(hand);
+        ToolStack tool = ToolStack.from(stack);
+        tool.getPersistentData().putInt(KEY_DRAWTIME,20);
+        player.startUsingItem(hand);
+        if (!checkOffHand(player)){
+            return InteractionResultHolder.fail(stack);
+        }
+        if (tool.isBroken()){
+            return InteractionResultHolder.fail(stack);
+        }
+        if (!tool.isBroken()) {
+            return InteractionResultHolder.pass(stack);
+        }
+        return InteractionResultHolder.consume(stack);
+    }
+    @Override
+    public void releaseUsing(ItemStack stack, Level level, LivingEntity livingEntity, int duration) {
+        ScopeModifier.stopScoping(livingEntity);
+        ToolStack tool = ToolStack.from(stack);
+        int i = this.getUseDuration(stack) - duration;
+        if (tool.isBroken()){
+            tool.getPersistentData().remove(KEY_DRAWTIME);
+            return;
+        }
+        if (livingEntity instanceof Player player) {
+            player.awardStat(Stats.ITEM_USED.get(this));
+            player.hasImpulse = true;
+            if (i >= 20){
+                player.startAutoSpinAttack(2);
+                player.setDeltaMovement(player.getLookAngle().scale(4));
+                player.invulnerableTime = 20;
+                player.fallDistance = 0;
+            }
+            ToolDamageUtil.damageAnimated(tool,1,player);
+            if (livingEntity instanceof ServerPlayer player1){
+                Channel.sendToPlayer(new TriggerBladeCharge(0), player1);
+            }
+        }
+        tool.getPersistentData().remove(KEY_DRAWTIME);
+    }
+    @Override
+    public void onUseTick(Level level, LivingEntity living, ItemStack stack, int chargeRemaining) {
+        if (living instanceof ServerPlayer player) {
+            float perc = Mth.clamp((float) (this.getUseDuration(stack) - chargeRemaining) / 20, 0, 1);
+            Channel.sendToPlayer(new TriggerBladeCharge(perc), player);
+        }
+    }
+    public int getUseDuration(ItemStack stack) {
+        return 72000;
+    }
+    @Override
+    public UseAnim getUseAnimation(ItemStack stack) {
+        return BlockingModifier.blockWhileCharging(ToolStack.from(stack), UseAnim.SPEAR);
     }
     public static boolean checkOffHand(Player player){
         return player!=null&& !player.hasItemInSlot(EquipmentSlot.OFFHAND);
@@ -138,7 +207,7 @@ public class divine_punishment_spear extends ModifiableItem {
         Iterator var7 = tool.getModifierList().iterator();
         while(var7.hasNext()) {
             ModifierEntry entry = (ModifierEntry)var7.next();
-            entry.getHook(ModifierHooks.TOOLTIP).addTooltip(tool, entry, player, tooltips, key, tooltipFlag);
+            ((TooltipModifierHook)entry.getHook(ModifierHooks.TOOLTIP)).addTooltip(tool, entry, player, tooltips, key, tooltipFlag);
         }
         return tooltips;
     }

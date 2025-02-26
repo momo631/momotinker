@@ -16,6 +16,7 @@ import slimeknights.tconstruct.library.tools.nbt.ToolStack;
 
 import java.util.List;
 
+import static com.momosensei.momotinker.register.MomotinkerItem.divine_punishment_spear;
 import static com.momosensei.momotinker.register.MomotinkerItem.trigger_blade;
 
 public class TriggerBladeHUD {
@@ -35,7 +36,7 @@ public class TriggerBladeHUD {
         if (player == null){
             return;
         }
-        if (!player.getItemBySlot(EquipmentSlot.MAINHAND).is(trigger_blade.get())){
+        if (!(player.getItemBySlot(EquipmentSlot.MAINHAND).is(trigger_blade.get())||player.getItemBySlot(EquipmentSlot.MAINHAND).is(divine_punishment_spear.get()))){
             return;
         }
         ToolStack tool = ToolStack.from(player.getMainHandItem());

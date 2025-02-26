@@ -125,7 +125,7 @@
   "item.momotinker.trigger_blade.description": "拥有特殊攻击手段的近战武器，使用时副手不能有其它物品。右键可进行蓄力，蓄力完成后松开可发出斩击，造成范围爆发伤害。\n每点初速度增加斩击伤害20%。\n精密度会随机增加伤害，每点使能随机到的最大值提升50%",
 
   "item.momotinker.divine_punishment_spear": "天谴之矛",
-  "item.momotinker.divine_punishment_spear.description": "超高攻速与攻击距离的单体型近战武器，使用时若副手有其他物品造成的伤害会减半，可以在古城奖励中获得。\n[古代神兵]:玩家无法自主锻造，可以在某些地点获得黯淡玄金部件的工具，完成对应神兵任务时可以进化",
+  "item.momotinker.divine_punishment_spear.description": "超高攻速与攻击距离的单体型近战武器，使用时若副手有其他物品造成的伤害会减半，右键蓄力释放时可短暂冲刺，可以在古城奖励中获得。\n[古代神兵]:玩家无法自主锻造，可以在某些地点获得黯淡玄金部件的工具，完成对应神兵任务时可以进化",
 
   "momotinker.tool.tooltip.offhand_hastool": "错误:副手有物品",
 
