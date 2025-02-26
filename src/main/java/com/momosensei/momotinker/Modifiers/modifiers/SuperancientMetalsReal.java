@@ -77,7 +77,7 @@ public class SuperancientMetalsReal extends momomodifier{
             }
         }
         if (a!=null&&a.getTags().contains("beconquered")) {
-            event.setAmount(event.getAmount() * 1.3F);
+            event.setAmount(event.getAmount() * 1.5F);
         }
     }
 
@@ -89,7 +89,7 @@ public class SuperancientMetalsReal extends momomodifier{
         }
         if (c.getFloat(sanctification)==500) {
             tooltip.add(net.minecraft.network.chat.Component.translatable("古代神兵认证:天谴之矛-星辰").withStyle(ChatFormatting.YELLOW));
-            tooltip.add(net.minecraft.network.chat.Component.translatable("此武器攻击怪物会永久添加“被征服者”的标记，此怪物受到的任何伤害会修正为130%").withStyle(ChatFormatting.YELLOW));
+            tooltip.add(net.minecraft.network.chat.Component.translatable("此武器攻击怪物会永久添加“被征服者”的标记，此怪物受到的任何伤害会修正为150%").withStyle(ChatFormatting.YELLOW));
         }
     }
 }
