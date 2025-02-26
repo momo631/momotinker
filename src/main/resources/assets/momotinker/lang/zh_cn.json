@@ -291,5 +291,9 @@
 
   "modifier.momotinker.starcloudchain": "星云连锁",
   "modifier.momotinker.starcloudchain.flavor": "如星座般",
-  "modifier.momotinker.starcloudchain.description": "攻击怪物会添加“星链”标记，以自身为中心一定范围内攻击带有该标记的怪物时，其他拥有该标记的怪物会受到此次攻击的50%+10%*词条等级的伤害（范围为10+5*词条等级的方形区域）"
+  "modifier.momotinker.starcloudchain.description": "攻击怪物会添加“星链”标记，以自身为中心一定范围内攻击带有该标记的怪物时，其他拥有该标记的怪物会受到此次攻击的50%+10%*词条等级的伤害（范围为10+5*词条等级的方形区域）",
+
+  "modifier.momotinker.breakthroughstars": "贯星魔枪",
+  "modifier.momotinker.breakthroughstars.flavor": "天谴之矛专属强化:魔力投矛",
+  "modifier.momotinker.breakthroughstars.description": "失去原本的冲刺能力，取而代之是在右键蓄力后松开会消耗当前5%的经验点数发射一把魔法矛，被其触碰会受到攻击伤害，每消耗1点经验会提升其1%的伤害（默认最多增伤100%）"
 }

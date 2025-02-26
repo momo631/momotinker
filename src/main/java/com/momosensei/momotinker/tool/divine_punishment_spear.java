@@ -53,6 +53,7 @@ import slimeknights.tconstruct.tools.modifiers.upgrades.ranged.ScopeModifier;
 import java.util.Iterator;
 import java.util.List;
 
+import static com.momosensei.momotinker.Modifiers.modifiers.BreakthroughStars.breakthroughstar;
 import static slimeknights.tconstruct.library.modifiers.hook.interaction.GeneralInteractionModifierHook.KEY_DRAWTIME;
 
 public class divine_punishment_spear extends ModifiableItem {
@@ -145,9 +146,10 @@ public class divine_punishment_spear extends ModifiableItem {
             return;
         }
         if (livingEntity instanceof Player player) {
+            int a = ModifierUtil.getModifierLevel(player.getMainHandItem(), MomotinkerModifiers.breakthroughstars.getId());
             player.awardStat(Stats.ITEM_USED.get(this));
-            player.hasImpulse = true;
-            if (i >= 20){
+            if (a==0&&i >= 20){
+                player.hasImpulse = true;
                 player.startAutoSpinAttack(2);
                 player.setDeltaMovement(player.getLookAngle().scale(4));
                 player.invulnerableTime = 20;
@@ -156,7 +158,10 @@ public class divine_punishment_spear extends ModifiableItem {
             ToolDamageUtil.damageAnimated(tool,1,player);
             if (livingEntity instanceof ServerPlayer player1){
                 Channel.sendToPlayer(new TriggerBladeCharge(0), player1);
-                Channel.INSTANCE.sendToServer(new SpearEntityPacket(player.getId()));
+                if (a>0&&i>=20){
+                    player.giveExperiencePoints(-tool.getPersistentData().getInt(breakthroughstar));
+                    Channel.INSTANCE.sendToServer(new SpearEntityPacket(player.getId()));
+                }
             }
         }
         tool.getPersistentData().remove(KEY_DRAWTIME);

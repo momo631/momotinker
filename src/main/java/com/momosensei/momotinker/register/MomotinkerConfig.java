@@ -32,6 +32,9 @@ public class MomotinkerConfig {
             .define("lazy_grail_is_special_acquisition",true);
     public static final ForgeConfigSpec.BooleanValue greedy_contract=builder.comment("greedy_contract")
             .define("greedy_contract_is_special_acquisition",true);
+    public static final ForgeConfigSpec.IntValue breakthroughstar_limit=builder.comment("breakthroughstar_limit")
+            .defineInRange("breakthroughstar_limit_max",100,0,Integer.MAX_VALUE);
+
 
 
     public static final ForgeConfigSpec spec=builder.pop().build();

@@ -17,21 +17,23 @@ import slimeknights.tconstruct.library.utils.Util;
 import java.util.List;
 
 
-public class SpearEntity extends Projectile {
-    public final ItemStack Spear;
+public class BurningEntity extends Projectile {
+    public final ItemStack Burning;
+    public Vec3 offset =new Vec3(0,0,0);
     public ToolStack tool;
     public float damage=0;
+    public double SCALE =Math.max(0.1, getMold(this.getDeltaMovement()));
 
-    public SpearEntity(EntityType<? extends Projectile> p_37248_, Level p_37249_, ItemStack spear) {
+    public BurningEntity(EntityType<? extends Projectile> p_37248_, Level p_37249_, ItemStack burning) {
         super(p_37248_, p_37249_);
-        this.Spear = spear;
+        this.Burning = burning;
     }
-    public ItemStack getSpear(){
-        return this.Spear;
+    public ItemStack getBurning(){
+        return this.Burning;
     }
     public static double getMold(Vec3 vec3){
         if(vec3!=null){
-            return Math.pow(Math.pow(vec3.x, 2)+Math.pow(vec3.y, 2)+Math.pow(vec3.z, 2),0.5);
+            return Math.pow(Math.pow(vec3.x, 2)+Math.pow(vec3.y, 2)+Math.pow(vec3.z, 2),0.05);
         }
         return 0;
     }
@@ -48,24 +50,26 @@ public class SpearEntity extends Projectile {
         if (this.tool==null&&this.getOwner() instanceof Player player){
             this.tool=ToolStack.from(player.getMainHandItem());
         }
+        Vec3 rayVec3 =this.getDeltaMovement();
         super.tick();
-        if (this.tickCount >= 200) {
-            this.discard();
-            return;
+        if (this.tickCount >= 21) {
+                this.discard();
+                return;
         }
         Entity entity =this.getOwner();
         if (entity==null){
             return;
         }
-        Vec3 movement =this.getDeltaMovement();
-        this.setPos(movement.x+this.getX(),movement.y+this.getY(),movement.z+this.getZ());
-        double angle =((this.tickCount * 100 % 360)*Math.PI)/180;
-        Vec3 anglevec =new Vec3(Math.sin(angle),0,Math.cos(angle)).scale(2);
-        if (getMold(movement)<=2){
-            this.setDeltaMovement(movement.scale(5));
-        }
         if (entity instanceof Player player) {
-            AABB aabb =new AABB(this.getX()+anglevec.x,this.getY(),this.getZ()+anglevec.z,this.getX(),this.getY(),this.getZ()).inflate(2.25);
+            Vec3 vec3 = new Vec3(rayVec3.x, rayVec3.y, rayVec3.z);
+            double x = player.getX();
+            double y = player.getY() + 0.5 * player.getBbHeight();
+            double z = player.getZ();
+            double dx = vec3.x * SCALE+offset.x;
+            double dy = vec3.y * SCALE+offset.y;
+            double dz = vec3.z * SCALE+offset.z;
+            this.setPos(x + dx, y + dy, z + dz+3);
+            AABB aabb = this.getBoundingBox().expandTowards(vec3.scale(2)).expandTowards(vec3.scale(-1)).expandTowards(new Vec3(0,dy,0).cross(vec3)).expandTowards(new Vec3(0,-dy,0).cross(vec3));
             List<Entity> ls0 = this.level.getEntitiesOfClass(Entity.class, aabb);
             for (Entity targets : ls0) {
                 if (targets!=getOwner()) {
