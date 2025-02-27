@@ -71,7 +71,6 @@ public class SpearEntity extends Projectile {
                 if (targets!=getOwner()) {
                     targets.invulnerableTime = 0;
                     attackUtil.attackEntity(this.tool, player, InteractionHand.MAIN_HAND, targets, ()->1, true, Util.getSlotType(InteractionHand.MAIN_HAND), this.damage, false, true, true, true);
-                    targets.invulnerableTime = 0;
                 }
             }
         }

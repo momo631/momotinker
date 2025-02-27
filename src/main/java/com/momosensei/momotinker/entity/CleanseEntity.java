@@ -1,17 +1,17 @@
 package com.momosensei.momotinker.entity;
 
-import com.mojang.math.Vector3f;
 import com.momosensei.momotinker.register.MomotinkerEntities;
 import com.momosensei.momotinker.util.attackUtil;
 import net.minecraft.core.BlockPos;
 import net.minecraft.core.Direction;
-import net.minecraft.core.particles.DustParticleOptions;
+import net.minecraft.core.particles.ParticleTypes;
 import net.minecraft.network.syncher.EntityDataAccessor;
 import net.minecraft.network.syncher.EntityDataSerializers;
 import net.minecraft.network.syncher.SynchedEntityData;
 import net.minecraft.server.level.ServerLevel;
 import net.minecraft.world.InteractionHand;
 import net.minecraft.world.damagesource.DamageSource;
+import net.minecraft.world.entity.Entity;
 import net.minecraft.world.entity.EntityType;
 import net.minecraft.world.entity.Mob;
 import net.minecraft.world.entity.MoverType;
@@ -32,14 +32,14 @@ import slimeknights.tconstruct.library.utils.Util;
 
 import java.util.List;
 
-public class BurningEntity extends Projectile {
+public class CleanseEntity extends Projectile {
     public ToolStack tool;
     public float damage=0;
-    private static final EntityDataAccessor<Byte> EXPLOSION_POWER = SynchedEntityData.defineId(BurningEntity.class, EntityDataSerializers.BYTE);
-    public BurningEntity(EntityType<? extends Projectile> p_37248_, Level p_37249_) {
+    private static final EntityDataAccessor<Byte> EXPLOSION_POWER = SynchedEntityData.defineId(CleanseEntity.class, EntityDataSerializers.BYTE);
+    public CleanseEntity(EntityType<? extends Projectile> p_37248_, Level p_37249_) {
         super(p_37248_, p_37249_);
     }
-    public BurningEntity(Level level, double x, double y, double z, Vec3 movement){
+    public CleanseEntity(Level level, double x, double y, double z, Vec3 movement){
         this(MomotinkerEntities.cleanse_entity.get(), level);
         this.setPos(x,y,z);
         this.setDeltaMovement(movement);
@@ -48,6 +48,13 @@ public class BurningEntity extends Projectile {
 
     @Override
     public void tick() {
+        if (this.tool==null&&this.getOwner() instanceof Player player){
+            this.tool=ToolStack.from(player.getMainHandItem());
+        }
+        Entity entity =this.getOwner();
+        if (entity==null){
+            return;
+        }
         super.tick();
         this.tickCount++;
         if (this.tickCount>1200) this.discard();
@@ -61,12 +68,27 @@ public class BurningEntity extends Projectile {
         if (entityhitresult != null && entityhitresult.getType() != HitResult.Type.MISS) {
             hitresult = entityhitresult;
         }
-        if (this.level instanceof ServerLevel serverLevel){
-            DustParticleOptions options =new DustParticleOptions(new Vector3f( Vec3.fromRGB24(0x784C3D)),1.0f);
-            serverLevel.sendParticles(options,this.getX(),this.getY(),this.getZ(),7,0.25,0.25,0.25,0.15);
+        if (this.level instanceof ServerLevel serverLevel&&tickCount%10==0){
+            for (int i = 0; i <= 360; i++) {
+                double rad = i * 0.017453292519943295;
+                double r = 15D;
+                double x = r * Math.cos(rad);
+                double z = r * Math.sin(rad);
+                serverLevel.sendParticles(ParticleTypes.FLAME, this.getX(), this.getY()-23, this.getZ(), 9/10, x, r, z, 0.1);
+            }
         }
         if (hitresult.getType()!= HitResult.Type.MISS){
             this.onHit(hitresult);
+        }
+        if (entity instanceof Player player) {
+            List<Mob> lis = this.level.getEntitiesOfClass(Mob.class, this.getBoundingBox().inflate(10));
+            for (Mob mob : lis) {
+                if (mob != null ) {
+                    mob.invulnerableTime = 0;
+                    attackUtil.attackEntity(this.tool, player, InteractionHand.MAIN_HAND, mob, () -> 1, true, Util.getSlotType(InteractionHand.MAIN_HAND), this.damage*0.01F, false, true, true, true);
+                    mob.invulnerableTime = 0;
+                }
+            }
         }
         if (this.onGround){
             this.onHit(new BlockHitResult(this.position(), Direction.UP,this.blockPosition().below(),false));
@@ -109,9 +131,9 @@ public class BurningEntity extends Projectile {
             List<Mob> lis = this.level.getEntitiesOfClass(Mob.class, this.getBoundingBox().inflate(22));
             for (Mob mob : lis) {
                 if (mob != null&&this.getOwner() instanceof Player player) {
-                    player.invulnerableTime=20;
                     mob.invulnerableTime = 0;
                     attackUtil.attackEntity(this.tool, player, InteractionHand.MAIN_HAND, mob, ()->1, true, Util.getSlotType(InteractionHand.MAIN_HAND), this.damage, false, true, true, true);
+                    mob.invulnerableTime = 0;
                 }
             }
         }

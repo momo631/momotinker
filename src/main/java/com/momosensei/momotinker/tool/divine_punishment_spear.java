@@ -2,6 +2,9 @@ package com.momosensei.momotinker.tool;
 
 
 import com.momosensei.momotinker.Momotinker;
+import com.momosensei.momotinker.entity.CleanseEntity;
+import com.momosensei.momotinker.entity.SpearCreate;
+import com.momosensei.momotinker.event.CleanseSpawnEvent;
 import com.momosensei.momotinker.network.Channel;
 import com.momosensei.momotinker.network.packet.SpearEntityPacket;
 import com.momosensei.momotinker.network.packet.TriggerBladeCharge;
@@ -28,6 +31,8 @@ import net.minecraft.world.item.TooltipFlag;
 import net.minecraft.world.item.UseAnim;
 import net.minecraft.world.level.Level;
 import net.minecraft.world.level.block.state.BlockState;
+import net.minecraft.world.phys.Vec2;
+import net.minecraft.world.phys.Vec3;
 import net.minecraftforge.common.MinecraftForge;
 import net.minecraftforge.event.entity.living.LivingDeathEvent;
 import net.minecraftforge.event.entity.living.LivingHurtEvent;
@@ -123,7 +128,13 @@ public class divine_punishment_spear extends ModifiableItem {
     public InteractionResultHolder<ItemStack> use(Level level, Player player, InteractionHand hand) {
         ItemStack stack = player.getItemInHand(hand);
         ToolStack tool = ToolStack.from(stack);
-        tool.getPersistentData().putInt(KEY_DRAWTIME,20);
+        int b = ModifierUtil.getModifierLevel(player.getMainHandItem(), MomotinkerModifiers.cleansetheworld.getId());
+        if (b==0) {
+            tool.getPersistentData().putInt(KEY_DRAWTIME, 20);
+        }else
+        if (b>0) {
+            tool.getPersistentData().putInt(KEY_DRAWTIME, 100);
+        }
         player.startUsingItem(hand);
         if (!checkOffHand(player)){
             return InteractionResultHolder.fail(stack);
@@ -158,9 +169,28 @@ public class divine_punishment_spear extends ModifiableItem {
             ToolDamageUtil.damageAnimated(tool,1,player);
             if (livingEntity instanceof ServerPlayer player1){
                 Channel.sendToPlayer(new TriggerBladeCharge(0), player1);
-                if (a>0&&i>=20){
+                int b = ModifierUtil.getModifierLevel(player.getMainHandItem(), MomotinkerModifiers.cleansetheworld.getId());
+                if (a>0&&b==0&&i>=20){
                     player.giveExperiencePoints(-tool.getPersistentData().getInt(breakthroughstar));
                     Channel.INSTANCE.sendToServer(new SpearEntityPacket(player.getId()));
+                }
+                if (a>0&&b>0&&i>=100) {
+                    player.giveExperiencePoints(-tool.getPersistentData().getInt(breakthroughstar)*5);
+                    Vec2 pos = new Vec2((float) (player.getX()), (float) (player.getZ()));
+                    CleanseSpawnEvent event1 = new CleanseSpawnEvent(new Vec3(pos.x, player.getY() + 100, pos.y));
+                    MinecraftForge.EVENT_BUS.post(event1);
+                    if (!event1.isCanceled()) {
+                        double x =player.getLookAngle().x;
+                        double z =player.getLookAngle().z;
+                        CleanseEntity entity = new CleanseEntity(level, pos.x, player.getY() + 100, pos.y, new Vec3(x*0.2,0,z*0.2));
+                        entity.noPhysics = true;
+                        entity.setOwner(player);
+                        entity.setToolstack(tool);
+                        entity.damage = SpearCreate.getDamageMultiplier(tool) * 50;
+                        entity.setExplosionPower((byte) 120);
+                        level.addFreshEntity(entity);
+                    }
+                    player.getCooldowns().addCooldown(player.getMainHandItem().getItem(), 6000);
                 }
             }
         }
@@ -169,8 +199,15 @@ public class divine_punishment_spear extends ModifiableItem {
     @Override
     public void onUseTick(Level level, LivingEntity living, ItemStack stack, int chargeRemaining) {
         if (living instanceof ServerPlayer player) {
-            float perc = Mth.clamp((float) (this.getUseDuration(stack) - chargeRemaining) / 20, 0, 1);
-            Channel.sendToPlayer(new TriggerBladeCharge(perc), player);
+            int b = ModifierUtil.getModifierLevel(player.getMainHandItem(), MomotinkerModifiers.cleansetheworld.getId());
+            if (b==0) {
+                float perc = Mth.clamp((float) (this.getUseDuration(stack) - chargeRemaining) / 20, 0, 1);
+                Channel.sendToPlayer(new TriggerBladeCharge(perc), player);
+            }else
+            if (b>0) {
+                float perc = Mth.clamp((float) (this.getUseDuration(stack) - chargeRemaining) / 100, 0, 1);
+                Channel.sendToPlayer(new TriggerBladeCharge(perc), player);
+            }
         }
     }
     public int getUseDuration(ItemStack stack) {

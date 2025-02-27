@@ -129,6 +129,7 @@ repositories {
         url 'https://dvs1.progwml6.com/files/maven'
     }
     maven { url = "https://maven.kosmx.dev/" }
+   // maven { url = "https://dl.cloudsmith.io/public/geckolib3/geckolib/maven/" }
     flatDir {
         dir 'libs'
     }
@@ -144,7 +145,7 @@ dependencies {
     minecraft 'net.minecraftforge:forge:1.19.2-43.4.0'
     minecraft "net.minecraftforge:forge:${minecraft_version}-${forge_version}"
     annotationProcessor "org.spongepowered:mixin:${mixin_version}:processor"
-
+  //  implementation fg.deobf("software.bernie.geckolib:geckolib-forge-${geckolib_version}")
     implementation fg.deobf("dev.kosmx.player-anim:player-animation-lib-forge:${player_animator_version}")
 
     // Real mod deobf dependency examples - these get remapped to your current mappings

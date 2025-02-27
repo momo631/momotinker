@@ -52,6 +52,8 @@
   "item.momotinker.molten_stained_blood_gold_bucket": "熔融染血玄金桶",
   "item.momotinker.molten_starry_mysterious_gold_bucket": "熔融星辰玄金桶",
 
+  "recipe.momotinker.modifier.cleansetheworld": "荡涤天地需要贯星魔枪作为前置",
+
   "item.momotinker.laomo": "墨",
 
   "item.momotinker.interdimensional_crystal": "§d天外来星§",
@@ -295,5 +297,9 @@
 
   "modifier.momotinker.breakthroughstars": "贯星魔枪",
   "modifier.momotinker.breakthroughstars.flavor": "天谴之矛专属强化:魔力投矛",
-  "modifier.momotinker.breakthroughstars.description": "失去原本的冲刺能力，取而代之是在右键蓄力后松开会消耗当前5%的经验点数发射一把魔法矛，被其触碰会受到攻击伤害，每消耗1点经验会提升其1%的伤害（默认最多增伤100%）"
+  "modifier.momotinker.breakthroughstars.description": "失去原本的冲刺能力，取而代之是在右键蓄力后松开会消耗当前5%的经验点数发射一把魔法矛，被其触碰会受到攻击伤害，每消耗1点经验会提升其1%的伤害（默认最多增伤100%）",
+
+  "modifier.momotinker.cleansetheworld": "荡涤天地",
+  "modifier.momotinker.cleansetheworld.flavor": "贯星魔枪增强:天谴",
+  "modifier.momotinker.cleansetheworld.description": "较长时间蓄力后会在上空会消耗当前25%的经验点数召唤巨大魔法矛（使用后该类工具进入冷却300秒），被其触碰每刻会受到50%的伤害，在落地后产生剧烈爆炸并对大范围生物造成5000%的伤害，每消耗1点经验会提升其1%的伤害（默认最多增伤100%）"
 }

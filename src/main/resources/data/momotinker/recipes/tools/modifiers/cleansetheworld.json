@@ -1,0 +1,42 @@
+{
+  "type": "tconstruct:modifier",
+  "allow_crystal": true,
+  "check_trait_level": true,
+  "inputs": [
+    {
+      "item": "minecraft:netherite_ingot",
+      "amount_needed": 2
+    },
+    {
+      "item": "minecraft:diamond",
+      "amount_needed": 16
+    },
+    {
+      "item": "momotinker:starry_mysterious_gold",
+      "amount_needed": 6
+    },
+    {
+      "item": "minecraft:diamond",
+      "amount_needed": 16
+    },
+    {
+      "item": "minecraft:netherite_ingot",
+      "amount_needed": 2
+    }
+  ],
+  "level": {
+    "max": 1
+  },
+  "result": "momotinker:cleansetheworld",
+  "slots": {
+    "abilities": 2
+  },
+  "requirements": {
+    "name": "momotinker:breakthroughstars",
+    "level": 1,
+    "error": "recipe.momotinker.modifier.cleansetheworld"
+  },
+  "tools": {
+    "item": "momotinker:divine_punishment_spear"
+  }
+}
