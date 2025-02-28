@@ -1,0 +1,12 @@
+{
+  "type": "tconstruct:modifier_salvage",
+  "tools":[
+    {
+      "tag": "momotinker:divine_punishment_spear"
+    }
+  ],
+  "slots": {
+    "upgrades": 1
+  },
+  "modifier": "momotinker:shadowofdamnation"
+}

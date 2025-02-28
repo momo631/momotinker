@@ -15,8 +15,8 @@ import slimeknights.tconstruct.library.tools.nbt.IToolStackView;
 import javax.annotation.Nullable;
 import java.util.List;
 
-public class CleanseTheWorld extends momomodifier implements RequirementsModifierHook , ValidateModifierHook {
-    public CleanseTheWorld() {
+public class ShadowOfDamnation extends momomodifier implements RequirementsModifierHook , ValidateModifierHook {
+    public ShadowOfDamnation() {
     }
     @Override
     protected void registerHooks(ModuleHookMap.Builder builder) {
@@ -30,17 +30,17 @@ public class CleanseTheWorld extends momomodifier implements RequirementsModifie
     @Nullable
     @Override
     public Component requirementsError(ModifierEntry entry) {
-        return Component.translatable("recipe.momotinker.modifier.cleansetheworld");
+        return Component.translatable("recipe.momotinker.modifier.shadowofdamnation");
     }
 
     @Override
     public @NotNull List<ModifierEntry> displayModifiers(ModifierEntry entry) {
-        return List.of(new ModifierEntry(MomotinkerModifiers.breakthroughstars.getId(),1));
+        return List.of(new ModifierEntry(MomotinkerModifiers.shadowofdamnation.getId(),1));
     }
 
     @Override
     public Component validate(IToolStackView tool, ModifierEntry modifier) {
-        if (tool.getModifierLevel(MomotinkerModifiers.breakthroughstars.getId())>0){
+        if (tool.getModifierLevel(MomotinkerModifiers.cleansetheworld.getId())>0){
             return null;
         }
         return requirementsError(modifier);

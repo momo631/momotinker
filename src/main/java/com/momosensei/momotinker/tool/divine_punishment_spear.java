@@ -128,9 +128,13 @@ public class divine_punishment_spear extends ModifiableItem {
     public InteractionResultHolder<ItemStack> use(Level level, Player player, InteractionHand hand) {
         ItemStack stack = player.getItemInHand(hand);
         ToolStack tool = ToolStack.from(stack);
+        int a = ModifierUtil.getModifierLevel(player.getMainHandItem(), MomotinkerModifiers.breakthroughstars.getId());
         int b = ModifierUtil.getModifierLevel(player.getMainHandItem(), MomotinkerModifiers.cleansetheworld.getId());
-        if (b==0) {
+        if (a==0&&b==0) {
             tool.getPersistentData().putInt(KEY_DRAWTIME, 20);
+        }else
+        if (a>0&&b==0) {
+            tool.getPersistentData().putInt(KEY_DRAWTIME, 10);
         }else
         if (b>0) {
             tool.getPersistentData().putInt(KEY_DRAWTIME, 100);
@@ -158,6 +162,8 @@ public class divine_punishment_spear extends ModifiableItem {
         }
         if (livingEntity instanceof Player player) {
             int a = ModifierUtil.getModifierLevel(player.getMainHandItem(), MomotinkerModifiers.breakthroughstars.getId());
+            int b = ModifierUtil.getModifierLevel(player.getMainHandItem(), MomotinkerModifiers.cleansetheworld.getId());
+            int c = ModifierUtil.getModifierLevel(player.getMainHandItem(), MomotinkerModifiers.shadowofdamnation.getId());
             player.awardStat(Stats.ITEM_USED.get(this));
             if (a==0&&i >= 20){
                 player.hasImpulse = true;
@@ -169,8 +175,7 @@ public class divine_punishment_spear extends ModifiableItem {
             ToolDamageUtil.damageAnimated(tool,1,player);
             if (livingEntity instanceof ServerPlayer player1){
                 Channel.sendToPlayer(new TriggerBladeCharge(0), player1);
-                int b = ModifierUtil.getModifierLevel(player.getMainHandItem(), MomotinkerModifiers.cleansetheworld.getId());
-                if (a>0&&b==0&&i>=20){
+                if (a>0&&b==0&&i>=10){
                     player.giveExperiencePoints(-tool.getPersistentData().getInt(breakthroughstar));
                     Channel.INSTANCE.sendToServer(new SpearEntityPacket(player.getId()));
                 }
@@ -186,11 +191,12 @@ public class divine_punishment_spear extends ModifiableItem {
                         entity.noPhysics = true;
                         entity.setOwner(player);
                         entity.setToolstack(tool);
+                        entity.setint(c);
                         entity.damage = SpearCreate.getDamageMultiplier(tool) * 50;
                         entity.setExplosionPower((byte) 120);
                         level.addFreshEntity(entity);
                     }
-                    player.getCooldowns().addCooldown(player.getMainHandItem().getItem(), 6000);
+                    //player.getCooldowns().addCooldown(player.getMainHandItem().getItem(), 6000);
                 }
             }
         }
@@ -199,9 +205,14 @@ public class divine_punishment_spear extends ModifiableItem {
     @Override
     public void onUseTick(Level level, LivingEntity living, ItemStack stack, int chargeRemaining) {
         if (living instanceof ServerPlayer player) {
+            int a = ModifierUtil.getModifierLevel(player.getMainHandItem(), MomotinkerModifiers.breakthroughstars.getId());
             int b = ModifierUtil.getModifierLevel(player.getMainHandItem(), MomotinkerModifiers.cleansetheworld.getId());
-            if (b==0) {
+            if (a==0&&b==0) {
                 float perc = Mth.clamp((float) (this.getUseDuration(stack) - chargeRemaining) / 20, 0, 1);
+                Channel.sendToPlayer(new TriggerBladeCharge(perc), player);
+            }else
+            if (a>0&&b==0) {
+                float perc = Mth.clamp((float) (this.getUseDuration(stack) - chargeRemaining) / 10, 0, 1);
                 Channel.sendToPlayer(new TriggerBladeCharge(perc), player);
             }else
             if (b>0) {

@@ -49,5 +49,6 @@ public class MomotinkerModifiers {
     public static final StaticModifier<StarCloudChain> starcloudchain=MODIFIERS.register("starcloudchain", StarCloudChain::new);
     public static final StaticModifier<BreakthroughStars> breakthroughstars=MODIFIERS.register("breakthroughstars", BreakthroughStars::new);
     public static final StaticModifier<CleanseTheWorld> cleansetheworld=MODIFIERS.register("cleansetheworld", CleanseTheWorld::new);
+    public static final StaticModifier<ShadowOfDamnation> shadowofdamnation=MODIFIERS.register("shadowofdamnation", ShadowOfDamnation::new);
 
 }

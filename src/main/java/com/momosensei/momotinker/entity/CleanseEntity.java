@@ -35,6 +35,7 @@ import java.util.List;
 public class CleanseEntity extends Projectile {
     public ToolStack tool;
     public float damage=0;
+    public int a = 0;
     private static final EntityDataAccessor<Byte> EXPLOSION_POWER = SynchedEntityData.defineId(CleanseEntity.class, EntityDataSerializers.BYTE);
     public CleanseEntity(EntityType<? extends Projectile> p_37248_, Level p_37249_) {
         super(p_37248_, p_37249_);
@@ -61,7 +62,11 @@ public class CleanseEntity extends Projectile {
         if (this.getDeltaMovement().length() > 1) {
             this.setDeltaMovement(this.getDeltaMovement().scale(0.9));
         }
-        this.setDeltaMovement(this.getDeltaMovement().add(0, -0.01, 0));
+        if (a==0) {
+            this.setDeltaMovement(this.getDeltaMovement().add(0, -0.01, 0));
+        }else if (a>0){
+            this.setDeltaMovement(this.getDeltaMovement().add(0, -0.3, 0));
+        }
         HitResult hitresult = this.level.clip(new ClipContext(this.position(), this.position().add(this.getDeltaMovement()), ClipContext.Block.COLLIDER, ClipContext.Fluid.NONE, this));
         EntityHitResult entityhitresult = ProjectileUtil.getEntityHitResult(this.level,this,this.position(), this.position().add(this.getDeltaMovement()),this.getBoundingBox().expandTowards(this.getDeltaMovement()).inflate(10),this::canHitEntity);
         super.move(MoverType.SELF,this.getDeltaMovement());
@@ -74,19 +79,34 @@ public class CleanseEntity extends Projectile {
                 double r = 15D;
                 double x = r * Math.cos(rad);
                 double z = r * Math.sin(rad);
-                serverLevel.sendParticles(ParticleTypes.FLAME, this.getX(), this.getY()-23, this.getZ(), 9/10, x, r, z, 0.1);
+                if (a == 0) {
+                    serverLevel.sendParticles(ParticleTypes.FLAME, this.getX(), this.getY() - 23, this.getZ(), 9 / 10, x, r, z, 0.1);
+                } else if (a > 0) {
+                    serverLevel.sendParticles(ParticleTypes.FLAME, this.getX(), this.getY() - 23, this.getZ(), 9 / 10, x, r, z, 0.3);
+                }
             }
         }
         if (hitresult.getType()!= HitResult.Type.MISS){
             this.onHit(hitresult);
         }
         if (entity instanceof Player player) {
-            List<Mob> lis = this.level.getEntitiesOfClass(Mob.class, this.getBoundingBox().inflate(10));
-            for (Mob mob : lis) {
-                if (mob != null ) {
-                    mob.invulnerableTime = 0;
-                    attackUtil.attackEntity(this.tool, player, InteractionHand.MAIN_HAND, mob, () -> 1, true, Util.getSlotType(InteractionHand.MAIN_HAND), this.damage*0.01F, false, true, true, true);
-                    mob.invulnerableTime = 0;
+            if (a==0) {
+                List<Mob> lis = this.level.getEntitiesOfClass(Mob.class, this.getBoundingBox().inflate(10));
+                for (Mob mob : lis) {
+                    if (mob != null ) {
+                        mob.invulnerableTime = 0;
+                        attackUtil.attackEntity(this.tool, player, InteractionHand.MAIN_HAND, mob, () -> 1, true, Util.getSlotType(InteractionHand.MAIN_HAND), this.damage*0.01F, false, true, true, true);
+                        mob.invulnerableTime = 0;
+                    }
+                }
+            }else if (a>0){
+                List<Mob> lis = this.level.getEntitiesOfClass(Mob.class, this.getBoundingBox().inflate(8));
+                for (Mob mob : lis) {
+                    if (mob != null ) {
+                        mob.invulnerableTime = 0;
+                        attackUtil.attackEntity(this.tool, player, InteractionHand.MAIN_HAND, mob, () -> 1, true, Util.getSlotType(InteractionHand.MAIN_HAND), this.damage*0.01F, false, true, true, true);
+                        mob.invulnerableTime = 0;
+                    }
                 }
             }
         }
@@ -98,12 +118,19 @@ public class CleanseEntity extends Projectile {
     @Override
     protected void onHitEntity(EntityHitResult p_37259_) {
         super.onHitEntity(p_37259_);
-        meteorExplode();
+        if (a==0) {
+            meteorExplode();
+        }
     }
 
     public void setToolstack(ToolStack tool){
         this.tool =tool;
     }
+
+    public void setint(int a){
+        this.a =a;
+    }
+
 
     public void meteorExplode(){
         if (!this.level.isClientSide) {
@@ -143,7 +170,9 @@ public class CleanseEntity extends Projectile {
     @Override
     protected void onHitBlock(BlockHitResult p_37258_) {
         super.onHitBlock(p_37258_);
-        meteorExplode();
+        if (a==0) {
+            meteorExplode();
+        }
     }
 
     @Override

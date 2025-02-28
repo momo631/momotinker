@@ -32,7 +32,7 @@
     "abilities": 2
   },
   "requirements": {
-    "id": "momotinker:breakthroughstars",
+    "name": "momotinker:breakthroughstars",
     "level": 1,
     "error": "recipe.momotinker.modifier.cleansetheworld"
   },

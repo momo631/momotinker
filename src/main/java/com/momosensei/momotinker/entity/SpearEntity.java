@@ -65,7 +65,7 @@ public class SpearEntity extends Projectile {
             this.setDeltaMovement(movement.scale(5));
         }
         if (entity instanceof Player player) {
-            AABB aabb =new AABB(this.getX()+anglevec.x,this.getY(),this.getZ()+anglevec.z,this.getX(),this.getY(),this.getZ()).inflate(2.25);
+            AABB aabb =new AABB(this.getX()+anglevec.x,this.getY(),this.getZ()+anglevec.z,this.getX(),this.getY(),this.getZ()).inflate(1.75);
             List<Entity> ls0 = this.level.getEntitiesOfClass(Entity.class, aabb);
             for (Entity targets : ls0) {
                 if (targets!=getOwner()) {
