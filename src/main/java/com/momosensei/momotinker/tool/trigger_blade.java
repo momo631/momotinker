@@ -178,6 +178,7 @@ public class trigger_blade extends ModifiableItem {
         slash.setOwner(player);
         slash.setToolstack(tool);
         slash.noPhysics = false;
+        slash.setint(tool.getModifierLevel(MomotinkerModifiers.yamato.getId()));
         slash.setDeltaMovement(player.getLookAngle());
         slash.setPos(player.getX()+x*2,player.getY()+0.7*player.getBbHeight()+y*1.5,player.getZ()+z*2);
         level.addFreshEntity(slash);
@@ -195,7 +196,7 @@ public class trigger_blade extends ModifiableItem {
         int a = tool.getModifierLevel(MomotinkerModifiers.yamato.getId());
         if (a == 0) {
             return tool.getStats().get(ToolStats.ATTACK_DAMAGE) * (1F + 0.005F * b + 0.2F * tool.getStats().get(ToolStats.VELOCITY));
-        }
+        }else
         if (a>0){
             return tool.getStats().get(ToolStats.ATTACK_DAMAGE) * (1F + 0.005F * b + 0.2F * tool.getStats().get(ToolStats.VELOCITY))*0.5F;
         }

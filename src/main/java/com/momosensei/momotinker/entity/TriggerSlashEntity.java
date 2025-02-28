@@ -1,7 +1,6 @@
 package com.momosensei.momotinker.entity;
 
 
-import com.momosensei.momotinker.register.MomotinkerModifiers;
 import com.momosensei.momotinker.util.attackUtil;
 import net.minecraft.world.InteractionHand;
 import net.minecraft.world.entity.Entity;
@@ -24,6 +23,7 @@ public class TriggerSlashEntity extends Projectile {
     public ToolStack tool;
     public float damage=0;
     public float angle ;
+    public int a = 0;
 
     public TriggerSlashEntity(EntityType<? extends Projectile> p_37248_, Level p_37249_, ItemStack slash) {
         super(p_37248_, p_37249_);
@@ -43,6 +43,10 @@ public class TriggerSlashEntity extends Projectile {
         this.tool =tool;
     }
 
+    public void setint(int a){
+        this.a =a;
+    }
+
     @Override
     protected void defineSynchedData() {
     }
@@ -52,7 +56,6 @@ public class TriggerSlashEntity extends Projectile {
         if (this.tool==null&&this.getOwner() instanceof Player player){
             this.tool=ToolStack.from(player.getMainHandItem());
         }
-        int a = tool.getModifierLevel(MomotinkerModifiers.yamato.getId());
         Vec3 rayVec3 =this.getDeltaMovement();
         super.tick();
         if (a==0) {

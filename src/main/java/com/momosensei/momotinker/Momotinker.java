@@ -27,8 +27,8 @@ import static slimeknights.tconstruct.TConstruct.makeTranslationKey;
 
 public class Momotinker {
     public static final String MOD_ID = "momotinker"; //是你的模组名，需要英文
-    public Momotinker(FMLJavaModLoadingContext context) {
-        IEventBus bus = FMLJavaModLoadingContext.get().getModEventBus();
+    public Momotinker() {
+        FMLJavaModLoadingContext context = FMLJavaModLoadingContext.get();
         IEventBus eventBus = context.getModEventBus();
         MinecraftForge.EVENT_BUS.register(new LivingEvents());
         MinecraftForge.EVENT_BUS.register(this);
@@ -40,7 +40,7 @@ public class Momotinker {
         MomotinkerEntities.ENTITIES.register(eventBus);
         MomotinkerLootModifiers.register(eventBus);
         ModLoadingContext.get().registerConfig(ModConfig.Type.COMMON, MomotinkerConfig.spec);
-        bus.register(new MomotinkerTools());
+        eventBus.register(new MomotinkerTools());
         MomotinkerTables.initRegisters();
 
     }
