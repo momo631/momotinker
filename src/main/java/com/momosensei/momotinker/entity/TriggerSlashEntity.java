@@ -51,7 +51,6 @@ public class TriggerSlashEntity extends Projectile {
     protected void defineSynchedData() {
     }
 
-    @Override
     public void tick() {
         if (this.tool==null&&this.getOwner() instanceof Player player){
             this.tool=ToolStack.from(player.getMainHandItem());
