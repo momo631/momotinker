@@ -1,6 +1,7 @@
 package com.momosensei.momotinker.Modifiers.modifiers;
 
 
+import com.momosensei.momotinker.Modifiers.momomodifier;
 import com.momosensei.momotinker.Momotinker;
 import net.minecraft.network.chat.Component;
 import net.minecraft.resources.ResourceLocation;

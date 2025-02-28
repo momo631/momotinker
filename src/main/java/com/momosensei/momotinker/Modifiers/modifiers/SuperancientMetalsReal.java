@@ -1,6 +1,7 @@
 package com.momosensei.momotinker.Modifiers.modifiers;
 
 
+import com.momosensei.momotinker.Modifiers.momomodifier;
 import net.minecraft.ChatFormatting;
 import net.minecraft.network.chat.Component;
 import net.minecraft.world.entity.Entity;
@@ -26,7 +27,7 @@ import java.util.List;
 import static com.momosensei.momotinker.tool.divine_punishment_spear.degenerate;
 import static com.momosensei.momotinker.tool.divine_punishment_spear.sanctification;
 
-public class SuperancientMetalsReal extends momomodifier{
+public class SuperancientMetalsReal extends momomodifier {
     public SuperancientMetalsReal() {
         MinecraftForge.EVENT_BUS.addListener(this::livinghurtevent);
     }

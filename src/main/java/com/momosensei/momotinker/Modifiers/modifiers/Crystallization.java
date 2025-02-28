@@ -1,6 +1,7 @@
 package com.momosensei.momotinker.Modifiers.modifiers;
 
 
+import com.momosensei.momotinker.Modifiers.momomodifier;
 import net.minecraft.ChatFormatting;
 import net.minecraft.network.chat.Component;
 import net.minecraft.world.entity.player.Player;
@@ -16,7 +17,7 @@ import java.util.List;
 
 import static com.momosensei.momotinker.Modifiers.modifiers.OverCrystalline.crystallization;
 
-public class Crystallization extends momomodifier{
+public class Crystallization extends momomodifier {
     public Crystallization() {
     }
     @Override

@@ -1,5 +1,6 @@
 package com.momosensei.momotinker.Modifiers.modifiers;
 
+import com.momosensei.momotinker.Modifiers.momomodifier;
 import net.minecraft.network.chat.Component;
 import slimeknights.tconstruct.library.modifiers.Modifier;
 import slimeknights.tconstruct.library.tools.nbt.IToolStackView;

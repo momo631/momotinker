@@ -1,4 +1,4 @@
-package com.momosensei.momotinker.Modifiers.modifiers;
+package com.momosensei.momotinker.Modifiers;
 
 
 import net.minecraft.network.chat.Component;
@@ -68,7 +68,7 @@ public abstract class momomodifier extends Modifier implements MeleeDamageModifi
         BowAmmoModifierHook, ProjectileHitModifierHook, ProjectileLaunchModifierHook,KeybindInteractModifierHook, ProcessLootModifierHook,
         EquipmentChangeModifierHook, InventoryTickModifierHook, OnAttackedModifierHook, TooltipModifierHook, AttributesModifierHook,
         ModifyDamageModifierHook, ModifierRemovalHook, BlockBreakModifierHook, EntityInteractionModifierHook, ToolStatsModifierHook,
-        ToolDamageModifierHook {
+        ToolDamageModifierHook{
 
     @Override
     protected void registerHooks(ModuleHookMap.Builder builder) {
