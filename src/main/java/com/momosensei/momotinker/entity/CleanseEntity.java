@@ -100,7 +100,7 @@ public class CleanseEntity extends Projectile {
                     }
                 }
             }else if (a>0){
-                List<Mob> lis = this.level.getEntitiesOfClass(Mob.class, this.getBoundingBox().inflate(8));
+                List<Mob> lis = this.level.getEntitiesOfClass(Mob.class, this.getBoundingBox().inflate(7));
                 for (Mob mob : lis) {
                     if (mob != null ) {
                         mob.invulnerableTime = 0;
