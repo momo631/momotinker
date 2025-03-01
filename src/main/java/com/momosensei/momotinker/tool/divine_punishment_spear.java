@@ -196,7 +196,7 @@ public class divine_punishment_spear extends ModifiableItem {
                         entity.setExplosionPower((byte) 120);
                         level.addFreshEntity(entity);
                     }
-                    //player.getCooldowns().addCooldown(player.getMainHandItem().getItem(), 6000);
+                    player.getCooldowns().addCooldown(player.getMainHandItem().getItem(), 6000);
                 }
             }
         }
