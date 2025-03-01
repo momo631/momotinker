@@ -1,9 +1,9 @@
 package com.momosensei.momotinker.register;
 
 
-import com.momosensei.momotinker.Momotinker;
 import com.momosensei.momotinker.tool.divine_punishment_spear;
 import com.momosensei.momotinker.tool.trigger_blade;
+import net.minecraft.network.chat.Component;
 import net.minecraft.world.item.CreativeModeTab;
 import net.minecraft.world.item.ItemStack;
 import net.minecraftforge.registries.RegistryObject;
@@ -29,7 +29,8 @@ public final class MomotinkerTools extends MomotinkerTables {
     }
 
     public static final RegistryObject<CreativeModeTab> tabTools = CREATIVE_TABS.register(
-            "tools", () -> CreativeModeTab.builder().title(Momotinker.makeTranslation("itemGroup", "tools"))
+            "tools", () -> CreativeModeTab.builder()
+                    .title(Component.translatable("itemGroup.momotinker.tools"))
                     .icon(() -> MomotinkerTools.trigger_blade.get().getRenderTool())
                     .displayItems(MomotinkerTools::addTabItems)
                     .withTabsBefore(MomotinkerTables.tabTables.getId())

@@ -56,7 +56,7 @@ public class SpearCreate {
         int a = tool.getModifierLevel(MomotinkerModifiers.breakthroughstars.getId());
         if (a==0){
             return tool.getStats().get(ToolStats.ATTACK_DAMAGE);
-        }
+        }else
         if (a>0){
             return tool.getStats().get(ToolStats.ATTACK_DAMAGE)* (1F + tool.getPersistentData().getInt(breakthroughstar)*0.01F);
         }

@@ -1,6 +1,6 @@
 package com.momosensei.momotinker.register;
 
-import com.momosensei.momotinker.Momotinker;
+import net.minecraft.network.chat.Component;
 import net.minecraft.world.item.CreativeModeTab;
 import net.minecraft.world.item.Item;
 import net.minecraft.world.item.ItemStack;
@@ -8,7 +8,8 @@ import net.minecraftforge.registries.RegistryObject;
 
 public class MomotinkerTables extends MomotinkerMod {
     public static final RegistryObject<CreativeModeTab> tabTables = CREATIVE_TABS.register(
-            "materials", () -> CreativeModeTab.builder().title(Momotinker.makeTranslation("itemGroup", "materials"))
+            "materials", () -> CreativeModeTab.builder()
+                    .title(Component.translatable("itemGroup.momotinker.materials"))
                     .icon(() -> new ItemStack(MomotinkerItem.laomo.get()))
                     .displayItems(MomotinkerTables::addTabItems)
                     .build());
