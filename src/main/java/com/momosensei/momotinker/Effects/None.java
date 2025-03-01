@@ -15,8 +15,6 @@ import java.util.Collection;
 
 
 public class None extends StaticEffect {
-
-
     public None() {
         super(MobEffectCategory.NEUTRAL, 16769263);
         super.addAttributeModifier(Attributes.MAX_HEALTH, "6D5C96FF-02EA-E875-A69F-25E17953AF39", -0.06, AttributeModifier.Operation.MULTIPLY_TOTAL);
