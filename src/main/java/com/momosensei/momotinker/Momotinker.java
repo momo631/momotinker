@@ -2,6 +2,8 @@ package com.momosensei.momotinker;
 
 
 import com.momosensei.momotinker.event.LivingEvents;
+import com.momosensei.momotinker.event.ServerEvent;
+import com.momosensei.momotinker.network.Channel;
 import com.momosensei.momotinker.register.*;
 import net.minecraft.network.chat.Component;
 import net.minecraft.network.chat.MutableComponent;
@@ -14,6 +16,7 @@ import net.minecraftforge.fml.ModLoadingContext;
 import net.minecraftforge.fml.common.Mod;
 import net.minecraftforge.fml.config.ModConfig;
 import net.minecraftforge.fml.event.lifecycle.FMLClientSetupEvent;
+import net.minecraftforge.fml.event.lifecycle.FMLCommonSetupEvent;
 import net.minecraftforge.fml.javafmlmod.FMLJavaModLoadingContext;
 import slimeknights.tconstruct.library.client.model.TinkerItemProperties;
 import slimeknights.tconstruct.library.tools.capability.TinkerDataCapability;
@@ -42,6 +45,7 @@ public class Momotinker {
         ModLoadingContext.get().registerConfig(ModConfig.Type.COMMON, MomotinkerConfig.spec);
         eventBus.register(new MomotinkerTools());
         MomotinkerTables.initRegisters();
+        MinecraftForge.EVENT_BUS.register(new ServerEvent());
 
     }
     //Resourcelocation
@@ -51,6 +55,11 @@ public class Momotinker {
     public static <T> TinkerDataCapability.TinkerDataKey<T> createKey(String name) {
         return TinkerDataCapability.TinkerDataKey.of(getResource(name));
     }
+
+    private void commonSetup(FMLCommonSetupEvent event) {
+        Channel.init();
+    }
+
     //生成键名用的
     public static String makeDescriptionId(String type, String name) {
         return type + ".momotinker." + name;

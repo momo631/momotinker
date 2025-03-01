@@ -8,6 +8,8 @@ import com.momosensei.momotinker.gui.overlay.TriggerBladeHUD;
 import com.momosensei.momotinker.key.key;
 import com.momosensei.momotinker.network.Channel;
 import com.momosensei.momotinker.register.MomotinkerEntities;
+import com.momosensei.momotinker.renderer.CleanseEntityRenderer;
+import com.momosensei.momotinker.renderer.SpearEntityRenderer;
 import com.momosensei.momotinker.renderer.triggerSlashRenderer;
 import net.minecraftforge.api.distmarker.Dist;
 import net.minecraftforge.client.event.EntityRenderersEvent;
@@ -39,11 +41,14 @@ public class ModEventListener {
     @SubscribeEvent
     static void registerRenderers(EntityRenderersEvent.RegisterRenderers event) {
         event.registerEntityRenderer(MomotinkerEntities.trigger_slash_a.get(), triggerSlashRenderer::new);
+        event.registerEntityRenderer(MomotinkerEntities.spear_entity.get(), SpearEntityRenderer::new);
+        event.registerEntityRenderer(MomotinkerEntities.cleanse_entity.get(), CleanseEntityRenderer::new);
     }
 
     @SubscribeEvent
     public static void onKeyRegister(RegisterKeyMappingsEvent event) {
         event.register(key.KeyBinding.KEY);
+        event.register(key.KeyBinding.KEYA);
         Channel.init();
     }
 }

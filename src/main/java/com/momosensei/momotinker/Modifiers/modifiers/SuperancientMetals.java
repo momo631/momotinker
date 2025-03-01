@@ -1,6 +1,7 @@
 package com.momosensei.momotinker.Modifiers.modifiers;
 
 
+import com.momosensei.momotinker.Modifiers.momomodifier;
 import com.momosensei.momotinker.Momotinker;
 import net.minecraft.resources.ResourceLocation;
 import net.minecraft.world.entity.LivingEntity;
@@ -21,7 +22,7 @@ import slimeknights.tconstruct.library.tools.stat.ToolStats;
 import static com.momosensei.momotinker.tool.divine_punishment_spear.degenerate;
 import static com.momosensei.momotinker.tool.divine_punishment_spear.sanctification;
 
-public class SuperancientMetals extends momomodifier{
+public class SuperancientMetals extends momomodifier {
     public SuperancientMetals() {
     }
     public static final ResourceLocation authentication = Momotinker.getResource("authentication");

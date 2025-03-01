@@ -2,6 +2,7 @@ package com.momosensei.momotinker.Modifiers.modifiers;
 
 
 import com.c2h6s.etstlib.entity.specialDamageSources.LegacyDamageSource;
+import com.momosensei.momotinker.Modifiers.momomodifier;
 import com.momosensei.momotinker.Momotinker;
 import com.momosensei.momotinker.network.Channel;
 import com.momosensei.momotinker.network.packet.TriggerBladeCharge;
@@ -34,7 +35,7 @@ import javax.annotation.Nullable;
 
 import static com.momosensei.momotinker.register.MomotinkerTools.trigger_blade;
 
-public class CrimsonQueen extends momomodifier  {
+public class CrimsonQueen extends momomodifier {
     public CrimsonQueen() {
         MinecraftForge.EVENT_BUS.addListener(this::livinghurtevent);
     }

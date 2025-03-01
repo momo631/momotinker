@@ -52,6 +52,9 @@
   "item.momotinker.molten_stained_blood_gold_bucket": "熔融染血玄金桶",
   "item.momotinker.molten_starry_mysterious_gold_bucket": "熔融星辰玄金桶",
 
+  "recipe.momotinker.modifier.cleansetheworld": "荡涤天地需要贯星魔枪作为前置",
+  "recipe.momotinker.modifier.shadowofdamnation": "天谴之影需要荡涤天地作为前置",
+
   "item.momotinker.laomo": "墨",
 
   "item.momotinker.interdimensional_crystal": "§d天外来星§",
@@ -125,7 +128,7 @@
   "item.momotinker.trigger_blade.description": "拥有特殊攻击手段的近战武器，使用时副手不能有其它物品。右键可进行蓄力，蓄力完成后松开可发出斩击，造成范围爆发伤害。\n每点初速度增加斩击伤害20%。\n精密度会随机增加伤害，每点使能随机到的最大值提升50%",
 
   "item.momotinker.divine_punishment_spear": "天谴之矛",
-  "item.momotinker.divine_punishment_spear.description": "超高攻速与攻击距离的单体型近战武器，使用时若副手有其他物品造成的伤害会减半，可以在古城奖励中获得。\n[古代神兵]:玩家无法自主锻造，可以在某些地点获得黯淡玄金部件的工具，完成对应神兵任务时可以进化",
+  "item.momotinker.divine_punishment_spear.description": "超高攻速与攻击距离的单体型近战武器，使用时若副手有其他物品造成的伤害会减半，右键蓄力释放时可短暂冲刺，可以在古城奖励中获得。\n[古代神兵]:玩家无法自主锻造，可以在某些地点获得黯淡玄金部件的工具，完成对应神兵任务时可以进化",
 
   "momotinker.tool.tooltip.offhand_hastool": "错误:副手有物品",
 
@@ -291,5 +294,18 @@
 
   "modifier.momotinker.starcloudchain": "星云连锁",
   "modifier.momotinker.starcloudchain.flavor": "如星座般",
-  "modifier.momotinker.starcloudchain.description": "攻击怪物会添加“星链”标记，以自身为中心一定范围内攻击带有该标记的怪物时，其他拥有该标记的怪物会受到此次攻击的50%+10%*词条等级的伤害（范围为10+5*词条等级的方形区域）"
+  "modifier.momotinker.starcloudchain.description": "攻击怪物会添加“星链”标记，以自身为中心一定范围内攻击带有该标记的怪物时，其他拥有该标记的怪物会受到此次攻击的50%+10%*词条等级的伤害（范围为10+5*词条等级的方形区域）",
+
+  "modifier.momotinker.breakthroughstars": "贯星魔枪",
+  "modifier.momotinker.breakthroughstars.flavor": "天谴之矛专属强化:魔力投矛",
+  "modifier.momotinker.breakthroughstars.description": "失去原本的冲刺能力，取而代之是在右键蓄力后松开会消耗当前5%的经验点数发射一把魔法矛，被其触碰会受到攻击伤害，每消耗1点经验会提升其1%的伤害（默认最多增伤100%）",
+
+  "modifier.momotinker.cleansetheworld": "荡涤天地",
+  "modifier.momotinker.cleansetheworld.flavor": "贯星魔枪增强:天谴",
+  "modifier.momotinker.cleansetheworld.description": "较长时间蓄力后会在上空会消耗当前25%的经验点数召唤巨大魔法矛（使用后该类工具进入冷却300秒），被其触碰每刻会受到50%的伤害，在落地后产生剧烈爆炸并对大范围生物造成5000%的伤害，每消耗1点经验会提升其1%的伤害（默认最多增伤100%）",
+
+  "modifier.momotinker.shadowofdamnation": "天谴之影",
+  "modifier.momotinker.shadowofdamnation.flavor": "荡涤天地改装:虚无投影",
+  "modifier.momotinker.shadowofdamnation.description": "召唤的巨大魔法矛会穿过方块和生物并不会产生爆炸，同时下落速度大幅提高，被其触碰每的伤害范围略微缩小"
+
 }

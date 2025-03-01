@@ -1,5 +1,6 @@
 package com.momosensei.momotinker.Modifiers.modifiers;
 
+import com.momosensei.momotinker.Modifiers.momomodifier;
 import com.momosensei.momotinker.register.MomotinkerEffects;
 import net.minecraft.server.level.ServerPlayer;
 import net.minecraft.world.effect.MobEffectInstance;

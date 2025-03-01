@@ -1,4 +1,4 @@
-package com.momosensei.momotinker.Modifiers.modifiers;
+package com.momosensei.momotinker.Modifiers;
 
 
 import com.c2h6s.etstlib.register.EtSTLibHooks;

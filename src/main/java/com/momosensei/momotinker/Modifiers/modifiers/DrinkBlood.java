@@ -1,6 +1,7 @@
 package com.momosensei.momotinker.Modifiers.modifiers;
 
 import com.c2h6s.etstlib.entity.specialDamageSources.LegacyDamageSource;
+import com.momosensei.momotinker.Modifiers.momomodifier;
 import com.momosensei.momotinker.register.MomotinkerModifiers;
 import net.minecraft.ChatFormatting;
 import net.minecraft.network.chat.Component;

@@ -72,9 +72,16 @@ public class trigger_blade extends ModifiableItem {
     public void onUseTick(Level level, LivingEntity living, ItemStack stack, int chargeRemaining) {
         if ( living instanceof ServerPlayer player) {
             int a = ModifierUtil.getModifierLevel(player.getMainHandItem(), MomotinkerModifiers.crimsonqueen.getId());
+            int b = ModifierUtil.getModifierLevel(player.getMainHandItem(), MomotinkerModifiers.yamato.getId());
             if (a==0) {
-                float perc = Mth.clamp((float) (this.getUseDuration(stack) - chargeRemaining) / 30, 0, 1);
-                Channel.sendToPlayer(new TriggerBladeCharge(perc), player);
+                if (b==0) {
+                    float perc = Mth.clamp((float) (this.getUseDuration(stack) - chargeRemaining) / 30, 0, 1);
+                    Channel.sendToPlayer(new TriggerBladeCharge(perc), player);
+                }
+                if (b>0) {
+                    float perc = Mth.clamp((float) (this.getUseDuration(stack) - chargeRemaining) / 20, 0, 1);
+                    Channel.sendToPlayer(new TriggerBladeCharge(perc), player);
+                }
             }
         }
     }
@@ -196,7 +203,7 @@ public class trigger_blade extends ModifiableItem {
         int a = tool.getModifierLevel(MomotinkerModifiers.yamato.getId());
         if (a == 0) {
             return tool.getStats().get(ToolStats.ATTACK_DAMAGE) * (1F + 0.005F * b + 0.2F * tool.getStats().get(ToolStats.VELOCITY));
-        }else
+        }
         if (a>0){
             return tool.getStats().get(ToolStats.ATTACK_DAMAGE) * (1F + 0.005F * b + 0.2F * tool.getStats().get(ToolStats.VELOCITY))*0.5F;
         }
