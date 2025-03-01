@@ -2,7 +2,6 @@ package com.momosensei.momotinker;
 
 
 import com.momosensei.momotinker.event.LivingEvents;
-import com.momosensei.momotinker.event.ServerEvent;
 import com.momosensei.momotinker.network.Channel;
 import com.momosensei.momotinker.register.*;
 import net.minecraft.network.chat.Component;
@@ -45,7 +44,6 @@ public class Momotinker {
         ModLoadingContext.get().registerConfig(ModConfig.Type.COMMON, MomotinkerConfig.spec);
         eventBus.register(new MomotinkerTools());
         MomotinkerTables.initRegisters();
-        MinecraftForge.EVENT_BUS.register(new ServerEvent());
 
     }
     //Resourcelocation
