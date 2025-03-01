@@ -1,7 +1,6 @@
 package com.momosensei.momotinker;
 
 import com.momosensei.momotinker.event.LivingEvents;
-import com.momosensei.momotinker.event.ServerEvent;
 import com.momosensei.momotinker.network.Channel;
 import com.momosensei.momotinker.register.*;
 import net.minecraft.resources.ResourceLocation;
@@ -45,7 +44,6 @@ public class Momotinker {
         MomotinkerLootModifiers.register(eventBus);
         IEventBus bus = FMLJavaModLoadingContext.get().getModEventBus();
         ModLoadingContext.get().registerConfig(ModConfig.Type.COMMON, MomotinkerConfig.spec);
-        MinecraftForge.EVENT_BUS.register(new ServerEvent());
     }
 
     //Resourcelocation
