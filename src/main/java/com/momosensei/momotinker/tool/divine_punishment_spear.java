@@ -87,7 +87,7 @@ public class divine_punishment_spear extends ModifiableItem {
     private void livinghurtevent(LivingHurtEvent event) {
         Entity a = event.getEntity();
         Entity b = event.getSource().getEntity();
-        if (b instanceof Player player&&a!=null){
+        if (b instanceof Player player&&a!=null&&player.getMainHandItem().is(MomotinkerItem.divine_punishment_spear.get())){
             ModDataNBT c = ToolStack.from(player.getItemBySlot(EquipmentSlot.MAINHAND)).getPersistentData();
             if (!checkOffHand(player)) {
                 event.setAmount(0.5F * event.getAmount());

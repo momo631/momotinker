@@ -40,50 +40,7 @@
             "path": "momotinker:item/tool/trigger_blade/sheath_body",
             "stat_type": "tconstruct:binding"
         },
-        {
-            "path": "momotinker:item/tool/trigger_blade/large/charge_1/sheath_body_1",
-            "stat_type": "tconstruct:binding"
-        },
-        {
-            "path": "momotinker:item/tool/trigger_blade/large/charge_1/charge_2/sheath_body_2",
-            "stat_type": "tconstruct:binding"
-        },
-        {
-            "path": "momotinker:item/tool/trigger_blade/large/charge_1/charge_2/charge_3/sheath_body_3",
-            "stat_type": "tconstruct:binding"
-        },
-        {
-            "path": "momotinker:item/tool/trigger_blade/large/charge_1/excitation_device_1",
-            "stat_type": "tconstruct:binding"
-        },
-        {
-            "path": "momotinker:item/tool/trigger_blade/large/charge_1/charge_2/excitation_device_2",
-            "stat_type": "tconstruct:binding"
-        },
-        {
-            "path": "momotinker:item/tool/trigger_blade/large/charge_1/charge_2/charge_3/excitation_device_3",
-            "stat_type": "tconstruct:binding"
-        },
-        {
-            "path": "momotinker:item/tool/trigger_blade/large/charge_1/blade_1",
-            "stat_type": "tconstruct:binding"
-        },
-        {
-            "path": "momotinker:item/tool/trigger_blade/large/charge_1/charge_2/blade_2",
-            "stat_type": "tconstruct:binding"
-        },
-        {
-            "path": "momotinker:item/tool/trigger_blade/large/charge_1/tough_handle_1_1",
-            "stat_type": "tconstruct:binding"
-        },
-        {
-            "path": "momotinker:item/tool/trigger_blade/large/charge_1/tough_handle_2_2",
-            "stat_type": "tconstruct:binding"
-        },
-        {
-            "path": "momotinker:item/tool/trigger_blade/large/charge_1/broken_blade_1",
-            "stat_type": "tconstruct:binding"
-        },
+
 
 
 

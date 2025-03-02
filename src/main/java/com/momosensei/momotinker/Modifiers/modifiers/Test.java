@@ -6,4 +6,5 @@ import com.momosensei.momotinker.Modifiers.momomodifier;
 public class Test extends momomodifier {
     public Test() {
     }
+
 }

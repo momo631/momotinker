@@ -38,6 +38,7 @@ public class MomotinkerItem {
     public static final RegistryObject<Item> dim_dark_gold = ITEMS.register("dim_dark_gold", () -> new dim_dark_gold(new Item.Properties().tab(MomotinkerTab.MATERIALS)));
     public static final RegistryObject<Item> stained_blood_gold = ITEMS.register("stained_blood_gold", () -> new stained_blood_gold(new Item.Properties().tab(MomotinkerTab.MATERIALS)));
     public static final RegistryObject<Item> starry_mysterious_gold = ITEMS.register("starry_mysterious_gold", () -> new starry_mysterious_gold(new Item.Properties().tab(MomotinkerTab.MATERIALS)));
+    public static final RegistryObject<Item> devouring_demon_gold = ITEMS.register("devouring_demon_gold", () -> new devouring_demon_gold(new Item.Properties().tab(MomotinkerTab.MATERIALS)));
 
     public static final RegistryObject<Item> trigger_slash_a = ITEMS.register("trigger_slash_a", ()->new Item(new Item.Properties()));
     public static final RegistryObject<Item> spear_entity = ITEMS.register("spear_entity", ()->new Item(new Item.Properties()));
