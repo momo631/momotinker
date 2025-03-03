@@ -63,7 +63,7 @@ public class SweetAfterTaste extends momomodifier {
         LivingEntity attacker =context.getAttacker();
         if (attacker instanceof ServerPlayer player){
             int a =tool.getPersistentData().getInt(meleeenchant);
-            return damage*(1+a*0.01F);
+            return damage*(1F+a*0.01F);
         }
         return damage;
     }

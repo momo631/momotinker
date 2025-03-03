@@ -42,6 +42,7 @@
         },
 
 
+
         {
             "path": "momotinker:item/tool/trigger_blade/large/charge_1/sheath_body_1",
             "stat_type": "tconstruct:binding"
@@ -79,13 +80,10 @@
             "stat_type": "tconstruct:binding"
         },
         {
-            "path": "momotinker:item/tool/trigger_blade/large/charge_1/tough_handle_2_2",
+            "path": "momotinker:item/tool/trigger_blade/large/charge_1/tough_handle_2_1",
             "stat_type": "tconstruct:binding"
         },
-        {
-            "path": "momotinker:item/tool/trigger_blade/large/charge_1/broken_blade_1",
-            "stat_type": "tconstruct:binding"
-        },
+
 
 
 

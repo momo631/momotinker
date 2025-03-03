@@ -200,10 +200,10 @@ public class trigger_blade extends ModifiableItem {
         float b = RANDOM.nextInt((int) (tool.getStats().get(ACCURACY) * 100));
         int a = tool.getModifierLevel(MomotinkerModifiers.yamato.getId());
         if (a == 0) {
-            return tool.getStats().get(ToolStats.ATTACK_DAMAGE) * (1F + 0.005F * b + 0.2F * tool.getStats().get(ToolStats.VELOCITY));
+            return tool.getStats().get(ToolStats.ATTACK_DAMAGE)*1.2F * (1F + 0.005F * b + 0.2F * tool.getStats().get(ToolStats.VELOCITY));
         }
         if (a>0){
-            return tool.getStats().get(ToolStats.ATTACK_DAMAGE) * (1F + 0.005F * b + 0.2F * tool.getStats().get(ToolStats.VELOCITY))*0.5F;
+            return tool.getStats().get(ToolStats.ATTACK_DAMAGE)*1.2F * (1F + 0.005F * b + 0.2F * tool.getStats().get(ToolStats.VELOCITY))*0.5F;
         }
         return getDamageMultiplier(tool);
     }
