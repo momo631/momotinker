@@ -86,7 +86,6 @@
 
 
 
-
         {
             "path": "momotinker:item/tool/divine_punishment_spear/spear_head",
             "stat_type": "tconstruct:binding"
@@ -133,6 +132,189 @@
         },
         {
             "path": "momotinker:item/tool/divine_punishment_spear/large/tough_handle_3",
+            "stat_type": "tconstruct:binding"
+        },
+
+
+
+        {
+            "path": "momotinker:item/tool/entropy_burning_cube/cube_component_1",
+            "stat_type": "tconstruct:binding"
+        },
+        {
+            "path": "momotinker:item/tool/entropy_burning_cube/cube_component_2",
+            "stat_type": "tconstruct:binding"
+        },
+        {
+            "path": "momotinker:item/tool/entropy_burning_cube/cube_component_3",
+            "stat_type": "tconstruct:binding"
+        },
+        {
+            "path": "momotinker:item/tool/entropy_burning_cube/cube_component_4",
+            "stat_type": "tconstruct:binding"
+        },
+        {
+            "path": "momotinker:item/tool/entropy_burning_cube/cube_component_5",
+            "stat_type": "tconstruct:binding"
+        },
+        {
+            "path": "momotinker:item/tool/entropy_burning_cube/broken_cube_component",
+            "stat_type": "tconstruct:binding"
+        },
+
+
+
+        {
+            "path": "momotinker:item/tool/entropy_burning_sword/cube_component_1",
+            "stat_type": "tconstruct:binding"
+        },
+        {
+            "path": "momotinker:item/tool/entropy_burning_sword/cube_component_2",
+            "stat_type": "tconstruct:binding"
+        },
+        {
+            "path": "momotinker:item/tool/entropy_burning_sword/cube_component_3",
+            "stat_type": "tconstruct:binding"
+        },
+        {
+            "path": "momotinker:item/tool/entropy_burning_sword/cube_component_4",
+            "stat_type": "tconstruct:binding"
+        },
+        {
+            "path": "momotinker:item/tool/entropy_burning_sword/cube_component_5",
+            "stat_type": "tconstruct:binding"
+        },
+        {
+            "path": "momotinker:item/tool/entropy_burning_sword/broken_cube_component",
+            "stat_type": "tconstruct:binding"
+        },
+
+        {
+            "path": "momotinker:item/tool/entropy_burning_sword/large/cube_component_1",
+            "stat_type": "tconstruct:binding"
+        },
+        {
+            "path": "momotinker:item/tool/entropy_burning_sword/large/cube_component_2",
+            "stat_type": "tconstruct:binding"
+        },
+        {
+            "path": "momotinker:item/tool/entropy_burning_sword/large/cube_component_3",
+            "stat_type": "tconstruct:binding"
+        },
+        {
+            "path": "momotinker:item/tool/entropy_burning_sword/large/cube_component_4",
+            "stat_type": "tconstruct:binding"
+        },
+        {
+            "path": "momotinker:item/tool/entropy_burning_sword/large/cube_component_5",
+            "stat_type": "tconstruct:binding"
+        },
+        {
+            "path": "momotinker:item/tool/entropy_burning_sword/large/broken_cube_component",
+            "stat_type": "tconstruct:binding"
+        },
+
+
+
+        {
+            "path": "momotinker:item/tool/entropy_burning_riding_spear/cube_component_1",
+            "stat_type": "tconstruct:binding"
+        },
+        {
+            "path": "momotinker:item/tool/entropy_burning_riding_spear/cube_component_2",
+            "stat_type": "tconstruct:binding"
+        },
+        {
+            "path": "momotinker:item/tool/entropy_burning_riding_spear/cube_component_3",
+            "stat_type": "tconstruct:binding"
+        },
+        {
+            "path": "momotinker:item/tool/entropy_burning_riding_spear/cube_component_4",
+            "stat_type": "tconstruct:binding"
+        },
+        {
+            "path": "momotinker:item/tool/entropy_burning_riding_spear/cube_component_5",
+            "stat_type": "tconstruct:binding"
+        },
+        {
+            "path": "momotinker:item/tool/entropy_burning_riding_spear/broken_cube_component",
+            "stat_type": "tconstruct:binding"
+        },
+
+        {
+            "path": "momotinker:item/tool/entropy_burning_riding_spear/large/cube_component_1",
+            "stat_type": "tconstruct:binding"
+        },
+        {
+            "path": "momotinker:item/tool/entropy_burning_riding_spear/large/cube_component_2",
+            "stat_type": "tconstruct:binding"
+        },
+        {
+            "path": "momotinker:item/tool/entropy_burning_riding_spear/large/cube_component_3",
+            "stat_type": "tconstruct:binding"
+        },
+        {
+            "path": "momotinker:item/tool/entropy_burning_riding_spear/large/cube_component_4",
+            "stat_type": "tconstruct:binding"
+        },
+        {
+            "path": "momotinker:item/tool/entropy_burning_riding_spear/large/cube_component_5",
+            "stat_type": "tconstruct:binding"
+        },
+        {
+            "path": "momotinker:item/tool/entropy_burning_riding_spear/large/broken_cube_component",
+            "stat_type": "tconstruct:binding"
+        },
+
+
+
+        {
+            "path": "momotinker:item/tool/entropy_burning_cannon/cube_component_1",
+            "stat_type": "tconstruct:binding"
+        },
+        {
+            "path": "momotinker:item/tool/entropy_burning_cannon/cube_component_2",
+            "stat_type": "tconstruct:binding"
+        },
+        {
+            "path": "momotinker:item/tool/entropy_burning_cannon/cube_component_3",
+            "stat_type": "tconstruct:binding"
+        },
+        {
+            "path": "momotinker:item/tool/entropy_burning_cannon/cube_component_4",
+            "stat_type": "tconstruct:binding"
+        },
+        {
+            "path": "momotinker:item/tool/entropy_burning_cannon/cube_component_5",
+            "stat_type": "tconstruct:binding"
+        },
+        {
+            "path": "momotinker:item/tool/entropy_burning_cannon/broken_cube_component",
+            "stat_type": "tconstruct:binding"
+        },
+
+        {
+            "path": "momotinker:item/tool/entropy_burning_cannon/large/cube_component_1",
+            "stat_type": "tconstruct:binding"
+        },
+        {
+            "path": "momotinker:item/tool/entropy_burning_cannon/large/cube_component_2",
+            "stat_type": "tconstruct:binding"
+        },
+        {
+            "path": "momotinker:item/tool/entropy_burning_cannon/large/cube_component_3",
+            "stat_type": "tconstruct:binding"
+        },
+        {
+            "path": "momotinker:item/tool/entropy_burning_cannon/large/cube_component_4",
+            "stat_type": "tconstruct:binding"
+        },
+        {
+            "path": "momotinker:item/tool/entropy_burning_cannon/large/cube_component_5",
+            "stat_type": "tconstruct:binding"
+        },
+        {
+            "path": "momotinker:item/tool/entropy_burning_cannon/large/broken_cube_component",
             "stat_type": "tconstruct:binding"
         }
     ],

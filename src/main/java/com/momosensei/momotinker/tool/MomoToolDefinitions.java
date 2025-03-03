@@ -16,6 +16,11 @@ public class MomoToolDefinitions {
     private static ToolStatId name(String name) {
         return new ToolStatId(Momotinker.MOD_ID, name);
     }
-    public static final ToolDefinition TROGGER_BLADE = ToolDefinition.create(MomotinkerItem.trigger_blade);
+    public static final ToolDefinition TRIGGER_BLADE = ToolDefinition.create(MomotinkerItem.trigger_blade);
     public static final ToolDefinition DIVINE_PUNISHMENT_SPEAR = ToolDefinition.create(MomotinkerItem.divine_punishment_spear);
+    public static final ToolDefinition ENTROPY_BURNING_CUBE = ToolDefinition.create(MomotinkerItem.entropy_burning_cube);
+    public static final ToolDefinition ENTROPY_BURNING_SWORD = ToolDefinition.create(MomotinkerItem.entropy_burning_sword);
+    public static final ToolDefinition ENTROPY_BURNING_RIDING_SPEAR = ToolDefinition.create(MomotinkerItem.entropy_burning_riding_spear);
+    public static final ToolDefinition ENTROPY_BURNING_CANNON = ToolDefinition.create(MomotinkerItem.entropy_burning_cannon);
+
 }

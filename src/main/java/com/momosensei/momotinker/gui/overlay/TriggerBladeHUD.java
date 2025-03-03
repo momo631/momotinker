@@ -16,8 +16,7 @@ import slimeknights.tconstruct.library.tools.nbt.ToolStack;
 
 import java.util.List;
 
-import static com.momosensei.momotinker.register.MomotinkerItem.divine_punishment_spear;
-import static com.momosensei.momotinker.register.MomotinkerItem.trigger_blade;
+import static com.momosensei.momotinker.register.MomotinkerItem.*;
 
 public class TriggerBladeHUD {
     public static ResourceLocation Texture0 = new ResourceLocation(Momotinker.MOD_ID,"/textures/gui/overlay/gui_trigger_blade_0.png");
@@ -36,7 +35,11 @@ public class TriggerBladeHUD {
         if (player == null){
             return;
         }
-        if (!(player.getItemBySlot(EquipmentSlot.MAINHAND).is(trigger_blade.get())||player.getItemBySlot(EquipmentSlot.MAINHAND).is(divine_punishment_spear.get()))){
+        if (!(player.getItemBySlot(EquipmentSlot.MAINHAND).is(trigger_blade.get())
+                ||player.getItemBySlot(EquipmentSlot.MAINHAND).is(divine_punishment_spear.get())
+                ||player.getItemBySlot(EquipmentSlot.MAINHAND).is(entropy_burning_sword.get())
+                ||player.getItemBySlot(EquipmentSlot.MAINHAND).is(entropy_burning_riding_spear.get())
+                ||player.getItemBySlot(EquipmentSlot.MAINHAND).is(entropy_burning_cannon.get()))){
             return;
         }
         ToolStack tool = ToolStack.from(player.getMainHandItem());

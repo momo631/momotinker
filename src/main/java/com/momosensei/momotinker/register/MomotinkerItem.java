@@ -1,9 +1,7 @@
 package com.momosensei.momotinker.register;
 
 import com.momosensei.momotinker.Items.*;
-import com.momosensei.momotinker.tool.MomoToolDefinitions;
-import com.momosensei.momotinker.tool.divine_punishment_spear;
-import com.momosensei.momotinker.tool.trigger_blade;
+import com.momosensei.momotinker.tool.*;
 import net.minecraft.world.item.BlockItem;
 import net.minecraft.world.item.Item;
 import net.minecraftforge.registries.DeferredRegister;
@@ -33,12 +31,17 @@ public class MomotinkerItem {
     public static final RegistryObject<Item> rage_stone_statue = ITEMS.register("rage_stone_statue", () -> new rage_stone_statue(new Item.Properties().tab(MomotinkerTab.MATERIALS)));
     public static final RegistryObject<Item> lazy_grail = ITEMS.register("lazy_grail", () -> new lazy_grail(new Item.Properties().tab(MomotinkerTab.MATERIALS)));
     public static final RegistryObject<Item> jealous_notes = ITEMS.register("jealous_notes", () -> new jealous_notes(new Item.Properties().tab(MomotinkerTab.MATERIALS)));
-    public static final RegistryObject<ModifiableItem> trigger_blade = ITEMS.register("trigger_blade", () -> new trigger_blade(TOOL, MomoToolDefinitions.TROGGER_BLADE));
-    public static final RegistryObject<ModifiableItem> divine_punishment_spear = ITEMS.register("divine_punishment_spear", () -> new divine_punishment_spear(TOOL, MomoToolDefinitions.DIVINE_PUNISHMENT_SPEAR));
     public static final RegistryObject<Item> dim_dark_gold = ITEMS.register("dim_dark_gold", () -> new dim_dark_gold(new Item.Properties().tab(MomotinkerTab.MATERIALS)));
     public static final RegistryObject<Item> stained_blood_gold = ITEMS.register("stained_blood_gold", () -> new stained_blood_gold(new Item.Properties().tab(MomotinkerTab.MATERIALS)));
     public static final RegistryObject<Item> starry_mysterious_gold = ITEMS.register("starry_mysterious_gold", () -> new starry_mysterious_gold(new Item.Properties().tab(MomotinkerTab.MATERIALS)));
     public static final RegistryObject<Item> devouring_demon_gold = ITEMS.register("devouring_demon_gold", () -> new devouring_demon_gold(new Item.Properties().tab(MomotinkerTab.MATERIALS)));
+
+    public static final RegistryObject<ModifiableItem> trigger_blade = ITEMS.register("trigger_blade", () -> new trigger_blade(TOOL, MomoToolDefinitions.TRIGGER_BLADE));
+    public static final RegistryObject<ModifiableItem> divine_punishment_spear = ITEMS.register("divine_punishment_spear", () -> new divine_punishment_spear(TOOL, MomoToolDefinitions.DIVINE_PUNISHMENT_SPEAR));
+    public static final RegistryObject<ModifiableItem> entropy_burning_cube = ITEMS.register("entropy_burning_cube", () -> new entropy_burning_cube(TOOL, MomoToolDefinitions.ENTROPY_BURNING_CUBE));
+    public static final RegistryObject<ModifiableItem> entropy_burning_sword = ITEMS.register("entropy_burning_sword", () -> new entropy_burning_sword(TOOL, MomoToolDefinitions.ENTROPY_BURNING_SWORD));
+    public static final RegistryObject<ModifiableItem> entropy_burning_riding_spear = ITEMS.register("entropy_burning_riding_spear", () -> new entropy_burning_riding_spear(TOOL, MomoToolDefinitions.ENTROPY_BURNING_RIDING_SPEAR));
+    public static final RegistryObject<ModifiableItem> entropy_burning_cannon = ITEMS.register("entropy_burning_cannon", () -> new entropy_burning_cannon(TOOL, MomoToolDefinitions.ENTROPY_BURNING_CANNON));
 
     public static final RegistryObject<Item> trigger_slash_a = ITEMS.register("trigger_slash_a", ()->new Item(new Item.Properties()));
     public static final RegistryObject<Item> spear_entity = ITEMS.register("spear_entity", ()->new Item(new Item.Properties()));
