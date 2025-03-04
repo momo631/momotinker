@@ -93,7 +93,7 @@ public class SpearCreate {
         for (int a = 0;a <= 1;a++) {
             Level level = player.getLevel();
             RayEntity entity = new RayEntity(MomotinkerEntities.ray_entity.get(), level);
-            entity.rayVec3 = player.getLookAngle().scale(60);
+            entity.rayVec3 = player.getLookAngle().scale(30);
             entity.damage = getRayExplosionDamage(tool,player)*0.05F;
             entity.tool = tool;
             entity.scale = tool.getStats().get(MomoToolDefinitions.SCALE);

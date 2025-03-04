@@ -64,11 +64,11 @@ public class RayEntity extends Projectile {
                 Vec3 vec3 = getUnitizedVec3(rayVec3);
                 Vec3 pos = new Vec3(this.getX(), this.getY(), this.getZ());
                 if (range > 0) {
-                    for (int i = 0;i <= range;i ++) {
+                    for (int i = 0;i < range;i ++) {
                         double x = pos.x + i * vec3.x;
                         double y = pos.y + 0.5 * this.getBbHeight() + i * vec3.y;
                         double z = pos.z + i * vec3.z;
-                        ((ServerLevel) world).sendParticles(ParticleTypes.FLAME, x, y, z, 5, 0, 0, 0, 0);
+                        ((ServerLevel) world).sendParticles(ParticleTypes.FLAME, x, y, z, 8, 0, 0, 0, 0.02);
                         AABB aabb = new AABB(x + 1.25 * scale, y + 0.5 + 1.25 * scale, z + 1.25 * scale, x - 1.25 * scale, y - 1.25 * scale + 0.5, z - 1.25 * scale);
                         aabbList.add(aabb);
                     }
