@@ -1,6 +1,7 @@
 package com.momosensei.momotinker.register;
 
 import com.momosensei.momotinker.entity.CleanseEntity;
+import com.momosensei.momotinker.entity.RayEntity;
 import com.momosensei.momotinker.entity.SpearEntity;
 import com.momosensei.momotinker.entity.TriggerSlashEntity;
 import net.minecraft.world.entity.EntityType;
@@ -19,6 +20,7 @@ public class MomotinkerEntities {
     public static final RegistryObject<EntityType<TriggerSlashEntity>> trigger_slash_a = registerTriggerSlash("trigger_slash_a",MomotinkerEntities.trigger_slash_a,1);
     public static final RegistryObject<EntityType<SpearEntity>> spear_entity = registerSpearEntity("spear_entity",MomotinkerEntities.spear_entity,2);
     public static final RegistryObject<EntityType<CleanseEntity>> cleanse_entity = ENTITIES.register("cleanse_entity", () -> EntityType.Builder.<CleanseEntity>of(CleanseEntity::new, MobCategory.MISC).sized(30F, 60F).setTrackingRange(4).setUpdateInterval(1).setCustomClientFactory((spawnEntity, world) -> new CleanseEntity(world,spawnEntity.getPosX(),spawnEntity.getPosY(),spawnEntity.getPosZ(),spawnEntity.getEntity().getDeltaMovement())).setShouldReceiveVelocityUpdates(true));
+    public static final RegistryObject<EntityType<RayEntity>> ray_entity = ENTITIES.register("ray_entity", () -> EntityType.Builder.of(RayEntity::new, MobCategory.MISC).sized(0.75F, 0.75F).setTrackingRange(4).setUpdateInterval(5).setCustomClientFactory((spawnEntity, world) -> new RayEntity(MomotinkerEntities.ray_entity.get(), world)).setShouldReceiveVelocityUpdates(true));
 
     public static RegistryObject<EntityType<TriggerSlashEntity>> registerTriggerSlash(String name, RegistryObject<EntityType<TriggerSlashEntity>> Type, int index){
         return ENTITIES.register(name, () -> EntityType.Builder.<TriggerSlashEntity>of((entityType, level)-> new TriggerSlashEntity(entityType, level,getSlash(index)), MobCategory.MISC).sized(3F, 0.1F).setTrackingRange(4).setUpdateInterval(10).setCustomClientFactory((spawnEntity, world) -> new TriggerSlashEntity(Type.get(), world,getSlash(index))).setShouldReceiveVelocityUpdates(true));

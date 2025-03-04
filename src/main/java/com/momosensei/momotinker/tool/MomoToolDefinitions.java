@@ -12,6 +12,7 @@ public class MomoToolDefinitions {
     public MomoToolDefinitions() {
     }
     public static final FloatToolStat SLASH_COLOR = ToolStats.register(new FloatToolStat(name("slash_color"), -3135232, 0.0F, 0.0F, 11));
+    public static final FloatToolStat SCALE = (FloatToolStat) ToolStats.register(new FloatToolStat(name("scale"), -3135232, 1.0F, 0.0F, Integer.MAX_VALUE));
 
     private static ToolStatId name(String name) {
         return new ToolStatId(Momotinker.MOD_ID, name);

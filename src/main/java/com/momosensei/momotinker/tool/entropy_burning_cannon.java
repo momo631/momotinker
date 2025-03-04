@@ -1,13 +1,22 @@
 package com.momosensei.momotinker.tool;
 
+import com.momosensei.momotinker.network.Channel;
+import com.momosensei.momotinker.network.packet.TriggerBladeCharge;
+import com.momosensei.momotinker.network.packet.aEntityPacket;
 import net.minecraft.ChatFormatting;
 import net.minecraft.core.BlockPos;
 import net.minecraft.network.chat.Component;
+import net.minecraft.server.level.ServerPlayer;
+import net.minecraft.stats.Stats;
+import net.minecraft.util.Mth;
+import net.minecraft.world.InteractionHand;
+import net.minecraft.world.InteractionResultHolder;
 import net.minecraft.world.entity.EquipmentSlot;
 import net.minecraft.world.entity.LivingEntity;
 import net.minecraft.world.entity.player.Player;
 import net.minecraft.world.item.ItemStack;
 import net.minecraft.world.item.TooltipFlag;
+import net.minecraft.world.item.UseAnim;
 import net.minecraft.world.level.Level;
 import net.minecraft.world.level.block.state.BlockState;
 import org.jetbrains.annotations.Nullable;
@@ -15,17 +24,23 @@ import slimeknights.mantle.client.TooltipKey;
 import slimeknights.tconstruct.common.TinkerTags;
 import slimeknights.tconstruct.library.modifiers.ModifierEntry;
 import slimeknights.tconstruct.library.modifiers.ModifierHooks;
+import slimeknights.tconstruct.library.modifiers.hook.build.ConditionalStatModifierHook;
 import slimeknights.tconstruct.library.modifiers.hook.display.TooltipModifierHook;
 import slimeknights.tconstruct.library.tools.definition.ToolDefinition;
+import slimeknights.tconstruct.library.tools.helper.ToolDamageUtil;
 import slimeknights.tconstruct.library.tools.helper.TooltipBuilder;
 import slimeknights.tconstruct.library.tools.item.ModifiableItem;
 import slimeknights.tconstruct.library.tools.nbt.IToolStackView;
 import slimeknights.tconstruct.library.tools.nbt.ModDataNBT;
+import slimeknights.tconstruct.library.tools.nbt.ToolStack;
 import slimeknights.tconstruct.library.tools.stat.ToolStats;
+import slimeknights.tconstruct.tools.modifiers.ability.interaction.BlockingModifier;
+import slimeknights.tconstruct.tools.modifiers.upgrades.ranged.ScopeModifier;
 
 import java.util.Iterator;
 import java.util.List;
 
+import static slimeknights.tconstruct.library.modifiers.hook.interaction.GeneralInteractionModifierHook.KEY_DRAWTIME;
 import static slimeknights.tconstruct.library.tools.stat.ToolStats.ACCURACY;
 
 public class entropy_burning_cannon extends ModifiableItem {
@@ -36,22 +51,60 @@ public class entropy_burning_cannon extends ModifiableItem {
     public boolean canAttackBlock(BlockState blockState, Level level, BlockPos blockPos, Player player) {
         return !player.isCreative();
     }
-    public boolean hurtEnemy(ItemStack stack, LivingEntity entity, LivingEntity player) {
-        stack.hurtAndBreak(0, player, (player1) -> {
-            player1.broadcastBreakEvent(EquipmentSlot.MAINHAND);
-        });
-        return true;
-    }
 
-    public boolean mineBlock(ItemStack stack, Level level, BlockState blockState, BlockPos blockPos, LivingEntity entity) {
-        if ((double) blockState.getDestroySpeed(level, blockPos) != 0.0D) {
-            stack.hurtAndBreak(0, entity, (entity1) -> {
-                entity1.broadcastBreakEvent(EquipmentSlot.MAINHAND);
-            });
+    public InteractionResultHolder<ItemStack> use(Level level, Player player, InteractionHand hand) {
+        ItemStack stack = player.getItemInHand(hand);
+        ToolStack tool = ToolStack.from(stack);
+        int drawTime = (int) (30/ ConditionalStatModifierHook.getModifiedStat(tool,player,ToolStats.ATTACK_SPEED));
+        tool.getPersistentData().putInt(KEY_DRAWTIME,drawTime);
+        player.startUsingItem(hand);
+        if (!checkOffHand(player)){
+            return InteractionResultHolder.fail(stack);
         }
-        return true;
+        if (tool.isBroken()){
+            return InteractionResultHolder.fail(stack);
+        }
+        if (!tool.isBroken()) {
+            return InteractionResultHolder.pass(stack);
+        }
+        return InteractionResultHolder.consume(stack);
     }
-
+    @Override
+    public void releaseUsing(ItemStack stack, Level level, LivingEntity livingEntity, int duration) {
+        ScopeModifier.stopScoping(livingEntity);
+        ToolStack tool = ToolStack.from(stack);
+        int i = this.getUseDuration(stack) - duration;
+        float perc = Mth.clamp((float) i / (30 / tool.getStats().get(ToolStats.ATTACK_SPEED)),0,1);
+        if (tool.isBroken()){
+            tool.getPersistentData().remove(KEY_DRAWTIME);
+            return;
+        }
+        if (livingEntity instanceof ServerPlayer player){
+            player.awardStat(Stats.ITEM_USED.get(this));
+            if (perc>=1) {
+                Channel.INSTANCE.sendToServer(new aEntityPacket(player.getId()));
+                player.giveExperiencePoints((int) (-player.totalExperience*0.02F));
+            }
+            Channel.sendToPlayer(new TriggerBladeCharge(0), player);
+            ToolDamageUtil.damageAnimated(tool,1,player);
+            tool.getPersistentData().remove(KEY_DRAWTIME);
+        }
+    }
+    @Override
+    public void onUseTick(Level level, LivingEntity living, ItemStack stack, int chargeRemaining) {
+        ToolStack tool = ToolStack.from(stack);
+        if (living instanceof ServerPlayer player) {
+            float perc = Mth.clamp((float) (this.getUseDuration(stack) - chargeRemaining) / (30 / tool.getStats().get(ToolStats.ATTACK_SPEED)),0,1);
+            Channel.sendToPlayer(new TriggerBladeCharge(perc), player);
+        }
+    }
+    public int getUseDuration(ItemStack stack) {
+        return 72000;
+    }
+    @Override
+    public UseAnim getUseAnimation(ItemStack stack) {
+        return BlockingModifier.blockWhileCharging(ToolStack.from(stack), UseAnim.BOW);
+    }
     public static boolean checkOffHand(Player player){
         return player!=null&& !player.hasItemInSlot(EquipmentSlot.OFFHAND);
     }

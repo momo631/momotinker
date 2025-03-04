@@ -70,10 +70,6 @@
       }
     },
     {
-      "type": "tconstruct:sweep_melee",
-      "range": 3
-    },
-    {
       "type": "tconstruct:traits",
       "traits": [
         {
@@ -81,6 +77,28 @@
           "level": 1
         }
       ]
+    },
+    {
+      "type": "tconstruct:box_aoe",
+      "bonus": {
+        "depth": 2,
+        "height": 1,
+        "width": 1
+      },
+      "expansion_direction": "tconstruct:side_hit",
+      "expansions": [
+        {
+          "height": 1,
+          "width": 1
+        },
+        {
+          "depth": 2
+        }
+      ]
+    },
+    {
+      "type": "tconstruct:circle_melee",
+      "diameter": 2.0
     }
   ]
 }

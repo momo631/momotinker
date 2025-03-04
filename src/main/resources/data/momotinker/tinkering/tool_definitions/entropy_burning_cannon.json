@@ -4,15 +4,15 @@
       "type": "tconstruct:part_stats",
       "parts": [
         {
-          "item": "tconstruct:large_plate",
-          "scale": 0.4
-        },
-        {
           "item": "tconstruct:broad_blade",
           "scale": 0.4
         },
         "tconstruct:bow_grip",
         "tconstruct:bow_limb",
+        {
+          "item": "tconstruct:large_plate",
+          "scale": 0.4
+        },
         "tconstruct:tough_handle"
       ]
     },

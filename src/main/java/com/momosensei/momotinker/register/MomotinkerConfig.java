@@ -34,6 +34,10 @@ public class MomotinkerConfig {
             .define("greedy_contract_is_special_acquisition",true);
     public static final ForgeConfigSpec.IntValue breakthroughstar_limit=builder.comment("breakthroughstar_limit")
             .defineInRange("breakthroughstar_limit_max",100,0,Integer.MAX_VALUE);
+    public static final ForgeConfigSpec.IntValue entropy_burning_riding_spear_limit=builder.comment("entropy_burning_riding_spear_limit")
+            .defineInRange("entropy_burning_riding_spear_limit_max",150,0,Integer.MAX_VALUE);
+    public static final ForgeConfigSpec.IntValue entropy_burning_cannon_limit=builder.comment("entropy_burning_cannon_limit")
+            .defineInRange("entropy_burning_cannon_limit_max",200,0,Integer.MAX_VALUE);
 
 
 

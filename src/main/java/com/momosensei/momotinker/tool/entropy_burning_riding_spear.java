@@ -3,6 +3,7 @@ package com.momosensei.momotinker.tool;
 
 import com.momosensei.momotinker.network.Channel;
 import com.momosensei.momotinker.network.packet.TriggerBladeCharge;
+import com.momosensei.momotinker.register.MomotinkerConfig;
 import com.momosensei.momotinker.register.MomotinkerItem;
 import net.minecraft.ChatFormatting;
 import net.minecraft.core.BlockPos;
@@ -28,6 +29,7 @@ import slimeknights.mantle.client.TooltipKey;
 import slimeknights.tconstruct.common.TinkerTags;
 import slimeknights.tconstruct.library.modifiers.ModifierEntry;
 import slimeknights.tconstruct.library.modifiers.ModifierHooks;
+import slimeknights.tconstruct.library.modifiers.hook.build.ConditionalStatModifierHook;
 import slimeknights.tconstruct.library.modifiers.hook.display.TooltipModifierHook;
 import slimeknights.tconstruct.library.tools.definition.ToolDefinition;
 import slimeknights.tconstruct.library.tools.helper.ToolDamageUtil;
@@ -56,25 +58,27 @@ public class entropy_burning_riding_spear extends ModifiableItem {
     private void livinghurtevent(LivingHurtEvent event) {
         Entity a = event.getEntity();
         Entity b = event.getSource().getEntity();
+        int d = MomotinkerConfig.entropy_burning_riding_spear_limit.get();
         if (b instanceof Player player&&a!=null&&player.getMainHandItem().is(MomotinkerItem.entropy_burning_riding_spear.get())){
             if (!checkOffHand(player)) {
                 event.setAmount(0.4F * event.getAmount());
             }
             float speed = (float) player.getDeltaMovement().length();
             float bonus;
-            bonus = getbonus(speed, 5);
-            if (bonus<1F) {
-                event.setAmount(event.getAmount()*(1f+bonus));
+            bonus = getbonus(speed, 5)*100;
+            if (bonus<d) {
+                event.setAmount(event.getAmount()*(1f+bonus*0.01f));
             }else
-            if (bonus>1F) {
-                event.setAmount(event.getAmount()*2f);
+            if (bonus>d) {
+                event.setAmount(event.getAmount()*(1f+d*0.01f));
             }
         }
     }
     public InteractionResultHolder<ItemStack> use(Level level, Player player, InteractionHand hand) {
         ItemStack stack = player.getItemInHand(hand);
         ToolStack tool = ToolStack.from(stack);
-        tool.getPersistentData().putInt(KEY_DRAWTIME, 30);
+        int drawTime = (int) (20/ ConditionalStatModifierHook.getModifiedStat(tool,player,ToolStats.ATTACK_SPEED));
+        tool.getPersistentData().putInt(KEY_DRAWTIME,drawTime);
         player.startUsingItem(hand);
         if (!checkOffHand(player)){
             return InteractionResultHolder.fail(stack);
@@ -92,13 +96,14 @@ public class entropy_burning_riding_spear extends ModifiableItem {
         ScopeModifier.stopScoping(livingEntity);
         ToolStack tool = ToolStack.from(stack);
         int i = this.getUseDuration(stack) - duration;
+        float perc = Mth.clamp((float) i / (20 / tool.getStats().get(ToolStats.ATTACK_SPEED)),0,1);
         if (tool.isBroken()){
             tool.getPersistentData().remove(KEY_DRAWTIME);
             return;
         }
         if (livingEntity instanceof Player player1) {
             player1.awardStat(Stats.ITEM_USED.get(this));
-            if (i >= 30){
+            if (perc >= 1){
                 player1.hasImpulse = true;
                 player1.startAutoSpinAttack(2);
                 player1.setDeltaMovement(player1.getLookAngle().scale(4));
@@ -114,8 +119,9 @@ public class entropy_burning_riding_spear extends ModifiableItem {
     }
     @Override
     public void onUseTick(Level level, LivingEntity living, ItemStack stack, int chargeRemaining) {
+        ToolStack tool = ToolStack.from(stack);
         if (living instanceof ServerPlayer player) {
-            float perc = Mth.clamp((float) (this.getUseDuration(stack) - chargeRemaining) / 30, 0, 1);
+            float perc = Mth.clamp((float) (this.getUseDuration(stack) - chargeRemaining) / (20 / tool.getStats().get(ToolStats.ATTACK_SPEED)),0,1);
             Channel.sendToPlayer(new TriggerBladeCharge(perc), player);
         }
     }
@@ -125,15 +131,6 @@ public class entropy_burning_riding_spear extends ModifiableItem {
     @Override
     public UseAnim getUseAnimation(ItemStack stack) {
         return BlockingModifier.blockWhileCharging(ToolStack.from(stack), UseAnim.BOW);
-    }
-    public boolean canAttackBlock(BlockState blockState, Level level, BlockPos blockPos, Player player) {
-        return !player.isCreative();
-    }
-    public boolean hurtEnemy(ItemStack stack, LivingEntity entity, LivingEntity player) {
-        stack.hurtAndBreak(0, player, (player1) -> {
-            player1.broadcastBreakEvent(EquipmentSlot.MAINHAND);
-        });
-        return true;
     }
 
     public boolean mineBlock(ItemStack stack, Level level, BlockState blockState, BlockPos blockPos, LivingEntity entity) {

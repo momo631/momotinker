@@ -5,10 +5,7 @@ import com.momosensei.momotinker.register.MomotinkerItem;
 import net.minecraft.core.BlockPos;
 import net.minecraft.network.chat.Component;
 import net.minecraft.world.entity.Entity;
-import net.minecraft.world.entity.EquipmentSlot;
-import net.minecraft.world.entity.LivingEntity;
 import net.minecraft.world.entity.player.Player;
-import net.minecraft.world.item.ItemStack;
 import net.minecraft.world.item.TooltipFlag;
 import net.minecraft.world.level.Level;
 import net.minecraft.world.level.block.state.BlockState;
@@ -45,25 +42,7 @@ public class entropy_burning_cube extends ModifiableItem {
     public boolean canAttackBlock(BlockState blockState, Level level, BlockPos blockPos, Player player) {
         return !player.isCreative();
     }
-    public boolean hurtEnemy(ItemStack stack, LivingEntity entity, LivingEntity player) {
-        stack.hurtAndBreak(0, player, (player1) -> {
-            player1.broadcastBreakEvent(EquipmentSlot.MAINHAND);
-        });
-        return true;
-    }
 
-    public boolean mineBlock(ItemStack stack, Level level, BlockState blockState, BlockPos blockPos, LivingEntity entity) {
-        if ((double) blockState.getDestroySpeed(level, blockPos) != 0.0D) {
-            stack.hurtAndBreak(0, entity, (entity1) -> {
-                entity1.broadcastBreakEvent(EquipmentSlot.MAINHAND);
-            });
-        }
-        return true;
-    }
-
-    public static boolean checkOffHand(Player player){
-        return player!=null&& !player.hasItemInSlot(EquipmentSlot.OFFHAND);
-    }
     public List<Component> getStatInformation(IToolStackView tool, @Nullable Player player, List<Component> tooltips, TooltipKey key, TooltipFlag tooltipFlag) {
         tooltips = this.getDivinePunishmentSpearStats(tool, player, tooltips, key, tooltipFlag);
         return tooltips;

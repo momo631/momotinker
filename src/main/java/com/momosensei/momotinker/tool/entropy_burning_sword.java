@@ -31,6 +31,7 @@ import slimeknights.mantle.client.TooltipKey;
 import slimeknights.tconstruct.common.TinkerTags;
 import slimeknights.tconstruct.library.modifiers.ModifierEntry;
 import slimeknights.tconstruct.library.modifiers.ModifierHooks;
+import slimeknights.tconstruct.library.modifiers.hook.build.ConditionalStatModifierHook;
 import slimeknights.tconstruct.library.modifiers.hook.display.TooltipModifierHook;
 import slimeknights.tconstruct.library.tools.definition.ToolDefinition;
 import slimeknights.tconstruct.library.tools.helper.ToolDamageUtil;
@@ -68,7 +69,8 @@ public class entropy_burning_sword extends ModifiableItem {
     public InteractionResultHolder<ItemStack> use(Level level, Player player, InteractionHand hand) {
         ItemStack stack = player.getItemInHand(hand);
         ToolStack tool = ToolStack.from(stack);
-        tool.getPersistentData().putInt(KEY_DRAWTIME, 30);
+        int drawTime = (int) (30/ ConditionalStatModifierHook.getModifiedStat(tool,player,ToolStats.ATTACK_SPEED));
+        tool.getPersistentData().putInt(KEY_DRAWTIME,drawTime);
         player.startUsingItem(hand);
         if (!checkOffHand(player)){
             return InteractionResultHolder.fail(stack);
@@ -86,21 +88,29 @@ public class entropy_burning_sword extends ModifiableItem {
         ScopeModifier.stopScoping(livingEntity);
         ToolStack tool = ToolStack.from(stack);
         int i = this.getUseDuration(stack) - duration;
+        float perc = Mth.clamp((float) i / (30 / tool.getStats().get(ToolStats.ATTACK_SPEED)),0,1);
         if (tool.isBroken()){
             tool.getPersistentData().remove(KEY_DRAWTIME);
             return;
         }
-        if (livingEntity instanceof ServerPlayer player){
+        if (livingEntity instanceof ServerPlayer player) {
             player.awardStat(Stats.ITEM_USED.get(this));
-            List<Entity> ls0 = player.level.getEntitiesOfClass(Entity.class, player.getBoundingBox().inflate(2.5));
-            for (Entity targets : ls0) {
-                if (targets != player) {
-                    if (i >= 30) {
+            int a = (int) player.getAttackRange();
+            if (perc >= 1) {
+                List<Entity> ls0 = player.level.getEntitiesOfClass(Entity.class, player.getBoundingBox().inflate(a+0.5, 1.5, a+0.5));
+                for (Entity targets : ls0) {
+                    if (targets != player) {
                         targets.invulnerableTime = 0;
-                        attackUtil.attackEntity(tool, player, InteractionHand.MAIN_HAND, targets, () -> 1, true, Util.getSlotType(InteractionHand.MAIN_HAND), tool.getStats().get(ToolStats.ATTACK_DAMAGE) * 1.2f, false, true, true, true);
-                        if (player.level instanceof ServerLevel serverLevel) {
-                            serverLevel.sendParticles(ParticleTypes.SWEEP_ATTACK, player.getX(), player.getY()+player.getBbHeight()*0.6, player.getZ(), 1, 2, 0, 2, 1);
-                        }
+                        attackUtil.attackEntity(tool, player, InteractionHand.MAIN_HAND, targets, () -> 1, true, Util.getSlotType(InteractionHand.MAIN_HAND), tool.getStats().get(ToolStats.ATTACK_DAMAGE) * 1.5f, false, true, true, true);
+                    }
+                }
+                if (player.level instanceof ServerLevel serverLevel) {
+                    for (int n = 0; n <= 360; n++) {
+                        double rad = n * 0.017453292519943295;
+                        double r = (a + 0.5);
+                        double x = r * Math.cos(rad);
+                        double z = r * Math.sin(rad);
+                        serverLevel.sendParticles(ParticleTypes.FLAME, player.getX() + x, player.getY() + player.getBbHeight() * 0.6, player.getZ() + z, 5, 0, 0, 0, 0.6);
                     }
                 }
             }
@@ -111,8 +121,9 @@ public class entropy_burning_sword extends ModifiableItem {
     }
     @Override
     public void onUseTick(Level level, LivingEntity living, ItemStack stack, int chargeRemaining) {
+        ToolStack tool = ToolStack.from(stack);
         if (living instanceof ServerPlayer player) {
-            float perc = Mth.clamp((float) (this.getUseDuration(stack) - chargeRemaining) / 30, 0, 1);
+            float perc = Mth.clamp((float) (this.getUseDuration(stack) - chargeRemaining) / (30 / tool.getStats().get(ToolStats.ATTACK_SPEED)),0,1);
             Channel.sendToPlayer(new TriggerBladeCharge(perc), player);
         }
     }
@@ -121,25 +132,10 @@ public class entropy_burning_sword extends ModifiableItem {
     }
     @Override
     public UseAnim getUseAnimation(ItemStack stack) {
-        return BlockingModifier.blockWhileCharging(ToolStack.from(stack), UseAnim.TOOT_HORN);
+        return BlockingModifier.blockWhileCharging(ToolStack.from(stack), UseAnim.SPEAR);
     }
     public boolean canAttackBlock(BlockState blockState, Level level, BlockPos blockPos, Player player) {
         return !player.isCreative();
-    }
-    public boolean hurtEnemy(ItemStack stack, LivingEntity entity, LivingEntity player) {
-        stack.hurtAndBreak(0, player, (player1) -> {
-            player1.broadcastBreakEvent(EquipmentSlot.MAINHAND);
-        });
-        return true;
-    }
-
-    public boolean mineBlock(ItemStack stack, Level level, BlockState blockState, BlockPos blockPos, LivingEntity entity) {
-        if ((double) blockState.getDestroySpeed(level, blockPos) != 0.0D) {
-            stack.hurtAndBreak(0, entity, (entity1) -> {
-                entity1.broadcastBreakEvent(EquipmentSlot.MAINHAND);
-            });
-        }
-        return true;
     }
 
     public static boolean checkOffHand(Player player){
