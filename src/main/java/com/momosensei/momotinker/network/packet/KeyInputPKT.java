@@ -122,9 +122,9 @@ public class KeyInputPKT {
             if (player != null && ModifierUtil.getModifierLevel(player.getMainHandItem(), MomotinkerModifiers.drinkingdemon.getId()) > 0) {
                 ModDataNBT drinkingdemondata = ToolStack.from(player.getItemBySlot(EquipmentSlot.MAINHAND)).getPersistentData();
                 int a = drinkingdemondata.getInt(defenseenchant)+drinkingdemondata.getInt(meleeenchant)+drinkingdemondata.getInt(projectileenchant)+drinkingdemondata.getInt(toolsenchant)+drinkingdemondata.getInt(curseenchant);
-                int f =5/(drinkingdemondata.getInt(curseenchant)+5);
+                float f = (float) 5 /(drinkingdemondata.getInt(curseenchant)+5);
                 if (!player.getCooldowns().isOnCooldown(player.getMainHandItem().getItem())&&player.getItemBySlot(EquipmentSlot.OFFHAND).isEnchanted()&&player.totalExperience>a*50*f) {
-                    player.giveExperiencePoints(-a*50*f);
+                    player.giveExperiencePoints((int) (-a*50*f));
                     Map<Enchantment, Integer> enchantments = EnchantmentHelper.getEnchantments(player.getItemBySlot(EquipmentSlot.OFFHAND));
                     for (Enchantment enchantment: enchantments.keySet()) {
                         if (enchantments.get(enchantment) > 0) {

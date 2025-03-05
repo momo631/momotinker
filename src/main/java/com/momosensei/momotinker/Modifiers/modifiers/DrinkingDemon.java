@@ -49,11 +49,12 @@ public class DrinkingDemon extends momomodifier {
         int d = tool.getPersistentData().getInt(projectileenchant);
         int e = tool.getPersistentData().getInt(toolsenchant);
         float f = (1-((float) 5 / (tool.getPersistentData().getInt(curseenchant) + 5)))*100;
+        float g = (float) 5 /(tool.getPersistentData().getInt(curseenchant)+5);
         if (player != null) {
-            if (player.totalExperience < a * 50 * f) {
+            if (player.totalExperience < a * 50 * g) {
                 tooltip.add(Component.translatable("当前经验点数不足以使用饮魔").withStyle(ChatFormatting.RED));
             }
-            if (player.totalExperience > a * 50 * f) {
+            if (player.totalExperience > a * 50 * g) {
                 tooltip.add(Component.translatable("当前经验点数可以使用饮魔").withStyle(ChatFormatting.GREEN));
             }
             tooltip.add(Component.translatable("饮魔诅咒点数:" + (tool.getPersistentData().getInt(curseenchant)) + ";当前减少饮魔经验消耗:" + (f) + "%").withStyle(ChatFormatting.DARK_PURPLE));
