@@ -1,6 +1,6 @@
 {
   "loader": "tconstruct:tool",
-  "parent": "forge:item/default-tool",
+  "parent": "momotinker:item/base/entropy_burning_cannon",
   "textures": {
     "cube_component_1": "momotinker:item/tool/entropy_burning_cannon/cube_component_1",
     "cube_component_2": "momotinker:item/tool/entropy_burning_cannon/cube_component_2",
@@ -25,7 +25,7 @@
     ]
   },
   "large": true,
-  "large_offset": [-7, 7],
+  "large_offset": [-12, -9],
   "parts": [
     {"name": "cube_component_1", "index": 0, "broken": "broken_cube_component"},
     {"name": "cube_component_2", "index": 1},

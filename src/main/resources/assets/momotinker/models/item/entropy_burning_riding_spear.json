@@ -25,7 +25,7 @@
     ]
   },
   "large": true,
-  "large_offset": [-7, 7],
+  "large_offset": [6, -6],
   "parts": [
     {"name": "cube_component_1", "index": 0, "broken": "broken_cube_component"},
     {"name": "cube_component_2", "index": 1},

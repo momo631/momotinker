@@ -3,8 +3,8 @@
   "gui_light": "front",
   "display": {
     "thirdperson_righthand": {
-      "rotation": [ -70, 275, -15 ],
-      "scale": [ 1.6, 1.6, 1 ]
+      "rotation": [ -70, 270, -25 ],
+      "scale": [ 1, 1, 1 ]
     }
   }
 }
