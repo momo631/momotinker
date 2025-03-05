@@ -18,7 +18,7 @@ import org.jetbrains.annotations.NotNull;
 import slimeknights.tconstruct.library.client.model.TinkerItemProperties;
 import slimeknights.tconstruct.library.tools.capability.TinkerDataCapability;
 
-import static com.momosensei.momotinker.register.MomotinkerItem.trigger_blade;
+import static com.momosensei.momotinker.register.MomotinkerItem.*;
 
 
 @Mod(Momotinker.MOD_ID)
@@ -75,6 +75,8 @@ public class Momotinker {
             event.enqueueWork(() -> {
                 TinkerItemProperties.registerBrokenProperty(trigger_blade.get());
                 TinkerItemProperties.registerToolProperties(trigger_blade.get());
+                TinkerItemProperties.registerToolProperties(entropy_burning_riding_spear.get());
+                TinkerItemProperties.registerToolProperties(entropy_burning_cannon.get());
             });
         }
     }

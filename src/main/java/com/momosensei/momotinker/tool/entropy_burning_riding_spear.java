@@ -102,7 +102,6 @@ public class entropy_burning_riding_spear extends ModifiableItem {
             return;
         }
         if (livingEntity instanceof Player player1) {
-            player1.awardStat(Stats.ITEM_USED.get(this));
             if (perc >= 1){
                 player1.hasImpulse = true;
                 player1.startAutoSpinAttack(2);
@@ -112,10 +111,11 @@ public class entropy_burning_riding_spear extends ModifiableItem {
             }
             if (livingEntity instanceof ServerPlayer player) {
                 Channel.sendToPlayer(new TriggerBladeCharge(0), player);
+                player1.awardStat(Stats.ITEM_USED.get(this));
                 ToolDamageUtil.damageAnimated(tool, 1, player);
-                tool.getPersistentData().remove(KEY_DRAWTIME);
             }
         }
+        tool.getPersistentData().remove(KEY_DRAWTIME);
     }
     @Override
     public void onUseTick(Level level, LivingEntity living, ItemStack stack, int chargeRemaining) {

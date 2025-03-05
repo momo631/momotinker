@@ -68,7 +68,7 @@ public class RayEntity extends Projectile {
                         double x = pos.x + i * vec3.x;
                         double y = pos.y + 0.5 * this.getBbHeight() + i * vec3.y;
                         double z = pos.z + i * vec3.z;
-                        ((ServerLevel) world).sendParticles(ParticleTypes.FLAME, x, y, z, 8, 0, 0, 0, 0.02);
+                        ((ServerLevel) world).sendParticles(ParticleTypes.FLAME, x, y, z, 8, 0, 0, 0, 0.1);
                         AABB aabb = new AABB(x + 1.25 * scale, y + 0.5 + 1.25 * scale, z + 1.25 * scale, x - 1.25 * scale, y - 1.25 * scale + 0.5, z - 1.25 * scale);
                         aabbList.add(aabb);
                     }
@@ -77,7 +77,7 @@ public class RayEntity extends Projectile {
             List<Entity> ls1 = new ArrayList<>(List.of());
             if (!aabbList.isEmpty()) {
                 for (AABB aabb : aabbList) {
-                    List<Entity> ls0 = this.level.getEntitiesOfClass(Entity.class, aabb.inflate(-0.7));
+                    List<Entity> ls0 = this.level.getEntitiesOfClass(Entity.class, aabb.inflate(-0.2));
                     for (Entity target : ls0) {
                         if (target != null && !(target instanceof Player) && target != this.getOwner()&& this.getOwner() instanceof Player player&& !ls1.contains(target)) {
                             target.invulnerableTime = 0;
