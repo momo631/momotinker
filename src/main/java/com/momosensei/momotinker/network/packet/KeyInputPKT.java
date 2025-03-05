@@ -10,18 +10,23 @@ import net.minecraft.server.level.ServerPlayer;
 import net.minecraft.world.effect.MobEffectInstance;
 import net.minecraft.world.entity.EquipmentSlot;
 import net.minecraft.world.item.ItemStack;
+import net.minecraft.world.item.enchantment.Enchantment;
+import net.minecraft.world.item.enchantment.EnchantmentHelper;
 import net.minecraftforge.network.NetworkEvent;
 import slimeknights.tconstruct.library.tools.helper.ModifierUtil;
 import slimeknights.tconstruct.library.tools.nbt.ModDataNBT;
 import slimeknights.tconstruct.library.tools.nbt.ToolStack;
 
+import java.util.Map;
 import java.util.Random;
 import java.util.function.Supplier;
 
 import static com.momosensei.momotinker.Modifiers.modifiers.Berserk.berserker;
+import static com.momosensei.momotinker.Modifiers.modifiers.DrinkingDemon.*;
 import static com.momosensei.momotinker.Modifiers.modifiers.FallingStars.falling;
 import static com.momosensei.momotinker.Modifiers.modifiers.OverCrystalline.crystallization;
 import static com.momosensei.momotinker.Modifiers.modifiers.Red.ender;
+import static net.minecraft.world.item.enchantment.EnchantmentCategory.*;
 import static slimeknights.tconstruct.TConstruct.RANDOM;
 
 public class KeyInputPKT {
@@ -112,6 +117,36 @@ public class KeyInputPKT {
                         berserkdate.putFloat(berserker,1);
                     }
                     player.getCooldowns().addCooldown(player.getMainHandItem().getItem(), 10);
+                }
+            }
+            if (player != null && ModifierUtil.getModifierLevel(player.getMainHandItem(), MomotinkerModifiers.drinkingdemon.getId()) > 0) {
+                ModDataNBT drinkingdemondata = ToolStack.from(player.getItemBySlot(EquipmentSlot.MAINHAND)).getPersistentData();
+                int a = drinkingdemondata.getInt(defenseenchant)+drinkingdemondata.getInt(meleeenchant)+drinkingdemondata.getInt(projectileenchant)+drinkingdemondata.getInt(toolsenchant)+drinkingdemondata.getInt(curseenchant);
+                int f =5/(drinkingdemondata.getInt(curseenchant)+5);
+                if (!player.getCooldowns().isOnCooldown(player.getMainHandItem().getItem())&&player.getItemBySlot(EquipmentSlot.OFFHAND).isEnchanted()&&player.totalExperience>a*50*f) {
+                    player.giveExperiencePoints(-a*50*f);
+                    Map<Enchantment, Integer> enchantments = EnchantmentHelper.getEnchantments(player.getItemBySlot(EquipmentSlot.OFFHAND));
+                    for (Enchantment enchantment: enchantments.keySet()) {
+                        if (enchantments.get(enchantment) > 0) {
+                            if (!enchantment.isCurse()&&enchantment.category==ARMOR||enchantment.category==ARMOR_FEET||enchantment.category==ARMOR_CHEST||enchantment.category==ARMOR_HEAD||enchantment.category==ARMOR_LEGS) {
+                                drinkingdemondata.putInt(defenseenchant,drinkingdemondata.getInt(defenseenchant)+enchantments.get(enchantment));
+                            }
+                            if (!enchantment.isCurse()&&enchantment.category==WEAPON) {
+                                drinkingdemondata.putInt(meleeenchant,drinkingdemondata.getInt(meleeenchant)+enchantments.get(enchantment));
+                            }
+                            if (!enchantment.isCurse()&&enchantment.category==CROSSBOW||enchantment.category==BOW||enchantment.category==TRIDENT) {
+                                drinkingdemondata.putInt(projectileenchant,drinkingdemondata.getInt(projectileenchant)+enchantments.get(enchantment));
+                            }
+                            if (!enchantment.isCurse()&&enchantment.category==WEARABLE||enchantment.category==DIGGER) {
+                                drinkingdemondata.putInt(toolsenchant,drinkingdemondata.getInt(toolsenchant)+enchantments.get(enchantment));
+                            }
+                            if (enchantment.isCurse()) {
+                                drinkingdemondata.putInt(curseenchant,drinkingdemondata.getInt(curseenchant)+enchantments.get(enchantment));
+                            }
+                        }
+                    }
+                    player.setItemSlot(EquipmentSlot.OFFHAND, ItemStack.EMPTY);
+                    player.getCooldowns().addCooldown(player.getMainHandItem().getItem(), 1800);
                 }
             }
         });

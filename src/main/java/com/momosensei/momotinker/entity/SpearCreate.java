@@ -1,10 +1,9 @@
 package com.momosensei.momotinker.entity;
 
-import com.momosensei.momotinker.register.MomotinkerEntities;
-import com.momosensei.momotinker.register.MomotinkerItem;
-import com.momosensei.momotinker.register.MomotinkerModifiers;
-import com.momosensei.momotinker.register.MomotinkerToolDefinitions;
+import com.momosensei.momotinker.register.*;
+import com.momosensei.momotinker.tool.MomoToolDefinitions;
 import com.momosensei.momotinker.tool.divine_punishment_spear;
+import com.momosensei.momotinker.tool.entropy_burning_cannon;
 import net.minecraft.server.level.ServerPlayer;
 import net.minecraft.world.InteractionHand;
 import net.minecraft.world.entity.EntityType;
@@ -17,6 +16,8 @@ import slimeknights.tconstruct.library.tools.nbt.ToolStack;
 import slimeknights.tconstruct.library.tools.stat.ToolStats;
 
 import static com.momosensei.momotinker.Modifiers.modifiers.BreakthroughStars.breakthroughstar;
+import static slimeknights.tconstruct.library.modifiers.Modifier.RANDOM;
+import static slimeknights.tconstruct.library.tools.stat.ToolStats.ACCURACY;
 
 public class SpearCreate {
     public static void createSpear(ServerPlayer player){
@@ -64,5 +65,38 @@ public class SpearCreate {
     }
     public static boolean checkOffHand(Player player){
         return player!=null&& !player.hasItemInSlot(EquipmentSlot.OFFHAND);
+    }
+    public static float getRayExplosionDamage(ToolStack tool,ServerPlayer player) {
+        int a = (int) (player.totalExperience*0.02f);
+        float b = RANDOM.nextInt((int) (tool.getStats().get(ACCURACY) * 100));
+        int d = MomotinkerConfig.entropy_burning_cannon_limit.get();
+        if (a<d){
+            return tool.getStats().get(ToolStats.ATTACK_DAMAGE)*(1f+a*0.01f + 0.005F * b + 0.2F * tool.getStats().get(ToolStats.VELOCITY));
+        }else
+        if (a>d){
+            return tool.getStats().get(ToolStats.ATTACK_DAMAGE)*(1f+d*0.01f + 0.005F * b + 0.2F * tool.getStats().get(ToolStats.VELOCITY));
+        }
+        return getRayExplosionDamage(tool,player);
+    }
+    public static void createRayExplosion(ServerPlayer player) {
+        if (!(player.getMainHandItem().getItem() instanceof entropy_burning_cannon) || !checkOffHand(player)) {
+            return;
+        }
+        ToolStack tool = ToolStack.from(player.getMainHandItem());
+        if (tool.isBroken()) {
+            return;
+        }
+        for (int a = 0;a <= 1;a++) {
+            Level level = player.level();
+            RayEntity entity = new RayEntity(MomotinkerEntities.ray_entity.get(), level);
+            entity.rayVec3 = player.getLookAngle().scale(30);
+            entity.damage = getRayExplosionDamage(tool,player)*0.05F;
+            entity.tool = tool;
+            entity.scale = tool.getStats().get(MomoToolDefinitions.SCALE);
+            entity.setPos(player.getEyePosition().x, player.getEyePosition().y - 0.5 * entity.getBbHeight(), player.getEyePosition().z);
+            entity.setOwner(player);
+            level.addFreshEntity(entity);
+            ToolDamageUtil.damageAnimated(tool, 1, player, InteractionHand.MAIN_HAND);
+        }
     }
 }

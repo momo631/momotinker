@@ -34,6 +34,7 @@
   "fluid.momotinker.molten_dim_dark_gold": "熔融黯淡玄金",
   "fluid.momotinker.molten_stained_blood_gold": "熔融染血玄金",
   "fluid.momotinker.molten_starry_mysterious_gold": "熔融星辰玄金",
+  "fluid.momotinker.molten_devouring_demon_gold": "熔融噬魔金",
 
   "item.momotinker.molten_laomo_bucket": "熔融墨桶",
   "item.momotinker.molten_arriving_at_the_other_shore_bucket": "熔融彼岸桶",
@@ -51,6 +52,7 @@
   "item.momotinker.molten_dim_dark_gold_bucket": "熔融黯淡玄金桶",
   "item.momotinker.molten_stained_blood_gold_bucket": "熔融染血玄金桶",
   "item.momotinker.molten_starry_mysterious_gold_bucket": "熔融星辰玄金桶",
+  "item.momotinker.molten_devouring_demon_gold_bucket": "熔融噬魔金桶",
 
   "recipe.momotinker.modifier.cleansetheworld": "荡涤天地需要贯星魔枪作为前置",
   "recipe.momotinker.modifier.shadowofdamnation": "天谴之影需要荡涤天地作为前置",
@@ -122,15 +124,31 @@
   "item.momotinker.starry_mysterious_gold": "星辰玄金锭",
   "momotinker.item.tooltip.starry_mysterious_gold1": "因古代神兵的苏醒从而再度闪耀，破茧重生",
 
+  "item.momotinker.devouring_demon_gold": "噬魔金",
+  "momotinker.item.tooltip.devouring_demon_gold1": "物极必反，过度的附魔导致了此物的诞生",
+  "momotinker.item.tooltip.devouring_demon_gold2": "按住“shift”查看获取",
+  "momotinker.item.tooltip.devouring_demon_gold3": "",
+
+
   "itemGroup.momotinker.tools": "墨工坊模组-工具",
 
   "item.momotinker.trigger_blade": "扳机长刀",
   "item.momotinker.trigger_blade.description": "拥有特殊攻击手段的近战武器，使用时副手不能有其它物品。右键可进行蓄力，蓄力完成后松开可发出斩击，造成范围爆发伤害。\n每点初速度增加斩击伤害20%。\n精密度会随机增加伤害，每点使能随机到的最大值提升50%",
 
   "item.momotinker.divine_punishment_spear": "天谴之矛",
-  "item.momotinker.divine_punishment_spear.description": "超高攻速与攻击距离的单体型近战武器，使用时若副手有其他物品造成的伤害会减半，右键蓄力释放时可短暂冲刺，可以在古城奖励中获得。\n[古代神兵]:玩家无法自主锻造，可以在某些地点获得黯淡玄金部件的工具，完成对应神兵任务时可以进化",
+  "item.momotinker.divine_punishment_spear.description": "[古代神兵]:遗落于深谙古城\n超高攻速与攻击距离的单体型近战武器，使用时若副手有其他物品造成的伤害会减半，右键蓄力释放时可短暂冲刺\n玩家无法自主锻造，可以在某些地点获得黯淡玄金部件的工具，完成神兵任务可进化",
+
+  "item.momotinker.entropy_burning_cube": "焓变遗骸·熵烬之心",
+  "item.momotinker.entropy_burning_cube.description": "[古代神兵]:遗落于亚特兰蒂斯\n本身无使用功能，按下工具技能可以变化多种形态且正常使用不消耗耐久，变形后无法更换和拆卸部件\n§o“沉睡于深渊中的国度，无法理解的繁华，\n§o尽数崩解为烬”——虚空铁匠议会第三席§",
+  "item.momotinker.entropy_burning_sword": "熵烬巨剑",
+  "item.momotinker.entropy_burning_sword.description": "高伤害但攻速极低的宽范围近战武器，使用时若副手有其他物品造成的伤害会大幅降低，右键蓄力完成后会进行一次“熵变”打击对大范围目标造成150%的伤害（受攻速影响）",
+  "item.momotinker.entropy_burning_riding_spear": "熵烬骑枪",
+  "item.momotinker.entropy_burning_riding_spear.description": "较高伤害攻速较低的较长攻击距离的单体近战武器，使用时若副手有其他物品造成的伤害会大幅降低，移动时会根据移速增加伤害（默认最多增加150%），右键蓄力释放可短暂冲刺",
+  "item.momotinker.entropy_burning_cannon": "熵烬机炮",
+  "item.momotinker.entropy_burning_cannon.description": "中等距离穿透型远程武器，使用时若副手有其他物品时无法使用，右键可消耗当前2%经验以发动射击，可穿透方块并对路径上所有目标造成伤害（消耗经验越多射击伤害越高，默认最多增加200%）",
 
   "momotinker.tool.tooltip.offhand_hastool": "错误:副手有物品",
+
 
   "itemGroup.momotinker.materials": "墨工坊模组-材料",
 
@@ -167,6 +185,8 @@
   "material.momotinker.stained_blood_gold.encyclopedia": "“任何暴行，任何代价，都只为更多的力量”",
   "material.momotinker.starry_mysterious_gold": "星辰玄金",
   "material.momotinker.starry_mysterious_gold.encyclopedia": "黯淡的星星重新开始闪耀于天空，正如手中熠熠之物",
+  "material.momotinker.devouring_demon_gold": "噬魔金",
+  "material.momotinker.devouring_demon_gold.encyclopedia": "一份付出，一份收获",
 
   "modifier.momotinker.laomochuji": "牢墨出击",
   "modifier.momotinker.laomochuji.flavor": "词条标题",
@@ -306,6 +326,14 @@
 
   "modifier.momotinker.shadowofdamnation": "天谴之影",
   "modifier.momotinker.shadowofdamnation.flavor": "荡涤天地改装:虚无投影",
-  "modifier.momotinker.shadowofdamnation.description": "召唤的巨大魔法矛会穿过方块和生物并不会产生爆炸，同时下落速度大幅提高，被其触碰每的伤害范围略微缩小"
+  "modifier.momotinker.shadowofdamnation.description": "召唤的巨大魔法矛会穿过方块和生物并不会产生爆炸，同时下落速度大幅提高，被其触碰每的伤害范围略微缩小",
+
+  "modifier.momotinker.drinkingdemon": "饮魔",
+  "modifier.momotinker.drinkingdemon.flavor": "饮下鸠毒，春种秋收",
+  "modifier.momotinker.drinkingdemon.description": "按下特殊技能按键可吸收副手带有附魔的物品，消耗已有点数总和*50点的经验并根据物品上的附魔数量获得相应种类的点数，使用后工具冷却90秒（若经验不足则无法吸收）",
+
+  "modifier.momotinker.sweetaftertaste": "回甘",
+  "modifier.momotinker.sweetaftertaste.flavor": "枯果枝下",
+  "modifier.momotinker.sweetaftertaste.description": "该工具为护甲时，会根据身上总护甲的饮魔点数减少受到伤害;该工具为武器或工具时，会根据饮魔点数增加近战伤害和攻击速度，若为远程武器则格外增加箭矢伤害;诅咒点数会减少使用饮魔所需的经验点数"
 
 }

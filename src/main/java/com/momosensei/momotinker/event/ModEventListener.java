@@ -11,6 +11,7 @@ import com.momosensei.momotinker.register.MomotinkerEntities;
 import com.momosensei.momotinker.renderer.CleanseEntityRenderer;
 import com.momosensei.momotinker.renderer.SpearEntityRenderer;
 import com.momosensei.momotinker.renderer.triggerSlashRenderer;
+import net.minecraft.client.renderer.entity.NoopRenderer;
 import net.minecraftforge.api.distmarker.Dist;
 import net.minecraftforge.client.event.EntityRenderersEvent;
 import net.minecraftforge.client.event.RegisterGuiOverlaysEvent;
@@ -43,6 +44,7 @@ public class ModEventListener {
         event.registerEntityRenderer(MomotinkerEntities.trigger_slash_a.get(), triggerSlashRenderer::new);
         event.registerEntityRenderer(MomotinkerEntities.spear_entity.get(), SpearEntityRenderer::new);
         event.registerEntityRenderer(MomotinkerEntities.cleanse_entity.get(), CleanseEntityRenderer::new);
+        event.registerEntityRenderer(MomotinkerEntities.ray_entity.get(), NoopRenderer::new);
     }
 
     @SubscribeEvent

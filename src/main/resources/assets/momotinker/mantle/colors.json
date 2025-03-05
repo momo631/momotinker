@@ -15,7 +15,8 @@
     "dimensional_prism": "#98F6FF",
     "dim_dark_gold": "#574A1E",
     "stained_blood_gold": "#AF3423",
-    "starry_mysterious_gold": "#FEFB00"
+    "starry_mysterious_gold": "#FEFB00",
+    "devouring_demon_gold": "#CC00FF"
   },
   "modifier.momotinker": {
     "laomochuji": "#596d99",
@@ -51,7 +52,9 @@
     "yamato": "#1500D4",
     "starcloudchain": "#FFFC81",
     "breakthroughstars": "#F9F99C",
-    "cleansetheworld": "#FFFF00",
-    "shadowofdamnation": "#FFFF00"
+    "cleansetheworld": "#F8F8C5",
+    "shadowofdamnation": "#FFFF85",
+    "drinkingdemon": "#C332C9",
+    "sweetaftertaste": "#FA4AFF"
   }
 }

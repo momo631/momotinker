@@ -1,0 +1,15 @@
+{
+  "parent": "momotinker:item/entropy_burning_riding_spear",
+  "display": {
+    "firstperson_righthand": {
+      "rotation": [-70, 270, 40],
+      "translation": [3, 3, 0],
+      "scale": [1, 1, 1]
+    },
+    "thirdperson_righthand": {
+      "rotation": [ -70, 270, 65 ],
+      "translation": [0, -2, -5],
+      "scale": [ 1, 1, 1 ]
+    }
+  }
+}

@@ -1,8 +1,7 @@
 package com.momosensei.momotinker.register;
 
 
-import com.momosensei.momotinker.tool.divine_punishment_spear;
-import com.momosensei.momotinker.tool.trigger_blade;
+import com.momosensei.momotinker.tool.*;
 import net.minecraft.network.chat.Component;
 import net.minecraft.world.item.CreativeModeTab;
 import net.minecraft.world.item.ItemStack;
@@ -39,11 +38,19 @@ public final class MomotinkerTools extends MomotinkerTables {
 
     public static final ItemObject<ModifiableItem> trigger_blade = ITEMS.register("trigger_blade", () -> new trigger_blade(UNSTACKABLE_PROPS, MomotinkerToolDefinitions.TRIGGER_BLADE));
     public static final ItemObject<ModifiableItem> divine_punishment_spear = ITEMS.register("divine_punishment_spear", () -> new divine_punishment_spear(UNSTACKABLE_PROPS, MomotinkerToolDefinitions.DIVINE_PUNISHMENT_SPEAR));
+    public static final ItemObject<ModifiableItem> entropy_burning_cube = ITEMS.register("entropy_burning_cube", () -> new entropy_burning_cube(UNSTACKABLE_PROPS, MomotinkerToolDefinitions.ENTROPY_BURNING_CUBE));
+    public static final ItemObject<ModifiableItem> entropy_burning_sword = ITEMS.register("entropy_burning_sword", () -> new entropy_burning_sword(UNSTACKABLE_PROPS, MomotinkerToolDefinitions.ENTROPY_BURNING_SWORD));
+    public static final ItemObject<ModifiableItem> entropy_burning_riding_spear = ITEMS.register("entropy_burning_riding_spear", () -> new entropy_burning_riding_spear(UNSTACKABLE_PROPS, MomotinkerToolDefinitions.ENTROPY_BURNING_RIDING_SPEAR));
+    public static final ItemObject<ModifiableItem> entropy_burning_cannon = ITEMS.register("entropy_burning_cannon", () -> new entropy_burning_cannon(UNSTACKABLE_PROPS, MomotinkerToolDefinitions.ENTROPY_BURNING_CANNON));
 
     private static void addTabItems(CreativeModeTab.ItemDisplayParameters itemDisplayParameters, CreativeModeTab.Output tab) {
         Consumer<ItemStack> output = tab::accept;
         acceptTool(output, trigger_blade);
         acceptTool(output, divine_punishment_spear);
+        acceptTool(output, entropy_burning_cube);
+        acceptTool(output, entropy_burning_sword);
+        acceptTool(output, entropy_burning_riding_spear);
+        acceptTool(output, entropy_burning_cannon);
     }
     private static void acceptTool(Consumer<ItemStack> output, Supplier<? extends IModifiable> tool) {
         ToolBuildHandler.addVariants(output, tool.get(), "");

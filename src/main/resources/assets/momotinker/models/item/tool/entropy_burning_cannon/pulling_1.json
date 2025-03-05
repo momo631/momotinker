@@ -1,0 +1,40 @@
+{
+  "loader": "tconstruct:tool",
+  "parent": "momotinker:item/base/entropy_burning_cannon",
+  "textures": {
+    "cube_component_1": "momotinker:item/tool/entropy_burning_cannon/cube_component_1",
+    "cube_component_2": "momotinker:item/tool/entropy_burning_cannon/cube_component_2",
+    "cube_component_3": "momotinker:item/tool/entropy_burning_cannon/cube_component_3",
+    "cube_component_4": "momotinker:item/tool/entropy_burning_cannon/cube_component_4",
+    "cube_component_5": "momotinker:item/tool/entropy_burning_cannon/cube_component_5",
+    "broken_cube_component": "momotinker:item/tool/entropy_burning_cannon/broken_cube_component",
+    "ember": "momotinker:item/tool/entropy_burning_cannon/large/charge_1/ember_0",
+
+    "large_cube_component_1": "momotinker:item/tool/entropy_burning_cannon/large/cube_component_1",
+    "large_cube_component_2": "momotinker:item/tool/entropy_burning_cannon/large/cube_component_2",
+    "large_cube_component_3": "momotinker:item/tool/entropy_burning_cannon/large/cube_component_3",
+    "large_cube_component_4": "momotinker:item/tool/entropy_burning_cannon/large/cube_component_4",
+    "large_cube_component_5": "momotinker:item/tool/entropy_burning_cannon/large/cube_component_5",
+    "broken_large_cube_component": "momotinker:item/tool/entropy_burning_cannon/large/broken_cube_component",
+    "large_ember": "momotinker:item/tool/entropy_burning_cannon/large/charge_1/ember"
+  },
+  "modifier_roots": {
+    "small": [
+      "momotinker:item/tool/entropy_burning_cannon/modifiers/"
+    ],
+    "large": [
+      "momotinker:item/tool/entropy_burning_cannon/large/modifiers/",
+      "momotinker:item/tool/entropy_burning_cannon/large/modifiers/charge_1/"
+    ]
+  },
+  "large": true,
+  "large_offset": [-12, -9],
+  "parts": [
+    {"name": "cube_component_1", "index": 0, "broken": "broken_cube_component"},
+    {"name": "cube_component_2", "index": 1},
+    {"name": "cube_component_3", "index": 2},
+    {"name": "cube_component_4", "index": 3},
+    {"name": "cube_component_5", "index": 4},
+    {"name": "ember"}
+  ]
+}

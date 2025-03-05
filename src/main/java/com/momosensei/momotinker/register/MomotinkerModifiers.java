@@ -50,5 +50,7 @@ public class MomotinkerModifiers {
     public static final StaticModifier<BreakthroughStars> breakthroughstars=MODIFIERS.register("breakthroughstars", BreakthroughStars::new);
     public static final StaticModifier<CleanseTheWorld> cleansetheworld=MODIFIERS.register("cleansetheworld", CleanseTheWorld::new);
     public static final StaticModifier<ShadowOfDamnation> shadowofdamnation=MODIFIERS.register("shadowofdamnation", ShadowOfDamnation::new);
+    public static final StaticModifier<DrinkingDemon> drinkingdemon=MODIFIERS.register("drinkingdemon", DrinkingDemon::new);
+    public static final StaticModifier<SweetAfterTaste> sweetaftertaste=MODIFIERS.register("sweetaftertaste", SweetAfterTaste::new);
 
 }

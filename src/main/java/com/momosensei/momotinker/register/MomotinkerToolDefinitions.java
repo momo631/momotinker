@@ -11,11 +11,16 @@ public class MomotinkerToolDefinitions {
     public MomotinkerToolDefinitions() {
     }
     public static final FloatToolStat SLASH_COLOR = ToolStats.register(new FloatToolStat(name("slash_color"), -3135232, 0.0F, 0.0F, 11));
+    public static final FloatToolStat SCALE = (FloatToolStat) ToolStats.register(new FloatToolStat(name("scale"), -3135232, 1.0F, 0.0F, Integer.MAX_VALUE));
 
     private static ToolStatId name(String name) {
         return new ToolStatId(Momotinker.MOD_ID, name);
     }
     public static final ToolDefinition TRIGGER_BLADE = ToolDefinition.create(MomotinkerTools.trigger_blade);
     public static final ToolDefinition DIVINE_PUNISHMENT_SPEAR = ToolDefinition.create(MomotinkerTools.divine_punishment_spear);
+    public static final ToolDefinition ENTROPY_BURNING_CUBE = ToolDefinition.create(MomotinkerTools.entropy_burning_cube);
+    public static final ToolDefinition ENTROPY_BURNING_SWORD = ToolDefinition.create(MomotinkerTools.entropy_burning_sword);
+    public static final ToolDefinition ENTROPY_BURNING_RIDING_SPEAR = ToolDefinition.create(MomotinkerTools.entropy_burning_riding_spear);
+    public static final ToolDefinition ENTROPY_BURNING_CANNON = ToolDefinition.create(MomotinkerTools.entropy_burning_cannon);
 
 }
