@@ -1,0 +1,42 @@
+{
+  "name": "minecraft:chests/buried_treasure",
+  "pools": [
+    {
+      "entries": [
+        {
+          "type": "minecraft:item",
+          "functions": [
+            {
+              "function": "tconstruct:add_tool_data",
+              "materials": [
+                {
+                  "type": "tconstruct:fixed",
+                  "material": "momotinker:dim_dark_gold"
+                },
+                {
+                  "type": "tconstruct:fixed",
+                  "material": "momotinker:dim_dark_gold"
+                },
+                {
+                  "type": "tconstruct:fixed",
+                  "material": "momotinker:dim_dark_gold"
+                },
+                {
+                  "type": "tconstruct:fixed",
+                  "material": "momotinker:dim_dark_gold"
+                },
+                {
+                  "type": "tconstruct:fixed",
+                  "material": "momotinker:dim_dark_gold"
+                }
+              ]
+            }
+          ],
+          "name": "momotinker:entropy_burning_cube",
+          "weight": 1
+        }
+      ],
+      "name": "main"
+    }
+  ]
+}
