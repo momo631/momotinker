@@ -266,4 +266,3 @@ public abstract class momomodifier extends Modifier implements MeleeDamageModifi
                 + ModifierUtil.getModifierLevel(entity.getItemBySlot(EquipmentSlot.FEET), modifierId);
     }
 }
-

@@ -68,6 +68,15 @@
         "abilities": 2,
         "upgrades": 3
       }
+    },
+    {
+      "type": "tconstruct:traits",
+      "traits": [
+        {
+          "name": "momotinker:frombrilliance",
+          "level": 1
+        }
+      ]
     }
   ]
 }

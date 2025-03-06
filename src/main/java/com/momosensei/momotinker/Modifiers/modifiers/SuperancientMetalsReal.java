@@ -16,6 +16,7 @@ import net.minecraft.world.entity.projectile.AbstractArrow;
 import net.minecraft.world.item.TooltipFlag;
 import net.minecraftforge.common.MinecraftForge;
 import net.minecraftforge.event.entity.living.LivingHurtEvent;
+import org.jetbrains.annotations.NotNull;
 import org.jetbrains.annotations.Nullable;
 import slimeknights.mantle.client.TooltipKey;
 import slimeknights.tconstruct.library.modifiers.ModifierEntry;
@@ -90,7 +91,7 @@ public class SuperancientMetalsReal extends momomodifier {
     }
 
     @Override
-    public LegacyDamageSource modifyArrowDamageSource(ModifierNBT modifiers, ModDataNBT persistentData, ModifierEntry modifier, AbstractArrow arrow, @org.jetbrains.annotations.Nullable LivingEntity attacker, @org.jetbrains.annotations.Nullable LivingEntity target, LegacyDamageSource source) {
+    public LegacyDamageSource modifyArrowDamageSource(ModifierNBT modifiers, ModDataNBT persistentData, ModifierEntry modifier, AbstractArrow arrow, @Nullable LivingEntity attacker, @NotNull Entity target, LegacyDamageSource source) {
         if (attacker instanceof ServerPlayer player&&arrow!=null && target != null) {
             if (persistentData.getFloat(degenerate)==100) {
                 target.invulnerableTime=0;

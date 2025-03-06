@@ -1,6 +1,5 @@
 package com.momosensei.momotinker.Modifiers.modifiers;
 
-
 import com.c2h6s.etstlib.entity.specialDamageSources.LegacyDamageSource;
 import com.momosensei.momotinker.Modifiers.momomodifier;
 import com.momosensei.momotinker.Momotinker;
@@ -23,6 +22,7 @@ import net.minecraft.world.item.ItemStack;
 import net.minecraft.world.level.Level;
 import net.minecraftforge.common.MinecraftForge;
 import net.minecraftforge.event.entity.living.LivingHurtEvent;
+import org.jetbrains.annotations.NotNull;
 import slimeknights.tconstruct.library.modifiers.Modifier;
 import slimeknights.tconstruct.library.modifiers.ModifierEntry;
 import slimeknights.tconstruct.library.tools.helper.ModifierUtil;
@@ -105,7 +105,7 @@ public class CrimsonQueen extends momomodifier {
     }
 
     @Override
-    public LegacyDamageSource modifyArrowDamageSource(ModifierNBT modifiers, ModDataNBT persistentData, ModifierEntry modifier, AbstractArrow arrow, @org.jetbrains.annotations.Nullable LivingEntity attacker, @org.jetbrains.annotations.Nullable LivingEntity target, LegacyDamageSource source) {
+    public LegacyDamageSource modifyArrowDamageSource(ModifierNBT modifiers, ModDataNBT persistentData, ModifierEntry modifier, AbstractArrow arrow, @org.jetbrains.annotations.Nullable LivingEntity attacker, @NotNull Entity target, LegacyDamageSource source) {
         if (attacker != null&&persistentData.getFloat(crimsonlayers)>0) {
             return source.setBypassArmor();
         }

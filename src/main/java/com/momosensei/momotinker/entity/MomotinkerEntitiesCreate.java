@@ -88,7 +88,7 @@ public class MomotinkerEntitiesCreate {
         for (int a = 0;a <= 1;a++) {
             Level level = player.level();
             RayEntity entity = new RayEntity(MomotinkerEntities.ray_entity.get(), level);
-            entity.rayVec3 = player.getLookAngle().scale(30);
+            entity.rayVec3 = player.getLookAngle().scale(45);
             entity.damage = getRayExplosionDamage(tool,player)*0.05F;
             entity.tool = tool;
             entity.scale = tool.getStats().get(MomotinkerToolDefinitions.SCALE);

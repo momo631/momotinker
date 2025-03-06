@@ -128,6 +128,12 @@ repositories {
             includeGroup "mezz.jei"
         }
     }
+    maven {
+        url "https://cursemaven.com"
+        content {
+            includeGroup "curse.maven"
+        }
+    }
     maven { url = "https://maven.kosmx.dev/" }
     flatDir {
         dir 'libs'
@@ -138,6 +144,7 @@ dependencies {
     minecraft "net.minecraftforge:forge:${minecraft_version}-${forge_version}"
     annotationProcessor "org.spongepowered:mixin:${mixin_version}:processor"
     implementation fg.deobf("dev.kosmx.player-anim:player-animation-lib-forge:${player_animator_version}")
+    implementation fg.deobf("curse.maven:etst-lib-1206379:6266577")
     runtimeOnly fg.deobf("mezz.jei:jei-${jei_mc_version}-forge:${jei_version}")
     implementation fileTree(dir: 'lib', includes: ['*.jar'])
 }
@@ -206,5 +213,4 @@ tasks.withType(JavaCompile).configureEach {options.encoding = 'UTF-8'
 
 mixin {
     add sourceSets.main, 'momotinker.refmap.json'
-    config 'mixins.momotinker.json'
 }

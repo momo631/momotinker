@@ -1,5 +1,6 @@
 package com.momosensei.momotinker.Modifiers.modifiers;
 
+
 import com.c2h6s.etstlib.entity.specialDamageSources.LegacyDamageSource;
 import com.c2h6s.etstlib.tool.hooks.ModifyDamageSourceModifierHook;
 import com.momosensei.momotinker.Modifiers.momomodifier;
@@ -17,6 +18,8 @@ import net.minecraft.world.entity.projectile.AbstractArrow;
 import net.minecraft.world.entity.projectile.Projectile;
 import net.minecraft.world.item.TooltipFlag;
 import net.minecraft.world.phys.EntityHitResult;
+import org.jetbrains.annotations.NotNull;
+import org.jetbrains.annotations.Nullable;
 import slimeknights.mantle.client.TooltipKey;
 import slimeknights.tconstruct.library.modifiers.ModifierEntry;
 import slimeknights.tconstruct.library.tools.context.ToolAttackContext;
@@ -50,7 +53,7 @@ public class Huangquan extends momomodifier implements ModifyDamageSourceModifie
     }
 
     @Override
-    public LegacyDamageSource modifyArrowDamageSource(ModifierNBT modifiers, ModDataNBT persistentData, ModifierEntry modifier, AbstractArrow arrow, @org.jetbrains.annotations.Nullable LivingEntity attacker, @org.jetbrains.annotations.Nullable LivingEntity target, LegacyDamageSource source) {
+    public LegacyDamageSource modifyArrowDamageSource(ModifierNBT modifiers, ModDataNBT persistentData, ModifierEntry modifier, AbstractArrow arrow, @Nullable LivingEntity attacker, @NotNull Entity target, LegacyDamageSource source) {
         if (attacker instanceof ServerPlayer player&& arrow!=null && target != null && player.getEffect(MomotinkerEffects.End.get()) != null && player.hasEffect(MomotinkerEffects.End.get())) {
             if (ModifierUtil.getModifierLevel(player.getItemBySlot(EquipmentSlot.MAINHAND), MomotinkerModifiers.huangquan.getId()) > 0) {
                 target.invulnerableTime=0;

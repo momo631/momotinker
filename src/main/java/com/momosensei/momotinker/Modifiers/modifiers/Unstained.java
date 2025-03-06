@@ -6,25 +6,35 @@ import com.momosensei.momotinker.register.MomotinkerModifiers;
 import net.minecraft.world.effect.MobEffect;
 import net.minecraft.world.effect.MobEffectCategory;
 import net.minecraft.world.effect.MobEffectInstance;
+import net.minecraft.world.effect.MobEffects;
 import net.minecraft.world.entity.LivingEntity;
 import net.minecraft.world.entity.player.Player;
 import net.minecraft.world.item.ItemStack;
 import net.minecraft.world.level.Level;
 import net.minecraftforge.common.MinecraftForge;
 import net.minecraftforge.event.entity.living.LivingAttackEvent;
-import net.minecraftforge.event.entity.living.MobEffectEvent;
 import slimeknights.tconstruct.library.modifiers.ModifierEntry;
 import slimeknights.tconstruct.library.tools.nbt.IToolStackView;
 
+import java.util.ArrayList;
 import java.util.Collection;
+import java.util.List;
 
 
 public class Unstained extends momomodifier {
     public Unstained() {
         MinecraftForge.EVENT_BUS.addListener(this::livingattackevent);
-        MinecraftForge.EVENT_BUS.addListener(this::WhenEffectRemove);
     }
-
+    private static final List<MobEffect> BENEFICIAL_EFFECTS = new ArrayList<>(List.of(
+            MobEffects.LUCK, MobEffects.DIG_SPEED, MobEffects.FIRE_RESISTANCE, MobEffects.MOVEMENT_SPEED,
+            MobEffects.DAMAGE_RESISTANCE, MobEffects.JUMP,MobEffects.DAMAGE_BOOST, MobEffects.HEAL,
+            MobEffects.REGENERATION,MobEffects.WATER_BREATHING,MobEffects.INVISIBILITY, MobEffects.NIGHT_VISION,
+            MobEffects.HEALTH_BOOST,MobEffects.ABSORPTION,MobEffects.SATURATION, MobEffects.SLOW_FALLING,
+            MobEffects.CONDUIT_POWER,MobEffects.DOLPHINS_GRACE
+    ));
+    public static List<MobEffect> getBeneficialEffectsByCopy(){
+        return new ArrayList<>(BENEFICIAL_EFFECTS);
+    }
     @Override
     public void onInventoryTick(IToolStackView tool, ModifierEntry modifier, Level world, LivingEntity entity, int index, boolean isSelected, boolean isCorrectSlot, ItemStack stack) {
         Collection<MobEffectInstance> harmeffect = entity.getActiveEffects();
@@ -35,17 +45,10 @@ public class Unstained extends momomodifier {
             if (mobEffect.getCategory() != MobEffectCategory.BENEFICIAL&&mobEffect != MomotinkerEffects.LostSoul.get() && mobEffect != MomotinkerEffects.Arrogant.get()) {
                 entity.removeEffect(mobEffect);
             }
-            if (a>0&&mobEffect.getCategory() == MobEffectCategory.BENEFICIAL&&effect.getDuration()<10){
-                entity.addEffect(new MobEffectInstance(mobEffect,10,effect.getAmplifier()));
-            }
-        }
-    }
-
-    public void WhenEffectRemove(MobEffectEvent.Remove event) {
-        int a = getArmorModifierlevel(event.getEntity(),MomotinkerModifiers.unstained.getId());
-        if (a>0&&event.getEffectInstance() != null) {
-            if (event.getEffectInstance().getEffect().isBeneficial()) {
-                event.setCanceled(true);
+            for (MobEffect beneficialeffect : getBeneficialEffectsByCopy()) {
+                if (a > 0  && mobEffect==beneficialeffect && effect.getDuration() < 10) {
+                    entity.addEffect(new MobEffectInstance(mobEffect, 10, effect.getAmplifier()));
+                }
             }
         }
     }
