@@ -258,7 +258,7 @@
 
   "modifier.momotinker.unstained": "不染",
   "modifier.momotinker.unstained.flavor": "§6尘事皆云§",
-  "modifier.momotinker.unstained.description": "在背包时免疫一切中性与负面效果（除七罪系列效果），穿戴或主副手持有时会保留正面效果并提供闪避攻击的几率，数值为总词条数*10%，最高为80%（同名只生效一次）",
+  "modifier.momotinker.unstained.description": "在背包时免疫一切中性与负面效果（除七罪系列效果），穿戴或主副手持有时会使原版的正面效果时间不归0并提供闪避攻击的几率，数值为总词条数*10%，最高为80%（同名只生效一次）",
 
   "modifier.momotinker.overcowardicesin": "尽怠之罪",
   "modifier.momotinker.overcowardicesin.flavor": "§6无尽怯怠之代价:微力予战§",

@@ -68,7 +68,8 @@ public class RayEntity extends Projectile {
                         double x = pos.x + i * vec3.x;
                         double y = pos.y + 0.5 * this.getBbHeight() + i * vec3.y;
                         double z = pos.z + i * vec3.z;
-                        ((ServerLevel) world).sendParticles(ParticleTypes.FLAME, x, y, z, 8, 0, 0, 0, 0.1);
+                        ((ServerLevel) world).sendParticles(ParticleTypes.FLAME, x, y, z, 8, 0, 0, 0, 0.05);
+                        ((ServerLevel) world).sendParticles(ParticleTypes.LAVA, x, y, z, 3, 0, 0, 0, 0);
                         AABB aabb = new AABB(x + 1.25 * scale, y + 0.5 + 1.25 * scale, z + 1.25 * scale, x - 1.25 * scale, y - 1.25 * scale + 0.5, z - 1.25 * scale);
                         aabbList.add(aabb);
                     }

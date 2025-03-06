@@ -80,7 +80,7 @@ public class KeyInputPKT {
 
             if (player != null && ModifierUtil.getModifierLevel(player.getMainHandItem(), MomotinkerModifiers.crystallization.getId()) > 0) {
                 ModDataNBT crystallizationdata = ToolStack.from(player.getItemBySlot(EquipmentSlot.MAINHAND)).getPersistentData();
-                if (player.getItemBySlot(EquipmentSlot.OFFHAND).is(MomotinkerItem.dimensional_prism.get()) && !player.getCooldowns().isOnCooldown(player.getMainHandItem().getItem())) {
+                if (player.getItemBySlot(EquipmentSlot.OFFHAND).is(MomotinkerItem.dimensional_prism.get())) {
                     int a = (int) crystallizationdata.getFloat(crystallization);
                     int b = RANDOM.nextInt(a + 4);
                     player.getItemBySlot(EquipmentSlot.OFFHAND).setCount(player.getItemBySlot(EquipmentSlot.OFFHAND).getCount() - 1);
@@ -104,19 +104,14 @@ public class KeyInputPKT {
                         player.setItemSlot(EquipmentSlot.MAINHAND, ItemStack.EMPTY);
                         player.sendSystemMessage(Component.translatable("强化失败！装备碎掉了。。。").withStyle(ChatFormatting.RED));
                     }
-                    player.getCooldowns().addCooldown(player.getMainHandItem().getItem(), 10);
                 }
             }
             if (player != null && ModifierUtil.getModifierLevel(player.getMainHandItem(), MomotinkerModifiers.berserk.getId()) > 0) {
                 ModDataNBT berserkdata = ToolStack.from(player.getItemBySlot(EquipmentSlot.MAINHAND)).getPersistentData();
-                if (!player.getCooldowns().isOnCooldown(player.getMainHandItem().getItem())) {
-                    if (berserkdata.getFloat(berserker)==1){
-                        berserkdata.putFloat(berserker,0);
-                    }else
-                    if (berserkdata.getFloat(berserker)==0){
-                        berserkdata.putFloat(berserker,1);
-                    }
-                    player.getCooldowns().addCooldown(player.getMainHandItem().getItem(), 10);
+                if (berserkdata.getFloat(berserker) == 1) {
+                    berserkdata.putFloat(berserker, 0);
+                } else if (berserkdata.getFloat(berserker) == 0) {
+                    berserkdata.putFloat(berserker, 1);
                 }
             }
             if (player != null && ModifierUtil.getModifierLevel(player.getMainHandItem(), MomotinkerModifiers.drinkingdemon.getId()) > 0) {

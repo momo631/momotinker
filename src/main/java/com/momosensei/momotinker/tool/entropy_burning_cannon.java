@@ -43,7 +43,7 @@ import java.util.List;
 import static slimeknights.tconstruct.library.modifiers.hook.interaction.GeneralInteractionModifierHook.KEY_DRAWTIME;
 import static slimeknights.tconstruct.library.tools.stat.ToolStats.ACCURACY;
 
-public class entropy_burning_cannon extends ModifiableItem {
+public class entropy_burning_cannon extends ModifiableItem{
     public entropy_burning_cannon(Properties properties, ToolDefinition toolDefinition) {
         super(properties, toolDefinition);
     }

@@ -12,7 +12,7 @@ import net.minecraft.world.phys.Vec3;
 
 public class FallingPreparation extends StaticEffect {
     public FallingPreparation() {
-        super(MobEffectCategory.NEUTRAL, 16769263);
+        super(MobEffectCategory.BENEFICIAL, 16769263);
     }
 
     @Override
