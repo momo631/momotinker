@@ -139,7 +139,7 @@
   "item.momotinker.divine_punishment_spear.description": "[古代神兵]:遗落于深谙古城\n超高攻速与攻击距离的单体型近战武器，使用时若副手有其他物品造成的伤害会减半，右键蓄力释放时可短暂冲刺\n玩家无法自主锻造，可以在某些地点获得黯淡玄金部件的工具，完成神兵任务可进化",
 
   "item.momotinker.entropy_burning_cube": "焓变遗骸·熵烬之心",
-  "item.momotinker.entropy_burning_cube.description": "[古代神兵]:遗落于亚特兰蒂斯与宝藏\n本身无使用功能，按下工具技能可以变化多种形态且正常使用不消耗耐久，变形后无法更换和拆卸部件\n§o“沉睡于深渊中的国度，无法理解的繁华，\n§o尽数崩解为烬”——虚空铁匠议会第三席§",
+  "item.momotinker.entropy_burning_cube.description": "[古代神兵]:遗落于亚特兰蒂斯与沉睡的宝藏\n本身无使用功能，按下工具技能可以变化多种形态且正常使用不消耗耐久，变形后无法更换和拆卸部件\n§o“沉睡于深渊中的国度，无法理解的繁华，\n§o尽数崩解为烬”——虚空铁匠议会第三席§",
   "item.momotinker.entropy_burning_sword": "熵烬巨剑",
   "item.momotinker.entropy_burning_sword.description": "高伤害但攻速极低的宽范围近战武器，使用时若副手有其他物品造成的伤害会大幅降低，右键蓄力完成后会进行一次“熵变”打击对大范围目标造成150%的伤害（受攻速影响）",
   "item.momotinker.entropy_burning_riding_spear": "熵烬骑枪",

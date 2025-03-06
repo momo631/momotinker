@@ -36,17 +36,16 @@ public class MomotinkerItem {
     public static final RegistryObject<Item> starry_mysterious_gold = ITEMS.register("starry_mysterious_gold", () -> new starry_mysterious_gold(new Item.Properties().tab(MomotinkerTab.MATERIALS)));
     public static final RegistryObject<Item> devouring_demon_gold = ITEMS.register("devouring_demon_gold", () -> new devouring_demon_gold(new Item.Properties().tab(MomotinkerTab.MATERIALS)));
 
-    public static final RegistryObject<ModifiableItem> trigger_blade = ITEMS.register("trigger_blade", () -> new trigger_blade(TOOL, MomoToolDefinitions.TRIGGER_BLADE));
-    public static final RegistryObject<ModifiableItem> divine_punishment_spear = ITEMS.register("divine_punishment_spear", () -> new divine_punishment_spear(TOOL, MomoToolDefinitions.DIVINE_PUNISHMENT_SPEAR));
-    public static final RegistryObject<ModifiableItem> entropy_burning_cube = ITEMS.register("entropy_burning_cube", () -> new entropy_burning_cube(TOOL, MomoToolDefinitions.ENTROPY_BURNING_CUBE));
-    public static final RegistryObject<ModifiableItem> entropy_burning_sword = ITEMS.register("entropy_burning_sword", () -> new entropy_burning_sword(TOOL, MomoToolDefinitions.ENTROPY_BURNING_SWORD));
-    public static final RegistryObject<ModifiableItem> entropy_burning_riding_spear = ITEMS.register("entropy_burning_riding_spear", () -> new entropy_burning_riding_spear(TOOL, MomoToolDefinitions.ENTROPY_BURNING_RIDING_SPEAR));
-    public static final RegistryObject<ModifiableItem> entropy_burning_cannon = ITEMS.register("entropy_burning_cannon", () -> new entropy_burning_cannon(TOOL, MomoToolDefinitions.ENTROPY_BURNING_CANNON));
+    public static final RegistryObject<ModifiableItem> trigger_blade = ITEMS.register("trigger_blade", () -> new trigger_blade(TOOL, MomotinkerToolDefinitions.TRIGGER_BLADE));
+    public static final RegistryObject<ModifiableItem> divine_punishment_spear = ITEMS.register("divine_punishment_spear", () -> new divine_punishment_spear(TOOL, MomotinkerToolDefinitions.DIVINE_PUNISHMENT_SPEAR));
+    public static final RegistryObject<ModifiableItem> entropy_burning_cube = ITEMS.register("entropy_burning_cube", () -> new entropy_burning_cube(TOOL, MomotinkerToolDefinitions.ENTROPY_BURNING_CUBE));
+    public static final RegistryObject<ModifiableItem> entropy_burning_sword = ITEMS.register("entropy_burning_sword", () -> new entropy_burning_sword(TOOL, MomotinkerToolDefinitions.ENTROPY_BURNING_SWORD));
+    public static final RegistryObject<ModifiableItem> entropy_burning_riding_spear = ITEMS.register("entropy_burning_riding_spear", () -> new entropy_burning_riding_spear(TOOL, MomotinkerToolDefinitions.ENTROPY_BURNING_RIDING_SPEAR));
+    public static final RegistryObject<ModifiableItem> entropy_burning_cannon = ITEMS.register("entropy_burning_cannon", () -> new entropy_burning_cannon(TOOL, MomotinkerToolDefinitions.ENTROPY_BURNING_CANNON));
 
     public static final RegistryObject<Item> trigger_slash_a = ITEMS.register("trigger_slash_a", ()->new Item(new Item.Properties()));
     public static final RegistryObject<Item> spear_entity = ITEMS.register("spear_entity", ()->new Item(new Item.Properties()));
     public static final RegistryObject<Item> cleanse_item = ITEMS.register("cleanse_item",()-> new Item(new Item.Properties()));
-    public static final RegistryObject<Item> plasmaexplosion = ITEMS.register("plasmaexplosion", ()->new Item(new Item.Properties()));
 
     //方块类要这样,略有变动
 

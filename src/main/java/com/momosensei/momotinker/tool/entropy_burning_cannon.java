@@ -1,8 +1,8 @@
 package com.momosensei.momotinker.tool;
 
 import com.momosensei.momotinker.network.Channel;
+import com.momosensei.momotinker.network.packet.RayEntityPacket;
 import com.momosensei.momotinker.network.packet.TriggerBladeCharge;
-import com.momosensei.momotinker.network.packet.aEntityPacket;
 import net.minecraft.ChatFormatting;
 import net.minecraft.core.BlockPos;
 import net.minecraft.network.chat.Component;
@@ -82,7 +82,7 @@ public class entropy_burning_cannon extends ModifiableItem {
         if (livingEntity instanceof ServerPlayer player){
             player.awardStat(Stats.ITEM_USED.get(this));
             if (perc>=1) {
-                Channel.INSTANCE.sendToServer(new aEntityPacket(player.getId()));
+                Channel.INSTANCE.sendToServer(new RayEntityPacket(player.getId()));
                 player.giveExperiencePoints((int) (-player.totalExperience*0.02F));
             }
             Channel.sendToPlayer(new TriggerBladeCharge(0), player);

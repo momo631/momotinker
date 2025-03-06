@@ -8,6 +8,7 @@ import com.momosensei.momotinker.network.packet.triggerSlashPacket;
 import com.momosensei.momotinker.register.MomotinkerEntities;
 import com.momosensei.momotinker.register.MomotinkerItem;
 import com.momosensei.momotinker.register.MomotinkerModifiers;
+import com.momosensei.momotinker.register.MomotinkerToolDefinitions;
 import net.minecraft.ChatFormatting;
 import net.minecraft.core.BlockPos;
 import net.minecraft.network.chat.Component;
@@ -181,9 +182,9 @@ public class trigger_blade extends ModifiableItem {
             return;
         }
         float damage = getDamageMultiplier(tool);
-        ItemStack color = getSlash(tool.getStats().getInt(MomoToolDefinitions.SLASH_COLOR));
+        ItemStack color = getSlash(tool.getStats().getInt(MomotinkerToolDefinitions.SLASH_COLOR));
         Level level =player.getLevel();
-        EntityType<TriggerSlashEntity> entityType = getSlashType(tool.getStats().getInt(MomoToolDefinitions.SLASH_COLOR));
+        EntityType<TriggerSlashEntity> entityType = getSlashType(tool.getStats().getInt(MomotinkerToolDefinitions.SLASH_COLOR));
         TriggerSlashEntity slash =new TriggerSlashEntity(entityType,level,color);
         double x =player.getLookAngle().x;
         double y =player.getLookAngle().y;

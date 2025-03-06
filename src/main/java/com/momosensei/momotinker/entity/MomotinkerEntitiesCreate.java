@@ -1,10 +1,6 @@
 package com.momosensei.momotinker.entity;
 
-import com.momosensei.momotinker.register.MomotinkerConfig;
-import com.momosensei.momotinker.register.MomotinkerEntities;
-import com.momosensei.momotinker.register.MomotinkerItem;
-import com.momosensei.momotinker.register.MomotinkerModifiers;
-import com.momosensei.momotinker.tool.MomoToolDefinitions;
+import com.momosensei.momotinker.register.*;
 import com.momosensei.momotinker.tool.divine_punishment_spear;
 import com.momosensei.momotinker.tool.entropy_burning_cannon;
 import net.minecraft.server.level.ServerPlayer;
@@ -21,7 +17,7 @@ import static com.momosensei.momotinker.Modifiers.modifiers.BreakthroughStars.br
 import static slimeknights.tconstruct.TConstruct.RANDOM;
 import static slimeknights.tconstruct.library.tools.stat.ToolStats.ACCURACY;
 
-public class SpearCreate {
+public class MomotinkerEntitiesCreate {
     public static void createSpear(ServerPlayer player) {
         if (!(player.getMainHandItem().getItem() instanceof divine_punishment_spear) || player.getAttackStrengthScale(0) != 1 || !checkOffHand(player)) {
             return;
@@ -31,9 +27,9 @@ public class SpearCreate {
             return;
         }
         float damage = getDamageMultiplier(tool);
-        ItemStack color = getSpear(tool.getStats().getInt(MomoToolDefinitions.SLASH_COLOR));
+        ItemStack color = getSpear(tool.getStats().getInt(MomotinkerToolDefinitions.SLASH_COLOR));
         Level level = player.getLevel();
-        EntityType<SpearEntity> entityType = getSpearType(tool.getStats().getInt(MomoToolDefinitions.SLASH_COLOR));
+        EntityType<SpearEntity> entityType = getSpearType(tool.getStats().getInt(MomotinkerToolDefinitions.SLASH_COLOR));
         SpearEntity spear = new SpearEntity(entityType, level, color);
         double x = player.getLookAngle().x;
         double y = player.getLookAngle().y;
@@ -96,7 +92,7 @@ public class SpearCreate {
             entity.rayVec3 = player.getLookAngle().scale(30);
             entity.damage = getRayExplosionDamage(tool,player)*0.05F;
             entity.tool = tool;
-            entity.scale = tool.getStats().get(MomoToolDefinitions.SCALE);
+            entity.scale = tool.getStats().get(MomotinkerToolDefinitions.SCALE);
             entity.setPos(player.getEyePosition().x, player.getEyePosition().y - 0.5 * entity.getBbHeight(), player.getEyePosition().z);
             entity.setOwner(player);
             level.addFreshEntity(entity);

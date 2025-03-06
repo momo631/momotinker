@@ -6,7 +6,7 @@ import net.minecraftforge.network.NetworkEvent;
 
 import java.util.function.Supplier;
 
-import static com.momosensei.momotinker.entity.SpearCreate.createSpear;
+import static com.momosensei.momotinker.entity.MomotinkerEntitiesCreate.createSpear;
 
 
 public class SpearEntityPacket {
