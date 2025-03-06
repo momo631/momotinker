@@ -6,24 +6,24 @@ import net.minecraftforge.network.NetworkEvent;
 
 import java.util.function.Supplier;
 
-import static com.momosensei.momotinker.entity.SpearCreate.createRayExplosion;
+import static com.momosensei.momotinker.entity.MomotinkerEntitiesCreate.createRayExplosion;
 
 
-public class aEntityPacket {
+public class RayEntityPacket {
     public final int playerID;
-    public aEntityPacket(int id) {
+    public RayEntityPacket(int id) {
         this.playerID =id;
     }
 
-    public static void encode(aEntityPacket packet, FriendlyByteBuf buf) {
+    public static void encode(RayEntityPacket packet, FriendlyByteBuf buf) {
         buf.writeInt(packet.playerID);
     }
 
-    public static aEntityPacket decode(FriendlyByteBuf buf) {
-        return new aEntityPacket(buf.readInt());
+    public static RayEntityPacket decode(FriendlyByteBuf buf) {
+        return new RayEntityPacket(buf.readInt());
     }
 
-    public static void handle(aEntityPacket packet, Supplier<NetworkEvent.Context> supplier) {
+    public static void handle(RayEntityPacket packet, Supplier<NetworkEvent.Context> supplier) {
         if (supplier.get().getDirection().getReceptionSide().isServer()) {
             supplier.get().enqueueWork(() -> {
                 ServerPlayer player =supplier.get().getSender();

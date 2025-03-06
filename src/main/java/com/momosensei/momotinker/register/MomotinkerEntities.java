@@ -10,7 +10,7 @@ import net.minecraftforge.registries.RegistryObject;
 import slimeknights.mantle.registration.deferred.EntityTypeDeferredRegister;
 
 import static com.momosensei.momotinker.Momotinker.MOD_ID;
-import static com.momosensei.momotinker.entity.SpearCreate.getSpear;
+import static com.momosensei.momotinker.entity.MomotinkerEntitiesCreate.getSpear;
 import static com.momosensei.momotinker.tool.trigger_blade.getSlash;
 
 public class MomotinkerEntities {

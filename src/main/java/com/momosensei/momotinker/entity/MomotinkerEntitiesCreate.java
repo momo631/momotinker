@@ -1,7 +1,6 @@
 package com.momosensei.momotinker.entity;
 
 import com.momosensei.momotinker.register.*;
-import com.momosensei.momotinker.tool.MomoToolDefinitions;
 import com.momosensei.momotinker.tool.divine_punishment_spear;
 import com.momosensei.momotinker.tool.entropy_burning_cannon;
 import net.minecraft.server.level.ServerPlayer;
@@ -19,9 +18,9 @@ import static com.momosensei.momotinker.Modifiers.modifiers.BreakthroughStars.br
 import static slimeknights.tconstruct.library.modifiers.Modifier.RANDOM;
 import static slimeknights.tconstruct.library.tools.stat.ToolStats.ACCURACY;
 
-public class SpearCreate {
-    public static void createSpear(ServerPlayer player){
-        if (!(player.getMainHandItem().getItem() instanceof divine_punishment_spear)||player.getAttackStrengthScale(0)!=1||!checkOffHand(player)){
+public class MomotinkerEntitiesCreate {
+    public static void createSpear(ServerPlayer player) {
+        if (!(player.getMainHandItem().getItem() instanceof divine_punishment_spear) || player.getAttackStrengthScale(0) != 1 || !checkOffHand(player)) {
             return;
         }
         ToolStack tool = ToolStack.from(player.getMainHandItem());
@@ -92,7 +91,7 @@ public class SpearCreate {
             entity.rayVec3 = player.getLookAngle().scale(30);
             entity.damage = getRayExplosionDamage(tool,player)*0.05F;
             entity.tool = tool;
-            entity.scale = tool.getStats().get(MomoToolDefinitions.SCALE);
+            entity.scale = tool.getStats().get(MomotinkerToolDefinitions.SCALE);
             entity.setPos(player.getEyePosition().x, player.getEyePosition().y - 0.5 * entity.getBbHeight(), player.getEyePosition().z);
             entity.setOwner(player);
             level.addFreshEntity(entity);

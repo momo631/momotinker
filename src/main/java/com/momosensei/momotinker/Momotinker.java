@@ -20,6 +20,7 @@ import net.minecraftforge.fml.javafmlmod.FMLJavaModLoadingContext;
 import slimeknights.tconstruct.library.client.model.TinkerItemProperties;
 import slimeknights.tconstruct.library.tools.capability.TinkerDataCapability;
 
+import static com.momosensei.momotinker.register.MomotinkerTools.*;
 import static slimeknights.tconstruct.TConstruct.makeTranslationKey;
 
 @Mod(Momotinker.MOD_ID)
@@ -72,8 +73,10 @@ public class Momotinker {
         @SubscribeEvent
         public static void onClientSetup(FMLClientSetupEvent event) {
             event.enqueueWork(() -> {
-                TinkerItemProperties.registerBrokenProperty(MomotinkerTools.trigger_blade.get());
-                TinkerItemProperties.registerToolProperties(MomotinkerTools.trigger_blade.get());
+                TinkerItemProperties.registerBrokenProperty(trigger_blade.get());
+                TinkerItemProperties.registerToolProperties(trigger_blade.get());
+                TinkerItemProperties.registerToolProperties(entropy_burning_riding_spear.get());
+                TinkerItemProperties.registerToolProperties(entropy_burning_cannon.get());
             });
         }
     }

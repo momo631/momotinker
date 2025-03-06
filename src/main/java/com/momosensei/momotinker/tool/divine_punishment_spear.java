@@ -4,7 +4,7 @@ package com.momosensei.momotinker.tool;
 import com.c2h6s.etstlib.entity.specialDamageSources.LegacyDamageSource;
 import com.momosensei.momotinker.Momotinker;
 import com.momosensei.momotinker.entity.CleanseEntity;
-import com.momosensei.momotinker.entity.SpearCreate;
+import com.momosensei.momotinker.entity.MomotinkerEntitiesCreate;
 import com.momosensei.momotinker.event.CleanseSpawnEvent;
 import com.momosensei.momotinker.network.Channel;
 import com.momosensei.momotinker.network.packet.SpearEntityPacket;
@@ -192,7 +192,7 @@ public class divine_punishment_spear extends ModifiableItem {
                         entity.setOwner(player);
                         entity.setToolstack(tool);
                         entity.setint(c);
-                        entity.damage = SpearCreate.getDamageMultiplier(tool) * 50;
+                        entity.damage = MomotinkerEntitiesCreate.getDamageMultiplier(tool) * 50;
                         entity.setExplosionPower((byte) 120);
                         level.addFreshEntity(entity);
                     }

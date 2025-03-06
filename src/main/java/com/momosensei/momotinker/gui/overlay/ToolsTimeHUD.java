@@ -17,8 +17,7 @@ import java.util.List;
 
 import static com.momosensei.momotinker.register.MomotinkerTools.*;
 
-
-public class TriggerBladeHUD {
+public class ToolsTimeHUD {
     public static ResourceLocation Texture0 = new ResourceLocation(Momotinker.MOD_ID,"/textures/gui/overlay/gui_trigger_blade_0.png");
     public static ResourceLocation Texture1 = new ResourceLocation(Momotinker.MOD_ID,"/textures/gui/overlay/gui_trigger_blade_1.png");
     public static ResourceLocation Texture2 = new ResourceLocation(Momotinker.MOD_ID,"/textures/gui/overlay/gui_trigger_blade_2.png");
@@ -29,7 +28,7 @@ public class TriggerBladeHUD {
     public static ResourceLocation Texture7 = new ResourceLocation(Momotinker.MOD_ID,"/textures/gui/overlay/gui_trigger_blade_7.png");
     public static ResourceLocation Texture8 = new ResourceLocation(Momotinker.MOD_ID,"/textures/gui/overlay/gui_trigger_blade_8.png");
     public static List<ResourceLocation> Texture = List.of(Texture0,Texture1,Texture2,Texture3,Texture4,Texture5,Texture6,Texture7,Texture8);
-    public static IGuiOverlay TRIGGER_BLADE_HUD = ((gui, poseStack, partialTick, width, height) -> {
+    public static IGuiOverlay TOOS_TIME_HUD = ((gui, poseStack, partialTick, width, height) -> {
         Minecraft minecraft = Minecraft.getInstance();
         Player player = minecraft.player;
         if (player == null){
@@ -50,9 +49,11 @@ public class TriggerBladeHUD {
         int amount = Mth.clamp((int) (perc*8),0,8);
         int x =width/2;
         int y = height/2;
-        RenderSystem.setShader(GameRenderer::getPositionShader);
-        RenderSystem.setShaderColor(1,1,1,1);
-        RenderSystem.setShaderTexture(0,Texture.get(amount));
-        poseStack.blit(Texture.get(amount),x-9,y-8,0,0,17,17,17,17);
+
+            RenderSystem.setShader(GameRenderer::getPositionShader);
+            RenderSystem.setShaderColor(1, 1, 1, 1);
+            RenderSystem.setShaderTexture(0, Texture.get(amount));
+            poseStack.blit(Texture.get(amount),x - 9, y - 8, 0, 0, 17, 17, 17, 17);
+
     });
 }

@@ -5,7 +5,6 @@ import com.momosensei.momotinker.register.MomotinkerModifiers;
 import net.minecraft.ChatFormatting;
 import net.minecraft.network.chat.Component;
 import net.minecraft.world.entity.Entity;
-import net.minecraft.world.entity.EquipmentSlot;
 import net.minecraft.world.entity.LivingEntity;
 import net.minecraft.world.entity.player.Player;
 import net.minecraft.world.item.TooltipFlag;
@@ -13,7 +12,6 @@ import net.minecraftforge.common.MinecraftForge;
 import net.minecraftforge.event.entity.living.LivingHurtEvent;
 import slimeknights.mantle.client.TooltipKey;
 import slimeknights.tconstruct.library.modifiers.ModifierEntry;
-import slimeknights.tconstruct.library.tools.helper.ModifierUtil;
 import slimeknights.tconstruct.library.tools.nbt.IToolContext;
 import slimeknights.tconstruct.library.tools.nbt.IToolStackView;
 import slimeknights.tconstruct.library.tools.stat.ModifierStatsBuilder;
@@ -49,12 +47,7 @@ public class Dominate extends momomodifier {
     private void livinghurtevent(LivingHurtEvent event) {
         LivingEntity living = event.getEntity();
         Entity entity=event.getSource().getEntity();
-        int a =   ModifierUtil.getModifierLevel(living.getItemBySlot(EquipmentSlot.MAINHAND), MomotinkerModifiers.dominate.getId())
-                + ModifierUtil.getModifierLevel(living.getItemBySlot(EquipmentSlot.OFFHAND), MomotinkerModifiers.dominate.getId())
-                + ModifierUtil.getModifierLevel(living.getItemBySlot(EquipmentSlot.HEAD), MomotinkerModifiers.dominate.getId())
-                + ModifierUtil.getModifierLevel(living.getItemBySlot(EquipmentSlot.CHEST), MomotinkerModifiers.dominate.getId())
-                + ModifierUtil.getModifierLevel(living.getItemBySlot(EquipmentSlot.LEGS), MomotinkerModifiers.dominate.getId())
-                + ModifierUtil.getModifierLevel(living.getItemBySlot(EquipmentSlot.FEET), MomotinkerModifiers.dominate.getId());
+        int a =  getArmorModifierlevel(living,MomotinkerModifiers.dominate.getId());
         if (entity instanceof LivingEntity attacker&&living instanceof Player player&& a > 0 && attacker.getMaxHealth()<player.getMaxHealth()*a*0.2F) {
             event.setAmount(event.getAmount() * 0.7F);
         }
@@ -62,12 +55,7 @@ public class Dominate extends momomodifier {
 
     public void addTooltip(IToolStackView tool, ModifierEntry modifierEntry, @org.jetbrains.annotations.Nullable Player player, List<Component> tooltip, TooltipKey tooltipKey, TooltipFlag tooltipFlag) {
         if (player != null) {
-            int a =   ModifierUtil.getModifierLevel(player.getItemBySlot(EquipmentSlot.MAINHAND), MomotinkerModifiers.dominate.getId())
-                    + ModifierUtil.getModifierLevel(player.getItemBySlot(EquipmentSlot.OFFHAND), MomotinkerModifiers.dominate.getId())
-                    + ModifierUtil.getModifierLevel(player.getItemBySlot(EquipmentSlot.HEAD), MomotinkerModifiers.dominate.getId())
-                    + ModifierUtil.getModifierLevel(player.getItemBySlot(EquipmentSlot.CHEST), MomotinkerModifiers.dominate.getId())
-                    + ModifierUtil.getModifierLevel(player.getItemBySlot(EquipmentSlot.LEGS), MomotinkerModifiers.dominate.getId())
-                    + ModifierUtil.getModifierLevel(player.getItemBySlot(EquipmentSlot.FEET), MomotinkerModifiers.dominate.getId());
+            int a =  getArmorModifierlevel(player,MomotinkerModifiers.dominate.getId());
             tooltip.add(net.minecraft.network.chat.Component.translatable("目前触发减伤的血量阈值为" + (player.getMaxHealth()*a*0.2F)).withStyle(ChatFormatting.RED));
         }
     }
