@@ -8,24 +8,24 @@ import java.util.function.Supplier;
 import static com.momosensei.momotinker.mobs.TriggerBladeDrawtime.setPercentage;
 
 
-public class TriggerBladeCharge {
+public class ToolsTimeCharge {
     private float percentage;
-    public TriggerBladeCharge(float percentage) {;
+    public ToolsTimeCharge(float percentage) {;
         this.percentage =percentage;
     }
-    public TriggerBladeCharge(FriendlyByteBuf buf){
+    public ToolsTimeCharge(FriendlyByteBuf buf){
         this.percentage =buf.readFloat();
     }
 
-    public static void encode(TriggerBladeCharge packet, FriendlyByteBuf buf) {
+    public static void encode(ToolsTimeCharge packet, FriendlyByteBuf buf) {
         buf.writeFloat(packet.percentage);
     }
 
-    public static TriggerBladeCharge decode(FriendlyByteBuf buf) {
-        return new TriggerBladeCharge(buf.readFloat());
+    public static ToolsTimeCharge decode(FriendlyByteBuf buf) {
+        return new ToolsTimeCharge(buf.readFloat());
     }
 
-    public static void handle(TriggerBladeCharge packet, Supplier<NetworkEvent.Context> supplier) {
+    public static void handle(ToolsTimeCharge packet, Supplier<NetworkEvent.Context> supplier) {
         supplier.get().enqueueWork(() -> {
             setPercentage(packet.percentage);
         });

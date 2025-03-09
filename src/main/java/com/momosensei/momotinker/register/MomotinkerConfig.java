@@ -38,6 +38,10 @@ public class MomotinkerConfig {
             .defineInRange("entropy_burning_riding_spear_limit_max",150,0,Integer.MAX_VALUE);
     public static final ForgeConfigSpec.IntValue entropy_burning_cannon_limit=builder.comment("entropy_burning_cannon_limit")
             .defineInRange("entropy_burning_cannon_limit_max",200,0,Integer.MAX_VALUE);
+    public static final ForgeConfigSpec.IntValue sanctification_limit=builder.comment("divine_punishment_spear_limit")
+            .defineInRange("divine_punishment_spear_sanctification_limit",500,0,Integer.MAX_VALUE);
+    public static final ForgeConfigSpec.IntValue degenerate_limit=builder.comment("divine_punishment_spear_limit")
+            .defineInRange("divine_punishment_spear_degenerate_limit",100,0,Integer.MAX_VALUE);
 
 
 

@@ -132,7 +132,7 @@
 
   "itemGroup.momotinker.tools": "墨工坊模组-工具",
 
-  "item.momotinker.trigger_blade": "扳机长刀",
+  "item.momotinker.trigger_blade": "扳机横刀",
   "item.momotinker.trigger_blade.description": "拥有特殊攻击手段的近战武器，使用时副手不能有其它物品。右键可进行蓄力，蓄力完成后松开可发出斩击，造成范围爆发伤害。\n每点初速度增加斩击伤害20%。\n精密度会随机增加伤害，每点使能随机到的最大值提升50%",
 
   "item.momotinker.divine_punishment_spear": "天谴之矛",
@@ -145,7 +145,7 @@
   "item.momotinker.entropy_burning_riding_spear": "熵烬骑枪",
   "item.momotinker.entropy_burning_riding_spear.description": "较高伤害攻速较低的较长攻击距离的单体近战武器，使用时若副手有其他物品造成的伤害会大幅降低，移动时会根据移速增加伤害（默认最多增加150%），右键蓄力释放可短暂冲刺",
   "item.momotinker.entropy_burning_cannon": "熵烬机炮",
-  "item.momotinker.entropy_burning_cannon.description": "中等距离穿透型远程武器，使用时若副手有其他物品时无法使用，右键可消耗当前2%经验以发动射击，可穿透方块并对路径上所有目标造成伤害（消耗经验越多射击伤害越高，默认最多增加200%）",
+  "item.momotinker.entropy_burning_cannon.description": "中等距离穿透型武器，使用时若副手有其他物品时无法使用，右键可消耗当前2%经验以发动射击，可穿透方块并对路径上所有目标造成伤害（消耗经验越多射击伤害越高，默认最多增加200%）",
 
   "momotinker.tool.tooltip.offhand_hastool": "错误:副手有物品",
 
@@ -301,7 +301,7 @@
   "modifier.momotinker.superancientmetalsreal.description": "工具的耐久消耗降低90%，大部分属性增加50%，会根据古代神兵的觉醒结果提供独特效果",
 
   "modifier.momotinker.crimsonqueen": "绯红女皇",
-  "modifier.momotinker.crimsonqueen.flavor": "扳机长刀专属强化:机动剑",
+  "modifier.momotinker.crimsonqueen.flavor": "扳机横刀专属强化:机动剑",
   "modifier.momotinker.crimsonqueen.description": "失去原本的斩击，取而代之的是在右键后一定时机松开会给武器充能20秒，存在充能时攻击会消耗层数使本次攻击修正为150%并无视护甲，最多可存在3层（若触发完美判定则直接获得3层），时间耗尽层数减一，切换武器时层数清零",
 
   "modifier.momotinker.berserk": "狂暴化",
@@ -309,7 +309,7 @@
   "modifier.momotinker.berserk.description": "按下按键切换普通与狂暴两种状态，狂暴状态下主手持有此工具时造成伤害与承受的伤害修正为140%+20%*词条等级",
 
   "modifier.momotinker.yamato": "次元斩",
-  "modifier.momotinker.yamato.flavor": "扳机长刀专属强化:阎魔刀",
+  "modifier.momotinker.yamato.flavor": "扳机横刀专属强化:阎魔刀",
   "modifier.momotinker.yamato.description": "斩击蓄力时间略微缩短且斩击变为50%伤害的4连击，使用后武器会陷入1秒的冷却，若在恰好蓄力完成以及其一定时机内释放则不会冷却",
 
   "modifier.momotinker.starcloudchain": "星云连锁",

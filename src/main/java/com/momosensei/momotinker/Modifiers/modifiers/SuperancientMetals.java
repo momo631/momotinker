@@ -3,6 +3,7 @@ package com.momosensei.momotinker.Modifiers.modifiers;
 
 import com.momosensei.momotinker.Modifiers.momomodifier;
 import com.momosensei.momotinker.Momotinker;
+import com.momosensei.momotinker.register.MomotinkerConfig;
 import net.minecraft.resources.ResourceLocation;
 import net.minecraft.world.entity.LivingEntity;
 import net.minecraft.world.item.ItemStack;
@@ -25,6 +26,8 @@ import static com.momosensei.momotinker.tool.divine_punishment_spear.sanctificat
 public class SuperancientMetals extends momomodifier {
     public SuperancientMetals() {
     }
+    int sanctification_limit = MomotinkerConfig.sanctification_limit.get();
+    int degenerate_limit = MomotinkerConfig.degenerate_limit.get();
     public static final ResourceLocation authentication = Momotinker.getResource("authentication");
     public static final MaterialVariantId id_dim_dark_gold = MaterialVariantId.create(new MaterialId("momotinker","dim_dark_gold"),"default");
     public static final MaterialVariantId id_stained_blood_gold = MaterialVariantId.create(new MaterialId("momotinker","stained_blood_gold"),"default");
@@ -62,10 +65,10 @@ public class SuperancientMetals extends momomodifier {
     }
 
     public void modifierOnInventoryTick(IToolStackView tool, ModifierEntry modifier, Level level, LivingEntity livingEntity, int itemSlot, boolean isSelected, boolean isCorrectSlot, ItemStack itemStack) {
-        if (tool.getPersistentData().getFloat(degenerate)==100){
+        if (tool.getPersistentData().getFloat(degenerate)==degenerate_limit){
             setHeatLevel(tool,1);
         }
-        if (tool.getPersistentData().getFloat(sanctification)==500){
+        if (tool.getPersistentData().getFloat(sanctification)==sanctification_limit){
             setHeatLevel(tool,2);
         }
     }

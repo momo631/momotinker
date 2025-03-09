@@ -3,7 +3,7 @@ package com.momosensei.momotinker.tool;
 
 import com.momosensei.momotinker.entity.TriggerSlashEntity;
 import com.momosensei.momotinker.network.Channel;
-import com.momosensei.momotinker.network.packet.TriggerBladeCharge;
+import com.momosensei.momotinker.network.packet.ToolsTimeCharge;
 import com.momosensei.momotinker.network.packet.triggerSlashPacket;
 import com.momosensei.momotinker.register.MomotinkerEntities;
 import com.momosensei.momotinker.register.MomotinkerItem;
@@ -77,11 +77,11 @@ public class trigger_blade extends ModifiableItem {
             if (a==0) {
                 if (b==0) {
                     float perc = Mth.clamp((float) (this.getUseDuration(stack) - chargeRemaining) / 30, 0, 1);
-                    Channel.sendToPlayer(new TriggerBladeCharge(perc), player);
+                    Channel.sendToPlayer(new ToolsTimeCharge(perc), player);
                 }
                 if (b>0) {
                     float perc = Mth.clamp((float) (this.getUseDuration(stack) - chargeRemaining) / 20, 0, 1);
-                    Channel.sendToPlayer(new TriggerBladeCharge(perc), player);
+                    Channel.sendToPlayer(new ToolsTimeCharge(perc), player);
                 }
             }
         }
@@ -110,7 +110,7 @@ public class trigger_blade extends ModifiableItem {
                         player.getCooldowns().addCooldown(player.getMainHandItem().getItem(), 20);
                     }
                 }
-                Channel.sendToPlayer(new TriggerBladeCharge(0),player);
+                Channel.sendToPlayer(new ToolsTimeCharge(0),player);
             }
             if (a>0) {
                 if ( i >= 0 && i <= 9) {
