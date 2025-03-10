@@ -1,0 +1,22 @@
+{
+  "loader": "tconstruct:tool",
+  "parent": "forge:item/default-tool",
+  "textures": {
+    "charging_part_1": "momotinker:item/tool/charging_axe/charging_part_1",
+    "charging_part_2": "momotinker:item/tool/charging_axe/charging_part_2",
+    "charging_part_3": "momotinker:item/tool/charging_axe/charging_part_3",
+    "charging_part_4": "momotinker:item/tool/charging_axe/charging_part_4",
+    "charging_part_5": "momotinker:item/tool/charging_axe/charging_part_5",
+    "broken_charging_part": "momotinker:item/tool/charging_axe/broken_charging_part"
+  },
+  "modifier_roots": [
+    "momotinker:item/tool/charging_axe/modifiers/"
+  ],
+  "parts": [
+    {"name": "charging_part_1", "index": 0, "broken": "broken_charging_part"},
+    {"name": "charging_part_2", "index": 1},
+    {"name": "charging_part_3", "index": 2},
+    {"name": "charging_part_4", "index": 3},
+    {"name": "charging_part_5", "index": 4}
+  ]
+}
