@@ -2,6 +2,7 @@ package com.momosensei.momotinker.Modifiers.modifiers;
 
 
 import com.momosensei.momotinker.Modifiers.momomodifier;
+import com.momosensei.momotinker.mobs.CoolTime;
 import com.momosensei.momotinker.register.MomotinkerModifiers;
 import net.minecraft.network.chat.Component;
 import net.minecraft.server.level.ServerPlayer;
@@ -9,7 +10,6 @@ import net.minecraft.world.entity.LivingEntity;
 import net.minecraft.world.item.ItemStack;
 import net.minecraft.world.level.Level;
 import org.jetbrains.annotations.NotNull;
-import slimeknights.tconstruct.library.modifiers.Modifier;
 import slimeknights.tconstruct.library.modifiers.ModifierEntry;
 import slimeknights.tconstruct.library.modifiers.ModifierHooks;
 import slimeknights.tconstruct.library.modifiers.hook.build.ValidateModifierHook;
@@ -19,8 +19,6 @@ import slimeknights.tconstruct.library.tools.nbt.IToolStackView;
 
 import javax.annotation.Nullable;
 import java.util.List;
-
-import static com.momosensei.momotinker.tool.divine_punishment_spear.cleansespawncooldown;
 
 public class CleanseTheWorld extends momomodifier implements RequirementsModifierHook , ValidateModifierHook {
     public CleanseTheWorld() {
@@ -52,15 +50,13 @@ public class CleanseTheWorld extends momomodifier implements RequirementsModifie
         }
         return requirementsError(modifier);
     }
-    @Override
-    public @Nullable Component onRemoved(IToolStackView iToolStackView, Modifier modifier) {
-        iToolStackView.getPersistentData().remove(cleansespawncooldown);
-        return null;
-    }
+
     @Override
     public void onInventoryTick(IToolStackView iToolStackView, ModifierEntry modifierEntry, Level level, LivingEntity entity, int index, boolean b, boolean b1, ItemStack itemStack) {
-        if (entity instanceof ServerPlayer &&entity.tickCount%20==0&&iToolStackView.getPersistentData().getInt(cleansespawncooldown)!=0) {
-            iToolStackView.getPersistentData().putInt(cleansespawncooldown,iToolStackView.getPersistentData().getInt(cleansespawncooldown)-1);
+        if (entity instanceof ServerPlayer player&&entity.tickCount%20==0) {
+            if (CoolTime.getCoolTime()>0){
+                CoolTime.setCoolTime(CoolTime.getCoolTime()-1);
+            }
         }
     }
 }

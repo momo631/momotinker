@@ -75,8 +75,18 @@ public class entropy_burning_cannon extends ModifiableItem{
         ToolStack tool = ToolStack.from(stack);
         int i = this.getUseDuration(stack) - duration;
         float perc = Mth.clamp((float) i / (30 / tool.getStats().get(ToolStats.ATTACK_SPEED)),0,1);
-        if (tool.isBroken()){
+        if (tool.isBroken()) {
             tool.getPersistentData().remove(KEY_DRAWTIME);
+            if (livingEntity instanceof ServerPlayer player){
+                Channel.sendToPlayer(new ToolsTimeCharge(0), player);
+            }
+            return;
+        }
+        if (!checkOffHand((Player) livingEntity)) {
+            tool.getPersistentData().remove(KEY_DRAWTIME);
+            if (livingEntity instanceof ServerPlayer player){
+                Channel.sendToPlayer(new ToolsTimeCharge(0), player);
+            }
             return;
         }
         if (livingEntity instanceof ServerPlayer player){

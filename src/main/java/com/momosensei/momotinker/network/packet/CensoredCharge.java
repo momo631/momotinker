@@ -8,7 +8,7 @@ import java.util.function.Supplier;
 
 
 public class CensoredCharge {
-    private  final float censoreddata;
+    private final float censoreddata;
     public CensoredCharge(float censoreddata) {;
         this.censoreddata =censoreddata;
     }

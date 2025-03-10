@@ -1,6 +1,6 @@
 package com.momosensei.momotinker.mobs;
 
-public class TriggerBladeDrawtime {
+public class ToolsTimeDrawtime {
     public static float percentage;
     public static void setPercentage(float f){
         percentage =f;

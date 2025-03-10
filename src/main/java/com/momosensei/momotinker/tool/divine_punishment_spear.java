@@ -1,11 +1,12 @@
 package com.momosensei.momotinker.tool;
 
-
 import com.momosensei.momotinker.Momotinker;
 import com.momosensei.momotinker.entity.CleanseEntity;
 import com.momosensei.momotinker.entity.MomotinkerEntitiesCreate;
 import com.momosensei.momotinker.event.CleanseSpawnEvent;
+import com.momosensei.momotinker.mobs.CoolTime;
 import com.momosensei.momotinker.network.Channel;
+import com.momosensei.momotinker.network.packet.CoolTimeCharge;
 import com.momosensei.momotinker.network.packet.SpearEntityPacket;
 import com.momosensei.momotinker.network.packet.ToolsTimeCharge;
 import com.momosensei.momotinker.register.MomotinkerConfig;
@@ -72,7 +73,6 @@ public class divine_punishment_spear extends ModifiableItem {
     int degenerate_limit = MomotinkerConfig.degenerate_limit.get();
     public static final ResourceLocation sanctification = Momotinker.getResource("sanctification");
     public static final ResourceLocation degenerate = Momotinker.getResource("degenerate");
-    public static final ResourceLocation cleansespawncooldown = Momotinker.getResource("cleansespawncooldown");
 
     private void onEntityDeath(LivingDeathEvent event) {
         if (event.getSource().getEntity() instanceof Player player&&event.getEntity()!=null) {
@@ -162,8 +162,18 @@ public class divine_punishment_spear extends ModifiableItem {
         ScopeModifier.stopScoping(livingEntity);
         ToolStack tool = ToolStack.from(stack);
         int i = this.getUseDuration(stack) - duration;
-        if (tool.isBroken()){
+        if (tool.isBroken()) {
             tool.getPersistentData().remove(KEY_DRAWTIME);
+            if (livingEntity instanceof ServerPlayer player){
+                Channel.sendToPlayer(new ToolsTimeCharge(0), player);
+            }
+            return;
+        }
+        if (CoolTime.getCoolTime() != 0) {
+            tool.getPersistentData().remove(KEY_DRAWTIME);
+            if (livingEntity instanceof ServerPlayer player){
+                Channel.sendToPlayer(new ToolsTimeCharge(0), player);
+            }
             return;
         }
         if (livingEntity instanceof Player player) {
@@ -202,7 +212,8 @@ public class divine_punishment_spear extends ModifiableItem {
                         entity.setExplosionPower((byte) 120);
                         level.addFreshEntity(entity);
                     }
-                    tool.getPersistentData().putInt(cleansespawncooldown,600);
+                    int d = MomotinkerConfig.cleansetheworld_limit.get();
+                    Channel.sendToClient(new CoolTimeCharge(d));
                 }
             }
         }
@@ -260,6 +271,9 @@ public class divine_punishment_spear extends ModifiableItem {
         }
         if (a.getFloat(degenerate)==degenerate_limit) {
             builder.add(Component.translatable("古代神兵隐藏任务已完成！此工具造成伤害会恢复耐久，若耐久为满则恢复使用者生命").withStyle(ChatFormatting.DARK_RED));
+        }
+        if (CoolTime.getCoolTime()!=0){
+            builder.add(Component.translatable("“荡涤天地”冷却还剩"+CoolTime.getCoolTime()+"秒").withStyle(ChatFormatting.YELLOW));
         }
         if (!checkOffHand(player)){
             builder.add(Component.translatable("momotinker.tool.tooltip.offhand_hastool").withStyle(ChatFormatting.RED));

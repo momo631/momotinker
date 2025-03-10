@@ -3,7 +3,7 @@ package com.momosensei.momotinker.gui.overlay;
 
 import com.mojang.blaze3d.systems.RenderSystem;
 import com.momosensei.momotinker.Momotinker;
-import com.momosensei.momotinker.mobs.TriggerBladeDrawtime;
+import com.momosensei.momotinker.mobs.ToolsTimeDrawtime;
 import net.minecraft.client.Minecraft;
 import net.minecraft.client.gui.GuiComponent;
 import net.minecraft.client.renderer.GameRenderer;
@@ -46,7 +46,7 @@ public class ToolsTimeHUD {
         if (tool.isBroken()){
             return;
         }
-        float perc = TriggerBladeDrawtime.getPercentage();
+        float perc = ToolsTimeDrawtime.getPercentage();
         int amount = Mth.clamp((int) (perc*8),0,8);
         int x =width/2;
         int y = height/2;

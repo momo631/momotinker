@@ -5,7 +5,7 @@ import net.minecraftforge.network.NetworkEvent;
 
 import java.util.function.Supplier;
 
-import static com.momosensei.momotinker.mobs.TriggerBladeDrawtime.setPercentage;
+import static com.momosensei.momotinker.mobs.ToolsTimeDrawtime.setPercentage;
 
 
 public class ToolsTimeCharge {
