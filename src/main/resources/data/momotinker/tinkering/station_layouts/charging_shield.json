@@ -6,30 +6,30 @@
   "input_slots": [
     {
       "filter": {
+        "item": "tconstruct:shield_core"
+      },
+      "icon": "tconstruct:shield_core",
+      "translation_key": "item.tconstruct.shield_core",
+      "x": 33,
+      "y": 53
+    },
+    {
+      "filter": {
         "item": "tconstruct:large_plate"
       },
       "icon": "tconstruct:large_plate",
       "translation_key": "item.tconstruct.large_plate",
-      "x": 33,
+      "x": 18,
       "y": 29
     },
     {
       "filter": {
-        "item": "tconstruct:shield_core"
+        "item": "tconstruct:large_plate"
       },
-      "icon": "tconstruct:shield_core",
-      "translation_key": "item.tconstruct.shield_core",
-      "x": 13,
-      "y": 53
-    },
-    {
-      "filter": {
-        "item": "tconstruct:shield_core"
-      },
-      "icon": "tconstruct:shield_core",
-      "translation_key": "item.tconstruct.shield_core",
-      "x": 53,
-      "y": 53
+      "icon": "tconstruct:large_plate",
+      "translation_key": "item.tconstruct.large_plate",
+      "x": 48,
+      "y": 29
     }
   ],
   "sortIndex": 0,

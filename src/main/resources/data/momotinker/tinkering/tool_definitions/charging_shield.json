@@ -3,9 +3,15 @@
     {
       "type": "tconstruct:part_stats",
       "parts": [
-        "tconstruct:large_plate",
         "tconstruct:shield_core",
-        "tconstruct:shield_core"
+        {
+          "item": "tconstruct:large_plate",
+          "scale": 0.75
+        },
+        {
+          "item": "tconstruct:large_plate",
+          "scale": 0.75
+        }
       ]
     },
     {
@@ -32,7 +38,7 @@
     {
       "type": "tconstruct:base_stats",
       "stats": {
-        "tconstruct:block_amount": 100.0,
+        "tconstruct:block_amount": 200.0,
         "tconstruct:block_angle": 180.0
       }
     },
