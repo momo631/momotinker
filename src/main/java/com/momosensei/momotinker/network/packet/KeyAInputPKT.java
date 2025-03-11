@@ -95,6 +95,7 @@ public class KeyAInputPKT {
                 tool3.setMaterials(tool3.getMaterials().replaceMaterial(2,tool1.getMaterial(2).getVariant()));
                 tool3.setMaterials(tool3.getMaterials().replaceMaterial(3,tool2.getMaterial(0).getVariant()));
                 tool3.setMaterials(tool3.getMaterials().replaceMaterial(4,tool2.getMaterial(1).getVariant()));
+                tool3.setMaterials(tool3.getMaterials().replaceMaterial(5,tool2.getMaterial(2).getVariant()));
 
                 tool4.setMaterials(tool4.getMaterials().replaceMaterial(0,tool1.getMaterial(0).getVariant()));
                 tool4.setMaterials(tool4.getMaterials().replaceMaterial(1,tool1.getMaterial(1).getVariant()));
@@ -102,6 +103,7 @@ public class KeyAInputPKT {
 
                 tool5.setMaterials(tool5.getMaterials().replaceMaterial(0,tool1.getMaterial(3).getVariant()));
                 tool5.setMaterials(tool5.getMaterials().replaceMaterial(1,tool1.getMaterial(4).getVariant()));
+                tool5.setMaterials(tool5.getMaterials().replaceMaterial(2,tool1.getMaterial(5).getVariant()));
 
                 stack3.setTag(stack1.getTag());
                 stack4.setTag(stack1.getTag());

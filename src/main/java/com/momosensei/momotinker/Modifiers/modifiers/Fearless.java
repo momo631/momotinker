@@ -15,6 +15,7 @@ import javax.annotation.Nullable;
 public class Fearless extends momomodifier implements RequirementsModifierHook , ValidateModifierHook {
     public Fearless() {
     }
+
     @Override
     protected void registerHooks(ModuleHookMap.Builder builder) {
         super.registerHooks(builder);
@@ -32,7 +33,9 @@ public class Fearless extends momomodifier implements RequirementsModifierHook ,
 
     @Override
     public Component validate(IToolStackView tool, ModifierEntry modifier) {
-
+        if (tool.getUpgrades().getModifiers().isEmpty()){
+            return null;
+        }
         return requirementsError(modifier);
     }
 }

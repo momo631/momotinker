@@ -4,24 +4,28 @@
       "type": "tconstruct:part_stats",
       "parts": [
         {
-          "item": "tconstruct:large_plate",
-          "scale": 0.4
+          "item": "tconstruct:broad_axe_head",
+          "scale": 0.6
         },
         {
           "item": "tconstruct:large_plate",
           "scale": 0.4
         },
         {
-          "item": "tconstruct:large_plate",
+          "item": "tconstruct:broad_axe_head",
+          "scale": 0.6
+        },
+        {
+          "item": "tconstruct:small_blade",
           "scale": 0.4
         },
         {
-          "item": "tconstruct:large_plate",
-          "scale": 0.4
+          "item": "tconstruct:tough_handle",
+          "scale": 0.6
         },
         {
-          "item": "tconstruct:large_plate",
-          "scale": 0.4
+          "item": "tconstruct:tough_handle",
+          "scale": 0.6
         }
       ]
     },
@@ -51,15 +55,19 @@
         {
           "type": "tconstruct:random",
           "tier": 1
+        },
+        {
+          "type": "tconstruct:random",
+          "tier": 1
         }
       ]
     },
     {
       "type": "tconstruct:multiply_stats",
       "multipliers": {
-        "tconstruct:attack_damage": 1,
+        "tconstruct:attack_damage": 2.4,
         "tconstruct:durability": 1,
-        "tconstruct:attack_speed": 1
+        "tconstruct:attack_speed": 0.3
       }
     },
     {
@@ -68,6 +76,41 @@
         "abilities": 2,
         "upgrades": 3
       }
+    },
+    {
+      "type": "tconstruct:box_aoe",
+      "bonus": {
+        "depth": 2,
+        "height": 1,
+        "width": 1
+      },
+      "expansion_direction": "tconstruct:side_hit",
+      "expansions": [
+        {
+          "height": 1,
+          "width": 1
+        },
+        {
+          "depth": 3
+        }
+      ]
+    },
+    {
+      "type": "tconstruct:circle_melee",
+      "diameter": 3.0
+    },
+    {
+      "type": "tconstruct:traits",
+      "traits": [
+        {
+          "name": "tconstruct:reach",
+          "level": 2
+        },
+        {
+          "name": "momotinker:fearless",
+          "level": 1
+        }
+      ]
     }
   ]
 }

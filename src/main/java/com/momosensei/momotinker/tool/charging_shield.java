@@ -13,7 +13,6 @@ import net.minecraftforge.common.MinecraftForge;
 import net.minecraftforge.event.entity.living.LivingHurtEvent;
 import org.jetbrains.annotations.Nullable;
 import slimeknights.mantle.client.TooltipKey;
-import slimeknights.tconstruct.common.TinkerTags;
 import slimeknights.tconstruct.library.modifiers.ModifierEntry;
 import slimeknights.tconstruct.library.modifiers.ModifierHooks;
 import slimeknights.tconstruct.library.modifiers.hook.display.TooltipModifierHook;
@@ -49,13 +48,12 @@ public class charging_shield extends ModifiableItem {
     }
     public List<Component> getDivinePunishmentSpearStats(IToolStackView tool, @Nullable Player player, List<Component> tooltips, TooltipKey key, TooltipFlag tooltipFlag) {
         TooltipBuilder builder = new TooltipBuilder(tool, tooltips);
-        if (tool.hasTag(TinkerTags.Items.DURABILITY)) {
-            builder.add(ToolStats.DURABILITY);
-        }
-        if (tool.hasTag(TinkerTags.Items.MELEE)) {
-            builder.add(ToolStats.ATTACK_DAMAGE);
-            builder.add(ToolStats.ATTACK_SPEED);
-        }
+        builder.add(ToolStats.DURABILITY);
+        builder.add(ToolStats.ATTACK_DAMAGE);
+        builder.add(ToolStats.ATTACK_SPEED);
+        builder.add(ToolStats.BLOCK_AMOUNT);
+        builder.add(ToolStats.BLOCK_ANGLE);
+
         builder.addAllFreeSlots();
         Iterator var7 = tool.getModifierList().iterator();
         while(var7.hasNext()) {
