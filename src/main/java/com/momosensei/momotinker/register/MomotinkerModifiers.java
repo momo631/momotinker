@@ -52,6 +52,6 @@ public class MomotinkerModifiers {
     public static final StaticModifier<ShadowOfDamnation> shadowofdamnation=MODIFIERS.register("shadowofdamnation", ShadowOfDamnation::new);
     public static final StaticModifier<DrinkingDemon> drinkingdemon=MODIFIERS.register("drinkingdemon", DrinkingDemon::new);
     public static final StaticModifier<SweetAfterTaste> sweetaftertaste=MODIFIERS.register("sweetaftertaste", SweetAfterTaste::new);
-    public static final StaticModifier<Fearless> fearless=MODIFIERS.register("fearless", Fearless::new);
+    public static final StaticModifier<ExpandedEquipment> expandedequipment=MODIFIERS.register("expandedequipment", ExpandedEquipment::new);
 
 }

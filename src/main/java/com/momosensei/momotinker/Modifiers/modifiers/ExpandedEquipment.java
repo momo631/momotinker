@@ -12,8 +12,8 @@ import slimeknights.tconstruct.library.tools.nbt.IToolStackView;
 
 import javax.annotation.Nullable;
 
-public class Fearless extends momomodifier implements RequirementsModifierHook , ValidateModifierHook {
-    public Fearless() {
+public class ExpandedEquipment extends momomodifier implements RequirementsModifierHook , ValidateModifierHook {
+    public ExpandedEquipment() {
     }
 
     @Override
@@ -28,7 +28,7 @@ public class Fearless extends momomodifier implements RequirementsModifierHook ,
     @Nullable
     @Override
     public Component requirementsError(ModifierEntry entry) {
-        return Component.translatable("recipe.momotinker.modifier.fearless");
+        return Component.translatable("recipe.momotinker.modifier.expandedequipment");
     }
 
     @Override
