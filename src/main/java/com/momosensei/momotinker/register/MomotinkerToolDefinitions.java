@@ -23,7 +23,7 @@ public class MomotinkerToolDefinitions {
     public static final ToolDefinition ENTROPY_BURNING_RIDING_SPEAR = ToolDefinition.create(MomotinkerItem.entropy_burning_riding_spear);
     public static final ToolDefinition ENTROPY_BURNING_CANNON = ToolDefinition.create(MomotinkerItem.entropy_burning_cannon);
     public static final ToolDefinition CHARGING_AXE = ToolDefinition.create(MomotinkerItem.eclipse_container);
-    public static final ToolDefinition CHARGING_SWORD = ToolDefinition.create(MomotinkerItem.coronal_lock);
-    public static final ToolDefinition CHARGING_SHIELD = ToolDefinition.create(MomotinkerItem.moon_key);
+    public static final ToolDefinition CHARGING_SWORD = ToolDefinition.create(MomotinkerItem.coronal_key);
+    public static final ToolDefinition CHARGING_SHIELD = ToolDefinition.create(MomotinkerItem.moon_lock);
 
 }

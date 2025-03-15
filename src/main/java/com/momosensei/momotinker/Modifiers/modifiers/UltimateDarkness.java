@@ -56,7 +56,7 @@ public class UltimateDarkness extends momomodifier {
             float perc = Mth.clamp((float)a.getInt(disaster) / 600, 0, 1);
             Channel.sendToPlayer(new ToolsTimeCharge(perc),player);
         }
-        if (!entity.getItemBySlot(EquipmentSlot.MAINHAND).is(MomotinkerItem.coronal_lock.get()) && !entity.getItemBySlot(EquipmentSlot.MAINHAND).is(MomotinkerItem.eclipse_container.get())) {
+        if (!entity.getItemBySlot(EquipmentSlot.MAINHAND).is(MomotinkerItem.coronal_key.get()) && !entity.getItemBySlot(EquipmentSlot.MAINHAND).is(MomotinkerItem.eclipse_container.get())) {
             a.putInt(disaster,a.getInt(disaster)-6);
         }
     }

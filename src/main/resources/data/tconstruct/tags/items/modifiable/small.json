@@ -1,7 +1,7 @@
 {
   "replace": false,
   "values": [
-    "momotinker:moon_key",
-    "momotinker:coronal_lock"
+    "momotinker:moon_lock",
+    "momotinker:coronal_key"
   ]
 }

@@ -49,7 +49,7 @@ public class ProjectionOfSuffering extends momomodifier {
     private void livinghurtevent(LivingHurtEvent event) {
         Entity a = event.getEntity();
         Entity b = event.getSource().getEntity();
-        if (b instanceof Player player && a != null && player.getMainHandItem().is(MomotinkerItem.coronal_lock.get())) {
+        if (b instanceof Player player && a != null && player.getMainHandItem().is(MomotinkerItem.coronal_key.get())) {
             ModDataNBT c = ToolStack.from(player.getItemBySlot(EquipmentSlot.MAINHAND)).getPersistentData();
             if (c.getInt(disasterpremonition) <= 8) {
                 c.putInt(disasterpremonition, 8);
@@ -58,7 +58,7 @@ public class ProjectionOfSuffering extends momomodifier {
                 event.setAmount(event.getAmount() * (1f + c.getInt(disaster) * 0.001f));
             }
         }
-        if (a instanceof Player player && b != null && player.getMainHandItem().is(MomotinkerItem.coronal_lock.get())) {
+        if (a instanceof Player player && b != null && player.getMainHandItem().is(MomotinkerItem.coronal_key.get())) {
             ModDataNBT c = ToolStack.from(player.getItemBySlot(EquipmentSlot.MAINHAND)).getPersistentData();
             if (c.getInt(disasterpremonition) <= 8) {
                 c.putInt(disasterpremonition, 8);
@@ -69,7 +69,7 @@ public class ProjectionOfSuffering extends momomodifier {
     @Override
     public void onInventoryTick(IToolStackView tool, ModifierEntry modifier, Level world, LivingEntity entity, int index, boolean isSelected, boolean isCorrectSlot, ItemStack stack) {
         ModDataNBT a = tool.getPersistentData();
-        if (entity instanceof ServerPlayer player&&entity.getItemBySlot(EquipmentSlot.MAINHAND).is(MomotinkerItem.coronal_lock.get())) {
+        if (entity instanceof ServerPlayer player&&entity.getItemBySlot(EquipmentSlot.MAINHAND).is(MomotinkerItem.coronal_key.get())) {
             if (a.getInt(disasterpremonition) > 0) {
                 if (a.getInt(disaster) < 600) {
                     a.putInt(disaster, a.getInt(disaster) + 2);
@@ -87,7 +87,7 @@ public class ProjectionOfSuffering extends momomodifier {
             float perc = Mth.clamp((float)a.getInt(disaster) / 600, 0, 1);
             Channel.sendToPlayer(new ToolsTimeCharge(perc),player);
         }
-        if (!entity.getItemBySlot(EquipmentSlot.MAINHAND).is(MomotinkerItem.coronal_lock.get()) && !entity.getItemBySlot(EquipmentSlot.MAINHAND).is(MomotinkerItem.eclipse_container.get())) {
+        if (!entity.getItemBySlot(EquipmentSlot.MAINHAND).is(MomotinkerItem.coronal_key.get()) && !entity.getItemBySlot(EquipmentSlot.MAINHAND).is(MomotinkerItem.eclipse_container.get())) {
             a.putInt(disaster,a.getInt(disaster)-6);
         }
     }

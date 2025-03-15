@@ -148,11 +148,11 @@
   "item.momotinker.entropy_burning_cannon": "熵烬机炮",
   "item.momotinker.entropy_burning_cannon.description": "中等距离穿透型武器，使用时若副手有其他物品时无法使用，右键可消耗当前2%经验以发动射击，可穿透方块并对路径上所有目标造成伤害（消耗经验越多射击伤害越高，默认最多增加200%）",
   "item.momotinker.eclipse_container": "日蚀容器",
-  "item.momotinker.eclipse_container.description": "超低攻速超高攻击的大范围近战武器，由“日冕之锁”和“新月之钥”合体而来，只会继承“日冕之锁”的强化（包括材料的强化点数等特征），期间消耗充能，充能结束或副手有物品伤害会大幅降低，右键蓄力释放可造成特殊打击",
-  "item.momotinker.coronal_lock": "日冕之锁",
-  "item.momotinker.coronal_lock.description": "属性较弱的近战武器，持续战斗可增加充能条，充能增加可提高伤害，充能为满且副手为“新月之钥”时按下工具技能按键可与其合体为“日蚀容器”",
-  "item.momotinker.moon_key": "新月之钥",
-  "item.momotinker.moon_key.description": "[不存在之影]\n右键使用期间可获得50%的减伤并有50%的概率无视弹射物攻击，满足一定条件下时按下工具技能可合体为“日蚀容器”",
+  "item.momotinker.eclipse_container.description": "超低攻速超高攻击的大范围近战武器，由“日冕之钥”和“新月之锁”合体而来，只会继承“日冕之钥”的强化（包括材料的强化点数等特征），期间消耗充能，充能结束或副手有物品伤害会大幅降低，右键蓄力释放可造成特殊打击",
+  "item.momotinker.coronal_key": "日冕之钥",
+  "item.momotinker.coronal_key.description": "属性较弱的近战武器，持续战斗可增加充能条，充能增加可提高伤害，充能为满且副手为“新月之锁”时按下工具技能按键可与其合体为“日蚀容器”",
+  "item.momotinker.moon_lock": "新月之锁",
+  "item.momotinker.moon_lock.description": "[不存在之影]\n右键使用期间可获得50%的减伤并有50%的概率无视弹射物攻击，满足一定条件下时按下工具技能可合体为“日蚀容器”",
 
   "momotinker.tool.tooltip.offhand_hastool": "错误:副手有物品",
 
@@ -349,10 +349,10 @@
 
   "modifier.momotinker.projectionofsuffering": "灾难预兆",
   "modifier.momotinker.projectionofsuffering.flavor": "日与月的重叠，是...",
-  "modifier.momotinker.projectionofsuffering.description": "处于战斗状态时随时间充能，脱离战斗8秒后充能随时间减少，若主手持有工具不是“日冕之锁”或“日蚀容器”时则更快速的减少；充能存在时，武器造成的伤害提高（默认最高为60%）",
+  "modifier.momotinker.projectionofsuffering.description": "处于战斗状态时随时间充能，脱离战斗8秒后充能随时间减少，若主手持有工具不是“日冕之钥”或“日蚀容器”时则更快速的减少；充能存在时，武器造成的伤害提高（默认最高为60%）",
 
   "modifier.momotinker.ultimatedarkness": "至黑，至暗",
   "modifier.momotinker.ultimatedarkness.flavor": "切莫哀悼，此乃必然",
-  "modifier.momotinker.ultimatedarkness.description": "持有时充能会随时间减少，若主手持有工具不是“日冕之锁”或“日蚀容器”时则更快速的减少；存在充能时武器造成的伤害提高（默认为60%）"
+  "modifier.momotinker.ultimatedarkness.description": "持有时充能会随时间减少，若主手持有工具不是“日冕之钥”或“日蚀容器”时则更快速的减少；存在充能时武器造成的伤害提高（默认为60%）"
 
 }

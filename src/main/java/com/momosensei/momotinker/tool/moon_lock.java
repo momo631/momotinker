@@ -3,10 +3,14 @@ package com.momosensei.momotinker.tool;
 
 import com.momosensei.momotinker.register.MomotinkerItem;
 import net.minecraft.core.BlockPos;
+import net.minecraft.core.particles.ParticleTypes;
 import net.minecraft.network.chat.Component;
+import net.minecraft.server.level.ServerLevel;
+import net.minecraft.server.level.ServerPlayer;
 import net.minecraft.world.InteractionHand;
 import net.minecraft.world.InteractionResultHolder;
 import net.minecraft.world.entity.Entity;
+import net.minecraft.world.entity.LivingEntity;
 import net.minecraft.world.entity.player.Player;
 import net.minecraft.world.item.ItemStack;
 import net.minecraft.world.item.TooltipFlag;
@@ -35,8 +39,8 @@ import java.util.List;
 
 import static slimeknights.tconstruct.TConstruct.RANDOM;
 
-public class moon_key extends ModifiableItem {
-    public moon_key(Properties properties, ToolDefinition toolDefinition) {
+public class moon_lock extends ModifiableItem {
+    public moon_lock(Properties properties, ToolDefinition toolDefinition) {
         super(properties, toolDefinition);
         MinecraftForge.EVENT_BUS.addListener(this::livinghurtevent);
         MinecraftForge.EVENT_BUS.addListener(this::onProjectileImpact);
@@ -61,7 +65,7 @@ public class moon_key extends ModifiableItem {
 
     private void livinghurtevent(LivingHurtEvent event) {
         Entity b = event.getEntity();
-        if (b instanceof Player player&& player.getUseItem().is(MomotinkerItem.moon_key.get())){
+        if (b instanceof Player player&& player.getUseItem().is(MomotinkerItem.moon_lock.get())){
             event.setAmount(event.getAmount()*0.5F);
         }
     }
@@ -70,7 +74,7 @@ public class moon_key extends ModifiableItem {
         if (event.getRayTraceResult() instanceof EntityHitResult result) {
             if (result.getEntity() instanceof Player player) {
                 if (!player.level.isClientSide) {
-                    boolean trigger = player.getUseItem().is(MomotinkerItem.moon_key.get());
+                    boolean trigger = player.getUseItem().is(MomotinkerItem.moon_lock.get());
                     int a = RANDOM.nextInt(10);
                     if (trigger&&a<5) {
                         event.setCanceled(true);
@@ -79,7 +83,12 @@ public class moon_key extends ModifiableItem {
             }
         }
     }
-
+    @Override
+    public void onUseTick(Level level, LivingEntity living, ItemStack stack, int chargeRemaining) {
+        if (living instanceof ServerPlayer player&&player.level instanceof ServerLevel serverLevel) {
+            serverLevel.sendParticles(ParticleTypes.REVERSE_PORTAL, player.getX(), player.getY() + player.getBbHeight() * 0.4, player.getZ(), 1, 0, 0, 0, 2);
+        }
+    }
     public int getUseDuration(ItemStack stack) {
         return 72000;
     }

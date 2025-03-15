@@ -1,6 +1,6 @@
 {
   "loader": "tconstruct:tool",
-  "parent": "forge:item/default-tool",
+  "parent": "momotinker:item/base/eclipse_container",
   "textures": {
     "part_1": "momotinker:item/tool/eclipse_container/part_1",
     "part_2": "momotinker:item/tool/eclipse_container/part_2",

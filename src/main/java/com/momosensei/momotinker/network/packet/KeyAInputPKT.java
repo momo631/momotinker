@@ -87,8 +87,8 @@ public class KeyAInputPKT {
                 ToolStack tool1 = ToolStack.from(stack1);
                 ToolStack tool2 = ToolStack.from(stack2);
                 ItemStack stack3 = ToolStack.createTool(MomotinkerItem.eclipse_container.get(), MomotinkerToolDefinitions.CHARGING_AXE, MaterialNBT.builder().build()).createStack();
-                ItemStack stack4 = ToolStack.createTool(MomotinkerItem.coronal_lock.get(), MomotinkerToolDefinitions.CHARGING_SWORD, MaterialNBT.builder().build()).createStack();
-                ItemStack stack5 = ToolStack.createTool(MomotinkerItem.moon_key.get(), MomotinkerToolDefinitions.CHARGING_SHIELD, MaterialNBT.builder().build()).createStack();
+                ItemStack stack4 = ToolStack.createTool(MomotinkerItem.coronal_key.get(), MomotinkerToolDefinitions.CHARGING_SWORD, MaterialNBT.builder().build()).createStack();
+                ItemStack stack5 = ToolStack.createTool(MomotinkerItem.moon_lock.get(), MomotinkerToolDefinitions.CHARGING_SHIELD, MaterialNBT.builder().build()).createStack();
                 ToolStack tool3 = ToolStack.from(stack3);
                 ToolStack tool4 = ToolStack.from(stack4);
                 ToolStack tool5 = ToolStack.from(stack5);
@@ -122,7 +122,7 @@ public class KeyAInputPKT {
                 tool3.rebuildStats();
                 tool4.rebuildStats();
                 tool5.rebuildStats();
-                if (player.getMainHandItem().is(MomotinkerItem.coronal_lock.get())&&player.getOffhandItem().is(MomotinkerItem.moon_key.get())&&tool1.getPersistentData().getInt(disaster)==600) {
+                if (player.getMainHandItem().is(MomotinkerItem.coronal_key.get())&&player.getOffhandItem().is(MomotinkerItem.moon_lock.get())&&tool1.getPersistentData().getInt(disaster)==600) {
                     player.setItemInHand(InteractionHand.MAIN_HAND, tool3.createStack());
                     player.setItemInHand(InteractionHand.OFF_HAND, ItemStack.EMPTY);
                 }else if (player.getMainHandItem().is(MomotinkerItem.eclipse_container.get())&&player.getOffhandItem().is(ItemStack.EMPTY.getItem())){
