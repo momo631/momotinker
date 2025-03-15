@@ -39,7 +39,7 @@ public class UseitemoffProcedure {
 		execute(null, world, entity);
 	}
 
-	private static void execute(@Nullable Event event, LevelAccessor world, Entity entity) {
+	public static void execute(@Nullable Event event, LevelAccessor world, Entity entity) {
 		if (entity == null)
 			return;
 		if (world.isClientSide()) {

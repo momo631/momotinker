@@ -4,7 +4,7 @@
       "type": "tconstruct:part_stats",
       "parts": [
         {
-          "item": "tconstruct:small_blade",
+          "item": "tconstruct:broad_blade",
           "scale": 0.7
         },
         {
@@ -40,7 +40,7 @@
       "multipliers": {
         "tconstruct:attack_damage": 0.8,
         "tconstruct:durability": 1,
-        "tconstruct:attack_speed": 1.6
+        "tconstruct:attack_speed": 1.2
       }
     },
     {
@@ -53,6 +53,15 @@
     {
       "type": "tconstruct:sweep_melee",
       "range": 1
+    },
+    {
+      "type": "tconstruct:traits",
+      "traits": [
+        {
+          "name": "momotinker:projectionofsuffering",
+          "level": 1
+        }
+      ]
     }
   ]
 }

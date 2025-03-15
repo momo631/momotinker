@@ -42,9 +42,9 @@ public class MomotinkerItem {
     public static final RegistryObject<ModifiableItem> entropy_burning_sword = ITEMS.register("entropy_burning_sword", () -> new entropy_burning_sword(TOOL, MomotinkerToolDefinitions.ENTROPY_BURNING_SWORD));
     public static final RegistryObject<ModifiableItem> entropy_burning_riding_spear = ITEMS.register("entropy_burning_riding_spear", () -> new entropy_burning_riding_spear(TOOL, MomotinkerToolDefinitions.ENTROPY_BURNING_RIDING_SPEAR));
     public static final RegistryObject<ModifiableItem> entropy_burning_cannon = ITEMS.register("entropy_burning_cannon", () -> new entropy_burning_cannon(TOOL, MomotinkerToolDefinitions.ENTROPY_BURNING_CANNON));
-    public static final RegistryObject<ModifiableItem> charging_axe = ITEMS.register("charging_axe", () -> new charging_axe(TOOL, MomotinkerToolDefinitions.CHARGING_AXE));
-    public static final RegistryObject<ModifiableItem> charging_sword = ITEMS.register("charging_sword", () -> new charging_sword(TOOL, MomotinkerToolDefinitions.CHARGING_SWORD));
-    public static final RegistryObject<ModifiableItem> charging_shield = ITEMS.register("charging_shield", () -> new charging_shield(TOOL, MomotinkerToolDefinitions.CHARGING_SHIELD));
+    public static final RegistryObject<ModifiableItem> eclipse_container = ITEMS.register("eclipse_container", () -> new eclipse_container(TOOL, MomotinkerToolDefinitions.CHARGING_AXE));
+    public static final RegistryObject<ModifiableItem> coronal_lock = ITEMS.register("coronal_lock", () -> new coronal_lock(TOOL, MomotinkerToolDefinitions.CHARGING_SWORD));
+    public static final RegistryObject<ModifiableItem> moon_key = ITEMS.register("moon_key", () -> new moon_key(TOOL, MomotinkerToolDefinitions.CHARGING_SHIELD));
 
     public static final RegistryObject<Item> trigger_slash_a = ITEMS.register("trigger_slash_a", ()->new Item(new Item.Properties()));
     public static final RegistryObject<Item> spear_entity = ITEMS.register("spear_entity", ()->new Item(new Item.Properties()));

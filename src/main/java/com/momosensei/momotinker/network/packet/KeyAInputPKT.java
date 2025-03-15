@@ -12,6 +12,8 @@ import slimeknights.tconstruct.library.tools.nbt.ToolStack;
 
 import java.util.function.Supplier;
 
+import static com.momosensei.momotinker.Modifiers.modifiers.ProjectionOfSuffering.disaster;
+
 public class KeyAInputPKT {
     public int key;
 
@@ -84,9 +86,9 @@ public class KeyAInputPKT {
                 ItemStack stack2 = player.getOffhandItem();
                 ToolStack tool1 = ToolStack.from(stack1);
                 ToolStack tool2 = ToolStack.from(stack2);
-                ItemStack stack3 = ToolStack.createTool(MomotinkerItem.charging_axe.get(), MomotinkerToolDefinitions.CHARGING_AXE, MaterialNBT.builder().build()).createStack();
-                ItemStack stack4 = ToolStack.createTool(MomotinkerItem.charging_sword.get(), MomotinkerToolDefinitions.CHARGING_SWORD, MaterialNBT.builder().build()).createStack();
-                ItemStack stack5 = ToolStack.createTool(MomotinkerItem.charging_shield.get(), MomotinkerToolDefinitions.CHARGING_SHIELD, MaterialNBT.builder().build()).createStack();
+                ItemStack stack3 = ToolStack.createTool(MomotinkerItem.eclipse_container.get(), MomotinkerToolDefinitions.CHARGING_AXE, MaterialNBT.builder().build()).createStack();
+                ItemStack stack4 = ToolStack.createTool(MomotinkerItem.coronal_lock.get(), MomotinkerToolDefinitions.CHARGING_SWORD, MaterialNBT.builder().build()).createStack();
+                ItemStack stack5 = ToolStack.createTool(MomotinkerItem.moon_key.get(), MomotinkerToolDefinitions.CHARGING_SHIELD, MaterialNBT.builder().build()).createStack();
                 ToolStack tool3 = ToolStack.from(stack3);
                 ToolStack tool4 = ToolStack.from(stack4);
                 ToolStack tool5 = ToolStack.from(stack5);
@@ -97,13 +99,13 @@ public class KeyAInputPKT {
                 tool3.setMaterials(tool3.getMaterials().replaceMaterial(4,tool1.getMaterial(1).getVariant()));
                 tool3.setMaterials(tool3.getMaterials().replaceMaterial(5,tool1.getMaterial(2).getVariant()));
 
-                tool5.setMaterials(tool5.getMaterials().replaceMaterial(0,tool1.getMaterial(0).getVariant()));
-                tool5.setMaterials(tool5.getMaterials().replaceMaterial(1,tool1.getMaterial(1).getVariant()));
-                tool5.setMaterials(tool5.getMaterials().replaceMaterial(2,tool1.getMaterial(2).getVariant()));
+                tool4.setMaterials(tool4.getMaterials().replaceMaterial(0,tool1.getMaterial(0).getVariant()));
+                tool4.setMaterials(tool4.getMaterials().replaceMaterial(1,tool1.getMaterial(1).getVariant()));
+                tool4.setMaterials(tool4.getMaterials().replaceMaterial(2,tool1.getMaterial(2).getVariant()));
 
-                tool4.setMaterials(tool4.getMaterials().replaceMaterial(0,tool1.getMaterial(3).getVariant()));
-                tool4.setMaterials(tool4.getMaterials().replaceMaterial(1,tool1.getMaterial(4).getVariant()));
-                tool4.setMaterials(tool4.getMaterials().replaceMaterial(2,tool1.getMaterial(5).getVariant()));
+                tool5.setMaterials(tool5.getMaterials().replaceMaterial(0,tool1.getMaterial(3).getVariant()));
+                tool5.setMaterials(tool5.getMaterials().replaceMaterial(1,tool1.getMaterial(4).getVariant()));
+                tool5.setMaterials(tool5.getMaterials().replaceMaterial(2,tool1.getMaterial(5).getVariant()));
 
                 stack3.setTag(stack1.getTag());
                 stack4.setTag(stack1.getTag());
@@ -120,10 +122,13 @@ public class KeyAInputPKT {
                 tool3.rebuildStats();
                 tool4.rebuildStats();
                 tool5.rebuildStats();
-                if (player.getMainHandItem().is(MomotinkerItem.charging_sword.get())&&player.getOffhandItem().is(MomotinkerItem.charging_shield.get())) {
+                if (player.getMainHandItem().is(MomotinkerItem.coronal_lock.get())&&player.getOffhandItem().is(MomotinkerItem.moon_key.get())&&tool1.getPersistentData().getInt(disaster)==600) {
                     player.setItemInHand(InteractionHand.MAIN_HAND, tool3.createStack());
                     player.setItemInHand(InteractionHand.OFF_HAND, ItemStack.EMPTY);
-                }else if (player.getMainHandItem().is(MomotinkerItem.charging_axe.get())&&player.getOffhandItem().is(ItemStack.EMPTY.getItem())){
+                }else if (player.getMainHandItem().is(MomotinkerItem.eclipse_container.get())&&player.getOffhandItem().is(ItemStack.EMPTY.getItem())){
+                    if (tool1.getPersistentData().getInt(disaster)>0){
+                        tool1.getPersistentData().putInt(disaster,0);
+                    }
                     player.setItemInHand(InteractionHand.MAIN_HAND, tool4.createStack());
                     player.setItemInHand(InteractionHand.OFF_HAND, tool5.createStack());
                 }

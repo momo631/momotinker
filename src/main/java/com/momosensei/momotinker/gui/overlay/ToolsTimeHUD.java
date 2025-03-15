@@ -39,7 +39,9 @@ public class ToolsTimeHUD {
                 ||player.getItemBySlot(EquipmentSlot.MAINHAND).is(divine_punishment_spear.get())
                 ||player.getItemBySlot(EquipmentSlot.MAINHAND).is(entropy_burning_sword.get())
                 ||player.getItemBySlot(EquipmentSlot.MAINHAND).is(entropy_burning_riding_spear.get())
-                ||player.getItemBySlot(EquipmentSlot.MAINHAND).is(entropy_burning_cannon.get()))){
+                ||player.getItemBySlot(EquipmentSlot.MAINHAND).is(entropy_burning_cannon.get())
+                ||player.getItemBySlot(EquipmentSlot.MAINHAND).is(coronal_lock.get())
+                ||player.getItemBySlot(EquipmentSlot.MAINHAND).is(eclipse_container.get()))){
             return;
         }
         ToolStack tool = ToolStack.from(player.getMainHandItem());

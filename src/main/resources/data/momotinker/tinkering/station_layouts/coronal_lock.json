@@ -1,15 +1,15 @@
 {
   "icon": {
-    "item": "momotinker:charging_sword",
+    "item": "momotinker:coronal_lock",
     "nbt": "{Damage:0,tic_broken:0b,tic_display:1b,tic_materials:[\"tconstruct:ui_render#head\",\"tconstruct:ui_render#handle\",\"tconstruct:ui_render#extra\",\"tconstruct:ui_render#large\",\"tconstruct:ui_render#extra_large\"]}"
   },
   "input_slots": [
     {
       "filter": {
-        "item": "tconstruct:small_blade"
+        "item": "tconstruct:broad_blade"
       },
-      "icon": "tconstruct:small_blade",
-      "translation_key": "item.tconstruct.small_blade",
+      "icon": "tconstruct:broad_blade",
+      "translation_key": "item.tconstruct.broad_blade",
       "x": 48,
       "y": 26
     },
@@ -19,8 +19,8 @@
       },
       "icon": "tconstruct:small_blade",
       "translation_key": "item.tconstruct.small_blade",
-      "x": 30,
-      "y": 44
+      "x": 12,
+      "y": 62
     },
     {
       "filter": {
@@ -28,10 +28,10 @@
       },
       "icon": "tconstruct:tool_handle",
       "translation_key": "item.tconstruct.tool_handle",
-      "x": 12,
-      "y": 62
+      "x": 30,
+      "y": 44
     }
   ],
   "sortIndex": 0,
-  "translation_key": "item.momotinker.charging_sword"
+  "translation_key": "item.momotinker.coronal_lock"
 }

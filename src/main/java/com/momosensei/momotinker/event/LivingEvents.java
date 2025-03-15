@@ -34,13 +34,15 @@ import static slimeknights.tconstruct.TConstruct.RANDOM;
 
 
 public class LivingEvents {
-    public LivingEvents(){
+    public LivingEvents() {
         MinecraftForge.EVENT_BUS.addListener(this::livinghurtevent);
-        MinecraftForge.EVENT_BUS.addListener(EventPriority.LOWEST,this::onEntityDeath);
-        MinecraftForge.EVENT_BUS.addListener(EventPriority.LOWEST,this::onBabyEntitySpawnEvent);
-        MinecraftForge.EVENT_BUS.addListener(EventPriority.LOWEST,this::onBonemealEvent);
-        MinecraftForge.EVENT_BUS.addListener(EventPriority.LOWEST,this::onSleepingTimeCheckEvent);
+        MinecraftForge.EVENT_BUS.addListener(EventPriority.LOWEST, this::onEntityDeath);
+        MinecraftForge.EVENT_BUS.addListener(EventPriority.LOWEST, this::onBabyEntitySpawnEvent);
+        MinecraftForge.EVENT_BUS.addListener(EventPriority.LOWEST, this::onBonemealEvent);
+        MinecraftForge.EVENT_BUS.addListener(EventPriority.LOWEST, this::onSleepingTimeCheckEvent);
+        //MinecraftForge.EVENT_BUS.addListener(EventPriority.HIGHEST,this::onPlayerTick);
     }
+
     private static final ResourceLocation lusttest = Momotinker.getResource("lusttest");
     private static final ResourceLocation ragetest = Momotinker.getResource("ragetest");
 
@@ -152,6 +154,7 @@ public class LivingEvents {
             }
         }
     }
+
     private void onBonemealEvent(BonemealEvent event) {
         boolean config = MomotinkerConfig.spirit_visage.get();
         if (config) {
@@ -164,6 +167,7 @@ public class LivingEvents {
             }
         }
     }
+
     private void onSleepingTimeCheckEvent(SleepingTimeCheckEvent event) {
         boolean config = MomotinkerConfig.lazy_grail.get();
         if (config) {
@@ -177,4 +181,10 @@ public class LivingEvents {
             }
         }
     }
+/*
+    private void onPlayerTick(TickEvent.PlayerTickEvent event) {
+        if (event!=null&&event.player instanceof ServerPlayer player&&!player.getUseItem().is(trigger_blade.get())) {
+            execute(event,player.level, player);
+        }
+    }*/
 }

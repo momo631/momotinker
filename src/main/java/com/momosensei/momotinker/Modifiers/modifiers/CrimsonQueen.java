@@ -65,7 +65,7 @@ public class CrimsonQueen extends momomodifier {
                     }
                 }
                 float perc = Mth.clamp(a.getFloat(crimsontime) / 20, 0, 1);
-                Channel.sendToClient(new ToolsTimeCharge(perc));
+                Channel.sendToPlayer(new ToolsTimeCharge(perc),player);
             }
             if (ModifierUtil.getModifierLevel(player.getMainHandItem(), MomotinkerModifiers.crimsonqueen.getId()) == 0) {
                 a.putFloat(crimsonlayers, 0);

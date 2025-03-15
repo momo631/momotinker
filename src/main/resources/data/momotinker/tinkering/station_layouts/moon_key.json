@@ -1,17 +1,17 @@
 {
   "icon": {
-    "item": "momotinker:charging_shield",
+    "item": "momotinker:moon_key",
     "nbt": "{Damage:0,tic_broken:0b,tic_display:1b,tic_materials:[\"tconstruct:ui_render#head\",\"tconstruct:ui_render#handle\",\"tconstruct:ui_render#extra\",\"tconstruct:ui_render#large\",\"tconstruct:ui_render#extra_large\"]}"
   },
   "input_slots": [
     {
       "filter": {
-        "item": "tconstruct:shield_core"
+        "item": "tconstruct:small_blade"
       },
-      "icon": "tconstruct:shield_core",
-      "translation_key": "item.tconstruct.shield_core",
-      "x": 33,
-      "y": 53
+      "icon": "tconstruct:small_blade",
+      "translation_key": "item.tconstruct.small_blade",
+      "x": 25,
+      "y": 30
     },
     {
       "filter": {
@@ -19,19 +19,19 @@
       },
       "icon": "tconstruct:large_plate",
       "translation_key": "item.tconstruct.large_plate",
-      "x": 18,
-      "y": 29
+      "x": 45,
+      "y": 45
     },
     {
       "filter": {
-        "item": "tconstruct:large_plate"
+        "item": "tconstruct:tool_handle"
       },
-      "icon": "tconstruct:large_plate",
-      "translation_key": "item.tconstruct.large_plate",
-      "x": 48,
-      "y": 29
+      "icon": "tconstruct:tool_handle",
+      "translation_key": "item.tconstruct.tool_handle",
+      "x": 20,
+      "y": 60
     }
   ],
   "sortIndex": 0,
-  "translation_key": "item.momotinker.charging_shield"
+  "translation_key": "item.momotinker.moon_key"
 }

@@ -2,9 +2,11 @@ package com.momosensei.momotinker.tool;
 
 
 import com.momosensei.momotinker.register.MomotinkerItem;
+import net.minecraft.ChatFormatting;
 import net.minecraft.core.BlockPos;
 import net.minecraft.network.chat.Component;
 import net.minecraft.world.entity.Entity;
+import net.minecraft.world.entity.EquipmentSlot;
 import net.minecraft.world.entity.player.Player;
 import net.minecraft.world.item.TooltipFlag;
 import net.minecraft.world.level.Level;
@@ -26,23 +28,26 @@ import slimeknights.tconstruct.library.tools.stat.ToolStats;
 import java.util.Iterator;
 import java.util.List;
 
-public class charging_sword extends ModifiableItem {
-    public charging_sword(Properties properties, ToolDefinition toolDefinition) {
+public class eclipse_container extends ModifiableItem {
+    public eclipse_container(Properties properties, ToolDefinition toolDefinition) {
         super(properties, toolDefinition);
         MinecraftForge.EVENT_BUS.addListener(this::livinghurtevent);
     }
-
     private void livinghurtevent(LivingHurtEvent event) {
         Entity a = event.getEntity();
         Entity b = event.getSource().getEntity();
-        if (b instanceof Player player&&a!=null&&player.getMainHandItem().is(MomotinkerItem.entropy_burning_cube.get())){
-            event.setAmount(6);
+        if (b instanceof Player player&&a!=null&&player.getMainHandItem().is(MomotinkerItem.eclipse_container.get())){
+            if (!checkOffHand(player)) {
+                event.setAmount(0.1F * event.getAmount());
+            }
         }
     }
     public boolean canAttackBlock(BlockState blockState, Level level, BlockPos blockPos, Player player) {
         return !player.isCreative();
     }
-
+    public static boolean checkOffHand(Player player){
+        return player!=null&& !player.hasItemInSlot(EquipmentSlot.OFFHAND);
+    }
     public List<Component> getStatInformation(IToolStackView tool, @Nullable Player player, List<Component> tooltips, TooltipKey key, TooltipFlag tooltipFlag) {
         tooltips = this.getDivinePunishmentSpearStats(tool, player, tooltips, key, tooltipFlag);
         return tooltips;
@@ -55,6 +60,9 @@ public class charging_sword extends ModifiableItem {
         if (tool.hasTag(TinkerTags.Items.MELEE)) {
             builder.add(ToolStats.ATTACK_DAMAGE);
             builder.add(ToolStats.ATTACK_SPEED);
+        }
+        if (!checkOffHand(player)){
+            builder.add(Component.translatable("momotinker.tool.tooltip.offhand_hastool").withStyle(ChatFormatting.RED));
         }
         builder.addAllFreeSlots();
         Iterator var7 = tool.getModifierList().iterator();

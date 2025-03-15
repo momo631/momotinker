@@ -57,7 +57,7 @@ public class Unstained extends momomodifier {
         LivingEntity living = event.getEntity();
         int a =  getArmorModifierlevel(living,MomotinkerModifiers.unstained.getId());
         int b = RANDOM.nextInt(10);
-        if (event.getEntity() instanceof Player &&(a>0 && a<8 && b<a)||a>8 && b<8) {
+        if (event.getEntity() instanceof Player &&(a>0 && a<8 && b<a)||(a>8 && b<8)) {
             event.setCanceled(true);
         }
     }

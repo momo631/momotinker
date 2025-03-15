@@ -58,11 +58,12 @@ public class KeyInputPKT {
                 Random random = new Random();
                 int randomIndex = random.nextInt(array.length);
                 if (enddata.getFloat(ender) == 0) {
-                    enddata.putFloat(ender, enddata.getFloat(ender) + 90);
+                    enddata.putFloat(ender, 90);
                     player.addEffect(new MobEffectInstance(MomotinkerEffects.End.get(), 300));
                     player.sendSystemMessage(Component.literal(array[randomIndex]).withStyle(ChatFormatting.DARK_RED));
                 }
             }
+
             if (player != null && ModifierUtil.getModifierLevel(player.getMainHandItem(), MomotinkerModifiers.fallingstars.getId()) > 0) {
                 ModDataNBT falldata = ToolStack.from(player.getItemBySlot(EquipmentSlot.MAINHAND)).getPersistentData();
                 if (falldata.getFloat(falling) == 0) {

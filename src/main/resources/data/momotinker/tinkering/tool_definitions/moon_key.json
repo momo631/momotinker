@@ -3,15 +3,9 @@
     {
       "type": "tconstruct:part_stats",
       "parts": [
-        "tconstruct:shield_core",
-        {
-          "item": "tconstruct:large_plate",
-          "scale": 0.75
-        },
-        {
-          "item": "tconstruct:large_plate",
-          "scale": 0.75
-        }
+        "tconstruct:small_blade",
+        "tconstruct:large_plate",
+        "tconstruct:tough_handle"
       ]
     },
     {
@@ -36,18 +30,11 @@
       ]
     },
     {
-      "type": "tconstruct:base_stats",
-      "stats": {
-        "tconstruct:block_amount": 200.0,
-        "tconstruct:block_angle": 180.0
-      }
-    },
-    {
       "type": "tconstruct:multiply_stats",
       "multipliers": {
-        "tconstruct:attack_damage": 0.8,
+        "tconstruct:attack_damage": 0.1,
         "tconstruct:durability": 1,
-        "tconstruct:attack_speed": 0.6
+        "tconstruct:attack_speed": 0.2
       }
     },
     {
@@ -55,10 +42,6 @@
       "traits": [
         {
           "name": "momotinker:expandedequipment",
-          "level": 1
-        },
-        {
-          "name": "tconstruct:blocking",
           "level": 1
         }
       ]

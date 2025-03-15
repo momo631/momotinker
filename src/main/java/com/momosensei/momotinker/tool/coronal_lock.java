@@ -22,8 +22,8 @@ import slimeknights.tconstruct.library.tools.stat.ToolStats;
 import java.util.Iterator;
 import java.util.List;
 
-public class charging_axe extends ModifiableItem {
-    public charging_axe(Properties properties, ToolDefinition toolDefinition) {
+public class coronal_lock extends ModifiableItem {
+    public coronal_lock(Properties properties, ToolDefinition toolDefinition) {
         super(properties, toolDefinition);
     }
 

@@ -111,7 +111,7 @@ public class entropy_burning_sword extends ModifiableItem {
                         double x = r * Math.cos(rad);
                         double z = r * Math.sin(rad);
                         serverLevel.sendParticles(ParticleTypes.FLAME, player.getX() + x, player.getY() + player.getBbHeight() * 0.6, player.getZ() + z, 5, 0, 0, 0, 0.6);
-                        serverLevel.sendParticles(ParticleTypes.LAVA, player.getX() + x, player.getY() + player.getBbHeight() * 0.6, player.getZ() + z, 5, 0, 0, 0, 0.6);
+                        serverLevel.sendParticles(ParticleTypes.LAVA, player.getX() + x, player.getY() + player.getBbHeight() * 0.6, player.getZ() + z, 2, 0, 0, 0, 0.6);
                     }
                 }
             }
