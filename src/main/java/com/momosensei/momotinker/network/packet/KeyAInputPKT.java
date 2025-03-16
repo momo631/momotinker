@@ -92,12 +92,12 @@ public class KeyAInputPKT {
                 ToolStack tool3 = ToolStack.from(stack3);
                 ToolStack tool4 = ToolStack.from(stack4);
                 ToolStack tool5 = ToolStack.from(stack5);
-                tool3.setMaterials(tool3.getMaterials().replaceMaterial(0,tool2.getMaterial(0).getVariant()));
-                tool3.setMaterials(tool3.getMaterials().replaceMaterial(1,tool2.getMaterial(1).getVariant()));
-                tool3.setMaterials(tool3.getMaterials().replaceMaterial(2,tool2.getMaterial(2).getVariant()));
-                tool3.setMaterials(tool3.getMaterials().replaceMaterial(3,tool1.getMaterial(0).getVariant()));
-                tool3.setMaterials(tool3.getMaterials().replaceMaterial(4,tool1.getMaterial(1).getVariant()));
-                tool3.setMaterials(tool3.getMaterials().replaceMaterial(5,tool1.getMaterial(2).getVariant()));
+                tool3.setMaterials(tool3.getMaterials().replaceMaterial(0,tool1.getMaterial(0).getVariant()));
+                tool3.setMaterials(tool3.getMaterials().replaceMaterial(1,tool1.getMaterial(1).getVariant()));
+                tool3.setMaterials(tool3.getMaterials().replaceMaterial(2,tool1.getMaterial(2).getVariant()));
+                tool3.setMaterials(tool3.getMaterials().replaceMaterial(3,tool2.getMaterial(0).getVariant()));
+                tool3.setMaterials(tool3.getMaterials().replaceMaterial(4,tool2.getMaterial(1).getVariant()));
+                tool3.setMaterials(tool3.getMaterials().replaceMaterial(5,tool2.getMaterial(2).getVariant()));
 
                 tool4.setMaterials(tool4.getMaterials().replaceMaterial(0,tool1.getMaterial(0).getVariant()));
                 tool4.setMaterials(tool4.getMaterials().replaceMaterial(1,tool1.getMaterial(1).getVariant()));

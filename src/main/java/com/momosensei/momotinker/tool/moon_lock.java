@@ -86,7 +86,13 @@ public class moon_lock extends ModifiableItem {
     @Override
     public void onUseTick(Level level, LivingEntity living, ItemStack stack, int chargeRemaining) {
         if (living instanceof ServerPlayer player&&player.level instanceof ServerLevel serverLevel) {
-            serverLevel.sendParticles(ParticleTypes.REVERSE_PORTAL, player.getX(), player.getY() + player.getBbHeight() * 0.4, player.getZ(), 1, 0, 0, 0, 2);
+            for (int i = 0; i <= 360; i++) {
+                double rad = i * 0.017453292519943295;
+                double r = 0.5D;
+                double x = r * Math.cos(rad);
+                double z = r * Math.sin(rad);
+                serverLevel.sendParticles(ParticleTypes.ELECTRIC_SPARK, player.getX()+x, player.getY(), player.getZ()+z, 1/2, 0, 0.5, 0, 5);
+            }
         }
     }
     public int getUseDuration(ItemStack stack) {

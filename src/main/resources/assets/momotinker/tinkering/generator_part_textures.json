@@ -295,6 +295,97 @@
         {
             "path": "momotinker:item/tool/entropy_burning_cannon/large/cube_component_5",
             "stat_type": "tconstruct:binding"
+        },
+
+
+
+        {
+            "path": "momotinker:item/tool/moon_lock/part_1",
+            "stat_type": "tconstruct:binding"
+        },
+        {
+            "path": "momotinker:item/tool/moon_lock/part_2",
+            "stat_type": "tconstruct:binding"
+        },
+        {
+            "path": "momotinker:item/tool/moon_lock/part_3",
+            "stat_type": "tconstruct:binding"
+        },
+
+
+        {
+            "path": "momotinker:item/tool/coronal_key/part_1",
+            "stat_type": "tconstruct:binding"
+        },
+        {
+            "path": "momotinker:item/tool/coronal_key/part_2",
+            "stat_type": "tconstruct:binding"
+        },
+        {
+            "path": "momotinker:item/tool/coronal_key/part_3",
+            "stat_type": "tconstruct:binding"
+        },
+        {
+            "path": "momotinker:item/tool/coronal_key/large/part_1",
+            "stat_type": "tconstruct:binding"
+        },
+        {
+            "path": "momotinker:item/tool/coronal_key/large/part_2",
+            "stat_type": "tconstruct:binding"
+        },
+        {
+            "path": "momotinker:item/tool/coronal_key/large/part_3",
+            "stat_type": "tconstruct:binding"
+        },
+
+
+        {
+            "path": "momotinker:item/tool/eclipse_container/large/part_1",
+            "stat_type": "tconstruct:binding"
+        },
+        {
+            "path": "momotinker:item/tool/eclipse_container/large/part_2",
+            "stat_type": "tconstruct:binding"
+        },
+        {
+            "path": "momotinker:item/tool/eclipse_container/large/part_3",
+            "stat_type": "tconstruct:binding"
+        },
+        {
+            "path": "momotinker:item/tool/eclipse_container/large/part_4",
+            "stat_type": "tconstruct:binding"
+        },
+        {
+            "path": "momotinker:item/tool/eclipse_container/large/part_5",
+            "stat_type": "tconstruct:binding"
+        },
+        {
+            "path": "momotinker:item/tool/eclipse_container/large/part_6",
+            "stat_type": "tconstruct:binding"
+        },
+        {
+            "path": "momotinker:item/tool/eclipse_container/part_1",
+            "stat_type": "tconstruct:binding"
+        },
+        {
+            "path": "momotinker:item/tool/eclipse_container/part_2",
+            "stat_type": "tconstruct:binding"
+        },
+        {
+            "path": "momotinker:item/tool/eclipse_container/part_3",
+            "stat_type": "tconstruct:binding"
+        },
+        {
+            "path": "momotinker:item/tool/eclipse_container/part_4",
+            "stat_type": "tconstruct:binding"
+        },
+        {
+            "path": "momotinker:item/tool/eclipse_container/part_5",
+            "stat_type": "tconstruct:binding"
+        },
+        {
+            "path": "momotinker:item/tool/eclipse_container/part_6",
+            "stat_type": "tconstruct:binding"
         }
     ],
     "replace": false

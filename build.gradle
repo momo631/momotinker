@@ -127,7 +127,7 @@ repositories {
         name 'DVS1 Maven FS'
         url 'https://dvs1.progwml6.com/files/maven'
     }
-    maven { url = "https://maven.kosmx.dev/" }
+
    // maven { url = "https://dl.cloudsmith.io/public/geckolib3/geckolib/maven/" }
     flatDir {
         dir 'libs'
@@ -145,7 +145,7 @@ dependencies {
     minecraft "net.minecraftforge:forge:${minecraft_version}-${forge_version}"
     annotationProcessor "org.spongepowered:mixin:${mixin_version}:processor"
   //  implementation fg.deobf("software.bernie.geckolib:geckolib-forge-${geckolib_version}")
-    implementation fg.deobf("dev.kosmx.player-anim:player-animation-lib-forge:${player_animator_version}")
+
 
     // Real mod deobf dependency examples - these get remapped to your current mappings
     // compileOnly fg.deobf("mezz.jei:jei-${mc_version}:${jei_version}:api") // Adds JEI API as a compile dependency
