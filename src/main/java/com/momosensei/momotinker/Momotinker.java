@@ -77,6 +77,7 @@ public class Momotinker {
                 TinkerItemProperties.registerToolProperties(trigger_blade.get());
                 TinkerItemProperties.registerToolProperties(entropy_burning_riding_spear.get());
                 TinkerItemProperties.registerToolProperties(entropy_burning_cannon.get());
+                TinkerItemProperties.registerToolProperties(eclipse_container.get());
             });
         }
     }

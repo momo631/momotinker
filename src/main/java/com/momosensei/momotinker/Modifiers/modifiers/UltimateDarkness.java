@@ -50,7 +50,7 @@ public class UltimateDarkness extends momomodifier {
     public void onInventoryTick(IToolStackView tool, ModifierEntry modifier, Level world, LivingEntity entity, int index, boolean isSelected, boolean isCorrectSlot, ItemStack stack) {
         ModDataNBT a = tool.getPersistentData();
         if (entity instanceof ServerPlayer player&&entity.getItemBySlot(EquipmentSlot.MAINHAND).is(MomotinkerItem.eclipse_container.get())){
-            if (a.getInt(disaster) > 0) {
+            if (a.getInt(disaster) > 0&&!player.getUseItem().is(MomotinkerItem.eclipse_container.get())) {
                 a.putInt(disaster, a.getInt(disaster) - 1);
             }
             float perc = Mth.clamp((float)a.getInt(disaster) / 600, 0, 1);

@@ -94,6 +94,9 @@ public class entropy_burning_sword extends ModifiableItem {
             return;
         }
         if (livingEntity instanceof ServerPlayer player) {
+            if (!checkOffHand(player)){
+                return;
+            }
             player.awardStat(Stats.ITEM_USED.get(this));
             int a = (int) player.getAttackRange();
             if (perc >= 1) {

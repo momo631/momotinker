@@ -100,7 +100,7 @@ public class moon_lock extends ModifiableItem {
     }
     @Override
     public UseAnim getUseAnimation(ItemStack stack) {
-        return BlockingModifier.blockWhileCharging(ToolStack.from(stack), UseAnim.NONE);
+        return BlockingModifier.blockWhileCharging(ToolStack.from(stack), UseAnim.CROSSBOW);
     }
     public List<Component> getStatInformation(IToolStackView tool, @Nullable Player player, List<Component> tooltips, TooltipKey key, TooltipFlag tooltipFlag) {
         tooltips = this.getDivinePunishmentSpearStats(tool, player, tooltips, key, tooltipFlag);

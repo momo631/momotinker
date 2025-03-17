@@ -2,15 +2,28 @@ package com.momosensei.momotinker.tool;
 
 
 import com.momosensei.momotinker.register.MomotinkerItem;
+import com.momosensei.momotinker.util.attackUtil;
 import net.minecraft.ChatFormatting;
 import net.minecraft.core.BlockPos;
+import net.minecraft.core.particles.ParticleTypes;
 import net.minecraft.network.chat.Component;
+import net.minecraft.server.level.ServerLevel;
+import net.minecraft.server.level.ServerPlayer;
+import net.minecraft.stats.Stats;
+import net.minecraft.util.Mth;
+import net.minecraft.world.InteractionHand;
+import net.minecraft.world.InteractionResultHolder;
 import net.minecraft.world.entity.Entity;
 import net.minecraft.world.entity.EquipmentSlot;
+import net.minecraft.world.entity.LivingEntity;
+import net.minecraft.world.entity.Mob;
 import net.minecraft.world.entity.player.Player;
+import net.minecraft.world.item.ItemStack;
 import net.minecraft.world.item.TooltipFlag;
+import net.minecraft.world.item.UseAnim;
 import net.minecraft.world.level.Level;
 import net.minecraft.world.level.block.state.BlockState;
+import net.minecraft.world.phys.Vec3;
 import net.minecraftforge.common.MinecraftForge;
 import net.minecraftforge.event.entity.living.LivingHurtEvent;
 import org.jetbrains.annotations.Nullable;
@@ -20,13 +33,22 @@ import slimeknights.tconstruct.library.modifiers.ModifierEntry;
 import slimeknights.tconstruct.library.modifiers.ModifierHooks;
 import slimeknights.tconstruct.library.modifiers.hook.display.TooltipModifierHook;
 import slimeknights.tconstruct.library.tools.definition.ToolDefinition;
+import slimeknights.tconstruct.library.tools.helper.ToolDamageUtil;
 import slimeknights.tconstruct.library.tools.helper.TooltipBuilder;
 import slimeknights.tconstruct.library.tools.item.ModifiableItem;
 import slimeknights.tconstruct.library.tools.nbt.IToolStackView;
+import slimeknights.tconstruct.library.tools.nbt.ModDataNBT;
+import slimeknights.tconstruct.library.tools.nbt.ToolStack;
 import slimeknights.tconstruct.library.tools.stat.ToolStats;
+import slimeknights.tconstruct.library.utils.Util;
+import slimeknights.tconstruct.tools.modifiers.ability.interaction.BlockingModifier;
+import slimeknights.tconstruct.tools.modifiers.upgrades.ranged.ScopeModifier;
 
 import java.util.Iterator;
 import java.util.List;
+
+import static com.momosensei.momotinker.Modifiers.modifiers.ProjectionOfSuffering.disaster;
+import static slimeknights.tconstruct.library.modifiers.hook.interaction.GeneralInteractionModifierHook.KEY_DRAWTIME;
 
 public class eclipse_container extends ModifiableItem {
     public eclipse_container(Properties properties, ToolDefinition toolDefinition) {
@@ -41,6 +63,109 @@ public class eclipse_container extends ModifiableItem {
                 event.setAmount(0.1F * event.getAmount());
             }
         }
+        if (a instanceof Player player&& player.getUseItem().is(MomotinkerItem.eclipse_container.get())){
+            ModDataNBT c = ToolStack.from(player.getItemBySlot(EquipmentSlot.MAINHAND)).getPersistentData();
+            if (c.getInt(disaster)>0) {
+                event.setAmount(event.getAmount() * 0.5F);
+            }
+        }
+    }
+    public InteractionResultHolder<ItemStack> use(Level level, Player player, InteractionHand hand) {
+        ItemStack stack = player.getItemInHand(hand);
+        ToolStack tool = ToolStack.from(stack);
+        tool.getPersistentData().putInt(KEY_DRAWTIME,60);
+        player.startUsingItem(hand);
+        if (!checkOffHand(player)){
+            return InteractionResultHolder.fail(stack);
+        }
+        if (tool.isBroken()){
+            return InteractionResultHolder.fail(stack);
+        }
+        if (!tool.isBroken()) {
+            return InteractionResultHolder.pass(stack);
+        }
+        return InteractionResultHolder.consume(stack);
+    }
+    @Override
+    public void onUseTick(Level level, LivingEntity living, ItemStack stack, int chargeRemaining) {
+        ToolStack tool = ToolStack.from(stack);
+        if (living instanceof ServerPlayer player) {
+            if (!checkOffHand(player)){
+                return;
+            }
+            int t = this.getUseDuration(stack) - chargeRemaining;
+            float perc = Mth.clamp((float) t / 60,0,1);
+            if (tool.getPersistentData().getInt(disaster)>0&&perc >= 1){
+                float a = tool.getStats().get(ToolStats.ATTACK_SPEED)*2+5;
+                //tool.getPersistentData().putInt(disaster, tool.getPersistentData().getInt(disaster) - 3);
+                if (a<30) {
+                    List<Entity> list = player.level.getEntitiesOfClass(Entity.class, player.getBoundingBox().inflate(a));
+                    for (Entity entity : list) {
+                        if (entity != null && entity != player) {
+                            Vec3 vec = entity.position().subtract(living.position()).normalize().scale(-0.1);
+                            entity.push(vec.x, vec.y, vec.z);
+                            if (entity instanceof Mob){
+                                attackUtil.attackEntity(tool, player, InteractionHand.MAIN_HAND, entity, () -> 1, true, Util.getSlotType(InteractionHand.MAIN_HAND), tool.getStats().get(ToolStats.ATTACK_DAMAGE) * 0.2f, false, true, false, true);
+                            }
+                        }
+                    }
+                    if (player.level instanceof ServerLevel serverLevel) {
+                        for (int n = 0; n <= 360; n++) {
+                            double rad = n * 0.017453292519943295;
+                            double x = (double) a * Math.cos(rad);
+                            double z = (double) a * Math.sin(rad);
+                            serverLevel.sendParticles(ParticleTypes.REVERSE_PORTAL, player.getX(), player.getY() + player.getBbHeight() * 0.5f + z, player.getZ() + x, 1, 0, 0, 0, 0.6);
+                            serverLevel.sendParticles(ParticleTypes.REVERSE_PORTAL, player.getX() + x, player.getY() + player.getBbHeight() * 0.5f + z, player.getZ(), 1, 0, 0, 0, 0.6);
+                            serverLevel.sendParticles(ParticleTypes.REVERSE_PORTAL, player.getX() + x, player.getY() + player.getBbHeight() * 0.5f, player.getZ() + z, 1, 0, 0, 0, 0.6);
+                        }
+                        serverLevel.sendParticles(ParticleTypes.DRAGON_BREATH, player.getX(), player.getY()+player.getBbHeight()*0.5f, player.getZ(), (int)(a*0.6F)+22, a, a, a, 2);
+                    }
+                }else if (a>=30) {
+                    List<Entity> list = player.level.getEntitiesOfClass(Entity.class, player.getBoundingBox().inflate(30));
+                    for (Entity entity : list) {
+                        if (entity != null && entity != player) {
+                            Vec3 vec = entity.position().subtract(living.position()).normalize().scale(-0.1);
+                            entity.push(vec.x, vec.y, vec.z);
+                            if (entity instanceof Mob){
+                                attackUtil.attackEntity(tool, player, InteractionHand.MAIN_HAND, entity, () -> 1, true, Util.getSlotType(InteractionHand.MAIN_HAND), tool.getStats().get(ToolStats.ATTACK_DAMAGE) * 0.2f, false, true, false, true);
+                            }
+                        }
+                    }
+                    if (player.level instanceof ServerLevel serverLevel) {
+                        for (int n = 0; n <= 360; n++) {
+                            double rad = n * 0.017453292519943295;
+                            double x = (double) 30 * Math.cos(rad);
+                            double z = (double) 30 * Math.sin(rad);
+                            serverLevel.sendParticles(ParticleTypes.REVERSE_PORTAL, player.getX(), player.getY() + player.getBbHeight() * 0.5f + z, player.getZ() + x, 1, 0, 0, 0, 0.6);
+                            serverLevel.sendParticles(ParticleTypes.REVERSE_PORTAL, player.getX() + x, player.getY() + player.getBbHeight() * 0.5f + z, player.getZ(), 1, 0, 0, 0, 0.6);
+                            serverLevel.sendParticles(ParticleTypes.REVERSE_PORTAL, player.getX() + x, player.getY() + player.getBbHeight() * 0.5f, player.getZ() + z, 1, 0, 0, 0, 0.6);
+                        }
+                        serverLevel.sendParticles(ParticleTypes.DRAGON_BREATH, player.getX(), player.getY()+player.getBbHeight()*0.5f, player.getZ(), 40, 30, 30, 30, 2);
+                    }
+                }
+            }
+        }
+    }
+    @Override
+    public void releaseUsing(ItemStack stack, Level level, LivingEntity livingEntity, int duration) {
+        ScopeModifier.stopScoping(livingEntity);
+        ToolStack tool = ToolStack.from(stack);
+        if (tool.isBroken()){
+            tool.getPersistentData().remove(KEY_DRAWTIME);
+            return;
+        }
+        if (livingEntity instanceof ServerPlayer player) {
+            player.awardStat(Stats.ITEM_USED.get(this));
+            ToolDamageUtil.damageAnimated(tool,1,player);
+            tool.getPersistentData().remove(KEY_DRAWTIME);
+        }
+    }
+    public int getUseDuration(ItemStack stack) {
+        return 72000;
+    }
+    @Override
+    public UseAnim getUseAnimation(ItemStack stack) {
+        return BlockingModifier.blockWhileCharging(ToolStack.from(stack), UseAnim.CUSTOM);
     }
     public boolean canAttackBlock(BlockState blockState, Level level, BlockPos blockPos, Player player) {
         return !player.isCreative();
@@ -64,6 +189,7 @@ public class eclipse_container extends ModifiableItem {
         if (!checkOffHand(player)){
             builder.add(Component.translatable("momotinker.tool.tooltip.offhand_hastool").withStyle(ChatFormatting.RED));
         }
+        builder.add(Component.translatable("目前“日蚀刻”的吸引范围为"+(tool.getStats().get(ToolStats.ATTACK_SPEED)*2+5)+"格").withStyle(ChatFormatting.DARK_GRAY));
         builder.addAllFreeSlots();
         Iterator var7 = tool.getModifierList().iterator();
         while(var7.hasNext()) {
