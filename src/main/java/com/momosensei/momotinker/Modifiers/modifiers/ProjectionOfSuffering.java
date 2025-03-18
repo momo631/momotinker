@@ -51,18 +51,14 @@ public class ProjectionOfSuffering extends momomodifier {
         Entity b = event.getSource().getEntity();
         if (b instanceof Player player && a != null && player.getMainHandItem().is(MomotinkerItem.coronal_key.get())) {
             ModDataNBT c = ToolStack.from(player.getItemBySlot(EquipmentSlot.MAINHAND)).getPersistentData();
-            if (c.getInt(disasterpremonition) <= 8) {
-                c.putInt(disasterpremonition, 8);
-            }
+            c.putInt(disasterpremonition, 8);
             if (c.getInt(disaster)>0){
                 event.setAmount(event.getAmount() * (1f + c.getInt(disaster) * 0.001f));
             }
         }
         if (a instanceof Player player && b != null && player.getMainHandItem().is(MomotinkerItem.coronal_key.get())) {
             ModDataNBT c = ToolStack.from(player.getItemBySlot(EquipmentSlot.MAINHAND)).getPersistentData();
-            if (c.getInt(disasterpremonition) <= 8) {
-                c.putInt(disasterpremonition, 8);
-            }
+            c.putInt(disasterpremonition, 8);
         }
     }
 
@@ -80,6 +76,7 @@ public class ProjectionOfSuffering extends momomodifier {
                 if (entity.tickCount % 20 == 0) {
                     a.putInt(disasterpremonition, a.getInt(disasterpremonition) - 1);
                 }
+
             }else
             if (a.getInt(disasterpremonition) == 0&&a.getInt(disaster) > 0) {
                 a.putInt(disaster, a.getInt(disaster) - 3);
@@ -87,8 +84,11 @@ public class ProjectionOfSuffering extends momomodifier {
             float perc = Mth.clamp((float)a.getInt(disaster) / 600, 0, 1);
             Channel.sendToPlayer(new ToolsTimeCharge(perc),player);
         }
-        if (!entity.getItemBySlot(EquipmentSlot.MAINHAND).is(MomotinkerItem.coronal_key.get()) && !entity.getItemBySlot(EquipmentSlot.MAINHAND).is(MomotinkerItem.eclipse_container.get())) {
+        if (a.getInt(disaster) > 0&&!entity.getItemBySlot(EquipmentSlot.MAINHAND).is(MomotinkerItem.coronal_key.get()) && !entity.getItemBySlot(EquipmentSlot.MAINHAND).is(MomotinkerItem.eclipse_container.get())) {
             a.putInt(disaster,a.getInt(disaster)-6);
+        }
+        if (a.getInt(disaster)<0){
+            a.putInt(disaster, 0);
         }
     }
 }

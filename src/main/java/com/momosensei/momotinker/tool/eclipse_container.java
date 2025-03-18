@@ -16,7 +16,6 @@ import net.minecraft.world.InteractionResultHolder;
 import net.minecraft.world.entity.Entity;
 import net.minecraft.world.entity.EquipmentSlot;
 import net.minecraft.world.entity.LivingEntity;
-import net.minecraft.world.entity.Mob;
 import net.minecraft.world.entity.player.Player;
 import net.minecraft.world.item.ItemStack;
 import net.minecraft.world.item.TooltipFlag;
@@ -96,51 +95,41 @@ public class eclipse_container extends ModifiableItem {
             int t = this.getUseDuration(stack) - chargeRemaining;
             float perc = Mth.clamp((float) t / 60,0,1);
             if (tool.getPersistentData().getInt(disaster)>0&&perc >= 1){
-                float a = tool.getStats().get(ToolStats.ATTACK_SPEED)*2+5;
-                //tool.getPersistentData().putInt(disaster, tool.getPersistentData().getInt(disaster) - 3);
-                if (a<30) {
+                int a = (int)(tool.getStats().get(ToolStats.ATTACK_SPEED)*2+5);
+                tool.getPersistentData().putInt(disaster, tool.getPersistentData().getInt(disaster) - 2);
+                if (a<30&&a>=1) {
                     List<Entity> list = player.level.getEntitiesOfClass(Entity.class, player.getBoundingBox().inflate(a));
+                    List<Entity> list1 = player.level.getEntitiesOfClass(Entity.class, player.getBoundingBox().inflate(a-0.5));
                     for (Entity entity : list) {
                         if (entity != null && entity != player) {
-                            Vec3 vec = entity.position().subtract(living.position()).normalize().scale(-0.1);
+                            Vec3 vec = entity.position().subtract(living.position()).normalize().scale(-0.15);
                             entity.push(vec.x, vec.y, vec.z);
-                            if (entity instanceof Mob){
-                                attackUtil.attackEntity(tool, player, InteractionHand.MAIN_HAND, entity, () -> 1, true, Util.getSlotType(InteractionHand.MAIN_HAND), tool.getStats().get(ToolStats.ATTACK_DAMAGE) * 0.2f, false, true, false, true);
-                            }
+                        }
+                    }
+                    for (Entity entity : list1) {
+                        if (entity instanceof LivingEntity && entity != player){
+                            attackUtil.attackEntity(tool, player, InteractionHand.MAIN_HAND, entity, () -> 1, true, Util.getSlotType(InteractionHand.MAIN_HAND), tool.getStats().get(ToolStats.ATTACK_DAMAGE) * 0.2f, false, true, false, true);
                         }
                     }
                     if (player.level instanceof ServerLevel serverLevel) {
-                        for (int n = 0; n <= 360; n++) {
-                            double rad = n * 0.017453292519943295;
-                            double x = (double) a * Math.cos(rad);
-                            double z = (double) a * Math.sin(rad);
-                            serverLevel.sendParticles(ParticleTypes.REVERSE_PORTAL, player.getX(), player.getY() + player.getBbHeight() * 0.5f + z, player.getZ() + x, 1, 0, 0, 0, 0.6);
-                            serverLevel.sendParticles(ParticleTypes.REVERSE_PORTAL, player.getX() + x, player.getY() + player.getBbHeight() * 0.5f + z, player.getZ(), 1, 0, 0, 0, 0.6);
-                            serverLevel.sendParticles(ParticleTypes.REVERSE_PORTAL, player.getX() + x, player.getY() + player.getBbHeight() * 0.5f, player.getZ() + z, 1, 0, 0, 0, 0.6);
-                        }
-                        serverLevel.sendParticles(ParticleTypes.DRAGON_BREATH, player.getX(), player.getY()+player.getBbHeight()*0.5f, player.getZ(), (int)(a*0.6F)+22, a, a, a, 2);
+                        serverLevel.sendParticles(ParticleTypes.DRAGON_BREATH, player.getX(), player.getY()+player.getBbHeight()*0.5f, player.getZ(), (int)(a*0.6F)+22, a, a, a, 0.5);
                     }
                 }else if (a>=30) {
                     List<Entity> list = player.level.getEntitiesOfClass(Entity.class, player.getBoundingBox().inflate(30));
+                    List<Entity> list1 = player.level.getEntitiesOfClass(Entity.class, player.getBoundingBox().inflate(29.5));
                     for (Entity entity : list) {
                         if (entity != null && entity != player) {
-                            Vec3 vec = entity.position().subtract(living.position()).normalize().scale(-0.1);
+                            Vec3 vec = entity.position().subtract(living.position()).normalize().scale(-0.15);
                             entity.push(vec.x, vec.y, vec.z);
-                            if (entity instanceof Mob){
-                                attackUtil.attackEntity(tool, player, InteractionHand.MAIN_HAND, entity, () -> 1, true, Util.getSlotType(InteractionHand.MAIN_HAND), tool.getStats().get(ToolStats.ATTACK_DAMAGE) * 0.2f, false, true, false, true);
-                            }
+                        }
+                    }
+                    for (Entity entity : list1) {
+                        if (entity instanceof LivingEntity && entity != player){
+                            attackUtil.attackEntity(tool, player, InteractionHand.MAIN_HAND, entity, () -> 1, true, Util.getSlotType(InteractionHand.MAIN_HAND), tool.getStats().get(ToolStats.ATTACK_DAMAGE) * 0.2f, false, true, false, true);
                         }
                     }
                     if (player.level instanceof ServerLevel serverLevel) {
-                        for (int n = 0; n <= 360; n++) {
-                            double rad = n * 0.017453292519943295;
-                            double x = (double) 30 * Math.cos(rad);
-                            double z = (double) 30 * Math.sin(rad);
-                            serverLevel.sendParticles(ParticleTypes.REVERSE_PORTAL, player.getX(), player.getY() + player.getBbHeight() * 0.5f + z, player.getZ() + x, 1, 0, 0, 0, 0.6);
-                            serverLevel.sendParticles(ParticleTypes.REVERSE_PORTAL, player.getX() + x, player.getY() + player.getBbHeight() * 0.5f + z, player.getZ(), 1, 0, 0, 0, 0.6);
-                            serverLevel.sendParticles(ParticleTypes.REVERSE_PORTAL, player.getX() + x, player.getY() + player.getBbHeight() * 0.5f, player.getZ() + z, 1, 0, 0, 0, 0.6);
-                        }
-                        serverLevel.sendParticles(ParticleTypes.DRAGON_BREATH, player.getX(), player.getY()+player.getBbHeight()*0.5f, player.getZ(), 40, 30, 30, 30, 2);
+                        serverLevel.sendParticles(ParticleTypes.DRAGON_BREATH, player.getX(), player.getY()+player.getBbHeight()*0.5f, player.getZ(), 40, 30, 30, 30, 0.5);
                     }
                 }
             }
@@ -165,7 +154,7 @@ public class eclipse_container extends ModifiableItem {
     }
     @Override
     public UseAnim getUseAnimation(ItemStack stack) {
-        return BlockingModifier.blockWhileCharging(ToolStack.from(stack), UseAnim.CUSTOM);
+        return BlockingModifier.blockWhileCharging(ToolStack.from(stack), UseAnim.BLOCK);
     }
     public boolean canAttackBlock(BlockState blockState, Level level, BlockPos blockPos, Player player) {
         return !player.isCreative();
@@ -189,7 +178,7 @@ public class eclipse_container extends ModifiableItem {
         if (!checkOffHand(player)){
             builder.add(Component.translatable("momotinker.tool.tooltip.offhand_hastool").withStyle(ChatFormatting.RED));
         }
-        builder.add(Component.translatable("目前“日蚀刻”的吸引范围为"+(tool.getStats().get(ToolStats.ATTACK_SPEED)*2+5)+"格").withStyle(ChatFormatting.DARK_GRAY));
+        builder.add(Component.translatable("目前“日蚀刻”的吸引范围为"+((int)(tool.getStats().get(ToolStats.ATTACK_SPEED)*2+5))+"格").withStyle(ChatFormatting.DARK_GRAY));
         builder.addAllFreeSlots();
         Iterator var7 = tool.getModifierList().iterator();
         while(var7.hasNext()) {
