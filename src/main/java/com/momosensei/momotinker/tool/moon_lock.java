@@ -85,7 +85,7 @@ public class moon_lock extends ModifiableItem {
     }
     @Override
     public void onUseTick(Level level, LivingEntity living, ItemStack stack, int chargeRemaining) {
-        if (living instanceof ServerPlayer player&&player.level instanceof ServerLevel serverLevel) {
+        if (living instanceof ServerPlayer player&&player.level instanceof ServerLevel serverLevel&&player.tickCount%10==0) {
             for (int i = 0; i <= 360; i++) {
                 double rad = i * 0.017453292519943295;
                 double r = 0.5D;
@@ -100,7 +100,7 @@ public class moon_lock extends ModifiableItem {
     }
     @Override
     public UseAnim getUseAnimation(ItemStack stack) {
-        return BlockingModifier.blockWhileCharging(ToolStack.from(stack), UseAnim.CROSSBOW);
+        return BlockingModifier.blockWhileCharging(ToolStack.from(stack), UseAnim.BLOCK);
     }
     public List<Component> getStatInformation(IToolStackView tool, @Nullable Player player, List<Component> tooltips, TooltipKey key, TooltipFlag tooltipFlag) {
         tooltips = this.getDivinePunishmentSpearStats(tool, player, tooltips, key, tooltipFlag);

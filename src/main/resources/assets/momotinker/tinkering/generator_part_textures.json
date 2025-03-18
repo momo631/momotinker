@@ -339,6 +339,31 @@
         },
 
 
+
+        {
+            "path": "momotinker:item/tool/eclipse_container/part_1",
+            "stat_type": "tconstruct:binding"
+        },
+        {
+            "path": "momotinker:item/tool/eclipse_container/part_2",
+            "stat_type": "tconstruct:binding"
+        },
+        {
+            "path": "momotinker:item/tool/eclipse_container/part_3",
+            "stat_type": "tconstruct:binding"
+        },
+        {
+            "path": "momotinker:item/tool/eclipse_container/part_4",
+            "stat_type": "tconstruct:binding"
+        },
+        {
+            "path": "momotinker:item/tool/eclipse_container/part_5",
+            "stat_type": "tconstruct:binding"
+        },
+        {
+            "path": "momotinker:item/tool/eclipse_container/part_6",
+            "stat_type": "tconstruct:binding"
+        },
         {
             "path": "momotinker:item/tool/eclipse_container/large/part_1",
             "stat_type": "tconstruct:binding"
@@ -364,27 +389,27 @@
             "stat_type": "tconstruct:binding"
         },
         {
-            "path": "momotinker:item/tool/eclipse_container/part_1",
+            "path": "momotinker:item/tool/eclipse_container/large/charge_1/part_1",
             "stat_type": "tconstruct:binding"
         },
         {
-            "path": "momotinker:item/tool/eclipse_container/part_2",
+            "path": "momotinker:item/tool/eclipse_container/large/charge_1/part_2",
             "stat_type": "tconstruct:binding"
         },
         {
-            "path": "momotinker:item/tool/eclipse_container/part_3",
+            "path": "momotinker:item/tool/eclipse_container/large/charge_1/part_3",
             "stat_type": "tconstruct:binding"
         },
         {
-            "path": "momotinker:item/tool/eclipse_container/part_4",
+            "path": "momotinker:item/tool/eclipse_container/large/charge_1/part_4",
             "stat_type": "tconstruct:binding"
         },
         {
-            "path": "momotinker:item/tool/eclipse_container/part_5",
+            "path": "momotinker:item/tool/eclipse_container/large/charge_1/part_5",
             "stat_type": "tconstruct:binding"
         },
         {
-            "path": "momotinker:item/tool/eclipse_container/part_6",
+            "path": "momotinker:item/tool/eclipse_container/large/charge_1/part_6",
             "stat_type": "tconstruct:binding"
         }
     ],
