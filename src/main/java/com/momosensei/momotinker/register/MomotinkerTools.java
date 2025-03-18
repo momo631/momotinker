@@ -42,6 +42,9 @@ public final class MomotinkerTools extends MomotinkerTables {
     public static final ItemObject<ModifiableItem> entropy_burning_sword = ITEMS.register("entropy_burning_sword", () -> new entropy_burning_sword(UNSTACKABLE_PROPS, MomotinkerToolDefinitions.ENTROPY_BURNING_SWORD));
     public static final ItemObject<ModifiableItem> entropy_burning_riding_spear = ITEMS.register("entropy_burning_riding_spear", () -> new entropy_burning_riding_spear(UNSTACKABLE_PROPS, MomotinkerToolDefinitions.ENTROPY_BURNING_RIDING_SPEAR));
     public static final ItemObject<ModifiableItem> entropy_burning_cannon = ITEMS.register("entropy_burning_cannon", () -> new entropy_burning_cannon(UNSTACKABLE_PROPS, MomotinkerToolDefinitions.ENTROPY_BURNING_CANNON));
+    public static final ItemObject<ModifiableItem> eclipse_container = ITEMS.register("eclipse_container", () -> new eclipse_container(UNSTACKABLE_PROPS, MomotinkerToolDefinitions.ECLIPSE_CONTAINER));
+    public static final ItemObject<ModifiableItem> coronal_key = ITEMS.register("coronal_key", () -> new coronal_key(UNSTACKABLE_PROPS, MomotinkerToolDefinitions.CORONAL_KEY));
+    public static final ItemObject<ModifiableItem> moon_lock = ITEMS.register("moon_lock", () -> new moon_lock(UNSTACKABLE_PROPS, MomotinkerToolDefinitions.MOON_LOCK));
 
     private static void addTabItems(CreativeModeTab.ItemDisplayParameters itemDisplayParameters, CreativeModeTab.Output tab) {
         Consumer<ItemStack> output = tab::accept;
@@ -51,6 +54,9 @@ public final class MomotinkerTools extends MomotinkerTables {
         acceptTool(output, entropy_burning_sword);
         acceptTool(output, entropy_burning_riding_spear);
         acceptTool(output, entropy_burning_cannon);
+        acceptTool(output, eclipse_container);
+        acceptTool(output, coronal_key);
+        acceptTool(output, moon_lock);
     }
     private static void acceptTool(Consumer<ItemStack> output, Supplier<? extends IModifiable> tool) {
         ToolBuildHandler.addVariants(output, tool.get(), "");

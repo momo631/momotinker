@@ -5,6 +5,11 @@
     "thirdperson_righthand": {
       "rotation": [ -70, 275, -15 ],
       "scale": [ 1.6, 1.6, 1 ]
+    },
+    "thirdperson_lefthand": {
+      "rotation": [ 20, 90, -75 ],
+      "translation": [0, 0, 1],
+      "scale": [ 1.6, 1.6, 1]
     }
   }
 }

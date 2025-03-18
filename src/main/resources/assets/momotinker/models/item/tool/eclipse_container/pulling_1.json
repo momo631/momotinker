@@ -1,0 +1,43 @@
+{
+  "loader": "tconstruct:tool",
+  "parent": "momotinker:item/base/eclipse_container",
+  "textures": {
+    "part_1": "momotinker:item/tool/eclipse_container/part_1",
+    "part_2": "momotinker:item/tool/eclipse_container/part_2",
+    "part_3": "momotinker:item/tool/eclipse_container/part_3",
+    "part_4": "momotinker:item/tool/eclipse_container/part_4",
+    "part_5": "momotinker:item/tool/eclipse_container/part_5",
+    "part_6": "momotinker:item/tool/eclipse_container/part_6",
+    "broken_part": "momotinker:item/tool/eclipse_container/broken_part",
+    "eclipse": "momotinker:item/tool/eclipse_container/large/charge_1/eclipse_0",
+
+    "large_part_1": "momotinker:item/tool/eclipse_container/large/charge_1/part_1",
+    "large_part_2": "momotinker:item/tool/eclipse_container/large/charge_1/part_2",
+    "large_part_3": "momotinker:item/tool/eclipse_container/large/charge_1/part_3",
+    "large_part_4": "momotinker:item/tool/eclipse_container/large/charge_1/part_4",
+    "large_part_5": "momotinker:item/tool/eclipse_container/large/charge_1/part_5",
+    "large_part_6": "momotinker:item/tool/eclipse_container/large/charge_1/part_6",
+    "large_broken_part": "momotinker:item/tool/eclipse_container/large/charge_1/broken_part",
+    "large_eclipse": "momotinker:item/tool/eclipse_container/large/charge_1/eclipse"
+  },
+  "modifier_roots": {
+    "small": [
+      "momotinker:item/tool/eclipse_container/modifiers/"
+    ],
+    "large": [
+      "momotinker:item/tool/eclipse_container/large/modifiers/",
+      "momotinker:item/tool/eclipse_container/large/modifiers/charge_1/"
+    ]
+  },
+  "large": true,
+  "large_offset": [11, -11],
+  "parts": [
+    {"name": "part_1", "index": 0, "broken": "broken_part"},
+    {"name": "part_2", "index": 1},
+    {"name": "part_3", "index": 2},
+    {"name": "part_4", "index": 3},
+    {"name": "part_5", "index": 4},
+    {"name": "part_6", "index": 5},
+    {"name": "eclipse"}
+  ]
+}

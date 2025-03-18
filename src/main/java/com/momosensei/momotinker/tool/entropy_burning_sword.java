@@ -2,7 +2,7 @@ package com.momosensei.momotinker.tool;
 
 
 import com.momosensei.momotinker.network.Channel;
-import com.momosensei.momotinker.network.packet.TriggerBladeCharge;
+import com.momosensei.momotinker.network.packet.ToolsTimeCharge;
 import com.momosensei.momotinker.register.MomotinkerTools;
 import com.momosensei.momotinker.util.attackUtil;
 import net.minecraft.ChatFormatting;
@@ -94,6 +94,9 @@ public class entropy_burning_sword extends ModifiableItem {
             return;
         }
         if (livingEntity instanceof ServerPlayer player) {
+            if (!checkOffHand(player)){
+                return;
+            }
             player.awardStat(Stats.ITEM_USED.get(this));
             int a = (int) player.getEntityReach();
             if (perc >= 1) {
@@ -114,7 +117,7 @@ public class entropy_burning_sword extends ModifiableItem {
                     }
                 }
             }
-            Channel.sendToPlayer(new TriggerBladeCharge(0), player);
+            Channel.sendToPlayer(new ToolsTimeCharge(0), player);
             ToolDamageUtil.damageAnimated(tool,1,player);
             tool.getPersistentData().remove(KEY_DRAWTIME);
         }
@@ -124,7 +127,7 @@ public class entropy_burning_sword extends ModifiableItem {
         ToolStack tool = ToolStack.from(stack);
         if (living instanceof ServerPlayer player) {
             float perc = Mth.clamp((float) (this.getUseDuration(stack) - chargeRemaining) / (30 / tool.getStats().get(ToolStats.ATTACK_SPEED)),0,1);
-            Channel.sendToPlayer(new TriggerBladeCharge(perc), player);
+            Channel.sendToPlayer(new ToolsTimeCharge(perc), player);
         }
     }
     public int getUseDuration(ItemStack stack) {

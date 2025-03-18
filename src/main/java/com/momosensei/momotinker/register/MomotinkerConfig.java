@@ -32,12 +32,18 @@ public class MomotinkerConfig {
             .define("lazy_grail_is_special_acquisition",true);
     public static final ForgeConfigSpec.BooleanValue greedy_contract=builder.comment("greedy_contract")
             .define("greedy_contract_is_special_acquisition",true);
-    public static final ForgeConfigSpec.IntValue breakthroughstar_limit=builder.comment("breakthroughstar_limit")
-            .defineInRange("breakthroughstar_limit_max",100,0,Integer.MAX_VALUE);
     public static final ForgeConfigSpec.IntValue entropy_burning_riding_spear_limit=builder.comment("entropy_burning_riding_spear_limit")
             .defineInRange("entropy_burning_riding_spear_limit_max",150,0,Integer.MAX_VALUE);
     public static final ForgeConfigSpec.IntValue entropy_burning_cannon_limit=builder.comment("entropy_burning_cannon_limit")
             .defineInRange("entropy_burning_cannon_limit_max",200,0,Integer.MAX_VALUE);
+    public static final ForgeConfigSpec.IntValue sanctification_limit=builder.comment("divine_punishment_spear_limit")
+            .defineInRange("divine_punishment_spear_sanctification_limit",500,0,Integer.MAX_VALUE);
+    public static final ForgeConfigSpec.IntValue degenerate_limit=builder.comment("divine_punishment_spear_limit")
+            .defineInRange("divine_punishment_spear_degenerate_limit",100,0,Integer.MAX_VALUE);
+    public static final ForgeConfigSpec.IntValue breakthroughstar_limit=builder.comment("breakthroughstar_limit")
+            .defineInRange("breakthroughstar_limit_max",100,0,Integer.MAX_VALUE);
+    public static final ForgeConfigSpec.IntValue cleansetheworld_limit=builder.comment("cleansetheworld_limit")
+            .defineInRange("cleansetheworld_cooldowntime_limit",600,0,Integer.MAX_VALUE);
 
 
 

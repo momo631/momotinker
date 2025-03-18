@@ -4,7 +4,7 @@
   "block.momotinker.dimensional_prism": "§b次元棱镜§",
   "momotinker.block.tooltip.dimensional_prism1": "§b异次元空间的碎片§",
   "momotinker.block.tooltip.dimensional_prism2": "§b按住“shift”查看获取§",
-  "momotinker.block.tooltip.dimensional_prism3": "§b暂时莫得§",
+  "momotinker.block.tooltip.dimensional_prism3": "§b§",
 
   "effect.momotinker.hongwen": "红温",
   "effect.momotinker.none": "忘阙人",
@@ -56,6 +56,7 @@
 
   "recipe.momotinker.modifier.cleansetheworld": "荡涤天地需要贯星魔枪作为前置",
   "recipe.momotinker.modifier.shadowofdamnation": "天谴之影需要荡涤天地作为前置",
+  "recipe.momotinker.modifier.expandedequipment": "该工具无法施加强化",
 
   "item.momotinker.laomo": "墨",
 
@@ -132,20 +133,26 @@
 
   "itemGroup.momotinker.tools": "墨工坊模组-工具",
 
-  "item.momotinker.trigger_blade": "扳机长刀",
-  "item.momotinker.trigger_blade.description": "拥有特殊攻击手段的近战武器，使用时副手不能有其它物品。右键可进行蓄力，蓄力完成后松开可发出斩击，造成范围爆发伤害。\n每点初速度增加斩击伤害20%。\n精密度会随机增加伤害，每点使能随机到的最大值提升50%",
+  "item.momotinker.trigger_blade": "扳机横刀",
+  "item.momotinker.trigger_blade.description": "[双手武器]\n拥有特殊攻击手段的近战武器。右键可进行蓄力，蓄力完成后松开可发出斩击，造成范围爆发伤害。\n每点初速度增加斩击伤害20%。\n精密度会随机增加伤害，每点使能随机到的最大值提升50%",
 
   "item.momotinker.divine_punishment_spear": "天谴之矛",
-  "item.momotinker.divine_punishment_spear.description": "[古代神兵]:遗落于深谙古城\n超高攻速与攻击距离的单体型近战武器，使用时若副手有其他物品造成的伤害会减半，右键蓄力释放时可短暂冲刺\n玩家无法自主锻造，可以在某些地点获得黯淡玄金部件的工具，完成神兵任务可进化",
+  "item.momotinker.divine_punishment_spear.description": "[古代神兵]:遗落于深谙古城;[双手武器]\n超高攻速与攻击距离的单体型近战武器，右键蓄力释放时可短暂冲刺",
 
   "item.momotinker.entropy_burning_cube": "焓变遗骸·熵烬之心",
-  "item.momotinker.entropy_burning_cube.description": "[古代神兵]:遗落于亚特兰蒂斯与沉睡的宝藏\n本身无使用功能，按下工具技能可以变化多种形态且正常使用不消耗耐久，变形后无法更换和拆卸部件\n§o“沉睡于深渊中的国度，无法理解的繁华，\n§o尽数崩解为烬”——虚空铁匠议会第三席§",
+  "item.momotinker.entropy_burning_cube.description": "[古代神兵]:遗落于亚特兰蒂斯与沉睡的宝藏\n本身无使用功能，按下工具技能可以变化多种形态，变形后无法更换和拆卸部件\n§o“沉睡于深渊中的国度，无法理解的繁华，\n§o尽数崩解为烬”——虚空铁匠议会第三席§",
   "item.momotinker.entropy_burning_sword": "熵烬巨剑",
-  "item.momotinker.entropy_burning_sword.description": "高伤害但攻速极低的宽范围近战武器，使用时若副手有其他物品造成的伤害会大幅降低，右键蓄力完成后会进行一次“熵变”打击对大范围目标造成150%的伤害（受攻速影响）",
+  "item.momotinker.entropy_burning_sword.description": "[双手武器]\n高伤害但攻速极低的宽范围近战武器，右键蓄力完成后会进行一次“熵变”打击对大范围目标造成150%的伤害（受攻速影响）",
   "item.momotinker.entropy_burning_riding_spear": "熵烬骑枪",
-  "item.momotinker.entropy_burning_riding_spear.description": "较高伤害攻速较低的较长攻击距离的单体近战武器，使用时若副手有其他物品造成的伤害会大幅降低，移动时会根据移速增加伤害（默认最多增加150%），右键蓄力释放可短暂冲刺",
+  "item.momotinker.entropy_burning_riding_spear.description": "[双手武器]\n较高伤害攻速较低的较长攻击距离的单体近战武器，移动时会根据移速增加伤害（默认最多增加150%），右键蓄力释放可短暂冲刺",
   "item.momotinker.entropy_burning_cannon": "熵烬机炮",
-  "item.momotinker.entropy_burning_cannon.description": "中等距离穿透型远程武器，使用时若副手有其他物品时无法使用，右键可消耗当前2%经验以发动射击，可穿透方块并对路径上所有目标造成伤害（消耗经验越多射击伤害越高，默认最多增加200%）",
+  "item.momotinker.entropy_burning_cannon.description": "[双手武器]\n中等距离穿透型武器，右键可消耗当前2%经验以发动射击，可穿透方块并对路径上所有目标造成伤害（消耗经验越多射击伤害越高，默认最多增加200%）",
+  "item.momotinker.eclipse_container": "日蚀容器",
+  "item.momotinker.eclipse_container.description": "[双手武器]\n超低攻速超高攻击的大范围近战武器，只会继承“日冕之钥”的强化（包括材料的强化点数等特征），期间消耗充能，右键蓄力一段时间后按住释放“日蚀刻”，持续吸引周围实体造成伤害",
+  "item.momotinker.coronal_key": "日冕之钥",
+  "item.momotinker.coronal_key.description": "属性较弱的近战武器，持续战斗可增加充能条，充能增加可提高伤害，充能为满且副手为“新月之锁”时按下工具技能按键可与其合体为“日蚀容器”",
+  "item.momotinker.moon_lock": "新月之锁",
+  "item.momotinker.moon_lock.description": "[不存在之影]\n右键使用期间可获得50%的减伤并有50%的概率无视弹射物攻击，满足一定条件下时按下工具技能可合体为“日蚀容器”",
 
   "momotinker.tool.tooltip.offhand_hastool": "错误:副手有物品",
 
@@ -202,7 +209,7 @@
 
   "modifier.momotinker.red": "轮回色",
   "modifier.momotinker.red.flavor": "§4所归之景，为无§",
-  "modifier.momotinker.red.description": "常态下感知周围敌对生物，按下技能按键后自身获得15秒的“引渡人”效果，且该工具进入90秒冷却\n§7[引渡人]§:观察的一切景象都将褪色，在持续时间内对大范围内生物附加12层“忘阙人”效果，自身血量无法超过1点且生命暂时无法恢复",
+  "modifier.momotinker.red.description": "常态下感知周围敌对生物，主手持有时按下技能按键后自身获得15秒的“引渡人”效果，且该工具进入90秒冷却\n§7[引渡人]§:观察的一切景象都将褪色，在持续时间内对大范围内生物附加12层“忘阙人”效果，自身血量无法超过1点且生命暂时无法恢复",
 
   "modifier.momotinker.firmheart": "坚心",
   "modifier.momotinker.firmheart.flavor": "§2心坚如钢§",
@@ -274,7 +281,7 @@
 
   "modifier.momotinker.fallingstars": "苍穹落星",
   "modifier.momotinker.fallingstars.flavor": "§d当流星于此降临§",
-  "modifier.momotinker.fallingstars.description": "按下技能按键后升往空中，并在之后3秒内再次按下会获得1秒的“落星”效果，且该工具获得120秒冷却（若未使用第二段技能则只有30秒）\n§d[落星]§:向视角方向快速冲刺并在碰撞方块或击中实体时停止，停止时产生爆炸对范围内生物造成词条等级*100（若击中实体则格外增加词条等级*武器近战攻击一次的伤害）的爆炸类型伤害（不破坏方块），飞行时间越长伤害越高（在飞行15刻时最高，数值为400%）",
+  "modifier.momotinker.fallingstars.description": "主手持有时按下技能按键后升往空中，并在之后3秒内再次按下会获得1秒的“落星”效果，且该工具获得120秒冷却（若未使用第二段技能则只有30秒）\n§d[落星]§:向视角方向快速冲刺并在碰撞方块或击中实体时停止，停止时产生爆炸对范围内生物造成词条等级*100（若击中实体则格外增加词条等级*武器近战攻击一次的伤害）的爆炸类型伤害（不破坏方块），飞行时间越长伤害越高（在飞行15刻时最高，数值为400%）",
 
   "modifier.momotinker.unknownreturnee": "未知归来者",
   "modifier.momotinker.unknownreturnee.flavor": "§d“\\---.. ..--- -.-. -..\\--... .- --... ----.”§",
@@ -290,7 +297,7 @@
 
   "modifier.momotinker.frombrilliance": "古代神兵",
   "modifier.momotinker.frombrilliance.flavor": "§e来自辉煌的时代§",
-  "modifier.momotinker.frombrilliance.description": "达成某种条件可使武器进化！",
+  "modifier.momotinker.frombrilliance.description": "玩家无法自主锻造，可以在某些地点获得固定材料部件的工具，达成某种条件可使武器进化！",
 
   "modifier.momotinker.superancientmetals": "超古代金属",
   "modifier.momotinker.superancientmetals.flavor": "来自古代的奇特金属，表面看起来平平无奇",
@@ -301,7 +308,7 @@
   "modifier.momotinker.superancientmetalsreal.description": "工具的耐久消耗降低90%，大部分属性增加50%，会根据古代神兵的觉醒结果提供独特效果",
 
   "modifier.momotinker.crimsonqueen": "绯红女皇",
-  "modifier.momotinker.crimsonqueen.flavor": "扳机长刀专属强化:机动剑",
+  "modifier.momotinker.crimsonqueen.flavor": "扳机横刀专属强化:机动剑",
   "modifier.momotinker.crimsonqueen.description": "失去原本的斩击，取而代之的是在右键后一定时机松开会给武器充能20秒，存在充能时攻击会消耗层数使本次攻击修正为150%并无视护甲，最多可存在3层（若触发完美判定则直接获得3层），时间耗尽层数减一，切换武器时层数清零",
 
   "modifier.momotinker.berserk": "狂暴化",
@@ -309,7 +316,7 @@
   "modifier.momotinker.berserk.description": "按下按键切换普通与狂暴两种状态，狂暴状态下主手持有此工具时造成伤害与承受的伤害修正为140%+20%*词条等级",
 
   "modifier.momotinker.yamato": "次元斩",
-  "modifier.momotinker.yamato.flavor": "扳机长刀专属强化:阎魔刀",
+  "modifier.momotinker.yamato.flavor": "扳机横刀专属强化:阎魔刀",
   "modifier.momotinker.yamato.description": "斩击蓄力时间略微缩短且斩击变为50%伤害的4连击，使用后武器会陷入1秒的冷却，若在恰好蓄力完成以及其一定时机内释放则不会冷却",
 
   "modifier.momotinker.starcloudchain": "星云连锁",
@@ -322,7 +329,7 @@
 
   "modifier.momotinker.cleansetheworld": "荡涤天地",
   "modifier.momotinker.cleansetheworld.flavor": "贯星魔枪增强:天谴",
-  "modifier.momotinker.cleansetheworld.description": "较长时间蓄力后会在上空会消耗当前25%的经验点数召唤巨大魔法矛（使用后该类工具进入冷却300秒），被其触碰每刻会受到50%的伤害，在落地后产生剧烈爆炸并对大范围生物造成5000%的伤害，每消耗1点经验会提升其1%的伤害（默认最多增伤100%）",
+  "modifier.momotinker.cleansetheworld.description": "较长时间蓄力后会在上空会消耗当前25%的经验点数召唤巨大魔法矛（使用后该类工具进入默认冷却600秒），被其触碰每刻会受到50%的伤害，在落地后产生剧烈爆炸并对大范围生物造成5000%的伤害，每消耗1点经验会提升其1%的伤害（默认最多增伤100%）",
 
   "modifier.momotinker.shadowofdamnation": "天谴之影",
   "modifier.momotinker.shadowofdamnation.flavor": "荡涤天地改装:虚无投影",
@@ -334,6 +341,18 @@
 
   "modifier.momotinker.sweetaftertaste": "回甘",
   "modifier.momotinker.sweetaftertaste.flavor": "枯果枝下",
-  "modifier.momotinker.sweetaftertaste.description": "该工具为护甲时，会根据身上总护甲的饮魔点数减少受到伤害;该工具为武器或工具时，会根据饮魔点数增加近战伤害和攻击速度，若为远程武器则格外增加箭矢伤害;诅咒点数会减少使用饮魔所需的经验点数"
+  "modifier.momotinker.sweetaftertaste.description": "该工具为护甲时，会根据身上总护甲的饮魔点数减少受到伤害;该工具为武器或工具时，会根据饮魔点数增加近战伤害和攻击速度，若为远程武器则格外增加箭矢伤害;诅咒点数会减少使用饮魔所需的经验点数",
+
+  "modifier.momotinker.expandedequipment": "不存在之影",
+  "modifier.momotinker.expandedequipment.flavor": "其存在的意义是...",
+  "modifier.momotinker.expandedequipment.description": "该工具属性很弱且无法施加任何强化，但可正常更换部件（在某些情况下其强化会被清除，若其部件材料拥有强化点数等特征也会被清除）",
+
+  "modifier.momotinker.projectionofsuffering": "灾难预兆",
+  "modifier.momotinker.projectionofsuffering.flavor": "日与月的重叠，是...",
+  "modifier.momotinker.projectionofsuffering.description": "处于战斗状态时随时间充能，脱离战斗8秒后充能随时间减少，若主手持有工具不是“日冕之钥”或“日蚀容器”时则更快速的减少；充能存在时，武器造成的伤害提高（默认最高为60%）",
+
+  "modifier.momotinker.ultimatedarkness": "至黑，至暗",
+  "modifier.momotinker.ultimatedarkness.flavor": "切莫哀悼，此乃必然",
+  "modifier.momotinker.ultimatedarkness.description": "持有时充能会随时间减少，若主手持有工具不是“日冕之钥”或“日蚀容器”时则更快速的减少；存在充能时武器造成的伤害提高（默认为60%）"
 
 }

@@ -3,6 +3,7 @@ package com.momosensei.momotinker.Modifiers.modifiers;
 
 import com.c2h6s.etstlib.entity.specialDamageSources.LegacyDamageSource;
 import com.momosensei.momotinker.Modifiers.momomodifier;
+import com.momosensei.momotinker.register.MomotinkerConfig;
 import net.minecraft.ChatFormatting;
 import net.minecraft.network.chat.Component;
 import net.minecraft.server.level.ServerPlayer;
@@ -33,7 +34,8 @@ public class SuperancientMetalsReal extends momomodifier {
     public SuperancientMetalsReal() {
         MinecraftForge.EVENT_BUS.addListener(this::livinghurtevent);
     }
-
+    int sanctification_limit = MomotinkerConfig.sanctification_limit.get();
+    int degenerate_limit = MomotinkerConfig.degenerate_limit.get();
     @Override
     public boolean isNoLevels() {
         return true;
@@ -70,7 +72,7 @@ public class SuperancientMetalsReal extends momomodifier {
         Entity b = event.getSource().getEntity();
         if (b instanceof Player player&&a!=null){
             ModDataNBT c = ToolStack.from(player.getItemBySlot(EquipmentSlot.MAINHAND)).getPersistentData();
-            if (c.getFloat(sanctification)==500&&a instanceof Mob mob&&!mob.getTags().contains("BeConquered")) {
+            if (c.getFloat(sanctification)==sanctification_limit&&a instanceof Mob mob&&!mob.getTags().contains("BeConquered")) {
                 mob.addTag("BeConquered");
             }
         }
@@ -82,7 +84,7 @@ public class SuperancientMetalsReal extends momomodifier {
     public LegacyDamageSource modifyDamageSource(IToolStackView tool, ModifierEntry entry, LivingEntity attacker, InteractionHand hand, Entity target, EquipmentSlot sourceSlot, boolean isFullyCharged, boolean isExtraAttack, boolean isCritical, LegacyDamageSource source) {
         ModDataNBT c = tool.getPersistentData();
         if (attacker instanceof ServerPlayer player && target != null) {
-            if (c.getFloat(degenerate)==100) {
+            if (c.getFloat(degenerate)==degenerate_limit) {
                 target.invulnerableTime=0;
                 return source.setBypassArmor();
             }
@@ -93,7 +95,7 @@ public class SuperancientMetalsReal extends momomodifier {
     @Override
     public LegacyDamageSource modifyArrowDamageSource(ModifierNBT modifiers, ModDataNBT persistentData, ModifierEntry modifier, AbstractArrow arrow, @Nullable LivingEntity attacker, @NotNull Entity target, LegacyDamageSource source) {
         if (attacker instanceof ServerPlayer player&&arrow!=null && target != null) {
-            if (persistentData.getFloat(degenerate)==100) {
+            if (persistentData.getFloat(degenerate)==degenerate_limit) {
                 target.invulnerableTime=0;
                 return source.setBypassArmor();
             }
@@ -103,11 +105,11 @@ public class SuperancientMetalsReal extends momomodifier {
 
     public void addTooltip(IToolStackView tool, ModifierEntry modifierEntry, @org.jetbrains.annotations.Nullable Player player, List<Component> tooltip, TooltipKey tooltipKey, TooltipFlag tooltipFlag) {
         ModDataNBT c = tool.getPersistentData();
-        if (c.getFloat(degenerate)==100) {
+        if (c.getFloat(degenerate)==degenerate_limit) {
             tooltip.add(net.minecraft.network.chat.Component.translatable("古代神兵认证:天谴之矛-染血").withStyle(ChatFormatting.DARK_RED));
             tooltip.add(net.minecraft.network.chat.Component.translatable("此工具攻击将无视护甲且不造成无敌帧").withStyle(ChatFormatting.DARK_RED));
         }
-        if (c.getFloat(sanctification)==500) {
+        if (c.getFloat(sanctification)==sanctification_limit) {
             tooltip.add(net.minecraft.network.chat.Component.translatable("古代神兵认证:天谴之矛-星辰").withStyle(ChatFormatting.YELLOW));
             tooltip.add(net.minecraft.network.chat.Component.translatable("此武器攻击怪物会永久添加“被征服者”的标记，此怪物受到的任何伤害会修正为150%").withStyle(ChatFormatting.YELLOW));
         }

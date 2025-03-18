@@ -2,7 +2,7 @@ package com.momosensei.momotinker.tool;
 
 import com.momosensei.momotinker.network.Channel;
 import com.momosensei.momotinker.network.packet.RayEntityPacket;
-import com.momosensei.momotinker.network.packet.TriggerBladeCharge;
+import com.momosensei.momotinker.network.packet.ToolsTimeCharge;
 import net.minecraft.ChatFormatting;
 import net.minecraft.core.BlockPos;
 import net.minecraft.network.chat.Component;
@@ -77,6 +77,16 @@ public class entropy_burning_cannon extends ModifiableItem {
         float perc = Mth.clamp((float) i / (30 / tool.getStats().get(ToolStats.ATTACK_SPEED)),0,1);
         if (tool.isBroken()){
             tool.getPersistentData().remove(KEY_DRAWTIME);
+            if (livingEntity instanceof ServerPlayer player){
+                Channel.sendToPlayer(new ToolsTimeCharge(0), player);
+            }
+            return;
+        }
+        if (!checkOffHand((Player) livingEntity)) {
+            tool.getPersistentData().remove(KEY_DRAWTIME);
+            if (livingEntity instanceof ServerPlayer player){
+                Channel.sendToPlayer(new ToolsTimeCharge(0), player);
+            }
             return;
         }
         if (livingEntity instanceof ServerPlayer player){
@@ -85,7 +95,7 @@ public class entropy_burning_cannon extends ModifiableItem {
                 Channel.INSTANCE.sendToServer(new RayEntityPacket(player.getId()));
                 player.giveExperiencePoints((int) (-player.totalExperience*0.02F));
             }
-            Channel.sendToPlayer(new TriggerBladeCharge(0), player);
+            Channel.sendToPlayer(new ToolsTimeCharge(0), player);
             ToolDamageUtil.damageAnimated(tool,1,player);
             tool.getPersistentData().remove(KEY_DRAWTIME);
         }
@@ -95,7 +105,7 @@ public class entropy_burning_cannon extends ModifiableItem {
         ToolStack tool = ToolStack.from(stack);
         if (living instanceof ServerPlayer player) {
             float perc = Mth.clamp((float) (this.getUseDuration(stack) - chargeRemaining) / (30 / tool.getStats().get(ToolStats.ATTACK_SPEED)),0,1);
-            Channel.sendToPlayer(new TriggerBladeCharge(perc), player);
+            Channel.sendToPlayer(new ToolsTimeCharge(perc), player);
         }
     }
     public int getUseDuration(ItemStack stack) {

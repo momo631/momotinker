@@ -6,9 +6,12 @@ import com.momosensei.momotinker.Momotinker;
 import com.momosensei.momotinker.entity.CleanseEntity;
 import com.momosensei.momotinker.entity.MomotinkerEntitiesCreate;
 import com.momosensei.momotinker.event.CleanseSpawnEvent;
+import com.momosensei.momotinker.mobs.CoolTime;
 import com.momosensei.momotinker.network.Channel;
+import com.momosensei.momotinker.network.packet.CoolTimeCharge;
 import com.momosensei.momotinker.network.packet.SpearEntityPacket;
-import com.momosensei.momotinker.network.packet.TriggerBladeCharge;
+import com.momosensei.momotinker.network.packet.ToolsTimeCharge;
+import com.momosensei.momotinker.register.MomotinkerConfig;
 import com.momosensei.momotinker.register.MomotinkerModifiers;
 import com.momosensei.momotinker.register.MomotinkerTools;
 import net.minecraft.ChatFormatting;
@@ -67,6 +70,8 @@ public class divine_punishment_spear extends ModifiableItem {
         MinecraftForge.EVENT_BUS.addListener(this::livinghurtevent);
         MinecraftForge.EVENT_BUS.addListener(EventPriority.LOWEST,this::onEntityDeath);
     }
+    int sanctification_limit = MomotinkerConfig.sanctification_limit.get();
+    int degenerate_limit = MomotinkerConfig.degenerate_limit.get();
     public static final ResourceLocation sanctification = Momotinker.getResource("sanctification");
     public static final ResourceLocation degenerate = Momotinker.getResource("degenerate");
 
@@ -74,10 +79,10 @@ public class divine_punishment_spear extends ModifiableItem {
         if (event.getSource().getEntity() instanceof Player player&&event.getEntity()!=null) {
             if (player.getItemBySlot(EquipmentSlot.MAINHAND).is(MomotinkerTools.divine_punishment_spear.get())&& ModifierUtil.getModifierLevel(player.getItemBySlot(EquipmentSlot.MAINHAND), MomotinkerModifiers.frombrilliance.getId())>0){
                 ModDataNBT a = ToolStack.from(player.getItemBySlot(EquipmentSlot.MAINHAND)).getPersistentData();
-                if (event.getEntity().getMobType() == MobType.UNDEAD&&a.getFloat(sanctification)<500&&a.getFloat(degenerate)<100){
+                if (event.getEntity().getMobType() == MobType.UNDEAD&&a.getFloat(sanctification)<sanctification_limit&&a.getFloat(degenerate)<degenerate_limit){
                     a.putFloat(sanctification, a.getFloat(sanctification) + 1);
                 }
-                if (event.getEntity() instanceof Villager&&a.getFloat(sanctification)<500&&a.getFloat(degenerate)<100){
+                if (event.getEntity() instanceof Villager&&a.getFloat(sanctification)<sanctification_limit&&a.getFloat(degenerate)<degenerate_limit){
                     a.putFloat(degenerate,a.getFloat(degenerate) + 1);
                 }
             }
@@ -87,16 +92,18 @@ public class divine_punishment_spear extends ModifiableItem {
     private void livinghurtevent(LivingHurtEvent event) {
         Entity a = event.getEntity();
         Entity b = event.getSource().getEntity();
-        if (b instanceof Player player&&a!=null){
+        int sanctification_limit = MomotinkerConfig.sanctification_limit.get();
+        int degenerate_limit = MomotinkerConfig.degenerate_limit.get();
+        if (b instanceof Player player&&a!=null&&player.getMainHandItem().is(MomotinkerTools.divine_punishment_spear.get())){
             ModDataNBT c = ToolStack.from(player.getItemBySlot(EquipmentSlot.MAINHAND)).getPersistentData();
             if (!checkOffHand(player)) {
                 event.setAmount(0.5F * event.getAmount());
             }
             if (ModifierUtil.getModifierLevel(player.getItemBySlot(EquipmentSlot.MAINHAND), MomotinkerModifiers.frombrilliance.getId())>0) {
-                if (c.getFloat(sanctification) == 500) {
+                if (c.getFloat(sanctification) == sanctification_limit) {
                     a.hurt(LegacyDamageSource.indirectMagic(player).setBypassMagic(), event.getAmount() * 0.25F);
                 }
-                if (c.getFloat(degenerate) == 100) {
+                if (c.getFloat(degenerate) == degenerate_limit) {
                     if (player.getItemBySlot(EquipmentSlot.MAINHAND).getDamageValue() == 0) {
                         player.heal(event.getAmount() * 0.5F);
                     }
@@ -158,6 +165,16 @@ public class divine_punishment_spear extends ModifiableItem {
         int i = this.getUseDuration(stack) - duration;
         if (tool.isBroken()){
             tool.getPersistentData().remove(KEY_DRAWTIME);
+            if (livingEntity instanceof ServerPlayer player){
+                Channel.sendToPlayer(new ToolsTimeCharge(0), player);
+            }
+            return;
+        }
+        if (CoolTime.getCoolTime() != 0) {
+            tool.getPersistentData().remove(KEY_DRAWTIME);
+            if (livingEntity instanceof ServerPlayer player){
+                Channel.sendToPlayer(new ToolsTimeCharge(0), player);
+            }
             return;
         }
         if (livingEntity instanceof Player player) {
@@ -174,7 +191,7 @@ public class divine_punishment_spear extends ModifiableItem {
             }
             ToolDamageUtil.damageAnimated(tool,1,player);
             if (livingEntity instanceof ServerPlayer player1){
-                Channel.sendToPlayer(new TriggerBladeCharge(0), player1);
+                Channel.sendToPlayer(new ToolsTimeCharge(0), player1);
                 if (a>0&&b==0&&i>=10){
                     player.giveExperiencePoints(-tool.getPersistentData().getInt(breakthroughstar));
                     Channel.INSTANCE.sendToServer(new SpearEntityPacket(player.getId()));
@@ -196,7 +213,8 @@ public class divine_punishment_spear extends ModifiableItem {
                         entity.setExplosionPower((byte) 120);
                         level.addFreshEntity(entity);
                     }
-                    player.getCooldowns().addCooldown(player.getMainHandItem().getItem(), 6000);
+                    int d = MomotinkerConfig.cleansetheworld_limit.get();
+                    Channel.sendToClient(new CoolTimeCharge(d));
                 }
             }
         }
@@ -209,15 +227,15 @@ public class divine_punishment_spear extends ModifiableItem {
             int b = ModifierUtil.getModifierLevel(player.getMainHandItem(), MomotinkerModifiers.cleansetheworld.getId());
             if (a==0&&b==0) {
                 float perc = Mth.clamp((float) (this.getUseDuration(stack) - chargeRemaining) / 20, 0, 1);
-                Channel.sendToPlayer(new TriggerBladeCharge(perc), player);
+                Channel.sendToPlayer(new ToolsTimeCharge(perc), player);
             }else
             if (a>0&&b==0) {
                 float perc = Mth.clamp((float) (this.getUseDuration(stack) - chargeRemaining) / 10, 0, 1);
-                Channel.sendToPlayer(new TriggerBladeCharge(perc), player);
+                Channel.sendToPlayer(new ToolsTimeCharge(perc), player);
             }else
             if (b>0) {
                 float perc = Mth.clamp((float) (this.getUseDuration(stack) - chargeRemaining) / 100, 0, 1);
-                Channel.sendToPlayer(new TriggerBladeCharge(perc), player);
+                Channel.sendToPlayer(new ToolsTimeCharge(perc), player);
             }
         }
     }
@@ -246,14 +264,17 @@ public class divine_punishment_spear extends ModifiableItem {
             builder.add(ToolStats.ATTACK_SPEED);
         }
         builder.addAllFreeSlots();
-        if (a.getFloat(sanctification)<500&&a.getFloat(degenerate)<100) {
-            builder.add(Component.translatable("古代神兵任务:击杀500只亡灵生物。当前击杀数为" + a.getFloat(sanctification)).withStyle(ChatFormatting.GOLD));
+        if (a.getFloat(sanctification)<sanctification_limit&&a.getFloat(degenerate)<degenerate_limit) {
+            builder.add(Component.translatable("古代神兵任务:击杀"+sanctification_limit+"只亡灵生物。当前击杀数为" + a.getFloat(sanctification)).withStyle(ChatFormatting.GOLD));
         }
-        if (a.getFloat(sanctification)==500) {
+        if (a.getFloat(sanctification)==sanctification_limit) {
             builder.add(Component.translatable("古代神兵任务已完成！此工具将格外造成25%魔法伤害且此伤害无视魔法防御").withStyle(ChatFormatting.YELLOW));
         }
-        if (a.getFloat(degenerate)==100) {
+        if (a.getFloat(degenerate)==degenerate_limit) {
             builder.add(Component.translatable("古代神兵隐藏任务已完成！此工具造成伤害会恢复耐久，若耐久为满则恢复使用者生命").withStyle(ChatFormatting.DARK_RED));
+        }
+        if (CoolTime.getCoolTime()!=0){
+            builder.add(Component.translatable("“荡涤天地”冷却还剩"+CoolTime.getCoolTime()+"秒").withStyle(ChatFormatting.YELLOW));
         }
         if (!checkOffHand(player)){
             builder.add(Component.translatable("momotinker.tool.tooltip.offhand_hastool").withStyle(ChatFormatting.RED));

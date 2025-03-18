@@ -1,15 +1,18 @@
 package com.momosensei.momotinker.network.packet;
 
 import com.momosensei.momotinker.register.MomotinkerToolDefinitions;
+import com.momosensei.momotinker.register.MomotinkerTools;
 import net.minecraft.network.FriendlyByteBuf;
 import net.minecraft.server.level.ServerPlayer;
 import net.minecraft.world.InteractionHand;
 import net.minecraft.world.item.ItemStack;
 import net.minecraftforge.network.NetworkEvent;
+import slimeknights.tconstruct.library.tools.nbt.MaterialNBT;
 import slimeknights.tconstruct.library.tools.nbt.ToolStack;
 
 import java.util.function.Supplier;
 
+import static com.momosensei.momotinker.Modifiers.modifiers.ProjectionOfSuffering.disaster;
 import static com.momosensei.momotinker.register.MomotinkerTools.*;
 
 public class KeyAInputPKT {
@@ -77,6 +80,59 @@ public class KeyAInputPKT {
                 tools.setDamage(tool.getDamage());
                 tools.getPersistentData().copyFrom(tool.getPersistentData().getCopy());
                 player.setItemInHand(InteractionHand.MAIN_HAND, tools.createStack());
+            }
+
+            if (player!=null) {
+                ItemStack stack1 = player.getMainHandItem();
+                ItemStack stack2 = player.getOffhandItem();
+                ToolStack tool1 = ToolStack.from(stack1);
+                ToolStack tool2 = ToolStack.from(stack2);
+                ItemStack stack3 = ToolStack.createTool(MomotinkerTools.eclipse_container.get(), MomotinkerToolDefinitions.ECLIPSE_CONTAINER, MaterialNBT.builder().build()).createStack();
+                ItemStack stack4 = ToolStack.createTool(MomotinkerTools.coronal_key.get(), MomotinkerToolDefinitions.CORONAL_KEY, MaterialNBT.builder().build()).createStack();
+                ItemStack stack5 = ToolStack.createTool(MomotinkerTools.moon_lock.get(), MomotinkerToolDefinitions.MOON_LOCK, MaterialNBT.builder().build()).createStack();
+                ToolStack tool3 = ToolStack.from(stack3);
+                ToolStack tool4 = ToolStack.from(stack4);
+                ToolStack tool5 = ToolStack.from(stack5);
+                tool3.setMaterials(tool3.getMaterials().replaceMaterial(0,tool1.getMaterial(0).getVariant()));
+                tool3.setMaterials(tool3.getMaterials().replaceMaterial(1,tool1.getMaterial(1).getVariant()));
+                tool3.setMaterials(tool3.getMaterials().replaceMaterial(2,tool1.getMaterial(2).getVariant()));
+                tool3.setMaterials(tool3.getMaterials().replaceMaterial(3,tool2.getMaterial(0).getVariant()));
+                tool3.setMaterials(tool3.getMaterials().replaceMaterial(4,tool2.getMaterial(1).getVariant()));
+                tool3.setMaterials(tool3.getMaterials().replaceMaterial(5,tool2.getMaterial(2).getVariant()));
+
+                tool4.setMaterials(tool4.getMaterials().replaceMaterial(0,tool1.getMaterial(0).getVariant()));
+                tool4.setMaterials(tool4.getMaterials().replaceMaterial(1,tool1.getMaterial(1).getVariant()));
+                tool4.setMaterials(tool4.getMaterials().replaceMaterial(2,tool1.getMaterial(2).getVariant()));
+
+                tool5.setMaterials(tool5.getMaterials().replaceMaterial(0,tool1.getMaterial(3).getVariant()));
+                tool5.setMaterials(tool5.getMaterials().replaceMaterial(1,tool1.getMaterial(4).getVariant()));
+                tool5.setMaterials(tool5.getMaterials().replaceMaterial(2,tool1.getMaterial(5).getVariant()));
+
+                stack3.setTag(stack1.getTag());
+                stack4.setTag(stack1.getTag());
+
+                tool3.setUpgrades(tool1.getUpgrades());
+                tool4.setUpgrades(tool1.getUpgrades());
+
+                tool3.setDamage(tool1.getDamage());
+                tool4.setDamage(tool1.getDamage());
+
+                tool3.getPersistentData().copyFrom(tool1.getPersistentData().getCopy());
+                tool4.getPersistentData().copyFrom(tool1.getPersistentData().getCopy());
+
+                tool3.rebuildStats();
+                tool4.rebuildStats();
+                tool5.rebuildStats();
+                if (player.getMainHandItem().is(MomotinkerTools.coronal_key.get())&&player.getOffhandItem().is(MomotinkerTools.moon_lock.get())&&tool1.getPersistentData().getInt(disaster)==600) {
+                    player.setItemInHand(InteractionHand.MAIN_HAND, tool3.createStack());
+                    player.setItemInHand(InteractionHand.OFF_HAND, ItemStack.EMPTY);
+                }else if (player.getMainHandItem().is(MomotinkerTools.eclipse_container.get())&&player.getOffhandItem().is(ItemStack.EMPTY.getItem())){
+                    if (tool1.getPersistentData().getInt(disaster)>0){
+                        tool1.getPersistentData().putInt(disaster,0);
+                    }
+                    player.setItemInHand(InteractionHand.MAIN_HAND, tool4.createStack());
+                    player.setItemInHand(InteractionHand.OFF_HAND, tool5.createStack());
+                }
             }
         });
         context.setPacketHandled(true);

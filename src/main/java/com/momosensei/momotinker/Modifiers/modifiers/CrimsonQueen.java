@@ -4,7 +4,7 @@ import com.c2h6s.etstlib.entity.specialDamageSources.LegacyDamageSource;
 import com.momosensei.momotinker.Modifiers.momomodifier;
 import com.momosensei.momotinker.Momotinker;
 import com.momosensei.momotinker.network.Channel;
-import com.momosensei.momotinker.network.packet.TriggerBladeCharge;
+import com.momosensei.momotinker.network.packet.ToolsTimeCharge;
 import com.momosensei.momotinker.register.MomotinkerModifiers;
 import net.minecraft.core.particles.ParticleTypes;
 import net.minecraft.network.chat.Component;
@@ -69,7 +69,7 @@ public class CrimsonQueen extends momomodifier {
                     }
                 }
                 float perc = Mth.clamp(a.getFloat(crimsontime) / 20, 0, 1);
-                Channel.sendToClient(new TriggerBladeCharge(perc));
+                Channel.sendToClient(new ToolsTimeCharge(perc));
             }
             if (ModifierUtil.getModifierLevel(player.getMainHandItem(), MomotinkerModifiers.crimsonqueen.getId()) == 0) {
                 a.putFloat(crimsonlayers, 0);

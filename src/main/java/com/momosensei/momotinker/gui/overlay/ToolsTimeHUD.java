@@ -3,7 +3,7 @@ package com.momosensei.momotinker.gui.overlay;
 
 import com.mojang.blaze3d.systems.RenderSystem;
 import com.momosensei.momotinker.Momotinker;
-import com.momosensei.momotinker.mobs.TriggerBladeDrawtime;
+import com.momosensei.momotinker.mobs.ToolsTimeDrawtime;
 import net.minecraft.client.Minecraft;
 import net.minecraft.client.renderer.GameRenderer;
 import net.minecraft.resources.ResourceLocation;
@@ -38,14 +38,16 @@ public class ToolsTimeHUD {
                 ||player.getItemBySlot(EquipmentSlot.MAINHAND).is(divine_punishment_spear.get())
                 ||player.getItemBySlot(EquipmentSlot.MAINHAND).is(entropy_burning_sword.get())
                 ||player.getItemBySlot(EquipmentSlot.MAINHAND).is(entropy_burning_riding_spear.get())
-                ||player.getItemBySlot(EquipmentSlot.MAINHAND).is(entropy_burning_cannon.get()))){
+                ||player.getItemBySlot(EquipmentSlot.MAINHAND).is(entropy_burning_cannon.get())
+                ||player.getItemBySlot(EquipmentSlot.MAINHAND).is(coronal_key.get())
+                ||player.getItemBySlot(EquipmentSlot.MAINHAND).is(eclipse_container.get()))){
             return;
         }
         ToolStack tool = ToolStack.from(player.getMainHandItem());
         if (tool.isBroken()){
             return;
         }
-        float perc = TriggerBladeDrawtime.getPercentage();
+        float perc = ToolsTimeDrawtime.getPercentage();
         int amount = Mth.clamp((int) (perc*8),0,8);
         int x =width/2;
         int y = height/2;
@@ -53,7 +55,7 @@ public class ToolsTimeHUD {
             RenderSystem.setShader(GameRenderer::getPositionShader);
             RenderSystem.setShaderColor(1, 1, 1, 1);
             RenderSystem.setShaderTexture(0, Texture.get(amount));
-            poseStack.blit(Texture.get(amount),x - 9, y - 8, 0, 0, 17, 17, 17, 17);
+            poseStack.blit(Texture.get(amount), x - 9, y - 8, 0, 0, 17, 17, 17, 17);
 
     });
 }

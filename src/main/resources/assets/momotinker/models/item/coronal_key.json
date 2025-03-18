@@ -1,0 +1,30 @@
+{
+  "loader": "tconstruct:tool",
+  "parent": "forge:item/default-tool",
+  "textures": {
+    "part_1": "momotinker:item/tool/coronal_key/part_1",
+    "part_2": "momotinker:item/tool/coronal_key/part_2",
+    "part_3": "momotinker:item/tool/coronal_key/part_3",
+    "broken_part": "momotinker:item/tool/coronal_key/broken_part",
+
+    "large_part_1": "momotinker:item/tool/coronal_key/large/part_1",
+    "large_part_2": "momotinker:item/tool/coronal_key/large/part_2",
+    "large_part_3": "momotinker:item/tool/coronal_key/large/part_3",
+    "large_broken_part": "momotinker:item/tool/coronal_key/large/broken_part"
+  },
+  "modifier_roots": {
+    "small": [
+      "momotinker:item/tool/coronal_key/modifiers/"
+    ],
+    "large": [
+      "momotinker:item/tool/coronal_key/large/modifiers/"
+    ]
+  },
+  "large": true,
+  "large_offset": [-1, 1],
+  "parts": [
+    {"name": "part_1", "index": 0, "broken": "broken_part"},
+    {"name": "part_2", "index": 1},
+    {"name": "part_3", "index": 2}
+  ]
+}
