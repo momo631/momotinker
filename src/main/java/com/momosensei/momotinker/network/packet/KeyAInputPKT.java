@@ -86,9 +86,9 @@ public class KeyAInputPKT {
                 ItemStack stack2 = player.getOffhandItem();
                 ToolStack tool1 = ToolStack.from(stack1);
                 ToolStack tool2 = ToolStack.from(stack2);
-                ItemStack stack3 = ToolStack.createTool(MomotinkerItem.eclipse_container.get(), MomotinkerToolDefinitions.CHARGING_AXE, MaterialNBT.builder().build()).createStack();
-                ItemStack stack4 = ToolStack.createTool(MomotinkerItem.coronal_key.get(), MomotinkerToolDefinitions.CHARGING_SWORD, MaterialNBT.builder().build()).createStack();
-                ItemStack stack5 = ToolStack.createTool(MomotinkerItem.moon_lock.get(), MomotinkerToolDefinitions.CHARGING_SHIELD, MaterialNBT.builder().build()).createStack();
+                ItemStack stack3 = ToolStack.createTool(MomotinkerItem.eclipse_container.get(), MomotinkerToolDefinitions.ECLIPSE_CONTAINER, MaterialNBT.builder().build()).createStack();
+                ItemStack stack4 = ToolStack.createTool(MomotinkerItem.coronal_key.get(), MomotinkerToolDefinitions.CORONAL_KEY, MaterialNBT.builder().build()).createStack();
+                ItemStack stack5 = ToolStack.createTool(MomotinkerItem.moon_lock.get(), MomotinkerToolDefinitions.MOON_LOCK, MaterialNBT.builder().build()).createStack();
                 ToolStack tool3 = ToolStack.from(stack3);
                 ToolStack tool4 = ToolStack.from(stack4);
                 ToolStack tool5 = ToolStack.from(stack5);
