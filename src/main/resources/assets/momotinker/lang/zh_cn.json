@@ -137,7 +137,7 @@
   "item.momotinker.trigger_blade.description": "[双手武器]\n拥有特殊攻击手段的近战武器。右键可进行蓄力，蓄力完成后松开可发出斩击，造成范围爆发伤害。\n每点初速度增加斩击伤害20%。\n精密度会随机增加伤害，每点使能随机到的最大值提升50%",
 
   "item.momotinker.divine_punishment_spear": "天谴之矛",
-  "item.momotinker.divine_punishment_spear.description": "[古代神兵]:遗落于深谙古城;[双手武器]\n超高攻速与攻击距离的单体型近战武器，右键蓄力释放时可短暂冲刺",
+  "item.momotinker.divine_punishment_spear.description": "[双手武器][古代神兵]:遗落于深谙古城;\n超高攻速与攻击距离的单体型近战武器，右键蓄力释放时可短暂冲刺",
 
   "item.momotinker.entropy_burning_cube": "焓变遗骸·熵烬之心",
   "item.momotinker.entropy_burning_cube.description": "[古代神兵]:遗落于亚特兰蒂斯与沉睡的宝藏\n本身无使用功能，按下工具技能可以变化多种形态，变形后无法更换和拆卸部件\n§o“沉睡于深渊中的国度，无法理解的繁华，\n§o尽数崩解为烬”——虚空铁匠议会第三席§",
@@ -147,6 +147,7 @@
   "item.momotinker.entropy_burning_riding_spear.description": "[双手武器]\n较高伤害攻速较低的较长攻击距离的单体近战武器，移动时会根据移速增加伤害（默认最多增加150%），右键蓄力释放可短暂冲刺",
   "item.momotinker.entropy_burning_cannon": "熵烬机炮",
   "item.momotinker.entropy_burning_cannon.description": "[双手武器]\n中等距离穿透型武器，右键可消耗当前2%经验以发动射击，可穿透方块并对路径上所有目标造成伤害（消耗经验越多射击伤害越高，默认最多增加200%）",
+
   "item.momotinker.eclipse_container": "日蚀容器",
   "item.momotinker.eclipse_container.description": "[双手武器]\n超低攻速超高攻击的大范围近战武器，只会继承“日冕之钥”的强化（包括材料的强化点数等特征），期间消耗充能，右键蓄力一段时间后按住释放“日蚀刻”，持续吸引周围实体造成伤害",
   "item.momotinker.coronal_key": "日冕之钥",
@@ -273,7 +274,7 @@
 
   "modifier.momotinker.grudgeothers": "妒外",
   "modifier.momotinker.grudgeothers.flavor": "§e深恶痛疾§",
-  "modifier.momotinker.grudgeothers.description": "攻击时若自己某个部位未装备护甲的同时目标存在装备，则会清除对方该部位护甲并掉落在自己所在位置（不对玩家与匠魂盔甲生效）;攻击血量上限比自己高的目标时会根据差值增加攻击力，数值为10%*词条等级*血量上限差值（最大为100*词条等级^2）",
+  "modifier.momotinker.grudgeothers.description": "攻击时若自己某个部位未装备护甲的同时目标存在装备，则会清除对方该部位护甲并掉落在自己所在位置（不对玩家生效）;攻击血量上限比自己高的目标时会根据差值增加攻击力，数值为10%*词条等级*血量上限差值（最大为100*词条等级^2）",
 
   "modifier.momotinker.overenvysin": "尽妒之罪",
   "modifier.momotinker.overenvysin.flavor": "§e无尽妒怨之代价:临微浅恶§",
