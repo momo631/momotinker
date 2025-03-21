@@ -22,7 +22,7 @@ public class IntendingPlunder extends momomodifier {
     public void addTooltip(IToolStackView tool, ModifierEntry modifierEntry, @org.jetbrains.annotations.Nullable Player player, List<Component> tooltip, TooltipKey tooltipKey, TooltipFlag tooltipFlag) {
         if (player != null) {
             int a = ModifierUtil.getModifierLevel(player.getItemBySlot(EquipmentSlot.MAINHAND), MomotinkerModifiers.intendingplunder.getId());
-            tooltip.add(net.minecraft.network.chat.Component.translatable("当前已增加掉落数量" + (a*50)+"%").withStyle(ChatFormatting.BLUE));
+            tooltip.add(net.minecraft.network.chat.Component.translatable("modifier.momotinker.tooltip.intendingplunder1").append(a*50+"%").withStyle(ChatFormatting.BLUE));
         }
     }
 }

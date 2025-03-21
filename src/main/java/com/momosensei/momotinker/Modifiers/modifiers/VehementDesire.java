@@ -73,8 +73,8 @@ public class VehementDesire extends momomodifier {
     public void addTooltip(IToolStackView tool, ModifierEntry modifierEntry, @org.jetbrains.annotations.Nullable Player player, List<Component> tooltip, TooltipKey tooltipKey, TooltipFlag tooltipFlag) {
         if (player != null) {
             float a = ModifierUtil.getModifierLevel(player.getItemBySlot(EquipmentSlot.MAINHAND), MomotinkerModifiers.vehementdesire.getId());
-            tooltip.add(net.minecraft.network.chat.Component.translatable("目前最高增伤为" + (a*40)+"%").withStyle(ChatFormatting.DARK_PURPLE));
-            tooltip.add(net.minecraft.network.chat.Component.translatable("目标护甲为" + (a*30)+"时增伤为0%").withStyle(ChatFormatting.DARK_PURPLE));
+            tooltip.add(net.minecraft.network.chat.Component.translatable("modifier.momotinker.tooltip.vehementdesire1").append(a*40+"%").withStyle(ChatFormatting.DARK_PURPLE));
+            tooltip.add(net.minecraft.network.chat.Component.translatable("modifier.momotinker.tooltip.vehementdesire2").append(a*30+"").append(Component.translatable("modifier.momotinker.tooltip.vehementdesire3")).withStyle(ChatFormatting.DARK_PURPLE));
         }
     }
 }

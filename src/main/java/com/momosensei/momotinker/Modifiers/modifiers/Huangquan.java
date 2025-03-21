@@ -100,9 +100,8 @@ public class Huangquan extends momomodifier implements ModifyDamageSourceModifie
     public void addTooltip(IToolStackView tool, ModifierEntry modifierEntry, @org.jetbrains.annotations.Nullable Player player, List<Component> tooltip, TooltipKey tooltipKey, TooltipFlag tooltipFlag) {
         if (player != null) {
             float var = player.getMaxHealth() - player.getHealth();
-            tooltip.add(net.minecraft.network.chat.Component.translatable("当前已损失生命" + var).withStyle(ChatFormatting.DARK_RED));
-            tooltip.add(net.minecraft.network.chat.Component.translatable("已实际提升伤害" + var*6 + "攻击力").withStyle(ChatFormatting.DARK_RED));
-            tooltip.add(net.minecraft.network.chat.Component.translatable("按下特殊技能按键引领众生至彼岸").withStyle(ChatFormatting.DARK_RED));
+            tooltip.add(Component.translatable("modifier.momotinker.tooltip.huangquan1").append(var+ "").withStyle(ChatFormatting.DARK_RED));
+            tooltip.add(Component.translatable("modifier.momotinker.tooltip.huangquan2").append(var * 6 + "").withStyle(ChatFormatting.DARK_RED));
         }
     }
 }

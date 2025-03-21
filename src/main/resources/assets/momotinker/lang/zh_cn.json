@@ -58,6 +58,9 @@
   "recipe.momotinker.modifier.shadowofdamnation": "天谴之影需要荡涤天地作为前置",
   "recipe.momotinker.modifier.expandedequipment": "该工具无法施加强化",
 
+  "key.momotinker.key": "特殊技能",
+  "key.momotinker.keya": "工具技能",
+
   "item.momotinker.laomo": "墨",
 
   "item.momotinker.interdimensional_crystal": "§d天外来星§",
@@ -138,6 +141,10 @@
 
   "item.momotinker.divine_punishment_spear": "天谴之矛",
   "item.momotinker.divine_punishment_spear.description": "[双手武器][古代神兵]:遗落于深谙古城;\n超高攻速与攻击距离的单体型近战武器，右键蓄力释放时可短暂冲刺",
+  "item.momotinker.tooltip.divine_punishment_spear1": "古代神兵任务:击杀",
+  "item.momotinker.tooltip.divine_punishment_spear2": "只亡灵生物。当前击杀数为:",
+  "item.momotinker.tooltip.divine_punishment_spear3": "古代神兵任务已完成！此工具将格外造成25%魔法伤害且此伤害无视魔法防御",
+  "item.momotinker.tooltip.divine_punishment_spear4": "古代神兵隐藏任务已完成！此工具造成伤害会恢复耐久，若耐久为满则恢复使用者生命",
 
   "item.momotinker.entropy_burning_cube": "焓变遗骸·熵烬之心",
   "item.momotinker.entropy_burning_cube.description": "[古代神兵]:遗落于亚特兰蒂斯与沉睡的宝藏\n本身无使用功能，按下工具技能可以变化多种形态，变形后无法更换和拆卸部件\n§o“沉睡于深渊中的国度，无法理解的繁华，\n§o尽数崩解为烬”——虚空铁匠议会第三席§",
@@ -145,11 +152,13 @@
   "item.momotinker.entropy_burning_sword.description": "[双手武器]\n高伤害但攻速极低的宽范围近战武器，右键蓄力完成后会进行一次“熵变”打击对大范围目标造成150%的伤害（受攻速影响）",
   "item.momotinker.entropy_burning_riding_spear": "熵烬骑枪",
   "item.momotinker.entropy_burning_riding_spear.description": "[双手武器]\n较高伤害攻速较低的较长攻击距离的单体近战武器，移动时会根据移速增加伤害（默认最多增加150%），右键蓄力释放可短暂冲刺",
+  "item.momotinker.tooltip.entropy_burning_riding_spear1": "当前移速已增加总伤害:",
   "item.momotinker.entropy_burning_cannon": "熵烬机炮",
   "item.momotinker.entropy_burning_cannon.description": "[双手武器]\n中等距离穿透型武器，右键可消耗当前2%经验以发动射击，可穿透方块并对路径上所有目标造成伤害（消耗经验越多射击伤害越高，默认最多增加200%）",
 
   "item.momotinker.eclipse_container": "日蚀容器",
   "item.momotinker.eclipse_container.description": "[双手武器]\n超低攻速超高攻击的大范围近战武器，只会继承“日冕之钥”的强化（包括材料的强化点数等特征），期间消耗充能，右键蓄力一段时间后按住释放“日蚀刻”，持续吸引周围实体造成伤害",
+  "item.momotinker.tooltip.eclipse_container1": "目前“日蚀刻”的吸引范围为:",
   "item.momotinker.coronal_key": "日冕之钥",
   "item.momotinker.coronal_key.description": "属性较弱的近战武器，持续战斗可增加充能条，充能增加可提高伤害，充能为满且副手为“新月之锁”时按下工具技能按键可与其合体为“日蚀容器”",
   "item.momotinker.moon_lock": "新月之锁",
@@ -207,22 +216,30 @@
   "modifier.momotinker.huangquan": "浸黄泉",
   "modifier.momotinker.huangquan.flavor": "§7所渡之处,为无§",
   "modifier.momotinker.huangquan.description": "血量低于60%时提升攻击力，数值为已损失生命值*6，获得“引渡人”效果时攻击将无视防御且该增伤涨至双倍（远程的增伤效率为25%）",
+  "modifier.momotinker.tooltip.huangquan1": "当前已损失生命值:",
+  "modifier.momotinker.tooltip.huangquan2": "已提供实际攻击力: ",
 
   "modifier.momotinker.red": "轮回色",
   "modifier.momotinker.red.flavor": "§4所归之景，为无§",
   "modifier.momotinker.red.description": "常态下感知周围敌对生物，主手持有时按下技能按键后自身获得15秒的“引渡人”效果，且该工具进入90秒冷却\n§7[引渡人]§:观察的一切景象都将褪色，在持续时间内对大范围内生物附加12层“忘阙人”效果，自身血量无法超过1点且生命暂时无法恢复",
+  "modifier.momotinker.tooltip.red1": "[轮回色]的冷却剩余:",
+  "msg.ender1": "层林尽染","msg.ender2": "引渡徘徊","msg.ender3": "终归尘土","msg.ender4": "化为虚无","msg.ender5": "在此永眠","msg.ender6": "万籁俱寂","msg.ender7": "如雨而逝",
 
   "modifier.momotinker.firmheart": "坚心",
   "modifier.momotinker.firmheart.flavor": "§2心坚如钢§",
   "modifier.momotinker.firmheart.description": "对一定范围的敌对生物进行充能，5层时攻击消耗充能造成格外自身最大生命值*4的伤害，并永久增长持有该武器时的最大生命值（每次0.2%，远程武器增伤与生命增长减半），每个生物存在60秒冷却（默认加成上限为100万）",
+  "modifier.momotinker.tooltip.firmheart1": "现阶段每次可提升生命值为:",
+  "modifier.momotinker.tooltip.firmheart2": "现阶段充能伤害为:",
 
   "modifier.momotinker.wildhearts": "自然之力",
   "modifier.momotinker.wildhearts.flavor": "§2狂野般生长§",
   "modifier.momotinker.wildhearts.description": "穿戴时提升20点最大生命值，若最大生命值超过一定值（默认80）则获得“狂徒之心”效果，效果持续期间若受到伤害则效果消失并进入8秒冷却，冷却期间受到伤害则重新冷却（同名只生效一次）\n§a[狂徒之心]§:每秒恢复最大生命值的10%",
+  "modifier.momotinker.tooltip.wildhearts1": "[狂徒之心]的冷却还剩: ",
 
   "modifier.momotinker.infinitevitality": "无限活力",
   "modifier.momotinker.infinitevitality.flavor": "§a活力如嫩芽§",
   "modifier.momotinker.infinitevitality.description": "穿戴时受到的任何治疗效果都将增加25%（同名只生效一次）",
+  "modifier.momotinker.tooltip.infinitevitality1": "已增加治疗效果:",
 
   "modifier.momotinker.feast": "盛宴",
   "modifier.momotinker.feast.flavor": "§2弱肉强食§",
@@ -231,10 +248,12 @@
   "modifier.momotinker.overeatingsin": "尽噬之罪",
   "modifier.momotinker.overeatingsin.flavor": "§2无尽吞食之代价:饥饿无休§",
   "modifier.momotinker.overeatingsin.description": "在背包内时受到的任何治疗效果都将减少50%（同名词条只生效一次）",
+  "modifier.momotinker.tooltip.overeatingsin1": "已减少治疗效果:",
 
   "modifier.momotinker.intendingplunder": "贪夺",
   "modifier.momotinker.intendingplunder.flavor": "§9掠夺一切§",
   "modifier.momotinker.intendingplunder.description": "每级增加击杀生物掉落物的50%数量",
+  "modifier.momotinker.tooltip.intendingplunder1": "当前已增加掉落数量:",
 
   "modifier.momotinker.overweightingwealthsin": "尽掠之罪",
   "modifier.momotinker.overweightingwealthsin.flavor": "§1无尽掠夺之代价:黄金之重§",
@@ -243,6 +262,9 @@
   "modifier.momotinker.vehementdesire": "强欲",
   "modifier.momotinker.vehementdesire.flavor": "§5深入骨髓§",
   "modifier.momotinker.vehementdesire.description": "击中时赋予20秒词条等级的“失魂”效果，在目标0护甲时获得40%*词条等级（远程减半）的增伤，目标护甲越高增伤越低，到达30*词条等级时增伤为0",
+  "modifier.momotinker.tooltip.vehementdesire1": "目前最高增伤为:",
+  "modifier.momotinker.tooltip.vehementdesire2": "目标护甲为:",
+  "modifier.momotinker.tooltip.vehementdesire3": "时增伤为0%",
 
   "modifier.momotinker.overindulgencesin": "尽纵之罪",
   "modifier.momotinker.overindulgencesin.flavor": "§5无尽纵欲之代价:骨肉痛寒§",
@@ -251,6 +273,7 @@
   "modifier.momotinker.dominate": "支配",
   "modifier.momotinker.dominate.flavor": "§c傲视一切§",
   "modifier.momotinker.dominate.description": "每级获得叠乘的50%大部分属性加成，受到最大生命低于自身最大生命一定百分比的怪物攻击时只受到70%的伤害，数值为总等级*20%（同名只生效一次）",
+  "modifier.momotinker.tooltip.dominate1": "目前触发减伤的血量阈值为:",
 
   "modifier.momotinker.overdisdainsin": "尽蔑之罪",
   "modifier.momotinker.overdisdainsin.flavor": "§4无尽蔑视之代价:身命具薄§",
@@ -259,10 +282,15 @@
   "modifier.momotinker.drinkblood": "饮血",
   "modifier.momotinker.drinkblood.flavor": "§8刀尖舔血§",
   "modifier.momotinker.drinkblood.description": "攻击时若血量大于最大生命的10%，则会消耗最大生命的10%并获得等级*60%的增伤，在造成伤害时恢复实际伤害的30%*等级的血量，若血量不足则不消耗且增伤与恢复降至10%*等级（远程增伤恢复全程为10%*等级且不消耗血量）",
+  "modifier.momotinker.tooltip.drinkblood1": "当前每次攻击消耗血量为:",
+  "modifier.momotinker.tooltip.drinkblood2": "未衰减状态时的增伤为:",
+  "modifier.momotinker.tooltip.drinkblood3": "衰减状态为:",
+  "modifier.momotinker.tooltip.drinkblood4": "可恢复量为实际伤害的:",
 
   "modifier.momotinker.overangersin": "尽愤之罪",
   "modifier.momotinker.overangersin.flavor": "§8无尽愤恨之代价:怒焰蚀身§",
   "modifier.momotinker.overangersin.description": "主手持有时增加10%*词条等级受到的任何伤害",
+  "modifier.momotinker.tooltip.overangersin1": "格外承受伤害:",
 
   "modifier.momotinker.unstained": "不染",
   "modifier.momotinker.unstained.flavor": "§6尘事皆云§",
@@ -271,6 +299,8 @@
   "modifier.momotinker.overcowardicesin": "尽怠之罪",
   "modifier.momotinker.overcowardicesin.flavor": "§6无尽怯怠之代价:微力予战§",
   "modifier.momotinker.overcowardicesin.description": "穿戴或主副手持有时减少造成的伤害，数值为总词条*5%，最高为40%（同名只生效一次）",
+  "modifier.momotinker.tooltip.overcowardicesin1": "当前已增加闪避几率:",
+  "modifier.momotinker.tooltip.overcowardicesin2": "当前已减少造成伤害:",
 
   "modifier.momotinker.grudgeothers": "妒外",
   "modifier.momotinker.grudgeothers.flavor": "§e深恶痛疾§",
@@ -279,10 +309,12 @@
   "modifier.momotinker.overenvysin": "尽妒之罪",
   "modifier.momotinker.overenvysin.flavor": "§e无尽妒怨之代价:临微浅恶§",
   "modifier.momotinker.overenvysin.description": "攻击血量上限比自身低的目标时会根据差值减少攻击力，数值为5%*词条等级*血量上限差值（最低时攻击不造成伤害）",
+  "modifier.momotinker.tooltip.overenvysin1": "目前增伤可提供最大攻击力为:",
 
   "modifier.momotinker.fallingstars": "苍穹落星",
   "modifier.momotinker.fallingstars.flavor": "§d当流星于此降临§",
   "modifier.momotinker.fallingstars.description": "主手持有时按下技能按键后升往空中，并在之后3秒内再次按下会获得1秒的“落星”效果，且该工具获得120秒冷却（若未使用第二段技能则只有30秒）\n§d[落星]§:向视角方向快速冲刺并在碰撞方块或击中实体时停止，停止时产生爆炸对范围内生物造成词条等级*100（若击中实体则格外增加词条等级*武器近战攻击一次的伤害）的爆炸类型伤害（不破坏方块），飞行时间越长伤害越高（在飞行15刻时最高，数值为400%）",
+  "modifier.momotinker.tooltip.fallingstars1": "[苍穹落星]的冷却还剩:",
 
   "modifier.momotinker.unknownreturnee": "未知归来者",
   "modifier.momotinker.unknownreturnee.flavor": "§d“\\---.. ..--- -.-. -..\\--... .- --... ----.”§",
@@ -295,6 +327,13 @@
   "modifier.momotinker.crystallization": "晶体进化",
   "modifier.momotinker.crystallization.flavor": "趋近完美",
   "modifier.momotinker.crystallization.description": "主手持有且副手持有次元棱镜时按下技能按键可消耗1个副手物品进行强化，当前强化等级越高成功概率越低，强化等级高到一定程度时失败会受到惩罚，强化等级大于等于14时会有粉碎的风险！",
+  "modifier.momotinker.tooltip.crystallization1": "当前强化点数为:",
+  "modifier.momotinker.tooltip.crystallization2": "当前强化成功率为:",
+  "modifier.momotinker.tooltip.crystallization3": "当前增伤量为:",
+  "modifier.momotinker.tooltip.crystallization4": "当前若强化失败会减1级！",
+  "modifier.momotinker.tooltip.crystallization5": "当前若强化失败会减4级！",
+  "modifier.momotinker.tooltip.crystallization6": "小心！！当前强化失败武器会消失！",
+  "msg.crystallization1": "强化成功！","msg.crystallization2": "强化失败！","msg.crystallization3": "强化失败！强化等级减1","msg.crystallization4": "强化失败！强化等级减4","msg.crystallization5": "强化失败！装备碎掉了。。。",
 
   "modifier.momotinker.frombrilliance": "古代神兵",
   "modifier.momotinker.frombrilliance.flavor": "§e来自辉煌的时代§",
@@ -307,6 +346,10 @@
   "modifier.momotinker.superancientmetalsreal": "超古代金属-解放",
   "modifier.momotinker.superancientmetalsreal.flavor": "来自古代的奇特金属，因古代神兵的苏醒而展现独特姿态",
   "modifier.momotinker.superancientmetalsreal.description": "工具的耐久消耗降低90%，大部分属性增加50%，会根据古代神兵的觉醒结果提供独特效果",
+  "modifier.momotinker.tooltip.superancientmetalsreal1": "古代神兵认证:天谴之矛-染血",
+  "modifier.momotinker.tooltip.superancientmetalsreal2": "此工具攻击将无视护甲且不造成无敌帧",
+  "modifier.momotinker.tooltip.superancientmetalsreal3": "古代神兵认证:天谴之矛-星辰",
+  "modifier.momotinker.tooltip.superancientmetalsreal4": "此武器攻击怪物会永久添加“被征服者”的标记，此怪物受到的任何伤害会修正为150%",
 
   "modifier.momotinker.crimsonqueen": "绯红女皇",
   "modifier.momotinker.crimsonqueen.flavor": "扳机横刀专属强化:机动剑",
@@ -315,6 +358,8 @@
   "modifier.momotinker.berserk": "狂暴化",
   "modifier.momotinker.berserk.flavor": "彻底疯狂",
   "modifier.momotinker.berserk.description": "按下按键切换普通与狂暴两种状态，狂暴状态下主手持有此工具时造成伤害与承受的伤害修正为140%+20%*词条等级",
+  "modifier.momotinker.tooltip.berserk1": "未开启狂暴化",
+  "modifier.momotinker.tooltip.berserk2": "开启狂暴化！当前造成伤害与承受伤害修正为:",
 
   "modifier.momotinker.yamato": "次元斩",
   "modifier.momotinker.yamato.flavor": "扳机横刀专属强化:阎魔刀",
@@ -331,6 +376,7 @@
   "modifier.momotinker.cleansetheworld": "荡涤天地",
   "modifier.momotinker.cleansetheworld.flavor": "贯星魔枪增强:天谴",
   "modifier.momotinker.cleansetheworld.description": "较长时间蓄力后会在上空会消耗当前25%的经验点数召唤巨大魔法矛（使用后该类工具进入默认冷却600秒），被其触碰每刻会受到50%的伤害，在落地后产生剧烈爆炸并对大范围生物造成5000%的伤害，每消耗1点经验会提升其1%的伤害（默认最多增伤100%）",
+  "modifier.momotinker.tooltip.cleansetheworld1": "“荡涤天地”冷却还剩:",
 
   "modifier.momotinker.shadowofdamnation": "天谴之影",
   "modifier.momotinker.shadowofdamnation.flavor": "荡涤天地改装:虚无投影",
@@ -339,6 +385,12 @@
   "modifier.momotinker.drinkingdemon": "饮魔",
   "modifier.momotinker.drinkingdemon.flavor": "饮下鸠毒，春种秋收",
   "modifier.momotinker.drinkingdemon.description": "按下特殊技能按键可吸收副手带有附魔的物品，消耗已有点数总和*50点的经验并根据物品上的附魔数量获得相应种类的点数，使用后工具冷却90秒（若经验不足则无法吸收）",
+  "modifier.momotinker.tooltip.drinkingdemon1": "当前经验点数不足以使用饮魔", "modifier.momotinker.tooltip.drinkingdemon2": "当前经验点数可以使用饮魔",
+  "modifier.momotinker.tooltip.drinkingdemon3": "饮魔诅咒点数:", "modifier.momotinker.tooltip.drinkingdemon4": "当前减少饮魔经验消耗:",
+  "modifier.momotinker.tooltip.drinkingdemon5": "饮魔总防御点数:", "modifier.momotinker.tooltip.drinkingdemon6": "当前减少受到伤害:",
+  "modifier.momotinker.tooltip.drinkingdemon7": "饮魔近战点数:", "modifier.momotinker.tooltip.drinkingdemon8": "当前增加近战伤害:",
+  "modifier.momotinker.tooltip.drinkingdemon9": "饮魔远程点数:", "modifier.momotinker.tooltip.drinkingdemon10": "当前增加箭矢伤害:",
+  "modifier.momotinker.tooltip.drinkingdemon11": "饮魔工具点数:","modifier.momotinker.tooltip.drinkingdemon12": "当前增加攻击速度:",
 
   "modifier.momotinker.sweetaftertaste": "回甘",
   "modifier.momotinker.sweetaftertaste.flavor": "枯果枝下",

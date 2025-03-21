@@ -56,7 +56,7 @@ public class Dominate extends momomodifier {
     public void addTooltip(IToolStackView tool, ModifierEntry modifierEntry, @org.jetbrains.annotations.Nullable Player player, List<Component> tooltip, TooltipKey tooltipKey, TooltipFlag tooltipFlag) {
         if (player != null) {
             int a =  getArmorModifierlevel(player,MomotinkerModifiers.dominate.getId());
-            tooltip.add(net.minecraft.network.chat.Component.translatable("目前触发减伤的血量阈值为" + (player.getMaxHealth()*a*0.2F)).withStyle(ChatFormatting.RED));
+            tooltip.add(net.minecraft.network.chat.Component.translatable("modifier.momotinker.tooltip.dominate1").append(player.getMaxHealth()*a*0.2F+"").withStyle(ChatFormatting.RED));
         }
     }
 }

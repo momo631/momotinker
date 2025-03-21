@@ -102,7 +102,7 @@ public class trigger_blade extends ModifiableItem {
             if (a==0) {
                 if (b==0&&i >= 30) {
                     Channel.INSTANCE.sendToServer(new triggerSlashPacket(player.getId()));
-                }
+                }else
                 if (b>0&&i >= 20){
                     Channel.INSTANCE.sendToServer(new triggerSlashPacket(player.getId()));
                     if (i>24){
@@ -116,7 +116,7 @@ public class trigger_blade extends ModifiableItem {
                     if (dataNBT.getFloat(crimsonlayers)<3){
                         dataNBT.putFloat(crimsonlayers, dataNBT.getFloat(crimsonlayers) + 1);
                         dataNBT.putFloat(crimsontime, 20);
-                    }
+                    }else
                     if (dataNBT.getFloat(crimsonlayers) == 3) {
                         dataNBT.putFloat(crimsontime, 20);
                     }
@@ -135,7 +135,14 @@ public class trigger_blade extends ModifiableItem {
     public InteractionResultHolder<ItemStack> use(Level level, Player player, InteractionHand hand) {
         ItemStack stack = player.getItemInHand(hand);
         ToolStack tool = ToolStack.from(stack);
-        tool.getPersistentData().putInt(KEY_DRAWTIME,30);
+        int a = ModifierUtil.getModifierLevel(player.getMainHandItem(), MomotinkerModifiers.crimsonqueen.getId());
+        int b = ModifierUtil.getModifierLevel(player.getMainHandItem(), MomotinkerModifiers.yamato.getId());
+        if (b==0&&a==0) {
+            tool.getPersistentData().putInt(KEY_DRAWTIME, 30);
+        }else
+        if (b>0&&a==0) {
+            tool.getPersistentData().putInt(KEY_DRAWTIME, 20);
+        }
         player.startUsingItem(hand);
         if (!checkOffHand(player)){
             return InteractionResultHolder.fail(stack);

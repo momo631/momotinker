@@ -53,10 +53,10 @@ public class Berserk extends momomodifier {
         if (player!=null) {
             int a = ModifierUtil.getModifierLevel(player.getMainHandItem(), MomotinkerModifiers.berserk.getId());
             if (c.getFloat(berserker) == 0) {
-                tooltip.add(Component.translatable("未开启狂暴化").withStyle(ChatFormatting.DARK_RED));
+                tooltip.add(Component.translatable("modifier.momotinker.tooltip.berserk1").withStyle(ChatFormatting.DARK_RED));
             }
             if (c.getFloat(berserker) == 1) {
-                tooltip.add(Component.translatable("开启狂暴化！当前造成伤害与承受伤害修正为" + (a*20+140) + "%").withStyle(ChatFormatting.DARK_RED));
+                tooltip.add(Component.translatable("modifier.momotinker.tooltip.berserk2").append((a*20+140) + "%").withStyle(ChatFormatting.DARK_RED));
             }
         }
     }

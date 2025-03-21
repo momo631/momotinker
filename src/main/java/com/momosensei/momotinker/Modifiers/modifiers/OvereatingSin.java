@@ -43,7 +43,7 @@ public class OvereatingSin extends momomodifier {
     }
     public void addTooltip(IToolStackView tool, ModifierEntry modifierEntry, @org.jetbrains.annotations.Nullable Player player, List<Component> tooltip, TooltipKey tooltipKey, TooltipFlag tooltipFlag) {
         if (player != null) {
-            tooltip.add(net.minecraft.network.chat.Component.translatable("已减少治疗效果" + (50)+"%").withStyle(ChatFormatting.DARK_GREEN));
+            tooltip.add(net.minecraft.network.chat.Component.translatable("modifier.momotinker.tooltip.overeatingsin1").append(50+"%").withStyle(ChatFormatting.DARK_GREEN));
         }
     }
 }

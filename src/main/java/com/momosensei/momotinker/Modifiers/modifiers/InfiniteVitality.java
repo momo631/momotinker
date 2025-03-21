@@ -43,7 +43,7 @@ public class InfiniteVitality extends momomodifier {
     }
     public void addTooltip(IToolStackView tool, ModifierEntry modifierEntry, @org.jetbrains.annotations.Nullable Player player, List<Component> tooltip, TooltipKey tooltipKey, TooltipFlag tooltipFlag) {
         if (player != null) {
-            tooltip.add(net.minecraft.network.chat.Component.translatable("已增加治疗效果" + (25)+"%").withStyle(ChatFormatting.GREEN));
+            tooltip.add(net.minecraft.network.chat.Component.translatable("modifier.momotinker.tooltip.infinitevitality1").append(25+"%").withStyle(ChatFormatting.GREEN));
         }
     }
 }

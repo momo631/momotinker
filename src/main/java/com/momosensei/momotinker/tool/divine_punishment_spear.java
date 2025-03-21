@@ -265,16 +265,16 @@ public class divine_punishment_spear extends ModifiableItem {
         }
         builder.addAllFreeSlots();
         if (a.getFloat(sanctification)<sanctification_limit&&a.getFloat(degenerate)<degenerate_limit) {
-            builder.add(Component.translatable("古代神兵任务:击杀"+sanctification_limit+"只亡灵生物。当前击杀数为" + a.getFloat(sanctification)).withStyle(ChatFormatting.GOLD));
+            builder.add(Component.translatable("item.momotinker.tooltip.divine_punishment_spear1").append(sanctification_limit+"").append(Component.translatable("item.momotinker.tooltip.divine_punishment_spear2")).append(a.getFloat(sanctification)+"").withStyle(ChatFormatting.GOLD));
         }
         if (a.getFloat(sanctification)==sanctification_limit) {
-            builder.add(Component.translatable("古代神兵任务已完成！此工具将格外造成25%魔法伤害且此伤害无视魔法防御").withStyle(ChatFormatting.YELLOW));
+            builder.add(Component.translatable("item.momotinker.tooltip.divine_punishment_spear3").withStyle(ChatFormatting.YELLOW));
         }
         if (a.getFloat(degenerate)==degenerate_limit) {
-            builder.add(Component.translatable("古代神兵隐藏任务已完成！此工具造成伤害会恢复耐久，若耐久为满则恢复使用者生命").withStyle(ChatFormatting.DARK_RED));
+            builder.add(Component.translatable("item.momotinker.tooltip.divine_punishment_spear4").withStyle(ChatFormatting.DARK_RED));
         }
         if (CoolTime.getCoolTime()!=0){
-            builder.add(Component.translatable("“荡涤天地”冷却还剩"+CoolTime.getCoolTime()+"秒").withStyle(ChatFormatting.YELLOW));
+            builder.add(Component.translatable("modifier.momotinker.tooltip.cleansetheworld1").append(CoolTime.getCoolTime()+"s").withStyle(ChatFormatting.YELLOW));
         }
         if (!checkOffHand(player)){
             builder.add(Component.translatable("momotinker.tool.tooltip.offhand_hastool").withStyle(ChatFormatting.RED));

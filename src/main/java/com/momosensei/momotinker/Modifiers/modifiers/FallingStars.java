@@ -104,7 +104,7 @@ public class FallingStars extends momomodifier {
     public void addTooltip(IToolStackView tool, ModifierEntry modifierEntry, @org.jetbrains.annotations.Nullable Player player, List<Component> tooltip, TooltipKey tooltipKey, TooltipFlag tooltipFlag) {
         if (player != null) {
             ModDataNBT tooldata = tool.getPersistentData();
-            tooltip.add(net.minecraft.network.chat.Component.translatable("[苍穹落星]的冷却还剩" + (tooldata.getFloat(falling))+"秒").withStyle(ChatFormatting.LIGHT_PURPLE));
+            tooltip.add(net.minecraft.network.chat.Component.translatable("modifier.momotinker.tooltip.fallingstars1").append((tooldata.getFloat(falling))+"秒").withStyle(ChatFormatting.LIGHT_PURPLE));
         }
     }
 }
