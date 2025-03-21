@@ -34,7 +34,7 @@ public class OverAngerSin extends momomodifier {
     public void addTooltip(IToolStackView tool, ModifierEntry modifierEntry, @org.jetbrains.annotations.Nullable Player player, List<Component> tooltip, TooltipKey tooltipKey, TooltipFlag tooltipFlag) {
         if (player != null) {
             int a = ModifierUtil.getModifierLevel(player.getItemBySlot(EquipmentSlot.MAINHAND), MomotinkerModifiers.overangersin.getId());
-            tooltip.add(net.minecraft.network.chat.Component.translatable("格外承受伤害" + (a*10)+"%").withStyle(ChatFormatting.DARK_GRAY));
+            tooltip.add(net.minecraft.network.chat.Component.translatable("modifier.momotinker.tooltip.overangersin1").append(a*10+"%").withStyle(ChatFormatting.DARK_GRAY));
         }
     }
 

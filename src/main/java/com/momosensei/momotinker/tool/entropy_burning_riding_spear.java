@@ -162,7 +162,7 @@ public class entropy_burning_riding_spear extends ModifiableItem {
         if (player != null) {
             float speed = (float) player.getDeltaMovement().length();
             float bonus = getbonus(speed,5);
-            builder.add(net.minecraft.network.chat.Component.translatable("当前移速已增加总伤害" + (bonus*100)+"%"));
+            builder.add(Component.translatable("item.momotinker.tooltip.entropy_burning_riding_spear1").append((bonus*100)+"%"));
         }
         builder.addAllFreeSlots();
         if (!checkOffHand(player)){

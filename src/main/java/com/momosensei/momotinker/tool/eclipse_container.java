@@ -178,7 +178,7 @@ public class eclipse_container extends ModifiableItem {
         if (!checkOffHand(player)){
             builder.add(Component.translatable("momotinker.tool.tooltip.offhand_hastool").withStyle(ChatFormatting.RED));
         }
-        builder.add(Component.translatable("目前“日蚀刻”的吸引范围为"+((int)(tool.getStats().get(ToolStats.ATTACK_SPEED)*2+5))+"格").withStyle(ChatFormatting.DARK_GRAY));
+        builder.add(Component.translatable("item.momotinker.tooltip.eclipse_container1").append((int)(tool.getStats().get(ToolStats.ATTACK_SPEED)*2+5)+"").withStyle(ChatFormatting.DARK_GRAY));
         builder.addAllFreeSlots();
         Iterator var7 = tool.getModifierList().iterator();
         while(var7.hasNext()) {

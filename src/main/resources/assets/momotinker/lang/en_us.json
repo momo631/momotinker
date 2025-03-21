@@ -58,6 +58,9 @@
   "recipe.momotinker.modifier.shadowofdamnation": "'Shadow Of Damnation' requires 'Cleanse The World' as a prerequisite",
   "recipe.momotinker.modifier.expandedequipment": "This tool cannot apply reinforcement",
 
+  "key.momotinker.key": "Category Example",
+  "key.momotinker.keya": "Tool Enhancement",
+
   "item.momotinker.laomo": "Momo",
 
   "item.momotinker.interdimensional_crystal": "§dInterdimensional Crystal§",
@@ -138,6 +141,10 @@
 
   "item.momotinker.divine_punishment_spear": "Divine Punishment Spear",
   "item.momotinker.divine_punishment_spear.description": "[Two handed weapons][From Brilliance]:Lost in the ancient city;\nA single type melee weapon with ultra-high attack speed.After accumulating power, it can sprint briefly.",
+  "item.momotinker.tooltip.divine_punishment_spear1": "[From Brilliance]Mission: Kill",
+  "item.momotinker.tooltip.divine_punishment_spear2": "undead. The current number of kills is:",
+  "item.momotinker.tooltip.divine_punishment_spear3": "The mission of the ancient divine weapon has been completed!This tool will deal an additional 25% magic damage and ignore magic defenses",
+  "item.momotinker.tooltip.divine_punishment_spear4": "The hidden mission of ancient divine weapons has been completed!This tool will restore durability if it causes damage, and if the durability is full, it will restore the user's life",
 
   "item.momotinker.entropy_burning_cube": "Entropy Burning Cube",
   "item.momotinker.entropy_burning_cube.description": "[From Brilliance]:Lost in Atlantis and the Sleeping Treasure\nThere is no functional use of the tool itself,and pressing 'Tool Enhancement' can change various forms.",
@@ -145,11 +152,13 @@
   "item.momotinker.entropy_burning_sword.description": "[Two handed weapons]\nA wide range melee weapon with high damage but extremely low attack speed,After accumulating power, deal 150% damage to a wide range target (affected by attack speed).",
   "item.momotinker.entropy_burning_riding_spear": "Entropy Burning Riding Spear",
   "item.momotinker.entropy_burning_riding_spear.description": "[Two handed weapons]\nSingle unit melee weapon with longer attack distance.The damage will increase according to the movement speed.After accumulating power, it can sprint briefly.",
+  "item.momotinker.tooltip.entropy_burning_riding_spear1": "The current movement speed has increased the total damage:",
   "item.momotinker.entropy_burning_cannon": "Entropy Burning Cannon",
   "item.momotinker.entropy_burning_cannon.description": "[Two handed weapons]\nCan consume experience to initiate shooting, can deal damage to all targets on the path (the more experience consumed, the higher the shooting damage).",
 
   "item.momotinker.eclipse_container": "Eclipse Container",
   "item.momotinker.eclipse_container.description": "[Two handed weapons]\nOnly inherit the reinforcement of 'Coronal Key' (including reinforcement points and other of the material),After accumulating power, press and release the 'solar eclipse'.",
+  "item.momotinker.tooltip.eclipse_container1": "The current attraction range of 'solar eclipse' is:",
   "item.momotinker.coronal_key": "Coronal Key",
   "item.momotinker.coronal_key.description": "Continuous combat can increase charging and improve damage. When the charging is full and the deputy is'Moon Lock', pressing 'Tool Enhancement' to merge with it to form an'Eclipse Container'.",
   "item.momotinker.moon_lock": "Moon Lock",
@@ -182,7 +191,7 @@
   "material.momotinker.lazy_grail": "Lazy",
   "material.momotinker.lazy_grail.encyclopedia": "§6Never be troubled by the urgency of the world§",
   "material.momotinker.jealous_notes": "Jealous",
-  "material.momotinker.jealous_notes.encyclopedia": "§eJealousy and resentment will never be dispelled§",
+  "material.momotinker.jealous_notes.encyclopedia": "§eJealousy and resentment will never be §edispelled",
   "material.momotinker.interdimensional_crystal": "Interdimensional Crystal",
   "material.momotinker.interdimensional_crystal.encyclopedia": "§dReturning from heaven§",
   "material.momotinker.dimensional_prism": "Dimensional Prism",
@@ -207,22 +216,30 @@
   "modifier.momotinker.huangquan": "Immersion in Huangquan",
   "modifier.momotinker.huangquan.flavor": "§7Where it crosses, there is nothing§",
   "modifier.momotinker.huangquan.description": "When the health is below 60%, the attack power is increased by the value of lost health * 6. When the 'end' effect is obtained, the attack will ignore the defense and the damage increase will be doubled (the long-range damage increase efficiency is 25%)",
+  "modifier.momotinker.tooltip.huangquan1": "Currently lost health:",
+  "modifier.momotinker.tooltip.huangquan2": "Actual attack power provided:",
 
   "modifier.momotinker.red": "Reincarnation color",
   "modifier.momotinker.red.flavor": "§4The scenery to which it belongs is nothing§",
   "modifier.momotinker.red.description": "Perceive hostile creatures around, press 'Category Example' while holding the main hand to obtain a 15 second 'end' effect, and the tool enters a 90 second cooldown\n§7[end]§:All observed scenes will fade, and a 12 layer 'none' effect will be added to a large range of organisms for a prolonged period of time. The body's health cannot exceed 1 point and life cannot be temporarily restored",
+  "modifier.momotinker.tooltip.red1": "Cooling residue of [Reincarnation color]:",
+  "msg.ender1": "Stain everything","msg.ender2": "I guide the wandering souls","msg.ender3": "Eventually turning into dust","msg.ender4": "Turn into nothingness","msg.ender5": "Forever sleeping here","msg.ender6": "All is quiet","msg.ender7": "End like rain",
 
   "modifier.momotinker.firmheart": "Affirmation ",
   "modifier.momotinker.firmheart.flavor": "§2Heart as firm as steel§",
   "modifier.momotinker.firmheart.description": "Charge hostile creatures within the range. When attacking at level 5, consume the charge and deal extra damage to their maximum health * 4, while permanently increasing their maximum health when holding the weapon (0.2% each time, with long-range weapon damage and health growth halved)",
+  "modifier.momotinker.tooltip.firmheart1": "At present, each increase in health can be:",
+  "modifier.momotinker.tooltip.firmheart2": "At present, the charging damage is:",
 
   "modifier.momotinker.wildhearts": "Force of Nature",
   "modifier.momotinker.wildhearts.flavor": "§2Wild like growth§",
   "modifier.momotinker.wildhearts.description": "When worn, increase the maximum health by 20 points. If the maximum health exceeds a certain value (default 80), you will receive the 'wild heart' effect. During the duration of the effect, if you receive damage, the effect will disappear and enter an 8-second cooldown.\n§a[wild heart]§:Recovers 10% of maximum health per second",
+  "modifier.momotinker.tooltip.wildhearts1": "Cooling residue of [wild heart]:",
 
   "modifier.momotinker.infinitevitality": "Infinite vitality",
   "modifier.momotinker.infinitevitality.flavor": "§aVitality like tender sprouts§",
   "modifier.momotinker.infinitevitality.description": "Any therapeutic effect received while wearing will increase by 25% (same name only effective once)",
+  "modifier.momotinker.tooltip.infinitevitality1": "Increased therapeutic effect:",
 
   "modifier.momotinker.feast": "Feast",
   "modifier.momotinker.feast.flavor": "§2The law of the jungle§",
@@ -231,10 +248,12 @@
   "modifier.momotinker.overeatingsin": "Over eating sin",
   "modifier.momotinker.overeatingsin.flavor": "§2The price of endless devouring: endless hunger§",
   "modifier.momotinker.overeatingsin.description": "Any therapeutic effect received while in the backpack will be reduced by 50% (the same name entry only takes effect once)",
+  "modifier.momotinker.tooltip.overeatingsin1": "Reduced treatment effect:",
 
   "modifier.momotinker.intendingplunder": "Greedy and plundering",
   "modifier.momotinker.intendingplunder.flavor": "§9Plundering everything§",
   "modifier.momotinker.intendingplunder.description": "Increase the number of killed creatures' drops by 50% at each level",
+  "modifier.momotinker.tooltip.intendingplunder1": "The current number of drops has increased:",
 
   "modifier.momotinker.overweightingwealthsin": "Over weighting wealth sin",
   "modifier.momotinker.overweightingwealthsin.flavor": "§1The price of endless plunder: the weight of gold§",
@@ -243,6 +262,9 @@
   "modifier.momotinker.vehementdesire": "Vehement desire",
   "modifier.momotinker.vehementdesire.flavor": "§5Down to the Bone§",
   "modifier.momotinker.vehementdesire.description": "When hit, it gives the same level of 'lost soul' effect, and gains a 40% * level (half ranged) increase in damage when the target has 0 armor. The higher the target's armor, the lower the increase in damage.",
+  "modifier.momotinker.tooltip.vehementdesire1": "The current highest damage increase is:",
+  "modifier.momotinker.tooltip.vehementdesire2": "When the target armor is:",
+  "modifier.momotinker.tooltip.vehementdesire3": "the damage increase is 0%",
 
   "modifier.momotinker.overindulgencesin": "Over indulgence sin",
   "modifier.momotinker.overindulgencesin.flavor": "§5The price of endless indulgence: bone and flesh pain and cold§",
@@ -251,6 +273,7 @@
   "modifier.momotinker.dominate": "Dominate",
   "modifier.momotinker.dominate.flavor": "§cProud of everything§",
   "modifier.momotinker.dominate.description": "Each level receives a 50% stack bonus for most attributes. When attacked by monsters with a maximum health lower than their maximum total health level * 20%, they only receive 70% damage (the same name only takes effect once)",
+  "modifier.momotinker.tooltip.dominate1": "The current threshold for triggering damage reduction is:",
 
   "modifier.momotinker.overdisdainsin": "Over disdain sin",
   "modifier.momotinker.overdisdainsin.flavor": "§4The Price of Endless Contemplation: Thin Lifespan§",
@@ -259,10 +282,15 @@
   "modifier.momotinker.drinkblood": "Drink blood",
   "modifier.momotinker.drinkblood.flavor": "§8Blade tip licking blood§",
   "modifier.momotinker.drinkblood.description": "When attacking, if the health is greater than 10% of the maximum life, it will consume 10% of the maximum life and gain a level * 60% damage increase, and restore 30% * level health of the actual damage. If the health is insufficient, it will not be consumed and will be reduced to 10% * level (the entire remote damage recovery process is at 10% * level and does not consume health)",
+  "modifier.momotinker.tooltip.drinkblood1": "The current health consumption for each attack is:",
+  "modifier.momotinker.tooltip.drinkblood2": "The damage increase in the undegraded state is:",
+  "modifier.momotinker.tooltip.drinkblood3": "The decay state is:",
+  "modifier.momotinker.tooltip.drinkblood4": "The recoverable amount is the actual damage:",
 
   "modifier.momotinker.overangersin": "Over anger sin",
   "modifier.momotinker.overangersin.flavor": "§8The Price of Endless Resentment: The Flame of Wrath erodes the Body§",
   "modifier.momotinker.overangersin.description": "The main handheld sometimes increases by 10% * any damage received by the entry level",
+  "modifier.momotinker.tooltip.overangersin1": "Extra damage tolerance:",
 
   "modifier.momotinker.unstained": "Unstained",
   "modifier.momotinker.unstained.flavor": "§6Dust is like clouds§",
@@ -271,6 +299,8 @@
   "modifier.momotinker.overcowardicesin": "Over cowardice sin",
   "modifier.momotinker.overcowardicesin.flavor": "§6The Price of Endless Fear and Neglect: Micro Force for Battle§",
   "modifier.momotinker.overcowardicesin.description": "Wearing or holding the primary and secondary items can sometimes reduce the damage caused, with a value of 5% of the total entries and a maximum of 40% (the same name only takes effect once)",
+  "modifier.momotinker.tooltip.overcowardicesin1": "The current evasion probability has been increased:",
+  "modifier.momotinker.tooltip.overcowardicesin2": "Currently reduced damage caused:",
 
   "modifier.momotinker.grudgeothers": "Grudge others",
   "modifier.momotinker.grudgeothers.flavor": "§eCherish an undying§",
@@ -279,10 +309,12 @@
   "modifier.momotinker.overenvysin": "Over envy sin",
   "modifier.momotinker.overenvysin.flavor": "§eThe Price of Endless Jealousy and Resentment: Facing Minor and Shallow Evil§",
   "modifier.momotinker.overenvysin.description": "When attacking targets with a lower health limit than oneself, the attack power will be reduced based on the difference, which is 5% * item level * health limit difference (attack does not cause damage at the lowest point)",
+  "modifier.momotinker.tooltip.overenvysin1": "At present, the maximum attack power that can be provided by increasing damage is:",
 
   "modifier.momotinker.fallingstars": "Falling stars",
   "modifier.momotinker.fallingstars.flavor": "§dWhen a meteor falls here§",
   "modifier.momotinker.fallingstars.description": "Press 'Category Example' and lift it into the air. Pressing it again within the next 3 seconds will result in a 1-second 'Falling Star' effect, and the tool will receive 120 seconds of cooldown (if the second skill is not used, it will only have 30 seconds)\n§d[Falling Star]§:Quickly sprint and stop when colliding with blocks or hitting entities, producing an explosion that causes explosive type damage to nearby creatures (without damaging the blocks),",
+  "modifier.momotinker.tooltip.fallingstars1": "Cooling residue of [Falling Star]:",
 
   "modifier.momotinker.unknownreturnee": "Unknown Returnee",
   "modifier.momotinker.unknownreturnee.flavor": "§d'\\---.. ..--- -.-. -..\\--... .- --... ----.'§",
@@ -295,6 +327,13 @@
   "modifier.momotinker.crystallization": "Crystal Evolution",
   "modifier.momotinker.crystallization.flavor": "Approaching perfection",
   "modifier.momotinker.crystallization.description": "When the deputy holds Dimensional Prism, pressing 'Category Example' can consume 1 for reinforcement. The higher the current reinforcement level, the lower the probability of success. Failure will be punished when the reinforcement level reaches a certain level, and there is a risk of crushing when the reinforcement level is greater than or equal to 14!",
+  "modifier.momotinker.tooltip.crystallization1": "The current number of reinforcement points is:",
+  "modifier.momotinker.tooltip.crystallization2": "The current success rate of reinforcement is:",
+  "modifier.momotinker.tooltip.crystallization3": "The current damage increase is:",
+  "modifier.momotinker.tooltip.crystallization4": "If the current reinforcement fails, it will be reduced by 1 level!",
+  "modifier.momotinker.tooltip.crystallization5": "If the current reinforcement fails, it will be reduced by 4 levels!",
+  "modifier.momotinker.tooltip.crystallization6": "Look out!! The current failed reinforcement weapon will disappear!",
+  "msg.crystallization1": "Strengthening success!","msg.crystallization2": "Strengthening failed!","msg.crystallization3": "Strengthening failed! Strengthen the level and reduce it by 1","msg.crystallization4": "Strengthening failed! Strengthen the level and reduce it by 4","msg.crystallization5": "Strengthening failed! The equipment is disappeared...",
 
   "modifier.momotinker.frombrilliance": "From Brilliance",
   "modifier.momotinker.frombrilliance.flavor": "§eFrom the glorious era§",
@@ -307,6 +346,10 @@
   "modifier.momotinker.superancientmetalsreal": "Super Ancient Metals-Real",
   "modifier.momotinker.superancientmetalsreal.flavor": "Unique metal from ancient times, exhibiting a unique posture due to the awakening of 'From Brilliance'",
   "modifier.momotinker.superancientmetalsreal.description": "The durability consumption of the tool is reduced by 90%, and most attributes are increased by 50%. It will provide unique effects based on the awakening results from 'From Brilliance'",
+  "modifier.momotinker.tooltip.superancientmetalsreal1": "[From Brilliance]Certification: Divine Punishment Spear - Stained with Blood",
+  "modifier.momotinker.tooltip.superancientmetalsreal2": "This tool attack will ignore armor and will not cause invincible frames",
+  "modifier.momotinker.tooltip.superancientmetalsreal3": "[From Brilliance]Certification: Divine Punishment Spear - Starry Sky",
+  "modifier.momotinker.tooltip.superancientmetalsreal4": "This weapon will permanently add the 'be conquered' mark when attacking monsters, and any damage taken by this monster will be corrected to 150%",
 
   "modifier.momotinker.crimsonqueen": "Crimson Queen",
   "modifier.momotinker.crimsonqueen.flavor": "'Trigger Blade' Exclusive Enhancement: Mobile Sword",
@@ -315,6 +358,8 @@
   "modifier.momotinker.berserk": "Berserk",
   "modifier.momotinker.berserk.flavor": "Completely insane",
   "modifier.momotinker.berserk.description": "Press 'Category Example' to switch between normal and berserk states. In berserk state, the damage caused and sustained by the main hand holding this tool is corrected to 140%+20% * entry level",
+  "modifier.momotinker.tooltip.berserk1": "[Berserk] not activated",
+  "modifier.momotinker.tooltip.berserk2": "[Berserk] is activated! The current correction for causing and sustaining damage is:",
 
   "modifier.momotinker.yamato": "Dimensional Slash",
   "modifier.momotinker.yamato.flavor": "'Trigger Blade' Exclusive enhancement: Yamato",
@@ -330,7 +375,8 @@
 
   "modifier.momotinker.cleansetheworld": "Cleanse The World",
   "modifier.momotinker.cleansetheworld.flavor": "'Breakthrough Stars' Enhancement: Divine Punishment",
-  "modifier.momotinker.cleansetheworld.description": "After accumulating power for a long time, it will consume 25% of its current experience points in the sky to summon a huge magic spear (this type of tool will enter a default cooldown of 600 seconds after use). Touching it will cause 50% damage every moment, and after landing, it will produce a violent explosion and deal 5000% damage to a wide range of creatures.",
+  "modifier.momotinker.cleansetheworld.description": "It will consume 25% of its current experience points in the sky to summon a huge magic spear (this type of tool will enter a default cooldown of 600 seconds after use). Touching it will cause 50% damage every moment, and after landing, it will produce a violent explosion and deal 5000% damage to a wide range of creatures.",
+  "modifier.momotinker.tooltip.cleansetheworld1": "Cooling residue of [Cleanse The World]:",
 
   "modifier.momotinker.shadowofdamnation": "Shadow Of Damnation",
   "modifier.momotinker.shadowofdamnation.flavor": "'Cleanse The World' Modification: Void Projection",
@@ -339,6 +385,12 @@
   "modifier.momotinker.drinkingdemon": "Drinking Demon",
   "modifier.momotinker.drinkingdemon.flavor": "Drink the poison of the dove, plant in spring and harvest in autumn",
   "modifier.momotinker.drinkingdemon.description": "Press the special 'Category Example' to absorb items with enchantments in the assistant, consume the total existing points * 50 points of experience, and obtain corresponding types of points based on the number of enchantments on the item. After use, the tool will cool down for 90 seconds (if experience is insufficient, it cannot be absorbed)",
+  "modifier.momotinker.tooltip.drinkingdemon1": "The current experience points are insufficient to use [Drinking Demon]", "modifier.momotinker.tooltip.drinkingdemon2": "The current experience points can be used for [Drinking Demon]",
+  "modifier.momotinker.tooltip.drinkingdemon3": "[Drinking Demon] Curse Points:", "modifier.momotinker.tooltip.drinkingdemon4": "Currently reducing the experience consumption of [Drinking Demon]:",
+  "modifier.momotinker.tooltip.drinkingdemon5": "[Drinking Demon] Total defense points:", "modifier.momotinker.tooltip.drinkingdemon6": "Currently reducing damage:",
+  "modifier.momotinker.tooltip.drinkingdemon7": "[Drinking Demon] Close combat points:", "modifier.momotinker.tooltip.drinkingdemon8": "Currently increasing melee damage:",
+  "modifier.momotinker.tooltip.drinkingdemon9": "[Drinking Demon] Remote Points:", "modifier.momotinker.tooltip.drinkingdemon10": "Currently increasing arrow damage:",
+  "modifier.momotinker.tooltip.drinkingdemon11": "[Drinking Demon] Tool Points:","modifier.momotinker.tooltip.drinkingdemon12": "Currently increasing attack speed:",
 
   "modifier.momotinker.sweetaftertaste": "Sweet After Taste",
   "modifier.momotinker.sweetaftertaste.flavor": "Under withered fruit branches",

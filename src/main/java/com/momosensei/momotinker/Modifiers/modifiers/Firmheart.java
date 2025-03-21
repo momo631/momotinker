@@ -118,8 +118,8 @@ public class Firmheart extends momomodifier {
 
     public void addTooltip(IToolStackView tool, ModifierEntry modifierEntry, @org.jetbrains.annotations.Nullable Player player, List<net.minecraft.network.chat.Component> tooltip, TooltipKey tooltipKey, TooltipFlag tooltipFlag) {
         if (player != null) {
-            tooltip.add(net.minecraft.network.chat.Component.translatable("现阶段每次可提升生命值为" + (player.getMaxHealth()*0.02F)).withStyle(ChatFormatting.DARK_GREEN));
-            tooltip.add(net.minecraft.network.chat.Component.translatable("现阶段充能伤害为" + (player.getMaxHealth()*4F)+"（远程减半）").withStyle(ChatFormatting.DARK_GREEN));
+            tooltip.add(net.minecraft.network.chat.Component.translatable("modifier.momotinker.tooltip.firmheart1").append(player.getMaxHealth()*0.02F+"").withStyle(ChatFormatting.DARK_GREEN));
+            tooltip.add(net.minecraft.network.chat.Component.translatable("modifier.momotinker.tooltip.firmheart2").append(player.getMaxHealth()*4F+"").withStyle(ChatFormatting.DARK_GREEN));
         }
     }
 }

@@ -125,7 +125,7 @@ public class WildHearts extends momomodifier {
     public void addTooltip(IToolStackView tool, ModifierEntry modifierEntry, @org.jetbrains.annotations.Nullable Player player, List<Component> tooltip, TooltipKey tooltipKey, TooltipFlag tooltipFlag) {
         if (player != null) {
             ModDataNBT tooldata = tool.getPersistentData();
-            tooltip.add(net.minecraft.network.chat.Component.translatable("[狂徒之心]的冷却还剩" + (tooldata.getFloat(wildheartcooldown))+"秒").withStyle(ChatFormatting.GREEN));
+            tooltip.add(net.minecraft.network.chat.Component.translatable("modifier.momotinker.tooltip.wildhearts1").append(tooldata.getFloat(wildheartcooldown)+"s").withStyle(ChatFormatting.GREEN));
         }
     }
 }

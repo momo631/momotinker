@@ -87,12 +87,12 @@ public class SuperancientMetalsReal extends momomodifier {
     public void addTooltip(IToolStackView tool, ModifierEntry modifierEntry, @org.jetbrains.annotations.Nullable Player player, List<Component> tooltip, TooltipKey tooltipKey, TooltipFlag tooltipFlag) {
         ModDataNBT c = tool.getPersistentData();
         if (c.getFloat(degenerate)==degenerate_limit) {
-            tooltip.add(net.minecraft.network.chat.Component.translatable("古代神兵认证:天谴之矛-染血").withStyle(ChatFormatting.DARK_RED));
-            tooltip.add(net.minecraft.network.chat.Component.translatable("此工具攻击将无视护甲且不造成无敌帧").withStyle(ChatFormatting.DARK_RED));
+            tooltip.add(net.minecraft.network.chat.Component.translatable("modifier.momotinker.tooltip.superancientmetalsreal1").withStyle(ChatFormatting.DARK_RED));
+            tooltip.add(net.minecraft.network.chat.Component.translatable("modifier.momotinker.tooltip.superancientmetalsreal2").withStyle(ChatFormatting.DARK_RED));
         }
         if (c.getFloat(sanctification)==sanctification_limit) {
-            tooltip.add(net.minecraft.network.chat.Component.translatable("古代神兵认证:天谴之矛-星辰").withStyle(ChatFormatting.YELLOW));
-            tooltip.add(net.minecraft.network.chat.Component.translatable("此武器攻击怪物会永久添加“被征服者”的标记，此怪物受到的任何伤害会修正为150%").withStyle(ChatFormatting.YELLOW));
+            tooltip.add(net.minecraft.network.chat.Component.translatable("modifier.momotinker.tooltip.superancientmetalsreal3").withStyle(ChatFormatting.YELLOW));
+            tooltip.add(net.minecraft.network.chat.Component.translatable("modifier.momotinker.tooltip.superancientmetalsreal4").withStyle(ChatFormatting.YELLOW));
         }
     }
 }

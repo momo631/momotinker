@@ -52,24 +52,24 @@ public class DrinkingDemon extends momomodifier {
         float g = (float) 5 /(tool.getPersistentData().getInt(curseenchant)+5);
         if (player != null) {
             if (player.totalExperience < a * 50 * g) {
-                tooltip.add(Component.translatable("当前经验点数不足以使用饮魔").withStyle(ChatFormatting.RED));
+                tooltip.add(Component.translatable("modifier.momotinker.tooltip.drinkingdemon1").withStyle(ChatFormatting.RED));
             }
             if (player.totalExperience > a * 50 * g) {
-                tooltip.add(Component.translatable("当前经验点数可以使用饮魔").withStyle(ChatFormatting.GREEN));
+                tooltip.add(Component.translatable("modifier.momotinker.tooltip.drinkingdemon2").withStyle(ChatFormatting.GREEN));
             }
-            tooltip.add(Component.translatable("饮魔诅咒点数:" + (tool.getPersistentData().getInt(curseenchant)) + ";当前减少饮魔经验消耗:" + (f) + "%").withStyle(ChatFormatting.DARK_PURPLE));
+            tooltip.add(Component.translatable("modifier.momotinker.tooltip.drinkingdemon3").append((tool.getPersistentData().getInt(curseenchant)) + ";").append(Component.translatable("modifier.momotinker.tooltip.drinkingdemon4")).append((f) + "%").withStyle(ChatFormatting.DARK_PURPLE));
             int b1=  ToolStack.from(player.getItemBySlot(EquipmentSlot.HEAD)).getPersistentData().getInt(defenseenchant)
                     +ToolStack.from(player.getItemBySlot(EquipmentSlot.CHEST)).getPersistentData().getInt(defenseenchant)
                     +ToolStack.from(player.getItemBySlot(EquipmentSlot.LEGS)).getPersistentData().getInt(defenseenchant)
                     +ToolStack.from(player.getItemBySlot(EquipmentSlot.FEET)).getPersistentData().getInt(defenseenchant);
             float b = (1-((float) 80 / (b1 + 80)))*100;
             if (tool.hasTag(TinkerTags.Items.ARMOR)) {
-                tooltip.add(Component.translatable("饮魔总防御点数:" + (b1) + ";当前减少受到伤害:" + (b) + "%").withStyle(ChatFormatting.DARK_PURPLE));
+                tooltip.add(Component.translatable("modifier.momotinker.tooltip.drinkingdemon5").append((b1) + ";").append(Component.translatable("modifier.momotinker.tooltip.drinkingdemon6")).append((b) + "%").withStyle(ChatFormatting.DARK_PURPLE));
             }
             if (!tool.hasTag(TinkerTags.Items.ARMOR)) {
-                tooltip.add(Component.translatable("饮魔近战点数:" + (c) + ";当前增加近战伤害:" + (c) + "%").withStyle(ChatFormatting.DARK_PURPLE));
-                tooltip.add(Component.translatable("饮魔远程点数:" + (d) + ";当前增加箭矢伤害:" + (d * 0.5) + "%").withStyle(ChatFormatting.DARK_PURPLE));
-                tooltip.add(Component.translatable("饮魔工具点数:" + (e) + ";当前增加攻击速度:" + (e) + "%").withStyle(ChatFormatting.DARK_PURPLE));
+                tooltip.add(Component.translatable("modifier.momotinker.tooltip.drinkingdemon7").append((c) + ";").append(Component.translatable("modifier.momotinker.tooltip.drinkingdemon8")).append((c) + "%").withStyle(ChatFormatting.DARK_PURPLE));
+                tooltip.add(Component.translatable("modifier.momotinker.tooltip.drinkingdemon9").append((d) + ";").append(Component.translatable("modifier.momotinker.tooltip.drinkingdemon10")).append((d * 0.5) + "%").withStyle(ChatFormatting.DARK_PURPLE));
+                tooltip.add(Component.translatable("modifier.momotinker.tooltip.drinkingdemon11").append((e) + ";").append(Component.translatable("modifier.momotinker.tooltip.drinkingdemon12")).append((e) + "%").withStyle(ChatFormatting.DARK_PURPLE));
             }
         }
     }

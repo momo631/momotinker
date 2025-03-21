@@ -54,13 +54,13 @@ public class KeyInputPKT {
 
             if (player != null && ModifierUtil.getModifierLevel(player.getMainHandItem(), MomotinkerModifiers.red.getId()) > 0) {
                 ModDataNBT enddata = ToolStack.from(player.getItemBySlot(EquipmentSlot.MAINHAND)).getPersistentData();
-                String[] array = new String[]{"层林尽染", "引渡徘徊", "终归尘土", "化为虚无", "在此永眠", "万籁俱寂", "如雨而逝"};
+                String[] array = new String[]{"msg.ender1", "msg.ender2", "msg.ender3", "msg.ender4", "msg.ender5", "msg.ender6", "msg.ender7"};
                 Random random = new Random();
                 int randomIndex = random.nextInt(array.length);
                 if (enddata.getFloat(ender) == 0) {
                     enddata.putFloat(ender, 90);
                     player.addEffect(new MobEffectInstance(MomotinkerEffects.End.get(), 300));
-                    player.sendSystemMessage(Component.literal(array[randomIndex]).withStyle(ChatFormatting.DARK_RED));
+                    player.sendSystemMessage(Component.translatable(array[randomIndex]).withStyle(ChatFormatting.DARK_RED));
                 }
             }
 
@@ -87,23 +87,23 @@ public class KeyInputPKT {
                     player.getItemBySlot(EquipmentSlot.OFFHAND).setCount(player.getItemBySlot(EquipmentSlot.OFFHAND).getCount() - 1);
                     if (b < 4) {
                         crystallizationdata.putFloat(crystallization, crystallizationdata.getFloat(crystallization) + 1);
-                        player.sendSystemMessage(Component.translatable("强化成功！").withStyle(ChatFormatting.GREEN));
+                        player.sendSystemMessage(Component.translatable("msg.crystallization1").withStyle(ChatFormatting.GREEN));
                     }
                     if (b >= 4 && a < 6) {
                         crystallizationdata.putFloat(crystallization, crystallizationdata.getFloat(crystallization));
-                        player.sendSystemMessage(Component.translatable("强化失败！").withStyle(ChatFormatting.RED));
+                        player.sendSystemMessage(Component.translatable("msg.crystallization2").withStyle(ChatFormatting.RED));
                     }
                     if (b >= 4 && a < 10 && a >= 6) {
                         crystallizationdata.putFloat(crystallization, crystallizationdata.getFloat(crystallization) - 1);
-                        player.sendSystemMessage(Component.translatable("强化失败！强化等级减1").withStyle(ChatFormatting.RED));
+                        player.sendSystemMessage(Component.translatable("msg.crystallization3").withStyle(ChatFormatting.RED));
                     }
                     if (b >= 4 && a < 14 && a >= 10) {
                         crystallizationdata.putFloat(crystallization, crystallizationdata.getFloat(crystallization) - 4);
-                        player.sendSystemMessage(Component.translatable("强化失败！强化等级减4").withStyle(ChatFormatting.RED));
+                        player.sendSystemMessage(Component.translatable("msg.crystallization4").withStyle(ChatFormatting.RED));
                     }
                     if (b >= 4 && a >= 14) {
                         player.setItemSlot(EquipmentSlot.MAINHAND, ItemStack.EMPTY);
-                        player.sendSystemMessage(Component.translatable("强化失败！装备碎掉了。。。").withStyle(ChatFormatting.RED));
+                        player.sendSystemMessage(Component.translatable("msg.crystallization5").withStyle(ChatFormatting.RED));
                     }
                 }
             }

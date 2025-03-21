@@ -22,7 +22,7 @@ public class OverEnvySin extends momomodifier {
     public void addTooltip(IToolStackView tool, ModifierEntry modifierEntry, @org.jetbrains.annotations.Nullable Player player, List<Component> tooltip, TooltipKey tooltipKey, TooltipFlag tooltipFlag) {
         if (player != null) {
             int a = ModifierUtil.getModifierLevel(player.getItemBySlot(EquipmentSlot.MAINHAND), MomotinkerModifiers.overenvysin.getId());
-            tooltip.add(net.minecraft.network.chat.Component.translatable("目前增伤可提供最大攻击力为" + (a*a*100)).withStyle(ChatFormatting.YELLOW));
+            tooltip.add(net.minecraft.network.chat.Component.translatable("modifier.momotinker.tooltip.overenvysin1").append((a*a*100)+"").withStyle(ChatFormatting.YELLOW));
         }
     }
 }

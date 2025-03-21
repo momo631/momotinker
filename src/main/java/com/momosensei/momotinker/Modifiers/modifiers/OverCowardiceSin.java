@@ -57,12 +57,12 @@ public class OverCowardiceSin extends momomodifier {
         if (player != null) {
             int a = getArmorModifierlevel(player,MomotinkerModifiers.overcowardicesin.getId());
             if (a>0&&a<8) {
-                tooltip.add(net.minecraft.network.chat.Component.translatable("当前已增加闪避几率" + (a * 10) + "%").withStyle(ChatFormatting.GOLD));
-                tooltip.add(net.minecraft.network.chat.Component.translatable("当前已减少造成伤害" + (a * 5) + "%").withStyle(ChatFormatting.GOLD));
+                tooltip.add(net.minecraft.network.chat.Component.translatable("modifier.momotinker.tooltip.overcowardicesin1").append((a * 10) + "%").withStyle(ChatFormatting.GOLD));
+                tooltip.add(net.minecraft.network.chat.Component.translatable("modifier.momotinker.tooltip.overcowardicesin2").append((a * 5) + "%").withStyle(ChatFormatting.GOLD));
             }
             if (a>8) {
-                tooltip.add(net.minecraft.network.chat.Component.translatable("当前已增加闪避几率" + (80) + "%").withStyle(ChatFormatting.GOLD));
-                tooltip.add(net.minecraft.network.chat.Component.translatable("当前已减少造成伤害" + (40) + "%").withStyle(ChatFormatting.GOLD));
+                tooltip.add(net.minecraft.network.chat.Component.translatable("modifier.momotinker.tooltip.overcowardicesin1").append((80) + "%").withStyle(ChatFormatting.GOLD));
+                tooltip.add(net.minecraft.network.chat.Component.translatable("modifier.momotinker.tooltip.overcowardicesin2").append((40) + "%").withStyle(ChatFormatting.GOLD));
             }
         }
     }
