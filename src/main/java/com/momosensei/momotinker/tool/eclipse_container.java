@@ -30,7 +30,6 @@ import slimeknights.mantle.client.TooltipKey;
 import slimeknights.tconstruct.common.TinkerTags;
 import slimeknights.tconstruct.library.modifiers.ModifierEntry;
 import slimeknights.tconstruct.library.modifiers.ModifierHooks;
-import slimeknights.tconstruct.library.modifiers.hook.display.TooltipModifierHook;
 import slimeknights.tconstruct.library.tools.definition.ToolDefinition;
 import slimeknights.tconstruct.library.tools.helper.ToolDamageUtil;
 import slimeknights.tconstruct.library.tools.helper.TooltipBuilder;
@@ -106,9 +105,11 @@ public class eclipse_container extends ModifiableItem {
                             entity.push(vec.x, vec.y, vec.z);
                         }
                     }
-                    for (Entity entity : list1) {
-                        if (entity instanceof LivingEntity && entity != player){
-                            attackUtil.attackEntity(tool, player, InteractionHand.MAIN_HAND, entity, () -> 1, true, Util.getSlotType(InteractionHand.MAIN_HAND), tool.getStats().get(ToolStats.ATTACK_DAMAGE) * 0.2f, false, true, false, true);
+                    if (player.tickCount%20==1) {
+                        for (Entity entity : list1) {
+                            if (entity instanceof LivingEntity && entity != player) {
+                                attackUtil.attackEntity(tool, player, InteractionHand.MAIN_HAND, entity, () -> 1, true, Util.getSlotType(InteractionHand.MAIN_HAND), tool.getStats().get(ToolStats.ATTACK_DAMAGE) * 0.2f, false, true, false, true);
+                            }
                         }
                     }
                     if (player.level() instanceof ServerLevel serverLevel) {
@@ -123,9 +124,11 @@ public class eclipse_container extends ModifiableItem {
                             entity.push(vec.x, vec.y, vec.z);
                         }
                     }
-                    for (Entity entity : list1) {
-                        if (entity instanceof LivingEntity && entity != player){
-                            attackUtil.attackEntity(tool, player, InteractionHand.MAIN_HAND, entity, () -> 1, true, Util.getSlotType(InteractionHand.MAIN_HAND), tool.getStats().get(ToolStats.ATTACK_DAMAGE) * 0.2f, false, true, false, true);
+                    if (player.tickCount%20==1) {
+                        for (Entity entity : list1) {
+                            if (entity instanceof LivingEntity && entity != player) {
+                                attackUtil.attackEntity(tool, player, InteractionHand.MAIN_HAND, entity, () -> 1, true, Util.getSlotType(InteractionHand.MAIN_HAND), tool.getStats().get(ToolStats.ATTACK_DAMAGE) * 0.2f, false, true, false, true);
+                            }
                         }
                     }
                     if (player.level() instanceof ServerLevel serverLevel) {
@@ -183,7 +186,7 @@ public class eclipse_container extends ModifiableItem {
         Iterator var7 = tool.getModifierList().iterator();
         while(var7.hasNext()) {
             ModifierEntry entry = (ModifierEntry)var7.next();
-            ((TooltipModifierHook)entry.getHook(ModifierHooks.TOOLTIP)).addTooltip(tool, entry, player, tooltips, key, tooltipFlag);
+            entry.getHook(ModifierHooks.TOOLTIP).addTooltip(tool, entry, player, tooltips, key, tooltipFlag);
         }
         return tooltips;
     }

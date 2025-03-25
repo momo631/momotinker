@@ -4,6 +4,7 @@ import com.momosensei.momotinker.Modifiers.momomodifier;
 import com.momosensei.momotinker.Momotinker;
 import com.momosensei.momotinker.register.MomotinkerConfig;
 import com.momosensei.momotinker.register.MomotinkerEffects;
+import com.momosensei.momotinker.register.MomotinkerModifiers;
 import net.minecraft.ChatFormatting;
 import net.minecraft.network.chat.Component;
 import net.minecraft.resources.ResourceLocation;
@@ -76,19 +77,28 @@ public class WildHearts extends momomodifier {
     @Override
     public void onInventoryTick(IToolStackView iToolStackView, ModifierEntry modifierEntry, Level level, LivingEntity entity, int index, boolean b, boolean b1, ItemStack itemStack) {
         if (entity instanceof ServerPlayer player) {
-            for (ItemStack stack : player.getInventory().armor) {
-                if (stack.getItem() instanceof ModifiableArmorItem) {
-                    ToolStack tool = ToolStack.from(stack);
-                    if (tool.getModifierLevel(this) > 0 ) {
+            int i = getArmorModifierlevel(entity, MomotinkerModifiers.wildhearts.getId());
+            int c = MomotinkerConfig.spirit_visage_limit.get();
+            if (i > 0) {
+                for (ItemStack stack : player.getInventory().armor) {
+                    if (stack.getItem() instanceof ModifiableArmorItem) {
                         ModDataNBT a = iToolStackView.getPersistentData();
-                        int c = MomotinkerConfig.spirit_visage_limit.get();
-                        if (entity.getMaxHealth() > c&&a.getFloat(wildheartcooldown)==0) {
+                        if (entity.getMaxHealth() > c && a.getFloat(wildheartcooldown) == 0) {
                             entity.addEffect(new MobEffectInstance(MomotinkerEffects.WildHeart.get(), 20));
                         }
-                        if (entity.tickCount % 20 == 0 &&a.getFloat(wildheartcooldown)>0.1){
-                            a.putFloat(wildheartcooldown,a.getFloat(wildheartcooldown)-1);
+                        if (a.getFloat(wildheartcooldown) <0) {
+                            a.putFloat(wildheartcooldown, 0);
                         }
                     }
+                }
+                for (ItemStack stack : player.getInventory().armor) {
+                    if (stack.getItem() instanceof ModifiableArmorItem) {
+                        ModDataNBT a = iToolStackView.getPersistentData();
+                        if (entity.tickCount % 20 == 0 && a.getFloat(wildheartcooldown) > 0) {
+                            a.putFloat(wildheartcooldown, a.getFloat(wildheartcooldown) - 1);
+                        }
+                    }
+                    break;
                 }
             }
         }
@@ -101,31 +111,22 @@ public class WildHearts extends momomodifier {
         ModDataNBT c = ToolStack.from(living.getItemBySlot(EquipmentSlot.LEGS)).getPersistentData();
         ModDataNBT d = ToolStack.from(living.getItemBySlot(EquipmentSlot.FEET)).getPersistentData();
         if (living instanceof Player player) {
+            int i = getArmorModifierlevel(player, MomotinkerModifiers.wildhearts.getId());
             if (living.getEffect(MomotinkerEffects.WildHeart.get()) != null && living.hasEffect(MomotinkerEffects.WildHeart.get())) {
                 living.removeEffect(MomotinkerEffects.WildHeart.get());
-                a.putFloat(wildheartcooldown,8);
-                b.putFloat(wildheartcooldown,8);
-                c.putFloat(wildheartcooldown,8);
-                d.putFloat(wildheartcooldown,8);
             }
-            if (a.getFloat(wildheartcooldown)>0){
-                a.putFloat(wildheartcooldown,8);
-            }
-            if (b.getFloat(wildheartcooldown)>0){
-                b.putFloat(wildheartcooldown,8);
-            }
-            if (c.getFloat(wildheartcooldown)>0){
-                c.putFloat(wildheartcooldown,8);
-            }
-            if (d.getFloat(wildheartcooldown)>0){
-                d.putFloat(wildheartcooldown,8);
+            if (i>0) {
+                a.putFloat(wildheartcooldown, 8);
+                b.putFloat(wildheartcooldown, 8);
+                c.putFloat(wildheartcooldown, 8);
+                d.putFloat(wildheartcooldown, 8);
             }
         }
     }
     public void addTooltip(IToolStackView tool, ModifierEntry modifierEntry, @org.jetbrains.annotations.Nullable Player player, List<Component> tooltip, TooltipKey tooltipKey, TooltipFlag tooltipFlag) {
         if (player != null) {
             ModDataNBT tooldata = tool.getPersistentData();
-            tooltip.add(net.minecraft.network.chat.Component.translatable("[狂徒之心]的冷却还剩" + (tooldata.getFloat(wildheartcooldown))+"秒").withStyle(ChatFormatting.GREEN));
+            tooltip.add(net.minecraft.network.chat.Component.translatable("modifier.momotinker.tooltip.wildhearts1").append(tooldata.getFloat(wildheartcooldown)+"s").withStyle(ChatFormatting.GREEN));
         }
     }
 }

@@ -4,7 +4,7 @@
   "block.momotinker.dimensional_prism": "§b次元棱镜§",
   "momotinker.block.tooltip.dimensional_prism1": "§b异次元空间的碎片§",
   "momotinker.block.tooltip.dimensional_prism2": "§b按住“shift”查看获取§",
-  "momotinker.block.tooltip.dimensional_prism3": "§b§",
+  "momotinker.block.tooltip.dimensional_prism3": "§b当玩家破坏玻璃时有10%的概率掉落该物品§",
 
   "effect.momotinker.hongwen": "红温",
   "effect.momotinker.none": "忘阙人",
@@ -131,7 +131,7 @@
   "item.momotinker.devouring_demon_gold": "噬魔金",
   "momotinker.item.tooltip.devouring_demon_gold1": "物极必反，过度的附魔导致了此物的诞生",
   "momotinker.item.tooltip.devouring_demon_gold2": "按住“shift”查看获取",
-  "momotinker.item.tooltip.devouring_demon_gold3": "",
+  "momotinker.item.tooltip.devouring_demon_gold3": "在虚空时将拥有附魔种类大于等于5的装备丢出时，其会转换为该物品",
 
 
   "itemGroup.momotinker.tools": "墨工坊模组-工具",
@@ -330,6 +330,7 @@
   "modifier.momotinker.tooltip.crystallization1": "当前强化点数为:",
   "modifier.momotinker.tooltip.crystallization2": "当前强化成功率为:",
   "modifier.momotinker.tooltip.crystallization3": "当前增伤量为:",
+  "modifier.momotinker.tooltip.crystallization7": "远程的当前增伤量为:",
   "modifier.momotinker.tooltip.crystallization4": "当前若强化失败会减1级！",
   "modifier.momotinker.tooltip.crystallization5": "当前若强化失败会减4级！",
   "modifier.momotinker.tooltip.crystallization6": "小心！！当前强化失败武器会消失！",
