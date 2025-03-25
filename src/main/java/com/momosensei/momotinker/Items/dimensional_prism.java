@@ -16,7 +16,10 @@ public class dimensional_prism extends BlockItem {
     public dimensional_prism(Block block, Properties properties) {
         super(block, properties);
     }
-
+    @Override
+    public boolean isFireResistant() {
+        return true;
+    }
     @Override
     public void appendHoverText(@NotNull ItemStack itemstack, Level world, @NotNull List<Component> list, @NotNull TooltipFlag flag) {
         if (Screen.hasShiftDown()) {

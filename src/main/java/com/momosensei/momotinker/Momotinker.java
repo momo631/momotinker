@@ -28,12 +28,11 @@ import static com.momosensei.momotinker.register.MomotinkerItem.*;
 
 public class Momotinker {
     public static final String MOD_ID = "momotinker"; //是你的模组名，需要英文
-
+    boolean config = MomotinkerConfig.special_acquisition.get();
     public Momotinker() {
         //注册表之类的东西
         //如果你新稿了别的注册表记得这边填一下
         IEventBus eventBus = FMLJavaModLoadingContext.get().getModEventBus();
-        MinecraftForge.EVENT_BUS.register(new LivingEvents());
         MinecraftForge.EVENT_BUS.register(this);
         MomotinkerItem.ITEMS.register(eventBus);
         MomotinkerModifiers.MODIFIERS.register(eventBus);
@@ -44,6 +43,9 @@ public class Momotinker {
         MomotinkerLootModifiers.register(eventBus);
         IEventBus bus = FMLJavaModLoadingContext.get().getModEventBus();
         ModLoadingContext.get().registerConfig(ModConfig.Type.COMMON, MomotinkerConfig.spec);
+        if (config) {
+            MinecraftForge.EVENT_BUS.register(new LivingEvents());
+        }
     }
 
     //Resourcelocation

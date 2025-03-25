@@ -35,19 +35,19 @@ public class GrudgeOthers extends momomodifier {
             if (ModifierUtil.getModifierLevel(player.getItemBySlot(EquipmentSlot.MAINHAND), MomotinkerModifiers.grudgeothers.getId())>0) {
                 if (!player.hasItemInSlot(EquipmentSlot.HEAD)){
                     mob.setDropChance(EquipmentSlot.HEAD, 1);
-                    entity.setItemSlot(EquipmentSlot.HEAD, ItemStack.EMPTY);
+                    mob.setItemSlot(EquipmentSlot.HEAD, ItemStack.EMPTY);
                 }
                 if (!player.hasItemInSlot(EquipmentSlot.CHEST)){
                     mob.setDropChance(EquipmentSlot.CHEST, 1);
-                    entity.setItemSlot(EquipmentSlot.CHEST, ItemStack.EMPTY);
+                    mob.setItemSlot(EquipmentSlot.CHEST, ItemStack.EMPTY);
                 }
                 if (!player.hasItemInSlot(EquipmentSlot.LEGS)){
                     mob.setDropChance(EquipmentSlot.LEGS, 1);
-                    entity.setItemSlot(EquipmentSlot.LEGS, ItemStack.EMPTY);
+                    mob.setItemSlot(EquipmentSlot.LEGS, ItemStack.EMPTY);
                 }
                 if (!player.hasItemInSlot(EquipmentSlot.FEET)){
                     mob.setDropChance(EquipmentSlot.FEET, 1);
-                    entity.setItemSlot(EquipmentSlot.FEET, ItemStack.EMPTY);
+                    mob.setItemSlot(EquipmentSlot.FEET, ItemStack.EMPTY);
                 }
             }
         }

@@ -4,6 +4,7 @@ package com.momosensei.momotinker.event;
 import com.momosensei.momotinker.Momotinker;
 import com.momosensei.momotinker.register.MomotinkerConfig;
 import com.momosensei.momotinker.register.MomotinkerItem;
+import it.unimi.dsi.fastutil.ints.Int2ObjectMap;
 import net.minecraft.resources.ResourceLocation;
 import net.minecraft.server.level.ServerPlayer;
 import net.minecraft.world.effect.MobEffects;
@@ -15,36 +16,52 @@ import net.minecraft.world.entity.animal.Sheep;
 import net.minecraft.world.entity.animal.Wolf;
 import net.minecraft.world.entity.animal.frog.Frog;
 import net.minecraft.world.entity.boss.wither.WitherBoss;
+import net.minecraft.world.entity.item.ItemEntity;
 import net.minecraft.world.entity.monster.Slime;
 import net.minecraft.world.entity.monster.warden.Warden;
+import net.minecraft.world.entity.npc.VillagerTrades;
+import net.minecraft.world.entity.player.Player;
 import net.minecraft.world.item.ItemStack;
 import net.minecraft.world.item.Items;
+import net.minecraft.world.item.enchantment.Enchantments;
+import net.minecraft.world.item.trading.MerchantOffer;
+import net.minecraft.world.level.Level;
+import net.minecraft.world.level.block.Blocks;
 import net.minecraft.world.level.block.SaplingBlock;
 import net.minecraftforge.common.MinecraftForge;
+import net.minecraftforge.event.entity.item.ItemEvent;
 import net.minecraftforge.event.entity.living.BabyEntitySpawnEvent;
 import net.minecraftforge.event.entity.living.LivingDeathEvent;
 import net.minecraftforge.event.entity.living.LivingHurtEvent;
 import net.minecraftforge.event.entity.player.BonemealEvent;
 import net.minecraftforge.event.entity.player.SleepingTimeCheckEvent;
+import net.minecraftforge.event.level.BlockEvent;
+import net.minecraftforge.event.village.VillagerTradesEvent;
 import net.minecraftforge.eventbus.api.EventPriority;
 import slimeknights.tconstruct.library.tools.helper.ModifierUtil;
 import slimeknights.tconstruct.library.tools.nbt.ModDataNBT;
+
+import java.util.List;
 
 import static slimeknights.tconstruct.TConstruct.RANDOM;
 
 
 public class LivingEvents {
-    public LivingEvents() {
+    public LivingEvents(){
         MinecraftForge.EVENT_BUS.addListener(this::livinghurtevent);
-        MinecraftForge.EVENT_BUS.addListener(EventPriority.LOWEST, this::onEntityDeath);
-        MinecraftForge.EVENT_BUS.addListener(EventPriority.LOWEST, this::onBabyEntitySpawnEvent);
-        MinecraftForge.EVENT_BUS.addListener(EventPriority.LOWEST, this::onBonemealEvent);
-        MinecraftForge.EVENT_BUS.addListener(EventPriority.LOWEST, this::onSleepingTimeCheckEvent);
-        //MinecraftForge.EVENT_BUS.addListener(EventPriority.HIGHEST,this::onPlayerTick);
+        MinecraftForge.EVENT_BUS.addListener(EventPriority.LOWEST,this::onEntityDeath);
+        MinecraftForge.EVENT_BUS.addListener(EventPriority.LOWEST,this::onBabyEntitySpawnEvent);
+        MinecraftForge.EVENT_BUS.addListener(EventPriority.LOWEST,this::onBonemealEvent);
+        MinecraftForge.EVENT_BUS.addListener(EventPriority.LOWEST,this::onSleepingTimeCheckEvent);
+        MinecraftForge.EVENT_BUS.addListener(EventPriority.HIGHEST,this::addCustomTrades);
+        MinecraftForge.EVENT_BUS.addListener(EventPriority.LOWEST,this::onItemEvent);
+        MinecraftForge.EVENT_BUS.addListener(EventPriority.LOWEST,this::onFallVoidEvent);
     }
 
     private static final ResourceLocation lusttest = Momotinker.getResource("lusttest");
     private static final ResourceLocation ragetest = Momotinker.getResource("ragetest");
+    private static final ResourceLocation enchtesta = Momotinker.getResource("enchtesta");
+    private static final ResourceLocation enchtestb = Momotinker.getResource("enchtestb");
 
     private void livinghurtevent(LivingHurtEvent event) {
         Entity a = event.getEntity();
@@ -154,7 +171,6 @@ public class LivingEvents {
             }
         }
     }
-
     private void onBonemealEvent(BonemealEvent event) {
         boolean config = MomotinkerConfig.spirit_visage.get();
         if (config) {
@@ -167,7 +183,6 @@ public class LivingEvents {
             }
         }
     }
-
     private void onSleepingTimeCheckEvent(SleepingTimeCheckEvent event) {
         boolean config = MomotinkerConfig.lazy_grail.get();
         if (config) {
@@ -181,10 +196,50 @@ public class LivingEvents {
             }
         }
     }
-/*
-    private void onPlayerTick(TickEvent.PlayerTickEvent event) {
-        if (event!=null&&event.player instanceof ServerPlayer player&&!player.getUseItem().is(trigger_blade.get())) {
-            execute(event,player.level, player);
+
+    private void addCustomTrades(VillagerTradesEvent event) {
+        boolean config = MomotinkerConfig.greedy_contract.get();
+        if (config) {
+            if (event.getType() != null) {
+                Int2ObjectMap<List<VillagerTrades.ItemListing>> trades = event.getTrades();
+                ItemStack a = new ItemStack(MomotinkerItem.greedy_contract.get());
+                int villagerLevel = 5;
+                trades.get(villagerLevel).add((trader, rand) -> new MerchantOffer(
+                        new ItemStack(Items.EMERALD_BLOCK, 16), a, 1, 0, 0.1f));
+            }
         }
-    }*/
+    }
+
+    private void onItemEvent(BlockEvent.BreakEvent event) {
+        Player player=event.getPlayer();
+        boolean config = MomotinkerConfig.dimensional_prism.get();
+        if (config) {
+            if (player != null && event.getState().is(Blocks.GLASS)) {
+                int a = RANDOM.nextInt(10);
+                if (player.getUseItem().isEnchanted() && player.getUseItem().getEnchantmentLevel(Enchantments.SILK_TOUCH) != 0) {
+                    return;
+                }
+                if (a == 1) {
+                    ItemStack b = new ItemStack(MomotinkerItem.dimensional_prism.get());
+                    ModifierUtil.dropItem(player, b);
+                }
+            }
+        }
+    }
+
+    private void onFallVoidEvent(ItemEvent event) {
+        ItemEntity entity = event.getEntity();
+        Level level = event.getEntity().level;
+        boolean config = MomotinkerConfig.devouring_demon_gold.get();
+        if (config) {
+            if (entity != null && entity.getOnPos().getY() < level.getMinBuildHeight()) {
+                if (!entity.getItem().isEnchanted()) {
+                    return;
+                }
+                if (entity.getItem().getAllEnchantments().size() >= 5) {
+                    entity.setItem(MomotinkerItem.devouring_demon_gold.get().getDefaultInstance());
+                }
+            }
+        }
+    }
 }
