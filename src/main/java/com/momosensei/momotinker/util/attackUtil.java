@@ -55,7 +55,7 @@ public class attackUtil {
                 .filter(attribute -> !attribute.hasModifier(ANTI_KNOCKBACK_MODIFIER));
     }
 
-    public static boolean attackEntity(IToolStackView tool, LivingEntity attackerLiving, InteractionHand hand, Entity targetEntity, DoubleSupplier cooldownFunction, boolean isExtraAttack, EquipmentSlot sourceSlot,float SetDamage,boolean SetCritical,boolean notDamageTool,boolean removeInvTime,boolean ignoreEnchant) {
+    public static boolean attackEntity(IToolStackView tool, LivingEntity attackerLiving, InteractionHand hand, Entity targetEntity, DoubleSupplier cooldownFunction, boolean isExtraAttack, EquipmentSlot sourceSlot,float SetDamage,float DamageMultiplier,boolean SetCritical,boolean notDamageTool,boolean removeInvTime) {
         if (tool.isBroken() || !tool.hasTag(TinkerTags.Items.MELEE)) {
             return false;
         }
@@ -115,7 +115,9 @@ public class attackUtil {
         if (isCritical) {
             damage *= criticalModifier;
         }
-
+        if (DamageMultiplier>=0){
+            damage *= DamageMultiplier;
+        }
 
         boolean isMagic = damage > baseDamage;
         if (cooldown < 1) {
@@ -203,7 +205,7 @@ public class attackUtil {
         }
 
         attackerLiving.setLastHurtMob(targetEntity);
-        if (targetLiving != null&&!ignoreEnchant) {
+        if (targetLiving != null) {
             EnchantmentHelper.doPostHurtEffects(targetLiving, attackerLiving);
         }
 

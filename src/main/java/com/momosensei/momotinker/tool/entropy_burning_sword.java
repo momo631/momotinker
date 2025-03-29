@@ -104,7 +104,7 @@ public class entropy_burning_sword extends ModifiableItem {
                 for (Entity targets : ls0) {
                     if (targets != player) {
                         targets.invulnerableTime = 0;
-                        attackUtil.attackEntity(tool, player, InteractionHand.MAIN_HAND, targets, () -> 1, true, Util.getSlotType(InteractionHand.MAIN_HAND), tool.getStats().get(ToolStats.ATTACK_DAMAGE) * 1.5f, false, true, true, true);
+                        attackUtil.attackEntity(tool, player, InteractionHand.MAIN_HAND, targets, () -> 1, true, Util.getSlotType(InteractionHand.MAIN_HAND), tool.getStats().get(ToolStats.ATTACK_DAMAGE),1.5f, false, true, true);
                     }
                 }
                 if (player.level() instanceof ServerLevel serverLevel) {

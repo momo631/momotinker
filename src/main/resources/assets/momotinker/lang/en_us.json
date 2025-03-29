@@ -358,7 +358,7 @@
 
   "modifier.momotinker.berserk": "Berserk",
   "modifier.momotinker.berserk.flavor": "Completely insane",
-  "modifier.momotinker.berserk.description": "Press 'Category Example' to switch between normal and berserk states. In berserk state, the damage caused and sustained by the main hand holding this tool is corrected to 140%+20% * entry level",
+  "modifier.momotinker.berserk.description": "Press 'Category Example' to switch between normal and berserk states. When worn in a berserk state or held by the primary and secondary players, the damage caused and taken is corrected to 140%+30% * total body entry level",
   "modifier.momotinker.tooltip.berserk1": "[Berserk] not activated",
   "modifier.momotinker.tooltip.berserk2": "[Berserk] is activated! The current correction for causing and sustaining damage is:",
 
@@ -368,7 +368,7 @@
 
   "modifier.momotinker.starcloudchain": "Star Cloud Chain",
   "modifier.momotinker.starcloudchain.flavor": "Like a constellation",
-  "modifier.momotinker.starcloudchain.description": "Attacking monsters will add a 'Star Chain' tag. When attacking monsters with this tag within a certain range centered on oneself, other monsters with this tag will receive 50%+10% * of the damage at the item level (within a square area of 10+5 * item level) from this attack",
+  "modifier.momotinker.starcloudchain.description": "Attacking or being attacked by monsters will add a 'Star Chain' tag to them. When attacking or being attacked by monsters with this tag, other monsters with this tag will receive 20%+10% * of the total body item level damage from this attack (within a square area of 5+3 * item level)",
 
   "modifier.momotinker.breakthroughstars": "Breakthrough Stars",
   "modifier.momotinker.breakthroughstars.flavor": "'Divine Punishment Spear' Exclusive Enhancement: Magic Spear Throwing",
@@ -376,12 +376,12 @@
 
   "modifier.momotinker.cleansetheworld": "Cleanse The World",
   "modifier.momotinker.cleansetheworld.flavor": "'Breakthrough Stars' Enhancement: Divine Punishment",
-  "modifier.momotinker.cleansetheworld.description": "It will consume 25% of its current experience points in the sky to summon a huge magic spear (this type of tool will enter a default cooldown of 600 seconds after use). Touching it will cause 50% damage every moment, and after landing, it will produce a violent explosion and deal 5000% damage to a wide range of creatures.",
+  "modifier.momotinker.cleansetheworld.description": "It will consume 25% of its current experience points in the sky to summon a huge magic spear (this type of tool will enter a default cooldown of 600 seconds after use). Touching it will cause 50% damage every moment, and after landing, it will produce a violent explosion and deal 2000% damage to a wide range of creatures.",
   "modifier.momotinker.tooltip.cleansetheworld1": "Cooling residue of [Cleanse The World]:",
 
   "modifier.momotinker.shadowofdamnation": "Shadow Of Damnation",
   "modifier.momotinker.shadowofdamnation.flavor": "'Cleanse The World' Modification: Void Projection",
-  "modifier.momotinker.shadowofdamnation.description": "The summoned giant magic spear will pass through blocks and creatures without exploding, and its falling speed will be greatly increased. The damage range of each touched by it will be slightly reduced",
+  "modifier.momotinker.shadowofdamnation.description": "The summoned giant magic spear will pass through blocks and creatures without exploding, and its falling speed will be greatly increased. The damage range touched by it is slightly reduced",
 
   "modifier.momotinker.drinkingdemon": "Drinking Demon",
   "modifier.momotinker.drinkingdemon.flavor": "Drink the poison of the dove, plant in spring and harvest in autumn",

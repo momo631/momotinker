@@ -184,11 +184,17 @@ public class trigger_blade extends ModifiableItem {
         ItemStack color = getSlash(tool.getStats().getInt(MomotinkerToolDefinitions.SLASH_COLOR));
         Level level =player.level();
         EntityType<TriggerSlashEntity> entityType = getSlashType(tool.getStats().getInt(MomotinkerToolDefinitions.SLASH_COLOR));
-        TriggerSlashEntity slash =new TriggerSlashEntity(entityType,level,color);
-        double x =player.getLookAngle().x;
-        double y =player.getLookAngle().y;
-        double z =player.getLookAngle().z;
-        slash.damage=damage;
+        TriggerSlashEntity slash = new TriggerSlashEntity(entityType, level, color);
+        double x = player.getLookAngle().x;
+        double y = player.getLookAngle().y;
+        double z = player.getLookAngle().z;
+        int a = tool.getModifierLevel(MomotinkerModifiers.yamato.getId());
+        slash.damage = tool.getStats().get(ToolStats.ATTACK_DAMAGE);
+        if (a>0){
+            slash.damagemultiplier = getDamageMultiplier(tool)*0.5f;
+        }else {
+            slash.damagemultiplier = getDamageMultiplier(tool);
+        }
         slash.setOwner(player);
         slash.setToolstack(tool);
         slash.noPhysics = false;
@@ -207,14 +213,7 @@ public class trigger_blade extends ModifiableItem {
     }
     public static float getDamageMultiplier(ToolStack tool) {
         float b = RANDOM.nextInt((int) (tool.getStats().get(ACCURACY) * 100));
-        int a = tool.getModifierLevel(MomotinkerModifiers.yamato.getId());
-        if (a == 0) {
-            return tool.getStats().get(ToolStats.ATTACK_DAMAGE) * (1F + 0.005F * b + 0.2F * tool.getStats().get(ToolStats.VELOCITY));
-        }
-        if (a>0){
-            return tool.getStats().get(ToolStats.ATTACK_DAMAGE) * (1F + 0.005F * b + 0.2F * tool.getStats().get(ToolStats.VELOCITY))*0.5F;
-        }
-        return getDamageMultiplier(tool);
+        return (1F + 0.005F * b + 0.2F * tool.getStats().get(ToolStats.VELOCITY));
     }
     public static boolean checkOffHand(Player player){
         return player!=null&& !player.hasItemInSlot(EquipmentSlot.OFFHAND);
