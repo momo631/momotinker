@@ -2,13 +2,8 @@ package com.momosensei.momotinker.Modifiers.modifiers;
 
 
 import com.momosensei.momotinker.Modifiers.momomodifier;
-import com.momosensei.momotinker.mobs.CoolTime;
 import com.momosensei.momotinker.register.MomotinkerModifiers;
 import net.minecraft.network.chat.Component;
-import net.minecraft.server.level.ServerPlayer;
-import net.minecraft.world.entity.LivingEntity;
-import net.minecraft.world.item.ItemStack;
-import net.minecraft.world.level.Level;
 import org.jetbrains.annotations.NotNull;
 import slimeknights.tconstruct.library.modifiers.ModifierEntry;
 import slimeknights.tconstruct.library.modifiers.ModifierHooks;
@@ -51,12 +46,4 @@ public class CleanseTheWorld extends momomodifier implements RequirementsModifie
         return requirementsError(modifier);
     }
 
-    @Override
-    public void onInventoryTick(IToolStackView iToolStackView, ModifierEntry modifierEntry, Level level, LivingEntity entity, int index, boolean b, boolean b1, ItemStack itemStack) {
-        if (entity instanceof ServerPlayer player&&entity.tickCount%20==0) {
-            if (CoolTime.getCoolTime()>0){
-                CoolTime.setCoolTime(CoolTime.getCoolTime()-1);
-            }
-        }
-    }
 }

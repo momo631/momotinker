@@ -69,6 +69,7 @@ public class divine_punishment_spear extends ModifiableItem {
         MinecraftForge.EVENT_BUS.addListener(this::livinghurtevent);
         MinecraftForge.EVENT_BUS.addListener(EventPriority.LOWEST,this::onEntityDeath);
     }
+
     int sanctification_limit = MomotinkerConfig.sanctification_limit.get();
     int degenerate_limit = MomotinkerConfig.degenerate_limit.get();
     public static final ResourceLocation sanctification = Momotinker.getResource("sanctification");
@@ -113,6 +114,7 @@ public class divine_punishment_spear extends ModifiableItem {
             }
         }
     }
+
     public boolean canAttackBlock(BlockState blockState, Level level, BlockPos blockPos, Player player) {
         return !player.isCreative();
     }
