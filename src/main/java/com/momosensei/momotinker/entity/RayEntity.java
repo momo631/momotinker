@@ -82,7 +82,7 @@ public class RayEntity extends Projectile {
                     for (Entity target : ls0) {
                         if (target != null && !(target instanceof Player) && target != this.getOwner()&& this.getOwner() instanceof Player player&& !ls1.contains(target)) {
                             target.invulnerableTime = 0;
-                            attackUtil.attackEntity(this.tool, player, InteractionHand.MAIN_HAND, target, () -> 1, true, Util.getSlotType(InteractionHand.MAIN_HAND), this.damage, false, true, true, true);
+                            attackUtil.attackEntity(this.tool, player, InteractionHand.MAIN_HAND, target, () -> 1, true, Util.getSlotType(InteractionHand.MAIN_HAND), this.damage,1f ,false, true, true);
                             target.invulnerableTime = 0;
                             ls1.add(target);
                         }

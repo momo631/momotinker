@@ -108,7 +108,7 @@ public class eclipse_container extends ModifiableItem {
                     if (player.tickCount%20==1) {
                         for (Entity entity : list1) {
                             if (entity instanceof LivingEntity && entity != player) {
-                                attackUtil.attackEntity(tool, player, InteractionHand.MAIN_HAND, entity, () -> 1, true, Util.getSlotType(InteractionHand.MAIN_HAND), tool.getStats().get(ToolStats.ATTACK_DAMAGE) * 0.2f, false, true, false, true);
+                                attackUtil.attackEntity(tool, player, InteractionHand.MAIN_HAND, entity, () -> 1, true, Util.getSlotType(InteractionHand.MAIN_HAND), tool.getStats().get(ToolStats.ATTACK_DAMAGE), 0.25f,false, true, false);
                             }
                         }
                     }
@@ -127,7 +127,7 @@ public class eclipse_container extends ModifiableItem {
                     if (player.tickCount%20==1) {
                         for (Entity entity : list1) {
                             if (entity instanceof LivingEntity && entity != player) {
-                                attackUtil.attackEntity(tool, player, InteractionHand.MAIN_HAND, entity, () -> 1, true, Util.getSlotType(InteractionHand.MAIN_HAND), tool.getStats().get(ToolStats.ATTACK_DAMAGE) * 0.2f, false, true, false, true);
+                                attackUtil.attackEntity(tool, player, InteractionHand.MAIN_HAND, entity, () -> 1, true, Util.getSlotType(InteractionHand.MAIN_HAND), tool.getStats().get(ToolStats.ATTACK_DAMAGE), 0.25f,false, true, false);
                             }
                         }
                     }

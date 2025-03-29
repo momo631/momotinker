@@ -208,7 +208,7 @@ public class divine_punishment_spear extends ModifiableItem {
                         entity.setOwner(player);
                         entity.setToolstack(tool);
                         entity.setint(c);
-                        entity.damage = MomotinkerEntitiesCreate.getDamageMultiplier(tool) * 50;
+                        entity.damage = MomotinkerEntitiesCreate.getDamageMultiplier(tool);
                         entity.setExplosionPower((byte) 120);
                         level.addFreshEntity(entity);
                     }

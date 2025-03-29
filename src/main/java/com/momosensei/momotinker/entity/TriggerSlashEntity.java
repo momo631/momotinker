@@ -23,6 +23,7 @@ public class TriggerSlashEntity extends Projectile {
     public Vec3 offset =new Vec3(0,0,0);
     public ToolStack tool;
     public float damage=0;
+    public float damagemultiplier=0;
     public float angle ;
 
     public TriggerSlashEntity(EntityType<? extends Projectile> p_37248_, Level p_37249_, ItemStack slash) {
@@ -79,7 +80,7 @@ public class TriggerSlashEntity extends Projectile {
             for (Entity targets : ls0) {
                 if (targets!=getOwner()) {
                     targets.invulnerableTime = 0;
-                    attackUtil.attackEntity(this.tool, player, InteractionHand.MAIN_HAND, targets, ()->1, true, Util.getSlotType(InteractionHand.MAIN_HAND), this.damage, false, true, true, true);
+                    attackUtil.attackEntity(this.tool, player, InteractionHand.MAIN_HAND, targets, ()->1, true, Util.getSlotType(InteractionHand.MAIN_HAND), this.damage, this.damagemultiplier,false, true, true);
                     targets.invulnerableTime = 0;
                 }
             }

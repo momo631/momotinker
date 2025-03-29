@@ -14,6 +14,7 @@ import net.minecraft.world.item.enchantment.Enchantment;
 import net.minecraft.world.item.enchantment.EnchantmentHelper;
 import net.minecraftforge.network.NetworkEvent;
 import slimeknights.tconstruct.library.tools.helper.ModifierUtil;
+import slimeknights.tconstruct.library.tools.item.armor.ModifiableArmorItem;
 import slimeknights.tconstruct.library.tools.nbt.ModDataNBT;
 import slimeknights.tconstruct.library.tools.nbt.ToolStack;
 
@@ -107,12 +108,16 @@ public class KeyInputPKT {
                     }
                 }
             }
-            if (player != null && ModifierUtil.getModifierLevel(player.getMainHandItem(), MomotinkerModifiers.berserk.getId()) > 0) {
-                ModDataNBT berserkdata = ToolStack.from(player.getItemBySlot(EquipmentSlot.MAINHAND)).getPersistentData();
-                if (berserkdata.getFloat(berserker) == 1) {
-                    berserkdata.putFloat(berserker, 0);
-                } else if (berserkdata.getFloat(berserker) == 0) {
-                    berserkdata.putFloat(berserker, 1);
+            if (player != null && getArmorModifierlevel(player,MomotinkerModifiers.berserk.getId()) > 0) {
+                for (ItemStack stack : player.getInventory().armor) {
+                    if (stack.getItem() instanceof ModifiableArmorItem) {
+                        ModDataNBT berserkdata = ToolStack.from(stack).getPersistentData();
+                        if (berserkdata.getFloat(berserker) == 1) {
+                            berserkdata.putFloat(berserker, 0);
+                        } else if (berserkdata.getFloat(berserker) == 0) {
+                            berserkdata.putFloat(berserker, 1);
+                        }
+                    }
                 }
             }
             if (player != null && ModifierUtil.getModifierLevel(player.getMainHandItem(), MomotinkerModifiers.drinkingdemon.getId()) > 0) {

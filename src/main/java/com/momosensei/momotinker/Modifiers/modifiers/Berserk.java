@@ -7,15 +7,16 @@ import net.minecraft.ChatFormatting;
 import net.minecraft.network.chat.Component;
 import net.minecraft.resources.ResourceLocation;
 import net.minecraft.world.entity.Entity;
-import net.minecraft.world.entity.EquipmentSlot;
 import net.minecraft.world.entity.LivingEntity;
 import net.minecraft.world.entity.player.Player;
+import net.minecraft.world.item.ItemStack;
 import net.minecraft.world.item.TooltipFlag;
 import net.minecraftforge.common.MinecraftForge;
 import net.minecraftforge.event.entity.living.LivingHurtEvent;
 import slimeknights.mantle.client.TooltipKey;
 import slimeknights.tconstruct.library.modifiers.ModifierEntry;
 import slimeknights.tconstruct.library.tools.helper.ModifierUtil;
+import slimeknights.tconstruct.library.tools.item.armor.ModifiableArmorItem;
 import slimeknights.tconstruct.library.tools.nbt.IToolStackView;
 import slimeknights.tconstruct.library.tools.nbt.ModDataNBT;
 import slimeknights.tconstruct.library.tools.nbt.ToolStack;
@@ -33,17 +34,25 @@ public class Berserk extends momomodifier {
         LivingEntity a = event.getEntity();
         Entity b = event.getSource().getEntity();
         if (b instanceof Player player&&a !=null){
-            int d =ModifierUtil.getModifierLevel(player.getMainHandItem(), MomotinkerModifiers.berserk.getId());
-            ModDataNBT c = ToolStack.from(player.getItemBySlot(EquipmentSlot.MAINHAND)).getPersistentData();
-            if (c.getFloat(berserker)==1&&d>0){
-                event.setAmount(event.getAmount()*(1.4F+0.2F*d));
+            int d = getArmorModifierlevel(player,MomotinkerModifiers.berserk.getId());
+            for (ItemStack stack : player.getInventory().armor) {
+                if (stack.getItem() instanceof ModifiableArmorItem) {
+                    ModDataNBT c = ToolStack.from(stack).getPersistentData();
+                    if (c.getFloat(berserker) >= 1 && d > 0) {
+                        event.setAmount(event.getAmount() * (1.4F + 0.3F * d));
+                    }
+                }
             }
         }
         if (a instanceof Player player){
-            int d =ModifierUtil.getModifierLevel(player.getMainHandItem(), MomotinkerModifiers.berserk.getId());
-            ModDataNBT c = ToolStack.from(player.getItemBySlot(EquipmentSlot.MAINHAND)).getPersistentData();
-            if (c.getFloat(berserker)==1&&d>0){
-                event.setAmount(event.getAmount()*(1.4F+0.2F*d));
+            int d = getArmorModifierlevel(player,MomotinkerModifiers.berserk.getId());
+            for (ItemStack stack : player.getInventory().armor) {
+                if (stack.getItem() instanceof ModifiableArmorItem) {
+                    ModDataNBT c = ToolStack.from(stack).getPersistentData();
+                    if (c.getFloat(berserker) >= 1 && d > 0) {
+                        event.setAmount(event.getAmount() * (1.4F + 0.3F * d));
+                    }
+                }
             }
         }
     }
