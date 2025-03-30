@@ -19,8 +19,10 @@ import javax.annotation.Nullable;
 import java.util.function.Consumer;
 
 public class aa extends ModifiableArmorItem {
-    public aa(ModifiableArmorMaterial material, EquipmentSlot slot, Properties builderIn, ToolDefinition toolDefinition) {
-        super(material, slot, builderIn, toolDefinition);
+    private final ResourceLocation name;
+    public aa(ModifiableArmorMaterial materialIn, EquipmentSlot slot, Properties builderIn, ToolDefinition toolDefinition) {
+        super(materialIn, slot, builderIn, toolDefinition);
+        this.name = materialIn.getId();
     }
 
     @Nullable

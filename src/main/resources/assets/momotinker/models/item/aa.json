@@ -2,14 +2,14 @@
   "loader": "tconstruct:tool",
   "parent": "forge:item/default",
   "textures": {
-    "upper": "momotinker:item/tool/aa/upper",
-    "lower": "momotinker:item/tool/aa/lower",
-    "wood":  "momotinker:item/tool/aa/wood"
+    "part_1": "momotinker:item/tool/aa/part_1",
+    "part_2": "momotinker:item/tool/aa/part_2",
+    "part_3":  "momotinker:item/tool/aa/part_3"
   },
   "parts": [
-    { "name": "upper", "index": 0 },
-    { "name": "lower", "index": 1 },
-    { "name": "wood",  "index": 2 }
+    { "name": "part_1", "index": 0 },
+    { "name": "part_2", "index": 1 },
+    { "name": "part_3",  "index": 2 }
   ],
   "modifier_roots": [ "momotinker:item/tool/aa/modifiers/" ]
 }
