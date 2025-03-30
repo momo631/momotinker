@@ -10,7 +10,7 @@ import com.momosensei.momotinker.register.MomotinkerEntities;
 import com.momosensei.momotinker.renderer.CleanseEntityRenderer;
 import com.momosensei.momotinker.renderer.SpearEntityRenderer;
 import com.momosensei.momotinker.renderer.triggerSlashRenderer;
-import com.momosensei.momotinker.tool.WroughtHelmModel;
+import com.momosensei.momotinker.tool.HelmModel;
 import net.minecraft.client.model.geom.ModelLayerLocation;
 import net.minecraft.client.renderer.entity.NoopRenderer;
 import net.minecraft.resources.ResourceLocation;
@@ -27,7 +27,7 @@ import net.minecraftforge.fml.loading.FMLEnvironment;
 
 @Mod.EventBusSubscriber(bus = Mod.EventBusSubscriber.Bus.MOD,modid = "momotinker")
 public class ModEventListener {
-    public static final ModelLayerLocation WROUGHT_HELM_LAYER = register("wrought_helm", "main");
+    public static final ModelLayerLocation HELM_LAYER = register("helm", "main");
     private static ModelLayerLocation register(String model, String layer) {
         return new ModelLayerLocation(new ResourceLocation("momotinker", model), layer);
     }
@@ -53,7 +53,7 @@ public class ModEventListener {
     }
     @SubscribeEvent
     public static void registerLayers(EntityRenderersEvent.RegisterLayerDefinitions event) {
-        event.registerLayerDefinition(WROUGHT_HELM_LAYER, WroughtHelmModel::createArmorLayer);
+        event.registerLayerDefinition(HELM_LAYER, HelmModel::createArmorLayer);
     }
     @SubscribeEvent
     public static void onKeyRegister(RegisterKeyMappingsEvent event) {

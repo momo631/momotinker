@@ -9,9 +9,9 @@ import net.minecraftforge.api.distmarker.Dist;
 import net.minecraftforge.api.distmarker.OnlyIn;
 
 @OnlyIn(Dist.CLIENT)
-public class WroughtHelmModel<T extends LivingEntity> extends HumanoidModel<T> {
+public class HelmModel<T extends LivingEntity> extends HumanoidModel<T> {
 
-	public WroughtHelmModel(ModelPart root) {
+	public HelmModel(ModelPart root) {
 		super(root);
 	}
 

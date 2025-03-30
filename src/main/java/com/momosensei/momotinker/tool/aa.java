@@ -49,8 +49,8 @@ public class aa extends ModifiableArmorItem {
         public HumanoidModel<?> getHumanoidArmorModel(LivingEntity entityLiving, ItemStack itemStack, EquipmentSlot armorSlot, HumanoidModel<?> _default) {
             if (MODEL == null) {
                 EntityModelSet models = Minecraft.getInstance().getEntityModels();
-                ModelPart root = models.bakeLayer(ModEventListener.WROUGHT_HELM_LAYER);
-                MODEL = new WroughtHelmModel<>(root);
+                ModelPart root = models.bakeLayer(ModEventListener.HELM_LAYER);
+                MODEL = new HelmModel<>(root);
             }
             return MODEL;
         }
