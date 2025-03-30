@@ -7,6 +7,7 @@ import net.minecraft.world.item.Item;
 import net.minecraftforge.registries.DeferredRegister;
 import net.minecraftforge.registries.ForgeRegistries;
 import net.minecraftforge.registries.RegistryObject;
+import slimeknights.tconstruct.common.registration.ItemDeferredRegisterExtension;
 import slimeknights.tconstruct.library.tools.item.ModifiableItem;
 
 import static com.momosensei.momotinker.Momotinker.MOD_ID;
@@ -17,6 +18,7 @@ public class MomotinkerItem {
     }
     private static final Item.Properties TOOL =(new Item.Properties().tab(MomotinkerTab.TOOLS).stacksTo(1));
     public static final DeferredRegister<Item> ITEMS = DeferredRegister.create(ForgeRegistries.ITEMS, MOD_ID);
+    public static final ItemDeferredRegisterExtension ARMOR = new ItemDeferredRegisterExtension(MOD_ID);
 
     //物品锭什么的注册照着复制就行，如果有单独类改new Item的Item字段为你的类名，tab为创造模式显示栏，在哪个栏位显示
     public static final RegistryObject<Item> laomo = ITEMS.register("laomo", () -> new Item(new Item.Properties().tab(MomotinkerTab.MATERIALS)));
@@ -45,6 +47,7 @@ public class MomotinkerItem {
     public static final RegistryObject<ModifiableItem> eclipse_container = ITEMS.register("eclipse_container", () -> new eclipse_container(TOOL, MomotinkerToolDefinitions.ECLIPSE_CONTAINER));
     public static final RegistryObject<ModifiableItem> coronal_key = ITEMS.register("coronal_key", () -> new coronal_key(TOOL, MomotinkerToolDefinitions.CORONAL_KEY));
     public static final RegistryObject<ModifiableItem> moon_lock = ITEMS.register("moon_lock", () -> new moon_lock(TOOL, MomotinkerToolDefinitions.MOON_LOCK));
+    //public static final RegistryObject<ModifiableArmorItem> aa = ITEMS.register("aa", () -> new aa(MomotinkerToolDefinitions.AAA, EquipmentSlot.HEAD,TOOL, MomotinkerToolDefinitions.AA));
 
     public static final RegistryObject<Item> trigger_slash_a = ITEMS.register("trigger_slash_a", ()->new Item(new Item.Properties()));
     public static final RegistryObject<Item> spear_entity = ITEMS.register("spear_entity", ()->new Item(new Item.Properties()));

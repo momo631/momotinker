@@ -35,6 +35,7 @@ public class Momotinker {
         IEventBus eventBus = FMLJavaModLoadingContext.get().getModEventBus();
         MinecraftForge.EVENT_BUS.register(this);
         MomotinkerItem.ITEMS.register(eventBus);
+        MomotinkerItem.ARMOR.register(eventBus);
         MomotinkerModifiers.MODIFIERS.register(eventBus);
         MomotinkerFluid.FLUIDS.register(eventBus);
         MomotinkerBlock.BLOCK.register(eventBus);
@@ -77,9 +78,14 @@ public class Momotinker {
             event.enqueueWork(() -> {
                 TinkerItemProperties.registerBrokenProperty(trigger_blade.get());
                 TinkerItemProperties.registerToolProperties(trigger_blade.get());
+                TinkerItemProperties.registerToolProperties(divine_punishment_spear.get());
+                TinkerItemProperties.registerToolProperties(entropy_burning_cube.get());
                 TinkerItemProperties.registerToolProperties(entropy_burning_riding_spear.get());
                 TinkerItemProperties.registerToolProperties(entropy_burning_cannon.get());
+                TinkerItemProperties.registerToolProperties(moon_lock.get());
+                TinkerItemProperties.registerToolProperties(coronal_key.get());
                 TinkerItemProperties.registerToolProperties(eclipse_container.get());
+             //   TinkerItemProperties.registerToolProperties(aa.get());
             });
         }
     }
