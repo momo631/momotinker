@@ -14,15 +14,18 @@ import net.minecraftforge.client.extensions.common.IClientItemExtensions;
 import slimeknights.tconstruct.library.tools.definition.ModifiableArmorMaterial;
 import slimeknights.tconstruct.library.tools.definition.ToolDefinition;
 import slimeknights.tconstruct.library.tools.item.armor.ModifiableArmorItem;
+import slimeknights.tconstruct.library.tools.nbt.ToolStack;
 
 import javax.annotation.Nullable;
 import java.util.function.Consumer;
 
 public class aa extends ModifiableArmorItem {
-    private final ResourceLocation name;
     public aa(ModifiableArmorMaterial materialIn, EquipmentSlot slot, Properties builderIn, ToolDefinition toolDefinition) {
         super(materialIn, slot, builderIn, toolDefinition);
-        this.name = materialIn.getId();
+    }
+
+    public String getName() {
+        return ToolStack.from(this.getDefaultInstance()).getMaterials().get(0).getVariant().getSuffix();
     }
 
     @Nullable
@@ -30,17 +33,16 @@ public class aa extends ModifiableArmorItem {
     public String getArmorTexture(ItemStack stack, Entity entity, EquipmentSlot slot, String type) {
          return getDummyArmorTexture(slot);
     }
-    public static final String HEAD_A = new ResourceLocation("momotinker", "textures/item/tool/aa/helmet/part_1_"+".png").toString();
-    public static final String HEAD_B = new ResourceLocation("momotinker", "textures/item/tool/aa/helmet/part_2_"+".png").toString();
 
-    public static String getDummyArmorTexture(EquipmentSlot slot) {
-        return slot == EquipmentSlot.HEAD ? HEAD_A : HEAD_B;
+    public String getDummyArmorTexture(EquipmentSlot slot) {
+        return new ResourceLocation("momotinker", "textures/item/tool/aa/helmet/part_1_"+getName()+".png").toString();
     }
 
     @Override
     public void initializeClient(Consumer<IClientItemExtensions> consumer) {
         consumer.accept(ArmorRender.INSTANCE);
     }
+
     private static final class ArmorRender implements IClientItemExtensions {
         private static final ArmorRender INSTANCE = new ArmorRender();
         private static HumanoidModel<?> MODEL;
