@@ -48,6 +48,10 @@ public class MomotinkerItem {
     public static final RegistryObject<ModifiableItem> coronal_key = ITEMS.register("coronal_key", () -> new coronal_key(TOOL, MomotinkerToolDefinitions.CORONAL_KEY));
     public static final RegistryObject<ModifiableItem> moon_lock = ITEMS.register("moon_lock", () -> new moon_lock(TOOL, MomotinkerToolDefinitions.MOON_LOCK));
    // public static final RegistryObject<ModifiableArmorItem> aa = ITEMS.register("aa", () -> new aa(MomotinkerToolDefinitions.AAA, EquipmentSlot.HEAD,TOOL, MomotinkerToolDefinitions.AA));
+   /*public static final EnumObject<ArmorSlotType, ModifiableArmorItem> aa = new EnumObject.Builder<ArmorSlotType,ModifiableArmorItem>(ArmorSlotType.class)
+           .putAll(ARMOR.registerEnum("aa", new ArmorSlotType[] {ArmorSlotType.BOOTS, ArmorSlotType.LEGGINGS, ArmorSlotType.CHESTPLATE}, type -> new MultilayerArmorItem(MomotinkerToolDefinitions.AAA, type, TOOL)))
+           .put(ArmorSlotType.HELMET, ITEMS.register("aa_helmet", () -> new aa(MomotinkerToolDefinitions.AAA, ArmorSlotType.HELMET ,TOOL)))
+           .build();*/
 
     public static final RegistryObject<Item> trigger_slash_a = ITEMS.register("trigger_slash_a", ()->new Item(new Item.Properties()));
     public static final RegistryObject<Item> spear_entity = ITEMS.register("spear_entity", ()->new Item(new Item.Properties()));

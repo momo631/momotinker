@@ -3,44 +3,44 @@ package com.momosensei.momotinker.tool;
 import com.momosensei.momotinker.event.ModEventListener;
 import net.minecraft.client.Minecraft;
 import net.minecraft.client.model.HumanoidModel;
+import net.minecraft.client.model.Model;
 import net.minecraft.client.model.geom.EntityModelSet;
 import net.minecraft.client.model.geom.ModelPart;
 import net.minecraft.resources.ResourceLocation;
-import net.minecraft.world.entity.Entity;
 import net.minecraft.world.entity.EquipmentSlot;
 import net.minecraft.world.entity.LivingEntity;
 import net.minecraft.world.item.ItemStack;
 import net.minecraftforge.client.extensions.common.IClientItemExtensions;
+import slimeknights.tconstruct.library.client.armor.ArmorModelManager;
+import slimeknights.tconstruct.library.client.armor.MultilayerArmorModel;
 import slimeknights.tconstruct.library.tools.definition.ModifiableArmorMaterial;
-import slimeknights.tconstruct.library.tools.definition.ToolDefinition;
 import slimeknights.tconstruct.library.tools.item.armor.ModifiableArmorItem;
-import slimeknights.tconstruct.library.tools.nbt.ToolStack;
+import slimeknights.tconstruct.tools.item.ArmorSlotType;
 
-import javax.annotation.Nullable;
+import javax.annotation.Nonnull;
 import java.util.function.Consumer;
 
 public class aa extends ModifiableArmorItem {
-    public aa(ModifiableArmorMaterial materialIn, EquipmentSlot slot, Properties builderIn, ToolDefinition toolDefinition) {
-        super(materialIn, slot, builderIn, toolDefinition);
-    }
-
-    public String getName() {
-        return ToolStack.from(this.getDefaultInstance()).getMaterials().get(0).getVariant().getSuffix();
-    }
-
-    @Nullable
-    @Override
-    public String getArmorTexture(ItemStack stack, Entity entity, EquipmentSlot slot, String type) {
-         return getDummyArmorTexture(slot);
-    }
-
-    public String getDummyArmorTexture(EquipmentSlot slot) {
-        return new ResourceLocation("momotinker", "textures/item/tool/aa/helmet/part_1_"+getName()+".png").toString();
+    private final ResourceLocation name;
+    public aa(ModifiableArmorMaterial material, ArmorSlotType slot, Properties builderIn) {
+        super(material, slot, builderIn);
+        this.name = material.getId();
     }
 
     @Override
     public void initializeClient(Consumer<IClientItemExtensions> consumer) {
-        consumer.accept(ArmorRender.INSTANCE);
+        consumer.accept(new ArmorModelManager.ArmorModelDispatcher() {
+            @Override
+            protected ResourceLocation getName() {
+                return name;
+            }
+            @Nonnull
+            @Override
+            public Model getGenericArmorModel(LivingEntity living, ItemStack stack, EquipmentSlot slot, HumanoidModel<?> original) {
+                return MultilayerArmorModel.INSTANCE.setup(living, stack, slot, ArmorRender.MODEL, this.getModel(stack));
+            }
+        });
+        //consumer.accept(ArmorRender.INSTANCE);
     }
 
     private static final class ArmorRender implements IClientItemExtensions {
@@ -56,6 +56,7 @@ public class aa extends ModifiableArmorItem {
             }
             return MODEL;
         }
+
     }
 
 }
