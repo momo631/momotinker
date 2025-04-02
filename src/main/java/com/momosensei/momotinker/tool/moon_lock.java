@@ -103,10 +103,10 @@ public class moon_lock extends ModifiableItem {
         return BlockingModifier.blockWhileCharging(ToolStack.from(stack), UseAnim.BLOCK);
     }
     public List<Component> getStatInformation(IToolStackView tool, @Nullable Player player, List<Component> tooltips, TooltipKey key, TooltipFlag tooltipFlag) {
-        tooltips = this.getDivinePunishmentSpearStats(tool, player, tooltips, key, tooltipFlag);
+        tooltips = this.getStats(tool, player, tooltips, key, tooltipFlag);
         return tooltips;
     }
-    public List<Component> getDivinePunishmentSpearStats(IToolStackView tool, @Nullable Player player, List<Component> tooltips, TooltipKey key, TooltipFlag tooltipFlag) {
+    public List<Component> getStats(IToolStackView tool, @Nullable Player player, List<Component> tooltips, TooltipKey key, TooltipFlag tooltipFlag) {
         TooltipBuilder builder = new TooltipBuilder(tool, tooltips);
         builder.add(ToolStats.DURABILITY);
         builder.add(ToolStats.ATTACK_DAMAGE);

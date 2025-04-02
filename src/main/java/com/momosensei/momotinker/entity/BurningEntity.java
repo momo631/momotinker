@@ -111,7 +111,7 @@ public class BurningEntity extends Projectile {
                 if (mob != null&&this.getOwner() instanceof Player player) {
                     player.invulnerableTime=20;
                     mob.invulnerableTime = 0;
-                    attackUtil.attackEntity(this.tool, player, InteractionHand.MAIN_HAND, mob, ()->1, true, Util.getSlotType(InteractionHand.MAIN_HAND), this.damage,1f ,false, true, true);
+                    attackUtil.attackEntity(this.tool, player, InteractionHand.MAIN_HAND, mob, ()->1, true, Util.getSlotType(InteractionHand.MAIN_HAND), this.damage,1f ,false, true, true,true);
                 }
             }
         }

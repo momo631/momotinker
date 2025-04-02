@@ -1,0 +1,18 @@
+{
+  "loader": "tconstruct:tool",
+  "parent": "forge:item/default-tool",
+  "textures": {
+    "part_1": "momotinker:item/tool/pocket_watch/part_1",
+    "part_2": "momotinker:item/tool/pocket_watch/part_2",
+    "part_3": "momotinker:item/tool/pocket_watch/part_3",
+    "broken_part": "momotinker:item/tool/pocket_watch/broken_part"
+  },
+  "modifier_roots": [
+    "momotinker:item/tool/pocket_watch/modifiers/"
+  ],
+  "parts": [
+    {"name": "part_1", "index": 0, "broken": "broken_part"},
+    {"name": "part_2", "index": 1},
+    {"name": "part_3", "index": 2}
+  ]
+}

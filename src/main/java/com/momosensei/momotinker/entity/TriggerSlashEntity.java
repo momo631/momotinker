@@ -80,7 +80,7 @@ public class TriggerSlashEntity extends Projectile {
             for (Entity targets : ls0) {
                 if (targets!=getOwner()) {
                     targets.invulnerableTime = 0;
-                    attackUtil.attackEntity(this.tool, player, InteractionHand.MAIN_HAND, targets, ()->1, true, Util.getSlotType(InteractionHand.MAIN_HAND), this.damage, this.damagemultiplier,false, true, true);
+                    attackUtil.attackEntity(this.tool, player, InteractionHand.MAIN_HAND, targets, ()->1, true, Util.getSlotType(InteractionHand.MAIN_HAND), this.damage, this.damagemultiplier,false, true, true,true);
                     targets.invulnerableTime = 0;
                 }
             }

@@ -47,8 +47,11 @@ public class MomotinkerItem {
     public static final RegistryObject<ModifiableItem> eclipse_container = ITEMS.register("eclipse_container", () -> new eclipse_container(TOOL, MomotinkerToolDefinitions.ECLIPSE_CONTAINER));
     public static final RegistryObject<ModifiableItem> coronal_key = ITEMS.register("coronal_key", () -> new coronal_key(TOOL, MomotinkerToolDefinitions.CORONAL_KEY));
     public static final RegistryObject<ModifiableItem> moon_lock = ITEMS.register("moon_lock", () -> new moon_lock(TOOL, MomotinkerToolDefinitions.MOON_LOCK));
-   // public static final RegistryObject<ModifiableArmorItem> aa = ITEMS.register("aa", () -> new aa(MomotinkerToolDefinitions.AAA, EquipmentSlot.HEAD,TOOL, MomotinkerToolDefinitions.AA));
-   /*public static final EnumObject<ArmorSlotType, ModifiableArmorItem> aa = new EnumObject.Builder<ArmorSlotType,ModifiableArmorItem>(ArmorSlotType.class)
+    public static final RegistryObject<ModifiableItem> pocket_watch = ITEMS.register("pocket_watch", () -> new pocket_watch(TOOL, MomotinkerToolDefinitions.POCKET_WATCH));
+    public static final RegistryObject<ModifiableItem> chain_sword = ITEMS.register("chain_sword", () -> new chain_sword(TOOL, MomotinkerToolDefinitions.CHAIN_SWORD));
+
+    // public static final RegistryObject<ModifiableArmorItem> aa = ITEMS.register("aa", () -> new aa(MomotinkerToolDefinitions.AAA, EquipmentSlot.HEAD,TOOL, MomotinkerToolDefinitions.AA));
+    /*public static final EnumObject<ArmorSlotType, ModifiableArmorItem> aa = new EnumObject.Builder<ArmorSlotType,ModifiableArmorItem>(ArmorSlotType.class)
            .putAll(ARMOR.registerEnum("aa", new ArmorSlotType[] {ArmorSlotType.BOOTS, ArmorSlotType.LEGGINGS, ArmorSlotType.CHESTPLATE}, type -> new MultilayerArmorItem(MomotinkerToolDefinitions.AAA, type, TOOL)))
            .put(ArmorSlotType.HELMET, ITEMS.register("aa_helmet", () -> new aa(MomotinkerToolDefinitions.AAA, ArmorSlotType.HELMET ,TOOL)))
            .build();*/

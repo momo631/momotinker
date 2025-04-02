@@ -95,7 +95,7 @@ public class CleanseEntity extends Projectile {
                 for (Mob mob : lis) {
                     if (mob != null ) {
                         mob.invulnerableTime = 0;
-                        attackUtil.attackEntity(this.tool, player, InteractionHand.MAIN_HAND, mob, () -> 1, true, Util.getSlotType(InteractionHand.MAIN_HAND), this.damage,0.5f ,false, true, true);
+                        attackUtil.attackEntity(this.tool, player, InteractionHand.MAIN_HAND, mob, () -> 1, true, Util.getSlotType(InteractionHand.MAIN_HAND), this.damage,0.5f ,false, true, true,true);
                         mob.invulnerableTime = 0;
                     }
                 }
@@ -104,7 +104,7 @@ public class CleanseEntity extends Projectile {
                 for (Mob mob : lis) {
                     if (mob != null ) {
                         mob.invulnerableTime = 0;
-                        attackUtil.attackEntity(this.tool, player, InteractionHand.MAIN_HAND, mob, () -> 1, true, Util.getSlotType(InteractionHand.MAIN_HAND), this.damage, 0.6f ,false, true, true);
+                        attackUtil.attackEntity(this.tool, player, InteractionHand.MAIN_HAND, mob, () -> 1, true, Util.getSlotType(InteractionHand.MAIN_HAND), this.damage, 0.6f ,false, true, true,true);
                         mob.invulnerableTime = 0;
                     }
                 }
@@ -159,7 +159,7 @@ public class CleanseEntity extends Projectile {
             for (Mob mob : lis) {
                 if (mob != null&&this.getOwner() instanceof Player player) {
                     mob.invulnerableTime = 0;
-                    attackUtil.attackEntity(this.tool, player, InteractionHand.MAIN_HAND, mob, ()->1, true, Util.getSlotType(InteractionHand.MAIN_HAND), this.damage, 20f,false, true, true);
+                    attackUtil.attackEntity(this.tool, player, InteractionHand.MAIN_HAND, mob, ()->1, true, Util.getSlotType(InteractionHand.MAIN_HAND), this.damage, 20f,false, true, true,false);
                     mob.invulnerableTime = 0;
                 }
             }
