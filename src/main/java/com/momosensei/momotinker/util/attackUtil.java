@@ -173,9 +173,7 @@ public class attackUtil {
         if (targetLiving != null) {
             damageDealt = oldHealth - targetLiving.getHealth();
         }
-        if (removeknockback){
-            knockbackModifier.ifPresent(attackUtil::enableKnockback);
-        }
+
         if (knockback > 0) {
             if (targetLiving != null) {
                 targetLiving.knockback(knockback, Mth.sin(attackerLiving.getYRot() * DEGREE_TO_RADIANS), -Mth.cos(attackerLiving.getYRot() * DEGREE_TO_RADIANS));

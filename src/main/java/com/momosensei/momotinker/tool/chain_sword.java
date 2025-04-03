@@ -19,8 +19,6 @@ import net.minecraft.world.item.TooltipFlag;
 import net.minecraft.world.item.UseAnim;
 import net.minecraft.world.level.Level;
 import net.minecraft.world.level.block.state.BlockState;
-import net.minecraftforge.common.MinecraftForge;
-import net.minecraftforge.event.entity.living.LivingHurtEvent;
 import org.jetbrains.annotations.Nullable;
 import slimeknights.mantle.client.TooltipKey;
 import slimeknights.tconstruct.common.TinkerTags;
@@ -45,18 +43,8 @@ import static slimeknights.tconstruct.library.modifiers.hook.interaction.General
 public class chain_sword extends ModifiableItem {
     public chain_sword(Properties properties, ToolDefinition toolDefinition) {
         super(properties, toolDefinition);
-        MinecraftForge.EVENT_BUS.addListener(this::livinghurtevent);
     }
 
-    private void livinghurtevent(LivingHurtEvent event) {
-        Entity a = event.getEntity();
-        Entity b = event.getSource().getEntity();
-        if (b instanceof ServerPlayer player && a != null && player.getMainHandItem().is(MomotinkerItem.chain_sword.get())&&!checkOffHand(player)){
-            ToolStack tool = ToolStack.from(player.getMainHandItem());
-            attackUtil.attackEntity(tool, player, InteractionHand.MAIN_HAND, a, () -> 1, true, Util.getSlotType(InteractionHand.MAIN_HAND), tool.getStats().get(ToolStats.ATTACK_DAMAGE),0.2f, false, true, true,true);
-            attackUtil.attackEntity(tool, player, InteractionHand.MAIN_HAND, a, () -> 1, true, Util.getSlotType(InteractionHand.MAIN_HAND), tool.getStats().get(ToolStats.ATTACK_DAMAGE),0.2f, false, true, true,true);
-        }
-    }
     public InteractionResultHolder<ItemStack> use(Level level, Player player, InteractionHand hand) {
         ItemStack stack = player.getItemInHand(hand);
         ToolStack tool = ToolStack.from(stack);
@@ -76,10 +64,10 @@ public class chain_sword extends ModifiableItem {
     @Override
     public void onUseTick(Level level, LivingEntity living, ItemStack stack, int chargeRemaining) {
         ToolStack tool = ToolStack.from(stack);
-        if (living instanceof ServerPlayer player&&!tool.isBroken()) {
+        if (living instanceof ServerPlayer player&&!tool.isBroken()&&checkOffHand(player)&&!player.getCooldowns().isOnCooldown(MomotinkerItem.chain_sword.get())) {
             float perc = Mth.clamp((float) (this.getUseDuration(stack) - chargeRemaining) / (300),0,1);
-            if (perc<1){
-                float a = tool.getStats().get(ToolStats.ATTACK_SPEED)/50;
+            if (perc<1&&perc>0.05f){
+                float a = tool.getStats().get(ToolStats.ATTACK_SPEED)/200;
                 List<Entity> ls0 = level.getEntities(living, living.getBoundingBox().expandTowards(player.getLookAngle().x(), player.getLookAngle().y(), player.getLookAngle().z()).inflate(1, 1, 1));
                 if (a<0.04f){
                     a = 0.04f;
@@ -98,11 +86,15 @@ public class chain_sword extends ModifiableItem {
     public void releaseUsing(ItemStack stack, Level level, LivingEntity livingEntity, int duration) {
         ScopeModifier.stopScoping(livingEntity);
         ToolStack tool = ToolStack.from(stack);
+        float perc = Mth.clamp((float) (this.getUseDuration(stack) - duration) / (300),0,1);
         if (tool.isBroken()){
             tool.getPersistentData().remove(KEY_DRAWTIME);
             return;
         }
         if (livingEntity instanceof ServerPlayer player) {
+            if (perc>1){
+                player.getCooldowns().addCooldown(MomotinkerItem.chain_sword.get(),80);
+            }
             player.awardStat(Stats.ITEM_USED.get(this));
             ToolDamageUtil.damageAnimated(tool,1,player);
             tool.getPersistentData().remove(KEY_DRAWTIME);

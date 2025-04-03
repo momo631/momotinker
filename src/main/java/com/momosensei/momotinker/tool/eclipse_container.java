@@ -102,6 +102,7 @@ public class eclipse_container extends ModifiableItem {
                     a = 30;
                 }
                 List<Entity> list = player.level.getEntitiesOfClass(Entity.class, player.getBoundingBox().inflate(a));
+                List<Entity> list1 = player.level.getEntitiesOfClass(Entity.class, player.getBoundingBox().inflate(a-0.5));
                 for (Entity entity : list) {
                     if (entity != null && entity != player) {
                         Vec3 vec = entity.position().subtract(living.position()).normalize().scale(-0.15);
@@ -109,7 +110,7 @@ public class eclipse_container extends ModifiableItem {
                     }
                 }
                 if (player.tickCount % 20 == 1) {
-                    for (Entity entity : list) {
+                    for (Entity entity : list1) {
                         if (entity instanceof LivingEntity && entity != player) {
                             attackUtil.attackEntity(tool, player, InteractionHand.MAIN_HAND, entity, () -> 1, true, Util.getSlotType(InteractionHand.MAIN_HAND), tool.getStats().get(ToolStats.ATTACK_DAMAGE), 0.25f, false, true, false,true);
                         }
