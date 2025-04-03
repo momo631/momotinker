@@ -65,15 +65,15 @@ public class chain_sword extends ModifiableItem {
     public void onUseTick(Level level, LivingEntity living, ItemStack stack, int chargeRemaining) {
         ToolStack tool = ToolStack.from(stack);
         if (living instanceof ServerPlayer player&&!tool.isBroken()&&checkOffHand(player)&&!player.getCooldowns().isOnCooldown(MomotinkerItem.chain_sword.get())) {
-            float perc = Mth.clamp((float) (this.getUseDuration(stack) - chargeRemaining) / (300),0,1);
-            if (perc<1&&perc>0.05f){
+            float perc = Mth.clamp((float) (this.getUseDuration(stack) - chargeRemaining) / (200),0,1);
+            if (perc < 1F && perc > 0.05f){
                 float a = tool.getStats().get(ToolStats.ATTACK_SPEED)/200;
-                List<Entity> ls0 = level.getEntities(living, living.getBoundingBox().expandTowards(player.getLookAngle().x(), player.getLookAngle().y(), player.getLookAngle().z()).inflate(1, 1, 1));
                 if (a<0.04f){
                     a = 0.04f;
                 }else if (a>1f){
                     a = 1f;
                 }
+                List<Entity> ls0 = level.getEntities(living, living.getBoundingBox().expandTowards(player.getLookAngle().x(), player.getLookAngle().y(), player.getLookAngle().z()).inflate(1, 1, 1));
                 for (Entity targets : ls0) {
                     if (targets != player) {
                         attackUtil.attackEntity(tool, player, InteractionHand.MAIN_HAND, targets, () -> 1, true, Util.getSlotType(InteractionHand.MAIN_HAND), tool.getStats().get(ToolStats.ATTACK_DAMAGE),a, false, true, true,true);
@@ -86,14 +86,14 @@ public class chain_sword extends ModifiableItem {
     public void releaseUsing(ItemStack stack, Level level, LivingEntity livingEntity, int duration) {
         ScopeModifier.stopScoping(livingEntity);
         ToolStack tool = ToolStack.from(stack);
-        float perc = Mth.clamp((float) (this.getUseDuration(stack) - duration) / (300),0,1);
+        float perc = Mth.clamp((float) (this.getUseDuration(stack) - duration) / (200),0,1);
         if (tool.isBroken()){
             tool.getPersistentData().remove(KEY_DRAWTIME);
             return;
         }
         if (livingEntity instanceof ServerPlayer player) {
-            if (perc>1){
-                player.getCooldowns().addCooldown(MomotinkerItem.chain_sword.get(),80);
+            if (perc>=1){
+                player.getCooldowns().addCooldown(MomotinkerItem.chain_sword.get(),120);
             }
             player.awardStat(Stats.ITEM_USED.get(this));
             ToolDamageUtil.damageAnimated(tool,1,player);

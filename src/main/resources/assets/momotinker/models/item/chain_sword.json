@@ -44,7 +44,7 @@
       "model": "momotinker:item/tool/chain_sword/pulling_2"
     },
     {
-      "predicate": { "tconstruct:charging": 1, "tconstruct:charge": 1.0 },
+      "predicate": { "tconstruct:charging": 1, "tconstruct:charge": 1 },
       "model": "momotinker:item/tool/chain_sword/pulling_3"
     },
     {
