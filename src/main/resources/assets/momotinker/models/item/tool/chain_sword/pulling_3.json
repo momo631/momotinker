@@ -14,14 +14,15 @@
     "large_part_3": "momotinker:item/tool/chain_sword/large/part_3",
     "large_part_4": "momotinker:item/tool/chain_sword/large/part_4",
     "large_part_5": "momotinker:item/tool/chain_sword/large/part_5",
-    "large_saw": "momotinker:item/tool/chain_sword/large/saw"
+    "large_saw": "momotinker:item/tool/chain_sword/large/charge_1/charge_2/charge_3/saw"
   },
   "modifier_roots": {
     "small": [
       "momotinker:item/tool/chain_sword/modifiers/"
     ],
     "large": [
-      "momotinker:item/tool/chain_sword/large/modifiers/"
+      "momotinker:item/tool/chain_sword/large/modifiers/",
+      "momotinker:item/tool/chain_sword/large/modifiers/charge_1/charge_2/charge_3/"
     ]
   },
   "large": true,
@@ -33,23 +34,5 @@
     {"name": "part_4", "index": 3},
     {"name": "part_5", "index": 4},
     {"name": "saw"}
-  ],
-  "overrides": [
-    {
-      "predicate": { "tconstruct:charging": 1},
-      "model": "momotinker:item/tool/chain_sword/pulling_1"
-    },
-    {
-      "predicate": { "tconstruct:charging": 1, "tconstruct:charge": 0.05 },
-      "model": "momotinker:item/tool/chain_sword/pulling_2"
-    },
-    {
-      "predicate": { "tconstruct:charging": 1, "tconstruct:charge": 1.0 },
-      "model": "momotinker:item/tool/chain_sword/pulling_3"
-    },
-    {
-      "predicate": { "tconstruct:broken": 1 },
-      "model": "momotinker:item/tool/chain_sword/broken"
-    }
   ]
 }

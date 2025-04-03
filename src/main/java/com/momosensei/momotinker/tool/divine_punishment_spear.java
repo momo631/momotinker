@@ -45,6 +45,7 @@ import slimeknights.tconstruct.common.TinkerTags;
 import slimeknights.tconstruct.library.modifiers.ModifierEntry;
 import slimeknights.tconstruct.library.modifiers.ModifierHooks;
 import slimeknights.tconstruct.library.modifiers.hook.display.TooltipModifierHook;
+import slimeknights.tconstruct.library.modifiers.hook.interaction.InventoryTickModifierHook;
 import slimeknights.tconstruct.library.tools.definition.ToolDefinition;
 import slimeknights.tconstruct.library.tools.helper.ModifierUtil;
 import slimeknights.tconstruct.library.tools.helper.ToolDamageUtil;
@@ -67,7 +68,7 @@ public class divine_punishment_spear extends ModifiableItem {
     public divine_punishment_spear(Properties properties, ToolDefinition toolDefinition) {
         super(properties, toolDefinition);
         MinecraftForge.EVENT_BUS.addListener(this::livinghurtevent);
-        MinecraftForge.EVENT_BUS.addListener(EventPriority.LOWEST,this::onEntityDeath);
+        MinecraftForge.EVENT_BUS.addListener(EventPriority.LOWEST, this::onEntityDeath);
     }
 
     int sanctification_limit = MomotinkerConfig.sanctification_limit.get();
@@ -76,26 +77,33 @@ public class divine_punishment_spear extends ModifiableItem {
     public static final ResourceLocation degenerate = Momotinker.getResource("degenerate");
 
     private void onEntityDeath(LivingDeathEvent event) {
-        if (event.getSource().getEntity() instanceof Player player&&event.getEntity()!=null) {
-            if (player.getItemBySlot(EquipmentSlot.MAINHAND).is(MomotinkerItem.divine_punishment_spear.get())&& ModifierUtil.getModifierLevel(player.getItemBySlot(EquipmentSlot.MAINHAND), MomotinkerModifiers.frombrilliance.getId())>0){
+        if (event.getSource().getEntity() instanceof Player player && event.getEntity() != null) {
+            if (player.getItemBySlot(EquipmentSlot.MAINHAND).is(MomotinkerItem.divine_punishment_spear.get()) && ModifierUtil.getModifierLevel(player.getItemBySlot(EquipmentSlot.MAINHAND), MomotinkerModifiers.frombrilliance.getId()) > 0) {
                 ModDataNBT a = ToolStack.from(player.getItemBySlot(EquipmentSlot.MAINHAND)).getPersistentData();
-                if (event.getEntity().getMobType() == MobType.UNDEAD&&a.getFloat(sanctification)<sanctification_limit&&a.getFloat(degenerate)<degenerate_limit){
+                if (event.getEntity().getMobType() == MobType.UNDEAD && a.getFloat(sanctification) < sanctification_limit && a.getFloat(degenerate) < degenerate_limit) {
                     a.putFloat(sanctification, a.getFloat(sanctification) + 1);
                 }
-                if (event.getEntity() instanceof Villager&&a.getFloat(sanctification)<sanctification_limit&&a.getFloat(degenerate)<degenerate_limit){
-                    a.putFloat(degenerate,a.getFloat(degenerate) + 1);
+                if (event.getEntity() instanceof Villager && a.getFloat(sanctification) < sanctification_limit && a.getFloat(degenerate) < degenerate_limit) {
+                    a.putFloat(degenerate, a.getFloat(degenerate) + 1);
                 }
             }
         }
     }
-
+    @Override
+    public void inventoryTick(ItemStack stack, Level worldIn, Entity entityIn, int itemSlot, boolean isSelected) {
+        InventoryTickModifierHook.heldInventoryTick(stack, worldIn, entityIn, itemSlot, isSelected);
+        if (ToolStack.from(stack).getDamage()<0){
+            ToolStack.from(stack).setDamage(0);
+        }
+    }
     private void livinghurtevent(LivingHurtEvent event) {
         Entity a = event.getEntity();
         Entity b = event.getSource().getEntity();
         int sanctification_limit = MomotinkerConfig.sanctification_limit.get();
         int degenerate_limit = MomotinkerConfig.degenerate_limit.get();
         if (b instanceof Player player&&a!=null&&player.getMainHandItem().is(MomotinkerItem.divine_punishment_spear.get())){
-            ModDataNBT c = ToolStack.from(player.getItemBySlot(EquipmentSlot.MAINHAND)).getPersistentData();
+            ToolStack tool=ToolStack.from(player.getItemBySlot(EquipmentSlot.MAINHAND));
+            ModDataNBT c = tool.getPersistentData();
             if (!checkOffHand(player)) {
                 event.setAmount(0.5F * event.getAmount());
             }
@@ -107,8 +115,8 @@ public class divine_punishment_spear extends ModifiableItem {
                     if (player.getItemBySlot(EquipmentSlot.MAINHAND).getDamageValue() == 0) {
                         player.heal(event.getAmount() * 0.5F);
                     }
-                    if (player.getItemBySlot(EquipmentSlot.MAINHAND).getDamageValue() > 0 && player.getItemBySlot(EquipmentSlot.MAINHAND).getDamageValue() != 0) {
-                        player.getItemBySlot(EquipmentSlot.MAINHAND).setDamageValue((int) (player.getItemBySlot(EquipmentSlot.MAINHAND).getDamageValue() - (event.getAmount() * 0.01F)));
+                    if (tool.getDamage() > 0 && tool.getDamage() != 0) {
+                        tool.setDamage((int) (tool.getDamage() - (event.getAmount() * 0.01F)));
                     }
                 }
             }
