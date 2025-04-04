@@ -64,8 +64,9 @@ public class chain_sword extends ModifiableItem {
     @Override
     public void onUseTick(Level level, LivingEntity living, ItemStack stack, int chargeRemaining) {
         ToolStack tool = ToolStack.from(stack);
-        if (living instanceof ServerPlayer player&&!tool.isBroken()&&checkOffHand(player)&&!player.getCooldowns().isOnCooldown(MomotinkerItem.chain_sword.get())) {
+        if (living instanceof ServerPlayer player &&!tool.isBroken()&&checkOffHand(player)&&!player.getCooldowns().isOnCooldown(MomotinkerItem.chain_sword.get())) {
             float perc = Mth.clamp((float) (this.getUseDuration(stack) - chargeRemaining) / (200),0,1);
+            //level.playSound(null, player.getX(), player.getY(), player.getZ(), MomotinkerSounds.AAAA.get(), SoundSource.PLAYERS, 1.5f, 1F / (player.getRandom().nextFloat() * 0.4F + 0.8F));
             if (perc < 1F && perc > 0.05f){
                 float a = tool.getStats().get(ToolStats.ATTACK_SPEED)/200;
                 if (a<0.04f){

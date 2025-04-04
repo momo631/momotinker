@@ -41,6 +41,7 @@ public class Momotinker {
         MomotinkerBlock.BLOCK.register(eventBus);
         MomotinkerEffects.EFFECT.register(eventBus);
         MomotinkerEntities.ENTITIES.register(eventBus);
+        MomotinkerSounds.SOUNDS.register(eventBus);
         MomotinkerLootModifiers.register(eventBus);
         IEventBus bus = FMLJavaModLoadingContext.get().getModEventBus();
         ModLoadingContext.get().registerConfig(ModConfig.Type.COMMON, MomotinkerConfig.spec);
