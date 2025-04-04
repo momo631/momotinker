@@ -28,5 +28,4 @@ public class devouring_demon_gold extends Item {
         }
         super.appendHoverText(stack, level, list, flag);
     }
-
 }

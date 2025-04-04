@@ -76,10 +76,28 @@ public class Momotinker {
         public static void onClientSetup(FMLClientSetupEvent event) {
             event.enqueueWork(() -> {
                 TinkerItemProperties.registerBrokenProperty(trigger_blade.get());
+                TinkerItemProperties.registerBrokenProperty(divine_punishment_spear.get());
+                TinkerItemProperties.registerBrokenProperty(entropy_burning_cube.get());
+                TinkerItemProperties.registerBrokenProperty(entropy_burning_cannon.get());
+                TinkerItemProperties.registerBrokenProperty(entropy_burning_riding_spear.get());
+                TinkerItemProperties.registerBrokenProperty(entropy_burning_sword.get());
+                TinkerItemProperties.registerBrokenProperty(eclipse_container.get());
+                TinkerItemProperties.registerBrokenProperty(moon_lock.get());
+                TinkerItemProperties.registerBrokenProperty(coronal_key.get());
+                TinkerItemProperties.registerBrokenProperty(pocket_watch.get());
+                TinkerItemProperties.registerBrokenProperty(chain_sword.get());
+
                 TinkerItemProperties.registerToolProperties(trigger_blade.get());
+                TinkerItemProperties.registerToolProperties(divine_punishment_spear.get());
+                TinkerItemProperties.registerToolProperties(entropy_burning_cube.get());
                 TinkerItemProperties.registerToolProperties(entropy_burning_riding_spear.get());
                 TinkerItemProperties.registerToolProperties(entropy_burning_cannon.get());
+                TinkerItemProperties.registerToolProperties(moon_lock.get());
+                TinkerItemProperties.registerToolProperties(coronal_key.get());
                 TinkerItemProperties.registerToolProperties(eclipse_container.get());
+                TinkerItemProperties.registerToolProperties(pocket_watch.get());
+                TinkerItemProperties.registerToolProperties(chain_sword.get());
+
             });
         }
     }

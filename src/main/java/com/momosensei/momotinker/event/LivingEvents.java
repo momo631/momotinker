@@ -60,6 +60,8 @@ public class LivingEvents {
 
     private static final ResourceLocation lusttest = Momotinker.getResource("lusttest");
     private static final ResourceLocation ragetest = Momotinker.getResource("ragetest");
+    private static final ResourceLocation enchtesta = Momotinker.getResource("enchtesta");
+    private static final ResourceLocation enchtestb = Momotinker.getResource("enchtestb");
 
     private void livinghurtevent(LivingHurtEvent event) {
         Entity a = event.getEntity();
