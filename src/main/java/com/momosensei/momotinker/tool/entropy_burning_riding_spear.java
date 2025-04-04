@@ -102,7 +102,6 @@ public class entropy_burning_riding_spear extends ModifiableItem {
             return;
         }
         if (livingEntity instanceof Player player1) {
-            player1.awardStat(Stats.ITEM_USED.get(this));
             if (perc >= 1){
                 player1.hasImpulse = true;
                 player1.startAutoSpinAttack(2);
@@ -112,6 +111,7 @@ public class entropy_burning_riding_spear extends ModifiableItem {
             }
             if (livingEntity instanceof ServerPlayer player) {
                 Channel.sendToPlayer(new ToolsTimeCharge(0), player);
+                player1.awardStat(Stats.ITEM_USED.get(this));
                 ToolDamageUtil.damageAnimated(tool, 1, player);
             }
         }
@@ -146,10 +146,10 @@ public class entropy_burning_riding_spear extends ModifiableItem {
         return player!=null&& !player.hasItemInSlot(EquipmentSlot.OFFHAND);
     }
     public List<Component> getStatInformation(IToolStackView tool, @Nullable Player player, List<Component> tooltips, TooltipKey key, TooltipFlag tooltipFlag) {
-        tooltips = this.getDivinePunishmentSpearStats(tool, player, tooltips, key, tooltipFlag);
+        tooltips = this.getStats(tool, player, tooltips, key, tooltipFlag);
         return tooltips;
     }
-    public List<Component> getDivinePunishmentSpearStats(IToolStackView tool, @Nullable Player player, List<Component> tooltips, TooltipKey key, TooltipFlag tooltipFlag) {
+    public List<Component> getStats(IToolStackView tool, @Nullable Player player, List<Component> tooltips, TooltipKey key, TooltipFlag tooltipFlag) {
         TooltipBuilder builder = new TooltipBuilder(tool, tooltips);
         ModDataNBT a = tool.getPersistentData();
         if (tool.hasTag(TinkerTags.Items.DURABILITY)) {

@@ -163,6 +163,15 @@
   "item.momotinker.coronal_key.description": "Continuous combat can increase charging and improve damage. When the charging is full and the deputy is'Moon Lock', pressing 'Tool Enhancement' to merge with it to form an'Eclipse Container'.",
   "item.momotinker.moon_lock": "Moon Lock",
   "item.momotinker.moon_lock.description": "[Non-existent shadow]\nDuring the charging period, 50% damage reduction can be obtained and there is a 50% probability of ignoring projectile attacks.",
+  "item.momotinker.pocket_watch": "Pocket Watch",
+
+  "item.momotinker.pocket_watch.description": "[From Brilliance]:Lost in the End City\nRight click to record the location in stealth mode. When the backpack is present, death will be teleported and it will be cooled down(invalid when located in different dimensions)",
+  "item.momotinker.tooltip.pocket_watch1": "Currently remaining cooling:",
+  "item.momotinker.tooltip.pocket_watch2": "The current recorded location is:(",
+  "item.momotinker.tooltip.pocket_watch3": "The current location is not in the same dimension as the recorded location. It cannot be used!",
+
+  "item.momotinker.chain_sword": "Chain Sword",
+  "item.momotinker.chain_sword.description": "[Two handed weapons]\nDuring use, it can continuously strike small range creatures in front of it. If used for too long, it will cannot be used normally. The higher the attack speed, the higher the damage",
 
   "momotinker.tool.tooltip.offhand_hastool": "Error: The deputy has items",
 

@@ -1,0 +1,38 @@
+{
+  "loader": "tconstruct:tool",
+  "parent": "forge:item/default-tool",
+  "textures": {
+    "part_1": "momotinker:item/tool/chain_sword/part_1",
+    "part_2": "momotinker:item/tool/chain_sword/part_2",
+    "part_3": "momotinker:item/tool/chain_sword/part_3",
+    "part_4": "momotinker:item/tool/chain_sword/part_4",
+    "part_5": "momotinker:item/tool/chain_sword/part_5",
+    "saw": "momotinker:item/tool/chain_sword/saw",
+
+    "large_part_1": "momotinker:item/tool/chain_sword/large/part_1",
+    "large_part_2": "momotinker:item/tool/chain_sword/large/part_2",
+    "large_part_3": "momotinker:item/tool/chain_sword/large/part_3",
+    "large_part_4": "momotinker:item/tool/chain_sword/large/part_4",
+    "large_part_5": "momotinker:item/tool/chain_sword/large/part_5",
+    "large_saw": "momotinker:item/tool/chain_sword/large/charge_1/saw"
+  },
+  "modifier_roots": {
+    "small": [
+      "momotinker:item/tool/chain_sword/modifiers/"
+    ],
+    "large": [
+      "momotinker:item/tool/chain_sword/large/modifiers/",
+      "momotinker:item/tool/chain_sword/large/modifiers/charge_1/"
+    ]
+  },
+  "large": true,
+  "large_offset": [6, -6],
+  "parts": [
+    {"name": "part_1", "index": 0},
+    {"name": "part_2", "index": 1},
+    {"name": "part_3", "index": 2},
+    {"name": "part_4", "index": 3},
+    {"name": "part_5", "index": 4},
+    {"name": "saw"}
+  ]
+}

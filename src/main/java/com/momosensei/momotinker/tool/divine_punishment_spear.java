@@ -46,6 +46,7 @@ import slimeknights.tconstruct.common.TinkerTags;
 import slimeknights.tconstruct.library.modifiers.ModifierEntry;
 import slimeknights.tconstruct.library.modifiers.ModifierHooks;
 import slimeknights.tconstruct.library.modifiers.hook.display.TooltipModifierHook;
+import slimeknights.tconstruct.library.modifiers.hook.interaction.InventoryTickModifierHook;
 import slimeknights.tconstruct.library.tools.definition.ToolDefinition;
 import slimeknights.tconstruct.library.tools.helper.ModifierUtil;
 import slimeknights.tconstruct.library.tools.helper.ToolDamageUtil;
@@ -88,14 +89,21 @@ public class divine_punishment_spear extends ModifiableItem {
             }
         }
     }
-
+    @Override
+    public void inventoryTick(ItemStack stack, Level worldIn, Entity entityIn, int itemSlot, boolean isSelected) {
+        InventoryTickModifierHook.heldInventoryTick(stack, worldIn, entityIn, itemSlot, isSelected);
+        if (ToolStack.from(stack).getDamage()<0){
+            ToolStack.from(stack).setDamage(0);
+        }
+    }
     private void livinghurtevent(LivingHurtEvent event) {
         Entity a = event.getEntity();
         Entity b = event.getSource().getEntity();
         int sanctification_limit = MomotinkerConfig.sanctification_limit.get();
         int degenerate_limit = MomotinkerConfig.degenerate_limit.get();
         if (b instanceof Player player&&a!=null&&player.getMainHandItem().is(MomotinkerTools.divine_punishment_spear.get())){
-            ModDataNBT c = ToolStack.from(player.getItemBySlot(EquipmentSlot.MAINHAND)).getPersistentData();
+            ToolStack tool=ToolStack.from(player.getItemBySlot(EquipmentSlot.MAINHAND));
+            ModDataNBT c = tool.getPersistentData();
             if (!checkOffHand(player)) {
                 event.setAmount(0.5F * event.getAmount());
             }
@@ -107,13 +115,14 @@ public class divine_punishment_spear extends ModifiableItem {
                     if (player.getItemBySlot(EquipmentSlot.MAINHAND).getDamageValue() == 0) {
                         player.heal(event.getAmount() * 0.5F);
                     }
-                    if (player.getItemBySlot(EquipmentSlot.MAINHAND).getDamageValue() > 0 && player.getItemBySlot(EquipmentSlot.MAINHAND).getDamageValue() != 0) {
-                        player.getItemBySlot(EquipmentSlot.MAINHAND).setDamageValue((int) (player.getItemBySlot(EquipmentSlot.MAINHAND).getDamageValue() - (event.getAmount() * 0.01F)));
+                    if (tool.getDamage() > 0 && tool.getDamage() != 0) {
+                        tool.setDamage((int) (tool.getDamage() - (event.getAmount() * 0.01F)));
                     }
                 }
             }
         }
     }
+
     public boolean canAttackBlock(BlockState blockState, Level level, BlockPos blockPos, Player player) {
         return !player.isCreative();
     }
@@ -209,7 +218,7 @@ public class divine_punishment_spear extends ModifiableItem {
                         entity.setOwner(player);
                         entity.setToolstack(tool);
                         entity.setint(c);
-                        entity.damage = MomotinkerEntitiesCreate.getDamageMultiplier(tool) * 50;
+                        entity.damage = MomotinkerEntitiesCreate.getDamageMultiplier(tool);
                         entity.setExplosionPower((byte) 120);
                         level.addFreshEntity(entity);
                     }
@@ -250,10 +259,10 @@ public class divine_punishment_spear extends ModifiableItem {
         return player!=null&& !player.hasItemInSlot(EquipmentSlot.OFFHAND);
     }
     public List<Component> getStatInformation(IToolStackView tool, @Nullable Player player, List<Component> tooltips, TooltipKey key, TooltipFlag tooltipFlag) {
-        tooltips = this.getDivinePunishmentSpearStats(tool, player, tooltips, key, tooltipFlag);
+        tooltips = this.getStats(tool, player, tooltips, key, tooltipFlag);
         return tooltips;
     }
-    public List<Component> getDivinePunishmentSpearStats(IToolStackView tool, @Nullable Player player, List<Component> tooltips, TooltipKey key, TooltipFlag tooltipFlag) {
+    public List<Component> getStats(IToolStackView tool, @Nullable Player player, List<Component> tooltips, TooltipKey key, TooltipFlag tooltipFlag) {
         TooltipBuilder builder = new TooltipBuilder(tool, tooltips);
         ModDataNBT a = tool.getPersistentData();
         if (tool.hasTag(TinkerTags.Items.DURABILITY)) {

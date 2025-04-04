@@ -93,47 +93,31 @@ public class eclipse_container extends ModifiableItem {
             }
             int t = this.getUseDuration(stack) - chargeRemaining;
             float perc = Mth.clamp((float) t / 60,0,1);
-            if (tool.getPersistentData().getInt(disaster)>0&&perc >= 1){
-                int a = (int)(tool.getStats().get(ToolStats.ATTACK_SPEED)*2+5);
-                tool.getPersistentData().putInt(disaster, tool.getPersistentData().getInt(disaster) - 2);
-                if (a<30&&a>=1) {
-                    List<Entity> list = player.level().getEntitiesOfClass(Entity.class, player.getBoundingBox().inflate(a));
-                    List<Entity> list1 = player.level().getEntitiesOfClass(Entity.class, player.getBoundingBox().inflate(a-0.5));
-                    for (Entity entity : list) {
-                        if (entity != null && entity != player) {
-                            Vec3 vec = entity.position().subtract(living.position()).normalize().scale(-0.15);
-                            entity.push(vec.x, vec.y, vec.z);
+            if (tool.getPersistentData().getInt(disaster)>0&&perc >= 1) {
+                int a = (int) (tool.getStats().get(ToolStats.ATTACK_SPEED) * 2 + 5);
+                tool.getPersistentData().putInt(disaster, tool.getPersistentData().getInt(disaster) - 3);
+                if (a>=1&&a<30){
+                    a = (int) (tool.getStats().get(ToolStats.ATTACK_SPEED) * 2 + 5);
+                }else if (a>=30){
+                    a = 30;
+                }
+                List<Entity> list = player.level().getEntitiesOfClass(Entity.class, player.getBoundingBox().inflate(a));
+                List<Entity> list1 = player.level().getEntitiesOfClass(Entity.class, player.getBoundingBox().inflate(a-0.5));
+                for (Entity entity : list) {
+                    if (entity != null && entity != player) {
+                        Vec3 vec = entity.position().subtract(living.position()).normalize().scale(-0.15);
+                        entity.push(vec.x, vec.y, vec.z);
+                    }
+                }
+                if (player.tickCount % 20 == 1) {
+                    for (Entity entity : list1) {
+                        if (entity instanceof LivingEntity && entity != player) {
+                            attackUtil.attackEntity(tool, player, InteractionHand.MAIN_HAND, entity, () -> 1, true, Util.getSlotType(InteractionHand.MAIN_HAND), tool.getStats().get(ToolStats.ATTACK_DAMAGE), 0.25f, false, true, false,true);
                         }
                     }
-                    if (player.tickCount%20==1) {
-                        for (Entity entity : list1) {
-                            if (entity instanceof LivingEntity && entity != player) {
-                                attackUtil.attackEntity(tool, player, InteractionHand.MAIN_HAND, entity, () -> 1, true, Util.getSlotType(InteractionHand.MAIN_HAND), tool.getStats().get(ToolStats.ATTACK_DAMAGE), 0.25f,false, true, false);
-                            }
-                        }
-                    }
-                    if (player.level() instanceof ServerLevel serverLevel) {
-                        serverLevel.sendParticles(ParticleTypes.DRAGON_BREATH, player.getX(), player.getY()+player.getBbHeight()*0.5f, player.getZ(), (int)(a*0.6F)+22, a, a, a, 0.5);
-                    }
-                }else if (a>=30) {
-                    List<Entity> list = player.level().getEntitiesOfClass(Entity.class, player.getBoundingBox().inflate(30));
-                    List<Entity> list1 = player.level().getEntitiesOfClass(Entity.class, player.getBoundingBox().inflate(29.5));
-                    for (Entity entity : list) {
-                        if (entity != null && entity != player) {
-                            Vec3 vec = entity.position().subtract(living.position()).normalize().scale(-0.15);
-                            entity.push(vec.x, vec.y, vec.z);
-                        }
-                    }
-                    if (player.tickCount%20==1) {
-                        for (Entity entity : list1) {
-                            if (entity instanceof LivingEntity && entity != player) {
-                                attackUtil.attackEntity(tool, player, InteractionHand.MAIN_HAND, entity, () -> 1, true, Util.getSlotType(InteractionHand.MAIN_HAND), tool.getStats().get(ToolStats.ATTACK_DAMAGE), 0.25f,false, true, false);
-                            }
-                        }
-                    }
-                    if (player.level() instanceof ServerLevel serverLevel) {
-                        serverLevel.sendParticles(ParticleTypes.DRAGON_BREATH, player.getX(), player.getY()+player.getBbHeight()*0.5f, player.getZ(), 40, 30, 30, 30, 0.5);
-                    }
+                }
+                if (player.level() instanceof ServerLevel serverLevel) {
+                    serverLevel.sendParticles(ParticleTypes.DRAGON_BREATH, player.getX(), player.getY() + player.getBbHeight() * 0.5f, player.getZ(), (int) (a * 0.6F) + 22, a, a, a, 0.5);
                 }
             }
         }
@@ -166,10 +150,10 @@ public class eclipse_container extends ModifiableItem {
         return player!=null&& !player.hasItemInSlot(EquipmentSlot.OFFHAND);
     }
     public List<Component> getStatInformation(IToolStackView tool, @Nullable Player player, List<Component> tooltips, TooltipKey key, TooltipFlag tooltipFlag) {
-        tooltips = this.getDivinePunishmentSpearStats(tool, player, tooltips, key, tooltipFlag);
+        tooltips = this.getStats(tool, player, tooltips, key, tooltipFlag);
         return tooltips;
     }
-    public List<Component> getDivinePunishmentSpearStats(IToolStackView tool, @Nullable Player player, List<Component> tooltips, TooltipKey key, TooltipFlag tooltipFlag) {
+    public List<Component> getStats(IToolStackView tool, @Nullable Player player, List<Component> tooltips, TooltipKey key, TooltipFlag tooltipFlag) {
         TooltipBuilder builder = new TooltipBuilder(tool, tooltips);
         if (tool.hasTag(TinkerTags.Items.DURABILITY)) {
             builder.add(ToolStats.DURABILITY);

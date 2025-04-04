@@ -32,7 +32,6 @@ import slimeknights.tconstruct.common.TinkerTags;
 import slimeknights.tconstruct.library.modifiers.ModifierEntry;
 import slimeknights.tconstruct.library.modifiers.ModifierHooks;
 import slimeknights.tconstruct.library.modifiers.hook.build.ConditionalStatModifierHook;
-import slimeknights.tconstruct.library.modifiers.hook.display.TooltipModifierHook;
 import slimeknights.tconstruct.library.tools.definition.ToolDefinition;
 import slimeknights.tconstruct.library.tools.helper.ToolDamageUtil;
 import slimeknights.tconstruct.library.tools.helper.TooltipBuilder;
@@ -104,7 +103,7 @@ public class entropy_burning_sword extends ModifiableItem {
                 for (Entity targets : ls0) {
                     if (targets != player) {
                         targets.invulnerableTime = 0;
-                        attackUtil.attackEntity(tool, player, InteractionHand.MAIN_HAND, targets, () -> 1, true, Util.getSlotType(InteractionHand.MAIN_HAND), tool.getStats().get(ToolStats.ATTACK_DAMAGE),1.5f, false, true, true);
+                        attackUtil.attackEntity(tool, player, InteractionHand.MAIN_HAND, targets, () -> 1, true, Util.getSlotType(InteractionHand.MAIN_HAND), tool.getStats().get(ToolStats.ATTACK_DAMAGE),1.5f, false, true, true,false);
                     }
                 }
                 if (player.level() instanceof ServerLevel serverLevel) {
@@ -114,6 +113,7 @@ public class entropy_burning_sword extends ModifiableItem {
                         double x = r * Math.cos(rad);
                         double z = r * Math.sin(rad);
                         serverLevel.sendParticles(ParticleTypes.FLAME, player.getX() + x, player.getY() + player.getBbHeight() * 0.6, player.getZ() + z, 5, 0, 0, 0, 0.6);
+                        serverLevel.sendParticles(ParticleTypes.LAVA, player.getX() + x, player.getY() + player.getBbHeight() * 0.6, player.getZ() + z, 2, 0, 0, 0, 0.6);
                     }
                 }
             }
@@ -145,10 +145,10 @@ public class entropy_burning_sword extends ModifiableItem {
         return player!=null&& !player.hasItemInSlot(EquipmentSlot.OFFHAND);
     }
     public List<Component> getStatInformation(IToolStackView tool, @Nullable Player player, List<Component> tooltips, TooltipKey key, TooltipFlag tooltipFlag) {
-        tooltips = this.getDivinePunishmentSpearStats(tool, player, tooltips, key, tooltipFlag);
+        tooltips = this.getStats(tool, player, tooltips, key, tooltipFlag);
         return tooltips;
     }
-    public List<Component> getDivinePunishmentSpearStats(IToolStackView tool, @Nullable Player player, List<Component> tooltips, TooltipKey key, TooltipFlag tooltipFlag) {
+    public List<Component> getStats(IToolStackView tool, @Nullable Player player, List<Component> tooltips, TooltipKey key, TooltipFlag tooltipFlag) {
         TooltipBuilder builder = new TooltipBuilder(tool, tooltips);
         ModDataNBT a = tool.getPersistentData();
         if (tool.hasTag(TinkerTags.Items.DURABILITY)) {
@@ -167,7 +167,7 @@ public class entropy_burning_sword extends ModifiableItem {
         Iterator var7 = tool.getModifierList().iterator();
         while(var7.hasNext()) {
             ModifierEntry entry = (ModifierEntry)var7.next();
-            ((TooltipModifierHook)entry.getHook(ModifierHooks.TOOLTIP)).addTooltip(tool, entry, player, tooltips, key, tooltipFlag);
+            entry.getHook(ModifierHooks.TOOLTIP).addTooltip(tool, entry, player, tooltips, key, tooltipFlag);
         }
         return tooltips;
     }

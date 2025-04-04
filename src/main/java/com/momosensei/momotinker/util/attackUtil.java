@@ -55,7 +55,7 @@ public class attackUtil {
                 .filter(attribute -> !attribute.hasModifier(ANTI_KNOCKBACK_MODIFIER));
     }
 
-    public static boolean attackEntity(IToolStackView tool, LivingEntity attackerLiving, InteractionHand hand, Entity targetEntity, DoubleSupplier cooldownFunction, boolean isExtraAttack, EquipmentSlot sourceSlot,float SetDamage,float DamageMultiplier,boolean SetCritical,boolean notDamageTool,boolean removeInvTime) {
+    public static boolean attackEntity(IToolStackView tool, LivingEntity attackerLiving, InteractionHand hand, Entity targetEntity, DoubleSupplier cooldownFunction, boolean isExtraAttack, EquipmentSlot sourceSlot,float SetDamage,float DamageMultiplier,boolean SetCritical,boolean notDamageTool,boolean removeInvTime,boolean removeknockback) {
         if (tool.isBroken() || !tool.hasTag(TinkerTags.Items.MELEE)) {
             return false;
         }

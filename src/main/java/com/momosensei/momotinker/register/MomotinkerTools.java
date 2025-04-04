@@ -45,6 +45,8 @@ public final class MomotinkerTools extends MomotinkerTables {
     public static final ItemObject<ModifiableItem> eclipse_container = ITEMS.register("eclipse_container", () -> new eclipse_container(UNSTACKABLE_PROPS, MomotinkerToolDefinitions.ECLIPSE_CONTAINER));
     public static final ItemObject<ModifiableItem> coronal_key = ITEMS.register("coronal_key", () -> new coronal_key(UNSTACKABLE_PROPS, MomotinkerToolDefinitions.CORONAL_KEY));
     public static final ItemObject<ModifiableItem> moon_lock = ITEMS.register("moon_lock", () -> new moon_lock(UNSTACKABLE_PROPS, MomotinkerToolDefinitions.MOON_LOCK));
+    public static final ItemObject<ModifiableItem> pocket_watch = ITEMS.register("pocket_watch", () -> new pocket_watch(UNSTACKABLE_PROPS, MomotinkerToolDefinitions.POCKET_WATCH));
+    public static final ItemObject<ModifiableItem> chain_sword = ITEMS.register("chain_sword", () -> new chain_sword(UNSTACKABLE_PROPS, MomotinkerToolDefinitions.CHAIN_SWORD));
 
     private static void addTabItems(CreativeModeTab.ItemDisplayParameters itemDisplayParameters, CreativeModeTab.Output tab) {
         Consumer<ItemStack> output = tab::accept;
@@ -57,6 +59,8 @@ public final class MomotinkerTools extends MomotinkerTables {
         acceptTool(output, eclipse_container);
         acceptTool(output, coronal_key);
         acceptTool(output, moon_lock);
+        acceptTool(output, pocket_watch);
+        acceptTool(output, chain_sword);
     }
     private static void acceptTool(Consumer<ItemStack> output, Supplier<? extends IModifiable> tool) {
         ToolBuildHandler.addVariants(output, tool.get(), "");
