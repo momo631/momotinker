@@ -71,7 +71,7 @@ public class pocket_watch extends ModifiableItem {
                     event.setCanceled(true);
                     player.setHealth(player.getMaxHealth()*0.2f);
                     tryTeleport(stack,player);
-                    int a = (int) (300/ (ConditionalStatModifierHook.getModifiedStat(tool,player,ToolStats.ATTACK_SPEED)+(0.1f*ConditionalStatModifierHook.getModifiedStat(tool,player,ToolStats.ATTACK_DAMAGE))));
+                    int a = (int) (600/ (ConditionalStatModifierHook.getModifiedStat(tool,player,ToolStats.ATTACK_SPEED)+(0.1f*ConditionalStatModifierHook.getModifiedStat(tool,player,ToolStats.ATTACK_DAMAGE))));
                     if (a>180) {
                         tool.getPersistentData().putInt(pocketwatch, 180);
                     }else if (a<12) {

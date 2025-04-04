@@ -411,6 +411,76 @@
         {
             "path": "momotinker:item/tool/eclipse_container/large/charge_1/part_6",
             "stat_type": "tconstruct:binding"
+        },
+
+
+        {
+            "path": "momotinker:item/tool/pocket_watch/part_1",
+            "stat_type": "tconstruct:binding"
+        },
+        {
+            "path": "momotinker:item/tool/pocket_watch/part_2",
+            "stat_type": "tconstruct:binding"
+        },
+        {
+            "path": "momotinker:item/tool/pocket_watch/part_3",
+            "stat_type": "tconstruct:binding"
+        },
+        {
+            "path": "momotinker:item/tool/pocket_watch/broken_part",
+            "stat_type": "tconstruct:binding"
+        },
+
+
+
+        {
+            "path": "momotinker:item/tool/chain_sword/part_1",
+            "stat_type": "tconstruct:binding"
+        },
+        {
+            "path": "momotinker:item/tool/chain_sword/part_2",
+            "stat_type": "tconstruct:binding"
+        },
+        {
+            "path": "momotinker:item/tool/chain_sword/part_3",
+            "stat_type": "tconstruct:binding"
+        },
+        {
+            "path": "momotinker:item/tool/chain_sword/part_4",
+            "stat_type": "tconstruct:binding"
+        },
+        {
+            "path": "momotinker:item/tool/chain_sword/part_5",
+            "stat_type": "tconstruct:binding"
+        },
+        {
+            "path": "momotinker:item/tool/chain_sword/broken_part",
+            "stat_type": "tconstruct:binding"
+        },
+
+        {
+            "path": "momotinker:item/tool/chain_sword/large/part_1",
+            "stat_type": "tconstruct:binding"
+        },
+        {
+            "path": "momotinker:item/tool/chain_sword/large/part_2",
+            "stat_type": "tconstruct:binding"
+        },
+        {
+            "path": "momotinker:item/tool/chain_sword/large/part_3",
+            "stat_type": "tconstruct:binding"
+        },
+        {
+            "path": "momotinker:item/tool/chain_sword/large/part_4",
+            "stat_type": "tconstruct:binding"
+        },
+        {
+            "path": "momotinker:item/tool/chain_sword/large/part_5",
+            "stat_type": "tconstruct:binding"
+        },
+        {
+            "path": "momotinker:item/tool/chain_sword/large/broken_part",
+            "stat_type": "tconstruct:binding"
         }
     ],
     "replace": false
