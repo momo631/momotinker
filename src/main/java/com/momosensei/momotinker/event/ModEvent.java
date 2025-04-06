@@ -13,16 +13,25 @@ import net.minecraftforge.eventbus.api.SubscribeEvent;
 import net.minecraftforge.fml.common.Mod;
 import slimeknights.tconstruct.library.tools.helper.ModifierUtil;
 
+import static slimeknights.tconstruct.TConstruct.RANDOM;
+
 @Mod.EventBusSubscriber(modid = "momotinker", bus = Mod.EventBusSubscriber.Bus.FORGE)
 public class ModEvent {
 
     @SubscribeEvent(priority = EventPriority.LOWEST)
     public static void onMobDrop(LivingDropsEvent event) {
         LivingEntity killer = event.getEntity().getKillCredit();
-        if (killer != null && ModifierUtil.getModifierLevel(killer.getMainHandItem(), MomotinkerModifiers.intendingplunder.getId()) > 0) {
-            double val = ModifierUtil.getModifierLevel(killer.getMainHandItem(), MomotinkerModifiers.intendingplunder.getId())*0.5;
+        if (killer != null) {
+            int a = ModifierUtil.getModifierLevel(killer.getMainHandItem(), MomotinkerModifiers.intendingplunder.getId());
+            int b = ModifierUtil.getModifierLevel(killer.getMainHandItem(), MomotinkerModifiers.origin.getId());
+            int b_random = RANDOM.nextInt(4+b);
             for (var stack : event.getDrops()) {
-                stack.getItem().setCount((int) (stack.getItem().getCount() * (1+val)));
+                if (a>0) {
+                    stack.getItem().setCount((int) (stack.getItem().getCount() * (1 + a * 0.5)));
+                }
+                if (b>0&&b_random>=4){
+                    stack.getItem().setCount(0);
+                }
             }
         }
     }

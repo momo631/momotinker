@@ -29,6 +29,7 @@ import net.minecraft.world.level.Level;
 import net.minecraft.world.level.block.Blocks;
 import net.minecraft.world.level.block.SaplingBlock;
 import net.minecraftforge.common.MinecraftForge;
+import net.minecraftforge.event.TickEvent;
 import net.minecraftforge.event.entity.item.ItemEvent;
 import net.minecraftforge.event.entity.living.BabyEntitySpawnEvent;
 import net.minecraftforge.event.entity.living.LivingDeathEvent;
@@ -49,6 +50,7 @@ import static slimeknights.tconstruct.TConstruct.RANDOM;
 public class LivingEvents {
     public LivingEvents(){
         MinecraftForge.EVENT_BUS.addListener(this::livinghurtevent);
+        MinecraftForge.EVENT_BUS.addListener(this::playertick);
         MinecraftForge.EVENT_BUS.addListener(EventPriority.LOWEST,this::onEntityDeath);
         MinecraftForge.EVENT_BUS.addListener(EventPriority.LOWEST,this::onBabyEntitySpawnEvent);
         MinecraftForge.EVENT_BUS.addListener(EventPriority.LOWEST,this::onBonemealEvent);
@@ -241,5 +243,9 @@ public class LivingEvents {
                 }
             }
         }
+    }
+
+    private void playertick(TickEvent.PlayerTickEvent event) {
+
     }
 }

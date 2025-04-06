@@ -1,0 +1,16 @@
+{
+  "default": [
+    {
+      "name": "momotinker:origin",
+      "level": 1
+    },
+    {
+      "name": "momotinker:significance",
+      "level": 1
+    },
+    {
+      "name": "momotinker:blank",
+      "level": 1
+    }
+  ]
+}

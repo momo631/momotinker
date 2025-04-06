@@ -27,6 +27,8 @@ import static com.momosensei.momotinker.Modifiers.modifiers.DrinkingDemon.*;
 import static com.momosensei.momotinker.Modifiers.modifiers.FallingStars.falling;
 import static com.momosensei.momotinker.Modifiers.modifiers.OverCrystalline.crystallization;
 import static com.momosensei.momotinker.Modifiers.modifiers.Red.ender;
+import static com.momosensei.momotinker.Modifiers.modifiers.Significance.signifincancecool;
+import static com.momosensei.momotinker.Modifiers.modifiers.Significance.signifincances;
 import static net.minecraft.world.item.enchantment.EnchantmentCategory.*;
 import static slimeknights.tconstruct.TConstruct.RANDOM;
 
@@ -148,6 +150,13 @@ public class KeyInputPKT {
                     }
                     player.setItemSlot(EquipmentSlot.OFFHAND, ItemStack.EMPTY);
                     player.getCooldowns().addCooldown(player.getMainHandItem().getItem(), 1800);
+                }
+            }
+            if (player != null && getMainhandModifierlevel(player,MomotinkerModifiers.significance.getId()) > 0) {
+                ModDataNBT significancedata = ToolStack.from(player.getItemBySlot(EquipmentSlot.MAINHAND)).getPersistentData();
+                if (significancedata.getInt(signifincancecool)==0){
+                    significancedata.putInt(signifincances,10);
+                    significancedata.putInt(signifincancecool,90);
                 }
             }
         });

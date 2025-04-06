@@ -35,6 +35,7 @@
   "fluid.momotinker.molten_stained_blood_gold": "熔融染血玄金",
   "fluid.momotinker.molten_starry_mysterious_gold": "熔融星辰玄金",
   "fluid.momotinker.molten_devouring_demon_gold": "熔融噬魔金",
+  "fluid.momotinker.molten_nihilism": "熔融终点",
 
   "item.momotinker.molten_laomo_bucket": "熔融墨桶",
   "item.momotinker.molten_arriving_at_the_other_shore_bucket": "熔融彼岸桶",
@@ -53,6 +54,7 @@
   "item.momotinker.molten_stained_blood_gold_bucket": "熔融染血玄金桶",
   "item.momotinker.molten_starry_mysterious_gold_bucket": "熔融星辰玄金桶",
   "item.momotinker.molten_devouring_demon_gold_bucket": "熔融噬魔金桶",
+  "item.momotinker.molten_nihilism_bucket": "熔融终点桶",
 
   "recipe.momotinker.modifier.cleansetheworld": "荡涤天地需要贯星魔枪作为前置",
   "recipe.momotinker.modifier.shadowofdamnation": "天谴之影需要荡涤天地作为前置",
@@ -133,6 +135,10 @@
   "momotinker.item.tooltip.devouring_demon_gold2": "按住“shift”查看获取",
   "momotinker.item.tooltip.devouring_demon_gold3": "在虚空时将拥有附魔种类大于等于5的装备丢出时，其会转换为该物品",
 
+  "item.momotinker.nihilism": "概念终点·虚无主义",
+  "momotinker.item.tooltip.nihilism1": "",
+  "momotinker.item.tooltip.nihilism2": "按住“shift”查看获取",
+  "momotinker.item.tooltip.nihilism3": "",
 
   "itemGroup.momotinker.tools": "墨工坊模组-工具",
 
@@ -213,6 +219,8 @@
   "material.momotinker.starry_mysterious_gold.encyclopedia": "黯淡的星星重新开始闪耀于天空，正如手中熠熠之物",
   "material.momotinker.devouring_demon_gold": "噬魔金",
   "material.momotinker.devouring_demon_gold.encyclopedia": "一份付出，一份收获",
+  "material.momotinker.nihilism": "终点",
+  "material.momotinker.nihilism.encyclopedia": "",
 
   "modifier.momotinker.laomochuji": "牢墨出击",
   "modifier.momotinker.laomochuji.flavor": "词条标题",
@@ -416,6 +424,18 @@
 
   "modifier.momotinker.ultimatedarkness": "至黑，至暗",
   "modifier.momotinker.ultimatedarkness.flavor": "切莫哀悼，此乃必然",
-  "modifier.momotinker.ultimatedarkness.description": "持有时充能会随时间减少，若主手持有工具不是“日冕之钥”或“日蚀容器”时则更快速的减少；存在充能时武器造成的伤害提高（默认为60%）"
+  "modifier.momotinker.ultimatedarkness.description": "持有时充能会随时间减少，若主手持有工具不是“日冕之钥”或“日蚀容器”时则更快速的减少；存在充能时武器造成的伤害提高（默认为60%）",
+
+  "modifier.momotinker.origin": "第一终章:起源",
+  "modifier.momotinker.origin.flavor": "一切生灵的起点，都来自于虚无，正因如此，也将归于虚无",
+  "modifier.momotinker.origin.description": "攻击无视防御并且会削减目标10%*等级的最大生命值，若目标最大生命低于自身会直接归于虚无，且掉落物有几率被清空",
+
+  "modifier.momotinker.significance": "第二终章:意义",
+  "modifier.momotinker.significance.flavor": "万物之所以存在，皆因系与意义，故此，予其剥夺",
+  "modifier.momotinker.significance.description": "按下特殊技能按键使大范围生物的最大生命持续衰减直到死亡并且身上所有药水效果都会被清除，自身也会被影响但是生命衰减的速度减半",
+
+  "modifier.momotinker.blank": "第三终章:留白",
+  "modifier.momotinker.blank.flavor": "如文章一般，在一切的最后，当终结被终结时，只留下未完成的空白",
+  "modifier.momotinker.blank.description": ""
 
 }
