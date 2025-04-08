@@ -230,7 +230,7 @@
 
   "modifier.momotinker.red": "Reincarnation color",
   "modifier.momotinker.red.flavor": "§4The scenery to which it belongs is nothing§",
-  "modifier.momotinker.red.description": "Perceive hostile creatures around, press 'Category Example' while holding the main hand to obtain a 15 second 'end' effect, and the tool enters a 90 second cooldown\n§7[end]§:All observed scenes will fade, and a 12 layer 'none' effect will be added to a large range of organisms for a prolonged period of time. The body's health cannot exceed 1 point and life cannot be temporarily restored",
+  "modifier.momotinker.red.description": "Perceive hostile creatures around, press 'Category Example' while holding the main hand to obtain a 15 second 'end' effect, and the tool enters a 90 second cooldown\n§7[end]§:All observed scenes will fade,reduced reaction to injury,and a 12 layer 'none' effect will be added to a large range of organisms for a prolonged period of time. The body's health cannot exceed 1 point",
   "modifier.momotinker.tooltip.red1": "Cooling residue of [Reincarnation color]:",
   "msg.ender1": "Stain everything","msg.ender2": "I guide the wandering souls","msg.ender3": "Eventually turning into dust","msg.ender4": "Turn into nothingness","msg.ender5": "Forever sleeping here","msg.ender6": "All is quiet","msg.ender7": "End like rain",
 
@@ -335,7 +335,7 @@
 
   "modifier.momotinker.crystallization": "Crystal Evolution",
   "modifier.momotinker.crystallization.flavor": "Approaching perfection",
-  "modifier.momotinker.crystallization.description": "When the deputy holds Dimensional Prism, pressing 'Category Example' can consume 1 for reinforcement. The higher the current reinforcement level, the lower the probability of success. Failure will be punished when the reinforcement level reaches a certain level, and there is a risk of crushing when the reinforcement level is greater than or equal to 14!",
+  "modifier.momotinker.crystallization.description": "When the deputy holds 'Dimensional Prism', pressing 'Category Example' can consume 1 for reinforcement. The higher the current reinforcement level, the lower the probability of success. Failure will be punished when the reinforcement level reaches a certain level, and there is a risk of crushing when the reinforcement level is greater than or equal to 14!",
   "modifier.momotinker.tooltip.crystallization1": "The current number of reinforcement points is:",
   "modifier.momotinker.tooltip.crystallization2": "The current success rate of reinforcement is:",
   "modifier.momotinker.tooltip.crystallization3": "The current damage increase is:",

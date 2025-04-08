@@ -1,18 +1,18 @@
 package com.momosensei.momotinker.network.packet;
 
-import com.momosensei.momotinker.mobs.CoolTime;
+import com.momosensei.momotinker.mobs.CoolTimeA;
 import net.minecraft.network.FriendlyByteBuf;
 import net.minecraftforge.network.NetworkEvent;
 
 import java.util.function.Supplier;
 
 
-public class CoolTimeCharge {
+public class CoolTimeChargeA {
     private final int cooltime;
-    public CoolTimeCharge(int cooltime) {;
+    public CoolTimeChargeA(int cooltime) {;
         this.cooltime =cooltime;
     }
-    public CoolTimeCharge(FriendlyByteBuf buf){
+    public CoolTimeChargeA(FriendlyByteBuf buf){
         this.cooltime =buf.readInt();
     }
 
@@ -22,7 +22,7 @@ public class CoolTimeCharge {
 
     public void handle(Supplier<NetworkEvent.Context> supplier) {
         supplier.get().enqueueWork(() -> {
-            CoolTime.setCoolTime(cooltime);
+            CoolTimeA.setCoolTime(cooltime);
         });
         supplier.get().setPacketHandled(true);
     }

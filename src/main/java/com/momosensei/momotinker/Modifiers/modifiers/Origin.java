@@ -11,7 +11,6 @@ import net.minecraftforge.event.entity.living.LivingAttackEvent;
 
 import static com.momosensei.momotinker.util.PenetratingDamage.reflectionPenetratingDamage;
 
-
 public class Origin extends momomodifier {
     public Origin() {
         MinecraftForge.EVENT_BUS.addListener(this::livinghurtevent);

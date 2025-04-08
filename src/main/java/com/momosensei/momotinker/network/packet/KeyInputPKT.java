@@ -1,5 +1,7 @@
 package com.momosensei.momotinker.network.packet;
 
+import com.momosensei.momotinker.mobs.CoolTimeB;
+import com.momosensei.momotinker.network.Channel;
 import com.momosensei.momotinker.register.MomotinkerEffects;
 import com.momosensei.momotinker.register.MomotinkerItem;
 import com.momosensei.momotinker.register.MomotinkerModifiers;
@@ -157,6 +159,12 @@ public class KeyInputPKT {
                 if (significancedata.getInt(signifincancecool)==0){
                     significancedata.putInt(signifincances,10);
                     significancedata.putInt(signifincancecool,90);
+                }
+            }
+            if (player != null && getMainhandModifierlevel(player,MomotinkerModifiers.blank.getId()) > 0&& CoolTimeB.getCoolTime()==0) {
+                if (player.getItemBySlot(EquipmentSlot.OFFHAND).is(MomotinkerItem.nihilism.get())){
+                    Channel.sendToClient(new CoolTimeChargeB(600));
+                    player.getItemBySlot(EquipmentSlot.OFFHAND).setCount(player.getItemBySlot(EquipmentSlot.OFFHAND).getCount() - 1);
                 }
             }
         });
