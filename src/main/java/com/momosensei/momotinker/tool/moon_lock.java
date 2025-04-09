@@ -74,9 +74,9 @@ public class moon_lock extends ModifiableItem {
         if (event.getRayTraceResult() instanceof EntityHitResult result) {
             if (result.getEntity() instanceof Player player) {
                 if (!player.level.isClientSide) {
-                    boolean trigger = player.getUseItem().is(MomotinkerItem.moon_lock.get());
+                    boolean b = player.getUseItem().is(MomotinkerItem.moon_lock.get());
                     int a = RANDOM.nextInt(10);
-                    if (trigger&&a<5) {
+                    if (b&&a<5) {
                         event.setCanceled(true);
                     }
                 }

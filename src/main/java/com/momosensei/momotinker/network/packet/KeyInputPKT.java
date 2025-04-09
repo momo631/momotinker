@@ -154,7 +154,7 @@ public class KeyInputPKT {
                     player.getCooldowns().addCooldown(player.getMainHandItem().getItem(), 1800);
                 }
             }
-            if (player != null && getMainhandModifierlevel(player,MomotinkerModifiers.significance.getId()) > 0) {
+            if (player != null && getMainhandModifierlevel(player,MomotinkerModifiers.significance.getId()) > 0&&!player.getItemBySlot(EquipmentSlot.OFFHAND).is(MomotinkerItem.nihilism.get())) {
                 ModDataNBT significancedata = ToolStack.from(player.getItemBySlot(EquipmentSlot.MAINHAND)).getPersistentData();
                 if (significancedata.getInt(signifincancecool)==0){
                     significancedata.putInt(signifincances,10);

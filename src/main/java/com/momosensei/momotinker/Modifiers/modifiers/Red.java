@@ -55,8 +55,8 @@ public class Red extends momomodifier {
         }
     }
     public void addTooltip(IToolStackView tool, ModifierEntry modifierEntry, @org.jetbrains.annotations.Nullable Player player, List<Component> tooltip, TooltipKey tooltipKey, TooltipFlag tooltipFlag) {
-        if (player != null) {
-            ModDataNBT tooldata = tool.getPersistentData();
+        ModDataNBT tooldata = tool.getPersistentData();
+        if (player != null&&tooldata.getFloat(ender)!=0) {
             tooltip.add(net.minecraft.network.chat.Component.translatable("modifier.momotinker.tooltip.red1").append(tooldata.getFloat(ender)+"s").withStyle(ChatFormatting.DARK_RED));
         }
     }

@@ -7,7 +7,10 @@ import com.momosensei.momotinker.network.packet.CoolTimeChargeA;
 import com.momosensei.momotinker.network.packet.CoolTimeChargeB;
 import com.momosensei.momotinker.register.MomotinkerModifiers;
 import com.momosensei.momotinker.util.attackUtil;
+import net.minecraft.ChatFormatting;
+import net.minecraft.core.particles.ParticleTypes;
 import net.minecraft.network.chat.Component;
+import net.minecraft.server.level.ServerLevel;
 import net.minecraft.server.level.ServerPlayer;
 import net.minecraft.world.entity.LivingEntity;
 import net.minecraft.world.entity.player.Player;
@@ -44,13 +47,20 @@ public class ModEvent {
     @SubscribeEvent
     public static void Livingtickevent(LivingEvent.LivingTickEvent event) {
         if (event.getEntity() instanceof Player player){
-            if (player.tickCount%60==0) {
-                String[] array = new String[]{"msg.blank1", "msg.blank2", "msg.blank3", "msg.blank4", "msg.blank5", "msg.blank6", "msg.blank7"};
-                if (CoolTimeB.getCoolTime() >= 579 && CoolTimeB.getCoolTime() <= 599) {
-                    int i = (599 - CoolTimeB.getCoolTime()) / 3;
-                    if (player.level.isClientSide()) {
-                        player.sendSystemMessage(Component.translatable(array[i]));
+            String[] array = new String[]{"msg.blank1", "msg.blank2", "msg.blank3", "msg.blank4", "msg.blank5", "msg.blank6", "msg.blank7"};
+            if (CoolTimeB.getCoolTime() >= 579 && CoolTimeB.getCoolTime() <= 599) {
+                if (player.level instanceof ServerLevel serverLevel&&player.tickCount%10==0){
+                    for (int i = 0; i <= 360; i++) {
+                        double rad = i * 0.017453292519943295;
+                        double r = 0.5D;
+                        double x = r * Math.cos(rad);
+                        double z = r * Math.sin(rad);
+                        serverLevel.sendParticles(ParticleTypes.ASH, player.getX()+x, player.getY()+player.getBbHeight(), player.getZ()+z, 1/2, 0, 0.5, 0, 0.5);
                     }
+                }
+                int i = (599 - CoolTimeB.getCoolTime()) / 3;
+                if (player.level.isClientSide()&&player.tickCount%60==0) {
+                    player.sendSystemMessage(Component.translatable(array[i]).withStyle(ChatFormatting.GRAY));
                 }
             }
             if (CoolTimeB.getCoolTime() == 578&&player.isAlive()){
@@ -60,7 +70,7 @@ public class ModEvent {
                 if (CoolTimeA.getCoolTime() < 0) {
                     Channel.sendToPlayer(new CoolTimeChargeA(0), player1);
                 }
-                if (CoolTimeB.getCoolTime() < 575) {
+                if (CoolTimeB.getCoolTime() < 0) {
                     Channel.sendToPlayer(new CoolTimeChargeB(0), player1);
                 }
                 if (player.tickCount % 20 == 0) {
