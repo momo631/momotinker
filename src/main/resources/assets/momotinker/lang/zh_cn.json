@@ -1,11 +1,4 @@
 {
-  "block.momotinker.laomo_block": "墨块",
-
-  "block.momotinker.dimensional_prism": "§b次元棱镜§",
-  "momotinker.block.tooltip.dimensional_prism1": "§b异次元空间的碎片§",
-  "momotinker.block.tooltip.dimensional_prism2": "§b按住“shift”查看获取§",
-  "momotinker.block.tooltip.dimensional_prism3": "§b当玩家破坏玻璃时有10%的概率掉落该物品§",
-
   "effect.momotinker.hongwen": "红温",
   "effect.momotinker.none": "忘阙人",
   "effect.momotinker.end": "引渡人",
@@ -36,6 +29,7 @@
   "fluid.momotinker.molten_starry_mysterious_gold": "熔融星辰玄金",
   "fluid.momotinker.molten_devouring_demon_gold": "熔融噬魔金",
   "fluid.momotinker.molten_nihilism": "熔融终点",
+  "fluid.momotinker.molten_meteor_nucleus": "熔融流星",
 
   "item.momotinker.molten_laomo_bucket": "熔融墨桶",
   "item.momotinker.molten_arriving_at_the_other_shore_bucket": "熔融彼岸桶",
@@ -55,6 +49,7 @@
   "item.momotinker.molten_starry_mysterious_gold_bucket": "熔融星辰玄金桶",
   "item.momotinker.molten_devouring_demon_gold_bucket": "熔融噬魔金桶",
   "item.momotinker.molten_nihilism_bucket": "熔融终点桶",
+  "item.momotinker.molten_meteor_nucleus_bucket": "熔融流星桶",
 
   "recipe.momotinker.modifier.cleansetheworld": "荡涤天地需要贯星魔枪作为前置",
   "recipe.momotinker.modifier.shadowofdamnation": "天谴之影需要荡涤天地作为前置",
@@ -63,12 +58,20 @@
   "key.momotinker.key": "特殊技能",
   "key.momotinker.keya": "工具技能",
 
+  "block.momotinker.laomo_block": "墨块",
+
+  "block.momotinker.dimensional_prism": "§b次元棱镜§",
+  "momotinker.block.tooltip.dimensional_prism1": "§b异次元空间的碎片§",
+  "momotinker.block.tooltip.dimensional_prism2": "§b按住“shift”查看获取§",
+  "momotinker.block.tooltip.dimensional_prism3": "§b当玩家破坏玻璃时有10%的概率掉落该物品§",
+
   "item.momotinker.laomo": "墨",
 
   "item.momotinker.interdimensional_crystal": "§d天外来星§",
   "momotinker.item.tooltip.interdimensional_crystal1": "§d自天堂归来§",
   "momotinker.item.tooltip.interdimensional_crystal2": "§d按住“shift”查看获取§",
   "momotinker.item.tooltip.interdimensional_crystal3": "§d当凋零在大于等于世界高度300的位置死亡后掉落在其所在位置§",
+  "momotinker.item.tooltip.interdimensional_crystal4": "群星闪烁，流星划过天边时注意到了你，并尝试给予你馈赠",
 
   "item.momotinker.arriving_at_the_other_shore": "\u00A74现彼岸\u00A7",
   "momotinker.item.tooltip.arriving_at_the_other_shore1": "§7万千逝物，皆渡彼岸§",
@@ -139,6 +142,13 @@
   "momotinker.item.tooltip.nihilism1": "你们不过是‘存在’投下的倒影，此刻，该随黄昏的潮汐退去了",
   "momotinker.item.tooltip.nihilism2": "按住“shift”查看获取",
   "momotinker.item.tooltip.nihilism3": "",
+
+  "item.momotinker.meteor_nucleus": "流星之核锭",
+  "block.momotinker.meteor_nucleus_block": "流星之核",
+  "momotinker.item.tooltip.meteor_nucleus1": "",
+  "momotinker.item.tooltip.meteor_nucleus2": "按住“shift”查看获取",
+  "momotinker.item.tooltip.meteor_nucleus3": "",
+  "momotinker.item.tooltip.meteor_nucleus4": "流星的馈赠即将到来",
 
   "itemGroup.momotinker.tools": "墨工坊模组-工具",
 
@@ -221,6 +231,8 @@
   "material.momotinker.devouring_demon_gold.encyclopedia": "一份付出，一份收获",
   "material.momotinker.nihilism": "终点",
   "material.momotinker.nihilism.encyclopedia": "......至仁至善",
+  "material.momotinker.meteor_nucleus": "流星",
+  "material.momotinker.meteor_nucleus.encyclopedia": "",
 
   "modifier.momotinker.laomochuji": "牢墨出击",
   "modifier.momotinker.laomochuji.flavor": "词条标题",

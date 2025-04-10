@@ -38,6 +38,7 @@ public class  MomotinkerItem {
     public static final RegistryObject<Item> starry_mysterious_gold = ITEMS.register("starry_mysterious_gold", () -> new starry_mysterious_gold(new Item.Properties().tab(MomotinkerTab.MATERIALS)));
     public static final RegistryObject<Item> devouring_demon_gold = ITEMS.register("devouring_demon_gold", () -> new devouring_demon_gold(new Item.Properties().tab(MomotinkerTab.MATERIALS)));
     public static final RegistryObject<Item> nihilism = ITEMS.register("nihilism", () -> new nihilism(new Item.Properties().tab(MomotinkerTab.MATERIALS)));
+    public static final RegistryObject<Item> meteor_nucleus = ITEMS.register("meteor_nucleus", () -> new meteor_nucleus(new Item.Properties().tab(MomotinkerTab.MATERIALS)));
 
     public static final RegistryObject<ModifiableItem> trigger_blade = ITEMS.register("trigger_blade", () -> new trigger_blade(TOOL, MomotinkerToolDefinitions.TRIGGER_BLADE));
     public static final RegistryObject<ModifiableItem> divine_punishment_spear = ITEMS.register("divine_punishment_spear", () -> new divine_punishment_spear(TOOL, MomotinkerToolDefinitions.DIVINE_PUNISHMENT_SPEAR));
@@ -65,5 +66,6 @@ public class  MomotinkerItem {
 
     public static final RegistryObject<BlockItem> Laomo_block = ITEMS.register("laomo_block", () -> new BlockItem(MomotinkerBlock.Laomo_block.get(), new Item.Properties().tab(MomotinkerTab.MATERIALS)));
     public static final RegistryObject<BlockItem> dimensional_prism = ITEMS.register("dimensional_prism", () -> new dimensional_prism(MomotinkerBlock.dimensional_prism.get(), new Item.Properties().tab(MomotinkerTab.MATERIALS)));
+    public static final RegistryObject<BlockItem> meteor_nucleus_block = ITEMS.register("meteor_nucleus_block", () -> new meteor_nucleus_block(MomotinkerBlock.meteor_nucleus_block.get(), new Item.Properties().tab(MomotinkerTab.MATERIALS)));
 
 }

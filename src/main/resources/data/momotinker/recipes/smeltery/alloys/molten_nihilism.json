@@ -1,0 +1,38 @@
+{
+  "type": "tconstruct:alloy",
+  "inputs": [
+    {
+      "name": "momotinker:molten_gluttony_core",
+      "amount": 90
+    },
+    {
+      "name": "momotinker:molten_greedy_contract",
+      "amount": 90
+    },
+    {
+      "name": "momotinker:molten_lust_mirror",
+      "amount": 90
+    },
+    {
+      "name": "momotinker:molten_arrogance_proof",
+      "amount": 90
+    },
+    {
+      "name": "momotinker:molten_rage_stone_statue",
+      "amount": 90
+    },
+    {
+      "name": "momotinker:molten_lazy_grail",
+      "amount": 90
+    },
+    {
+      "name": "momotinker:molten_jealous_notes",
+      "amount": 90
+    }
+  ],
+  "result": {
+    "fluid": "momotinker:molten_nihilism",
+    "amount": 90
+  },
+  "temperature": 12000
+}

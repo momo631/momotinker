@@ -1,11 +1,4 @@
 {
-  "block.momotinker.laomo_block": "Momo Block",
-
-  "block.momotinker.dimensional_prism": "§bDimensional Prism§",
-  "momotinker.block.tooltip.dimensional_prism1": "§bFragments of interdimensional space§",
-  "momotinker.block.tooltip.dimensional_prism2": "§bPress and hold 'shift' to view and retrieve§",
-  "momotinker.block.tooltip.dimensional_prism3": "§bWhen a player breaks glass, there is a 10% chance that the item will drop§",
-
   "effect.momotinker.hongwen": "hongwen",
   "effect.momotinker.none": "none",
   "effect.momotinker.end": "end",
@@ -63,12 +56,20 @@
   "key.momotinker.key": "Category Example",
   "key.momotinker.keya": "Tool Enhancement",
 
+  "block.momotinker.laomo_block": "Momo Block",
+
+  "block.momotinker.dimensional_prism": "§bDimensional Prism§",
+  "momotinker.block.tooltip.dimensional_prism1": "§bFragments of interdimensional space§",
+  "momotinker.block.tooltip.dimensional_prism2": "§bPress and hold 'shift' to view and retrieve§",
+  "momotinker.block.tooltip.dimensional_prism3": "§bWhen a player breaks glass, there is a 10% chance that the item will drop§",
+
   "item.momotinker.laomo": "Momo",
 
   "item.momotinker.interdimensional_crystal": "§dInterdimensional Crystal§",
   "momotinker.item.tooltip.interdimensional_crystal1": "§dReturning from heaven§",
   "momotinker.item.tooltip.interdimensional_crystal2": "§dPress and hold 'shift' to view and retrieve§",
   "momotinker.item.tooltip.interdimensional_crystal3": "§dWhen the witherBoss dies at a height greater than or equal to 300 in the world and falls to its location§",
+  "momotinker.item.tooltip.interdimensional_crystal4": "The stars twinkled, and shooting stars noticed you as they crossed the horizon, trying to give you a gift",
 
   "item.momotinker.arriving_at_the_other_shore": "\u00A74Other Shore\u00A7",
   "momotinker.item.tooltip.arriving_at_the_other_shore1": "§7Thousands of passing things, all crossing the other shore§",

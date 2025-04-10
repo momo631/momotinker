@@ -2,6 +2,7 @@
   "replace": false,
   "values": [
     "momotinker:laomo_block",
-    "momotinker:dimensional_prism"
+    "momotinker:dimensional_prism",
+    "momotinker:meteor_nucleus_block"
   ]
 }
