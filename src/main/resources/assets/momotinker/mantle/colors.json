@@ -16,7 +16,8 @@
     "dim_dark_gold": "#574A1E",
     "stained_blood_gold": "#AF3423",
     "starry_mysterious_gold": "#FEFB00",
-    "devouring_demon_gold": "#CC00FF"
+    "devouring_demon_gold": "#CC00FF",
+    "nihilism": "#FFFFFF"
   },
   "modifier.momotinker": {
     "laomochuji": "#596d99",
@@ -58,6 +59,9 @@
     "sweetaftertaste": "#FA4AFF",
     "expandedequipment": "#D4FFFE",
     "projectionofsuffering": "#B0B0B0",
-    "ultimatedarkness": "#3F3F3F"
+    "ultimatedarkness": "#3F3F3F",
+    "origin": "#FFFFFF",
+    "significance": "#FFFFFF",
+    "blank": "#FFFFFF"
   }
 }

@@ -35,6 +35,7 @@
   "fluid.momotinker.molten_stained_blood_gold": "Molten Stained Blood Gold",
   "fluid.momotinker.molten_starry_mysterious_gold": "Molten Starry Mysterious Gold",
   "fluid.momotinker.molten_devouring_demon_gold": "Molten Devouring Demon Gold",
+  "fluid.momotinker.molten_nihilism": "Molten Nihilism",
 
   "item.momotinker.molten_laomo_bucket": "Molten Momo Bucket",
   "item.momotinker.molten_arriving_at_the_other_shore_bucket": "Molten Other Shore Bucket",
@@ -53,6 +54,7 @@
   "item.momotinker.molten_stained_blood_gold_bucket": "Molten Stained Blood Gold Bucket",
   "item.momotinker.molten_starry_mysterious_gold_bucket": "Molten Starry Mysterious Gold Bucket",
   "item.momotinker.molten_devouring_demon_gold_bucket": "Molten Devouring Demon Gold Bucket",
+  "item.momotinker.molten_nihilism_bucket": "Molten Nihilism Bucket",
 
   "recipe.momotinker.modifier.cleansetheworld": "'Cleanse The World' requires 'Breakthrough Stars' as a prerequisite",
   "recipe.momotinker.modifier.shadowofdamnation": "'Shadow Of Damnation' requires 'Cleanse The World' as a prerequisite",

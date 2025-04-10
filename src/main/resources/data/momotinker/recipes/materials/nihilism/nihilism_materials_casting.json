@@ -1,0 +1,9 @@
+{
+  "type": "tconstruct:material_fluid",
+  "fluid": {
+    "name": "momotinker:molten_nihilism",
+    "amount": 90
+  },
+  "temperature": 12000,
+  "output": "momotinker:nihilism"
+}
