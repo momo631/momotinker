@@ -102,8 +102,8 @@ public class FallingStars extends momomodifier {
     }
 
     public void addTooltip(IToolStackView tool, ModifierEntry modifierEntry, @org.jetbrains.annotations.Nullable Player player, List<Component> tooltip, TooltipKey tooltipKey, TooltipFlag tooltipFlag) {
-        if (player != null) {
-            ModDataNBT tooldata = tool.getPersistentData();
+        ModDataNBT tooldata = tool.getPersistentData();
+        if (player != null&&tooldata.getFloat(falling)!=0) {
             tooltip.add(net.minecraft.network.chat.Component.translatable("modifier.momotinker.tooltip.fallingstars1").append((tooldata.getFloat(falling))+"秒").withStyle(ChatFormatting.LIGHT_PURPLE));
         }
     }

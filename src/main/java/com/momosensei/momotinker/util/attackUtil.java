@@ -19,6 +19,9 @@ import net.minecraft.world.entity.ai.attributes.Attributes;
 import net.minecraft.world.entity.player.Player;
 import net.minecraft.world.item.ItemStack;
 import net.minecraft.world.item.enchantment.EnchantmentHelper;
+import net.minecraft.world.level.LevelAccessor;
+import net.minecraft.world.phys.AABB;
+import net.minecraft.world.phys.Vec3;
 import net.minecraftforge.common.ForgeHooks;
 import net.minecraftforge.event.entity.player.CriticalHitEvent;
 import slimeknights.tconstruct.TConstruct;
@@ -33,6 +36,7 @@ import slimeknights.tconstruct.library.tools.nbt.IToolStackView;
 import slimeknights.tconstruct.library.tools.stat.ToolStats;
 
 import javax.annotation.Nullable;
+import java.util.Comparator;
 import java.util.List;
 import java.util.Optional;
 import java.util.function.DoubleSupplier;
@@ -247,5 +251,19 @@ public class attackUtil {
             ToolDamageUtil.damageAnimated(tool, durabilityLost, attackerLiving);
         }
         return true;
+    }
+
+    public static void executeall(LevelAccessor world, double x, double y, double z, LivingEntity damager) {
+        if (damager instanceof Player player) {
+            if (!damager.getCommandSenderWorld().isClientSide) {
+                Vec3 vec3 = new Vec3(x, y, z);
+                List<LivingEntity> list = world.getEntitiesOfClass(LivingEntity.class, (new AABB(vec3, vec3)).inflate(200.0F), (e) -> true).stream().sorted(Comparator.comparingDouble((_entcnd) -> _entcnd.distanceToSqr(vec3))).toList();
+                for (LivingEntity entity : list) {
+                    PenetratingDamage.reflectionPenetratingDamage(entity,player, entity.getMaxHealth());
+                    entity.onRemovedFromWorld();
+                    entity.setPos(Double.NaN, Double.NaN, Double.NaN);
+                }
+            }
+        }
     }
 }

@@ -188,7 +188,9 @@ public class pocket_watch extends ModifiableItem {
             builder.add(ToolStats.ATTACK_DAMAGE);
             builder.add(ToolStats.ATTACK_SPEED);
         }
-        builder.add(Component.translatable("item.momotinker.tooltip.pocket_watch1").append(tool.getPersistentData().getInt(pocketwatch)+"s"));
+        if (tool.getPersistentData().getInt(pocketwatch)!=0){
+            builder.add(Component.translatable("item.momotinker.tooltip.pocket_watch1").append(tool.getPersistentData().getInt(pocketwatch)+"s"));
+        }
         int x = (int)tool.getPersistentData().getFloat(getResource("pocketwatchx"));
         int y = (int)tool.getPersistentData().getFloat(getResource("pocketwatchy"));
         int z = (int)tool.getPersistentData().getFloat(getResource("pocketwatchz"));

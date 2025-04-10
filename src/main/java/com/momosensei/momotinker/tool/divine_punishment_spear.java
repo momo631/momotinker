@@ -6,9 +6,9 @@ import com.momosensei.momotinker.Momotinker;
 import com.momosensei.momotinker.entity.CleanseEntity;
 import com.momosensei.momotinker.entity.MomotinkerEntitiesCreate;
 import com.momosensei.momotinker.event.CleanseSpawnEvent;
-import com.momosensei.momotinker.mobs.CoolTime;
+import com.momosensei.momotinker.mobs.CoolTimeA;
 import com.momosensei.momotinker.network.Channel;
-import com.momosensei.momotinker.network.packet.CoolTimeCharge;
+import com.momosensei.momotinker.network.packet.CoolTimeChargeA;
 import com.momosensei.momotinker.network.packet.SpearEntityPacket;
 import com.momosensei.momotinker.network.packet.ToolsTimeCharge;
 import com.momosensei.momotinker.register.MomotinkerConfig;
@@ -179,7 +179,7 @@ public class divine_punishment_spear extends ModifiableItem {
             }
             return;
         }
-        if (CoolTime.getCoolTime() != 0) {
+        if (CoolTimeA.getCoolTime() != 0) {
             tool.getPersistentData().remove(KEY_DRAWTIME);
             if (livingEntity instanceof ServerPlayer player){
                 Channel.sendToPlayer(new ToolsTimeCharge(0), player);
@@ -223,7 +223,7 @@ public class divine_punishment_spear extends ModifiableItem {
                         level.addFreshEntity(entity);
                     }
                     int d = MomotinkerConfig.cleansetheworld_limit.get();
-                    Channel.sendToClient(new CoolTimeCharge(d));
+                    Channel.sendToClient(new CoolTimeChargeA(d));
                 }
             }
         }
@@ -282,8 +282,8 @@ public class divine_punishment_spear extends ModifiableItem {
         if (a.getFloat(degenerate)==degenerate_limit) {
             builder.add(Component.translatable("item.momotinker.tooltip.divine_punishment_spear4").withStyle(ChatFormatting.DARK_RED));
         }
-        if (CoolTime.getCoolTime()!=0){
-            builder.add(Component.translatable("modifier.momotinker.tooltip.cleansetheworld1").append(CoolTime.getCoolTime()+"s").withStyle(ChatFormatting.YELLOW));
+        if (CoolTimeA.getCoolTime()!=0){
+            builder.add(Component.translatable("modifier.momotinker.tooltip.cleansetheworld1").append(CoolTimeA.getCoolTime()+"s").withStyle(ChatFormatting.YELLOW));
         }
         if (!checkOffHand(player)){
             builder.add(Component.translatable("momotinker.tool.tooltip.offhand_hastool").withStyle(ChatFormatting.RED));

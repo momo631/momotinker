@@ -1,0 +1,12 @@
+{
+  "type": "tconstruct:melting",
+  "ingredient": {
+    "item": "momotinker:nihilism"
+  },
+  "result": {
+    "fluid": "momotinker:molten_nihilism",
+    "amount": 90
+  },
+  "temperature": 12000,
+  "time": 120
+}

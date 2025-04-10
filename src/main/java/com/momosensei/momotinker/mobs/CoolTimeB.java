@@ -1,6 +1,6 @@
 package com.momosensei.momotinker.mobs;
 
-public class CoolTime {
+public class CoolTimeB {
     public static int cooltime;
     public static void setCoolTime(int f){
         cooltime  =f;

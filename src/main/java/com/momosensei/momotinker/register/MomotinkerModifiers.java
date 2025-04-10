@@ -55,5 +55,8 @@ public class MomotinkerModifiers {
     public static final StaticModifier<ExpandedEquipment> expandedequipment=MODIFIERS.register("expandedequipment", ExpandedEquipment::new);
     public static final StaticModifier<ProjectionOfSuffering> projectionofsuffering=MODIFIERS.register("projectionofsuffering", ProjectionOfSuffering::new);
     public static final StaticModifier<UltimateDarkness> ultimatedarkness=MODIFIERS.register("ultimatedarkness", UltimateDarkness::new);
+    public static final StaticModifier<Origin> origin=MODIFIERS.register("origin", Origin::new);
+    public static final StaticModifier<Significance> significance=MODIFIERS.register("significance", Significance::new);
+    public static final StaticModifier<Blank> blank=MODIFIERS.register("blank", Blank::new);
 
 }

@@ -35,6 +35,7 @@
   "fluid.momotinker.molten_stained_blood_gold": "Molten Stained Blood Gold",
   "fluid.momotinker.molten_starry_mysterious_gold": "Molten Starry Mysterious Gold",
   "fluid.momotinker.molten_devouring_demon_gold": "Molten Devouring Demon Gold",
+  "fluid.momotinker.molten_nihilism": "Molten Nihilism",
 
   "item.momotinker.molten_laomo_bucket": "Molten Momo Bucket",
   "item.momotinker.molten_arriving_at_the_other_shore_bucket": "Molten Other Shore Bucket",
@@ -53,6 +54,7 @@
   "item.momotinker.molten_stained_blood_gold_bucket": "Molten Stained Blood Gold Bucket",
   "item.momotinker.molten_starry_mysterious_gold_bucket": "Molten Starry Mysterious Gold Bucket",
   "item.momotinker.molten_devouring_demon_gold_bucket": "Molten Devouring Demon Gold Bucket",
+  "item.momotinker.molten_nihilism_bucket": "Molten Nihilism Bucket",
 
   "recipe.momotinker.modifier.cleansetheworld": "'Cleanse The World' requires 'Breakthrough Stars' as a prerequisite",
   "recipe.momotinker.modifier.shadowofdamnation": "'Shadow Of Damnation' requires 'Cleanse The World' as a prerequisite",
@@ -133,6 +135,10 @@
   "momotinker.item.tooltip.devouring_demon_gold2": "Press and hold 'shift' to view and retrieve",
   "momotinker.item.tooltip.devouring_demon_gold3": "When throwing equipment with enchanting types greater than or equal to 5 in the void, it will be converted into that item",
 
+  "item.momotinker.nihilism": "Conceptual Endpoint · Nihilism",
+  "momotinker.item.tooltip.nihilism1": "You are just reflections cast by 'existence', and at this moment, it should recede with the tide of dusk",
+  "momotinker.item.tooltip.nihilism2": "Press and hold 'shift' to view and retrieve",
+  "momotinker.item.tooltip.nihilism3": "",
 
   "itemGroup.momotinker.tools": "Momotinker Tools",
 
@@ -213,6 +219,9 @@
   "material.momotinker.starry_mysterious_gold.encyclopedia": "The dim stars began to shine in the sky again, just like the sparkling object in the hand",
   "material.momotinker.devouring_demon_gold": "Devouring Demon Gold",
   "material.momotinker.devouring_demon_gold.encyclopedia": "One effort, one reward",
+  "material.momotinker.nihilism": "Nihilism",
+  "material.momotinker.nihilism.encyclopedia": "... the utmost benevolence and goodness",
+
 
   "modifier.momotinker.laomochuji": "laomochuji",
   "modifier.momotinker.laomochuji.flavor": "Test flavor",
@@ -230,7 +239,7 @@
 
   "modifier.momotinker.red": "Reincarnation color",
   "modifier.momotinker.red.flavor": "§4The scenery to which it belongs is nothing§",
-  "modifier.momotinker.red.description": "Perceive hostile creatures around, press 'Category Example' while holding the main hand to obtain a 15 second 'end' effect, and the tool enters a 90 second cooldown\n§7[end]§:All observed scenes will fade, and a 12 layer 'none' effect will be added to a large range of organisms for a prolonged period of time. The body's health cannot exceed 1 point and life cannot be temporarily restored",
+  "modifier.momotinker.red.description": "Perceive hostile creatures around, press 'Category Example' while holding the main hand to obtain a 15 second 'end' effect, and the tool enters a 90 second cooldown\n§7[end]§:All observed scenes will fade,reduced reaction to injury,and a 12 layer 'none' effect will be added to a large range of organisms for a prolonged period of time. The body's health cannot exceed 1 point",
   "modifier.momotinker.tooltip.red1": "Cooling residue of [Reincarnation color]:",
   "msg.ender1": "Stain everything","msg.ender2": "I guide the wandering souls","msg.ender3": "Eventually turning into dust","msg.ender4": "Turn into nothingness","msg.ender5": "Forever sleeping here","msg.ender6": "All is quiet","msg.ender7": "End like rain",
 
@@ -335,7 +344,7 @@
 
   "modifier.momotinker.crystallization": "Crystal Evolution",
   "modifier.momotinker.crystallization.flavor": "Approaching perfection",
-  "modifier.momotinker.crystallization.description": "When the deputy holds Dimensional Prism, pressing 'Category Example' can consume 1 for reinforcement. The higher the current reinforcement level, the lower the probability of success. Failure will be punished when the reinforcement level reaches a certain level, and there is a risk of crushing when the reinforcement level is greater than or equal to 14!",
+  "modifier.momotinker.crystallization.description": "When the deputy holds 'Dimensional Prism', pressing 'Category Example' can consume 1 for reinforcement. The higher the current reinforcement level, the lower the probability of success. Failure will be punished when the reinforcement level reaches a certain level, and there is a risk of crushing when the reinforcement level is greater than or equal to 14!",
   "modifier.momotinker.tooltip.crystallization1": "The current number of reinforcement points is:",
   "modifier.momotinker.tooltip.crystallization2": "The current success rate of reinforcement is:",
   "modifier.momotinker.tooltip.crystallization3": "The current damage increase is:",
@@ -385,7 +394,7 @@
 
   "modifier.momotinker.cleansetheworld": "Cleanse The World",
   "modifier.momotinker.cleansetheworld.flavor": "'Breakthrough Stars' Enhancement: Divine Punishment",
-  "modifier.momotinker.cleansetheworld.description": "It will consume 25% of its current experience points in the sky to summon a huge magic spear (this type of tool will enter a default cooldown of 600 seconds after use). Touching it will cause 50% damage every moment, and after landing, it will produce a violent explosion and deal 2000% damage to a wide range of creatures.",
+  "modifier.momotinker.cleansetheworld.description": "It will consume 25% of its current experience points in the sky to summon a huge magic spear (this type of tool will enter a default cooldown of 600 s after use). Touching it will cause 50% damage every moment, and after landing, it will produce a violent explosion and deal 2000% damage to a wide range of creatures.",
   "modifier.momotinker.tooltip.cleansetheworld1": "Cooling residue of [Cleanse The World]:",
 
   "modifier.momotinker.shadowofdamnation": "Shadow Of Damnation",
@@ -394,7 +403,7 @@
 
   "modifier.momotinker.drinkingdemon": "Drinking Demon",
   "modifier.momotinker.drinkingdemon.flavor": "Drink the poison of the dove, plant in spring and harvest in autumn",
-  "modifier.momotinker.drinkingdemon.description": "Press the special 'Category Example' to absorb items with enchantments in the assistant, consume the total existing points * 50 points of experience, and obtain corresponding types of points based on the number of enchantments on the item. After use, the tool will cool down for 90 seconds (if experience is insufficient, it cannot be absorbed)",
+  "modifier.momotinker.drinkingdemon.description": "Press 'Category Example' to absorb items with enchantments in the assistant, consume the total existing points * 50 points of experience, and obtain corresponding types of points based on the number of enchantments on the item. After use, the tool will cool down for 90 seconds (if experience is insufficient, it cannot be absorbed)",
   "modifier.momotinker.tooltip.drinkingdemon1": "The current experience points are insufficient to use [Drinking Demon]", "modifier.momotinker.tooltip.drinkingdemon2": "The current experience points can be used for [Drinking Demon]",
   "modifier.momotinker.tooltip.drinkingdemon3": "[Drinking Demon] Curse Points:", "modifier.momotinker.tooltip.drinkingdemon4": "Currently reducing the experience consumption of [Drinking Demon]:",
   "modifier.momotinker.tooltip.drinkingdemon5": "[Drinking Demon] Total defense points:", "modifier.momotinker.tooltip.drinkingdemon6": "Currently reducing damage:",
@@ -416,6 +425,22 @@
 
   "modifier.momotinker.ultimatedarkness": "ultimate Darkness",
   "modifier.momotinker.ultimatedarkness.flavor": "Do not mourn, it is inevitable",
-  "modifier.momotinker.ultimatedarkness.description": "Charging will decrease over time when holding, and if the main holding tool is not a 'Coronal Key' or 'Eclipse Container', it will decrease more quickly; When charged, the damage caused by the weapon increases (default is 60%)"
+  "modifier.momotinker.ultimatedarkness.description": "Charging will decrease over time when holding, and if the main holding tool is not a 'Coronal Key' or 'Eclipse Container', it will decrease more quickly; When charged, the damage caused by the weapon increases (default is 60%)",
+
+  "modifier.momotinker.origin": "Chapter 1: Origins",
+  "modifier.momotinker.origin.flavor": "The starting point of all living beings comes from nothingness, and precisely because of this, they will also return to nothingness",
+  "modifier.momotinker.origin.description": "Reduced response to injury, attacks ignore defense and reduce the target's maximum health by 10% * level. If the target's maximum health is lower than their own, they will die directly, and there is a chance that the dropped object will be cleared",
+
+  "modifier.momotinker.significance": "Chapter 2: Meaning",
+  "modifier.momotinker.significance.flavor": "All things exist because of their relationship and meaning, therefore, they should be deprived",
+  "modifier.momotinker.significance.description": "Press 'Category Example' to continuously decay the maximum life of a large range of organisms until death, and all potions on their bodies will be cleared. They will also be affected, but the rate of life decay will be halved",
+  "modifier.momotinker.tooltip.significance1": "Cooling residue of [Chapter 2: Meaning]:",
+
+  "modifier.momotinker.blank": "Chapter 3: Blank",
+  "modifier.momotinker.blank.flavor": "Like an article, at the end of everything, when the end is terminated, only an unfinished blank remains",
+  "modifier.momotinker.blank.description": "When the deputy holds the 'Conceptual Endpoint · Nihilism', Press 'Category Example' can consume one item to release the '§k Final Poem §r'(Global cooling for 600s), enter the reading bar, and draw a period on the World Living Chapter at the end of the time (death in the reading bar will be interrupted and enter a cooling period of 300s)",
+  "modifier.momotinker.tooltip.blank1": "Cooling residue of [Chapter 3: Blank]:",
+  "msg.blank1": "§oRiver will flow upstream and return to the clouds","msg.blank2": "§oThe flying bird will return to its eggshell and form an egg again","msg.blank3": "§oTake a breath, one last time——","msg.blank4": "§oYour laughter, tears, love and hate will all sink into eternal 'nothingness'",
+  "msg.blank5": "§oNo pain, no sorrow, only non-existent peace","msg.blank6": "§oI am the writer of 'nothingness', silently composing poems about all things","msg.blank7": "§oSleep, creatures, you will no longer exist"
 
 }

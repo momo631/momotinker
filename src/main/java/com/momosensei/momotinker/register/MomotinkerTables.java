@@ -40,6 +40,7 @@ public class MomotinkerTables extends MomotinkerMod {
         output.accept(MomotinkerItem.stained_blood_gold.get());
         output.accept(MomotinkerItem.starry_mysterious_gold.get());
         output.accept(MomotinkerItem.devouring_demon_gold.get());
+        output.accept(MomotinkerItem.nihilism.get());
 
     }
 }
