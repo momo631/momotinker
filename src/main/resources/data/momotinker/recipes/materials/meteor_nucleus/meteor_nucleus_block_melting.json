@@ -1,0 +1,12 @@
+{
+  "type": "tconstruct:melting",
+  "ingredient": {
+    "item": "momotinker:meteor_nucleus_block"
+  },
+  "result": {
+    "fluid": "momotinker:molten_meteor_nucleus",
+    "amount": 810
+  },
+  "temperature": 1500,
+  "time": 200
+}

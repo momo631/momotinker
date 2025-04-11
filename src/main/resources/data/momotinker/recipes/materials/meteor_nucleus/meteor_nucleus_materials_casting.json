@@ -1,0 +1,9 @@
+{
+  "type": "tconstruct:material_fluid",
+  "fluid": {
+    "name": "momotinker:molten_meteor_nucleus",
+    "amount": 90
+  },
+  "temperature": 1500,
+  "output": "momotinker:meteor_nucleus"
+}

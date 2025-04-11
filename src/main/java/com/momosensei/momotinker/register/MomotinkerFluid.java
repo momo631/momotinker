@@ -55,5 +55,6 @@ public class MomotinkerFluid{
     public static final FluidObject<ForgeFlowingFluid> molten_starry_mysterious_gold = register("molten_starry_mysterious_gold", 5855,10,false);
     public static final FluidObject<ForgeFlowingFluid> molten_devouring_demon_gold = register("molten_devouring_demon_gold", 5855,10,false);
     public static final FluidObject<ForgeFlowingFluid> molten_nihilism = register("molten_nihilism", 5855,10,false);
+    public static final FluidObject<ForgeFlowingFluid> molten_meteor_nucleus = register("molten_meteor_nucleus", 12000,10,false);
 
 }

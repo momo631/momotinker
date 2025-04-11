@@ -1,0 +1,9 @@
+{
+  "type": "tconstruct:casting_basin",
+  "fluid": {
+    "fluid": "momotinker:molten_meteor_nucleus",
+    "amount": 810
+  },
+  "result": "momotinker:meteor_nucleus_block",
+  "cooling_time": 200
+}

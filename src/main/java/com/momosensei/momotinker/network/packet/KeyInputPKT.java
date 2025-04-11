@@ -27,6 +27,7 @@ import java.util.function.Supplier;
 import static com.momosensei.momotinker.Modifiers.modifiers.Berserk.berserker;
 import static com.momosensei.momotinker.Modifiers.modifiers.DrinkingDemon.*;
 import static com.momosensei.momotinker.Modifiers.modifiers.FallingStars.falling;
+import static com.momosensei.momotinker.Modifiers.modifiers.FlameBath.flamebathcooldown;
 import static com.momosensei.momotinker.Modifiers.modifiers.OverCrystalline.crystallization;
 import static com.momosensei.momotinker.Modifiers.modifiers.Red.ender;
 import static com.momosensei.momotinker.Modifiers.modifiers.Significance.signifincancecool;
@@ -56,8 +57,8 @@ public class KeyInputPKT {
         NetworkEvent.Context context = context$.get();
         context.enqueueWork(() -> {
             ServerPlayer player = context.getSender();
-
-            if (player != null && ModifierUtil.getModifierLevel(player.getMainHandItem(), MomotinkerModifiers.red.getId()) > 0) {
+            if (player==null)return;
+            if (ModifierUtil.getModifierLevel(player.getMainHandItem(), MomotinkerModifiers.red.getId()) > 0) {
                 ModDataNBT enddata = ToolStack.from(player.getItemBySlot(EquipmentSlot.MAINHAND)).getPersistentData();
                 String[] array = new String[]{"msg.ender1", "msg.ender2", "msg.ender3", "msg.ender4", "msg.ender5", "msg.ender6", "msg.ender7"};
                 Random random = new Random();
@@ -69,7 +70,7 @@ public class KeyInputPKT {
                 }
             }
 
-            if (player != null && ModifierUtil.getModifierLevel(player.getMainHandItem(), MomotinkerModifiers.fallingstars.getId()) > 0) {
+            if (ModifierUtil.getModifierLevel(player.getMainHandItem(), MomotinkerModifiers.fallingstars.getId()) > 0) {
                 ModDataNBT falldata = ToolStack.from(player.getItemBySlot(EquipmentSlot.MAINHAND)).getPersistentData();
                 if (falldata.getFloat(falling) == 0) {
                     player.addEffect(new MobEffectInstance(MomotinkerEffects.FallingPreparation.get(), 20));
@@ -84,7 +85,7 @@ public class KeyInputPKT {
                 }
             }
 
-            if (player != null && ModifierUtil.getModifierLevel(player.getMainHandItem(), MomotinkerModifiers.crystallization.getId()) > 0) {
+            if (ModifierUtil.getModifierLevel(player.getMainHandItem(), MomotinkerModifiers.crystallization.getId()) > 0) {
                 ModDataNBT crystallizationdata = ToolStack.from(player.getItemBySlot(EquipmentSlot.MAINHAND)).getPersistentData();
                 if (player.getItemBySlot(EquipmentSlot.OFFHAND).is(MomotinkerItem.dimensional_prism.get())) {
                     int a = (int) crystallizationdata.getFloat(crystallization);
@@ -112,7 +113,7 @@ public class KeyInputPKT {
                     }
                 }
             }
-            if (player != null && getArmorModifierlevel(player,MomotinkerModifiers.berserk.getId()) > 0) {
+            if (getAllModifierlevel(player,MomotinkerModifiers.berserk.getId()) > 0) {
                 for (ItemStack stack : player.getInventory().armor) {
                     if (stack.getItem() instanceof ModifiableArmorItem) {
                         ModDataNBT berserkdata = ToolStack.from(stack).getPersistentData();
@@ -124,7 +125,7 @@ public class KeyInputPKT {
                     }
                 }
             }
-            if (player != null && ModifierUtil.getModifierLevel(player.getMainHandItem(), MomotinkerModifiers.drinkingdemon.getId()) > 0) {
+            if (ModifierUtil.getModifierLevel(player.getMainHandItem(), MomotinkerModifiers.drinkingdemon.getId()) > 0) {
                 ModDataNBT drinkingdemondata = ToolStack.from(player.getItemBySlot(EquipmentSlot.MAINHAND)).getPersistentData();
                 int a = drinkingdemondata.getInt(defenseenchant)+drinkingdemondata.getInt(meleeenchant)+drinkingdemondata.getInt(projectileenchant)+drinkingdemondata.getInt(toolsenchant)+drinkingdemondata.getInt(curseenchant);
                 float f = (float) 5 /(drinkingdemondata.getInt(curseenchant)+5);
@@ -154,17 +155,32 @@ public class KeyInputPKT {
                     player.getCooldowns().addCooldown(player.getMainHandItem().getItem(), 1800);
                 }
             }
-            if (player != null && getMainhandModifierlevel(player,MomotinkerModifiers.significance.getId()) > 0&&!player.getItemBySlot(EquipmentSlot.OFFHAND).is(MomotinkerItem.nihilism.get())) {
+            if (getMainhandModifierlevel(player, MomotinkerModifiers.significance.getId()) > 0 && !player.getItemBySlot(EquipmentSlot.OFFHAND).is(MomotinkerItem.nihilism.get())) {
                 ModDataNBT significancedata = ToolStack.from(player.getItemBySlot(EquipmentSlot.MAINHAND)).getPersistentData();
                 if (significancedata.getInt(signifincancecool)==0){
                     significancedata.putInt(signifincances,10);
                     significancedata.putInt(signifincancecool,90);
                 }
             }
-            if (player != null && getMainhandModifierlevel(player,MomotinkerModifiers.blank.getId()) > 0&& CoolTimeB.getCoolTime()==0) {
+            if (getMainhandModifierlevel(player, MomotinkerModifiers.blank.getId()) > 0 && CoolTimeB.getCoolTime() == 0) {
                 if (player.getItemBySlot(EquipmentSlot.OFFHAND).is(MomotinkerItem.nihilism.get())){
                     Channel.sendToClient(new CoolTimeChargeB(600));
                     player.getItemBySlot(EquipmentSlot.OFFHAND).setCount(player.getItemBySlot(EquipmentSlot.OFFHAND).getCount() - 1);
+                }
+            }
+            if (getAllModifierlevel(player,MomotinkerModifiers.flamebath.getId()) > 0) {
+                for (ItemStack stack : player.getInventory().armor) {
+                    if (stack.getItem() instanceof ModifiableArmorItem) {
+                        ModDataNBT flamebathdata = ToolStack.from(stack).getPersistentData();
+                        if (flamebathdata.getInt(flamebathcooldown) == 0) {
+                            player.addEffect(new MobEffectInstance(MomotinkerEffects.FlameBathArmor.get(),2400,getArmorModifierlevel(player,MomotinkerModifiers.flamebath.getId())-1));
+                            if (player.getEffect(MomotinkerEffects.FlameBathArmor.get())!=null&&player.hasEffect(MomotinkerEffects.FlameBathArmor.get())){
+                                player.removeEffect(MomotinkerEffects.FlameBathArmor.get());
+                                player.addEffect(new MobEffectInstance(MomotinkerEffects.FlameBathArmor.get(),2400,getArmorModifierlevel(player,MomotinkerModifiers.flamebath.getId())-1));
+                            }
+                            flamebathdata.putInt(flamebathcooldown, 240);
+                        }
+                    }
                 }
             }
         });

@@ -1,11 +1,4 @@
 {
-  "block.momotinker.laomo_block": "Momo Block",
-
-  "block.momotinker.dimensional_prism": "§bDimensional Prism§",
-  "momotinker.block.tooltip.dimensional_prism1": "§bFragments of interdimensional space§",
-  "momotinker.block.tooltip.dimensional_prism2": "§bPress and hold 'shift' to view and retrieve§",
-  "momotinker.block.tooltip.dimensional_prism3": "§bWhen a player breaks glass, there is a 10% chance that the item will drop§",
-
   "effect.momotinker.hongwen": "hongwen",
   "effect.momotinker.none": "none",
   "effect.momotinker.end": "end",
@@ -17,6 +10,7 @@
   "effect.momotinker.fallingpreparation": "falling preparation",
   "effect.momotinker.fallingstar": "falling star",
   "effect.momotinker.censored": "??????????",
+  "effect.momotinker.flamebatharmor": "Flame Bath Armor",
 
   "fluid.momotinker.molten_laomo": "Molten Momo",
   "fluid.momotinker.molten_arriving_at_the_other_shore": "Molten Other Shore",
@@ -36,6 +30,7 @@
   "fluid.momotinker.molten_starry_mysterious_gold": "Molten Starry Mysterious Gold",
   "fluid.momotinker.molten_devouring_demon_gold": "Molten Devouring Demon Gold",
   "fluid.momotinker.molten_nihilism": "Molten Nihilism",
+  "fluid.momotinker.molten_meteor_nucleus": "Molten Meteor",
 
   "item.momotinker.molten_laomo_bucket": "Molten Momo Bucket",
   "item.momotinker.molten_arriving_at_the_other_shore_bucket": "Molten Other Shore Bucket",
@@ -55,6 +50,7 @@
   "item.momotinker.molten_starry_mysterious_gold_bucket": "Molten Starry Mysterious Gold Bucket",
   "item.momotinker.molten_devouring_demon_gold_bucket": "Molten Devouring Demon Gold Bucket",
   "item.momotinker.molten_nihilism_bucket": "Molten Nihilism Bucket",
+  "item.momotinker.molten_meteor_nucleus_bucket": "Molten Meteor Bucket",
 
   "recipe.momotinker.modifier.cleansetheworld": "'Cleanse The World' requires 'Breakthrough Stars' as a prerequisite",
   "recipe.momotinker.modifier.shadowofdamnation": "'Shadow Of Damnation' requires 'Cleanse The World' as a prerequisite",
@@ -63,12 +59,20 @@
   "key.momotinker.key": "Category Example",
   "key.momotinker.keya": "Tool Enhancement",
 
+  "block.momotinker.laomo_block": "Momo Block",
+
+  "block.momotinker.dimensional_prism": "§bDimensional Prism§",
+  "momotinker.block.tooltip.dimensional_prism1": "§bFragments of interdimensional space§",
+  "momotinker.block.tooltip.dimensional_prism2": "§bPress and hold 'shift' to view and retrieve§",
+  "momotinker.block.tooltip.dimensional_prism3": "§bWhen a player breaks glass, there is a 10% chance that the item will drop§",
+
   "item.momotinker.laomo": "Momo",
 
   "item.momotinker.interdimensional_crystal": "§dInterdimensional Crystal§",
   "momotinker.item.tooltip.interdimensional_crystal1": "§dReturning from heaven§",
   "momotinker.item.tooltip.interdimensional_crystal2": "§dPress and hold 'shift' to view and retrieve§",
   "momotinker.item.tooltip.interdimensional_crystal3": "§dWhen the witherBoss dies at a height greater than or equal to 300 in the world and falls to its location§",
+  "momotinker.item.tooltip.interdimensional_crystal4": "The stars twinkled, and shooting stars noticed you as they crossed the horizon, trying to give you a gift",
 
   "item.momotinker.arriving_at_the_other_shore": "\u00A74Other Shore\u00A7",
   "momotinker.item.tooltip.arriving_at_the_other_shore1": "§7Thousands of passing things, all crossing the other shore§",
@@ -139,6 +143,15 @@
   "momotinker.item.tooltip.nihilism1": "You are just reflections cast by 'existence', and at this moment, it should recede with the tide of dusk",
   "momotinker.item.tooltip.nihilism2": "Press and hold 'shift' to view and retrieve",
   "momotinker.item.tooltip.nihilism3": "",
+
+  "item.momotinker.meteor_nucleus": "§6Meteor Ingot",
+  "block.momotinker.meteor_nucleus_block": "§6Meteor Nucleus",
+  "momotinker.item.tooltip.meteor_nucleus1": "The stars falling from the sky contain energy that never existed in this world",
+  "momotinker.item.tooltip.meteor_nucleus2": "Press and hold 'shift' to view and retrieve",
+  "momotinker.item.tooltip.meteor_nucleus3": "Since the player first picks up the 'Interdimensional Crystal', there is a chance for it to fall in the form of a meteor within a 300 grid area centered around the player every period of time",
+  "momotinker.item.tooltip.meteor_nucleus4": "The metal ingot poured by the melting meteor in the sky contains enormous energy",
+  "momotinker.item.tooltip.meteor_nucleus5": "'The core of the meteor can continuously release a large amount of heat energy without any signs of decay after melting, which may provide new assistance in our craftsmanship work'",
+  "momotinker.item.tooltip.meteor_nucleus6": "The gift of shooting stars is coming soon",
 
   "itemGroup.momotinker.tools": "Momotinker Tools",
 
@@ -221,6 +234,8 @@
   "material.momotinker.devouring_demon_gold.encyclopedia": "One effort, one reward",
   "material.momotinker.nihilism": "Nihilism",
   "material.momotinker.nihilism.encyclopedia": "... the utmost benevolence and goodness",
+  "material.momotinker.meteor_nucleus": "Meteor",
+  "material.momotinker.meteor_nucleus.encyclopedia": "Gift from Meteor",
 
 
   "modifier.momotinker.laomochuji": "laomochuji",
@@ -290,7 +305,7 @@
 
   "modifier.momotinker.dominate": "Dominate",
   "modifier.momotinker.dominate.flavor": "§cProud of everything§",
-  "modifier.momotinker.dominate.description": "Each level receives a 50% stack bonus for most attributes. When attacked by monsters with a maximum health lower than their maximum total health level * 20%, they only receive 70% damage (the same name only takes effect once)",
+  "modifier.momotinker.dominate.description": "Each level receives a 70% stack bonus for most attributes. When attacked by monsters with a maximum health lower than their maximum total health level * 20%, they only receive 70% damage (the same name only takes effect once)",
   "modifier.momotinker.tooltip.dominate1": "The current threshold for triggering damage reduction is:",
 
   "modifier.momotinker.overdisdainsin": "Over disdain sin",
@@ -360,11 +375,11 @@
 
   "modifier.momotinker.superancientmetals": "Super Ancient Metals",
   "modifier.momotinker.superancientmetals.flavor": "A peculiar metal from ancient times that appears ordinary on the surface",
-  "modifier.momotinker.superancientmetals.description": "The durability consumption of the tool is reduced by 50%, and most attributes are increased by 20%, which may evolve due to certain circumstances",
+  "modifier.momotinker.superancientmetals.description": "The durability consumption of the tool is reduced by 50%, and most attributes are increased by 40%, which may evolve due to certain circumstances",
 
   "modifier.momotinker.superancientmetalsreal": "Super Ancient Metals-Real",
   "modifier.momotinker.superancientmetalsreal.flavor": "Unique metal from ancient times, exhibiting a unique posture due to the awakening of 'From Brilliance'",
-  "modifier.momotinker.superancientmetalsreal.description": "The durability consumption of the tool is reduced by 90%, and most attributes are increased by 50%. It will provide unique effects based on the awakening results from 'From Brilliance'",
+  "modifier.momotinker.superancientmetalsreal.description": "The durability consumption of the tool is reduced by 90%, and most attributes are increased by 80%. It will provide unique effects based on the awakening results from 'From Brilliance'",
   "modifier.momotinker.tooltip.superancientmetalsreal1": "[From Brilliance]Certification: Divine Punishment Spear - Stained with Blood",
   "modifier.momotinker.tooltip.superancientmetalsreal2": "This tool attack will ignore armor and will not cause invincible frames",
   "modifier.momotinker.tooltip.superancientmetalsreal3": "[From Brilliance]Certification: Divine Punishment Spear - Starry Sky",
@@ -441,6 +456,23 @@
   "modifier.momotinker.blank.description": "When the deputy holds the 'Conceptual Endpoint · Nihilism', Press 'Category Example' can consume one item to release the '§k Final Poem §r'(Global cooling for 600s), enter the reading bar, and draw a period on the World Living Chapter at the end of the time (death in the reading bar will be interrupted and enter a cooling period of 300s)",
   "modifier.momotinker.tooltip.blank1": "Cooling residue of [Chapter 3: Blank]:",
   "msg.blank1": "§oRiver will flow upstream and return to the clouds","msg.blank2": "§oThe flying bird will return to its eggshell and form an egg again","msg.blank3": "§oTake a breath, one last time——","msg.blank4": "§oYour laughter, tears, love and hate will all sink into eternal 'nothingness'",
-  "msg.blank5": "§oNo pain, no sorrow, only non-existent peace","msg.blank6": "§oI am the writer of 'nothingness', silently composing poems about all things","msg.blank7": "§oSleep, creatures, you will no longer exist"
+  "msg.blank5": "§oNo pain, no sorrow, only non-existent peace","msg.blank6": "§oI am the writer of 'nothingness', silently composing poems about all things","msg.blank7": "§oSleep, creatures, you will no longer exist",
+
+  "modifier.momotinker.flamebath": "Flame Bath",
+  "modifier.momotinker.flamebath.flavor": "Using the energy of shooting stars to envelop oneself",
+  "modifier.momotinker.flamebath.description": "Press 'Category Example' while wearing to obtain a 120s 'Flame Bath Armor' effect, with a level of the total worn level and a cooling time of 240s\n§6[Flame Bath Armor]:§rObtain 60% * level armor and 40% * level armor toughness during the duration, and repel nearby creatures every 5s",
+  "modifier.momotinker.tooltip.flamebath1": "Cooling residue of [Flame Bath]:",
+
+  "modifier.momotinker.starfallarrow": "Star Fall Arrow",
+  "modifier.momotinker.starfallarrow.flavor": "Resonance with shooting stars",
+  "modifier.momotinker.starfallarrow.description": "After the arrow hits the creature, it will summon a shooting star above its head to quickly fall, explode on the ground, and cause range damage",
+
+  "modifier.momotinker.explosivesword": "Explosive Sword",
+  "modifier.momotinker.explosivesword.flavor": "Concentrate the energy of shooting stars into one sword",
+  "modifier.momotinker.explosivesword.description": "Melee attacks will explode once at the target location, causing extra damage (this feature cannot be triggered by extra attacks)",
+
+  "modifier.momotinker.blessingofmeteor": "Blessing Of Meteor",
+  "modifier.momotinker.blessingofmeteor.flavor": "The shooting stars generously bless you",
+  "modifier.momotinker.blessingofmeteor.description": "Each level receives one slot for each of the three types, and each level receives a 40% stacking bonus for most attributes"
 
 }

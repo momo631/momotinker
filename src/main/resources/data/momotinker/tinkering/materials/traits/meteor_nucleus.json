@@ -1,0 +1,34 @@
+{
+  "perStat": {
+    "tconstruct:melee_harvest": [
+      {
+        "name": "momotinker:explosivesword",
+        "level": 1
+      },
+      {
+        "name": "momotinker:blessingofmeteor",
+        "level": 1
+      }
+    ],
+    "tconstruct:armor": [
+      {
+        "name": "momotinker:flamebath",
+        "level": 1
+      },
+      {
+        "name": "momotinker:blessingofmeteor",
+        "level": 1
+      }
+    ],
+    "tconstruct:ranged": [
+      {
+        "name": "momotinker:starfallarrow",
+        "level": 1
+      },
+      {
+        "name": "momotinker:blessingofmeteor",
+        "level": 1
+      }
+    ]
+  }
+}

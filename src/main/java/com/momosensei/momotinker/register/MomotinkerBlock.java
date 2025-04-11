@@ -14,4 +14,6 @@ public class MomotinkerBlock {
             () -> new Block(BlockBehaviour.Properties.copy(Blocks.BLUE_WOOL)));
     public static final RegistryObject<Block> dimensional_prism = BLOCK.register("dimensional_prism",
             () -> new Block(BlockBehaviour.Properties.copy(Blocks.BLUE_WOOL)));
+    public static final RegistryObject<Block> meteor_nucleus_block = BLOCK.register("meteor_nucleus_block",
+            () -> new Block(BlockBehaviour.Properties.copy(Blocks.BLUE_WOOL)));
 }

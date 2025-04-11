@@ -22,9 +22,9 @@ public class TriggerSlashEntity extends Projectile {
     public Vec3 offset =new Vec3(0,0,0);
     public ToolStack tool;
     public float damage=0;
+    public int a=0;
     public float damagemultiplier=0;
     public float angle ;
-    public int a = 0;
 
     public TriggerSlashEntity(EntityType<? extends Projectile> p_37248_, Level p_37249_, ItemStack slash) {
         super(p_37248_, p_37249_);
@@ -43,11 +43,9 @@ public class TriggerSlashEntity extends Projectile {
     public void setToolstack(ToolStack tool){
         this.tool =tool;
     }
-
     public void setint(int a){
         this.a =a;
     }
-
     @Override
     protected void defineSynchedData() {
     }
@@ -76,9 +74,9 @@ public class TriggerSlashEntity extends Projectile {
             return;
         }
         if (entity instanceof Player player) {
-            Vec3 vec3 = new Vec3(rayVec3.x, rayVec3.y, rayVec3.z);
-            double dy = vec3.y +offset.y+1;
-            AABB aabb = this.getBoundingBox().expandTowards(vec3.scale(2)).expandTowards(vec3.scale(-1)).expandTowards(new Vec3(0,dy,0).cross(vec3)).expandTowards(new Vec3(0,-dy,0).cross(vec3));
+            Vec3 vec3 = new Vec3(rayVec3.x, rayVec3.y+2, rayVec3.z);
+            double dy = vec3.y +offset.y-1;
+            AABB aabb = this.getBoundingBox().expandTowards(vec3.scale(1)).expandTowards(vec3.scale(-0.5)).expandTowards(new Vec3(0,dy,0).cross(vec3)).expandTowards(new Vec3(0,-dy,0).cross(vec3));
             List<Entity> ls0 = this.level().getEntitiesOfClass(Entity.class, aabb);
             for (Entity targets : ls0) {
                 if (targets!=getOwner()) {

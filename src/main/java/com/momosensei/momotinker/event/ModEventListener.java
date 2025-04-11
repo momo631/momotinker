@@ -8,9 +8,7 @@ import com.momosensei.momotinker.gui.overlay.ToolsTimeHUD;
 import com.momosensei.momotinker.key.key;
 import com.momosensei.momotinker.network.Channel;
 import com.momosensei.momotinker.register.MomotinkerEntities;
-import com.momosensei.momotinker.renderer.CleanseEntityRenderer;
-import com.momosensei.momotinker.renderer.SpearEntityRenderer;
-import com.momosensei.momotinker.renderer.triggerSlashRenderer;
+import com.momosensei.momotinker.renderer.*;
 import net.minecraft.client.renderer.entity.NoopRenderer;
 import net.minecraftforge.api.distmarker.Dist;
 import net.minecraftforge.client.event.EntityRenderersEvent;
@@ -45,6 +43,8 @@ public class ModEventListener {
         event.registerEntityRenderer(MomotinkerEntities.spear_entity.get(), SpearEntityRenderer::new);
         event.registerEntityRenderer(MomotinkerEntities.cleanse_entity.get(), CleanseEntityRenderer::new);
         event.registerEntityRenderer(MomotinkerEntities.ray_entity.get(), NoopRenderer::new);
+        event.registerEntityRenderer(MomotinkerEntities.meteor_entity.get(), MeteorEntityRenderer::new);
+        event.registerEntityRenderer(MomotinkerEntities.starfall_entity.get(), StarfallEntityRenderer::new);
     }
 
     @SubscribeEvent

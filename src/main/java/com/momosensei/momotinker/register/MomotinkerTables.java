@@ -41,6 +41,8 @@ public class MomotinkerTables extends MomotinkerMod {
         output.accept(MomotinkerItem.starry_mysterious_gold.get());
         output.accept(MomotinkerItem.devouring_demon_gold.get());
         output.accept(MomotinkerItem.nihilism.get());
+        output.accept(MomotinkerItem.meteor_nucleus.get());
+        output.accept(MomotinkerItem.meteor_nucleus_block.get());
 
     }
 }

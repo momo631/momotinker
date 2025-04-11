@@ -1,8 +1,8 @@
 package com.momosensei.momotinker.entity;
 
+import com.momosensei.momotinker.register.MomotinkerConfig;
 import com.momosensei.momotinker.register.MomotinkerEntities;
 import com.momosensei.momotinker.util.attackUtil;
-import net.minecraft.core.BlockPos;
 import net.minecraft.core.Direction;
 import net.minecraft.core.particles.ParticleTypes;
 import net.minecraft.network.syncher.EntityDataAccessor;
@@ -20,8 +20,6 @@ import net.minecraft.world.entity.projectile.ProjectileUtil;
 import net.minecraft.world.level.ClipContext;
 import net.minecraft.world.level.Explosion;
 import net.minecraft.world.level.Level;
-import net.minecraft.world.level.block.Blocks;
-import net.minecraft.world.level.material.Fluids;
 import net.minecraft.world.phys.BlockHitResult;
 import net.minecraft.world.phys.EntityHitResult;
 import net.minecraft.world.phys.HitResult;
@@ -35,6 +33,7 @@ public class CleanseEntity extends Projectile {
     public ToolStack tool;
     public float damage=0;
     public int a = 0;
+    boolean config = MomotinkerConfig.explosion_destroys_limit.get();
     private static final EntityDataAccessor<Byte> EXPLOSION_POWER = SynchedEntityData.defineId(CleanseEntity.class, EntityDataSerializers.BYTE);
     public CleanseEntity(EntityType<? extends Projectile> p_37248_, Level p_37249_) {
         super(p_37248_, p_37249_);
@@ -130,28 +129,23 @@ public class CleanseEntity extends Projectile {
         this.a =a;
     }
 
-
     public void meteorExplode(){
         if (!this.level().isClientSide) {
             if (this.tool==null&&this.getOwner() instanceof Player player){
                 this.tool=ToolStack.from(player.getMainHandItem());
             }
-            Explosion explosion =this.level().explode(this, this.getX(), this.getY(), this.getZ(), this.getEntityData().get(EXPLOSION_POWER) * 0.1f, true, Level.ExplosionInteraction.BLOCK);
-            List<BlockPos> list = explosion.getToBlow();
-            List<Player> players = explosion.getHitPlayers().keySet().stream().toList();
-            boolean generatedPress =false;
-            for (BlockPos blockPos : list) {
-                if ((this.level().getBlockState(blockPos).isAir() || this.level().getBlockState(blockPos).is(Blocks.FIRE) || !(this.level().getFluidState(blockPos).is(Fluids.EMPTY))) && this.level().getBlockState(blockPos.below()).isCollisionShapeFullBlock(this.level(), blockPos)) {
-                    if (!generatedPress) {
-                        //this.level.setBlockAndUpdate(blockPos, Blocks.MAGMA_BLOCK.defaultBlockState());
-                        generatedPress = true;
-                    }
-                }
+            Level.ExplosionInteraction explosionInteraction;
+            if (config) {
+                explosionInteraction=Level.ExplosionInteraction.BLOCK;
+            }else {
+                explosionInteraction=Level.ExplosionInteraction.NONE;
             }
+            Explosion explosion =this.level().explode(this, this.getX(), this.getY(), this.getZ(), this.getEntityData().get(EXPLOSION_POWER) * 0.1f, true, explosionInteraction);
+            List<Player> players = explosion.getHitPlayers().keySet().stream().toList();
             for (Player player:players){
                 if (player!=null){
                     player.invulnerableTime =0;
-                    player.hurt(player.level().damageSources().explosion(explosion),1);
+                    player.hurt(this.level().damageSources().explosion(explosion),1);
                 }
             }
             List<Mob> lis = this.level().getEntitiesOfClass(Mob.class, this.getBoundingBox().inflate(22));
