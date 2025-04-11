@@ -198,6 +198,7 @@ public class trigger_blade extends ModifiableItem {
         slash.setOwner(player);
         slash.setToolstack(tool);
         slash.noPhysics = false;
+        slash.setint(a);
         slash.setDeltaMovement(player.getLookAngle());
         slash.setPos(player.getX()+x*2,player.getY()+0.7*player.getBbHeight()+y*1.5,player.getZ()+z*2);
         level.addFreshEntity(slash);

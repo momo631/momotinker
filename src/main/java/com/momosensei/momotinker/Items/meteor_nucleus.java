@@ -1,7 +1,7 @@
 package com.momosensei.momotinker.Items;
 
 
-import net.minecraft.client.gui.screens.Screen;
+import net.minecraft.ChatFormatting;
 import net.minecraft.network.chat.Component;
 import net.minecraft.world.item.Item;
 import net.minecraft.world.item.ItemStack;
@@ -22,13 +22,8 @@ public class meteor_nucleus extends Item {
     }
     @Override
     public void appendHoverText(@NotNull ItemStack stack, @Nullable Level level, List<Component> list, @NotNull TooltipFlag flag) {
-        if (Screen.hasShiftDown()) {
-            list.add(Component.translatable("momotinker.item.tooltip.meteor_nucleus3"));
-        }else{
-            list.add(Component.translatable("momotinker.item.tooltip.meteor_nucleus1"));
-            list.add(Component.translatable("momotinker.item.tooltip.meteor_nucleus2"));
-        }
+        list.add(Component.translatable("momotinker.item.tooltip.meteor_nucleus4").withStyle(ChatFormatting.GOLD));
+        list.add(Component.translatable("momotinker.item.tooltip.meteor_nucleus5").withStyle(ChatFormatting.GOLD));
         super.appendHoverText(stack, level, list, flag);
     }
-
 }

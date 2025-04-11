@@ -260,17 +260,17 @@ public class LivingEvents {
         if (event.player.getLevel() instanceof ServerLevel level && level.getGameTime() % 2000 == 0) {
             Player player = event.player;
             Random random = new Random();
-            if (random.nextInt(10) == 0&&PlayerChargeBoolean.getPlayerChargeBoolean()>0) {
-                Vec2 pos = new Vec2((float) (player.getX() + random.nextFloat() * 192), (float) (player.getZ() + random.nextFloat() * 192));
-                MeteorSpawnEvent event1 = new MeteorSpawnEvent(new Vec3(pos.x, player.getY() + 150, pos.y));
-                //MeteorSpawnEvent event1 = new MeteorSpawnEvent(new Vec3(player.getX(), player.getY() + 150, player.getZ()));
+            if (random.nextInt(5) == 0&&PlayerChargeBoolean.getPlayerChargeBoolean()>0) {
+                Vec2 pos = new Vec2((float) (player.getX() + random.nextInt(180)+120), (float) (player.getZ() + random.nextInt(180)+120));
+                EntitySpawnEvent event1 = new EntitySpawnEvent(new Vec3(pos.x, player.getY() + 150, pos.y));
+                //EntitySpawnEvent event1 = new EntitySpawnEvent(new Vec3(player.getX(), player.getY() + 150, player.getZ()));
                 MinecraftForge.EVENT_BUS.post(event1);
                 if (!event1.isCanceled()) {
                     MeteorEntity entity = new MeteorEntity(level, pos.x, player.getY() + 150, pos.y, new Vec3(random.nextFloat() * 0.5, random.nextFloat() * 2.5 - 1.5, random.nextFloat() * 0.5));
                     //MeteorEntity entity = new MeteorEntity(level, player.getX(), player.getY() + 150, player.getZ(), new Vec3(random.nextFloat() * 0.5, random.nextFloat() * 2.5 - 1.5, random.nextFloat() * 0.5));
-                    entity.setExplosionPower((byte) (random.nextInt(35) + 25));
+                    entity.setExplosionPower((byte) (random.nextInt(55) + 25));
                     level.addFreshEntity(entity);
-                    player.sendSystemMessage(Component.translatable("momotinker.item.tooltip.meteor_nucleus4").withStyle(ChatFormatting.LIGHT_PURPLE));
+                    player.sendSystemMessage(Component.translatable("momotinker.item.tooltip.meteor_nucleus6").withStyle(ChatFormatting.GOLD));
                 }
             }
         }
@@ -280,7 +280,7 @@ public class LivingEvents {
         if (event.getEntity() instanceof ServerPlayer player&& PlayerChargeBoolean.getPlayerChargeBoolean()==0){
             if (event.getItem().getItem().is(MomotinkerItem.interdimensional_crystal.get())) {
                 Channel.sendToPlayer(new PlayerCharge(1), player);
-                player.sendSystemMessage(Component.translatable("momotinker.item.tooltip.interdimensional_crystal4").withStyle(ChatFormatting.LIGHT_PURPLE));
+                player.sendSystemMessage(Component.translatable("momotinker.item.tooltip.interdimensional_crystal4").withStyle(ChatFormatting.GOLD));
             }
         }
     }

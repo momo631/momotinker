@@ -38,6 +38,7 @@ import slimeknights.tconstruct.library.modifiers.hook.behavior.ProcessLootModifi
 import slimeknights.tconstruct.library.modifiers.hook.behavior.ToolDamageModifierHook;
 import slimeknights.tconstruct.library.modifiers.hook.build.ModifierRemovalHook;
 import slimeknights.tconstruct.library.modifiers.hook.build.ToolStatsModifierHook;
+import slimeknights.tconstruct.library.modifiers.hook.build.VolatileDataModifierHook;
 import slimeknights.tconstruct.library.modifiers.hook.combat.DamageDealtModifierHook;
 import slimeknights.tconstruct.library.modifiers.hook.combat.MeleeDamageModifierHook;
 import slimeknights.tconstruct.library.modifiers.hook.combat.MeleeHitModifierHook;
@@ -56,10 +57,7 @@ import slimeknights.tconstruct.library.tools.context.EquipmentContext;
 import slimeknights.tconstruct.library.tools.context.ToolAttackContext;
 import slimeknights.tconstruct.library.tools.context.ToolHarvestContext;
 import slimeknights.tconstruct.library.tools.helper.ModifierUtil;
-import slimeknights.tconstruct.library.tools.nbt.IToolContext;
-import slimeknights.tconstruct.library.tools.nbt.IToolStackView;
-import slimeknights.tconstruct.library.tools.nbt.ModifierNBT;
-import slimeknights.tconstruct.library.tools.nbt.NamespacedNBT;
+import slimeknights.tconstruct.library.tools.nbt.*;
 import slimeknights.tconstruct.library.tools.stat.ModifierStatsBuilder;
 
 import java.util.List;
@@ -70,7 +68,7 @@ public abstract class momomodifier extends Modifier implements MeleeDamageModifi
         BowAmmoModifierHook, ProjectileHitModifierHook, ProjectileLaunchModifierHook,KeybindInteractModifierHook, ProcessLootModifierHook,
         EquipmentChangeModifierHook, InventoryTickModifierHook, OnAttackedModifierHook, TooltipModifierHook, AttributesModifierHook,
         ModifyDamageModifierHook, ModifierRemovalHook, BlockBreakModifierHook, EntityInteractionModifierHook, ToolStatsModifierHook,
-        ToolDamageModifierHook{
+        ToolDamageModifierHook, VolatileDataModifierHook {
 
     @Override
     protected void registerHooks(ModuleHookMap.Builder builder) {
@@ -81,7 +79,7 @@ public abstract class momomodifier extends Modifier implements MeleeDamageModifi
         builder.addHook(this, ModifierHooks.TOOLTIP, ModifierHooks.REMOVE, ModifierHooks.MODIFY_DAMAGE);
         builder.addHook(this, ModifierHooks.BLOCK_BREAK, ModifierHooks.ENTITY_INTERACT, ModifierHooks.TOOL_STATS);
         builder.addHook(this, ModifierHooks.ARMOR_INTERACT, ModifierHooks.ATTRIBUTES, ModifierHooks.PROCESS_LOOT);
-        builder.addHook(this, ModifierHooks.TOOL_DAMAGE);
+        builder.addHook(this, ModifierHooks.TOOL_DAMAGE, ModifierHooks.VOLATILE_DATA);
     }
 
     public momomodifier() {
@@ -95,7 +93,7 @@ public abstract class momomodifier extends Modifier implements MeleeDamageModifi
         return amount;
     }
 
-        public void addAttributes(IToolStackView tool, ModifierEntry modifier, EquipmentSlot slot, BiConsumer<Attribute, AttributeModifier> consumer) {
+    public void addAttributes(IToolStackView tool, ModifierEntry modifier, EquipmentSlot slot, BiConsumer<Attribute, AttributeModifier> consumer) {
     }
 
     public void processLoot(IToolStackView tool, ModifierEntry modifier, List<ItemStack> list, LootContext context) {
@@ -209,6 +207,13 @@ public abstract class momomodifier extends Modifier implements MeleeDamageModifi
     public void addToolStats(IToolContext context, ModifierEntry modifier, ModifierStatsBuilder builder) {
         this.modifierAddToolStats(context, modifier, builder);
     }
+    @Override
+    public void addVolatileData(IToolContext context,ModifierEntry modifier, ModDataNBT modDataNBT) {
+        this.modifieraddVolatileData(context, modifier, modDataNBT);
+    }
+
+    private void modifieraddVolatileData(IToolContext context, ModifierEntry modifier, ModDataNBT modDataNBT) {
+    }
 
     public void modifierOnEquip(IToolStackView tool, ModifierEntry modifier, EquipmentChangeContext context) {
     }
@@ -269,10 +274,17 @@ public abstract class momomodifier extends Modifier implements MeleeDamageModifi
         return KeybindInteractModifierHook.super.startInteract(tool, modifier, player, slot, keyModifier);
     }
 
-    public static int getArmorModifierlevel(LivingEntity entity, ModifierId modifierId) {
+    public static int getAllModifierlevel(LivingEntity entity, ModifierId modifierId) {
         return ModifierUtil.getModifierLevel(entity.getItemBySlot(EquipmentSlot.MAINHAND), modifierId)
                 + ModifierUtil.getModifierLevel(entity.getItemBySlot(EquipmentSlot.OFFHAND), modifierId)
                 + ModifierUtil.getModifierLevel(entity.getItemBySlot(EquipmentSlot.HEAD), modifierId)
+                + ModifierUtil.getModifierLevel(entity.getItemBySlot(EquipmentSlot.CHEST), modifierId)
+                + ModifierUtil.getModifierLevel(entity.getItemBySlot(EquipmentSlot.LEGS), modifierId)
+                + ModifierUtil.getModifierLevel(entity.getItemBySlot(EquipmentSlot.FEET), modifierId);
+    }
+
+    public static int getArmorModifierlevel(LivingEntity entity, ModifierId modifierId) {
+        return ModifierUtil.getModifierLevel(entity.getItemBySlot(EquipmentSlot.HEAD), modifierId)
                 + ModifierUtil.getModifierLevel(entity.getItemBySlot(EquipmentSlot.CHEST), modifierId)
                 + ModifierUtil.getModifierLevel(entity.getItemBySlot(EquipmentSlot.LEGS), modifierId)
                 + ModifierUtil.getModifierLevel(entity.getItemBySlot(EquipmentSlot.FEET), modifierId);

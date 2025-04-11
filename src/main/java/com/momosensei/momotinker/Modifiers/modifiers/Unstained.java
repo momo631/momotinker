@@ -38,7 +38,7 @@ public class Unstained extends momomodifier {
     @Override
     public void onInventoryTick(IToolStackView tool, ModifierEntry modifier, Level world, LivingEntity entity, int index, boolean isSelected, boolean isCorrectSlot, ItemStack stack) {
         Collection<MobEffectInstance> harmeffect = entity.getActiveEffects();
-        int a = getArmorModifierlevel(entity,MomotinkerModifiers.unstained.getId());
+        int a = getAllModifierlevel(entity,MomotinkerModifiers.unstained.getId());
         for (int i = 0; i < harmeffect.size(); i++) {
             MobEffectInstance effect = harmeffect.stream().toList().get(i);
             MobEffect mobEffect = effect.getEffect();
@@ -55,7 +55,7 @@ public class Unstained extends momomodifier {
 
     private void livingattackevent(LivingAttackEvent event) {
         LivingEntity living = event.getEntity();
-        int a =  getArmorModifierlevel(living,MomotinkerModifiers.unstained.getId());
+        int a =  getAllModifierlevel(living,MomotinkerModifiers.unstained.getId());
         int b = RANDOM.nextInt(10);
         if (event.getEntity() instanceof Player &&(a>0 && a<8 && b<a)||(a>8 && b<8)) {
             event.setCanceled(true);

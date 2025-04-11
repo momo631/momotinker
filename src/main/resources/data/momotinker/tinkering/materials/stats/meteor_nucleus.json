@@ -2,57 +2,52 @@
   "stats": {
     "tconstruct:binding": {},
     "tconstruct:handle": {
-      "durability": 1.7,
-      "mining_speed": 1.7,
+      "durability": 1.4,
+      "mining_speed": 1.2,
       "melee_speed": 1.2,
       "melee_damage": 1.2
     },
     "tconstruct:head": {
-      "durability": 2024,
-      "mining_speed": 3,
+      "durability": 2400,
+      "mining_speed": 12,
       "mining_tier": "minecraft:netherite",
-      "melee_attack": 6
+      "melee_attack": 12
     },
     "tconstruct:limb": {
-      "durability": 2024,
-      "draw_speed": 0.3,
-      "velocity": 8,
+      "durability": 2400,
+      "draw_speed": 0.6,
+      "velocity": 4,
       "accuracy": 1.2
     },
     "tconstruct:grip": {
-      "durability": 1.7,
-      "accuracy": 2.0,
-      "melee_damage": 5.0
+      "durability": 1.2,
+      "accuracy": 1.2,
+      "melee_damage": 12
     },
     "tconstruct:maille": {},
     "tconstruct:plating_helmet": {
-      "armor": 5.0,
-      "durability": 1024,
-      "knockback_resistance": 0.2,
-      "toughness": 4.0
+      "armor": 4,
+      "durability": 2400,
+      "knockback_resistance": 0.25,
+      "toughness": 6
     },
     "tconstruct:plating_chestplate": {
-      "armor": 10.0,
-      "durability": 1948,
-      "knockback_resistance": 0.2,
-      "toughness": 7.0
+      "armor": 10,
+      "durability": 2400,
+      "knockback_resistance": 0.25,
+      "toughness": 12
     },
     "tconstruct:plating_leggings": {
-      "armor": 7.0,
-      "durability": 1560,
-      "knockback_resistance": 0.2,
-      "toughness": 5.0
+      "armor": 7,
+      "durability": 2400,
+      "knockback_resistance": 0.25,
+      "toughness": 10
     },
     "tconstruct:plating_boots": {
-      "armor": 5.0,
-      "durability": 1135,
-      "knockback_resistance": 0.2,
-      "toughness": 5.0
-    },
-    "tconstruct:plating_shield": {
-      "durability": 1200,
-      "knockback_resistance": 0.4,
-      "toughness": 5
+      "armor": 4,
+      "durability": 2400,
+      "knockback_resistance": 0.25,
+      "toughness": 6
     }
   }
 }

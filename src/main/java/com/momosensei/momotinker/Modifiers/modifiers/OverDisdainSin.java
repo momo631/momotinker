@@ -17,7 +17,7 @@ public class OverDisdainSin extends momomodifier {
 
     @Override
     public void onInventoryTick(IToolStackView iToolStackView, ModifierEntry modifierEntry, Level level, LivingEntity entity, int index, boolean b, boolean b1, ItemStack itemStack) {
-        int a = getArmorModifierlevel(entity,MomotinkerModifiers.overdisdainsin.getId());
+        int a = getAllModifierlevel(entity,MomotinkerModifiers.overdisdainsin.getId());
         if (a > 0) {
             entity.addEffect(new MobEffectInstance(MomotinkerEffects.Arrogant.get(), 400, a - 1));
         }

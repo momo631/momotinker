@@ -47,7 +47,7 @@ public class Dominate extends momomodifier {
     private void livinghurtevent(LivingHurtEvent event) {
         LivingEntity living = event.getEntity();
         Entity entity=event.getSource().getEntity();
-        int a =  getArmorModifierlevel(living,MomotinkerModifiers.dominate.getId());
+        int a =  getAllModifierlevel(living,MomotinkerModifiers.dominate.getId());
         if (entity instanceof LivingEntity attacker&&living instanceof Player player&& a > 0 && attacker.getMaxHealth()<player.getMaxHealth()*a*0.2F) {
             event.setAmount(event.getAmount() * 0.7F);
         }
@@ -55,7 +55,7 @@ public class Dominate extends momomodifier {
 
     public void addTooltip(IToolStackView tool, ModifierEntry modifierEntry, @org.jetbrains.annotations.Nullable Player player, List<Component> tooltip, TooltipKey tooltipKey, TooltipFlag tooltipFlag) {
         if (player != null) {
-            int a =  getArmorModifierlevel(player,MomotinkerModifiers.dominate.getId());
+            int a =  getAllModifierlevel(player,MomotinkerModifiers.dominate.getId());
             tooltip.add(net.minecraft.network.chat.Component.translatable("modifier.momotinker.tooltip.dominate1").append(player.getMaxHealth()*a*0.2F+"").withStyle(ChatFormatting.RED));
         }
     }

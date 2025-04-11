@@ -5,9 +5,9 @@ import net.minecraftforge.eventbus.api.Cancelable;
 import net.minecraftforge.eventbus.api.Event;
 
 @Cancelable
-public class CleanseSpawnEvent extends Event {
+public class EntitySpawnEvent extends Event {
     public final Vec3 Pos;
-    public CleanseSpawnEvent(Vec3 Pos){
+    public EntitySpawnEvent(Vec3 Pos){
         this.Pos = Pos;
     }
     public Vec3 getPos(){

@@ -29,6 +29,7 @@
   "fluid.momotinker.molten_starry_mysterious_gold": "Molten Starry Mysterious Gold",
   "fluid.momotinker.molten_devouring_demon_gold": "Molten Devouring Demon Gold",
   "fluid.momotinker.molten_nihilism": "Molten Nihilism",
+  "fluid.momotinker.molten_meteor_nucleus": "Molten Meteor",
 
   "item.momotinker.molten_laomo_bucket": "Molten Momo Bucket",
   "item.momotinker.molten_arriving_at_the_other_shore_bucket": "Molten Other Shore Bucket",
@@ -48,6 +49,7 @@
   "item.momotinker.molten_starry_mysterious_gold_bucket": "Molten Starry Mysterious Gold Bucket",
   "item.momotinker.molten_devouring_demon_gold_bucket": "Molten Devouring Demon Gold Bucket",
   "item.momotinker.molten_nihilism_bucket": "Molten Nihilism Bucket",
+  "item.momotinker.molten_meteor_nucleus_bucket": "Molten Meteor Bucket",
 
   "recipe.momotinker.modifier.cleansetheworld": "'Cleanse The World' requires 'Breakthrough Stars' as a prerequisite",
   "recipe.momotinker.modifier.shadowofdamnation": "'Shadow Of Damnation' requires 'Cleanse The World' as a prerequisite",
@@ -141,6 +143,15 @@
   "momotinker.item.tooltip.nihilism2": "Press and hold 'shift' to view and retrieve",
   "momotinker.item.tooltip.nihilism3": "",
 
+  "item.momotinker.meteor_nucleus": "§6Meteor Ingot",
+  "block.momotinker.meteor_nucleus_block": "§6Meteor Nucleus",
+  "momotinker.item.tooltip.meteor_nucleus1": "The stars falling from the sky contain energy that never existed in this world",
+  "momotinker.item.tooltip.meteor_nucleus2": "Press and hold 'shift' to view and retrieve",
+  "momotinker.item.tooltip.meteor_nucleus3": "Since the player first picks up the 'Interdimensional Crystal', there is a chance for it to fall in the form of a meteor within a 300 grid area centered around the player every period of time",
+  "momotinker.item.tooltip.meteor_nucleus4": "The metal ingot poured by the melting meteor in the sky contains enormous energy",
+  "momotinker.item.tooltip.meteor_nucleus5": "'The core of the meteor can continuously release a large amount of heat energy without any signs of decay after melting, which may provide new assistance in our craftsmanship work'",
+  "momotinker.item.tooltip.meteor_nucleus6": "The gift of shooting stars is coming soon",
+
   "itemGroup.momotinker.tools": "Momotinker Tools",
 
   "item.momotinker.trigger_blade": "Trigger Blade",
@@ -222,6 +233,8 @@
   "material.momotinker.devouring_demon_gold.encyclopedia": "One effort, one reward",
   "material.momotinker.nihilism": "Nihilism",
   "material.momotinker.nihilism.encyclopedia": "... the utmost benevolence and goodness",
+  "material.momotinker.meteor_nucleus": "Meteor",
+  "material.momotinker.meteor_nucleus.encyclopedia": "Gift from Meteor",
 
 
   "modifier.momotinker.laomochuji": "laomochuji",

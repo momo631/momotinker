@@ -54,6 +54,8 @@ public class MomotinkerConfig {
     public static final ForgeConfigSpec.IntValue cleansetheworld_limit=builder.comment("cleansetheworld_limit")
             .defineInRange("cleansetheworld cooldown time limit",600,0,Integer.MAX_VALUE);
 
+    public static final ForgeConfigSpec.BooleanValue explosion_destroys_limit=builder.comment("explosion_destroys_limit")
+            .define("explosion destroys limit",true);
 
 
     public static final ForgeConfigSpec spec=builder.pop().build();

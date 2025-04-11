@@ -143,12 +143,14 @@
   "momotinker.item.tooltip.nihilism2": "按住“shift”查看获取",
   "momotinker.item.tooltip.nihilism3": "",
 
-  "item.momotinker.meteor_nucleus": "流星之核锭",
-  "block.momotinker.meteor_nucleus_block": "流星之核",
-  "momotinker.item.tooltip.meteor_nucleus1": "",
+  "item.momotinker.meteor_nucleus": "§6流星锭",
+  "block.momotinker.meteor_nucleus_block": "§6流星之核",
+  "momotinker.item.tooltip.meteor_nucleus1": "从天际坠落于此的星星，蕴含着此世间不曾存在的能量",
   "momotinker.item.tooltip.meteor_nucleus2": "按住“shift”查看获取",
-  "momotinker.item.tooltip.meteor_nucleus3": "",
-  "momotinker.item.tooltip.meteor_nucleus4": "流星的馈赠即将到来",
+  "momotinker.item.tooltip.meteor_nucleus3": "自玩家第一次拾取到“天外来星”开始，每一段时间就会有几率以流星的方式坠落在以玩家为中心的300格以内区域",
+  "momotinker.item.tooltip.meteor_nucleus4": "熔融天际流星浇筑出的金属锭，蕴含着巨大的能量",
+  "momotinker.item.tooltip.meteor_nucleus5": "“流星之核在熔融之后能源源不断释放大量热能还没有任何衰减的迹象，这或许能在我们的工匠工作上提供新的帮助”",
+  "momotinker.item.tooltip.meteor_nucleus6": "流星的馈赠即将到来",
 
   "itemGroup.momotinker.tools": "墨工坊模组-工具",
 
@@ -232,7 +234,7 @@
   "material.momotinker.nihilism": "终点",
   "material.momotinker.nihilism.encyclopedia": "......至仁至善",
   "material.momotinker.meteor_nucleus": "流星",
-  "material.momotinker.meteor_nucleus.encyclopedia": "",
+  "material.momotinker.meteor_nucleus.encyclopedia": "来自流星的馈赠",
 
   "modifier.momotinker.laomochuji": "牢墨出击",
   "modifier.momotinker.laomochuji.flavor": "词条标题",
@@ -449,9 +451,26 @@
 
   "modifier.momotinker.blank": "第三终章:留白",
   "modifier.momotinker.blank.flavor": "如文章一般，在一切的最后，当终结被终结时，只留下未完成的空白",
-  "modifier.momotinker.blank.description": "副手持有“概念终点·虚无主义”时按下特殊技能按键可消耗一个该物品释放“§k最终之诗§r”（全局冷却600s），进入读条并在时间结束后在世界活物之章上画上句点（读条中途死亡会中断并进入冷却300s）",
+  "modifier.momotinker.blank.description": "副手持有“概念终点·虚无主义”时按下特殊技能按键可消耗一个该物品吟唱“§k最终之诗§r”（全局冷却600s），进入读条并在时间结束后在世界活物之章上画上句点（读条中途死亡会中断并进入冷却300s）",
   "modifier.momotinker.tooltip.blank1": "“第三终章:留白”冷却还剩:",
   "msg.blank1": "§o河流将逆流而上，归还于云","msg.blank2": "§o飞鸟将折返蛋壳，重归为卵","msg.blank3": "§o呼吸吧，最后一次——","msg.blank4": "§o尔等的欢笑、泪水、爱恨，都将沉入永恒的‘无’",
-  "msg.blank5": "§o没有痛苦，没有哀伤，只有未曾存在的安宁","msg.blank6": "§o吾乃‘无’之书写者，以沉默著就万物的诗篇","msg.blank7": "§o睡吧，生灵们，你们将不复存在"
+  "msg.blank5": "§o没有痛苦，没有哀伤，只有未曾存在的安宁","msg.blank6": "§o吾乃‘无’之书写者，以沉默著就万物的诗篇","msg.blank7": "§o睡吧生灵们，你们将不复存在",
+
+  "modifier.momotinker.flamebath": "星炎战衣",
+  "modifier.momotinker.flamebath.flavor": "",
+  "modifier.momotinker.flamebath.description": "穿戴时按下特殊技能按键获得120s的“浴炎战衣”效果，等级为已穿戴总等级，冷却240s（持续期间再次释放会覆盖上一个效果）\n[浴炎战衣]:持续期间获得60%*等级的护甲和40%*等级的护甲韧性，并且每5秒击退近身的生物",
+  "modifier.momotinker.tooltip.flamebath1": "“星炎战衣”冷却还剩:",
+
+  "modifier.momotinker.starfallarrow": "星落箭",
+  "modifier.momotinker.starfallarrow.flavor": "",
+  "modifier.momotinker.starfallarrow.description": "箭矢命中生物后会在其头顶召唤一个流星快速落下，落地爆炸并造成范围伤害",
+
+  "modifier.momotinker.explosivesword": "星爆剑",
+  "modifier.momotinker.explosivesword.flavor": "",
+  "modifier.momotinker.explosivesword.description": "近战攻击会在目标位置爆炸一次造成格外伤害（额外攻击无法触发此特性）",
+
+  "modifier.momotinker.blessingofmeteor": "流星祝福",
+  "modifier.momotinker.blessingofmeteor.flavor": "",
+  "modifier.momotinker.blessingofmeteor.description": "每等级获得三种槽位各一个，并且每级获得叠乘的125%大部分属性加成"
 
 }

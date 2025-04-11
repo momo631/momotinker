@@ -34,7 +34,7 @@ public class Berserk extends momomodifier {
         LivingEntity a = event.getEntity();
         Entity b = event.getSource().getEntity();
         if (b instanceof Player player&&a !=null){
-            int d = getArmorModifierlevel(player,MomotinkerModifiers.berserk.getId());
+            int d = getAllModifierlevel(player,MomotinkerModifiers.berserk.getId());
             for (ItemStack stack : player.getInventory().armor) {
                 if (stack.getItem() instanceof ModifiableArmorItem) {
                     ModDataNBT c = ToolStack.from(stack).getPersistentData();
@@ -45,7 +45,7 @@ public class Berserk extends momomodifier {
             }
         }
         if (a instanceof Player player){
-            int d = getArmorModifierlevel(player,MomotinkerModifiers.berserk.getId());
+            int d = getAllModifierlevel(player,MomotinkerModifiers.berserk.getId());
             for (ItemStack stack : player.getInventory().armor) {
                 if (stack.getItem() instanceof ModifiableArmorItem) {
                     ModDataNBT c = ToolStack.from(stack).getPersistentData();

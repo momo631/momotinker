@@ -7,10 +7,7 @@ import com.momosensei.momotinker.gui.overlay.ToolsTimeHUD;
 import com.momosensei.momotinker.key.key;
 import com.momosensei.momotinker.network.Channel;
 import com.momosensei.momotinker.register.MomotinkerEntities;
-import com.momosensei.momotinker.renderer.CleanseEntityRenderer;
-import com.momosensei.momotinker.renderer.MeteorEntityRenderer;
-import com.momosensei.momotinker.renderer.SpearEntityRenderer;
-import com.momosensei.momotinker.renderer.triggerSlashRenderer;
+import com.momosensei.momotinker.renderer.*;
 import com.momosensei.momotinker.tool.HelmModel;
 import net.minecraft.client.model.geom.ModelLayerLocation;
 import net.minecraft.client.renderer.entity.NoopRenderer;
@@ -52,6 +49,7 @@ public class ModEventListener {
         event.registerEntityRenderer(MomotinkerEntities.cleanse_entity.get(), CleanseEntityRenderer::new);
         event.registerEntityRenderer(MomotinkerEntities.ray_entity.get(), NoopRenderer::new);
         event.registerEntityRenderer(MomotinkerEntities.meteor_entity.get(), MeteorEntityRenderer::new);
+        event.registerEntityRenderer(MomotinkerEntities.starfall_entity.get(), StarfallEntityRenderer::new);
     }
     @SubscribeEvent
     public static void registerLayers(EntityRenderersEvent.RegisterLayerDefinitions event) {

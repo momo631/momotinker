@@ -5,7 +5,7 @@ import com.momosensei.momotinker.Modifiers.momomodifier;
 import com.momosensei.momotinker.register.MomotinkerModifiers;
 import net.minecraft.world.damagesource.DamageSource;
 import net.minecraft.world.entity.Entity;
-import net.minecraft.world.entity.Mob;
+import net.minecraft.world.entity.LivingEntity;
 import net.minecraft.world.entity.player.Player;
 import net.minecraftforge.common.MinecraftForge;
 import net.minecraftforge.event.entity.living.LivingHurtEvent;
@@ -20,30 +20,30 @@ public class StarCloudChain extends momomodifier {
     private void livinghurtevent(LivingHurtEvent event) {
         Entity a = event.getEntity();
         Entity b = event.getSource().getEntity();
-        if (b instanceof Player player&&a instanceof Mob){
-            int c = getArmorModifierlevel(player,MomotinkerModifiers.starcloudchain.getId());
+        if (b instanceof Player player&&a instanceof LivingEntity){
+            int c = getAllModifierlevel(player,MomotinkerModifiers.starcloudchain.getId());
             if (c>0&&!a.getTags().contains("starchain")) {
                 a.addTag("starchain");
             }
             if (c>0) {
-                List<Mob> list = player.level.getEntitiesOfClass(Mob.class, player.getBoundingBox().inflate(5 + 3 * c));
-                for (Mob mob : list) {
-                    if (mob != null&&mob.getTags().contains("starchain")) {
-                        mob.hurt(DamageSource.playerAttack(player),event.getAmount()*(0.2F+0.1F*c));
+                List<LivingEntity> list = player.level.getEntitiesOfClass(LivingEntity.class, player.getBoundingBox().inflate(5 + 3 * c));
+                for (LivingEntity entity : list) {
+                    if (entity != null&&entity.getTags().contains("starchain")) {
+                        entity.hurt(DamageSource.playerAttack(player),event.getAmount()*(0.2F+0.1F*c));
                     }
                 }
             }
         }
-        if (a instanceof Player player&&b instanceof Mob){
-            int c = getArmorModifierlevel(player,MomotinkerModifiers.starcloudchain.getId());
+        if (a instanceof Player player&&b instanceof LivingEntity){
+            int c = getAllModifierlevel(player,MomotinkerModifiers.starcloudchain.getId());
             if (c>0&&!b.getTags().contains("starchain")) {
                 b.addTag("starchain");
             }
             if (c>0) {
-                List<Mob> list = player.level.getEntitiesOfClass(Mob.class, player.getBoundingBox().inflate(5 + 3 * c));
-                for (Mob mob : list) {
-                    if (mob != null&&mob.getTags().contains("starchain")) {
-                        mob.hurt(DamageSource.playerAttack(player),event.getAmount()*(0.2F+0.1F*c));
+                List<LivingEntity> list = player.level.getEntitiesOfClass(LivingEntity.class, player.getBoundingBox().inflate(5 + 3 * c));
+                for (LivingEntity entity : list) {
+                    if (entity != null&&entity.getTags().contains("starchain")) {
+                        entity.hurt(DamageSource.playerAttack(player),event.getAmount()*(0.2F+0.1F*c));
                     }
                 }
             }

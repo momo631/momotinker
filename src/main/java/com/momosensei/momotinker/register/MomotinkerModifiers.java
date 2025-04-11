@@ -58,5 +58,9 @@ public class MomotinkerModifiers {
     public static final StaticModifier<Origin> origin=MODIFIERS.register("origin", Origin::new);
     public static final StaticModifier<Significance> significance=MODIFIERS.register("significance", Significance::new);
     public static final StaticModifier<Blank> blank=MODIFIERS.register("blank", Blank::new);
+    public static final StaticModifier<FlameBath> flamebath=MODIFIERS.register("flamebath", FlameBath::new);
+    public static final StaticModifier<StarfallArrow> starfallarrow=MODIFIERS.register("starfallarrow", StarfallArrow::new);
+    public static final StaticModifier<ExplosiveSword> explosivesword=MODIFIERS.register("explosivesword", ExplosiveSword::new);
+    public static final StaticModifier<BlessingOfMeteor> blessingofmeteor=MODIFIERS.register("blessingofmeteor", BlessingOfMeteor::new);
 
 }

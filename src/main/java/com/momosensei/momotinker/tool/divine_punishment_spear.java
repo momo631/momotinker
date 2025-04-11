@@ -3,7 +3,7 @@ package com.momosensei.momotinker.tool;
 import com.momosensei.momotinker.Momotinker;
 import com.momosensei.momotinker.entity.CleanseEntity;
 import com.momosensei.momotinker.entity.MomotinkerEntitiesCreate;
-import com.momosensei.momotinker.event.CleanseSpawnEvent;
+import com.momosensei.momotinker.event.EntitySpawnEvent;
 import com.momosensei.momotinker.mobs.CoolTimeA;
 import com.momosensei.momotinker.network.Channel;
 import com.momosensei.momotinker.network.packet.CoolTimeChargeA;
@@ -208,7 +208,7 @@ public class divine_punishment_spear extends ModifiableItem {
                 if (a>0&&b>0&&i>=100) {
                     player.giveExperiencePoints(-tool.getPersistentData().getInt(breakthroughstar)*5);
                     Vec2 pos = new Vec2((float) (player.getX()), (float) (player.getZ()));
-                    CleanseSpawnEvent event1 = new CleanseSpawnEvent(new Vec3(pos.x, player.getY() + 100, pos.y));
+                    EntitySpawnEvent event1 = new EntitySpawnEvent(new Vec3(pos.x, player.getY() + 100, pos.y));
                     MinecraftForge.EVENT_BUS.post(event1);
                     if (!event1.isCanceled()) {
                         double x =player.getLookAngle().x;

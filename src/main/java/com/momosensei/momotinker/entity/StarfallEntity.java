@@ -1,17 +1,17 @@
 package com.momosensei.momotinker.entity;
 
-import com.momosensei.momotinker.register.MomotinkerBlock;
 import com.momosensei.momotinker.register.MomotinkerConfig;
 import com.momosensei.momotinker.register.MomotinkerEntities;
-import net.minecraft.core.BlockPos;
+import com.momosensei.momotinker.util.attackUtil;
 import net.minecraft.core.Direction;
 import net.minecraft.core.particles.ParticleTypes;
 import net.minecraft.network.syncher.EntityDataAccessor;
 import net.minecraft.network.syncher.EntityDataSerializers;
 import net.minecraft.network.syncher.SynchedEntityData;
 import net.minecraft.server.level.ServerLevel;
-import net.minecraft.world.damagesource.DamageSource;
+import net.minecraft.world.InteractionHand;
 import net.minecraft.world.entity.EntityType;
+import net.minecraft.world.entity.LivingEntity;
 import net.minecraft.world.entity.MoverType;
 import net.minecraft.world.entity.player.Player;
 import net.minecraft.world.entity.projectile.Projectile;
@@ -19,23 +19,26 @@ import net.minecraft.world.entity.projectile.ProjectileUtil;
 import net.minecraft.world.level.ClipContext;
 import net.minecraft.world.level.Explosion;
 import net.minecraft.world.level.Level;
-import net.minecraft.world.level.block.Blocks;
-import net.minecraft.world.level.material.Fluids;
 import net.minecraft.world.phys.BlockHitResult;
 import net.minecraft.world.phys.EntityHitResult;
 import net.minecraft.world.phys.HitResult;
 import net.minecraft.world.phys.Vec3;
+import slimeknights.tconstruct.library.tools.nbt.ToolStack;
+import slimeknights.tconstruct.library.utils.Util;
 
 import java.util.List;
 
-public class MeteorEntity extends Projectile {
+public class StarfallEntity extends Projectile {
+    public ToolStack tool;
+    public float damage=0;
+    public float damagemultiplier=0;
     boolean config = MomotinkerConfig.explosion_destroys_limit.get();
-    private static final EntityDataAccessor<Byte> EXPLOSION_POWER = SynchedEntityData.defineId(MeteorEntity.class, EntityDataSerializers.BYTE);
-    public MeteorEntity(EntityType<? extends Projectile> p_37248_, Level p_37249_) {
+    private static final EntityDataAccessor<Byte> EXPLOSION_POWER = SynchedEntityData.defineId(StarfallEntity.class, EntityDataSerializers.BYTE);
+    public StarfallEntity(EntityType<? extends Projectile> p_37248_, Level p_37249_) {
         super(p_37248_, p_37249_);
     }
-    public MeteorEntity(Level level, double x, double y, double z, Vec3 movement){
-        this(MomotinkerEntities.meteor_entity.get(), level);
+    public StarfallEntity(Level level, double x, double y, double z, Vec3 movement){
+        this(MomotinkerEntities.starfall_entity.get(), level);
         this.setPos(x,y,z);
         this.setDeltaMovement(movement);
     }
@@ -45,23 +48,20 @@ public class MeteorEntity extends Projectile {
         super.tick();
         this.tickCount++;
         if (this.tickCount>1200) this.discard();
-        if (this.getDeltaMovement().length() > 1) {
-            this.setDeltaMovement(this.getDeltaMovement().scale(0.9));
-        }
-        this.setDeltaMovement(this.getDeltaMovement().add(0, -0.25, 0));
+        this.setDeltaMovement(this.getDeltaMovement().add(0, -0.35, 0));
         HitResult hitresult = this.level.clip(new ClipContext(this.position(), this.position().add(this.getDeltaMovement()), ClipContext.Block.COLLIDER, ClipContext.Fluid.NONE, this));
         EntityHitResult entityhitresult = ProjectileUtil.getEntityHitResult(this.level,this,this.position(), this.position().add(this.getDeltaMovement()),this.getBoundingBox().expandTowards(this.getDeltaMovement()).inflate(1),this::canHitEntity);
         super.move(MoverType.SELF,this.getDeltaMovement());
         if (entityhitresult != null && entityhitresult.getType() != HitResult.Type.MISS) {
             hitresult = entityhitresult;
         }
-        if (this.level instanceof ServerLevel serverLevel&&tickCount%5==0){
+        if (this.level instanceof ServerLevel serverLevel&&tickCount%2==0){
             for (int i = 0; i <= 360; i++) {
                 double rad = i * 0.017453292519943295;
-                double r = 1D;
+                double r = 0.2D;
                 double x = r * Math.cos(rad);
                 double z = r * Math.sin(rad);
-                serverLevel.sendParticles(ParticleTypes.FLAME, this.getX(), this.getY(), this.getZ(), 9 / 10, x, r, z, 2);
+                serverLevel.sendParticles(ParticleTypes.FLAME, this.getX(), this.getY()-1.5, this.getZ(), 9 / 10, x, r, z, 6);
             }
         }
         if (hitresult.getType()!= HitResult.Type.MISS){
@@ -75,10 +75,12 @@ public class MeteorEntity extends Projectile {
     @Override
     protected void onHitEntity(EntityHitResult p_37259_) {
         super.onHitEntity(p_37259_);
-        meteorExplode();
+        Explode();
     }
-
-    public void meteorExplode(){
+    public void setToolstack(ToolStack tool){
+        this.tool =tool;
+    }
+    public void Explode(){
         if (!this.level.isClientSide) {
             Explosion.BlockInteraction blockInteraction;
             if (config) {
@@ -87,21 +89,11 @@ public class MeteorEntity extends Projectile {
                 blockInteraction=Explosion.BlockInteraction.NONE;
             }
             Explosion explosion =this.level.explode(this, this.getX(), this.getY(), this.getZ(), this.getEntityData().get(EXPLOSION_POWER) * 0.1f, true, blockInteraction);
-            List<BlockPos> list = explosion.getToBlow();
-            List<Player> players = explosion.getHitPlayers().keySet().stream().toList();
-            boolean generatedPress =false;
-            for (BlockPos blockPos : list) {
-                if ((this.level.getBlockState(blockPos).isAir() || this.level.getBlockState(blockPos).is(Blocks.FIRE) || !(this.level.getFluidState(blockPos).is(Fluids.EMPTY))) && this.level.getBlockState(blockPos.below()).isCollisionShapeFullBlock(this.level, blockPos)) {
-                    if (!generatedPress) {
-                        this.level.setBlockAndUpdate(blockPos, MomotinkerBlock.meteor_nucleus_block.get().defaultBlockState());
-                        generatedPress = true;
-                    }
-                }
-            }
-            for (Player player:players){
-                if (player!=null){
-                    player.invulnerableTime =0;
-                    player.hurt(DamageSource.explosion(explosion),120);
+            List<LivingEntity> lis = this.level.getEntitiesOfClass(LivingEntity.class, this.getBoundingBox().inflate(8));
+            for (LivingEntity entity : lis) {
+                if (entity != null&&this.getOwner() instanceof Player player&&entity!=this.getOwner()) {
+                    entity.invulnerableTime = 0;
+                    attackUtil.attackEntity(this.tool, player, InteractionHand.MAIN_HAND, entity, ()->1, true, Util.getSlotType(InteractionHand.MAIN_HAND), this.damage, this.damagemultiplier,false, true, true,false);
                 }
             }
         }
@@ -111,7 +103,7 @@ public class MeteorEntity extends Projectile {
     @Override
     protected void onHitBlock(BlockHitResult p_37258_) {
         super.onHitBlock(p_37258_);
-        meteorExplode();
+        Explode();
     }
 
     @Override
