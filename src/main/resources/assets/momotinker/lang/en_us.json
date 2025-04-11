@@ -10,6 +10,7 @@
   "effect.momotinker.fallingpreparation": "falling preparation",
   "effect.momotinker.fallingstar": "falling star",
   "effect.momotinker.censored": "??????????",
+  "effect.momotinker.flamebatharmor": "Flame Bath Armor",
 
   "fluid.momotinker.molten_laomo": "Molten Momo",
   "fluid.momotinker.molten_arriving_at_the_other_shore": "Molten Other Shore",
@@ -304,7 +305,7 @@
 
   "modifier.momotinker.dominate": "Dominate",
   "modifier.momotinker.dominate.flavor": "§cProud of everything§",
-  "modifier.momotinker.dominate.description": "Each level receives a 50% stack bonus for most attributes. When attacked by monsters with a maximum health lower than their maximum total health level * 20%, they only receive 70% damage (the same name only takes effect once)",
+  "modifier.momotinker.dominate.description": "Each level receives a 70% stack bonus for most attributes. When attacked by monsters with a maximum health lower than their maximum total health level * 20%, they only receive 70% damage (the same name only takes effect once)",
   "modifier.momotinker.tooltip.dominate1": "The current threshold for triggering damage reduction is:",
 
   "modifier.momotinker.overdisdainsin": "Over disdain sin",
@@ -374,11 +375,11 @@
 
   "modifier.momotinker.superancientmetals": "Super Ancient Metals",
   "modifier.momotinker.superancientmetals.flavor": "A peculiar metal from ancient times that appears ordinary on the surface",
-  "modifier.momotinker.superancientmetals.description": "The durability consumption of the tool is reduced by 50%, and most attributes are increased by 20%, which may evolve due to certain circumstances",
+  "modifier.momotinker.superancientmetals.description": "The durability consumption of the tool is reduced by 50%, and most attributes are increased by 40%, which may evolve due to certain circumstances",
 
   "modifier.momotinker.superancientmetalsreal": "Super Ancient Metals-Real",
   "modifier.momotinker.superancientmetalsreal.flavor": "Unique metal from ancient times, exhibiting a unique posture due to the awakening of 'From Brilliance'",
-  "modifier.momotinker.superancientmetalsreal.description": "The durability consumption of the tool is reduced by 90%, and most attributes are increased by 50%. It will provide unique effects based on the awakening results from 'From Brilliance'",
+  "modifier.momotinker.superancientmetalsreal.description": "The durability consumption of the tool is reduced by 90%, and most attributes are increased by 80%. It will provide unique effects based on the awakening results from 'From Brilliance'",
   "modifier.momotinker.tooltip.superancientmetalsreal1": "[From Brilliance]Certification: Divine Punishment Spear - Stained with Blood",
   "modifier.momotinker.tooltip.superancientmetalsreal2": "This tool attack will ignore armor and will not cause invincible frames",
   "modifier.momotinker.tooltip.superancientmetalsreal3": "[From Brilliance]Certification: Divine Punishment Spear - Starry Sky",
@@ -455,6 +456,23 @@
   "modifier.momotinker.blank.description": "When the deputy holds the 'Conceptual Endpoint · Nihilism', Press 'Category Example' can consume one item to release the '§k Final Poem §r'(Global cooling for 600s), enter the reading bar, and draw a period on the World Living Chapter at the end of the time (death in the reading bar will be interrupted and enter a cooling period of 300s)",
   "modifier.momotinker.tooltip.blank1": "Cooling residue of [Chapter 3: Blank]:",
   "msg.blank1": "§oRiver will flow upstream and return to the clouds","msg.blank2": "§oThe flying bird will return to its eggshell and form an egg again","msg.blank3": "§oTake a breath, one last time——","msg.blank4": "§oYour laughter, tears, love and hate will all sink into eternal 'nothingness'",
-  "msg.blank5": "§oNo pain, no sorrow, only non-existent peace","msg.blank6": "§oI am the writer of 'nothingness', silently composing poems about all things","msg.blank7": "§oSleep, creatures, you will no longer exist"
+  "msg.blank5": "§oNo pain, no sorrow, only non-existent peace","msg.blank6": "§oI am the writer of 'nothingness', silently composing poems about all things","msg.blank7": "§oSleep, creatures, you will no longer exist",
+
+  "modifier.momotinker.flamebath": "Flame Bath",
+  "modifier.momotinker.flamebath.flavor": "Using the energy of shooting stars to envelop oneself",
+  "modifier.momotinker.flamebath.description": "Press 'Category Example' while wearing to obtain a 120s 'Flame Bath Armor' effect, with a level of the total worn level and a cooling time of 240s\n§6[Flame Bath Armor]:§rObtain 60% * level armor and 40% * level armor toughness during the duration, and repel nearby creatures every 5s",
+  "modifier.momotinker.tooltip.flamebath1": "Cooling residue of [Flame Bath]:",
+
+  "modifier.momotinker.starfallarrow": "Star Fall Arrow",
+  "modifier.momotinker.starfallarrow.flavor": "Resonance with shooting stars",
+  "modifier.momotinker.starfallarrow.description": "After the arrow hits the creature, it will summon a shooting star above its head to quickly fall, explode on the ground, and cause range damage",
+
+  "modifier.momotinker.explosivesword": "Explosive Sword",
+  "modifier.momotinker.explosivesword.flavor": "Concentrate the energy of shooting stars into one sword",
+  "modifier.momotinker.explosivesword.description": "Melee attacks will explode once at the target location, causing extra damage (this feature cannot be triggered by extra attacks)",
+
+  "modifier.momotinker.blessingofmeteor": "Blessing Of Meteor",
+  "modifier.momotinker.blessingofmeteor.flavor": "The shooting stars generously bless you",
+  "modifier.momotinker.blessingofmeteor.description": "Each level receives one slot for each of the three types, and each level receives a 40% stacking bonus for most attributes"
 
 }

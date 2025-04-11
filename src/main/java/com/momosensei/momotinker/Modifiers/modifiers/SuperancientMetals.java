@@ -41,19 +41,19 @@ public class SuperancientMetals extends momomodifier {
     @Override
     public void addToolStats(IToolContext context, ModifierEntry modifier, ModifierStatsBuilder builder) {
         if (modifier.getLevel() > 0) {
-            ToolStats.DURABILITY.multiply(builder, 1.2);
-            ToolStats.ATTACK_SPEED.multiply(builder, 1.2);
-            ToolStats.ATTACK_DAMAGE.multiply(builder, 1.2);
-            ToolStats.ACCURACY.multiply(builder, 1.2);
-            ToolStats.DRAW_SPEED.multiply(builder, 1.2);
-            ToolStats.VELOCITY.multiply(builder, 1.2);
-            ToolStats.MINING_SPEED.multiply(builder, 1.2);
-            ToolStats.ARMOR.multiply(builder, 1.2);
-            ToolStats.ARMOR_TOUGHNESS.multiply(builder, 1.2);
-            ToolStats.PROJECTILE_DAMAGE.multiply(builder, 1.2);
-            ToolStats.KNOCKBACK_RESISTANCE.multiply(builder, 1.2);
-            ToolStats.BLOCK_AMOUNT.multiply(builder, 1.2);
-            ToolStats.BLOCK_ANGLE.multiply(builder, 1.2);
+            ToolStats.DURABILITY.multiply(builder, 1.4);
+            ToolStats.ATTACK_SPEED.multiply(builder, 1.4);
+            ToolStats.ATTACK_DAMAGE.multiply(builder, 1.4);
+            ToolStats.ACCURACY.multiply(builder, 1.4);
+            ToolStats.DRAW_SPEED.multiply(builder, 1.4);
+            ToolStats.VELOCITY.multiply(builder, 1.4);
+            ToolStats.MINING_SPEED.multiply(builder, 1.4);
+            ToolStats.ARMOR.multiply(builder, 1.4);
+            ToolStats.ARMOR_TOUGHNESS.multiply(builder, 1.4);
+            ToolStats.PROJECTILE_DAMAGE.multiply(builder, 1.4);
+            ToolStats.KNOCKBACK_RESISTANCE.multiply(builder, 1.4);
+            ToolStats.BLOCK_AMOUNT.multiply(builder, 1.4);
+            ToolStats.BLOCK_ANGLE.multiply(builder, 1.4);
         }
     }
     @Override

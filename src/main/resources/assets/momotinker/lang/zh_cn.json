@@ -10,6 +10,7 @@
   "effect.momotinker.fallingpreparation": "落星（准备）",
   "effect.momotinker.fallingstar": "落星",
   "effect.momotinker.censored": "??????????",
+  "effect.momotinker.flamebatharmor": "浴炎战衣",
 
   "fluid.momotinker.molten_laomo": "熔融墨",
   "fluid.momotinker.molten_arriving_at_the_other_shore": "熔融彼岸",
@@ -303,7 +304,7 @@
 
   "modifier.momotinker.dominate": "支配",
   "modifier.momotinker.dominate.flavor": "§c傲视一切§",
-  "modifier.momotinker.dominate.description": "每级获得叠乘的50%大部分属性加成，受到最大生命低于自身最大生命一定百分比的怪物攻击时只受到70%的伤害，数值为总等级*20%（同名只生效一次）",
+  "modifier.momotinker.dominate.description": "每级获得叠乘的70%大部分属性加成，受到最大生命低于自身最大生命一定百分比的怪物攻击时只受到70%的伤害，数值为总等级*20%（同名只生效一次）",
   "modifier.momotinker.tooltip.dominate1": "目前触发减伤的血量阈值为:",
 
   "modifier.momotinker.overdisdainsin": "尽蔑之罪",
@@ -373,11 +374,11 @@
 
   "modifier.momotinker.superancientmetals": "超古代金属",
   "modifier.momotinker.superancientmetals.flavor": "来自古代的奇特金属，表面看起来平平无奇",
-  "modifier.momotinker.superancientmetals.description": "工具的耐久消耗降低50%，大部分属性增加20%，可能会因为某些情况产生进化",
+  "modifier.momotinker.superancientmetals.description": "工具的耐久消耗降低50%，大部分属性增加40%，可能会因为某些情况产生进化",
 
   "modifier.momotinker.superancientmetalsreal": "超古代金属-解放",
   "modifier.momotinker.superancientmetalsreal.flavor": "来自古代的奇特金属，因古代神兵的苏醒而展现独特姿态",
-  "modifier.momotinker.superancientmetalsreal.description": "工具的耐久消耗降低90%，大部分属性增加50%，会根据古代神兵的觉醒结果提供独特效果",
+  "modifier.momotinker.superancientmetalsreal.description": "工具的耐久消耗降低90%，大部分属性增加80%，会根据古代神兵的觉醒结果提供独特效果",
   "modifier.momotinker.tooltip.superancientmetalsreal1": "古代神兵认证:天谴之矛-染血",
   "modifier.momotinker.tooltip.superancientmetalsreal2": "此工具攻击将无视护甲且不造成无敌帧",
   "modifier.momotinker.tooltip.superancientmetalsreal3": "古代神兵认证:天谴之矛-星辰",
@@ -457,20 +458,20 @@
   "msg.blank5": "§o没有痛苦，没有哀伤，只有未曾存在的安宁","msg.blank6": "§o吾乃‘无’之书写者，以沉默著就万物的诗篇","msg.blank7": "§o睡吧生灵们，你们将不复存在",
 
   "modifier.momotinker.flamebath": "星炎战衣",
-  "modifier.momotinker.flamebath.flavor": "",
-  "modifier.momotinker.flamebath.description": "穿戴时按下特殊技能按键获得120s的“浴炎战衣”效果，等级为已穿戴总等级，冷却240s（持续期间再次释放会覆盖上一个效果）\n[浴炎战衣]:持续期间获得60%*等级的护甲和40%*等级的护甲韧性，并且每5秒击退近身的生物",
+  "modifier.momotinker.flamebath.flavor": "运用流星的能量包裹自身",
+  "modifier.momotinker.flamebath.description": "穿戴时按下特殊技能按键获得120s的“浴炎战衣”效果，等级为已穿戴总等级，冷却240s（持续期间再次释放会覆盖上一个效果）\n§6[浴炎战衣]:持续期间获得60%*等级的护甲和40%*等级的护甲韧性，并且每5秒击退近身的生物",
   "modifier.momotinker.tooltip.flamebath1": "“星炎战衣”冷却还剩:",
 
   "modifier.momotinker.starfallarrow": "星落箭",
-  "modifier.momotinker.starfallarrow.flavor": "",
+  "modifier.momotinker.starfallarrow.flavor": "与流星共鸣",
   "modifier.momotinker.starfallarrow.description": "箭矢命中生物后会在其头顶召唤一个流星快速落下，落地爆炸并造成范围伤害",
 
   "modifier.momotinker.explosivesword": "星爆剑",
-  "modifier.momotinker.explosivesword.flavor": "",
+  "modifier.momotinker.explosivesword.flavor": "将流星的能量汇聚一剑",
   "modifier.momotinker.explosivesword.description": "近战攻击会在目标位置爆炸一次造成格外伤害（额外攻击无法触发此特性）",
 
   "modifier.momotinker.blessingofmeteor": "流星祝福",
-  "modifier.momotinker.blessingofmeteor.flavor": "",
-  "modifier.momotinker.blessingofmeteor.description": "每等级获得三种槽位各一个，并且每级获得叠乘的125%大部分属性加成"
+  "modifier.momotinker.blessingofmeteor.flavor": "流星们慷慨的祝福着你",
+  "modifier.momotinker.blessingofmeteor.description": "每等级获得三种槽位各一个，并且每级获得叠乘的40%大部分属性加成"
 
 }

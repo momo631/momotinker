@@ -17,7 +17,8 @@
     "stained_blood_gold": "#AF3423",
     "starry_mysterious_gold": "#FEFB00",
     "devouring_demon_gold": "#CC00FF",
-    "nihilism": "#FFFFFF"
+    "nihilism": "#FFFFFF",
+    "meteor_nucleus": "#DB621C"
   },
   "modifier.momotinker": {
     "laomochuji": "#596d99",
@@ -62,6 +63,10 @@
     "ultimatedarkness": "#3F3F3F",
     "origin": "#FFFFFF",
     "significance": "#FFFFFF",
-    "blank": "#FFFFFF"
+    "blank": "#FFFFFF",
+    "flamebath": "#DB621C",
+    "starfallarrow": "#734134",
+    "explosivesword": "#59250B",
+    "blessingofmeteor": "#F6AE50"
   }
 }

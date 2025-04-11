@@ -42,19 +42,19 @@ public class SuperancientMetalsReal extends momomodifier {
     @Override
     public void addToolStats(IToolContext context, ModifierEntry modifier, ModifierStatsBuilder builder) {
         if (modifier.getLevel() > 0) {
-            ToolStats.DURABILITY.multiply(builder, 1.5);
-            ToolStats.ATTACK_SPEED.multiply(builder, 1.5);
-            ToolStats.ATTACK_DAMAGE.multiply(builder, 1.5);
-            ToolStats.ACCURACY.multiply(builder, 1.5);
-            ToolStats.DRAW_SPEED.multiply(builder, 1.5);
-            ToolStats.VELOCITY.multiply(builder, 1.5);
-            ToolStats.MINING_SPEED.multiply(builder, 1.5);
-            ToolStats.ARMOR.multiply(builder, 1.5);
-            ToolStats.ARMOR_TOUGHNESS.multiply(builder, 1.5);
-            ToolStats.PROJECTILE_DAMAGE.multiply(builder, 1.5);
-            ToolStats.KNOCKBACK_RESISTANCE.multiply(builder, 1.5);
-            ToolStats.BLOCK_AMOUNT.multiply(builder, 1.5);
-            ToolStats.BLOCK_ANGLE.multiply(builder, 1.5);
+            ToolStats.DURABILITY.multiply(builder, 1.8);
+            ToolStats.ATTACK_SPEED.multiply(builder, 1.8);
+            ToolStats.ATTACK_DAMAGE.multiply(builder, 1.8);
+            ToolStats.ACCURACY.multiply(builder, 1.8);
+            ToolStats.DRAW_SPEED.multiply(builder, 1.8);
+            ToolStats.VELOCITY.multiply(builder, 1.8);
+            ToolStats.MINING_SPEED.multiply(builder, 1.8);
+            ToolStats.ARMOR.multiply(builder, 1.8);
+            ToolStats.ARMOR_TOUGHNESS.multiply(builder, 1.8);
+            ToolStats.PROJECTILE_DAMAGE.multiply(builder, 1.8);
+            ToolStats.KNOCKBACK_RESISTANCE.multiply(builder, 1.8);
+            ToolStats.BLOCK_AMOUNT.multiply(builder, 1.8);
+            ToolStats.BLOCK_ANGLE.multiply(builder, 1.8);
         }
     }
     @Override
@@ -80,7 +80,7 @@ public class SuperancientMetalsReal extends momomodifier {
             }
         }
         if (a!=null&&a.getTags().contains("beconquered")) {
-            event.setAmount(event.getAmount() * 1.5F);
+            event.setAmount(event.getAmount() * 1.8F);
         }
     }
 
