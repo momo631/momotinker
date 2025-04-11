@@ -28,7 +28,7 @@ public class StarfallEntityRenderer extends EntityRenderer<StarfallEntity> {
         matrixStackIn.mulPose(Axis.XP.rotationDegrees(entity.tickCount%360));
         matrixStackIn.mulPose(Axis.ZP.rotationDegrees(entity.tickCount%360));
         matrixStackIn.translate(-0.03125, -0.09375, 0);
-        matrixStackIn.scale(1.5f,1.5f,1.5f);
+        matrixStackIn.scale(3,3,3);
         this.itemRenderer.renderStatic(new ItemStack(MomotinkerBlock.meteor_nucleus_block.get()), ItemDisplayContext.GROUND, p_114490_, OverlayTexture.NO_OVERLAY, matrixStackIn, p_114489_, entity.level(),entity.getId());
         matrixStackIn.popPose();
     }
