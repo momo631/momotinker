@@ -232,8 +232,8 @@ public class divine_punishment_spear extends ModifiableItem {
     @Override
     public void onUseTick(Level level, LivingEntity living, ItemStack stack, int chargeRemaining) {
         if (living instanceof ServerPlayer player) {
-            int a = ModifierUtil.getModifierLevel(player.getMainHandItem(), MomotinkerModifiers.breakthroughstars.getId());
-            int b = ModifierUtil.getModifierLevel(player.getMainHandItem(), MomotinkerModifiers.cleansetheworld.getId());
+            int a = ModifierUtil.getModifierLevel(stack, MomotinkerModifiers.breakthroughstars.getId());
+            int b = ModifierUtil.getModifierLevel(stack, MomotinkerModifiers.cleansetheworld.getId());
             if (a==0&&b==0) {
                 float perc = Mth.clamp((float) (this.getUseDuration(stack) - chargeRemaining) / 20, 0, 1);
                 Channel.sendToPlayer(new ToolsTimeCharge(perc), player);

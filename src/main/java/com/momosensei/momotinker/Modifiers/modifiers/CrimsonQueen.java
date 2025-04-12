@@ -53,7 +53,7 @@ public class CrimsonQueen extends momomodifier {
     public void onInventoryTick(IToolStackView tool, ModifierEntry modifierEntry, Level level, LivingEntity entity, int index, boolean b, boolean b1, ItemStack itemStack) {
         if (entity instanceof ServerPlayer player&&player.getItemBySlot(EquipmentSlot.MAINHAND).is(trigger_blade.get())&&player.level instanceof ServerLevel serverLevel) {
             ModDataNBT a = tool.getPersistentData();
-            if (ModifierUtil.getModifierLevel(player.getMainHandItem(), MomotinkerModifiers.crimsonqueen.getId()) > 0) {
+            if (tool.getModifierLevel(MomotinkerModifiers.crimsonqueen.getId()) > 0) {
                 if (a.getFloat(crimsonlayers) > 0) {
                     if (a.getFloat(crimsontime) > 0 && player.tickCount % 20 == 0) {
                         a.putFloat(crimsontime, a.getFloat(crimsontime) - 1);
@@ -67,7 +67,7 @@ public class CrimsonQueen extends momomodifier {
                 float perc = Mth.clamp(a.getFloat(crimsontime) / 20, 0, 1);
                 Channel.sendToPlayer(new ToolsTimeCharge(perc),player);
             }
-            if (ModifierUtil.getModifierLevel(player.getMainHandItem(), MomotinkerModifiers.crimsonqueen.getId()) == 0) {
+            if (tool.getModifierLevel(MomotinkerModifiers.crimsonqueen.getId()) == 0) {
                 a.putFloat(crimsonlayers, 0);
             }
             if (a.getFloat(crimsonlayers)==0){

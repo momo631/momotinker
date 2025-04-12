@@ -13,12 +13,11 @@ import net.minecraft.world.phys.EntityHitResult;
 import net.minecraft.world.phys.Vec3;
 import net.minecraftforge.common.MinecraftForge;
 import slimeknights.tconstruct.library.modifiers.ModifierEntry;
+import slimeknights.tconstruct.library.modifiers.hook.build.ConditionalStatModifierHook;
 import slimeknights.tconstruct.library.tools.nbt.ModifierNBT;
 import slimeknights.tconstruct.library.tools.nbt.NamespacedNBT;
 import slimeknights.tconstruct.library.tools.nbt.ToolStack;
 import slimeknights.tconstruct.library.tools.stat.ToolStats;
-
-import static slimeknights.tconstruct.library.tools.stat.ToolStats.ACCURACY;
 
 
 public class StarfallArrow extends momomodifier {
@@ -29,9 +28,9 @@ public class StarfallArrow extends momomodifier {
         return true;
     }
 
-    public static float getDamageMultiplier(ToolStack tool) {
-        float b = RANDOM.nextInt((int) (tool.getStats().get(ACCURACY) * 100));
-        return (1F + 0.005F * b + 0.2F * tool.getStats().get(ToolStats.VELOCITY));
+    public static float getDamageMultiplier(ToolStack tool,LivingEntity living) {
+        float velocity = ConditionalStatModifierHook.getModifiedStat(tool, living, ToolStats.VELOCITY);
+        return (0.5F*velocity);
     }
     @Override
     public boolean onProjectileHitEntity(ModifierNBT modifiers, NamespacedNBT persistentData, ModifierEntry modifier, Projectile projectile, EntityHitResult hit, @javax.annotation.Nullable LivingEntity attacker, @javax.annotation.Nullable LivingEntity target) {
@@ -48,8 +47,8 @@ public class StarfallArrow extends momomodifier {
                 entity.noPhysics = true;
                 entity.setOwner(player);
                 entity.setToolstack(tool);
-                entity.damagemultiplier = getDamageMultiplier(tool)*0.5f;
-                entity.damage = (float) (tool.getStats().get(ToolStats.ATTACK_DAMAGE)+arrow.getBaseDamage());
+                entity.damagemultiplier = getDamageMultiplier(tool,player);
+                entity.damage = (float) (arrow.getBaseDamage() - 2 + tool.getStats().get(ToolStats.PROJECTILE_DAMAGE));
                 entity.setExplosionPower((byte)50);
                 level.addFreshEntity(entity);
             }
