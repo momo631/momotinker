@@ -81,7 +81,8 @@ public class KeyAInputPKT {
                 player.setItemInHand(InteractionHand.MAIN_HAND, tools.createStack());
             }
 
-            if (player!=null) {
+            if (player!=null&&(player.getMainHandItem().is(MomotinkerItem.coronal_key.get())&&player.getOffhandItem().is(MomotinkerItem.moon_lock.get())
+                    ||player.getMainHandItem().is(MomotinkerItem.eclipse_container.get())&&player.getOffhandItem().is(ItemStack.EMPTY.getItem()))) {
                 ItemStack stack1 = player.getMainHandItem();
                 ItemStack stack2 = player.getOffhandItem();
                 ToolStack tool1 = ToolStack.from(stack1);
