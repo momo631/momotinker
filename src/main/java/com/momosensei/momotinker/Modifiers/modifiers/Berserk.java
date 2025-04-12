@@ -15,7 +15,6 @@ import net.minecraftforge.common.MinecraftForge;
 import net.minecraftforge.event.entity.living.LivingHurtEvent;
 import slimeknights.mantle.client.TooltipKey;
 import slimeknights.tconstruct.library.modifiers.ModifierEntry;
-import slimeknights.tconstruct.library.tools.helper.ModifierUtil;
 import slimeknights.tconstruct.library.tools.item.armor.ModifiableArmorItem;
 import slimeknights.tconstruct.library.tools.nbt.IToolStackView;
 import slimeknights.tconstruct.library.tools.nbt.ModDataNBT;
@@ -34,7 +33,7 @@ public class Berserk extends momomodifier {
         LivingEntity a = event.getEntity();
         Entity b = event.getSource().getEntity();
         if (b instanceof Player player&&a !=null){
-            int d = getArmorModifierlevel(player,MomotinkerModifiers.berserk.getId());
+            int d = getAllModifierlevel(player,MomotinkerModifiers.berserk.getId());
             for (ItemStack stack : player.getInventory().armor) {
                 if (stack.getItem() instanceof ModifiableArmorItem) {
                     ModDataNBT c = ToolStack.from(stack).getPersistentData();
@@ -45,7 +44,7 @@ public class Berserk extends momomodifier {
             }
         }
         if (a instanceof Player player){
-            int d = getArmorModifierlevel(player,MomotinkerModifiers.berserk.getId());
+            int d = getAllModifierlevel(player,MomotinkerModifiers.berserk.getId());
             for (ItemStack stack : player.getInventory().armor) {
                 if (stack.getItem() instanceof ModifiableArmorItem) {
                     ModDataNBT c = ToolStack.from(stack).getPersistentData();
@@ -60,7 +59,7 @@ public class Berserk extends momomodifier {
     public void addTooltip(IToolStackView tool, ModifierEntry modifierEntry, @org.jetbrains.annotations.Nullable Player player, List<Component> tooltip, TooltipKey tooltipKey, TooltipFlag tooltipFlag) {
         ModDataNBT c = tool.getPersistentData();
         if (player!=null) {
-            int a = ModifierUtil.getModifierLevel(player.getMainHandItem(), MomotinkerModifiers.berserk.getId());
+            int a = tool.getModifierLevel(MomotinkerModifiers.berserk.getId());
             if (c.getFloat(berserker) == 0) {
                 tooltip.add(Component.translatable("modifier.momotinker.tooltip.berserk1").withStyle(ChatFormatting.DARK_RED));
             }

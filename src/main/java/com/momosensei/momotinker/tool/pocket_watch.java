@@ -5,6 +5,7 @@ import com.momosensei.momotinker.register.MomotinkerTools;
 import net.minecraft.core.BlockPos;
 import net.minecraft.core.particles.ParticleTypes;
 import net.minecraft.network.chat.Component;
+import net.minecraft.resources.ResourceKey;
 import net.minecraft.resources.ResourceLocation;
 import net.minecraft.server.level.ServerLevel;
 import net.minecraft.server.level.ServerPlayer;
@@ -20,6 +21,7 @@ import net.minecraft.world.item.UseAnim;
 import net.minecraft.world.level.Level;
 import net.minecraft.world.level.block.state.BlockState;
 import net.minecraftforge.common.MinecraftForge;
+import net.minecraftforge.common.util.FakePlayer;
 import net.minecraftforge.event.entity.living.LivingDeathEvent;
 import net.minecraftforge.eventbus.api.EventPriority;
 import org.jetbrains.annotations.Nullable;
@@ -43,6 +45,8 @@ import java.util.Iterator;
 import java.util.List;
 
 import static com.momosensei.momotinker.Momotinker.getResource;
+import static com.momosensei.momotinker.Momotinker.getResourceLocation;
+import static net.minecraft.core.registries.Registries.DIMENSION;
 
 public class pocket_watch extends ModifiableItem {
     public pocket_watch(Properties properties, ToolDefinition toolDefinition) {
@@ -109,7 +113,7 @@ public class pocket_watch extends ModifiableItem {
                 tool.getPersistentData().putFloat(getResource("pocketwatchx"), (float) player.getX());
                 tool.getPersistentData().putFloat(getResource("pocketwatchy"), (float) player.getY());
                 tool.getPersistentData().putFloat(getResource("pocketwatchz"), (float) player.getZ());
-                tool.getPersistentData().putString(getResource("pocketwatchlevel"),player.level().dimension().location().toString());
+                tool.getPersistentData().putString(getResourceLocation("pocketwatchlevel"),player.level().dimension().location().toString());
                 player.getCooldowns().addCooldown(MomotinkerTools.pocket_watch.get(),10);
             }else if (!player.isShiftKeyDown()&&tool.getPersistentData().getInt(pocketwatch)==0) {
                 int a = (int) (600/ (0.2f*ConditionalStatModifierHook.getModifiedStat(tool,player,ToolStats.ATTACK_SPEED))+(0.1f*ConditionalStatModifierHook.getModifiedStat(tool,player,ToolStats.ATTACK_DAMAGE)));
@@ -130,10 +134,10 @@ public class pocket_watch extends ModifiableItem {
         if (world.isClientSide) {
             return false;
         }
-        if (living instanceof ServerPlayer player) {
-            if (!tool.getPersistentData().getString(getResource("pocketwatchlevel")).equals(living.level().dimension().location().toString())) {
-                return false;
-            }
+        if (living instanceof ServerPlayer player&&!(living instanceof FakePlayer)) {
+            ResourceKey<Level> level=ResourceKey.create(DIMENSION,getResourceLocation(tool.getPersistentData().getString(getResourceLocation("pocketwatchlevel"))));
+            if (player.getServer()==null)return false;
+            var server=player.getServer().getLevel(level);
             double x = tool.getPersistentData().getFloat(getResource("pocketwatchx"));
             double y = tool.getPersistentData().getFloat(getResource("pocketwatchy"));
             double z = tool.getPersistentData().getFloat(getResource("pocketwatchz"));
@@ -152,7 +156,9 @@ public class pocket_watch extends ModifiableItem {
                 }
             }
 
-            player.teleportTo(x,y,z);
+            if (server != null) {
+                player.teleportTo(server,x,y,z,0,0);
+            }
         }
         if (world instanceof ServerLevel serverWorld) {
             for (int i = 0; i < 32; ++i) {
@@ -195,8 +201,8 @@ public class pocket_watch extends ModifiableItem {
         int y = (int)tool.getPersistentData().getFloat(getResource("pocketwatchy"));
         int z = (int)tool.getPersistentData().getFloat(getResource("pocketwatchz"));
         builder.add(Component.translatable("item.momotinker.tooltip.pocket_watch2").append(x + ",").append(y + ",").append(z + ")"));
-        if (player != null && !tool.getPersistentData().getString(getResource("pocketwatchlevel")).equals(player.level().dimension().location().toString())) {
-            builder.add(Component.translatable("item.momotinker.tooltip.pocket_watch3"));
+        if (player != null) {
+            builder.add(Component.translatable("item.momotinker.tooltip.pocket_watch3").append(getResourceLocation(tool.getPersistentData().getString(getResourceLocation("pocketwatchlevel"))) + ""));
         }
 
         builder.addAllFreeSlots();

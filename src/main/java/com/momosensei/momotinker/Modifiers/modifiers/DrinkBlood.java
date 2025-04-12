@@ -77,7 +77,7 @@ public class DrinkBlood extends momomodifier {
 
     public void addTooltip(IToolStackView tool, ModifierEntry modifierEntry, @org.jetbrains.annotations.Nullable Player player, List<Component> tooltip, TooltipKey tooltipKey, TooltipFlag tooltipFlag) {
         if (player != null) {
-            int a = ModifierUtil.getModifierLevel(player.getItemBySlot(EquipmentSlot.MAINHAND), MomotinkerModifiers.drinkblood.getId());
+            int a = tool.getModifierLevel(MomotinkerModifiers.drinkblood.getId());
             tooltip.add(net.minecraft.network.chat.Component.translatable("modifier.momotinker.tooltip.drinkblood1").append(player.getMaxHealth()*a*0.1f+"").withStyle(ChatFormatting.DARK_GRAY));
             tooltip.add(net.minecraft.network.chat.Component.translatable("modifier.momotinker.tooltip.drinkblood2").append(a*60+"%（").append(Component.translatable("modifier.momotinker.tooltip.drinkblood3")).append(a*10+"%）").withStyle(ChatFormatting.DARK_GRAY));
             tooltip.add(net.minecraft.network.chat.Component.translatable("modifier.momotinker.tooltip.drinkblood4").append(a*30+"%（").append(Component.translatable("modifier.momotinker.tooltip.drinkblood3")).append(a*10+"%）").withStyle(ChatFormatting.DARK_GRAY));

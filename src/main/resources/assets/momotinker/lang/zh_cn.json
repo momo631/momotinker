@@ -184,10 +184,10 @@
   "item.momotinker.moon_lock.description": "[不存在之影]\n右键使用期间可获得50%的减伤并有50%的概率无视弹射物攻击，满足一定条件下时按下工具技能可合体为“日蚀容器”",
 
   "item.momotinker.pocket_watch": "遗落怀表",
-  "item.momotinker.pocket_watch.description": "[古代神兵]:遗落于终末之城\n潜行时右键记录当前位置，若背包存在该工具时死亡会直接传送并恢复生命，免疫此次死亡并陷入冷却（与记录位置不同维度时无法使用，可以右键主动使用但不会恢复生命）",
+  "item.momotinker.pocket_watch.description": "[古代神兵]:遗落于终末之城\n潜行时右键记录当前位置，若背包存在该工具时死亡会直接传送并恢复生命，免疫此次死亡并陷入冷却（可以右键主动使用但不会恢复生命）",
   "item.momotinker.tooltip.pocket_watch1": "目前剩余冷却:",
   "item.momotinker.tooltip.pocket_watch2": "目前记录的位置为:(",
-  "item.momotinker.tooltip.pocket_watch3": "目前所在位置与记录位置不在同一维度，无法使用！",
+  "item.momotinker.tooltip.pocket_watch3": "目前记录的维度为:",
 
   "item.momotinker.chain_sword": "链锯剑",
   "item.momotinker.chain_sword.description": "[双手武器]\n右键使用期间可对前方小范围生物进行持续打击，使用时间过长则会过热无法正常使用，攻速越高伤害越高",
@@ -459,7 +459,7 @@
 
   "modifier.momotinker.flamebath": "星炎战衣",
   "modifier.momotinker.flamebath.flavor": "运用流星的能量包裹自身",
-  "modifier.momotinker.flamebath.description": "穿戴时按下特殊技能按键获得120s的“浴炎战衣”效果，等级为已穿戴总等级，冷却240s(持续期间再次释放会覆盖上一个效果)\n§6[浴炎战衣]:持续期间获得60%*等级的护甲和40%*等级的护甲韧性，并且每5秒击退近身的生物",
+  "modifier.momotinker.flamebath.description": "穿戴时按下特殊技能按键获得120s的“浴炎战衣”效果，等级为已穿戴总等级，冷却240s（持续期间再次释放会覆盖上一个效果）\n§6[浴炎战衣]:持续期间获得60%*等级的护甲和40%*等级的护甲韧性，并且每5秒击退近身的生物",
   "modifier.momotinker.tooltip.flamebath1": "“星炎战衣”冷却还剩:",
 
   "modifier.momotinker.starfallarrow": "星落箭",

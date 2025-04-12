@@ -53,6 +53,11 @@ public class Momotinker {
     public static ResourceLocation getResource(String id) {
         return new ResourceLocation("momotinker", id);
     }
+
+    public static ResourceLocation getResourceLocation(String id) {
+        return new ResourceLocation(id);
+    }
+
     public static <T> TinkerDataCapability.TinkerDataKey<T> createKey(String name) {
         return TinkerDataCapability.TinkerDataKey.of(getResource(name));
     }
