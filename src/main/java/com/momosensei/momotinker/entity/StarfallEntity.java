@@ -50,7 +50,7 @@ public class StarfallEntity extends Projectile {
         if (this.tickCount>1200) this.discard();
         this.setDeltaMovement(this.getDeltaMovement().add(0, -0.35, 0));
         HitResult hitresult = this.level.clip(new ClipContext(this.position(), this.position().add(this.getDeltaMovement()), ClipContext.Block.COLLIDER, ClipContext.Fluid.NONE, this));
-        EntityHitResult entityhitresult = ProjectileUtil.getEntityHitResult(this.level,this,this.position(), this.position().add(this.getDeltaMovement()),this.getBoundingBox().expandTowards(this.getDeltaMovement()).inflate(1),this::canHitEntity);
+        EntityHitResult entityhitresult = ProjectileUtil.getEntityHitResult(this.level,this,this.position(), this.position().add(this.getDeltaMovement()),this.getBoundingBox().expandTowards(this.getDeltaMovement()).inflate(2),this::canHitEntity);
         super.move(MoverType.SELF,this.getDeltaMovement());
         if (entityhitresult != null && entityhitresult.getType() != HitResult.Type.MISS) {
             hitresult = entityhitresult;

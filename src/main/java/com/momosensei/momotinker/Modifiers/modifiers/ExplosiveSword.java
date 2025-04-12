@@ -47,7 +47,7 @@ public class ExplosiveSword extends momomodifier {
             }else {
                 blockInteraction=Explosion.BlockInteraction.NONE;
             }
-            Explosion explosion =level.explode(living, living.getX(), living.getY(), living.getZ(), 3, true, blockInteraction);
+            Explosion explosion =level.explode(player, living.getX(), living.getY(), living.getZ(), 3, true, blockInteraction);
             List<LivingEntity> lis = level.getEntitiesOfClass(LivingEntity.class, living.getBoundingBox().inflate(3));
             for (LivingEntity entity : lis) {
                 if (entity != null&&entity!=player) {
