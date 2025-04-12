@@ -15,8 +15,8 @@ import java.util.List;
 public class FlameBathArmor extends StaticEffect {
     public FlameBathArmor() {
         super(MobEffectCategory.BENEFICIAL, 16769263);
-        super.addAttributeModifier(Attributes.ARMOR, "F62FAE71-81FF-C7C6-321A-9EAE5730DA42", +0.6, AttributeModifier.Operation.MULTIPLY_TOTAL);
-        super.addAttributeModifier(Attributes.ARMOR_TOUGHNESS, "E512D0A8-EF5A-1052-2E84-A8ED78069C72", +0.4, AttributeModifier.Operation.MULTIPLY_TOTAL);
+        super.addAttributeModifier(Attributes.ARMOR, "94168FB1-54A3-EE85-49C7-395B48E46C04", +0.6, AttributeModifier.Operation.MULTIPLY_TOTAL);
+        super.addAttributeModifier(Attributes.ARMOR_TOUGHNESS, "77D9BF62-CD92-B29E-2208-C37A877FB151", +0.4, AttributeModifier.Operation.MULTIPLY_TOTAL);
     }
     @Override
     public boolean isDurationEffectTick(int pDuration, int pAmplifier) {
