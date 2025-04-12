@@ -28,7 +28,7 @@ public class MeteorEntityRenderer extends EntityRenderer<MeteorEntity> {
         matrixStackIn.mulPose(Vector3f.XP.rotationDegrees(entity.tickCount%360));
         matrixStackIn.mulPose(Vector3f.ZP.rotationDegrees(entity.tickCount%360));
         matrixStackIn.translate(-0.03125, -0.09375, 0);
-        matrixStackIn.scale(2,2,2);
+        matrixStackIn.scale(3,3,3);
         this.itemRenderer.renderStatic(new ItemStack(MomotinkerBlock.meteor_nucleus_block.get()), ItemTransforms.TransformType.GROUND, p_114490_, OverlayTexture.NO_OVERLAY, matrixStackIn, p_114489_, entity.getId());
         matrixStackIn.popPose();
     }
