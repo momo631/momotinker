@@ -125,6 +125,22 @@ public class KeyInputPKT {
                     }
                 }
             }
+            if (getMainhandModifierlevel(player,MomotinkerModifiers.berserk.getId()) > 0) {
+                ModDataNBT berserkdata = ToolStack.from(player.getMainHandItem()).getPersistentData();
+                if (berserkdata.getFloat(berserker) == 1) {
+                    berserkdata.putFloat(berserker, 0);
+                } else if (berserkdata.getFloat(berserker) == 0) {
+                    berserkdata.putFloat(berserker, 1);
+                }
+            }
+            if (getOffhandModifierlevel(player,MomotinkerModifiers.berserk.getId()) > 0) {
+                ModDataNBT berserkdata = ToolStack.from(player.getOffhandItem()).getPersistentData();
+                if (berserkdata.getFloat(berserker) == 1) {
+                    berserkdata.putFloat(berserker, 0);
+                } else if (berserkdata.getFloat(berserker) == 0) {
+                    berserkdata.putFloat(berserker, 1);
+                }
+            }
             if (ModifierUtil.getModifierLevel(player.getMainHandItem(), MomotinkerModifiers.drinkingdemon.getId()) > 0) {
                 ModDataNBT drinkingdemondata = ToolStack.from(player.getItemBySlot(EquipmentSlot.MAINHAND)).getPersistentData();
                 int a = drinkingdemondata.getInt(defenseenchant)+drinkingdemondata.getInt(meleeenchant)+drinkingdemondata.getInt(projectileenchant)+drinkingdemondata.getInt(toolsenchant)+drinkingdemondata.getInt(curseenchant);

@@ -293,5 +293,9 @@ public abstract class momomodifier extends Modifier implements MeleeDamageModifi
     public static int getMainhandModifierlevel(LivingEntity entity, ModifierId modifierId) {
         return ModifierUtil.getModifierLevel(entity.getItemBySlot(EquipmentSlot.MAINHAND), modifierId);
     }
+
+    public static int getOffhandModifierlevel(LivingEntity entity, ModifierId modifierId) {
+        return ModifierUtil.getModifierLevel(entity.getItemBySlot(EquipmentSlot.OFFHAND), modifierId);
+    }
 }
 

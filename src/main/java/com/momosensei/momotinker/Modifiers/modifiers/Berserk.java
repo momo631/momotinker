@@ -34,24 +34,38 @@ public class Berserk extends momomodifier {
         Entity b = event.getSource().getEntity();
         if (b instanceof Player player&&a !=null){
             int d = getAllModifierlevel(player,MomotinkerModifiers.berserk.getId());
+            float c=0;
             for (ItemStack stack : player.getInventory().armor) {
-                if (stack.getItem() instanceof ModifiableArmorItem) {
-                    ModDataNBT c = ToolStack.from(stack).getPersistentData();
-                    if (c.getFloat(berserker) >= 1 && d > 0) {
-                        event.setAmount(event.getAmount() * (1.4F + 0.3F * d));
-                    }
+                if (stack.getItem() instanceof ModifiableArmorItem&&getArmorModifierlevel(player,MomotinkerModifiers.berserk.getId())>0) {
+                    c += ToolStack.from(stack).getPersistentData().getFloat(berserker);
                 }
+            }
+            if (getMainhandModifierlevel(player,MomotinkerModifiers.berserk.getId())>0){
+                c += ToolStack.from(player.getMainHandItem()).getPersistentData().getFloat(berserker);
+            }
+            if (getOffhandModifierlevel(player,MomotinkerModifiers.berserk.getId())>0){
+                c += ToolStack.from(player.getOffhandItem()).getPersistentData().getFloat(berserker);
+            }
+            if (c >= 1 && d > 0) {
+                event.setAmount(event.getAmount() * (1.4F + 0.3F * d));
             }
         }
         if (a instanceof Player player){
             int d = getAllModifierlevel(player,MomotinkerModifiers.berserk.getId());
+            float c=0;
             for (ItemStack stack : player.getInventory().armor) {
-                if (stack.getItem() instanceof ModifiableArmorItem) {
-                    ModDataNBT c = ToolStack.from(stack).getPersistentData();
-                    if (c.getFloat(berserker) >= 1 && d > 0) {
-                        event.setAmount(event.getAmount() * (1.4F + 0.3F * d));
-                    }
+                if (stack.getItem() instanceof ModifiableArmorItem&&getArmorModifierlevel(player,MomotinkerModifiers.berserk.getId())>0) {
+                    c += ToolStack.from(stack).getPersistentData().getFloat(berserker);
                 }
+            }
+            if (getMainhandModifierlevel(player,MomotinkerModifiers.berserk.getId())>0){
+                c += ToolStack.from(player.getMainHandItem()).getPersistentData().getFloat(berserker);
+            }
+            if (getOffhandModifierlevel(player,MomotinkerModifiers.berserk.getId())>0){
+                c += ToolStack.from(player.getOffhandItem()).getPersistentData().getFloat(berserker);
+            }
+            if (c >= 1 && d > 0) {
+                event.setAmount(event.getAmount() * (1.4F + 0.3F * d));
             }
         }
     }
@@ -59,7 +73,7 @@ public class Berserk extends momomodifier {
     public void addTooltip(IToolStackView tool, ModifierEntry modifierEntry, @org.jetbrains.annotations.Nullable Player player, List<Component> tooltip, TooltipKey tooltipKey, TooltipFlag tooltipFlag) {
         ModDataNBT c = tool.getPersistentData();
         if (player!=null) {
-            int a = tool.getModifierLevel(MomotinkerModifiers.berserk.getId());
+            int a = getAllModifierlevel(player,MomotinkerModifiers.berserk.getId());
             if (c.getFloat(berserker) == 0) {
                 tooltip.add(Component.translatable("modifier.momotinker.tooltip.berserk1").withStyle(ChatFormatting.DARK_RED));
             }
