@@ -83,12 +83,15 @@ public class StarfallEntity extends Projectile {
     public void Explode(){
         if (!this.level().isClientSide) {
             Level.ExplosionInteraction explosionInteraction;
+            boolean a;
             if (config) {
                 explosionInteraction=Level.ExplosionInteraction.BLOCK;
+                a=true;
             }else {
                 explosionInteraction=Level.ExplosionInteraction.NONE;
+                a=false;
             }
-            Explosion explosion =this.level().explode(this, this.getX(), this.getY(), this.getZ(), this.getEntityData().get(EXPLOSION_POWER) * 0.1f, true, explosionInteraction);
+            Explosion explosion =this.level().explode(this, this.getX(), this.getY(), this.getZ(), this.getEntityData().get(EXPLOSION_POWER) * 0.1f, a, explosionInteraction);
             List<LivingEntity> lis = this.level().getEntitiesOfClass(LivingEntity.class, this.getBoundingBox().inflate(8));
             for (LivingEntity entity : lis) {
                 if (entity != null&&this.getOwner() instanceof Player player&&entity!=this.getOwner()) {

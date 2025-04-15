@@ -135,12 +135,15 @@ public class CleanseEntity extends Projectile {
                 this.tool=ToolStack.from(player.getMainHandItem());
             }
             Level.ExplosionInteraction explosionInteraction;
+            boolean a;
             if (config) {
                 explosionInteraction=Level.ExplosionInteraction.BLOCK;
+                a=true;
             }else {
                 explosionInteraction=Level.ExplosionInteraction.NONE;
+                a=false;
             }
-            Explosion explosion =this.level().explode(this, this.getX(), this.getY(), this.getZ(), this.getEntityData().get(EXPLOSION_POWER) * 0.1f, true, explosionInteraction);
+            Explosion explosion =this.level().explode(this, this.getX(), this.getY(), this.getZ(), this.getEntityData().get(EXPLOSION_POWER) * 0.1f, a, explosionInteraction);
             List<Player> players = explosion.getHitPlayers().keySet().stream().toList();
             for (Player player:players){
                 if (player!=null){

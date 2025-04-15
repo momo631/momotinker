@@ -3,13 +3,11 @@ package com.momosensei.momotinker.event;
 
 import com.momosensei.momotinker.Momotinker;
 import com.momosensei.momotinker.entity.MeteorEntity;
-import com.momosensei.momotinker.mobs.PlayerChargeBoolean;
-import com.momosensei.momotinker.network.Channel;
-import com.momosensei.momotinker.network.packet.PlayerCharge;
 import com.momosensei.momotinker.register.MomotinkerConfig;
 import com.momosensei.momotinker.register.MomotinkerItem;
 import it.unimi.dsi.fastutil.ints.Int2ObjectMap;
 import net.minecraft.ChatFormatting;
+import net.minecraft.nbt.CompoundTag;
 import net.minecraft.network.chat.Component;
 import net.minecraft.resources.ResourceLocation;
 import net.minecraft.server.level.ServerLevel;
@@ -258,13 +256,15 @@ public class LivingEvents {
         if (event.player.level() instanceof ServerLevel level && level.getGameTime() % 2000 == 0) {
             Player player = event.player;
             Random random = new Random();
-            if (random.nextInt(5) == 0&&PlayerChargeBoolean.getPlayerChargeBoolean()>0) {
-                Vec2 pos = new Vec2((float) (player.getX() + random.nextInt(180)+120), (float) (player.getZ() + random.nextInt(180)+120));
+            CompoundTag tag = player.getPersistentData().getCompound(Player.PERSISTED_NBT_TAG);
+            String a = "meteor_nucleus_unlock";
+            if (random.nextInt(5) == 0&&tag.getBoolean(a)) {
+                Vec2 pos = new Vec2((float) (player.getX() + random.nextInt(240)-random.nextInt(240)), (float) (player.getZ() + random.nextInt(240)-random.nextInt(240)));
                 EntitySpawnEvent event1 = new EntitySpawnEvent(new Vec3(pos.x, player.getY() + 150, pos.y));
                 //EntitySpawnEvent event1 = new EntitySpawnEvent(new Vec3(player.getX(), player.getY() + 150, player.getZ()));
                 MinecraftForge.EVENT_BUS.post(event1);
                 if (!event1.isCanceled()) {
-                    MeteorEntity entity = new MeteorEntity(level, pos.x, player.getY() + 150, pos.y, new Vec3(random.nextFloat() * 0.5, random.nextFloat() * 2.5 - 1.5, random.nextFloat() * 0.5));
+                    MeteorEntity entity = new MeteorEntity(level, pos.x, player.getY() + 150, pos.y, new Vec3(0, 0, 0));
                     //MeteorEntity entity = new MeteorEntity(level, player.getX(), player.getY() + 150, player.getZ(), new Vec3(random.nextFloat() * 0.5, random.nextFloat() * 2.5 - 1.5, random.nextFloat() * 0.5));
                     entity.setExplosionPower((byte) (random.nextInt(55) + 25));
                     level.addFreshEntity(entity);
@@ -275,10 +275,14 @@ public class LivingEvents {
     }
 
     private void playerpickup(EntityItemPickupEvent event) {
-        if (event.getEntity() instanceof ServerPlayer player&& PlayerChargeBoolean.getPlayerChargeBoolean()==0){
-            if (event.getItem().getItem().is(MomotinkerItem.interdimensional_crystal.get())) {
-                Channel.sendToPlayer(new PlayerCharge(1), player);
+        if (event.getEntity() instanceof ServerPlayer player){
+            CompoundTag tag = player.getPersistentData().getCompound(Player.PERSISTED_NBT_TAG);
+            String a = "meteor_nucleus_unlock";
+            if (event.getItem().getItem().is(MomotinkerItem.interdimensional_crystal.get())&&!tag.getBoolean(a)) {
                 player.sendSystemMessage(Component.translatable("momotinker.item.tooltip.interdimensional_crystal4").withStyle(ChatFormatting.GOLD));
+                player.getPersistentData().getBoolean(a);
+                tag.putBoolean(a, true);
+                player.getPersistentData().put(Player.PERSISTED_NBT_TAG, tag);
             }
         }
     }
