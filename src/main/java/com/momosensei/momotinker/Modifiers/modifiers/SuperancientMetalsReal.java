@@ -32,8 +32,7 @@ public class SuperancientMetalsReal extends momomodifier {
     public SuperancientMetalsReal() {
         MinecraftForge.EVENT_BUS.addListener(this::livinghurtevent);
     }
-    int sanctification_limit = MomotinkerConfig.sanctification_limit.get();
-    int degenerate_limit = MomotinkerConfig.degenerate_limit.get();
+
     @Override
     public boolean isNoLevels() {
         return true;
@@ -66,6 +65,8 @@ public class SuperancientMetalsReal extends momomodifier {
     }
 
     private void livinghurtevent(LivingHurtEvent event) {
+        int sanctification_limit = MomotinkerConfig.sanctification_limit.get();
+        int degenerate_limit = MomotinkerConfig.degenerate_limit.get();
         Entity a = event.getEntity();
         Entity b = event.getSource().getEntity();
         if (b instanceof Player player&&a!=null){
@@ -85,6 +86,8 @@ public class SuperancientMetalsReal extends momomodifier {
     }
 
     public void addTooltip(IToolStackView tool, ModifierEntry modifierEntry, @org.jetbrains.annotations.Nullable Player player, List<Component> tooltip, TooltipKey tooltipKey, TooltipFlag tooltipFlag) {
+        int sanctification_limit = MomotinkerConfig.sanctification_limit.get();
+        int degenerate_limit = MomotinkerConfig.degenerate_limit.get();
         ModDataNBT c = tool.getPersistentData();
         if (c.getFloat(degenerate)==degenerate_limit) {
             tooltip.add(net.minecraft.network.chat.Component.translatable("modifier.momotinker.tooltip.superancientmetalsreal1").withStyle(ChatFormatting.DARK_RED));
