@@ -34,6 +34,8 @@ public class MomotinkerConfig {
             .define("dimensional_prism is special acquisition",true);
     public static final ForgeConfigSpec.BooleanValue devouring_demon_gold=builder.comment("devouring_demon_gold")
             .define("devouring_demon_gold is special acquisition",true);
+    public static final ForgeConfigSpec.BooleanValue meteor_nucleus=builder.comment("meteor_nucleus")
+            .define("meteor_nucleus is special acquisition",true);
 
 
 

@@ -1,6 +1,7 @@
 package com.momosensei.momotinker.Items;
 
 
+import com.momosensei.momotinker.register.MomotinkerConfig;
 import net.minecraft.ChatFormatting;
 import net.minecraft.client.gui.screens.Screen;
 import net.minecraft.network.chat.Component;
@@ -20,11 +21,15 @@ public class interdimensional_crystal extends Item {
 
     @Override
     public void appendHoverText(@NotNull ItemStack stack, @Nullable Level level, List<net.minecraft.network.chat.Component> list, @NotNull TooltipFlag flag) {
-        if (Screen.hasShiftDown()) {
-            list.add(Component.translatable("momotinker.item.tooltip.interdimensional_crystal3").withStyle(ChatFormatting.LIGHT_PURPLE));
-        }else{
+        boolean config = MomotinkerConfig.special_acquisition.get();
+        boolean configa = MomotinkerConfig.interdimensional_crystal.get();
+        if (Screen.hasShiftDown()&&config&&configa) {
+            list.add(Component.translatable("momotinker.item.tooltip.interdimensional_crystal2").withStyle(ChatFormatting.LIGHT_PURPLE));
+        }else {
             list.add(net.minecraft.network.chat.Component.translatable("momotinker.item.tooltip.interdimensional_crystal1").withStyle(ChatFormatting.LIGHT_PURPLE));
-            list.add(net.minecraft.network.chat.Component.translatable("momotinker.item.tooltip.interdimensional_crystal2").withStyle(ChatFormatting.LIGHT_PURPLE));
+            if (config && configa) {
+                list.add(net.minecraft.network.chat.Component.translatable("item.tooltip.special_acquisition").withStyle(ChatFormatting.LIGHT_PURPLE));
+            }
         }
         super.appendHoverText(stack, level, list, flag);
     }

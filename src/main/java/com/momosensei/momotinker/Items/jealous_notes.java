@@ -1,6 +1,7 @@
 package com.momosensei.momotinker.Items;
 
 
+import com.momosensei.momotinker.register.MomotinkerConfig;
 import net.minecraft.ChatFormatting;
 import net.minecraft.client.gui.screens.Screen;
 import net.minecraft.network.chat.Component;
@@ -20,12 +21,17 @@ public class jealous_notes extends Item {
 
     @Override
     public void appendHoverText(@NotNull ItemStack stack, @Nullable Level level, List<net.minecraft.network.chat.Component> list, @NotNull TooltipFlag flag) {
-        if (Screen.hasShiftDown()) {
-            list.add(Component.translatable("momotinker.item.tooltip.jealous_notes3").withStyle(ChatFormatting.YELLOW));
-        }else{
+        boolean config = MomotinkerConfig.special_acquisition.get();
+        boolean configa = MomotinkerConfig.jealous_notes.get();
+        if (Screen.hasShiftDown()&&config&&configa) {
+            list.add(Component.translatable("momotinker.item.tooltip.jealous_notes2").withStyle(ChatFormatting.YELLOW));
+        }else {
             list.add(net.minecraft.network.chat.Component.translatable("momotinker.item.tooltip.jealous_notes1").withStyle(ChatFormatting.YELLOW));
-            list.add(net.minecraft.network.chat.Component.translatable("momotinker.item.tooltip.jealous_notes2").withStyle(ChatFormatting.YELLOW));
-        }super.appendHoverText(stack, level, list, flag);
+            if (config && configa) {
+                list.add(net.minecraft.network.chat.Component.translatable("item.tooltip.special_acquisition").withStyle(ChatFormatting.YELLOW));
+            }
+        }
+        super.appendHoverText(stack, level, list, flag);
     }
 
 }

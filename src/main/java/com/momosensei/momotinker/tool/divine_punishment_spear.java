@@ -71,12 +71,13 @@ public class divine_punishment_spear extends ModifiableItem {
         MinecraftForge.EVENT_BUS.addListener(this::livinghurtevent);
         MinecraftForge.EVENT_BUS.addListener(EventPriority.LOWEST,this::onEntityDeath);
     }
-    int sanctification_limit = MomotinkerConfig.sanctification_limit.get();
-    int degenerate_limit = MomotinkerConfig.degenerate_limit.get();
+
     public static final ResourceLocation sanctification = Momotinker.getResource("sanctification");
     public static final ResourceLocation degenerate = Momotinker.getResource("degenerate");
 
     private void onEntityDeath(LivingDeathEvent event) {
+        int sanctification_limit = MomotinkerConfig.sanctification_limit.get();
+        int degenerate_limit = MomotinkerConfig.degenerate_limit.get();
         if (event.getSource().getEntity() instanceof Player player&&event.getEntity()!=null) {
             if (player.getItemBySlot(EquipmentSlot.MAINHAND).is(MomotinkerTools.divine_punishment_spear.get())&& ModifierUtil.getModifierLevel(player.getItemBySlot(EquipmentSlot.MAINHAND), MomotinkerModifiers.frombrilliance.getId())>0){
                 ModDataNBT a = ToolStack.from(player.getItemBySlot(EquipmentSlot.MAINHAND)).getPersistentData();
@@ -263,6 +264,8 @@ public class divine_punishment_spear extends ModifiableItem {
         return tooltips;
     }
     public List<Component> getStats(IToolStackView tool, @Nullable Player player, List<Component> tooltips, TooltipKey key, TooltipFlag tooltipFlag) {
+        int sanctification_limit = MomotinkerConfig.sanctification_limit.get();
+        int degenerate_limit = MomotinkerConfig.degenerate_limit.get();
         TooltipBuilder builder = new TooltipBuilder(tool, tooltips);
         ModDataNBT a = tool.getPersistentData();
         if (tool.hasTag(TinkerTags.Items.DURABILITY)) {

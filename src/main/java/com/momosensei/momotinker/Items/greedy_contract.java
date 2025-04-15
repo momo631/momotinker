@@ -1,6 +1,7 @@
 package com.momosensei.momotinker.Items;
 
 
+import com.momosensei.momotinker.register.MomotinkerConfig;
 import net.minecraft.ChatFormatting;
 import net.minecraft.client.gui.screens.Screen;
 import net.minecraft.network.chat.Component;
@@ -18,14 +19,18 @@ public class greedy_contract extends Item{
         super(properties);
     }
 
-@Override
+    @Override
     public void appendHoverText(@NotNull ItemStack stack, @Nullable Level level, List<Component> list, @NotNull TooltipFlag flag) {
-    if (Screen.hasShiftDown()) {
-        list.add(Component.translatable("momotinker.item.tooltip.greedy_contract3").withStyle(ChatFormatting.BLUE));
-    }else{
-        list.add(net.minecraft.network.chat.Component.translatable("momotinker.item.tooltip.greedy_contract1").withStyle(ChatFormatting.BLUE));
-        list.add(net.minecraft.network.chat.Component.translatable("momotinker.item.tooltip.greedy_contract2").withStyle(ChatFormatting.BLUE));
-    }
-    super.appendHoverText(stack, level, list, flag);
+        boolean config = MomotinkerConfig.special_acquisition.get();
+        boolean configa = MomotinkerConfig.greedy_contract.get();
+        if (Screen.hasShiftDown() && config && configa) {
+            list.add(Component.translatable("momotinker.item.tooltip.greedy_contract2").withStyle(ChatFormatting.BLUE));
+        } else {
+            list.add(net.minecraft.network.chat.Component.translatable("momotinker.item.tooltip.greedy_contract1").withStyle(ChatFormatting.BLUE));
+            if (config && configa) {
+                list.add(net.minecraft.network.chat.Component.translatable("item.tooltip.special_acquisition").withStyle(ChatFormatting.BLUE));
+            }
+        }
+        super.appendHoverText(stack, level, list, flag);
     }
 }

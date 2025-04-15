@@ -20,9 +20,6 @@ public class FromBrilliance extends momomodifier {
     public FromBrilliance() {
     }
 
-    int sanctification_limit = MomotinkerConfig.sanctification_limit.get();
-    int degenerate_limit = MomotinkerConfig.degenerate_limit.get();
-
     @Override
     public boolean isNoLevels() {
         return true;
@@ -37,6 +34,8 @@ public class FromBrilliance extends momomodifier {
 
     @Override
     public void onInventoryTick(IToolStackView tool, ModifierEntry modifier, Level world, LivingEntity entity, int index, boolean isSelected, boolean isCorrectSlot, ItemStack stack) {
+        int sanctification_limit = MomotinkerConfig.sanctification_limit.get();
+        int degenerate_limit = MomotinkerConfig.degenerate_limit.get();
         ModDataNBT a = tool.getPersistentData();
         if (a.getFloat(degenerate)>degenerate_limit){
             a.putFloat(degenerate,degenerate_limit);

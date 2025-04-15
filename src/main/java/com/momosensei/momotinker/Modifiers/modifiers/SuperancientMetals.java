@@ -26,8 +26,7 @@ import static com.momosensei.momotinker.tool.divine_punishment_spear.sanctificat
 public class SuperancientMetals extends momomodifier {
     public SuperancientMetals() {
     }
-    int sanctification_limit = MomotinkerConfig.sanctification_limit.get();
-    int degenerate_limit = MomotinkerConfig.degenerate_limit.get();
+
     public static final ResourceLocation authentication = Momotinker.getResource("authentication");
     public static final MaterialVariantId id_dim_dark_gold = MaterialVariantId.create(new MaterialId("momotinker","dim_dark_gold"),"default");
     public static final MaterialVariantId id_stained_blood_gold = MaterialVariantId.create(new MaterialId("momotinker","stained_blood_gold"),"default");
@@ -65,6 +64,8 @@ public class SuperancientMetals extends momomodifier {
     }
 
     public void modifierOnInventoryTick(IToolStackView tool, ModifierEntry modifier, Level level, LivingEntity livingEntity, int itemSlot, boolean isSelected, boolean isCorrectSlot, ItemStack itemStack) {
+        int sanctification_limit = MomotinkerConfig.sanctification_limit.get();
+        int degenerate_limit = MomotinkerConfig.degenerate_limit.get();
         if (tool.getPersistentData().getFloat(degenerate)==degenerate_limit){
             setHeatLevel(tool,1);
         }

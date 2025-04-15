@@ -73,6 +73,8 @@ public class LivingEvents {
     private static final ResourceLocation ragetest = Momotinker.getResource("ragetest");
 
     private void livinghurtevent(LivingHurtEvent event) {
+        boolean configall = MomotinkerConfig.special_acquisition.get();
+        if (!configall)return;
         Entity a = event.getEntity();
         Entity b = event.getSource().getEntity();
         boolean configa = MomotinkerConfig.arriving_at_the_other_shore.get();
@@ -99,6 +101,8 @@ public class LivingEvents {
     }
 
     private void onEntityDeath(LivingDeathEvent event) {
+        boolean configall = MomotinkerConfig.special_acquisition.get();
+        if (!configall)return;
         if (event.getEntity() instanceof Warden warden) {
             boolean configa = MomotinkerConfig.heartsteel.get();
             if (configa) {
@@ -161,6 +165,8 @@ public class LivingEvents {
     }
 
     private void onBabyEntitySpawnEvent(BabyEntitySpawnEvent event) {
+        boolean configall = MomotinkerConfig.special_acquisition.get();
+        if (!configall)return;
         boolean config = MomotinkerConfig.lust_mirror.get();
         if (config) {
             if (event.getParentA() != null && event.getParentB() != null && event.getChild() != null) {
@@ -181,6 +187,8 @@ public class LivingEvents {
         }
     }
     private void onBonemealEvent(BonemealEvent event) {
+        boolean configall = MomotinkerConfig.special_acquisition.get();
+        if (!configall)return;
         boolean config = MomotinkerConfig.spirit_visage.get();
         if (config) {
             if (event.getBlock().getBlock() instanceof SaplingBlock && event.getEntity() instanceof ServerPlayer) {
@@ -207,6 +215,8 @@ public class LivingEvents {
     }
 
     private void addCustomTrades(VillagerTradesEvent event) {
+        boolean configall = MomotinkerConfig.special_acquisition.get();
+        if (!configall)return;
         boolean config = MomotinkerConfig.greedy_contract.get();
         if (config) {
             if (event.getType() != null) {
@@ -220,7 +230,9 @@ public class LivingEvents {
     }
 
     private void onItemEvent(BlockEvent.BreakEvent event) {
-        Player player=event.getPlayer();
+        boolean configall = MomotinkerConfig.special_acquisition.get();
+        if (!configall)return;
+        Player player = event.getPlayer();
         boolean config = MomotinkerConfig.dimensional_prism.get();
         if (config) {
             if (player != null && event.getState().is(Blocks.GLASS)) {
@@ -237,6 +249,8 @@ public class LivingEvents {
     }
 
     private void onFallVoidEvent(ItemEvent event) {
+        boolean configall = MomotinkerConfig.special_acquisition.get();
+        if (!configall)return;
         ItemEntity entity = event.getEntity();
         Level level = event.getEntity().level();
         boolean config = MomotinkerConfig.devouring_demon_gold.get();
@@ -253,36 +267,46 @@ public class LivingEvents {
     }
 
     private void playertick(TickEvent.PlayerTickEvent event) {
-        if (event.player.level() instanceof ServerLevel level && level.getGameTime() % 2000 == 0) {
-            Player player = event.player;
-            Random random = new Random();
-            CompoundTag tag = player.getPersistentData().getCompound(Player.PERSISTED_NBT_TAG);
-            String a = "meteor_nucleus_unlock";
-            if (random.nextInt(5) == 0&&tag.getBoolean(a)) {
-                Vec2 pos = new Vec2((float) (player.getX() + random.nextInt(240)-random.nextInt(240)), (float) (player.getZ() + random.nextInt(240)-random.nextInt(240)));
-                EntitySpawnEvent event1 = new EntitySpawnEvent(new Vec3(pos.x, player.getY() + 150, pos.y));
-                //EntitySpawnEvent event1 = new EntitySpawnEvent(new Vec3(player.getX(), player.getY() + 150, player.getZ()));
-                MinecraftForge.EVENT_BUS.post(event1);
-                if (!event1.isCanceled()) {
-                    MeteorEntity entity = new MeteorEntity(level, pos.x, player.getY() + 150, pos.y, new Vec3(0, 0, 0));
-                    //MeteorEntity entity = new MeteorEntity(level, player.getX(), player.getY() + 150, player.getZ(), new Vec3(random.nextFloat() * 0.5, random.nextFloat() * 2.5 - 1.5, random.nextFloat() * 0.5));
-                    entity.setExplosionPower((byte) (random.nextInt(55) + 25));
-                    level.addFreshEntity(entity);
-                    player.sendSystemMessage(Component.translatable("momotinker.item.tooltip.meteor_nucleus6").withStyle(ChatFormatting.GOLD));
+        boolean configall = MomotinkerConfig.special_acquisition.get();
+        if (!configall)return;
+        boolean config = MomotinkerConfig.meteor_nucleus.get();
+        if (config) {
+            if (event.player.level() instanceof ServerLevel level && level.getGameTime() % 2000 == 0) {
+                Player player = event.player;
+                Random random = new Random();
+                CompoundTag tag = player.getPersistentData().getCompound(Player.PERSISTED_NBT_TAG);
+                String a = "meteor_nucleus_unlock";
+                if (random.nextInt(5) == 0 && tag.getBoolean(a)) {
+                    Vec2 pos = new Vec2((float) (player.getX() + random.nextInt(240) - random.nextInt(240)), (float) (player.getZ() + random.nextInt(240) - random.nextInt(240)));
+                    EntitySpawnEvent event1 = new EntitySpawnEvent(new Vec3(pos.x, player.getY() + 150, pos.y));
+                    //EntitySpawnEvent event1 = new EntitySpawnEvent(new Vec3(player.getX(), player.getY() + 150, player.getZ()));
+                    MinecraftForge.EVENT_BUS.post(event1);
+                    if (!event1.isCanceled()) {
+                        MeteorEntity entity = new MeteorEntity(level, pos.x, player.getY() + 150, pos.y, new Vec3(0, 0, 0));
+                        //MeteorEntity entity = new MeteorEntity(level, player.getX(), player.getY() + 150, player.getZ(), new Vec3(random.nextFloat() * 0.5, random.nextFloat() * 2.5 - 1.5, random.nextFloat() * 0.5));
+                        entity.setExplosionPower((byte) (random.nextInt(55) + 25));
+                        level.addFreshEntity(entity);
+                        player.sendSystemMessage(Component.translatable("momotinker.item.tooltip.meteor_nucleus5").withStyle(ChatFormatting.GOLD));
+                    }
                 }
             }
         }
     }
 
     private void playerpickup(EntityItemPickupEvent event) {
-        if (event.getEntity() instanceof ServerPlayer player){
-            CompoundTag tag = player.getPersistentData().getCompound(Player.PERSISTED_NBT_TAG);
-            String a = "meteor_nucleus_unlock";
-            if (event.getItem().getItem().is(MomotinkerItem.interdimensional_crystal.get())&&!tag.getBoolean(a)) {
-                player.sendSystemMessage(Component.translatable("momotinker.item.tooltip.interdimensional_crystal4").withStyle(ChatFormatting.GOLD));
-                player.getPersistentData().getBoolean(a);
-                tag.putBoolean(a, true);
-                player.getPersistentData().put(Player.PERSISTED_NBT_TAG, tag);
+        boolean configall = MomotinkerConfig.special_acquisition.get();
+        if (!configall)return;
+        boolean config = MomotinkerConfig.meteor_nucleus.get();
+        if (config) {
+            if (event.getEntity() instanceof ServerPlayer player) {
+                CompoundTag tag = player.getPersistentData().getCompound(Player.PERSISTED_NBT_TAG);
+                String a = "meteor_nucleus_unlock";
+                if (event.getItem().getItem().is(MomotinkerItem.interdimensional_crystal.get()) && !tag.getBoolean(a)) {
+                    player.sendSystemMessage(Component.translatable("momotinker.item.tooltip.interdimensional_crystal3").withStyle(ChatFormatting.GOLD));
+                    player.getPersistentData().getBoolean(a);
+                    tag.putBoolean(a, true);
+                    player.getPersistentData().put(Player.PERSISTED_NBT_TAG, tag);
+                }
             }
         }
     }
