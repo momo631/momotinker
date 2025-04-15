@@ -1,5 +1,6 @@
 package com.momosensei.momotinker.Items;
 
+import com.momosensei.momotinker.register.MomotinkerConfig;
 import net.minecraft.ChatFormatting;
 import net.minecraft.client.gui.screens.Screen;
 import net.minecraft.network.chat.Component;
@@ -24,11 +25,15 @@ public class meteor_nucleus_block extends BlockItem {
 
     @Override
     public void appendHoverText(@NotNull ItemStack stack, @Nullable Level level, List<Component> list, @NotNull TooltipFlag flag) {
-        if (Screen.hasShiftDown()) {
-            list.add(Component.translatable("momotinker.item.tooltip.meteor_nucleus3").withStyle(ChatFormatting.GOLD));
-        }else{
-            list.add(Component.translatable("momotinker.item.tooltip.meteor_nucleus1").withStyle(ChatFormatting.GOLD));
+        boolean config = MomotinkerConfig.special_acquisition.get();
+        boolean configa = MomotinkerConfig.meteor_nucleus.get();
+        if (Screen.hasShiftDown()&&config&&configa) {
             list.add(Component.translatable("momotinker.item.tooltip.meteor_nucleus2").withStyle(ChatFormatting.GOLD));
+        }else {
+            list.add(Component.translatable("momotinker.item.tooltip.meteor_nucleus1").withStyle(ChatFormatting.GOLD));
+            if (config && configa) {
+                list.add(Component.translatable("item.tooltip.special_acquisition").withStyle(ChatFormatting.GOLD));
+            }
         }
         super.appendHoverText(stack, level, list, flag);
     }
