@@ -223,7 +223,7 @@ public class divine_punishment_spear extends ModifiableItem {
                         level.addFreshEntity(entity);
                     }
                     int d = MomotinkerConfig.cleansetheworld_limit.get();
-                    Channel.sendToClient(new CoolTimeChargeA(d));
+                    Channel.sendToPlayer(new CoolTimeChargeA(d),player1);
                 }
             }
         }

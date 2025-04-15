@@ -42,12 +42,15 @@ public class ExplosiveSword extends momomodifier {
     public void Explode(ToolStack tool,Player player,LivingEntity living,Level level,float damage,float damagemultiplier){
         if (!level.isClientSide) {
             Explosion.BlockInteraction blockInteraction;
+            boolean a;
             if (config) {
                 blockInteraction=Explosion.BlockInteraction.DESTROY;
+                a=true;
             }else {
                 blockInteraction=Explosion.BlockInteraction.NONE;
+                a=false;
             }
-            Explosion explosion =level.explode(player, living.getX(), living.getY(), living.getZ(), 3, true, blockInteraction);
+            Explosion explosion =level.explode(player, living.getX(), living.getY(), living.getZ(), 3, a, blockInteraction);
             List<LivingEntity> lis = level.getEntitiesOfClass(LivingEntity.class, living.getBoundingBox().inflate(3));
             for (LivingEntity entity : lis) {
                 if (entity != null&&entity!=player) {

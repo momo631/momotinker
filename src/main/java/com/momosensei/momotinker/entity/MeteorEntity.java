@@ -87,16 +87,11 @@ public class MeteorEntity extends Projectile {
                 blockInteraction=Explosion.BlockInteraction.NONE;
             }
             Explosion explosion =this.level.explode(this, this.getX(), this.getY(), this.getZ(), this.getEntityData().get(EXPLOSION_POWER) * 0.1f, true, blockInteraction);
-            List<BlockPos> list = explosion.getToBlow();
             List<Player> players = explosion.getHitPlayers().keySet().stream().toList();
-            boolean generatedPress =false;
-            for (BlockPos blockPos : list) {
-                if ((this.level.getBlockState(blockPos).isAir() || this.level.getBlockState(blockPos).is(Blocks.FIRE) || !(this.level.getFluidState(blockPos).is(Fluids.EMPTY))) && this.level.getBlockState(blockPos.below()).isCollisionShapeFullBlock(this.level, blockPos)) {
-                    if (!generatedPress) {
-                        this.level.setBlockAndUpdate(blockPos, MomotinkerBlock.meteor_nucleus_block.get().defaultBlockState());
-                        generatedPress = true;
-                    }
-                }
+            BlockPos blockPos= BlockPos.of(BlockPos.asLong((int) this.getX(), (int) this.getY(), (int) this.getZ()));
+            if ((this.level.getBlockState(blockPos).isAir() || this.level.getBlockState(blockPos).is(Blocks.FIRE) || !(this.level.getFluidState(blockPos).is(Fluids.EMPTY)))
+                    ) {
+                this.level.setBlockAndUpdate(blockPos, MomotinkerBlock.meteor_nucleus_block.get().defaultBlockState());
             }
             for (Player player:players){
                 if (player!=null){
