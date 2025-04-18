@@ -2,6 +2,8 @@ package com.momosensei.momotinker.Modifiers.modifiers;
 
 import com.momosensei.momotinker.Modifiers.momomodifier;
 import com.momosensei.momotinker.Momotinker;
+import com.momosensei.momotinker.network.Channel;
+import com.momosensei.momotinker.network.packet.SignifiCharge;
 import net.minecraft.network.chat.Component;
 import net.minecraft.resources.ResourceLocation;
 import net.minecraft.server.level.ServerLevel;
@@ -81,6 +83,10 @@ public class Significance extends momomodifier {
                             MobEffectInstance effect = harmeffect1.stream().toList().get(i);
                             e.removeEffect(effect.getEffect());
                         }
+                    }
+                    if (e instanceof ServerPlayer player1){
+                        Channel.sendToPlayer(new SignifiCharge(3),player1);
+
                     }
                 }
             }
