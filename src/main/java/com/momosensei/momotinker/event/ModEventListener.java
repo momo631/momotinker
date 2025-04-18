@@ -2,7 +2,7 @@ package com.momosensei.momotinker.event;
 
 import com.momosensei.momotinker.capability.ender.EnderProvider;
 import com.momosensei.momotinker.gui.overlay.CensoredHUD;
-import com.momosensei.momotinker.gui.overlay.EnderOverlay;
+import com.momosensei.momotinker.gui.overlay.MomotinkerOverlay;
 import com.momosensei.momotinker.gui.overlay.ToolsTimeHUD;
 import com.momosensei.momotinker.key.key;
 import com.momosensei.momotinker.network.Channel;
@@ -37,7 +37,7 @@ public class ModEventListener {
     @SubscribeEvent
     public static void registerOverlay(RegisterGuiOverlaysEvent event) {
         if (FMLEnvironment.dist == Dist.CLIENT) {
-            event.registerAbove(VanillaGuiOverlay.HOTBAR.id(), "ender", EnderOverlay.ENDER);
+            event.registerAbove(VanillaGuiOverlay.HOTBAR.id(), "ender", MomotinkerOverlay::render);
             event.registerAboveAll( "censored_hud", CensoredHUD.CENSORED);
             event.registerAboveAll( "tools_time_hud", ToolsTimeHUD.TOOS_TIME_HUD);
         }

@@ -39,6 +39,7 @@ public class  MomotinkerItem {
     public static final RegistryObject<Item> devouring_demon_gold = ITEMS.register("devouring_demon_gold", () -> new devouring_demon_gold(new Item.Properties().tab(MomotinkerTab.MATERIALS)));
     public static final RegistryObject<Item> nihilism = ITEMS.register("nihilism", () -> new nihilism(new Item.Properties().tab(MomotinkerTab.MATERIALS)));
     public static final RegistryObject<Item> meteor_nucleus = ITEMS.register("meteor_nucleus", () -> new meteor_nucleus(new Item.Properties().tab(MomotinkerTab.MATERIALS)));
+   // public static final RegistryObject<Item> meteor_nucleus = ITEMS.register("meteor_nucleus", () -> new meteor_nucleus(new Item.Properties().tab(MomotinkerTab.MATERIALS)));
 
     public static final RegistryObject<ModifiableItem> trigger_blade = ITEMS.register("trigger_blade", () -> new trigger_blade(TOOL, MomotinkerToolDefinitions.TRIGGER_BLADE));
     public static final RegistryObject<ModifiableItem> divine_punishment_spear = ITEMS.register("divine_punishment_spear", () -> new divine_punishment_spear(TOOL, MomotinkerToolDefinitions.DIVINE_PUNISHMENT_SPEAR));
