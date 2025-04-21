@@ -150,7 +150,7 @@ public class pocket_watch extends ModifiableItem {
                 }
             }else if (a<1000){
                 if (tool.getStats().getInt(ToolStats.DURABILITY) - tool.getDamage() < 1000) {
-                    tool.setDamage(tool.getStats().getInt(ToolStats.DURABILITY));;
+                    tool.setDamage(tool.getStats().getInt(ToolStats.DURABILITY));
                 } else if (tool.getStats().getInt(ToolStats.DURABILITY) - tool.getDamage() > 1000) {
                     tool.setDamage(tool.getDamage() + 1000);
                 }

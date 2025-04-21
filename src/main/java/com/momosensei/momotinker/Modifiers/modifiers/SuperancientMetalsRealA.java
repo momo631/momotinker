@@ -28,8 +28,8 @@ import java.util.List;
 import static com.momosensei.momotinker.tool.divine_punishment_spear.degenerate;
 import static com.momosensei.momotinker.tool.divine_punishment_spear.sanctification;
 
-public class SuperancientMetalsReal extends momomodifier {
-    public SuperancientMetalsReal() {
+public class SuperancientMetalsRealA extends momomodifier {
+    public SuperancientMetalsRealA() {
         MinecraftForge.EVENT_BUS.addListener(this::livinghurtevent);
     }
 
@@ -90,12 +90,12 @@ public class SuperancientMetalsReal extends momomodifier {
         int degenerate_limit = MomotinkerConfig.degenerate_limit.get();
         ModDataNBT c = tool.getPersistentData();
         if (c.getFloat(degenerate)==degenerate_limit) {
-            tooltip.add(net.minecraft.network.chat.Component.translatable("modifier.momotinker.tooltip.superancientmetalsreal1").withStyle(ChatFormatting.DARK_RED));
-            tooltip.add(net.minecraft.network.chat.Component.translatable("modifier.momotinker.tooltip.superancientmetalsreal2").withStyle(ChatFormatting.DARK_RED));
+            tooltip.add(net.minecraft.network.chat.Component.translatable("modifier.momotinker.tooltip.superancientmetalsreala1").withStyle(ChatFormatting.DARK_RED));
+            tooltip.add(net.minecraft.network.chat.Component.translatable("modifier.momotinker.tooltip.superancientmetalsreala2").withStyle(ChatFormatting.DARK_RED));
         }
         if (c.getFloat(sanctification)==sanctification_limit) {
-            tooltip.add(net.minecraft.network.chat.Component.translatable("modifier.momotinker.tooltip.superancientmetalsreal3").withStyle(ChatFormatting.YELLOW));
-            tooltip.add(net.minecraft.network.chat.Component.translatable("modifier.momotinker.tooltip.superancientmetalsreal4").withStyle(ChatFormatting.YELLOW));
+            tooltip.add(net.minecraft.network.chat.Component.translatable("modifier.momotinker.tooltip.superancientmetalsreala3").withStyle(ChatFormatting.YELLOW));
+            tooltip.add(net.minecraft.network.chat.Component.translatable("modifier.momotinker.tooltip.superancientmetalsreala4").withStyle(ChatFormatting.YELLOW));
         }
     }
 }

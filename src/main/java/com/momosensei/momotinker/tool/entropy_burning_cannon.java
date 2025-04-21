@@ -3,6 +3,7 @@ package com.momosensei.momotinker.tool;
 import com.momosensei.momotinker.network.Channel;
 import com.momosensei.momotinker.network.packet.RayEntityPacket;
 import com.momosensei.momotinker.network.packet.ToolsTimeCharge;
+import com.momosensei.momotinker.register.MomotinkerConfig;
 import net.minecraft.ChatFormatting;
 import net.minecraft.core.BlockPos;
 import net.minecraft.network.chat.Component;
@@ -40,6 +41,7 @@ import slimeknights.tconstruct.tools.modifiers.upgrades.ranged.ScopeModifier;
 import java.util.Iterator;
 import java.util.List;
 
+import static com.momosensei.momotinker.tool.entropy_burning_cube.*;
 import static slimeknights.tconstruct.library.modifiers.hook.interaction.GeneralInteractionModifierHook.KEY_DRAWTIME;
 import static slimeknights.tconstruct.library.tools.stat.ToolStats.ACCURACY;
 
@@ -125,6 +127,10 @@ public class entropy_burning_cannon extends ModifiableItem{
     public List<Component> getStats(IToolStackView tool, @Nullable Player player, List<Component> tooltips, TooltipKey key, TooltipFlag tooltipFlag) {
         TooltipBuilder builder = new TooltipBuilder(tool, tooltips);
         ModDataNBT a = tool.getPersistentData();
+        int hadal_limit = MomotinkerConfig.hadal_limit.get();
+        int stellarcore_limit = MomotinkerConfig.stellarcore_limit.get();
+        int crystallized_limit = MomotinkerConfig.crystallized_limit.get();
+        int liverization_limit = MomotinkerConfig.liverization_limit.get();
         if (tool.hasTag(TinkerTags.Items.DURABILITY)) {
             builder.add(ToolStats.DURABILITY);
         }
@@ -140,6 +146,24 @@ public class entropy_burning_cannon extends ModifiableItem{
             builder.add(Component.translatable("momotinker.tool.tooltip.offhand_hastool").withStyle(ChatFormatting.RED));
         }
 
+        if (a.getInt(hadal)<hadal_limit&&a.getInt(stellarcore)<stellarcore_limit&&a.getInt(crystallized)<crystallized_limit&&a.getInt(liverization)<liverization_limit) {
+            builder.add(Component.translatable("item.momotinker.tooltip.crystallized").append(crystallized_limit + "").append(Component.translatable("item.momotinker.tooltip.crystallized1")).append(a.getInt(crystallized) + "").withStyle(ChatFormatting.GOLD));
+        }
+        if (a.getInt(crystallized)==crystallized_limit) {
+            builder.add(Component.translatable("item.momotinker.tooltip.crystallized2").withStyle(ChatFormatting.AQUA));
+        }
+        if (a.getInt(liverization)>=liverization_limit) {
+            builder.add(Component.translatable("item.momotinker.tooltip.liverization").withStyle(ChatFormatting.DARK_RED));
+            if (a.getInt(liverization)==liverization_limit) {
+                builder.add(Component.translatable("item.momotinker.tooltip.liverization1").withStyle(ChatFormatting.DARK_RED));
+            }
+            if (a.getInt(liverization)>liverization_limit) {
+                builder.add(Component.translatable("item.momotinker.tooltip.liverization2").withStyle(ChatFormatting.GRAY));
+            }
+        }
+        if (a.getInt(hadal)==hadal_limit||a.getInt(stellarcore)==stellarcore_limit) {
+            builder.add(Component.translatable("item.momotinker.tooltip.other").withStyle(ChatFormatting.GRAY));
+        }
         Iterator var7 = tool.getModifierList().iterator();
         while(var7.hasNext()) {
             ModifierEntry entry = (ModifierEntry)var7.next();

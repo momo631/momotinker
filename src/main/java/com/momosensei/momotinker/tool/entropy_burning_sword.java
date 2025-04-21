@@ -3,6 +3,7 @@ package com.momosensei.momotinker.tool;
 
 import com.momosensei.momotinker.network.Channel;
 import com.momosensei.momotinker.network.packet.ToolsTimeCharge;
+import com.momosensei.momotinker.register.MomotinkerConfig;
 import com.momosensei.momotinker.register.MomotinkerItem;
 import com.momosensei.momotinker.util.attackUtil;
 import net.minecraft.ChatFormatting;
@@ -15,6 +16,7 @@ import net.minecraft.stats.Stats;
 import net.minecraft.util.Mth;
 import net.minecraft.world.InteractionHand;
 import net.minecraft.world.InteractionResultHolder;
+import net.minecraft.world.damagesource.DamageSource;
 import net.minecraft.world.entity.Entity;
 import net.minecraft.world.entity.EquipmentSlot;
 import net.minecraft.world.entity.LivingEntity;
@@ -47,6 +49,7 @@ import slimeknights.tconstruct.tools.modifiers.upgrades.ranged.ScopeModifier;
 import java.util.Iterator;
 import java.util.List;
 
+import static com.momosensei.momotinker.tool.entropy_burning_cube.*;
 import static slimeknights.tconstruct.library.modifiers.hook.interaction.GeneralInteractionModifierHook.KEY_DRAWTIME;
 
 public class entropy_burning_sword extends ModifiableItem {
@@ -58,9 +61,14 @@ public class entropy_burning_sword extends ModifiableItem {
     private void livinghurtevent(LivingHurtEvent event) {
         Entity a = event.getEntity();
         Entity b = event.getSource().getEntity();
+        int stellarcore_limit = MomotinkerConfig.stellarcore_limit.get();
         if (b instanceof Player player&&a!=null&&player.getMainHandItem().is(MomotinkerItem.entropy_burning_sword.get())){
             if (!checkOffHand(player)) {
                 event.setAmount(0.2F * event.getAmount());
+            }
+            ModDataNBT c = ToolStack.from(player.getItemBySlot(EquipmentSlot.MAINHAND)).getPersistentData();
+            if (c.getInt(stellarcore)==stellarcore_limit&&a instanceof LivingEntity) {
+                a.hurt(DamageSource.LAVA,event.getAmount()*0.25f);
             }
         }
     }
@@ -86,6 +94,7 @@ public class entropy_burning_sword extends ModifiableItem {
     public void releaseUsing(ItemStack stack, Level level, LivingEntity livingEntity, int duration) {
         ScopeModifier.stopScoping(livingEntity);
         ToolStack tool = ToolStack.from(stack);
+        int stellarcore_limit = MomotinkerConfig.stellarcore_limit.get();
         int i = this.getUseDuration(stack) - duration;
         float perc = Mth.clamp((float) i / (30 / tool.getStats().get(ToolStats.ATTACK_SPEED)),0,1);
         if (tool.isBroken()){
@@ -102,8 +111,13 @@ public class entropy_burning_sword extends ModifiableItem {
                 List<Entity> ls0 = player.level.getEntitiesOfClass(Entity.class, player.getBoundingBox().inflate(a+0.5, 1.5, a+0.5));
                 for (Entity targets : ls0) {
                     if (targets != player) {
-                        targets.invulnerableTime = 0;
-                        attackUtil.attackEntity(tool, player, InteractionHand.MAIN_HAND, targets, () -> 1, true, Util.getSlotType(InteractionHand.MAIN_HAND), tool.getStats().get(ToolStats.ATTACK_DAMAGE),1.5f, false, true, true,false);
+                        if (tool.getPersistentData().getInt(stellarcore) == stellarcore_limit && ls0.size() == 1) {
+                            targets.invulnerableTime = 0;
+                            attackUtil.attackEntity(tool, player, InteractionHand.MAIN_HAND, targets, () -> 1, true, Util.getSlotType(InteractionHand.MAIN_HAND), tool.getStats().get(ToolStats.ATTACK_DAMAGE), 3f, false, true, true, false);
+                        } else if (tool.getPersistentData().getInt(stellarcore) != stellarcore_limit) {
+                            targets.invulnerableTime = 0;
+                            attackUtil.attackEntity(tool, player, InteractionHand.MAIN_HAND, targets, () -> 1, true, Util.getSlotType(InteractionHand.MAIN_HAND), tool.getStats().get(ToolStats.ATTACK_DAMAGE), 1.5f, false, true, true, false);
+                        }
                     }
                 }
                 if (player.level instanceof ServerLevel serverLevel) {
@@ -150,6 +164,10 @@ public class entropy_burning_sword extends ModifiableItem {
     }
     public List<Component> getStats(IToolStackView tool, @Nullable Player player, List<Component> tooltips, TooltipKey key, TooltipFlag tooltipFlag) {
         TooltipBuilder builder = new TooltipBuilder(tool, tooltips);
+        int hadal_limit = MomotinkerConfig.hadal_limit.get();
+        int stellarcore_limit = MomotinkerConfig.stellarcore_limit.get();
+        int crystallized_limit = MomotinkerConfig.crystallized_limit.get();
+        int liverization_limit = MomotinkerConfig.liverization_limit.get();
         ModDataNBT a = tool.getPersistentData();
         if (tool.hasTag(TinkerTags.Items.DURABILITY)) {
             builder.add(ToolStats.DURABILITY);
@@ -164,6 +182,24 @@ public class entropy_burning_sword extends ModifiableItem {
             builder.add(Component.translatable("momotinker.tool.tooltip.offhand_hastool").withStyle(ChatFormatting.RED));
         }
 
+        if (a.getInt(hadal)<hadal_limit&&a.getInt(stellarcore)<stellarcore_limit&&a.getInt(crystallized)<crystallized_limit&&a.getInt(liverization)<liverization_limit) {
+            builder.add(Component.translatable("item.momotinker.tooltip.stellarcore").append(stellarcore_limit + "").append(Component.translatable("item.momotinker.tooltip.stellarcore1")).append(a.getInt(stellarcore) + "").withStyle(ChatFormatting.GOLD));
+        }
+        if (a.getInt(stellarcore)==stellarcore_limit) {
+            builder.add(Component.translatable("item.momotinker.tooltip.stellarcore2").withStyle(ChatFormatting.YELLOW));
+        }
+        if (a.getInt(liverization)>=liverization_limit) {
+            builder.add(Component.translatable("item.momotinker.tooltip.liverization").withStyle(ChatFormatting.DARK_RED));
+            if (a.getInt(liverization)==liverization_limit) {
+                builder.add(Component.translatable("item.momotinker.tooltip.liverization1").withStyle(ChatFormatting.DARK_RED));
+            }
+            if (a.getInt(liverization)>liverization_limit) {
+                builder.add(Component.translatable("item.momotinker.tooltip.liverization2").withStyle(ChatFormatting.GRAY));
+            }
+        }
+        if (a.getInt(hadal)==hadal_limit||a.getInt(crystallized)==crystallized_limit) {
+            builder.add(Component.translatable("item.momotinker.tooltip.other").withStyle(ChatFormatting.GRAY));
+        }
         Iterator var7 = tool.getModifierList().iterator();
         while(var7.hasNext()) {
             ModifierEntry entry = (ModifierEntry)var7.next();

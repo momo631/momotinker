@@ -23,11 +23,11 @@ import slimeknights.tconstruct.library.tools.stat.ToolStats;
 import static com.momosensei.momotinker.tool.divine_punishment_spear.degenerate;
 import static com.momosensei.momotinker.tool.divine_punishment_spear.sanctification;
 
-public class SuperancientMetals extends momomodifier {
-    public SuperancientMetals() {
+public class SuperancientMetalsA extends momomodifier {
+    public SuperancientMetalsA() {
     }
 
-    public static final ResourceLocation authentication = Momotinker.getResource("authentication");
+    public static final ResourceLocation authenticationa = Momotinker.getResource("authenticationa");
     public static final MaterialVariantId id_dim_dark_gold = MaterialVariantId.create(new MaterialId("momotinker","dim_dark_gold"),"default");
     public static final MaterialVariantId id_stained_blood_gold = MaterialVariantId.create(new MaterialId("momotinker","stained_blood_gold"),"default");
     public static final MaterialVariantId id_starry_mysterious_gold = MaterialVariantId.create(new MaterialId("momotinker","starry_mysterious_gold"),"default");
@@ -74,7 +74,7 @@ public class SuperancientMetals extends momomodifier {
         }
     }
     public static int getPersistentLevel(IToolStackView tool){
-        int a = tool.getPersistentData().getInt(authentication);
+        int a = tool.getPersistentData().getInt(authenticationa);
         return getLevel(a);
     }
     public static int getLevel(int a){
@@ -87,7 +87,7 @@ public class SuperancientMetals extends momomodifier {
         else return 0;
     }
     public static void setHeat(IToolStackView tool,int heat){
-        tool.getPersistentData().putInt(authentication, heat);
+        tool.getPersistentData().putInt(authenticationa, heat);
         EvolutionTool((ToolStack) tool);
     }
     public static void setHeatLevel(IToolStackView tool,int heatLevel){
