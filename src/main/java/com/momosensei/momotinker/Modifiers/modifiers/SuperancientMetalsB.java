@@ -62,9 +62,6 @@ public class SuperancientMetalsB extends momomodifier {
         if (tool.getDamage()==0&&entity instanceof Player player&&player.tickCount%40==0&&player.getHealth()<player.getMaxHealth()){
             player.heal(1);
         }
-    }
-
-    public void modifierOnInventoryTick(IToolStackView tool, ModifierEntry modifier, Level level, LivingEntity livingEntity, int itemSlot, boolean isSelected, boolean isCorrectSlot, ItemStack itemStack) {
         int hadal_limit = MomotinkerConfig.hadal_limit.get();
         int stellarcore_limit = MomotinkerConfig.stellarcore_limit.get();
         int crystallized_limit = MomotinkerConfig.crystallized_limit.get();
@@ -83,6 +80,7 @@ public class SuperancientMetalsB extends momomodifier {
             setHeatLevel(tool, 4);
         }
     }
+
     
     public static int getPersistentLevel(IToolStackView tool){
         int a = tool.getPersistentData().getInt(authenticationb);

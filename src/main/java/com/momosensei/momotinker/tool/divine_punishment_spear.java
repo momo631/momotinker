@@ -80,11 +80,11 @@ public class divine_punishment_spear extends ModifiableItem {
         if (event.getSource().getEntity() instanceof Player player && event.getEntity() != null) {
             if (player.getItemBySlot(EquipmentSlot.MAINHAND).is(MomotinkerItem.divine_punishment_spear.get()) && ModifierUtil.getModifierLevel(player.getItemBySlot(EquipmentSlot.MAINHAND), MomotinkerModifiers.frombrilliance.getId()) > 0) {
                 ModDataNBT a = ToolStack.from(player.getItemBySlot(EquipmentSlot.MAINHAND)).getPersistentData();
-                if (event.getEntity().getMobType() == MobType.UNDEAD && a.getFloat(sanctification) < sanctification_limit && a.getFloat(degenerate) < degenerate_limit) {
-                    a.putFloat(sanctification, a.getFloat(sanctification) + 1);
+                if (event.getEntity().getMobType() == MobType.UNDEAD && a.getInt(sanctification) < sanctification_limit && a.getInt(degenerate) < degenerate_limit) {
+                    a.putInt(sanctification, a.getInt(sanctification) + 1);
                 }
-                if (event.getEntity() instanceof Villager && a.getFloat(sanctification) < sanctification_limit && a.getFloat(degenerate) < degenerate_limit) {
-                    a.putFloat(degenerate, a.getFloat(degenerate) + 1);
+                if (event.getEntity() instanceof Villager && a.getInt(sanctification) < sanctification_limit && a.getInt(degenerate) < degenerate_limit) {
+                    a.putInt(degenerate, a.getInt(degenerate) + 1);
                 }
             }
         }
@@ -108,10 +108,10 @@ public class divine_punishment_spear extends ModifiableItem {
                 event.setAmount(0.5F * event.getAmount());
             }
             if (ModifierUtil.getModifierLevel(player.getItemBySlot(EquipmentSlot.MAINHAND), MomotinkerModifiers.frombrilliance.getId())>0) {
-                if (c.getFloat(sanctification) == sanctification_limit) {
+                if (c.getInt(sanctification) == sanctification_limit) {
                     a.hurt(DamageSource.MAGIC.bypassMagic(), event.getAmount() * 0.25F);
                 }
-                if (c.getFloat(degenerate) == degenerate_limit) {
+                if (c.getInt(degenerate) == degenerate_limit) {
                     if (player.getItemBySlot(EquipmentSlot.MAINHAND).getDamageValue() == 0) {
                         player.heal(event.getAmount() * 0.5F);
                     }
@@ -275,13 +275,13 @@ public class divine_punishment_spear extends ModifiableItem {
             builder.add(ToolStats.ATTACK_SPEED);
         }
         builder.addAllFreeSlots();
-        if (a.getFloat(sanctification)<sanctification_limit&&a.getFloat(degenerate)<degenerate_limit) {
-            builder.add(Component.translatable("item.momotinker.tooltip.divine_punishment_spear1").append(sanctification_limit+"").append(Component.translatable("item.momotinker.tooltip.divine_punishment_spear2")).append(a.getFloat(sanctification)+"").withStyle(ChatFormatting.GOLD));
+        if (a.getInt(sanctification)<sanctification_limit&&a.getInt(degenerate)<degenerate_limit) {
+            builder.add(Component.translatable("item.momotinker.tooltip.divine_punishment_spear1").append(sanctification_limit+"").append(Component.translatable("item.momotinker.tooltip.divine_punishment_spear2")).append(a.getInt(sanctification)+"").withStyle(ChatFormatting.GOLD));
         }
-        if (a.getFloat(sanctification)==sanctification_limit) {
+        if (a.getInt(sanctification)==sanctification_limit) {
             builder.add(Component.translatable("item.momotinker.tooltip.divine_punishment_spear3").withStyle(ChatFormatting.YELLOW));
         }
-        if (a.getFloat(degenerate)==degenerate_limit) {
+        if (a.getInt(degenerate)==degenerate_limit) {
             builder.add(Component.translatable("item.momotinker.tooltip.divine_punishment_spear4").withStyle(ChatFormatting.DARK_RED));
         }
         if (CoolTimeA.getCoolTime()!=0){

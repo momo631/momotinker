@@ -52,7 +52,7 @@ public class MomotinkerConfig {
     public static final ForgeConfigSpec.IntValue cleansetheworld_limit=builder.comment("cleansetheworld_limit")
             .defineInRange("cleansetheworld cooldown time limit",600,0,Integer.MAX_VALUE);
     public static final ForgeConfigSpec.IntValue crystallized_hurt_limit=builder.comment("crystallized_hurt_limit")
-            .defineInRange("crystallized hurt limit",600,0,Integer.MAX_VALUE);
+            .defineInRange("crystallized hurt limit",60,0,Integer.MAX_VALUE);
 
     public static final ForgeConfigSpec.IntValue sanctification_limit=builder.comment("divine_punishment_spear_limit")
             .defineInRange("divine_punishment_spear sanctification limit",500,0,Integer.MAX_VALUE);

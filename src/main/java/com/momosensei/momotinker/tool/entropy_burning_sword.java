@@ -16,7 +16,6 @@ import net.minecraft.stats.Stats;
 import net.minecraft.util.Mth;
 import net.minecraft.world.InteractionHand;
 import net.minecraft.world.InteractionResultHolder;
-import net.minecraft.world.damagesource.DamageSource;
 import net.minecraft.world.entity.Entity;
 import net.minecraft.world.entity.EquipmentSlot;
 import net.minecraft.world.entity.LivingEntity;
@@ -61,14 +60,9 @@ public class entropy_burning_sword extends ModifiableItem {
     private void livinghurtevent(LivingHurtEvent event) {
         Entity a = event.getEntity();
         Entity b = event.getSource().getEntity();
-        int stellarcore_limit = MomotinkerConfig.stellarcore_limit.get();
         if (b instanceof Player player&&a!=null&&player.getMainHandItem().is(MomotinkerItem.entropy_burning_sword.get())){
             if (!checkOffHand(player)) {
                 event.setAmount(0.2F * event.getAmount());
-            }
-            ModDataNBT c = ToolStack.from(player.getItemBySlot(EquipmentSlot.MAINHAND)).getPersistentData();
-            if (c.getInt(stellarcore)==stellarcore_limit&&a instanceof LivingEntity) {
-                a.hurt(DamageSource.LAVA,event.getAmount()*0.25f);
             }
         }
     }
@@ -108,13 +102,13 @@ public class entropy_burning_sword extends ModifiableItem {
             player.awardStat(Stats.ITEM_USED.get(this));
             int a = (int) player.getAttackRange();
             if (perc >= 1) {
-                List<Entity> ls0 = player.level.getEntitiesOfClass(Entity.class, player.getBoundingBox().inflate(a+0.5, 1.5, a+0.5));
-                for (Entity targets : ls0) {
-                    if (targets != player) {
+                List<LivingEntity> ls0 = player.level.getEntitiesOfClass(LivingEntity.class, player.getBoundingBox().inflate(a+0.5, 1.5, a+0.5));
+                for (LivingEntity targets : ls0) {
+                    if (targets != player&&targets!=null) {
                         if (tool.getPersistentData().getInt(stellarcore) == stellarcore_limit && ls0.size() == 1) {
                             targets.invulnerableTime = 0;
                             attackUtil.attackEntity(tool, player, InteractionHand.MAIN_HAND, targets, () -> 1, true, Util.getSlotType(InteractionHand.MAIN_HAND), tool.getStats().get(ToolStats.ATTACK_DAMAGE), 3f, false, true, true, false);
-                        } else if (tool.getPersistentData().getInt(stellarcore) != stellarcore_limit) {
+                        } else {
                             targets.invulnerableTime = 0;
                             attackUtil.attackEntity(tool, player, InteractionHand.MAIN_HAND, targets, () -> 1, true, Util.getSlotType(InteractionHand.MAIN_HAND), tool.getStats().get(ToolStats.ATTACK_DAMAGE), 1.5f, false, true, true, false);
                         }
@@ -189,9 +183,9 @@ public class entropy_burning_sword extends ModifiableItem {
             builder.add(Component.translatable("item.momotinker.tooltip.stellarcore2").withStyle(ChatFormatting.YELLOW));
         }
         if (a.getInt(liverization)>=liverization_limit) {
-            builder.add(Component.translatable("item.momotinker.tooltip.liverization").withStyle(ChatFormatting.DARK_RED));
             if (a.getInt(liverization)==liverization_limit) {
-                builder.add(Component.translatable("item.momotinker.tooltip.liverization1").withStyle(ChatFormatting.DARK_RED));
+                builder.add(Component.translatable("item.momotinker.tooltip.liverization").withStyle(ChatFormatting.RED));
+                builder.add(Component.translatable("item.momotinker.tooltip.liverization1").withStyle(ChatFormatting.RED));
             }
             if (a.getInt(liverization)>liverization_limit) {
                 builder.add(Component.translatable("item.momotinker.tooltip.liverization2").withStyle(ChatFormatting.GRAY));

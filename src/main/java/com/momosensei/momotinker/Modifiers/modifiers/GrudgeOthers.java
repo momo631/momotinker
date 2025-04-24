@@ -62,15 +62,15 @@ public class GrudgeOthers extends momomodifier {
             float b = target.getMaxHealth() - attacker.getMaxHealth();
             if (b > 0 && b < a*1000){
                 return damage + b*a/10;
-            }
+            }else
             if (b > a*1000){
                 return damage + a*1000*a/10;
-            }
+            }else
             if (b < 0 && b > -damage){
                 return damage + b*a/20;
-            }
+            }else
             if (b < -damage){
-                return damage * 0;
+                return 0;
             }
         }
         return damage;
@@ -84,15 +84,15 @@ public class GrudgeOthers extends momomodifier {
                 float b = target.getMaxHealth() - attacker.getMaxHealth();
                 if (b > 0 && b < a*1000){
                     arrow.setBaseDamage(arrow.getBaseDamage() + b*a/10);
-                }
+                }else
                 if (b > a*1000){
                     arrow.setBaseDamage(arrow.getBaseDamage() + a*1000*a/10);
-                }
+                }else
                 if (b < 0 && b > -arrow.getBaseDamage()){
                     arrow.setBaseDamage(arrow.getBaseDamage() + b*a/20);
-                }
+                }else
                 if (b < -arrow.getBaseDamage()){
-                    arrow.setBaseDamage(arrow.getBaseDamage() * 0);
+                    arrow.setBaseDamage(1);
                 }
             }
         }

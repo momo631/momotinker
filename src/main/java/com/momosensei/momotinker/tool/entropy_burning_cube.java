@@ -83,7 +83,7 @@ public class entropy_burning_cube extends ModifiableItem {
         Entity a = event.getEntity();
         Entity b = event.getSource().getEntity();
         if (b instanceof Player player&&a!=null&&player.getMainHandItem().is(MomotinkerItem.entropy_burning_cube.get())){
-            event.setAmount(6);
+            event.setAmount(event.getAmount()*0.006f);
         }
     }
     public boolean canAttackBlock(BlockState blockState, Level level, BlockPos blockPos, Player player) {
@@ -123,9 +123,9 @@ public class entropy_burning_cube extends ModifiableItem {
             builder.add(Component.translatable("item.momotinker.tooltip.crystallized2").withStyle(ChatFormatting.AQUA));
         }
         if (a.getInt(liverization)>=liverization_limit) {
-            builder.add(Component.translatable("item.momotinker.tooltip.liverization").withStyle(ChatFormatting.DARK_RED));
             if (a.getInt(liverization)==liverization_limit) {
-                builder.add(Component.translatable("item.momotinker.tooltip.liverization1").withStyle(ChatFormatting.DARK_RED));
+                builder.add(Component.translatable("item.momotinker.tooltip.liverization").withStyle(ChatFormatting.RED));
+                builder.add(Component.translatable("item.momotinker.tooltip.liverization1").withStyle(ChatFormatting.RED));
             }
             if (a.getInt(liverization)>liverization_limit) {
                 builder.add(Component.translatable("item.momotinker.tooltip.liverization2").withStyle(ChatFormatting.GRAY));

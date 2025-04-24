@@ -88,7 +88,7 @@ public class KeyAInputPKT {
             if (player!=null&&player.getMainHandItem().is(MomotinkerItem.entropy_burning_cube.get())&&player.getOffhandItem().getItem() instanceof ModifiableItem) {
                 ToolStack tool = ToolStack.from(player.getMainHandItem());
                 ToolStack tool1 = ToolStack.from(player.getOffhandItem());
-                if (tool1.getMaterials().size()==3&&tool.getPersistentData().getInt(liverization)==liverization_limit) {
+                if (tool1.getMaterials().size()<=3&&tool1.getMaterials().size()>=0&&tool.getPersistentData().getInt(liverization)==liverization_limit) {
                     List<ModifierEntry> list1 = tool1.getModifiers().getModifiers();
                     for (ModifierEntry modifier : list1) {
                         tool.setUpgrades(tool.getUpgrades().withModifier(modifier.getId(),modifier.getLevel()));

@@ -59,28 +59,9 @@ public class entropy_burning_riding_spear extends ModifiableItem {
     private void livinghurtevent(LivingHurtEvent event) {
         Entity a = event.getEntity();
         Entity b = event.getSource().getEntity();
-        int hadal_limit = MomotinkerConfig.hadal_limit.get();
-        int d = MomotinkerConfig.entropy_burning_riding_spear_limit.get();
         if (b instanceof Player player&&a!=null&&player.getMainHandItem().is(MomotinkerItem.entropy_burning_riding_spear.get())){
-            ModDataNBT c = ToolStack.from(player.getItemBySlot(EquipmentSlot.MAINHAND)).getPersistentData();
             if (!checkOffHand(player)) {
                 event.setAmount(0.4F * event.getAmount());
-            }
-            float speed = (float) player.getDeltaMovement().length();
-            float bonus;
-            bonus = getbonus(speed, 5)*100;
-            if (c.getInt(hadal)==hadal_limit) {
-                if (bonus < 3*d) {
-                    event.setAmount(event.getAmount() * (1f + 2*bonus * 0.01f));
-                } else if (bonus > 3*d) {
-                    event.setAmount(event.getAmount() * (1f + 3*d * 0.01f));
-                }
-            }else if (c.getInt(hadal)!=hadal_limit){
-                if (bonus < d) {
-                    event.setAmount(event.getAmount() * (1f + bonus * 0.01f));
-                } else if (bonus > d) {
-                    event.setAmount(event.getAmount() * (1f + d * 0.01f));
-                }
             }
         }
     }
@@ -181,6 +162,9 @@ public class entropy_burning_riding_spear extends ModifiableItem {
         if (player != null) {
             float speed = (float) player.getDeltaMovement().length();
             float bonus = getbonus(speed,5);
+            if (a.getInt(hadal)==hadal_limit){
+                bonus*=2;
+            }
             builder.add(Component.translatable("item.momotinker.tooltip.entropy_burning_riding_spear1").append((bonus*100)+"%"));
         }
         builder.addAllFreeSlots();
@@ -195,9 +179,9 @@ public class entropy_burning_riding_spear extends ModifiableItem {
             builder.add(Component.translatable("item.momotinker.tooltip.hadal2").withStyle(ChatFormatting.DARK_BLUE));
         }
         if (a.getInt(liverization)>=liverization_limit) {
-            builder.add(Component.translatable("item.momotinker.tooltip.liverization").withStyle(ChatFormatting.DARK_RED));
             if (a.getInt(liverization)==liverization_limit) {
-                builder.add(Component.translatable("item.momotinker.tooltip.liverization1").withStyle(ChatFormatting.DARK_RED));
+                builder.add(Component.translatable("item.momotinker.tooltip.liverization").withStyle(ChatFormatting.RED));
+                builder.add(Component.translatable("item.momotinker.tooltip.liverization1").withStyle(ChatFormatting.RED));
             }
             if (a.getInt(liverization)>liverization_limit) {
                 builder.add(Component.translatable("item.momotinker.tooltip.liverization2").withStyle(ChatFormatting.GRAY));

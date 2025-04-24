@@ -153,9 +153,9 @@ public class entropy_burning_cannon extends ModifiableItem{
             builder.add(Component.translatable("item.momotinker.tooltip.crystallized2").withStyle(ChatFormatting.AQUA));
         }
         if (a.getInt(liverization)>=liverization_limit) {
-            builder.add(Component.translatable("item.momotinker.tooltip.liverization").withStyle(ChatFormatting.DARK_RED));
             if (a.getInt(liverization)==liverization_limit) {
-                builder.add(Component.translatable("item.momotinker.tooltip.liverization1").withStyle(ChatFormatting.DARK_RED));
+                builder.add(Component.translatable("item.momotinker.tooltip.liverization").withStyle(ChatFormatting.RED));
+                builder.add(Component.translatable("item.momotinker.tooltip.liverization1").withStyle(ChatFormatting.RED));
             }
             if (a.getInt(liverization)>liverization_limit) {
                 builder.add(Component.translatable("item.momotinker.tooltip.liverization2").withStyle(ChatFormatting.GRAY));
