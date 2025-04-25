@@ -30,7 +30,6 @@ import slimeknights.tconstruct.common.TinkerTags;
 import slimeknights.tconstruct.library.modifiers.ModifierEntry;
 import slimeknights.tconstruct.library.modifiers.ModifierHooks;
 import slimeknights.tconstruct.library.modifiers.hook.build.ConditionalStatModifierHook;
-import slimeknights.tconstruct.library.modifiers.hook.display.TooltipModifierHook;
 import slimeknights.tconstruct.library.tools.definition.ToolDefinition;
 import slimeknights.tconstruct.library.tools.helper.ToolDamageUtil;
 import slimeknights.tconstruct.library.tools.helper.TooltipBuilder;
@@ -45,6 +44,7 @@ import slimeknights.tconstruct.tools.modifiers.upgrades.ranged.ScopeModifier;
 import java.util.Iterator;
 import java.util.List;
 
+import static com.momosensei.momotinker.Modifiers.momomodifier.getbonus;
 import static com.momosensei.momotinker.tool.entropy_burning_cube.*;
 import static slimeknights.tconstruct.library.modifiers.hook.interaction.GeneralInteractionModifierHook.KEY_DRAWTIME;
 
@@ -53,9 +53,7 @@ public class entropy_burning_riding_spear extends ModifiableItem {
         super(properties, toolDefinition);
         MinecraftForge.EVENT_BUS.addListener(this::livinghurtevent);
     }
-    public float getbonus(float speed, int status) {
-        return speed * status;
-    }
+
     private void livinghurtevent(LivingHurtEvent event) {
         Entity a = event.getEntity();
         Entity b = event.getSource().getEntity();
@@ -97,9 +95,9 @@ public class entropy_burning_riding_spear extends ModifiableItem {
             if (perc >= 1){
                 player1.hasImpulse = true;
                 player1.startAutoSpinAttack(2);
-                int a =4;
+                int a =3;
                 if (tool.getPersistentData().getInt(hadal)==hadal_limit&&player1.isInWater()||player1.level.isRaining()) {
-                    a+=8;
+                    a+=1;
                 }
                 player1.setDeltaMovement(player1.getLookAngle().scale(a));
                 player1.invulnerableTime = 20;
@@ -160,12 +158,11 @@ public class entropy_burning_riding_spear extends ModifiableItem {
             builder.add(ToolStats.ATTACK_SPEED);
         }
         if (player != null) {
-            float speed = (float) player.getDeltaMovement().length();
-            float bonus = getbonus(speed,5);
+            float bonus = getbonus(player,2500);
             if (a.getInt(hadal)==hadal_limit){
                 bonus*=2;
             }
-            builder.add(Component.translatable("item.momotinker.tooltip.entropy_burning_riding_spear1").append((bonus*100)+"%"));
+            builder.add(Component.translatable("item.momotinker.tooltip.entropy_burning_riding_spear1").append(String.format("%.0f",bonus)+"%"));
         }
         builder.addAllFreeSlots();
         if (!checkOffHand(player)){
@@ -193,7 +190,7 @@ public class entropy_burning_riding_spear extends ModifiableItem {
         Iterator var7 = tool.getModifierList().iterator();
         while(var7.hasNext()) {
             ModifierEntry entry = (ModifierEntry)var7.next();
-            ((TooltipModifierHook)entry.getHook(ModifierHooks.TOOLTIP)).addTooltip(tool, entry, player, tooltips, key, tooltipFlag);
+            entry.getHook(ModifierHooks.TOOLTIP).addTooltip(tool, entry, player, tooltips, key, tooltipFlag);
         }
         return tooltips;
     }

@@ -8,6 +8,7 @@ import net.minecraft.ChatFormatting;
 import net.minecraft.network.chat.Component;
 import net.minecraft.world.damagesource.DamageSource;
 import net.minecraft.world.entity.LivingEntity;
+import net.minecraft.world.entity.ai.attributes.Attributes;
 import net.minecraft.world.entity.player.Player;
 import net.minecraft.world.item.ItemStack;
 import net.minecraft.world.item.TooltipFlag;
@@ -73,10 +74,6 @@ public class FromBrilliance extends momomodifier {
         }
     }
 
-    public float getbonus(float speed, int status) {
-        return speed * status;
-    }
-
     @Override
     public float getMeleeDamage(@Nonnull IToolStackView tool, ModifierEntry modifier, @Nonnull ToolAttackContext context, float baseDamage, float damage) {
         LivingEntity attacker = context.getAttacker();
@@ -86,9 +83,7 @@ public class FromBrilliance extends momomodifier {
         if (attacker instanceof Player player && context.getLivingTarget() != null) {
             ModDataNBT c = ToolStack.from(player.getMainHandItem()).getPersistentData();
             if (player.getMainHandItem().is(MomotinkerItem.entropy_burning_riding_spear.get())) {
-                float speed = (float) player.getDeltaMovement().length();
-                float bonus;
-                bonus = getbonus(speed, 5) * 100;
+                float bonus = getbonus(player,2500);
                 if (c.getInt(hadal) == hadal_limit) {
                     if (bonus < 3 * d) {
                         return damage * (1f + 2 * bonus * 0.01f);
@@ -105,8 +100,9 @@ public class FromBrilliance extends momomodifier {
             }
             if (player.getMainHandItem().is(MomotinkerItem.entropy_burning_sword.get())) {
                 if (c.getInt(stellarcore) == stellarcore_limit) {
+                    float e = (float) (player.getArmorValue()*0.5f+player.getAttributeValue(Attributes.ARMOR_TOUGHNESS)*0.25f);
                     context.getLivingTarget().invulnerableTime = 0;
-                    context.getLivingTarget().hurt(DamageSource.LAVA, damage * 0.25f);
+                    context.getLivingTarget().hurt(DamageSource.LAVA, damage * 0.05f+e);
                     context.getLivingTarget().invulnerableTime = 0;
                 }
             }

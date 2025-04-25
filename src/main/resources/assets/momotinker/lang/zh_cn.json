@@ -173,8 +173,8 @@
   "item.momotinker.entropy_burning_sword": "熵烬巨剑",
   "item.momotinker.entropy_burning_sword.description": "[双手武器]\n高伤害但攻速极低的宽范围近战武器，右键蓄力完成后会进行一次“熵变”打击对大范围目标造成150%的伤害（受攻速影响）",
   "item.momotinker.tooltip.stellarcore": "古代神兵任务:[熵烬巨剑]击杀",
-  "item.momotinker.tooltip.stellarcore1": "只火焰类生物。当前击杀数为:",
-  "item.momotinker.tooltip.stellarcore2": "古代神兵任务已完成！攻击对主要目标造成25%火焰伤害，若“熵变”打击的目标只有一个则伤害变为300%",
+  "item.momotinker.tooltip.stellarcore1": "只正在着火的生物。当前击杀数为:",
+  "item.momotinker.tooltip.stellarcore2": "古代神兵任务已完成！攻击造成格外火焰伤害，数值为护甲的50%+护甲韧性的25%+攻击力的5%，若“熵变”打击的目标只有一个则伤害变为300%",
 
   "item.momotinker.entropy_burning_riding_spear": "熵烬骑枪",
   "item.momotinker.entropy_burning_riding_spear.description": "[双手武器]\n较高伤害攻速较低的较长攻击距离的单体近战武器，移动时会根据移速增加伤害（默认最多增加150%），右键蓄力释放可短暂冲刺",
@@ -498,7 +498,7 @@
 
   "modifier.momotinker.significance": "第二终章:意义",
   "modifier.momotinker.significance.flavor": "万物之所以存在，皆因系与意义，故此，予其剥夺",
-  "modifier.momotinker.significance.description": "按下特殊技能按键使大范围生物的最大生命持续衰减直到死亡并且身上所有药水效果都会被清除，自身也会被影响但是生命衰减的速度减半",
+  "modifier.momotinker.significance.description": "按下特殊技能按键使大范围生物的最大生命持续衰减直到死亡并且身上所有药水效果都会被清除，最大生命低于自身最大生命的200%时会直接归于虚无，自身最大生命也会降低但是生命衰减的速度减半",
   "modifier.momotinker.tooltip.significance1": "“第二终章:意义”冷却还剩:",
 
   "modifier.momotinker.blank": "第三终章:留白",
@@ -523,6 +523,24 @@
 
   "modifier.momotinker.blessingofmeteor": "流星祝福",
   "modifier.momotinker.blessingofmeteor.flavor": "流星们慷慨的祝福着你",
-  "modifier.momotinker.blessingofmeteor.description": "每等级获得三种槽位各一个，并且每级获得叠乘的40%大部分属性加成"
+  "modifier.momotinker.blessingofmeteor.description": "每等级获得三种槽位各一个，并且每级获得叠乘的40%大部分属性加成",
+
+  "modifier.momotinker.abyssalresonance": "渊海共鸣",
+  "modifier.momotinker.abyssalresonance.flavor": "聆听来自远古海洋血脉的回响",
+  "modifier.momotinker.abyssalresonance.description": "获得20%移速，所在维度更容易下雨，在水中或下雨时受到的伤害减少固定数值，数值受身上总词条等级数量与速度影响",
+  "modifier.momotinker.tooltip.abyssalresonance1": "当前减伤:",
+
+  "modifier.momotinker.thermonuclearzone": "热核地带",
+  "modifier.momotinker.thermonuclearzone.flavor": "所到之处，寸草不生",
+  "modifier.momotinker.thermonuclearzone.description": "周围每有一个已着火的生物，自身就会获得暂时的2+身上总词条等级数一半的护甲，受到伤害时会根据护甲和护甲韧性的数值进行反伤",
+
+  "modifier.momotinker.selfcrystallization": "自结晶",
+  "modifier.momotinker.selfcrystallization.flavor": "如晶体般易碎，如晶体般生长",
+  "modifier.momotinker.selfcrystallization.description": "获得25%可叠乘耐久，耐久会自动恢复且速度与身上总词条相关，受到伤害会消耗身上该词条装备总剩余耐久的5%来减少受到伤害（主手和副手只有0.2%的效能），每50点减少1点伤害，若消耗的耐久大于受到伤害会将多余耐久反伤回去",
+  "modifier.momotinker.tooltip.selfcrystallization1": "当前减伤:",
+
+  "modifier.momotinker.lifeprogram": "仿生程序",
+  "modifier.momotinker.lifeprogram.flavor": "模仿生命的程序，为何会...",
+  "modifier.momotinker.lifeprogram.description": "受到的治疗效率增加40%+20%*身上总词条，若生命低于50%则受到的治疗效率格外增加100%，低于25%时改为增加300%，受到的所有伤害不会超过最大生命的90%"
 
 }

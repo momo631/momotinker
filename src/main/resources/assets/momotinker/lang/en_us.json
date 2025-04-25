@@ -173,13 +173,13 @@
   "item.momotinker.entropy_burning_sword.description": "[Two handed weapons]\nA wide range melee weapon with high damage but extremely low attack speed,After accumulating power, deal 150% damage to a wide range target (affected by attack speed).",
   "item.momotinker.tooltip.stellarcore": "[From Brilliance]Mission:[Entropy Burning Sword]Kill",
   "item.momotinker.tooltip.stellarcore1": "flame creature. The current number of kills is:",
-  "item.momotinker.tooltip.stellarcore2": "The mission of the ancient divine weapon has been completed!The attack deals 25% flame damage to the main target,If there is only one target hit by the right-click, the damage will become 300%",
+  "item.momotinker.tooltip.stellarcore2": "The mission of the ancient divine weapon has been completed!Attacks cause extra flame damage, with values related to armor and armor resilience.If there is only one target hit by the right-click, the damage will become 300%",
 
   "item.momotinker.entropy_burning_riding_spear": "Entropy Burning Riding Spear",
   "item.momotinker.entropy_burning_riding_spear.description": "[Two handed weapons]\nSingle unit melee weapon with longer attack distance.The damage will increase according to the movement speed.After accumulating power, it can sprint briefly.",
   "item.momotinker.tooltip.entropy_burning_riding_spear1": "The current movement speed has increased the total damage:",
   "item.momotinker.tooltip.hadal": "[From Brilliance]Mission:[Entropy Burning Riding Spear]Kill",
-  "item.momotinker.tooltip.hadal1": "aquatic organism. The current number of kills is:",
+  "item.momotinker.tooltip.hadal1": "creature on fire. The current number of kills is:",
   "item.momotinker.tooltip.hadal2": "The mission of the ancient divine weapon has been completed!Double the damage value based on movement speed and increase the sprint distance in water.Increase the upper limit of damage to 450%",
 
   "item.momotinker.entropy_burning_cannon": "Entropy Burning Cannon",
@@ -497,7 +497,7 @@
 
   "modifier.momotinker.significance": "Chapter 2: Meaning",
   "modifier.momotinker.significance.flavor": "All things exist because of their relationship and meaning, therefore, they should be deprived",
-  "modifier.momotinker.significance.description": "Press 'Category Example' to continuously decay the maximum life of a large range of organisms until death, and all potions on their bodies will be cleared. They will also be affected, but the rate of life decay will be halved",
+  "modifier.momotinker.significance.description": "Press 'Category Example' to continuously decay the maximum life of a large range of organisms until death, and all potions on their bodies will be cleared.When the maximum life is less than 200% of the maximum life of the releaser, it will be cleared. The maximum life of the releaser will also decrease, but the rate of life decay will be halved",
   "modifier.momotinker.tooltip.significance1": "Cooling residue of [Chapter 2: Meaning]:",
 
   "modifier.momotinker.blank": "Chapter 3: Blank",
@@ -522,6 +522,24 @@
 
   "modifier.momotinker.blessingofmeteor": "Blessing Of Meteor",
   "modifier.momotinker.blessingofmeteor.flavor": "The shooting stars generously bless you",
-  "modifier.momotinker.blessingofmeteor.description": "Each level receives one slot for each of the three types, and each level receives a 40% stacking bonus for most attributes"
+  "modifier.momotinker.blessingofmeteor.description": "Each level receives one slot for each of the three types, and each level receives a 40% stacking bonus for most attributes",
+
+  "modifier.momotinker.abyssalresonance": "Abyssal Resonance",
+  "modifier.momotinker.abyssalresonance.flavor": "Listen to the echoes of ancient oceanic bloodlines",
+  "modifier.momotinker.abyssalresonance.description": "Get a 20% movement speed, the dimension is more prone to rain, and the damage received in water or rain is reduced by a fixed value, which is affected by the total number of entry levels and speed on the body",
+  "modifier.momotinker.tooltip.abyssalresonance1": "Current damage reduction:",
+
+  "modifier.momotinker.thermonuclearzone": "Thermonuclear Zone",
+  "modifier.momotinker.thermonuclearzone.flavor": "Wherever they go, not a single blade of grass grows",
+  "modifier.momotinker.thermonuclearzone.description": "For every creature around that is already on fire, they will receive a temporary 2+armor that is half the total item level on their body. When they receive damage, they will counterattack based on the values of armor and armor toughness",
+
+  "modifier.momotinker.selfcrystallization": "Self Crystallization",
+  "modifier.momotinker.selfcrystallization.flavor": "Fragile like a crystal, growing like a crystal",
+  "modifier.momotinker.selfcrystallization.description": "Obtain 25% stackable durability, which will automatically recover and consume 5% of the remaining durability of the equipment on the body, reducing damage (the tool only has 0.2% effectiveness). If the durability consumed is greater than the damage received, the excess durability will be counterattacked",
+  "modifier.momotinker.tooltip.selfcrystallization1": "Current damage reduction:",
+
+  "modifier.momotinker.lifeprogram": "Life Program",
+  "modifier.momotinker.lifeprogram.flavor": "Why does the program that imitates life exist ..\n",
+  "modifier.momotinker.lifeprogram.description": "The treatment efficiency received increases by 40%+20% * the total number of items on the body. If the life is less than 50%, the treatment efficiency received increases by an additional 100%. If it is less than 25%, it increases by 300%. The total damage received will not exceed 90% of the maximum life"
 
 }

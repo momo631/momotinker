@@ -281,7 +281,13 @@ public class LivingEvents {
                 CompoundTag tag = player.getPersistentData().getCompound(Player.PERSISTED_NBT_TAG);
                 String a = "meteor_nucleus_unlock";
                 if (random.nextInt(5) == 0 && tag.getBoolean(a)) {
-                    Vec2 pos = new Vec2((float) (player.getX() + random.nextInt(240) - random.nextInt(240)), (float) (player.getZ() + random.nextInt(240) - random.nextInt(240)));
+
+                    Vec2 pos1 = new Vec2((float) (player.getX() + random.nextInt(240) - random.nextInt(240)), (float) (player.getZ() + random.nextInt(240) - random.nextInt(240)));
+                    Vec2 pos2 = new Vec2((float) (player.getX() + random.nextInt(100) - random.nextInt(100)), (float) (player.getZ() + random.nextInt(100) - random.nextInt(100)));
+                    Vec2 pos = new Vec2((float) Math.pow(Math.pow(pos1.x,2)-Math.pow(pos2.x,2), (double) 1 /2), (float) Math.pow(Math.pow(pos1.y,2)-Math.pow(pos2.y,2), (double) 1 /2));
+                    if ((pos.x<100)||(pos.y<100)){
+                        return;
+                    }
                     EntitySpawnEvent event1 = new EntitySpawnEvent(new Vec3(pos.x, player.getY() + 150, pos.y));
                     //EntitySpawnEvent event1 = new EntitySpawnEvent(new Vec3(player.getX(), player.getY() + 150, player.getZ()));
                     MinecraftForge.EVENT_BUS.post(event1);

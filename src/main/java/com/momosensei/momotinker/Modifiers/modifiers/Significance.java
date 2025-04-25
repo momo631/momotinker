@@ -25,6 +25,8 @@ import javax.annotation.Nullable;
 import java.util.Collection;
 import java.util.List;
 
+import static com.momosensei.momotinker.util.PenetratingDamage.reflectionPenetratingDamage;
+
 
 public class Significance extends momomodifier {
     public Significance() {
@@ -83,10 +85,14 @@ public class Significance extends momomodifier {
                             MobEffectInstance effect = harmeffect1.stream().toList().get(i);
                             e.removeEffect(effect.getEffect());
                         }
+                        if (e.getMaxHealth()<player.getMaxHealth()*2f){
+                            reflectionPenetratingDamage(e,player,e.getMaxHealth());
+                            e.onRemovedFromWorld();
+                            e.setPos(Double.NaN, Double.NaN, Double.NaN);
+                        }
                     }
                     if (e instanceof ServerPlayer player1){
                         Channel.sendToPlayer(new SignifiCharge(3),player1);
-
                     }
                 }
             }

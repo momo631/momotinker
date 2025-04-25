@@ -57,14 +57,14 @@ public class DrinkingDemon extends momomodifier {
             if (player.totalExperience > a * 50 * g) {
                 tooltip.add(Component.translatable("modifier.momotinker.tooltip.drinkingdemon2").withStyle(ChatFormatting.GREEN));
             }
-            tooltip.add(Component.translatable("modifier.momotinker.tooltip.drinkingdemon3").append((tool.getPersistentData().getInt(curseenchant)) + ";").append(Component.translatable("modifier.momotinker.tooltip.drinkingdemon4")).append((f) + "%").withStyle(ChatFormatting.DARK_PURPLE));
+            tooltip.add(Component.translatable("modifier.momotinker.tooltip.drinkingdemon3").append((tool.getPersistentData().getInt(curseenchant)) + ";").append(Component.translatable("modifier.momotinker.tooltip.drinkingdemon4")).append(String.format("%.0f",f) + "%").withStyle(ChatFormatting.DARK_PURPLE));
             int b1=  ToolStack.from(player.getItemBySlot(EquipmentSlot.HEAD)).getPersistentData().getInt(defenseenchant)
                     +ToolStack.from(player.getItemBySlot(EquipmentSlot.CHEST)).getPersistentData().getInt(defenseenchant)
                     +ToolStack.from(player.getItemBySlot(EquipmentSlot.LEGS)).getPersistentData().getInt(defenseenchant)
                     +ToolStack.from(player.getItemBySlot(EquipmentSlot.FEET)).getPersistentData().getInt(defenseenchant);
             float b = (1-((float) 80 / (b1 + 80)))*100;
             if (tool.hasTag(TinkerTags.Items.ARMOR)) {
-                tooltip.add(Component.translatable("modifier.momotinker.tooltip.drinkingdemon5").append((b1) + ";").append(Component.translatable("modifier.momotinker.tooltip.drinkingdemon6")).append((b) + "%").withStyle(ChatFormatting.DARK_PURPLE));
+                tooltip.add(Component.translatable("modifier.momotinker.tooltip.drinkingdemon5").append((b1) + ";").append(Component.translatable("modifier.momotinker.tooltip.drinkingdemon6")).append(String.format("%.0f",b) + "%").withStyle(ChatFormatting.DARK_PURPLE));
             }
             if (!tool.hasTag(TinkerTags.Items.ARMOR)) {
                 tooltip.add(Component.translatable("modifier.momotinker.tooltip.drinkingdemon7").append((c) + ";").append(Component.translatable("modifier.momotinker.tooltip.drinkingdemon8")).append((c) + "%").withStyle(ChatFormatting.DARK_PURPLE));

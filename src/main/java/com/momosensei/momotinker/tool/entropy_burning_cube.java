@@ -63,7 +63,7 @@ public class entropy_burning_cube extends ModifiableItem {
                 }
             }
             if (player.getItemBySlot(EquipmentSlot.MAINHAND).is(MomotinkerItem.entropy_burning_sword.get())) {
-                if (event.getEntity().getMobType() == MobType.ILLAGER && a.getInt(hadal) < hadal_limit && a.getInt(stellarcore) < stellarcore_limit&& a.getInt(crystallized) < crystallized_limit&& a.getInt(liverization) < liverization_limit) {
+                if (event.getEntity().isOnFire() && a.getInt(hadal) < hadal_limit && a.getInt(stellarcore) < stellarcore_limit&& a.getInt(crystallized) < crystallized_limit&& a.getInt(liverization) < liverization_limit) {
                     a.putInt(stellarcore, a.getInt(stellarcore) + 1);
                 }
             }

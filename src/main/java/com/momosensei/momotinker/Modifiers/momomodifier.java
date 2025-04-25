@@ -10,6 +10,7 @@ import net.minecraft.world.entity.EquipmentSlot;
 import net.minecraft.world.entity.LivingEntity;
 import net.minecraft.world.entity.ai.attributes.Attribute;
 import net.minecraft.world.entity.ai.attributes.AttributeModifier;
+import net.minecraft.world.entity.ai.attributes.Attributes;
 import net.minecraft.world.entity.player.Player;
 import net.minecraft.world.entity.projectile.AbstractArrow;
 import net.minecraft.world.entity.projectile.Projectile;
@@ -59,6 +60,7 @@ import slimeknights.tconstruct.library.tools.context.ToolHarvestContext;
 import slimeknights.tconstruct.library.tools.helper.ModifierUtil;
 import slimeknights.tconstruct.library.tools.nbt.*;
 import slimeknights.tconstruct.library.tools.stat.ModifierStatsBuilder;
+import slimeknights.tconstruct.library.tools.stat.ToolStats;
 
 import java.util.List;
 import java.util.function.BiConsumer;
@@ -296,6 +298,14 @@ public abstract class momomodifier extends Modifier implements MeleeDamageModifi
 
     public static int getOffhandModifierlevel(LivingEntity entity, ModifierId modifierId) {
         return ModifierUtil.getModifierLevel(entity.getItemBySlot(EquipmentSlot.OFFHAND), modifierId);
+    }
+
+    public static float getRemainingDurability(IToolStackView tool) {
+        return (tool.getStats().getInt(ToolStats.DURABILITY)-tool.getDamage());
+    }
+
+    public static float getbonus(LivingEntity entity, int status) {
+        return (float) (entity.getAttributeValue(Attributes.MOVEMENT_SPEED) * entity.getDeltaMovement().length() * status);
     }
 }
 

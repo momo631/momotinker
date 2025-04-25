@@ -70,13 +70,13 @@ public class entropy_burning_sword extends ModifiableItem {
     public InteractionResultHolder<ItemStack> use(Level level, Player player, InteractionHand hand) {
         ItemStack stack = player.getItemInHand(hand);
         ToolStack tool = ToolStack.from(stack);
-        int drawTime = (int) (30/ ConditionalStatModifierHook.getModifiedStat(tool,player,ToolStats.ATTACK_SPEED));
-        tool.getPersistentData().putInt(KEY_DRAWTIME,drawTime);
+        int drawTime = (int) (30 / ConditionalStatModifierHook.getModifiedStat(tool, player, ToolStats.ATTACK_SPEED));
+        tool.getPersistentData().putInt(KEY_DRAWTIME, drawTime);
         player.startUsingItem(hand);
-        if (!checkOffHand(player)){
+        if (!checkOffHand(player)) {
             return InteractionResultHolder.fail(stack);
         }
-        if (tool.isBroken()){
+        if (tool.isBroken()) {
             return InteractionResultHolder.fail(stack);
         }
         if (!tool.isBroken()) {
@@ -84,6 +84,7 @@ public class entropy_burning_sword extends ModifiableItem {
         }
         return InteractionResultHolder.consume(stack);
     }
+
     @Override
     public void releaseUsing(ItemStack stack, Level level, LivingEntity livingEntity, int duration) {
         ScopeModifier.stopScoping(livingEntity);

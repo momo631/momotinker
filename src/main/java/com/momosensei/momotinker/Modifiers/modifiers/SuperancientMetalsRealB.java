@@ -110,7 +110,7 @@ public class SuperancientMetalsRealB extends momomodifier {
             }
         }
         if (a.getInt(stellarcore) == stellarcore_limit && entity instanceof Player player &&ToolStack.from(player.getMainHandItem()).getPersistentData().getInt(stellarcore)==stellarcore_limit
-                && getMainhandModifierlevel(player, MomotinkerModifiers.superancientmetalsrealb.getId()) > 0&&player.tickCount%10==0){
+                && getMainhandModifierlevel(player, MomotinkerModifiers.superancientmetalsrealb.getId()) > 0&&player.tickCount%20==0){
             int b = (int) player.getAttackRange();
             List<LivingEntity> ls0 = player.level.getEntitiesOfClass(LivingEntity.class, player.getBoundingBox().inflate(b+2, b+2, b+2));
             for (LivingEntity targets : ls0) {
@@ -119,11 +119,11 @@ public class SuperancientMetalsRealB extends momomodifier {
                     Vec3 c=new Vec3(player.getX(),player.getY(),player.getZ());
                     Vec3 d=new Vec3(targets.getX(),targets.getY(),targets.getZ());
                     float e = (float) c.distanceTo(d);
-                    if (e>1&&e<b+2){
-                        attackUtil.attackEntity(tool, player, InteractionHand.MAIN_HAND, targets, () -> 1, true, Util.getSlotType(InteractionHand.MAIN_HAND), tool.getStats().get(ToolStats.ATTACK_DAMAGE), (b+2-e)*0.25f, false, true, true, false);
+                    if (e>2&&e<b+2){
+                        attackUtil.attackEntity(tool, player, InteractionHand.MAIN_HAND, targets, () -> 1, true, Util.getSlotType(InteractionHand.MAIN_HAND), tool.getStats().get(ToolStats.ATTACK_DAMAGE), (b+2-e)*0.1f, false, true, true, false);
                     }else
-                    if (e<1) {
-                        attackUtil.attackEntity(tool, player, InteractionHand.MAIN_HAND, targets, () -> 1, true, Util.getSlotType(InteractionHand.MAIN_HAND), tool.getStats().get(ToolStats.ATTACK_DAMAGE), (b+1)*0.25f, false, true, true, false);
+                    if (e<2) {
+                        attackUtil.attackEntity(tool, player, InteractionHand.MAIN_HAND, targets, () -> 1, true, Util.getSlotType(InteractionHand.MAIN_HAND), tool.getStats().get(ToolStats.ATTACK_DAMAGE), (b+2)*0.1f, false, true, true, false);
                     }
                 }
             }
@@ -143,7 +143,7 @@ public class SuperancientMetalsRealB extends momomodifier {
             biConsumer.accept(Attributes.ARMOR_TOUGHNESS, new AttributeModifier(UUID.fromString("6A5B426C-6342-1E6D-53F1-4D8918CFEB6A"), Attributes.ARMOR_TOUGHNESS.getDescriptionId(), 0.3f, AttributeModifier.Operation.MULTIPLY_TOTAL));
         }
         if (a.getInt(degenerate)==degenerate_limit&&a.getInt(degeneratedeath)>0){
-            biConsumer.accept(Attributes.ATTACK_SPEED, new AttributeModifier(UUID.fromString("EC681DE9-2FF1-8D57-2E6A-0D8F43A6565D"), Attributes.ATTACK_SPEED.getDescriptionId(), a.getInt(degeneratedeath)*0.005f, AttributeModifier.Operation.MULTIPLY_TOTAL));
+            biConsumer.accept(Attributes.ATTACK_SPEED, new AttributeModifier(UUID.fromString("EC681DE9-2FF1-8D57-2E6A-0D8F43A6565D"), Attributes.ATTACK_SPEED.getDescriptionId(), a.getInt(degeneratedeath)*0.0025f, AttributeModifier.Operation.MULTIPLY_TOTAL));
             biConsumer.accept(Attributes.ATTACK_DAMAGE, new AttributeModifier(UUID.fromString("E9B7C9E2-E9BD-D7B8-AAF5-F122364C8A1E"), Attributes.ATTACK_DAMAGE.getDescriptionId(), a.getInt(degeneratedeath)*0.25, AttributeModifier.Operation.ADDITION));
         }
     }
@@ -194,23 +194,20 @@ public class SuperancientMetalsRealB extends momomodifier {
         }
     }
 
-    public float getbonus(float speed, int status) {
-        return speed * status;
-    }
     private void livingattackevent(LivingAttackEvent event) {
         LivingEntity living = event.getEntity();
         int hadal_limit = MomotinkerConfig.hadal_limit.get();
         int a =  getAllModifierlevel(living, MomotinkerModifiers.superancientmetalsrealb.getId());
         int b = RANDOM.nextInt(100);
         if (event.getEntity() instanceof Player player&&a>0) {
-            float speed = (float) player.getDeltaMovement().length();
-            int bonus = (int) (getbonus(speed, 5)*50);
+            float bonus = getbonus(player, 2500);
+            int d = Math.round(bonus);
             ModDataNBT c = ToolStack.from(player.getMainHandItem()).getPersistentData();
             if (c.getInt(hadal)==hadal_limit) {
-                if (bonus>=50){
-                    bonus=50;
+                if (d>=50){
+                    d=50;
                 }
-                if (b<bonus) {
+                if (b<d) {
                     event.setCanceled(true);
                 }
             }
@@ -252,13 +249,13 @@ public class SuperancientMetalsRealB extends momomodifier {
         int degenerate_limit = MomotinkerConfig.degenerate_limit.get();
         ModDataNBT a = tool.getPersistentData();
         if (a.getInt(hadal)==hadal_limit&&player!=null) {
-            float speed = (float) player.getDeltaMovement().length();
-            int bonus = (int) (getbonus(speed, 5)*50);
-            if (bonus>=50) {
-                bonus=50;
+            float bonus = getbonus(player, 2500);
+            int d = Math.round(bonus);
+            if (d>=50) {
+                d=50;
             }
             builder.add(Component.translatable("modifier.momotinker.tooltip.hadal2").withStyle(ChatFormatting.DARK_BLUE));
-            builder.add(Component.translatable("modifier.momotinker.tooltip.hadal21").append(bonus+"%").withStyle(ChatFormatting.DARK_BLUE));
+            builder.add(Component.translatable("modifier.momotinker.tooltip.hadal21").append(d+"%").withStyle(ChatFormatting.DARK_BLUE));
         }
         if (a.getInt(stellarcore)==stellarcore_limit) {
             builder.add(Component.translatable("modifier.momotinker.tooltip.stellarcore2").withStyle(ChatFormatting.YELLOW));

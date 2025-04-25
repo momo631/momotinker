@@ -8,7 +8,6 @@ import com.momosensei.momotinker.register.MomotinkerModifiers;
 import net.minecraft.ChatFormatting;
 import net.minecraft.network.chat.Component;
 import net.minecraft.resources.ResourceLocation;
-import net.minecraft.server.level.ServerPlayer;
 import net.minecraft.world.effect.MobEffectInstance;
 import net.minecraft.world.entity.EquipmentSlot;
 import net.minecraft.world.entity.LivingEntity;
@@ -77,7 +76,7 @@ public class WildHearts extends momomodifier {
 
     @Override
     public void onInventoryTick(IToolStackView iToolStackView, ModifierEntry modifierEntry, Level level, LivingEntity entity, int index, boolean b, boolean b1, ItemStack itemStack) {
-        if (entity instanceof ServerPlayer player) {
+        if (entity instanceof Player player) {
             int c = MomotinkerConfig.spirit_visage_limit.get();
             for (ItemStack stack : player.getInventory().armor) {
                 if (stack.getItem() instanceof ModifiableArmorItem && ModifierUtil.getModifierLevel(stack, MomotinkerModifiers.wildhearts.getId()) > 0) {
