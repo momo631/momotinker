@@ -419,7 +419,7 @@
   "modifier.momotinker.superancientmetalsreala.flavor": "Unique metal from ancient times, exhibiting a unique posture due to the awakening of 'From Brilliance'",
   "modifier.momotinker.superancientmetalsreala.description": "The durability consumption of the tool is reduced by 90%, and most attributes are increased by 80%. It will provide unique effects based on the awakening results from 'From Brilliance'",
   "modifier.momotinker.tooltip.degenerate1": "[From Brilliance]Certification: Divine Punishment Spear - Stained with Blood",
-  "modifier.momotinker.tooltip.degenerate2": "This tool attack will ignore armor and will not cause invincible frames",
+  "modifier.momotinker.tooltip.degenerate2": "This tool attack will ignore armor and will not cause invincible frames.Continuous attacks can temporarily stack attack speed, up to 160%",
   "modifier.momotinker.tooltip.sanctification1": "[From Brilliance]Certification: Divine Punishment Spear - Starry Sky",
   "modifier.momotinker.tooltip.sanctification2": "This weapon will permanently add the 'be conquered' mark when attacking monsters, and any damage taken by this monster will be corrected to 150%",
   "modifier.momotinker.tooltip.hadal3": "The attack will cause extra damage of 5% of the opponent's maximum life, ignoring armor",
