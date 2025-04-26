@@ -13,7 +13,6 @@ import net.minecraft.world.InteractionHand;
 import net.minecraft.world.entity.Entity;
 import net.minecraft.world.entity.EquipmentSlot;
 import net.minecraft.world.entity.LivingEntity;
-import net.minecraft.world.entity.Mob;
 import net.minecraft.world.entity.ai.attributes.Attribute;
 import net.minecraft.world.entity.ai.attributes.AttributeModifier;
 import net.minecraft.world.entity.ai.attributes.Attributes;
@@ -51,6 +50,7 @@ public class SuperancientMetalsRealA extends momomodifier {
         MinecraftForge.EVENT_BUS.addListener(this::livinghurtevent);
         MinecraftForge.EVENT_BUS.addListener(EventPriority.LOWEST,this::onEntityDeath);
     }
+    public static final ResourceLocation degeneratepoints = Momotinker.getResource("degeneratepoints");
     public static final ResourceLocation stellarcorepoints = Momotinker.getResource("stellarcorepoints");
     public static final ResourceLocation crystallizedpoints = Momotinker.getResource("crystallizedpoints");
     public static final ResourceLocation liverizationpointa = Momotinker.getResource("liverizationpointa");
@@ -62,6 +62,7 @@ public class SuperancientMetalsRealA extends momomodifier {
     }
     @Override
     public @javax.annotation.Nullable Component onRemoved(IToolStackView iToolStackView, Modifier modifier) {
+        iToolStackView.getPersistentData().remove(degeneratepoints);
         iToolStackView.getPersistentData().remove(stellarcorepoints);
         iToolStackView.getPersistentData().remove(crystallizedpoints);
         iToolStackView.getPersistentData().remove(liverizationpointa);
@@ -96,10 +97,26 @@ public class SuperancientMetalsRealA extends momomodifier {
     }
     @Override
     public void onInventoryTick(IToolStackView tool, ModifierEntry modifier, Level world, LivingEntity entity, int index, boolean isSelected, boolean isCorrectSlot, ItemStack stack) {
+        int degenerate_limit = MomotinkerConfig.degenerate_limit.get();
         int stellarcore_limit = MomotinkerConfig.stellarcore_limit.get();
         int crystallized_limit = MomotinkerConfig.crystallized_limit.get();
         int liverization_limit = MomotinkerConfig.liverization_limit.get();
         ModDataNBT a = tool.getPersistentData();
+        if (a.getInt(degenerate)==degenerate_limit) {
+            if (entity instanceof Player player&&a.getInt(degeneratepoints)>0){
+                if (ToolStack.from(player.getMainHandItem()).getPersistentData().getInt(degenerate)!=degenerate_limit&&player.tickCount%2==0){
+                    a.putInt(degeneratepoints,a.getInt(degeneratepoints)-1);
+                }else if (player.tickCount%10==0) {
+                    a.putInt(degeneratepoints, a.getInt(degeneratepoints) - 1);
+                }
+            }
+            if (a.getInt(degeneratepoints)>20) {
+                a.putInt(degeneratepoints,20);
+            }
+            if (a.getInt(degeneratepoints)<0) {
+                a.putInt(degeneratepoints,0);
+            }
+        }
         if (a.getInt(stellarcore)==stellarcore_limit) {
             if (entity instanceof Player player&&a.getInt(stellarcorepoints)!=player.getArmorValue()){
                 a.putInt(stellarcorepoints,player.getArmorValue());
@@ -129,10 +146,16 @@ public class SuperancientMetalsRealA extends momomodifier {
     @Override
     public float getMeleeDamage(@Nonnull IToolStackView tool, ModifierEntry modifier, @Nonnull ToolAttackContext context, float baseDamage, float damage) {
         LivingEntity attacker = context.getAttacker();
+        LivingEntity entity = context.getLivingTarget();
+        int sanctification_limit = MomotinkerConfig.sanctification_limit.get();
+        int degenerate_limit = MomotinkerConfig.degenerate_limit.get();
         int hadal_limit = MomotinkerConfig.hadal_limit.get();
         int crystallized_limit = MomotinkerConfig.crystallized_limit.get();
         if (attacker instanceof Player player) {
             ModDataNBT a = tool.getPersistentData();
+            if (a.getInt(sanctification) == sanctification_limit && entity!=null && !entity.getTags().contains("beconquered")) {
+                entity.addTag("beconquered");
+            }
             if (a.getInt(crystallized)==crystallized_limit&&a.getInt(crystallizedpoints)>0) {
                 float b= (float) Math.pow(1.15,a.getInt(crystallizedpoints));
                 return damage*b;
@@ -141,6 +164,11 @@ public class SuperancientMetalsRealA extends momomodifier {
                 context.getLivingTarget().invulnerableTime = 0;
                 context.getLivingTarget().hurt(player.level().damageSources().dragonBreath(), context.getLivingTarget().getMaxHealth() * 0.05f);
                 context.getLivingTarget().invulnerableTime = 0;
+            }
+            if (a.getInt(degenerate) == degenerate_limit&&entity!=null) {
+                if (a.getInt(degeneratepoints)<20) {
+                    a.putInt(degeneratepoints, a.getInt(degeneratepoints) + 2);
+                }
             }
         }
         return damage;
@@ -161,15 +189,7 @@ public class SuperancientMetalsRealA extends momomodifier {
     }
 
     private void livinghurtevent(LivingHurtEvent event) {
-        int sanctification_limit = MomotinkerConfig.sanctification_limit.get();
         Entity a = event.getEntity();
-        Entity b = event.getSource().getEntity();
-        if (b instanceof Player player && a != null) {
-            ModDataNBT c = ToolStack.from(player.getItemBySlot(EquipmentSlot.MAINHAND)).getPersistentData();
-            if (c.getInt(sanctification) == sanctification_limit && a instanceof Mob mob && !mob.getTags().contains("beconquered")) {
-                mob.addTag("beconquered");
-            }
-        }
         if (a != null && a.getTags().contains("beconquered")) {
             event.setAmount(event.getAmount() * 1.8F);
         }
@@ -202,10 +222,14 @@ public class SuperancientMetalsRealA extends momomodifier {
     @Override
     public void addAttributes(IToolStackView tool, ModifierEntry modifierEntry, EquipmentSlot equipmentSlot, BiConsumer<Attribute, AttributeModifier> biConsumer) {
         ModDataNBT a = tool.getPersistentData();
+        int degenerate_limit = MomotinkerConfig.degenerate_limit.get();
         int stellarcore_limit = MomotinkerConfig.stellarcore_limit.get();
         if (a.getInt(stellarcore)==stellarcore_limit) {
             biConsumer.accept(Attributes.MAX_HEALTH, new AttributeModifier(UUID.fromString("30324209-D3A4-4BDB-988F-81F683850386"), Attributes.MAX_HEALTH.getDescriptionId(), a.getInt(stellarcorepoints)*0.6f, AttributeModifier.Operation.ADDITION));
             biConsumer.accept(Attributes.ARMOR_TOUGHNESS, new AttributeModifier(UUID.fromString("F25D09BF-FD6D-0ACE-AD38-05916FF9096A"), Attributes.ARMOR_TOUGHNESS.getDescriptionId(), a.getInt(stellarcorepoints)*0.3f, AttributeModifier.Operation.ADDITION));
+        }
+        if (a.getInt(degenerate) == degenerate_limit&&a.getInt(degeneratepoints)>0) {
+            biConsumer.accept(Attributes.ATTACK_SPEED, new AttributeModifier(UUID.fromString("294E32F4-48AE-F55E-8111-2AA9C97E1689"), Attributes.ATTACK_SPEED.getDescriptionId(), a.getInt(degeneratepoints)*0.04f, AttributeModifier.Operation.MULTIPLY_TOTAL));
         }
     }
 
