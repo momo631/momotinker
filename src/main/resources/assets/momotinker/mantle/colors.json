@@ -18,7 +18,12 @@
     "starry_mysterious_gold": "#FEFB00",
     "devouring_demon_gold": "#CC00FF",
     "nihilism": "#FFFFFF",
-    "meteor_nucleus": "#DB621C"
+    "meteor_nucleus": "#DB621C",
+    "ashen_platinum": "#969696",
+    "hadal_platinum": "#514E95",
+    "stellar_core_platinum": "#793D1A",
+    "crystallized_platinum": "#BEFBFF",
+    "living_platinum": "#873D3D"
   },
   "modifier.momotinker": {
     "laomochuji": "#596d99",
@@ -67,6 +72,12 @@
     "flamebath": "#DB621C",
     "starfallarrow": "#734134",
     "explosivesword": "#59250B",
-    "blessingofmeteor": "#F6AE50"
+    "blessingofmeteor": "#F6AE50",
+    "superancientmetalsb": "#A7C3D5",
+    "superancientmetalsrealb": "#B4C9D7",
+    "abyssalresonance": "#514E95",
+    "thermonuclearzone": "#793D1A",
+    "selfcrystallization": "#BEFBFF",
+    "lifeprogram": "#F873D3D"
   }
 }

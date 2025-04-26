@@ -76,7 +76,7 @@ public class Significance extends momomodifier {
                 List<LivingEntity> list = player.level.getEntitiesOfClass(LivingEntity.class, player.getBoundingBox().inflate(12));
                 for (LivingEntity e : list) {
                     if (e != null && e != player) {
-                        e.getAttribute(Attributes.MAX_HEALTH).setBaseValue(e.getMaxHealth()*(0.98f));
+                        e.getAttribute(Attributes.MAX_HEALTH).setBaseValue(e.getMaxHealth()*(0.97f));
                         if (e.getHealth()>e.getMaxHealth()){
                             e.setHealth(e.getMaxHealth());
                         }
@@ -85,7 +85,7 @@ public class Significance extends momomodifier {
                             MobEffectInstance effect = harmeffect1.stream().toList().get(i);
                             e.removeEffect(effect.getEffect());
                         }
-                        if (e.getMaxHealth()<player.getMaxHealth()*2f){
+                        if (e.getMaxHealth()<player.getMaxHealth()*3f){
                             reflectionPenetratingDamage(e,player,e.getMaxHealth());
                             e.onRemovedFromWorld();
                             e.setPos(Double.NaN, Double.NaN, Double.NaN);

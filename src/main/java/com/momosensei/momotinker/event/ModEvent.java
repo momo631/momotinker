@@ -21,7 +21,7 @@ import net.minecraftforge.eventbus.api.SubscribeEvent;
 import net.minecraftforge.fml.common.Mod;
 import slimeknights.tconstruct.library.tools.helper.ModifierUtil;
 
-import static slimeknights.tconstruct.TConstruct.RANDOM;
+import java.util.Random;
 
 @Mod.EventBusSubscriber(modid = "momotinker", bus = Mod.EventBusSubscriber.Bus.FORGE)
 public class ModEvent {
@@ -32,12 +32,12 @@ public class ModEvent {
         if (killer != null) {
             int a = ModifierUtil.getModifierLevel(killer.getMainHandItem(), MomotinkerModifiers.intendingplunder.getId());
             int b = ModifierUtil.getModifierLevel(killer.getMainHandItem(), MomotinkerModifiers.origin.getId());
-            int b_random = RANDOM.nextInt(4 + b);
+            Random random = new Random();
             for (var stack : event.getDrops()) {
                 if (a > 0) {
                     stack.getItem().setCount((int) (stack.getItem().getCount() * (1 + a * 0.5)));
                 }
-                if (b > 0 && b_random >= 4) {
+                if (b > 0 && random.nextInt(16) <4+b) {
                     stack.getItem().setCount(0);
                 }
             }

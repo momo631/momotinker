@@ -494,11 +494,11 @@
 
   "modifier.momotinker.origin": "第一终章:起源",
   "modifier.momotinker.origin.flavor": "一切生灵的起点，都来自于虚无，正因如此，也将归于虚无",
-  "modifier.momotinker.origin.description": "对受伤的反应降低，攻击无视防御并且会削减目标10%*等级的最大生命值，若目标最大生命低于自身会直接归于虚无，且掉落物有几率被清空",
+  "modifier.momotinker.origin.description": "对受伤的反应降低，攻击无视防御并且会削减目标10%*等级的最大生命值，攻击范围内的目标最大生命若低于自身会直接归于虚无，且掉落物有几率被清空",
 
   "modifier.momotinker.significance": "第二终章:意义",
   "modifier.momotinker.significance.flavor": "万物之所以存在，皆因系与意义，故此，予其剥夺",
-  "modifier.momotinker.significance.description": "按下特殊技能按键使大范围生物的最大生命持续衰减直到死亡并且身上所有药水效果都会被清除，最大生命低于自身最大生命的200%时会直接归于虚无，自身最大生命也会降低但是生命衰减的速度减半",
+  "modifier.momotinker.significance.description": "按下特殊技能按键使大范围生物的最大生命持续衰减直到死亡并且身上所有药水效果都会被清除，最大生命低于自身最大生命的300%时会直接归于虚无，自身最大生命也会降低但是速度大幅减少",
   "modifier.momotinker.tooltip.significance1": "“第二终章:意义”冷却还剩:",
 
   "modifier.momotinker.blank": "第三终章:留白",
