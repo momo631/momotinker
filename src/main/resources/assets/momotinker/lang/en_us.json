@@ -421,7 +421,7 @@
   "modifier.momotinker.tooltip.degenerate1": "[From Brilliance]Certification: Divine Punishment Spear - Stained with Blood",
   "modifier.momotinker.tooltip.degenerate2": "This tool attack will ignore armor and will not cause invincible frames.Continuous attacks can temporarily stack attack speed, up to 160%",
   "modifier.momotinker.tooltip.sanctification1": "[From Brilliance]Certification: Divine Punishment Spear - Starry Sky",
-  "modifier.momotinker.tooltip.sanctification2": "This weapon will permanently add the 'be conquered' mark when attacking monsters, and any damage taken by this monster will be corrected to 150%",
+  "modifier.momotinker.tooltip.sanctification2": "This weapon will permanently add the 'be conquered' mark when attacking monsters, and any damage taken by this monster will be corrected to 180%",
   "modifier.momotinker.tooltip.hadal3": "The attack will cause extra damage of 5% of the opponent's maximum life, ignoring armor",
   "modifier.momotinker.tooltip.stellarcore3": "Obtain maximum health equal to 60% of armor and armor toughness equal to 30% of armor when held in hand",
   "modifier.momotinker.tooltip.crystallized3": "When the durability is greater than 5 digits, the damage will be corrected to a multiplier of 1.15 ^ the number of extra digits",
