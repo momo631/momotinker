@@ -150,6 +150,22 @@
   "momotinker.item.tooltip.meteor_nucleus4": "“流星之核在熔融之后能源源不断释放大量热能还没有任何衰减的迹象，这或许能在我们的工匠工作上提供新的帮助”",
   "momotinker.item.tooltip.meteor_nucleus5": "流星的馈赠即将到来",
 
+  "item.momotinker.ashen_platinum": "灰烬铂金锭",
+  "momotinker.item.tooltip.ashen_platinum1": "来自远古的神秘金属，其身上的荣光与辉煌已被时间掩埋",
+
+  "item.momotinker.hadal_platinum": "海渊铂金锭",
+  "momotinker.item.tooltip.hadal_platinum1": "经历无数时代被稀薄的渊海血脉，终于再度显现",
+
+  "item.momotinker.stellar_core_platinum": "燃核铂金锭",
+  "momotinker.item.tooltip.stellar_core_platinum1": "被雕琢为造物的金属回想起了来自星核熔岩之下的使命",
+
+  "item.momotinker.crystallized_platinum": "晶化铂金锭",
+  "momotinker.item.tooltip.crystallized_platinum1": "在强大灵魂的浸染下其结构重新组合，形成了一种全新的复合材料",
+
+  "item.momotinker.living_platinum": "仿生铂金锭",
+  "momotinker.item.tooltip.living_platinum1": "远古文明预设在其中的隐藏程序被意外激活，展现出一种模仿活体生物的诡异形态",
+  "momotinker.item.tooltip.living_platinum2": "§c隐藏材料:§o实验笔记A9-23:为了防止其产生意识，必须使用非智慧生物进行喂食的同时保证其最接近原始的形态§",
+
   "itemGroup.momotinker.tools": "墨工坊模组-工具",
 
   "item.momotinker.trigger_blade": "扳机横刀",
@@ -251,15 +267,15 @@
   "material.momotinker.meteor_nucleus": "流星",
   "material.momotinker.meteor_nucleus.encyclopedia": "来自流星的馈赠",
   "material.momotinker.ashen_platinum": "灰烬铂金",
-  "material.momotinker.ashen_platinum.encyclopedia": "",
+  "material.momotinker.ashen_platinum.encyclopedia": "正如无数珍宝陨落于万丈深海，闪耀如宝石的精妙造物也早已侵蚀损坏，但...",
   "material.momotinker.hadal_platinum": "海渊铂金",
-  "material.momotinker.hadal_platinum.encyclopedia": "",
+  "material.momotinker.hadal_platinum.encyclopedia": "经历无数时代被稀薄的渊海血脉，终于再度显现",
   "material.momotinker.stellar_core_platinum": "燃核铂金",
-  "material.momotinker.stellar_core_platinum.encyclopedia": "",
+  "material.momotinker.stellar_core_platinum.encyclopedia": "被雕琢为造物的金属回想起了来自星核熔岩之下的使命",
   "material.momotinker.crystallized_platinum": "晶化铂金",
-  "material.momotinker.crystallized_platinum.encyclopedia": "",
+  "material.momotinker.crystallized_platinum.encyclopedia": "在强大灵魂的浸染下其结构重新组合，形成了一种全新的复合材料",
   "material.momotinker.living_platinum": "仿生铂金",
-  "material.momotinker.living_platinum.encyclopedia": "",
+  "material.momotinker.living_platinum.encyclopedia": "远古文明预设在其中的隐藏程序被意外激活，展现出一种模仿活体生物的诡异形态",
 
   "modifier.momotinker.laomochuji": "牢墨出击",
   "modifier.momotinker.laomochuji.flavor": "词条标题",

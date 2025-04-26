@@ -22,6 +22,7 @@ public class living_platinum extends Item {
     @Override
     public void appendHoverText(@NotNull ItemStack stack, @Nullable Level level, List<Component> list, @NotNull TooltipFlag flag) {
         list.add(Component.translatable("momotinker.item.tooltip.living_platinum1"));
+        list.add(Component.translatable("momotinker.item.tooltip.living_platinum2"));
         super.appendHoverText(stack, level, list, flag);
     }
 

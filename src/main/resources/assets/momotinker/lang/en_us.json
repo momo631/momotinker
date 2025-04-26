@@ -150,6 +150,22 @@
   "momotinker.item.tooltip.meteor_nucleus4": "'The core of the meteor can continuously release a large amount of heat energy without any signs of decay after melting, which may provide new assistance in our craftsmanship work'",
   "momotinker.item.tooltip.meteor_nucleus5": "The gift of shooting stars is coming soon",
 
+  "item.momotinker.ashen_platinum": "Ashen Platinum",
+  "momotinker.item.tooltip.ashen_platinum1": "Mysterious metal from ancient times, its glory and splendor have been buried by time",
+
+  "item.momotinker.hadal_platinum": "Abyss Platinum",
+  "momotinker.item.tooltip.hadal_platinum1": "After countless eras of being diluted by the bloodline of the deep sea, it finally reappears",
+
+  "item.momotinker.stellar_core_platinum": "Stellar Core Platinum",
+  "momotinker.item.tooltip.stellar_core_platinum1": "The metal carved into creation recalls its mission from beneath the lava of the star core",
+
+  "item.momotinker.crystallized_platinum": "Crystallized Platinum",
+  "momotinker.item.tooltip.crystallized_platinum1": "Under the influence of a powerful soul, its structure is reassembled to form a completely new composite material",
+
+  "item.momotinker.living_platinum": "Bionics Platinum",
+  "momotinker.item.tooltip.living_platinum1": "The hidden program preset in ancient civilizations was accidentally activated, revealing a bizarre form that mimics living organisms",
+  "momotinker.item.tooltip.living_platinum2": "§cHidden Material:§oExperimental note A9-23: In order to prevent it from developing consciousness, non intelligent organisms must be fed while ensuring that they are closest to their original form§",
+
   "itemGroup.momotinker.tools": "Momotinker Tools",
 
   "item.momotinker.trigger_blade": "Trigger Blade",
@@ -250,15 +266,15 @@
   "material.momotinker.meteor_nucleus": "Meteor",
   "material.momotinker.meteor_nucleus.encyclopedia": "Gift from Meteor",
   "material.momotinker.ashen_platinum": "Ashen Platinum",
-  "material.momotinker.ashen_platinum.encyclopedia": "",
+  "material.momotinker.ashen_platinum.encyclopedia": "Just as countless treasures have fallen into the depths of the sea, the exquisite creations that shine like gems have long been eroded and damaged, but...",
   "material.momotinker.hadal_platinum": "Abyss Platinum",
-  "material.momotinker.hadal_platinum.encyclopedia": "",
+  "material.momotinker.hadal_platinum.encyclopedia": "After countless eras of being diluted by the bloodline of the deep sea, it finally reappears",
   "material.momotinker.stellar_core_platinum": "Stellar Core Platinum",
-  "material.momotinker.stellar_core_platinum.encyclopedia": "",
+  "material.momotinker.stellar_core_platinum.encyclopedia": "The metal carved into creation recalls its mission from beneath the lava of the star core",
   "material.momotinker.crystallized_platinum": "Crystallized Platinum",
-  "material.momotinker.crystallized_platinum.encyclopedia": "",
+  "material.momotinker.crystallized_platinum.encyclopedia": "Under the influence of a powerful soul, its structure is reassembled to form a completely new composite material",
   "material.momotinker.living_platinum": "Bionics Platinum",
-  "material.momotinker.living_platinum.encyclopedia": "",
+  "material.momotinker.living_platinum.encyclopedia": "The hidden program preset in ancient civilizations was accidentally activated, revealing a bizarre form that mimics living organisms\n",
 
   "modifier.momotinker.laomochuji": "laomochuji",
   "modifier.momotinker.laomochuji.flavor": "Test flavor",
