@@ -62,9 +62,11 @@ public class AbyssalResonance extends momomodifier {
             if (c > 0 && player.isInWater() || player.level.isRaining()) {
                 float bonus = getbonus(player, 400);
                 int d = Math.round(bonus) + 2 * c;
-                if (d > event.getAmount()) {
+                if (d < event.getAmount()) {
                     event.setAmount(event.getAmount() - d);
-                } else event.setAmount(0);
+                } else if (d > event.getAmount()) {
+                    event.setAmount(0);
+                }
             }
         }
     }
