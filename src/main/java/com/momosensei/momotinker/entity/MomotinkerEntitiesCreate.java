@@ -15,6 +15,7 @@ import slimeknights.tconstruct.library.tools.nbt.ToolStack;
 import slimeknights.tconstruct.library.tools.stat.ToolStats;
 
 import static com.momosensei.momotinker.Modifiers.modifiers.BreakthroughStars.breakthroughstar;
+import static com.momosensei.momotinker.tool.entropy_burning_cube.crystallized;
 import static slimeknights.tconstruct.library.modifiers.Modifier.RANDOM;
 import static slimeknights.tconstruct.library.tools.stat.ToolStats.ACCURACY;
 
@@ -81,6 +82,7 @@ public class MomotinkerEntitiesCreate {
         if (!(player.getMainHandItem().getItem() instanceof entropy_burning_cannon) || !checkOffHand(player)) {
             return;
         }
+        int crystallized_limit = MomotinkerConfig.crystallized_limit.get();
         ToolStack tool = ToolStack.from(player.getMainHandItem());
         if (tool.isBroken()) {
             return;
@@ -88,7 +90,15 @@ public class MomotinkerEntitiesCreate {
         for (int a = 0;a <= 1;a++) {
             Level level = player.level();
             RayEntity entity = new RayEntity(MomotinkerEntities.ray_entity.get(), level);
-            entity.rayVec3 = player.getLookAngle().scale(45);
+
+            int b =45;
+            int c = 6;
+            if (tool.getPersistentData().getFloat(crystallized)==crystallized_limit) {
+                b*=2;
+                c+=8;
+            }
+            entity.rayVec3 = player.getLookAngle().scale(b);
+            entity.settimes(c);
             entity.damage = getRayExplosionDamage(tool,player)*0.05F;
             entity.tool = tool;
             entity.scale = tool.getStats().get(MomotinkerToolDefinitions.SCALE);

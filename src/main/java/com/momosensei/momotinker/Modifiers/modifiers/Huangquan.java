@@ -23,7 +23,6 @@ import org.jetbrains.annotations.Nullable;
 import slimeknights.mantle.client.TooltipKey;
 import slimeknights.tconstruct.library.modifiers.ModifierEntry;
 import slimeknights.tconstruct.library.tools.context.ToolAttackContext;
-import slimeknights.tconstruct.library.tools.helper.ModifierUtil;
 import slimeknights.tconstruct.library.tools.nbt.IToolStackView;
 import slimeknights.tconstruct.library.tools.nbt.ModDataNBT;
 import slimeknights.tconstruct.library.tools.nbt.ModifierNBT;
@@ -43,9 +42,9 @@ public class Huangquan extends momomodifier implements ModifyDamageSourceModifie
 
     @Override
     public LegacyDamageSource modifyDamageSource(IToolStackView tool, ModifierEntry entry, LivingEntity attacker, InteractionHand hand, Entity target, EquipmentSlot sourceSlot, boolean isFullyCharged, boolean isExtraAttack, boolean isCritical, LegacyDamageSource source) {
-        if (attacker instanceof ServerPlayer player && target != null && player.getEffect(MomotinkerEffects.End.get()) != null && player.hasEffect(MomotinkerEffects.End.get())) {
-            if (ModifierUtil.getModifierLevel(player.getItemBySlot(EquipmentSlot.MAINHAND), MomotinkerModifiers.huangquan.getId()) > 0) {
-                target.invulnerableTime=0;
+        if (attacker instanceof Player player && target instanceof LivingEntity entity && player.getEffect(MomotinkerEffects.End.get()) != null && player.hasEffect(MomotinkerEffects.End.get())) {
+            if (tool.getModifierLevel(MomotinkerModifiers.huangquan.getId()) > 0) {
+                entity.invulnerableTime=0;
                 return source.setBypassArmor().setBypassInvul().setBypassInvulnerableTime().setBypassMagic().setBypassEnchantment().setBypassShield();
             }
         }
@@ -54,9 +53,9 @@ public class Huangquan extends momomodifier implements ModifyDamageSourceModifie
 
     @Override
     public LegacyDamageSource modifyArrowDamageSource(ModifierNBT modifiers, ModDataNBT persistentData, ModifierEntry modifier, AbstractArrow arrow, @Nullable LivingEntity attacker, @NotNull Entity target, LegacyDamageSource source) {
-        if (attacker instanceof ServerPlayer player&& arrow!=null && target != null && player.getEffect(MomotinkerEffects.End.get()) != null && player.hasEffect(MomotinkerEffects.End.get())) {
-            if (ModifierUtil.getModifierLevel(player.getItemBySlot(EquipmentSlot.MAINHAND), MomotinkerModifiers.huangquan.getId()) > 0) {
-                target.invulnerableTime=0;
+        if (attacker instanceof Player player&& arrow!=null && target instanceof LivingEntity entity && player.getEffect(MomotinkerEffects.End.get()) != null && player.hasEffect(MomotinkerEffects.End.get())) {
+            if (modifiers.getLevel(MomotinkerModifiers.huangquan.getId()) > 0) {
+                entity.invulnerableTime=0;
                 return source.setBypassArmor().setBypassInvul().setBypassInvulnerableTime().setBypassMagic().setBypassEnchantment().setBypassShield();
             }
         }

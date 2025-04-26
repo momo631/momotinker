@@ -43,6 +43,10 @@ public class MomotinkerTables extends MomotinkerMod {
         output.accept(MomotinkerItem.nihilism.get());
         output.accept(MomotinkerItem.meteor_nucleus.get());
         output.accept(MomotinkerItem.meteor_nucleus_block.get());
-
+        output.accept(MomotinkerItem.ashen_platinum.get());
+        output.accept(MomotinkerItem.hadal_platinum.get());
+        output.accept(MomotinkerItem.stellar_core_platinum.get());
+        output.accept(MomotinkerItem.crystallized_platinum.get());
+        output.accept(MomotinkerItem.living_platinum.get());
     }
 }

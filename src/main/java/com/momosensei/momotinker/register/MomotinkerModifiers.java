@@ -20,7 +20,7 @@ public class MomotinkerModifiers {
     public static final StaticModifier<Red> red=MODIFIERS.register("red", Red::new);
     public static final StaticModifier<Firmheart> firmheart=MODIFIERS.register("firmheart", Firmheart::new);
     public static final StaticModifier<Feast> feast=MODIFIERS.register("feast", Feast::new);
-    public static final StaticModifier<OvereatingSin> overeatingsin=MODIFIERS.register("overeatingsin", OvereatingSin::new);
+    public static final StaticModifier<OverEatingSin> overeatingsin=MODIFIERS.register("overeatingsin", OverEatingSin::new);
     public static final StaticModifier<WildHearts> wildhearts=MODIFIERS.register("wildhearts", WildHearts::new);
     public static final StaticModifier<InfiniteVitality> infinitevitality=MODIFIERS.register("infinitevitality", InfiniteVitality::new);
     public static final StaticModifier<IntendingPlunder> intendingplunder=MODIFIERS.register("intendingplunder", IntendingPlunder::new);
@@ -41,8 +41,8 @@ public class MomotinkerModifiers {
     public static final StaticModifier<OverCrystalline> overcrystalline=MODIFIERS.register("overcrystalline", OverCrystalline::new);
     public static final StaticModifier<Crystallization> crystallization=MODIFIERS.register("crystallization", Crystallization::new);
     public static final StaticModifier<FromBrilliance> frombrilliance=MODIFIERS.register("frombrilliance", FromBrilliance::new);
-    public static final StaticModifier<SuperancientMetals> superancientmetals=MODIFIERS.register("superancientmetals", SuperancientMetals::new);
-    public static final StaticModifier<SuperancientMetalsReal> superancientmetalsreal=MODIFIERS.register("superancientmetalsreal", SuperancientMetalsReal::new);
+    public static final StaticModifier<SuperancientMetalsA> superancientmetalsa=MODIFIERS.register("superancientmetalsa", SuperancientMetalsA::new);
+    public static final StaticModifier<SuperancientMetalsRealA> superancientmetalsreala=MODIFIERS.register("superancientmetalsreala", SuperancientMetalsRealA::new);
     public static final StaticModifier<CrimsonQueen> crimsonqueen=MODIFIERS.register("crimsonqueen", CrimsonQueen::new);
     public static final StaticModifier<Berserk> berserk=MODIFIERS.register("berserk", Berserk::new);
     public static final StaticModifier<Yamato> yamato=MODIFIERS.register("yamato", Yamato::new);
@@ -62,5 +62,11 @@ public class MomotinkerModifiers {
     public static final StaticModifier<StarfallArrow> starfallarrow=MODIFIERS.register("starfallarrow", StarfallArrow::new);
     public static final StaticModifier<ExplosiveSword> explosivesword=MODIFIERS.register("explosivesword", ExplosiveSword::new);
     public static final StaticModifier<BlessingOfMeteor> blessingofmeteor=MODIFIERS.register("blessingofmeteor", BlessingOfMeteor::new);
+    public static final StaticModifier<SuperancientMetalsB> superancientmetalsb=MODIFIERS.register("superancientmetalsb", SuperancientMetalsB::new);
+    public static final StaticModifier<SuperancientMetalsRealB> superancientmetalsrealb=MODIFIERS.register("superancientmetalsrealb", SuperancientMetalsRealB::new);
+    public static final StaticModifier<AbyssalResonance> abyssalresonance=MODIFIERS.register("abyssalresonance", AbyssalResonance::new);
+    public static final StaticModifier<ThermonuclearZone> thermonuclearzone=MODIFIERS.register("thermonuclearzone", ThermonuclearZone::new);
+    public static final StaticModifier<SelfCrystallization> selfcrystallization=MODIFIERS.register("selfcrystallization", SelfCrystallization::new);
+    public static final StaticModifier<LifeProgram> lifeprogram=MODIFIERS.register("lifeprogram", LifeProgram::new);
 
 }

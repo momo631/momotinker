@@ -38,6 +38,11 @@ public class MomotinkerItem {
     public static final RegistryObject<Item> devouring_demon_gold = ITEMS.register("devouring_demon_gold", () -> new devouring_demon_gold(MomotinkerTables.material()));
     public static final RegistryObject<Item> nihilism = ITEMS.register("nihilism", () -> new nihilism(MomotinkerTables.material()));
     public static final RegistryObject<Item> meteor_nucleus = ITEMS.register("meteor_nucleus", () -> new meteor_nucleus(MomotinkerTables.material()));
+    public static final RegistryObject<Item> ashen_platinum = ITEMS.register("ashen_platinum", () -> new ashen_platinum(MomotinkerTables.material()));
+    public static final RegistryObject<Item> hadal_platinum = ITEMS.register("hadal_platinum", () -> new hadal_platinum(MomotinkerTables.material()));
+    public static final RegistryObject<Item> stellar_core_platinum = ITEMS.register("stellar_core_platinum", () -> new stellar_core_platinum(MomotinkerTables.material()));
+    public static final RegistryObject<Item> crystallized_platinum = ITEMS.register("crystallized_platinum", () -> new crystallized_platinum(MomotinkerTables.material()));
+    public static final RegistryObject<Item> living_platinum = ITEMS.register("living_platinum", () -> new living_platinum(MomotinkerTables.material()));
 
     public static final RegistryObject<Item> trigger_slash_a = ITEMS.register("trigger_slash_a", ()->new Item(new Item.Properties()));
     public static final RegistryObject<Item> spear_entity = ITEMS.register("spear_entity", ()->new Item(new Item.Properties()));

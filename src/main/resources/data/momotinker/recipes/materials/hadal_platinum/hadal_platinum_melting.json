@@ -1,0 +1,12 @@
+{
+  "type": "tconstruct:melting",
+  "ingredient": {
+    "item": "momotinker:hadal_platinum"
+  },
+  "result": {
+    "fluid": "momotinker:molten_hadal_platinum",
+    "amount": 90
+  },
+  "temperature": 1500,
+  "time": 66
+}

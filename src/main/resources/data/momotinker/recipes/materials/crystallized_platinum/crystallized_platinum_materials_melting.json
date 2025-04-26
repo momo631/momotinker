@@ -1,0 +1,9 @@
+{
+  "type": "tconstruct:material_melting",
+  "input": "momotinker:crystallized_platinum",
+  "temperature": 1500,
+  "result": {
+    "fluid": "momotinker:molten_crystallized_platinum",
+    "amount": 90
+  }
+}

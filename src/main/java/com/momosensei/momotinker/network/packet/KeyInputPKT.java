@@ -115,7 +115,7 @@ public class KeyInputPKT {
             }
             if (getAllModifierlevel(player,MomotinkerModifiers.berserk.getId()) > 0) {
                 for (ItemStack stack : player.getInventory().armor) {
-                    if (stack.getItem() instanceof ModifiableArmorItem) {
+                    if (stack.getItem() instanceof ModifiableArmorItem&&ToolStack.from(stack).getModifierLevel(MomotinkerModifiers.berserk.getId())>0) {
                         ModDataNBT berserkdata = ToolStack.from(stack).getPersistentData();
                         if (berserkdata.getFloat(berserker) == 1) {
                             berserkdata.putFloat(berserker, 0);
@@ -124,21 +124,21 @@ public class KeyInputPKT {
                         }
                     }
                 }
-            }
-            if (getMainhandModifierlevel(player,MomotinkerModifiers.berserk.getId()) > 0) {
-                ModDataNBT berserkdata = ToolStack.from(player.getMainHandItem()).getPersistentData();
-                if (berserkdata.getFloat(berserker) == 1) {
-                    berserkdata.putFloat(berserker, 0);
-                } else if (berserkdata.getFloat(berserker) == 0) {
-                    berserkdata.putFloat(berserker, 1);
+                if (ToolStack.from(player.getMainHandItem()).getModifierLevel(MomotinkerModifiers.berserk.getId())>0){
+                    ModDataNBT berserkdata = ToolStack.from(player.getMainHandItem()).getPersistentData();
+                    if (berserkdata.getFloat(berserker) == 1) {
+                        berserkdata.putFloat(berserker, 0);
+                    } else if (berserkdata.getFloat(berserker) == 0) {
+                        berserkdata.putFloat(berserker, 1);
+                    }
                 }
-            }
-            if (getOffhandModifierlevel(player,MomotinkerModifiers.berserk.getId()) > 0) {
-                ModDataNBT berserkdata = ToolStack.from(player.getOffhandItem()).getPersistentData();
-                if (berserkdata.getFloat(berserker) == 1) {
-                    berserkdata.putFloat(berserker, 0);
-                } else if (berserkdata.getFloat(berserker) == 0) {
-                    berserkdata.putFloat(berserker, 1);
+                if (ToolStack.from(player.getOffhandItem()).getModifierLevel(MomotinkerModifiers.berserk.getId())>0){
+                    ModDataNBT berserkdata = ToolStack.from(player.getOffhandItem()).getPersistentData();
+                    if (berserkdata.getFloat(berserker) == 1) {
+                        berserkdata.putFloat(berserker, 0);
+                    } else if (berserkdata.getFloat(berserker) == 0) {
+                        berserkdata.putFloat(berserker, 1);
+                    }
                 }
             }
             if (ModifierUtil.getModifierLevel(player.getMainHandItem(), MomotinkerModifiers.drinkingdemon.getId()) > 0) {

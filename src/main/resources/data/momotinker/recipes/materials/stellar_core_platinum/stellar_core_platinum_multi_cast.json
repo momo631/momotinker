@@ -1,0 +1,13 @@
+{
+  "type": "tconstruct:casting_table",
+  "cast": {
+    "tag": "tconstruct:casts/multi_use/ingot"
+  },
+  "cast_consumed": false,
+  "fluid": {
+    "name": "momotinker:molten_stellar_core_platinum",
+    "amount": 90
+  },
+  "result": "momotinker:stellar_core_platinum",
+  "cooling_time": 66
+}

@@ -47,14 +47,25 @@ public class MomotinkerConfig {
             .defineInRange("entropy_burning_riding_spear limit max",150,0,Integer.MAX_VALUE);
     public static final ForgeConfigSpec.IntValue entropy_burning_cannon_limit=builder.comment("entropy_burning_cannon_limit")
             .defineInRange("entropy_burning_cannon limit max",200,0,Integer.MAX_VALUE);
-    public static final ForgeConfigSpec.IntValue sanctification_limit=builder.comment("divine_punishment_spear_limit")
-            .defineInRange("divine_punishment_spear sanctification limit",500,0,Integer.MAX_VALUE);
-    public static final ForgeConfigSpec.IntValue degenerate_limit=builder.comment("divine_punishment_spear_limit")
-            .defineInRange("divine_punishment_spear degenerate limit",100,0,Integer.MAX_VALUE);
     public static final ForgeConfigSpec.IntValue breakthroughstar_limit=builder.comment("breakthroughstar_limit")
             .defineInRange("breakthroughstar limit max",100,0,Integer.MAX_VALUE);
     public static final ForgeConfigSpec.IntValue cleansetheworld_limit=builder.comment("cleansetheworld_limit")
             .defineInRange("cleansetheworld cooldown time limit",600,0,Integer.MAX_VALUE);
+    public static final ForgeConfigSpec.IntValue crystallized_hurt_limit=builder.comment("crystallized_hurt_limit")
+            .defineInRange("crystallized hurt limit",60,0,Integer.MAX_VALUE);
+
+    public static final ForgeConfigSpec.IntValue sanctification_limit=builder.comment("divine_punishment_spear_limit")
+            .defineInRange("divine_punishment_spear sanctification limit",500,0,Integer.MAX_VALUE);
+    public static final ForgeConfigSpec.IntValue degenerate_limit=builder.comment("divine_punishment_spear_limit")
+            .defineInRange("divine_punishment_spear degenerate limit",100,0,Integer.MAX_VALUE);
+    public static final ForgeConfigSpec.IntValue hadal_limit=builder.comment("entropy_burning_riding_spear_limit")
+            .defineInRange("entropy_burning_riding_spear hadal limit",400,0,Integer.MAX_VALUE);
+    public static final ForgeConfigSpec.IntValue stellarcore_limit=builder.comment("entropy_burning_sword_limit")
+            .defineInRange("entropy_burning_sword stellarcore limit",400,0,Integer.MAX_VALUE);
+    public static final ForgeConfigSpec.IntValue crystallized_limit=builder.comment("entropy_burning_cannon_limit")
+            .defineInRange("entropy_burning_cannon crystallized limit",20,0,Integer.MAX_VALUE);
+    public static final ForgeConfigSpec.IntValue liverization_limit=builder.comment("entropy_burning_cube_limit")
+            .defineInRange("entropy_burning_cube liverization limit",100,0,Integer.MAX_VALUE);
 
     public static final ForgeConfigSpec.BooleanValue explosion_destroys_limit=builder.comment("explosion_destroys_limit")
             .define("explosion destroys limit",true);

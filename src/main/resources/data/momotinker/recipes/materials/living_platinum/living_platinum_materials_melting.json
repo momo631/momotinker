@@ -1,0 +1,9 @@
+{
+  "type": "tconstruct:material_melting",
+  "input": "momotinker:living_platinum",
+  "temperature": 1500,
+  "result": {
+    "fluid": "momotinker:molten_living_platinum",
+    "amount": 90
+  }
+}

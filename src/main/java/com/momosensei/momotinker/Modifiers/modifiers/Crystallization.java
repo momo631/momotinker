@@ -39,8 +39,8 @@ public class Crystallization extends momomodifier {
         float d = (float)Math.pow(1.1,a);
         if (player != null) {
             tooltip.add(Component.translatable("modifier.momotinker.tooltip.crystallization1").append(a+"").withStyle(ChatFormatting.AQUA));
-            tooltip.add(Component.translatable("modifier.momotinker.tooltip.crystallization2").append(b*100 +"%").withStyle(ChatFormatting.AQUA));
-            tooltip.add(Component.translatable("modifier.momotinker.tooltip.crystallization3").append(c*100 +"%(").append(Component.translatable("modifier.momotinker.tooltip.crystallization7").append(d*100 +"%)")).withStyle(ChatFormatting.AQUA));
+            tooltip.add(Component.translatable("modifier.momotinker.tooltip.crystallization2").append(String.format("%.0f",b*100) +"%").withStyle(ChatFormatting.AQUA));
+            tooltip.add(Component.translatable("modifier.momotinker.tooltip.crystallization3").append(String.format("%.0f",c*100) +"%(").append(Component.translatable("modifier.momotinker.tooltip.crystallization7").append(String.format("%.0f",d*100)+"%)")).withStyle(ChatFormatting.AQUA));
             if (a >= 6 && a < 10) {
                 tooltip.add(Component.translatable("modifier.momotinker.tooltip.crystallization4").withStyle(ChatFormatting.RED));
             }

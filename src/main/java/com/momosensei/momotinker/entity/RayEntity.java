@@ -23,6 +23,7 @@ public class RayEntity extends Projectile {
     public Vec3 rayVec3 =new Vec3(0,0,0);
     public float damage =0;
     public int time =0;
+    public int times =6;
     public ToolStack tool =null;
     public float scale =1;
     public List<AABB> aabbList =new ArrayList<>(List.of());
@@ -30,7 +31,9 @@ public class RayEntity extends Projectile {
     public RayEntity(EntityType<? extends Projectile> p_37248_, Level p_37249_) {
         super(p_37248_, p_37249_);
     }
-
+    public void settimes(int times){
+        this.times =times;
+    }
     @Override
     protected void defineSynchedData() {
     }
@@ -55,7 +58,7 @@ public class RayEntity extends Projectile {
     public void tick() {
         time++;
         Level world = this.level();
-        if (time >=6) {
+        if (time >=this.times) {
             this.discard();
         }
         if (time >= 1) {

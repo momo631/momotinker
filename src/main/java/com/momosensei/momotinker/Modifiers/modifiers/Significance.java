@@ -25,6 +25,8 @@ import javax.annotation.Nullable;
 import java.util.Collection;
 import java.util.List;
 
+import static com.momosensei.momotinker.util.PenetratingDamage.reflectionPenetratingDamage;
+
 
 public class Significance extends momomodifier {
     public Significance() {
@@ -47,7 +49,7 @@ public class Significance extends momomodifier {
 
     @Override
     public void onInventoryTick(IToolStackView tool, ModifierEntry modifierEntry, Level level, LivingEntity entity, int index, boolean b, boolean b1, ItemStack itemStack) {
-        if (entity instanceof ServerPlayer player && player.level() instanceof ServerLevel serverLevel) {
+        if (entity instanceof Player player && player.level() instanceof ServerLevel serverLevel) {
             ModDataNBT a = tool.getPersistentData();
             if (a.getInt(signifincances)<0){
                 a.putInt(signifincances,0);
@@ -74,7 +76,7 @@ public class Significance extends momomodifier {
                 List<LivingEntity> list = player.level().getEntitiesOfClass(LivingEntity.class, player.getBoundingBox().inflate(12));
                 for (LivingEntity e : list) {
                     if (e != null && e != player) {
-                        e.getAttribute(Attributes.MAX_HEALTH).setBaseValue(e.getMaxHealth()*(0.98f));
+                        e.getAttribute(Attributes.MAX_HEALTH).setBaseValue(e.getMaxHealth()*(0.97f));
                         if (e.getHealth()>e.getMaxHealth()){
                             e.setHealth(e.getMaxHealth());
                         }
@@ -83,10 +85,14 @@ public class Significance extends momomodifier {
                             MobEffectInstance effect = harmeffect1.stream().toList().get(i);
                             e.removeEffect(effect.getEffect());
                         }
+                        if (e.getMaxHealth()<player.getMaxHealth()*3f){
+                            reflectionPenetratingDamage(e,player,e.getMaxHealth());
+                            e.onRemovedFromWorld();
+                            e.setPos(Double.NaN, Double.NaN, Double.NaN);
+                        }
                     }
                     if (e instanceof ServerPlayer player1){
                         Channel.sendToPlayer(new SignifiCharge(3),player1);
-
                     }
                 }
             }

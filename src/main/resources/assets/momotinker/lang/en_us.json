@@ -31,6 +31,11 @@
   "fluid.momotinker.molten_devouring_demon_gold": "Molten Devouring Demon Gold",
   "fluid.momotinker.molten_nihilism": "Molten Nihilism",
   "fluid.momotinker.molten_meteor_nucleus": "Molten Meteor",
+  "fluid.momotinker.molten_ashen_platinum": "Molten Ashen Platinum",
+  "fluid.momotinker.molten_hadal_platinum": "Molten Abyss Platinum",
+  "fluid.momotinker.molten_stellar_core_platinum": "Molten Stellar Core Platinum",
+  "fluid.momotinker.molten_crystallized_platinum": "Molten Crystallized Platinum",
+  "fluid.momotinker.molten_living_platinum": "Molten Bionics Platinum",
 
   "item.momotinker.molten_laomo_bucket": "Molten Momo Bucket",
   "item.momotinker.molten_arriving_at_the_other_shore_bucket": "Molten Other Shore Bucket",
@@ -51,6 +56,11 @@
   "item.momotinker.molten_devouring_demon_gold_bucket": "Molten Devouring Demon Gold Bucket",
   "item.momotinker.molten_nihilism_bucket": "Molten Nihilism Bucket",
   "item.momotinker.molten_meteor_nucleus_bucket": "Molten Meteor Bucket",
+  "item.momotinker.molten_ashen_platinum_bucket": "Molten Ashen Platinum Bucket",
+  "item.momotinker.molten_hadal_platinum_bucket": "Molten Abyss Platinum Bucket",
+  "item.momotinker.molten_stellar_core_platinum_bucket": "Molten Stellar Core Platinum Bucket",
+  "item.momotinker.molten_crystallized_platinum_bucket": "Molten Crystallized Platinum Bucket",
+  "item.momotinker.molten_living_platinum_bucket": "Molten Bionics Platinum Bucket",
 
   "recipe.momotinker.modifier.cleansetheworld": "'Cleanse The World' requires 'Breakthrough Stars' as a prerequisite",
   "recipe.momotinker.modifier.shadowofdamnation": "'Shadow Of Damnation' requires 'Cleanse The World' as a prerequisite",
@@ -140,6 +150,22 @@
   "momotinker.item.tooltip.meteor_nucleus4": "'The core of the meteor can continuously release a large amount of heat energy without any signs of decay after melting, which may provide new assistance in our craftsmanship work'",
   "momotinker.item.tooltip.meteor_nucleus5": "The gift of shooting stars is coming soon",
 
+  "item.momotinker.ashen_platinum": "Ashen Platinum",
+  "momotinker.item.tooltip.ashen_platinum1": "Mysterious metal from ancient times, its glory and splendor have been buried by time",
+
+  "item.momotinker.hadal_platinum": "Abyss Platinum",
+  "momotinker.item.tooltip.hadal_platinum1": "After countless eras of being diluted by the bloodline of the deep sea, it finally reappears",
+
+  "item.momotinker.stellar_core_platinum": "Stellar Core Platinum",
+  "momotinker.item.tooltip.stellar_core_platinum1": "The metal carved into creation recalls its mission from beneath the lava of the star core",
+
+  "item.momotinker.crystallized_platinum": "Crystallized Platinum",
+  "momotinker.item.tooltip.crystallized_platinum1": "Under the influence of a powerful soul, its structure is reassembled to form a completely new composite material",
+
+  "item.momotinker.living_platinum": "Bionics Platinum",
+  "momotinker.item.tooltip.living_platinum1": "The hidden program preset in ancient civilizations was accidentally activated, revealing a bizarre form that mimics living organisms",
+  "momotinker.item.tooltip.living_platinum2": "§cHidden Material:§oExperimental note A9-23: In order to prevent it from developing consciousness, non intelligent organisms must be fed while ensuring that they are closest to their original form§",
+
   "itemGroup.momotinker.tools": "Momotinker Tools",
 
   "item.momotinker.trigger_blade": "Trigger Blade",
@@ -154,13 +180,29 @@
 
   "item.momotinker.entropy_burning_cube": "Entropy Burning Cube",
   "item.momotinker.entropy_burning_cube.description": "[From Brilliance]:Lost in Atlantis and the Sleeping Treasure\nThere is no functional use of the tool itself,and pressing 'Tool Enhancement' can change various forms.",
+  "item.momotinker.tooltip.liverization": "The hidden mission of ancient divine weapons has been completed!Got a chance to 'Refactor'!",
+  "item.momotinker.tooltip.liverization1": "Pressing 'Tool Enhancement' while placing any three part  and below tool on the deputy can permanently devour the deputy's equipment and obtain all its reinforcements and material properties,Use with caution!",
+  "item.momotinker.tooltip.liverization2": "'Refactor' has already been used",
+  "item.momotinker.tooltip.other": "This ancient divine weapon is used to complete other forms of evolution",
+
   "item.momotinker.entropy_burning_sword": "Entropy Burning Sword",
   "item.momotinker.entropy_burning_sword.description": "[Two handed weapons]\nA wide range melee weapon with high damage but extremely low attack speed,After accumulating power, deal 150% damage to a wide range target (affected by attack speed).",
+  "item.momotinker.tooltip.stellarcore": "[From Brilliance]Mission:[Entropy Burning Sword]Kill",
+  "item.momotinker.tooltip.stellarcore1": "flame creature. The current number of kills is:",
+  "item.momotinker.tooltip.stellarcore2": "The mission of the ancient divine weapon has been completed!Attacks cause extra flame damage, with values related to armor and armor resilience.If there is only one target hit by the right-click, the damage will become 300%",
+
   "item.momotinker.entropy_burning_riding_spear": "Entropy Burning Riding Spear",
   "item.momotinker.entropy_burning_riding_spear.description": "[Two handed weapons]\nSingle unit melee weapon with longer attack distance.The damage will increase according to the movement speed.After accumulating power, it can sprint briefly.",
   "item.momotinker.tooltip.entropy_burning_riding_spear1": "The current movement speed has increased the total damage:",
+  "item.momotinker.tooltip.hadal": "[From Brilliance]Mission:[Entropy Burning Riding Spear]Kill",
+  "item.momotinker.tooltip.hadal1": "creature on fire. The current number of kills is:",
+  "item.momotinker.tooltip.hadal2": "The mission of the ancient divine weapon has been completed!Double the damage value based on movement speed and increase the sprint distance in water.Increase the upper limit of damage to 450%",
+
   "item.momotinker.entropy_burning_cannon": "Entropy Burning Cannon",
   "item.momotinker.entropy_burning_cannon.description": "[Two handed weapons]\nCan consume experience to initiate shooting, can deal damage to all targets on the path (the more experience consumed, the higher the shooting damage).",
+  "item.momotinker.tooltip.crystallized": "[From Brilliance]Mission:[Entropy Burning Cannon]Kill",
+  "item.momotinker.tooltip.crystallized1": "witherBoss. The current number of kills is:",
+  "item.momotinker.tooltip.crystallized2": "The mission of the ancient divine weapon has been completed!Double the shooting distance and slightly increase the number of damage segments",
 
   "item.momotinker.eclipse_container": "Eclipse Container",
   "item.momotinker.eclipse_container.description": "[Two handed weapons]\nOnly inherit the reinforcement of 'Coronal Key' (including reinforcement points and other of the material),After accumulating power, press and release the 'solar eclipse'.",
@@ -223,7 +265,16 @@
   "material.momotinker.nihilism.encyclopedia": "... the utmost benevolence and goodness",
   "material.momotinker.meteor_nucleus": "Meteor",
   "material.momotinker.meteor_nucleus.encyclopedia": "Gift from Meteor",
-
+  "material.momotinker.ashen_platinum": "Ashen Platinum",
+  "material.momotinker.ashen_platinum.encyclopedia": "Just as countless treasures have fallen into the depths of the sea, the exquisite creations that shine like gems have long been eroded and damaged, but...",
+  "material.momotinker.hadal_platinum": "Abyss Platinum",
+  "material.momotinker.hadal_platinum.encyclopedia": "After countless eras of being diluted by the bloodline of the deep sea, it finally reappears",
+  "material.momotinker.stellar_core_platinum": "Stellar Core Platinum",
+  "material.momotinker.stellar_core_platinum.encyclopedia": "The metal carved into creation recalls its mission from beneath the lava of the star core",
+  "material.momotinker.crystallized_platinum": "Crystallized Platinum",
+  "material.momotinker.crystallized_platinum.encyclopedia": "Under the influence of a powerful soul, its structure is reassembled to form a completely new composite material",
+  "material.momotinker.living_platinum": "Bionics Platinum",
+  "material.momotinker.living_platinum.encyclopedia": "The hidden program preset in ancient civilizations was accidentally activated, revealing a bizarre form that mimics living organisms\n",
 
   "modifier.momotinker.laomochuji": "laomochuji",
   "modifier.momotinker.laomochuji.flavor": "Test flavor",
@@ -360,17 +411,44 @@
   "modifier.momotinker.frombrilliance.flavor": "§eFrom the glorious era§",
   "modifier.momotinker.frombrilliance.description": "Players are unable to forge independently and can obtain tools with fixed material components at certain locations. Achieving certain conditions can lead to weapon evolution!",
 
-  "modifier.momotinker.superancientmetals": "Super Ancient Metals",
-  "modifier.momotinker.superancientmetals.flavor": "A peculiar metal from ancient times that appears ordinary on the surface",
-  "modifier.momotinker.superancientmetals.description": "The durability consumption of the tool is reduced by 50%, and most attributes are increased by 40%, which may evolve due to certain circumstances",
+  "modifier.momotinker.superancientmetalsa": "Super Ancient Metals-Alpha",
+  "modifier.momotinker.superancientmetalsa.flavor": "A peculiar metal from ancient times that appears ordinary on the surface",
+  "modifier.momotinker.superancientmetalsa.description": "The durability consumption of the tool is reduced by 50%, and most attributes are increased by 40%, which may evolve due to certain circumstances",
 
-  "modifier.momotinker.superancientmetalsreal": "Super Ancient Metals-Real",
-  "modifier.momotinker.superancientmetalsreal.flavor": "Unique metal from ancient times, exhibiting a unique posture due to the awakening of 'From Brilliance'",
-  "modifier.momotinker.superancientmetalsreal.description": "The durability consumption of the tool is reduced by 90%, and most attributes are increased by 80%. It will provide unique effects based on the awakening results from 'From Brilliance'",
-  "modifier.momotinker.tooltip.superancientmetalsreal1": "[From Brilliance]Certification: Divine Punishment Spear - Stained with Blood",
-  "modifier.momotinker.tooltip.superancientmetalsreal2": "This tool attack will ignore armor and will not cause invincible frames",
-  "modifier.momotinker.tooltip.superancientmetalsreal3": "[From Brilliance]Certification: Divine Punishment Spear - Starry Sky",
-  "modifier.momotinker.tooltip.superancientmetalsreal4": "This weapon will permanently add the 'be conquered' mark when attacking monsters, and any damage taken by this monster will be corrected to 150%",
+  "modifier.momotinker.superancientmetalsreala": "Super Ancient Metals-Alpha-Real",
+  "modifier.momotinker.superancientmetalsreala.flavor": "Unique metal from ancient times, exhibiting a unique posture due to the awakening of 'From Brilliance'",
+  "modifier.momotinker.superancientmetalsreala.description": "The durability consumption of the tool is reduced by 90%, and most attributes are increased by 80%. It will provide unique effects based on the awakening results from 'From Brilliance'",
+  "modifier.momotinker.tooltip.degenerate1": "[From Brilliance]Certification: Divine Punishment Spear - Stained with Blood",
+  "modifier.momotinker.tooltip.degenerate2": "This tool attack will ignore armor and will not cause invincible frames",
+  "modifier.momotinker.tooltip.sanctification1": "[From Brilliance]Certification: Divine Punishment Spear - Starry Sky",
+  "modifier.momotinker.tooltip.sanctification2": "This weapon will permanently add the 'be conquered' mark when attacking monsters, and any damage taken by this monster will be corrected to 150%",
+  "modifier.momotinker.tooltip.hadal3": "The attack will cause extra damage of 5% of the opponent's maximum life, ignoring armor",
+  "modifier.momotinker.tooltip.stellarcore3": "Obtain maximum health equal to 60% of armor and armor toughness equal to 30% of armor when held in hand",
+  "modifier.momotinker.tooltip.crystallized3": "When the durability is greater than 5 digits, the damage will be corrected to a multiplier of 1.15 ^ the number of extra digits",
+  "modifier.momotinker.tooltip.crystallized31": "The current correction multiplier is:",
+  "modifier.momotinker.tooltip.liverization3": "Kill creatures to increase points. Each time the points are full, one of the three slots will be obtained. After completion, the points will be cleared and the subsequent required points will be doubled",
+  "modifier.momotinker.tooltip.liverization31": "Current points:",
+  "modifier.momotinker.tooltip.liverization32": "The current required points are:",
+
+  "modifier.momotinker.superancientmetalsb": "Super Ancient Metals-Beta",
+  "modifier.momotinker.superancientmetalsb.flavor": "A peculiar metal from ancient times that appears ordinary on the surface",
+  "modifier.momotinker.superancientmetalsb.description": "Slow recovery of durability, slowly restoring player life when durability is full,and most attributes are increased by 25%, which may evolve due to certain circumstances",
+
+  "modifier.momotinker.superancientmetalsrealb": "Super Ancient Metals-Beta-Real",
+  "modifier.momotinker.superancientmetalsrealb.flavor": "Unique metal from ancient times, exhibiting a unique posture due to the awakening of 'From Brilliance'",
+  "modifier.momotinker.superancientmetalsrealb.description": "Durability quickly recovers, and when the durability is full, players' lives are quickly restored,and most attributes are increased by 60%. It will provide unique effects based on the awakening results from 'From Brilliance'",
+  "modifier.momotinker.tooltip.hadal1": "[From Brilliance]Certification: Entropy Burning Cube - The Abyss of the Sea",
+  "modifier.momotinker.tooltip.hadal2": "The movement speed increases, and there is a chance to dodge when attacked. The dodge probability increases by up to 50% with speed",
+  "modifier.momotinker.tooltip.hadal21": "Current evasion probability:",
+  "modifier.momotinker.tooltip.stellarcore1": "[From Brilliance]Certification: Entropy Burning Cube - Stellar Core",
+  "modifier.momotinker.tooltip.stellarcore2": "Armor and armor toughness increase,50% increase in damage to burnt or aquatic organisms.When held in hand, it will cause surrounding organisms to burn and suffer damage at regular intervals, and the closer the distance, the higher the damage",
+  "modifier.momotinker.tooltip.crystallized1": "[From Brilliance]Certification: Entropy Burning Cube - Crystallization",
+  "modifier.momotinker.tooltip.crystallized2": "Durability increases, attacks will consume 2% of the current durability and cause extra damage. Every 1 point consumed will increase by 0.25% (default maximum consumption is 600 points)",
+  "modifier.momotinker.tooltip.crystallized21": "Current increase damage:",
+  "modifier.momotinker.tooltip.liverization1": "[From Brilliance]Certification: Entropy Burning Cube - Bionics",
+  "modifier.momotinker.tooltip.liverization2": "The ability to restore durability and health increases, and even when the durability is not full, life will still be restored.When about to die, an attempt will be made to lose 99% of the maximum durability to avoid this death (it will not take effect if the durability is insufficient)",
+  "modifier.momotinker.tooltip.degenerate3": "When this tool completes a kill, it will permanently increase attack speed and attack damage",
+  "modifier.momotinker.tooltip.sanctification3": "This weapon has a chance of triggering lightning strikes when attacking",
 
   "modifier.momotinker.crimsonqueen": "Crimson Queen",
   "modifier.momotinker.crimsonqueen.flavor": "'Trigger Blade' Exclusive Enhancement: Mobile Sword",
@@ -431,11 +509,11 @@
 
   "modifier.momotinker.origin": "Chapter 1: Origins",
   "modifier.momotinker.origin.flavor": "The starting point of all living beings comes from nothingness, and precisely because of this, they will also return to nothingness",
-  "modifier.momotinker.origin.description": "Reduced response to injury, attacks ignore defense and reduce the target's maximum health by 10% * level. If the target's maximum health is lower than their own, they will die directly, and there is a chance that the dropped object will be cleared",
+  "modifier.momotinker.origin.description": "Reduced response to injury, attacks ignore defense and reduce the target's maximum health by 10% * level. If the maximum life of the target within the attack range is lower than that of the holder, it will be cleared, and there is a chance that the dropped object will be cleared",
 
   "modifier.momotinker.significance": "Chapter 2: Meaning",
   "modifier.momotinker.significance.flavor": "All things exist because of their relationship and meaning, therefore, they should be deprived",
-  "modifier.momotinker.significance.description": "Press 'Category Example' to continuously decay the maximum life of a large range of organisms until death, and all potions on their bodies will be cleared. They will also be affected, but the rate of life decay will be halved",
+  "modifier.momotinker.significance.description": "Press 'Category Example' to continuously decay the maximum life of a large range of organisms until death, and all potions on their bodies will be cleared.When the maximum life is less than 300% of the maximum life of the releaser, it will be cleared. The maximum life of the releaser will also decrease, But the speed has significantly decreased",
   "modifier.momotinker.tooltip.significance1": "Cooling residue of [Chapter 2: Meaning]:",
 
   "modifier.momotinker.blank": "Chapter 3: Blank",
@@ -460,6 +538,24 @@
 
   "modifier.momotinker.blessingofmeteor": "Blessing Of Meteor",
   "modifier.momotinker.blessingofmeteor.flavor": "The shooting stars generously bless you",
-  "modifier.momotinker.blessingofmeteor.description": "Each level receives one slot for each of the three types, and each level receives a 40% stacking bonus for most attributes"
+  "modifier.momotinker.blessingofmeteor.description": "Each level receives one slot for each of the three types, and each level receives a 40% stacking bonus for most attributes",
+
+  "modifier.momotinker.abyssalresonance": "Abyssal Resonance",
+  "modifier.momotinker.abyssalresonance.flavor": "Listen to the echoes of ancient oceanic bloodlines",
+  "modifier.momotinker.abyssalresonance.description": "Get a 20% movement speed, the dimension is more prone to rain, and the damage received in water or rain is reduced by a fixed value, which is affected by the total number of entry levels and speed on the body",
+  "modifier.momotinker.tooltip.abyssalresonance1": "Current damage reduction:",
+
+  "modifier.momotinker.thermonuclearzone": "Thermonuclear Zone",
+  "modifier.momotinker.thermonuclearzone.flavor": "Wherever they go, not a single blade of grass grows",
+  "modifier.momotinker.thermonuclearzone.description": "For every creature around that is already on fire, they will receive a temporary 2+armor that is half the total item level on their body. When they receive damage, they will counterattack based on the values of armor and armor toughness",
+
+  "modifier.momotinker.selfcrystallization": "Self Crystallization",
+  "modifier.momotinker.selfcrystallization.flavor": "Fragile like a crystal, growing like a crystal",
+  "modifier.momotinker.selfcrystallization.description": "Obtain 25% stackable durability, which will automatically recover and consume 5% of the remaining durability of the equipment on the body, reducing damage (the tool only has 0.2% effectiveness). If the durability consumed is greater than the damage received, the excess durability will be counterattacked",
+  "modifier.momotinker.tooltip.selfcrystallization1": "Current damage reduction:",
+
+  "modifier.momotinker.lifeprogram": "Life Program",
+  "modifier.momotinker.lifeprogram.flavor": "Why does the program that imitates life exist ..\n",
+  "modifier.momotinker.lifeprogram.description": "The treatment efficiency received increases by 40%+20% * the total number of items on the body. If the life is less than 50%, the treatment efficiency received increases by an additional 100%. If it is less than 25%, it increases by 300%. The total damage received will not exceed 90% of the maximum life"
 
 }
