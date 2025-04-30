@@ -32,6 +32,14 @@ public class MomotinkerEntitiesCreate {
         Level level = player.getLevel();
         EntityType<SpearEntity> entityType = getSpearType(tool.getStats().getInt(MomotinkerToolDefinitions.SLASH_COLOR));
         SpearEntity spear = new SpearEntity(entityType, level, color);
+        for (int dx=-1;dx<=1;dx++){
+            for (int dz=-1;dz<=1;dz++){
+                if (!level.hasChunk(spear.chunkPosition().x+dx,spear.chunkPosition().z+dz)){
+                    spear.discard();
+                    return;
+                }
+            }
+        }
         double x = player.getLookAngle().x;
         double y = player.getLookAngle().y;
         double z = player.getLookAngle().z;
