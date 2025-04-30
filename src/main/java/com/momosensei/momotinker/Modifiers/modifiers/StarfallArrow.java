@@ -44,6 +44,14 @@ public class StarfallArrow extends momomodifier {
             MinecraftForge.EVENT_BUS.post(event1);
             if (!event1.isCanceled()) {
                 StarfallEntity entity = new StarfallEntity(level, x, y + 100, z, new Vec3(0,0,0));
+                for (int dx=-1;dx<=1;dx++){
+                    for (int dz=-1;dz<=1;dz++){
+                        if (!level.hasChunk(entity.chunkPosition().x+dx,entity.chunkPosition().z+dz)){
+                            entity.discard();
+                            return false;
+                        }
+                    }
+                }
                 entity.noPhysics = true;
                 entity.setOwner(player);
                 entity.setToolstack(tool);

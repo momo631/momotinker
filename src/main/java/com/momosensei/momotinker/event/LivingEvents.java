@@ -291,6 +291,14 @@ public class LivingEvents {
                     MinecraftForge.EVENT_BUS.post(event1);
                     if (!event1.isCanceled()) {
                         MeteorEntity entity = new MeteorEntity(level, pos.x, player.getY() + 150, pos.y, new Vec3(0, 0, 0));
+                        for (int dx=-1;dx<=1;dx++){
+                            for (int dz=-1;dz<=1;dz++){
+                                if (!level.hasChunk(entity.chunkPosition().x+dx,entity.chunkPosition().z+dz)){
+                                    entity.discard();
+                                    return;
+                                }
+                            }
+                        }
                         //MeteorEntity entity = new MeteorEntity(level, player.getX(), player.getY() + 150, player.getZ(), new Vec3(random.nextFloat() * 0.5, random.nextFloat() * 2.5 - 1.5, random.nextFloat() * 0.5));
                         entity.setExplosionPower((byte) (random.nextInt(55) + 25));
                         level.addFreshEntity(entity);
