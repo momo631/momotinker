@@ -55,13 +55,7 @@ public class MeteorEntity extends Projectile {
             hitresult = entityhitresult;
         }
         if (this.level() instanceof ServerLevel serverLevel&&tickCount%5==0){
-            for (int i = 0; i <= 360; i++) {
-                double rad = i * 0.017453292519943295;
-                double r = 1D;
-                double x = r * Math.cos(rad);
-                double z = r * Math.sin(rad);
-                serverLevel.sendParticles(ParticleTypes.FLAME, this.getX(), this.getY(), this.getZ(), 9 / 10, x, r, z, 2);
-            }
+            serverLevel.sendParticles(ParticleTypes.FLAME, this.getX(), this.getY()-1.5, this.getZ(), 2, 0, 0,0, 6);
         }
         if (hitresult.getType()!= HitResult.Type.MISS){
             this.onHit(hitresult);
