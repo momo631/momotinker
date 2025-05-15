@@ -29,7 +29,7 @@ apply plugin: 'org.parchmentmc.librarian.forgegradle'
 
 //版本号
 
-version = '1.19.2-1.2.5.1'
+version = '1.19.2-1.2.5.2'
 group = 'com.momosensei.momotinker' // http://maven.apache.org/guides/mini/guide-naming-conventions.html
 archivesBaseName = 'momotinker'
 
@@ -54,21 +54,8 @@ minecraft {
         }
 
         server {
-            workingDirectory project.file('run')
-
-            property 'forge.logging.markers', 'REGISTRIES'
-
-            property 'forge.logging.console.level', 'debug'
-
-            // Comma-separated list of namespaces to load gametests from. Empty = all namespaces.
-            property 'forge.enabledGameTestNamespaces', 'momotinker'
-            arg '-mixin.config=momotinker.mixins.json'
-
-            mods {
-                momotinker {
-                    source sourceSets.main
-                }
-            }
+            property 'forge.enabledGameTestNamespaces', mod_id
+            args '--nogui'
         }
 
         // This run config launches GameTestServer and runs all registered gametests, then exits.
