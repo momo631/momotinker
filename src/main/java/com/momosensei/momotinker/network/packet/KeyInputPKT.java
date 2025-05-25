@@ -15,7 +15,9 @@ import net.minecraft.world.item.ItemStack;
 import net.minecraft.world.item.enchantment.Enchantment;
 import net.minecraft.world.item.enchantment.EnchantmentHelper;
 import net.minecraftforge.network.NetworkEvent;
+import net.minecraftforge.registries.ForgeRegistries;
 import slimeknights.tconstruct.library.tools.helper.ModifierUtil;
+import slimeknights.tconstruct.library.tools.item.ModifiableItem;
 import slimeknights.tconstruct.library.tools.item.armor.ModifiableArmorItem;
 import slimeknights.tconstruct.library.tools.nbt.ModDataNBT;
 import slimeknights.tconstruct.library.tools.nbt.ToolStack;
@@ -32,6 +34,7 @@ import static com.momosensei.momotinker.Modifiers.modifiers.OverCrystalline.crys
 import static com.momosensei.momotinker.Modifiers.modifiers.Red.ender;
 import static com.momosensei.momotinker.Modifiers.modifiers.Significance.signifincancecool;
 import static com.momosensei.momotinker.Modifiers.modifiers.Significance.signifincances;
+import static com.momosensei.momotinker.Momotinker.*;
 import static net.minecraft.world.item.enchantment.EnchantmentCategory.*;
 import static slimeknights.tconstruct.TConstruct.RANDOM;
 
@@ -195,6 +198,31 @@ public class KeyInputPKT {
                                 player.addEffect(new MobEffectInstance(MomotinkerEffects.FlameBathArmor.get(),2400,getArmorModifierlevel(player,MomotinkerModifiers.flamebath.getId())-1));
                             }
                             flamebathdata.putInt(flamebathcooldown, 240);
+                        }
+                    }
+                }
+            }
+            if (getMainhandModifierlevel(player,MomotinkerModifiers.shortterminvestments.getId()) > 0) {
+                if (player.getMainHandItem().getItem() instanceof ModifiableItem){
+                    ToolStack tool = ToolStack.from(player.getMainHandItem());
+                    ModDataNBT data = tool.getPersistentData();
+                    if (player.hasItemInSlot(EquipmentSlot.OFFHAND)) {
+                        if (data.getString(getResourceLocation("shorttermname")).isEmpty()) {
+                            player.getItemBySlot(EquipmentSlot.OFFHAND).setCount(player.getItemBySlot(EquipmentSlot.OFFHAND).getCount() - 1);
+                            data.putFloat(getResource("shorttermindex"), data.getFloat(getResource("shorttermindex")) + 1);
+                            data.putString(getResourceLocation("shorttermname"), ItemString(player.getOffhandItem().getItem()));
+                        }else if (data.getString(getResourceLocation("shorttermname")).equals(ItemString(player.getOffhandItem().getItem()))){
+                            player.getItemBySlot(EquipmentSlot.OFFHAND).setCount(player.getItemBySlot(EquipmentSlot.OFFHAND).getCount() - 1);
+                            data.putFloat(getResource("shorttermindex"), data.getFloat(getResource("shorttermindex")) + 1);
+                        }
+                    }else if (player.getOffhandItem().isEmpty()&&data.getFloat(getResource("shorttermindex"))>0&&!data.getString(getResourceLocation("shorttermname")).isEmpty()){
+                        int a= (int) Math.floor(data.getFloat(getResource("shorttermindex")));
+                        ItemStack items = new ItemStack(ForgeRegistries.ITEMS.getValue(getResourceLocation(data.getString(getResourceLocation("shorttermname")))),a);
+                        ModifierUtil.dropItem(player,items);
+                        data.putFloat(getResource("shorttermindex"), data.getFloat(getResource("shorttermindex")) - a);
+                        if (data.getFloat(getResource("shorttermindex"))-1<0) {
+                            data.remove(getResource("shorttermindex"));
+                            data.remove(getResourceLocation("shorttermname"));
                         }
                     }
                 }

@@ -65,6 +65,7 @@
   "recipe.momotinker.modifier.cleansetheworld": "'Cleanse The World' requires 'Breakthrough Stars' as a prerequisite",
   "recipe.momotinker.modifier.shadowofdamnation": "'Shadow Of Damnation' requires 'Cleanse The World' as a prerequisite",
   "recipe.momotinker.modifier.expandedequipment": "This tool cannot apply reinforcement",
+  "recipe.momotinker.modifier.shortterminvestments": "'Short Term Investments' requires 'Greedy and plundering' as a prerequisite",
 
   "key.momotinker.key": "Category Example",
   "key.momotinker.keya": "Tool Enhancement",
@@ -555,7 +556,10 @@
   "modifier.momotinker.tooltip.selfcrystallization1": "Current damage reduction:",
 
   "modifier.momotinker.lifeprogram": "Life Program",
-  "modifier.momotinker.lifeprogram.flavor": "Why does the program that imitates life exist ..\n",
-  "modifier.momotinker.lifeprogram.description": "The treatment efficiency received increases by 40%+20% * the total number of items on the body. If the life is less than 50%, the treatment efficiency received increases by an additional 100%. If it is less than 25%, it increases by 300%. The total damage received will not exceed 90% of the maximum life"
+  "modifier.momotinker.lifeprogram.flavor": "Why does the program that imitates life exist...",
+  "modifier.momotinker.lifeprogram.description": "The treatment efficiency received increases by 40%+20% * the total number of items on the body. If the life is less than 50%, the treatment efficiency received increases by an additional 100%. If it is less than 25%, it increases by 300%. The total damage received will not exceed 90% of the maximum life",
 
+  "modifier.momotinker.shortterminvestments": "Short Term Investments",
+  "modifier.momotinker.shortterminvestments.flavor": "Investment carries risks...",
+  "modifier.momotinker.shortterminvestments.description": "副手持有某物品时按下特殊技能按键消耗一个该物品记录并增加“指数”，该工具进行挖掘或击杀行为时会增加或减少随机“指数”，在空手时按下特殊技能按键会清空信息与“指数”并获得等于指数量的该物品（默认只对原版物品有效）"
 }
