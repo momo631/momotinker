@@ -35,7 +35,7 @@ public class ModEvent {
             Random random = new Random();
             for (var stack : event.getDrops()) {
                 if (a > 0) {
-                    stack.getItem().setCount((int) (stack.getItem().getCount() * (1 + a * 0.5)));
+                    stack.getItem().setCount(stack.getItem().getCount() * (1 + a));
                 }
                 if (b > 0 && random.nextInt(16) <4+b) {
                     stack.getItem().setCount(0);

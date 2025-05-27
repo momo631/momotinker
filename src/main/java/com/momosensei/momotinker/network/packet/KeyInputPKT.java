@@ -2,6 +2,7 @@ package com.momosensei.momotinker.network.packet;
 
 import com.momosensei.momotinker.mobs.CoolTimeB;
 import com.momosensei.momotinker.network.Channel;
+import com.momosensei.momotinker.register.MomotinkerConfig;
 import com.momosensei.momotinker.register.MomotinkerEffects;
 import com.momosensei.momotinker.register.MomotinkerItem;
 import com.momosensei.momotinker.register.MomotinkerModifiers;
@@ -11,6 +12,7 @@ import net.minecraft.network.chat.Component;
 import net.minecraft.server.level.ServerPlayer;
 import net.minecraft.world.effect.MobEffectInstance;
 import net.minecraft.world.entity.EquipmentSlot;
+import net.minecraft.world.item.Item;
 import net.minecraft.world.item.ItemStack;
 import net.minecraft.world.item.enchantment.Enchantment;
 import net.minecraft.world.item.enchantment.EnchantmentHelper;
@@ -23,6 +25,7 @@ import slimeknights.tconstruct.library.tools.nbt.ModDataNBT;
 import slimeknights.tconstruct.library.tools.nbt.ToolStack;
 
 import java.util.Map;
+import java.util.Objects;
 import java.util.Random;
 import java.util.function.Supplier;
 
@@ -207,20 +210,26 @@ public class KeyInputPKT {
                     ToolStack tool = ToolStack.from(player.getMainHandItem());
                     ModDataNBT data = tool.getPersistentData();
                     if (player.hasItemInSlot(EquipmentSlot.OFFHAND)) {
-                        if (data.getString(getResourceLocation("shorttermname")).isEmpty()) {
-                            player.getItemBySlot(EquipmentSlot.OFFHAND).setCount(player.getItemBySlot(EquipmentSlot.OFFHAND).getCount() - 1);
-                            data.putFloat(getResource("shorttermindex"), data.getFloat(getResource("shorttermindex")) + 1);
-                            data.putString(getResourceLocation("shorttermname"), ItemString(player.getOffhandItem().getItem()));
-                        }else if (data.getString(getResourceLocation("shorttermname")).equals(ItemString(player.getOffhandItem().getItem()))){
-                            player.getItemBySlot(EquipmentSlot.OFFHAND).setCount(player.getItemBySlot(EquipmentSlot.OFFHAND).getCount() - 1);
-                            data.putFloat(getResource("shorttermindex"), data.getFloat(getResource("shorttermindex")) + 1);
+                        Item item =player.getOffhandItem().getItem();
+                        boolean config = MomotinkerConfig.shortterminvestments_only_minecraft.get();
+                        boolean i= !config || Objects.requireNonNull(ForgeRegistries.ITEMS.getKey(item)).getNamespace().contains("minecraft");
+                        if (i) {
+                            if (data.getString(getResourceLocation("shorttermname")).isEmpty()) {
+                                data.putFloat(getResource("shorttermindex"), data.getFloat(getResource("shorttermindex")) + 1);
+                                data.putString(getResourceLocation("shorttermname"), ItemString(item));
+                                player.getItemBySlot(EquipmentSlot.OFFHAND).setCount(player.getItemBySlot(EquipmentSlot.OFFHAND).getCount() - 1);
+                            } else if (data.getString(getResourceLocation("shorttermname")).equals(ItemString(item))) {
+                                data.putFloat(getResource("shorttermindex"), data.getFloat(getResource("shorttermindex")) + 1);
+                                player.getItemBySlot(EquipmentSlot.OFFHAND).setCount(player.getItemBySlot(EquipmentSlot.OFFHAND).getCount() - 1);
+                            }
                         }
-                    }else if (player.getOffhandItem().isEmpty()&&data.getFloat(getResource("shorttermindex"))>0&&!data.getString(getResourceLocation("shorttermname")).isEmpty()){
-                        int a= (int) Math.floor(data.getFloat(getResource("shorttermindex")));
-                        ItemStack items = new ItemStack(ForgeRegistries.ITEMS.getValue(getResourceLocation(data.getString(getResourceLocation("shorttermname")))),a);
-                        ModifierUtil.dropItem(player,items);
-                        data.putFloat(getResource("shorttermindex"), data.getFloat(getResource("shorttermindex")) - a);
-                        if (data.getFloat(getResource("shorttermindex"))-1<0) {
+                    }else if (player.getOffhandItem().isEmpty()&&!data.getString(getResourceLocation("shorttermname")).isEmpty()){
+                        int a = (int) Math.floor(data.getFloat(getResource("shorttermindex")));
+                        if (a!=0) {
+                            ItemStack items = new ItemStack(ForgeRegistries.ITEMS.getValue(getResourceLocation(data.getString(getResourceLocation("shorttermname")))), a);
+                            ModifierUtil.dropItem(player, items);
+                            data.putFloat(getResource("shorttermindex"), data.getFloat(getResource("shorttermindex")) - a);
+                        }else {
                             data.remove(getResource("shorttermindex"));
                             data.remove(getResourceLocation("shorttermname"));
                         }

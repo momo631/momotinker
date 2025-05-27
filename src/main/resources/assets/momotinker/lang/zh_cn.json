@@ -325,7 +325,7 @@
 
   "modifier.momotinker.intendingplunder": "贪夺",
   "modifier.momotinker.intendingplunder.flavor": "§9掠夺一切§",
-  "modifier.momotinker.intendingplunder.description": "每级增加击杀生物掉落物的50%数量",
+  "modifier.momotinker.intendingplunder.description": "每级增加击杀生物掉落物的100%数量",
   "modifier.momotinker.tooltip.intendingplunder1": "当前已增加掉落数量:",
 
   "modifier.momotinker.overweightingwealthsin": "尽掠之罪",
@@ -562,8 +562,8 @@
 
   "modifier.momotinker.shortterminvestments": "短期投资",
   "modifier.momotinker.shortterminvestments.flavor": "投资有风险...",
-  "modifier.momotinker.shortterminvestments.description": "副手持有某物品时按下特殊技能按键消耗一个该物品记录并增加“指数”，该工具进行某些行为时会随机涨降“指数”，在空手时按下特殊技能按键会清空信息与“指数”并获得等于指数数量的该物品（默认只对原版物品有效）",
+  "modifier.momotinker.shortterminvestments.description": "副手持有某物品时按下特殊技能按键消耗一个该物品记录并增加点数，手持该工具进行某些行为时会随机涨降点数，点数大于1时在空手时按下特殊技能按键会清空点数并获得等于点数数量的该物品，点数不足1时清空信息并可记录其他物品（默认只对原版物品有效，且概率可自定）（稳定性很差）",
   "modifier.momotinker.tooltip.shortterminvestments1":"当前记录物品:",
-  "modifier.momotinker.tooltip.shortterminvestments2":"当前指数:"
+  "modifier.momotinker.tooltip.shortterminvestments2":"当前点数:"
 
 }

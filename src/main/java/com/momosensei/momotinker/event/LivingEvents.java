@@ -192,7 +192,7 @@ public class LivingEvents {
         if (!configall)return;
         boolean config = MomotinkerConfig.spirit_visage.get();
         if (config) {
-            if (event.getBlock().getBlock() instanceof SaplingBlock && event.getEntity() instanceof ServerPlayer) {
+            if (event.getBlock().getBlock() instanceof SaplingBlock) {
                 int b = RANDOM.nextInt(50);
                 if (b == 1) {
                     ItemStack a = new ItemStack(MomotinkerItem.spirit_visage.get());
