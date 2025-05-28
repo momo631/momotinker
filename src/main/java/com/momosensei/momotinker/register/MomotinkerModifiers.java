@@ -69,5 +69,6 @@ public class MomotinkerModifiers {
     public static final StaticModifier<SelfCrystallization> selfcrystallization=MODIFIERS.register("selfcrystallization", SelfCrystallization::new);
     public static final StaticModifier<LifeProgram> lifeprogram=MODIFIERS.register("lifeprogram", LifeProgram::new);
     public static final StaticModifier<ShortTermInvestments> shortterminvestments=MODIFIERS.register("shortterminvestments", ShortTermInvestments::new);
+    public static final StaticModifier<LongTermInvestments> longterminvestments=MODIFIERS.register("longterminvestments", LongTermInvestments::new);
 
 }

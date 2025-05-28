@@ -205,7 +205,7 @@ public class KeyInputPKT {
                     }
                 }
             }
-            if (getMainhandModifierlevel(player,MomotinkerModifiers.shortterminvestments.getId()) > 0) {
+            if ((getMainhandModifierlevel(player,MomotinkerModifiers.shortterminvestments.getId()) > 0)||(getMainhandModifierlevel(player,MomotinkerModifiers.longterminvestments.getId()) > 0)) {
                 if (player.getMainHandItem().getItem() instanceof ModifiableItem){
                     ToolStack tool = ToolStack.from(player.getMainHandItem());
                     ModDataNBT data = tool.getPersistentData();
@@ -213,25 +213,25 @@ public class KeyInputPKT {
                         Item item =player.getOffhandItem().getItem();
                         boolean config = MomotinkerConfig.shortterminvestments_only_minecraft.get();
                         boolean i= !config || Objects.requireNonNull(ForgeRegistries.ITEMS.getKey(item)).getNamespace().contains("minecraft");
-                        if (i) {
-                            if (data.getString(getResourceLocation("shorttermname")).isEmpty()) {
-                                data.putFloat(getResource("shorttermindex"), data.getFloat(getResource("shorttermindex")) + 1);
-                                data.putString(getResourceLocation("shorttermname"), ItemString(item));
+                        if (i&&!player.getOffhandItem().hasTag()) {
+                            if (data.getString(getResourceLocation("termname")).isEmpty()) {
+                                data.putFloat(getResource("termindex"), data.getFloat(getResource("termindex")) + 1);
+                                data.putString(getResourceLocation("termname"), ItemString(item));
                                 player.getItemBySlot(EquipmentSlot.OFFHAND).setCount(player.getItemBySlot(EquipmentSlot.OFFHAND).getCount() - 1);
-                            } else if (data.getString(getResourceLocation("shorttermname")).equals(ItemString(item))) {
-                                data.putFloat(getResource("shorttermindex"), data.getFloat(getResource("shorttermindex")) + 1);
+                            } else if (data.getString(getResourceLocation("termname")).equals(ItemString(item))) {
+                                data.putFloat(getResource("termindex"), data.getFloat(getResource("termindex")) + 1);
                                 player.getItemBySlot(EquipmentSlot.OFFHAND).setCount(player.getItemBySlot(EquipmentSlot.OFFHAND).getCount() - 1);
                             }
                         }
-                    }else if (player.getOffhandItem().isEmpty()&&!data.getString(getResourceLocation("shorttermname")).isEmpty()){
-                        int a = (int) Math.floor(data.getFloat(getResource("shorttermindex")));
+                    }else if (player.getOffhandItem().isEmpty()&&!data.getString(getResourceLocation("termname")).isEmpty()){
+                        int a = (int) Math.floor(data.getFloat(getResource("termindex")));
                         if (a!=0) {
-                            ItemStack items = new ItemStack(ForgeRegistries.ITEMS.getValue(getResourceLocation(data.getString(getResourceLocation("shorttermname")))), a);
+                            ItemStack items = new ItemStack(ForgeRegistries.ITEMS.getValue(getResourceLocation(data.getString(getResourceLocation("termname")))), a);
                             ModifierUtil.dropItem(player, items);
-                            data.putFloat(getResource("shorttermindex"), data.getFloat(getResource("shorttermindex")) - a);
+                            data.putFloat(getResource("termindex"), data.getFloat(getResource("termindex")) - a);
                         }else {
-                            data.remove(getResource("shorttermindex"));
-                            data.remove(getResourceLocation("shorttermname"));
+                            data.remove(getResource("termindex"));
+                            data.remove(getResourceLocation("termname"));
                         }
                     }
                 }

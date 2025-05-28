@@ -65,7 +65,8 @@
   "recipe.momotinker.modifier.cleansetheworld": "荡涤天地需要贯星魔枪作为前置",
   "recipe.momotinker.modifier.shadowofdamnation": "天谴之影需要荡涤天地作为前置",
   "recipe.momotinker.modifier.expandedequipment": "该工具无法施加强化",
-  "recipe.momotinker.modifier.shortterminvestments": "短期投资需要贪夺作为前置",
+  "recipe.momotinker.modifier.shortterminvestments": "短期投资需要贪夺作为前置且与长期投资互斥",
+  "recipe.momotinker.modifier.longterminvestments": "长期投资需要贪夺作为前置且与短期投资互斥",
 
   "key.momotinker.key": "特殊技能",
   "key.momotinker.keya": "工具技能",
@@ -562,8 +563,12 @@
 
   "modifier.momotinker.shortterminvestments": "短期投资",
   "modifier.momotinker.shortterminvestments.flavor": "投资有风险...",
-  "modifier.momotinker.shortterminvestments.description": "副手持有某物品时按下特殊技能按键消耗一个该物品记录并增加点数，手持该工具进行某些行为时会随机涨降点数，点数大于1时在空手时按下特殊技能按键会清空点数并获得等于点数数量的该物品，点数不足1时清空信息并可记录其他物品（默认只对原版物品有效，且概率可自定）（稳定性很差）",
-  "modifier.momotinker.tooltip.shortterminvestments1":"当前记录物品:",
-  "modifier.momotinker.tooltip.shortterminvestments2":"当前点数:"
+  "modifier.momotinker.shortterminvestments.description": "副手持有某物品时按下特殊技能按键消耗一个该物品记录并增加点数，手持该工具进行某些行为时会随机涨降点数，点数大于1时在空手时按下特殊技能按键会清空点数并获得等于点数数量的该物品，点数不足1时清空信息并可记录其他物品（默认只对原版物品有效）",
+  "modifier.momotinker.tooltip.terminvestments1":"当前记录物品:",
+  "modifier.momotinker.tooltip.terminvestments2":"当前点数:",
+
+  "modifier.momotinker.longterminvestments": "长期投资",
+  "modifier.momotinker.longterminvestments.flavor": "或许可以更长远点...",
+  "modifier.momotinker.longterminvestments.description": "大致功能与“短期投资”相同，相较于“短期投资”，增长点数的概率增加，降低点数的概率减少，但相对的增长与降低的幅度大幅减小"
 
 }

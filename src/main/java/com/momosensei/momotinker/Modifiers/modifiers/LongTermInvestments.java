@@ -33,8 +33,8 @@ import java.util.List;
 import static com.momosensei.momotinker.Momotinker.getResource;
 import static com.momosensei.momotinker.Momotinker.getResourceLocation;
 
-public class ShortTermInvestments extends momomodifier implements RequirementsModifierHook, ValidateModifierHook {
-    public ShortTermInvestments() {
+public class LongTermInvestments extends momomodifier implements RequirementsModifierHook, ValidateModifierHook {
+    public LongTermInvestments() {
         MinecraftForge.EVENT_BUS.addListener(this::livinghurtevent);
         MinecraftForge.EVENT_BUS.addListener(this::onEntityDeath);
         MinecraftForge.EVENT_BUS.addListener(this::onItemEvent);
@@ -51,7 +51,7 @@ public class ShortTermInvestments extends momomodifier implements RequirementsMo
     @Nullable
     @Override
     public Component requirementsError(ModifierEntry entry) {
-        return Component.translatable("recipe.momotinker.modifier.shortterminvestments");
+        return Component.translatable("recipe.momotinker.modifier.longterminvestments");
     }
 
     @Override
@@ -61,7 +61,7 @@ public class ShortTermInvestments extends momomodifier implements RequirementsMo
 
     @Override
     public Component validate(IToolStackView tool, ModifierEntry modifier) {
-        if (tool.getModifierLevel(MomotinkerModifiers.intendingplunder.getId())>0&&tool.getModifierLevel(MomotinkerModifiers.longterminvestments.getId())==0){
+        if (tool.getModifierLevel(MomotinkerModifiers.intendingplunder.getId())>0&&tool.getModifierLevel(MomotinkerModifiers.shortterminvestments.getId())==0){
             return null;
         }
         return requirementsError(modifier);
@@ -70,8 +70,8 @@ public class ShortTermInvestments extends momomodifier implements RequirementsMo
     public void addTooltip(IToolStackView tool, ModifierEntry modifierEntry, @org.jetbrains.annotations.Nullable Player player, List<Component> tooltip, TooltipKey tooltipKey, TooltipFlag tooltipFlag) {
         ModDataNBT data = tool.getPersistentData();
         if (player != null) {
-            tooltip.add(net.minecraft.network.chat.Component.translatable("modifier.momotinker.tooltip.terminvestments1").append(data.getString(getResourceLocation("termname"))).withStyle(ChatFormatting.BLUE));
-            tooltip.add(net.minecraft.network.chat.Component.translatable("modifier.momotinker.tooltip.terminvestments2").append(data.getFloat(getResource("termindex"))+"").withStyle(ChatFormatting.BLUE));
+            tooltip.add(Component.translatable("modifier.momotinker.tooltip.terminvestments1").append(data.getString(getResourceLocation("termname"))).withStyle(ChatFormatting.BLUE));
+            tooltip.add(Component.translatable("modifier.momotinker.tooltip.terminvestments2").append(data.getFloat(getResource("termindex"))+"").withStyle(ChatFormatting.BLUE));
 
         }
     }
@@ -80,13 +80,13 @@ public class ShortTermInvestments extends momomodifier implements RequirementsMo
         LivingEntity attacker = context.getAttacker();
         int d = RANDOM.nextInt(100);
         if (attacker instanceof Player player&&!context.isExtraAttack()) {
-            int c=getMainhandModifierlevel(player,MomotinkerModifiers.shortterminvestments.getId());
-            ModDataNBT data= tool.getPersistentData();
-            if (c>0&&!data.getString(getResourceLocation("termname")).isEmpty()){
-                if (d<25){
-                    data.putFloat(getResource("termindex"), data.getFloat(getResource("termindex"))*1.1f);
-                }else if (d>=100-50){
-                    data.putFloat(getResource("termindex"), data.getFloat(getResource("termindex"))*0.95f);
+            int c = getMainhandModifierlevel(player, MomotinkerModifiers.longterminvestments.getId());
+            ModDataNBT data = tool.getPersistentData();
+            if (c > 0 && !data.getString(getResourceLocation("termname")).isEmpty()) {
+                if (d < 50) {
+                    data.putFloat(getResource("termindex"), data.getFloat(getResource("termindex")) * 1.01f);
+                } else if (d >= 100 - 25) {
+                    data.putFloat(getResource("termindex"), data.getFloat(getResource("termindex")) * 0.995f);
                 }
             }
         }
@@ -96,13 +96,13 @@ public class ShortTermInvestments extends momomodifier implements RequirementsMo
     public boolean onProjectileHitEntity(ModifierNBT modifiers, NamespacedNBT persistentData, ModifierEntry modifier, Projectile projectile, EntityHitResult hit, @javax.annotation.Nullable LivingEntity attacker, @javax.annotation.Nullable LivingEntity target) {
         int d = RANDOM.nextInt(100);
         if (attacker instanceof Player player&& projectile instanceof AbstractArrow arrow) {
-            int c=getMainhandModifierlevel(player,MomotinkerModifiers.shortterminvestments.getId());
+            int c = getMainhandModifierlevel(player, MomotinkerModifiers.longterminvestments.getId());
             ModDataNBT data= ToolStack.from(player.getMainHandItem()).getPersistentData();
-            if (c>0&&!data.getString(getResourceLocation("termname")).isEmpty()){
-                if (d<25){
-                    data.putFloat(getResource("termindex"), data.getFloat(getResource("termindex"))*1.1f);
-                }else if (d>=100-50){
-                    data.putFloat(getResource("termindex"), data.getFloat(getResource("termindex"))*0.95f);
+            if (c > 0 && !data.getString(getResourceLocation("termname")).isEmpty()) {
+                if (d < 50) {
+                    data.putFloat(getResource("termindex"), data.getFloat(getResource("termindex")) * 1.01f);
+                } else if (d >= 100 - 25) {
+                    data.putFloat(getResource("termindex"), data.getFloat(getResource("termindex")) * 0.995f);
                 }
             }
         }
@@ -114,13 +114,13 @@ public class ShortTermInvestments extends momomodifier implements RequirementsMo
         //int reduce = MomotinkerConfig.shortterminvestments_reduce_ratio.get();
         int d = RANDOM.nextInt(100);
         if (a instanceof Player player){
-            int c=getMainhandModifierlevel(player,MomotinkerModifiers.shortterminvestments.getId());
+            int c=getMainhandModifierlevel(player,MomotinkerModifiers.longterminvestments.getId());
             ModDataNBT data= ToolStack.from(player.getMainHandItem()).getPersistentData();
             if (c>0&&!data.getString(getResourceLocation("termname")).isEmpty()){
-                if (d<25){
-                    data.putFloat(getResource("termindex"), data.getFloat(getResource("termindex"))*1.1f);
-                }else if (d>=100-50){
-                    data.putFloat(getResource("termindex"), data.getFloat(getResource("termindex"))*0.95f);
+                if (d<50){
+                    data.putFloat(getResource("termindex"), data.getFloat(getResource("termindex"))*1.01f);
+                }else if (d>=100-25){
+                    data.putFloat(getResource("termindex"), data.getFloat(getResource("termindex"))*0.995f);
                 }
             }
         }
@@ -132,24 +132,24 @@ public class ShortTermInvestments extends momomodifier implements RequirementsMo
         //int reduce = MomotinkerConfig.shortterminvestments_reduce_ratio.get();
         int d = RANDOM.nextInt(100);
         if (a instanceof Player player){
-            int c=getMainhandModifierlevel(player,MomotinkerModifiers.shortterminvestments.getId());
+            int c=getMainhandModifierlevel(player,MomotinkerModifiers.longterminvestments.getId());
             ModDataNBT data= ToolStack.from(player.getMainHandItem()).getPersistentData();
             if (c>0&&!data.getString(getResourceLocation("termname")).isEmpty()){
-                if (d<25){
-                    data.putFloat(getResource("termindex"), data.getFloat(getResource("termindex"))*1.3f);
-                }else if (d>=100-50){
-                    data.putFloat(getResource("termindex"), data.getFloat(getResource("termindex"))*0.85f);
+                if (d<50){
+                    data.putFloat(getResource("termindex"), data.getFloat(getResource("termindex"))*1.03f);
+                }else if (d>=100-25){
+                    data.putFloat(getResource("termindex"), data.getFloat(getResource("termindex"))*0.975f);
                 }
             }
         }
         if (b instanceof Player player&&a!=null){
-            int c=getMainhandModifierlevel(player,MomotinkerModifiers.shortterminvestments.getId());
+            int c=getMainhandModifierlevel(player,MomotinkerModifiers.longterminvestments.getId());
             ModDataNBT data= ToolStack.from(player.getMainHandItem()).getPersistentData();
             if (c>0&&!data.getString(getResourceLocation("termname")).isEmpty()){
-                if (d<25){
-                    data.putFloat(getResource("termindex"), data.getFloat(getResource("termindex"))*1.4f);
-                }else if (d>=100-50){
-                    data.putFloat(getResource("termindex"), data.getFloat(getResource("termindex"))*0.8f);
+                if (d<50){
+                    data.putFloat(getResource("termindex"), data.getFloat(getResource("termindex"))*1.025f);
+                }else if (d>=100-25){
+                    data.putFloat(getResource("termindex"), data.getFloat(getResource("termindex"))*0.98f);
                 }
             }
         }
@@ -160,13 +160,13 @@ public class ShortTermInvestments extends momomodifier implements RequirementsMo
         //int reduce = MomotinkerConfig.shortterminvestments_reduce_ratio.get();
         int d = RANDOM.nextInt(100);
         if (player!=null&& event.getState()!=null){
-            int a=getMainhandModifierlevel(player,MomotinkerModifiers.shortterminvestments.getId());
+            int a=getMainhandModifierlevel(player,MomotinkerModifiers.longterminvestments.getId());
             ModDataNBT data= ToolStack.from(player.getMainHandItem()).getPersistentData();
             if (a>0&&!data.getString(getResourceLocation("termname")).isEmpty()){
-                if (d<25){
-                    data.putFloat(getResource("termindex"), data.getFloat(getResource("termindex"))*1.2f);
-                }else if (d>=100-50){
-                    data.putFloat(getResource("termindex"), data.getFloat(getResource("termindex"))*0.9f);
+                if (d<50){
+                    data.putFloat(getResource("termindex"), data.getFloat(getResource("termindex"))*1.015f);
+                }else if (d>=100-25){
+                    data.putFloat(getResource("termindex"), data.getFloat(getResource("termindex"))*0.99f);
                 }
             }
         }

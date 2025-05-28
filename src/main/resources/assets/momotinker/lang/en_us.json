@@ -65,7 +65,8 @@
   "recipe.momotinker.modifier.cleansetheworld": "'Cleanse The World' requires 'Breakthrough Stars' as a prerequisite",
   "recipe.momotinker.modifier.shadowofdamnation": "'Shadow Of Damnation' requires 'Cleanse The World' as a prerequisite",
   "recipe.momotinker.modifier.expandedequipment": "This tool cannot apply reinforcement",
-  "recipe.momotinker.modifier.shortterminvestments": "'Short Term Investments' requires 'Greedy and plundering' as a prerequisite",
+  "recipe.momotinker.modifier.shortterminvestments": "'Short Term Investments' requires 'Greedy and plundering' as a prerequisite and is mutually exclusive with 'Long Term Investments'",
+  "recipe.momotinker.modifier.longterminvestments": "'Long Term Investments' requires 'Greedy and plundering' as a prerequisite and is mutually exclusive with 'Short Term Investments'",
 
   "key.momotinker.key": "Category Example",
   "key.momotinker.keya": "Tool Enhancement",
@@ -561,8 +562,12 @@
 
   "modifier.momotinker.shortterminvestments": "Short Term Investments",
   "modifier.momotinker.shortterminvestments.flavor": "Investment carries risks...",
-  "modifier.momotinker.shortterminvestments.description": "When the deputy holds an item, press 'Category Example' will consume a record of the item and increase points. When holding this tool for certain actions, the points will randomly increase or decrease. When the point is greater than 1, pressing the special skill button while empty handed will clear the point and obtain an item equal to the number of points(Default only valid for minecraft' items, and the probability can be customized) (Poor stability)",
-  "modifier.momotinker.tooltip.shortterminvestments1":"Current recorded item:",
-  "modifier.momotinker.tooltip.shortterminvestments2":"Current points:"
+  "modifier.momotinker.shortterminvestments.description": "When the deputy holds an item, press 'Category Example' will consume a record of the item and increase points. When holding this tool for certain actions, the points will randomly increase or decrease. When the point is greater than 1, pressing the special skill button while empty handed will clear the point and obtain an item equal to the number of points(Default only valid for minecraft' items)",
+  "modifier.momotinker.tooltip.terminvestments1":"Current recorded item:",
+  "modifier.momotinker.tooltip.terminvestments2":"Current points:",
+
+  "modifier.momotinker.longterminvestments": "Long Term Investments",
+  "modifier.momotinker.longterminvestments.flavor": "Perhaps it could be a bit longer...",
+  "modifier.momotinker.longterminvestments.description": "The general function is similar to 'Short Term Investments'. Compared to 'Short Term Investments', the probability of increasing points increases and the probability of decreasing points decreases, but the relative magnitude of growth and decrease is significantly reduced"
 
 }
