@@ -77,7 +77,7 @@
 
   "block.momotinker.dimensional_prism": "§bDimensional Prism§",
   "momotinker.block.tooltip.dimensional_prism1": "§bFragments of interdimensional space§",
-  "momotinker.block.tooltip.dimensional_prism2": "§bWhen a player breaks glass, there is a 10% chance that the item will drop§",
+  "momotinker.block.tooltip.dimensional_prism2": "§bWhen a player breaks glass, there is a 6.18% chance that the item will drop§",
 
   "item.momotinker.laomo": "Momo",
 
@@ -96,7 +96,7 @@
 
   "item.momotinker.spirit_visage": "§aSpirit Visage§",
   "momotinker.item.tooltip.spirit_visage1": "§aBrace up§",
-  "momotinker.item.tooltip.spirit_visage2": "§aWhen a player uses bone powder to ripen any sapling, there is a 2% chance that it will fall to the player's location§",
+  "momotinker.item.tooltip.spirit_visage2": "§aWhen uses bone powder to ripen any sapling, there is a 2% chance that it will fall to the sapling's location§",
 
   "item.momotinker.gluttony_core": "§2Gluttony Core§",
   "momotinker.item.tooltip.gluttony_core1": "§2With your soul, forge my flesh and blood§",

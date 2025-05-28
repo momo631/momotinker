@@ -186,12 +186,13 @@ public class LivingEvents {
             }
         }
     }
+
     private void onBonemealEvent(BonemealEvent event) {
         boolean configall = MomotinkerConfig.special_acquisition.get();
         if (!configall)return;
         boolean config = MomotinkerConfig.spirit_visage.get();
         if (config) {
-            if (event.getBlock().getBlock() instanceof SaplingBlock && event.getEntity() instanceof ServerPlayer) {
+            if (event.getBlock().getBlock() instanceof SaplingBlock) {
                 int b = RANDOM.nextInt(50);
                 if (b == 1) {
                     ItemStack a = new ItemStack(MomotinkerItem.spirit_visage.get());
@@ -200,6 +201,7 @@ public class LivingEvents {
             }
         }
     }
+
     private void onSleepingTimeCheckEvent(SleepingTimeCheckEvent event) {
         boolean configall = MomotinkerConfig.special_acquisition.get();
         if (!configall)return;
@@ -238,11 +240,11 @@ public class LivingEvents {
         boolean config = MomotinkerConfig.dimensional_prism.get();
         if (config) {
             if (player != null && event.getState().is(Blocks.GLASS)) {
-                int a = RANDOM.nextInt(10);
+                int a = RANDOM.nextInt(10000);
                 if (player.getUseItem().isEnchanted() && player.getUseItem().getEnchantmentLevel(Enchantments.SILK_TOUCH) != 0) {
                     return;
                 }
-                if (a == 1) {
+                if (a <618) {
                     ItemStack b = new ItemStack(MomotinkerItem.dimensional_prism.get());
                     ModifierUtil.dropItem(player, b);
                 }
