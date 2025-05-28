@@ -240,11 +240,11 @@ public class LivingEvents {
         boolean config = MomotinkerConfig.dimensional_prism.get();
         if (config) {
             if (player != null && event.getState().is(Blocks.GLASS)) {
-                int a = RANDOM.nextInt(10);
+                int a = RANDOM.nextInt(10000);
                 if (player.getUseItem().isEnchanted() && player.getUseItem().getEnchantmentLevel(Enchantments.SILK_TOUCH) != 0) {
                     return;
                 }
-                if (a == 1) {
+                if (a <618) {
                     ItemStack b = new ItemStack(MomotinkerItem.dimensional_prism.get());
                     ModifierUtil.dropItem(player, b);
                 }
