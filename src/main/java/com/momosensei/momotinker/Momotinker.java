@@ -7,6 +7,7 @@ import com.momosensei.momotinker.register.*;
 import net.minecraft.network.chat.Component;
 import net.minecraft.network.chat.MutableComponent;
 import net.minecraft.resources.ResourceLocation;
+import net.minecraft.world.item.Item;
 import net.minecraftforge.api.distmarker.Dist;
 import net.minecraftforge.common.MinecraftForge;
 import net.minecraftforge.eventbus.api.IEventBus;
@@ -17,8 +18,11 @@ import net.minecraftforge.fml.config.ModConfig;
 import net.minecraftforge.fml.event.lifecycle.FMLClientSetupEvent;
 import net.minecraftforge.fml.event.lifecycle.FMLCommonSetupEvent;
 import net.minecraftforge.fml.javafmlmod.FMLJavaModLoadingContext;
+import net.minecraftforge.registries.ForgeRegistries;
 import slimeknights.tconstruct.library.client.model.TinkerItemProperties;
 import slimeknights.tconstruct.library.tools.capability.TinkerDataCapability;
+
+import java.util.Objects;
 
 import static com.momosensei.momotinker.register.MomotinkerTools.*;
 import static slimeknights.tconstruct.TConstruct.makeTranslationKey;
@@ -53,6 +57,10 @@ public class Momotinker {
 
     public static ResourceLocation getResourceLocation(String id) {
         return new ResourceLocation(id);
+    }
+
+    public static String ItemString(Item item) {
+        return Objects.requireNonNull(ForgeRegistries.ITEMS.getKey(item)).getNamespace() + ":" + Objects.requireNonNull(ForgeRegistries.ITEMS.getKey(item)).getPath();
     }
 
     public static <T> TinkerDataCapability.TinkerDataKey<T> createKey(String name) {

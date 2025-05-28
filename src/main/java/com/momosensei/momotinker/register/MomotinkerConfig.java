@@ -66,6 +66,12 @@ public class MomotinkerConfig {
             .defineInRange("entropy_burning_cannon crystallized limit",20,0,Integer.MAX_VALUE);
     public static final ForgeConfigSpec.IntValue liverization_limit=builder.comment("entropy_burning_cube_limit")
             .defineInRange("entropy_burning_cube liverization limit",100,0,Integer.MAX_VALUE);
+    //public static final ForgeConfigSpec.IntValue shortterminvestments_increase_ratio=builder.comment("shortterminvestments_increase_ratio")
+    //        .defineInRange("shortterminvestments increase ratio",25,0,Integer.MAX_VALUE);
+    //public static final ForgeConfigSpec.IntValue shortterminvestments_reduce_ratio=builder.comment("shortterminvestments_reduce_ratio")
+    //        .defineInRange("shortterminvestments reduce_ratio",50,0,Integer.MAX_VALUE);
+    public static final ForgeConfigSpec.BooleanValue shortterminvestments_only_minecraft=builder.comment("shortterminvestments_only_minecraft")
+            .define("shortterminvestments only valid for the minecraft' item",true);
 
     public static final ForgeConfigSpec.BooleanValue explosion_destroys_limit=builder.comment("explosion_destroys_limit")
             .define("explosion destroys limit",true);

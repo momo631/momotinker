@@ -2,6 +2,7 @@ package com.momosensei.momotinker.network.packet;
 
 import com.momosensei.momotinker.mobs.CoolTimeB;
 import com.momosensei.momotinker.network.Channel;
+import com.momosensei.momotinker.register.MomotinkerConfig;
 import com.momosensei.momotinker.register.MomotinkerEffects;
 import com.momosensei.momotinker.register.MomotinkerItem;
 import com.momosensei.momotinker.register.MomotinkerModifiers;
@@ -11,16 +12,20 @@ import net.minecraft.network.chat.Component;
 import net.minecraft.server.level.ServerPlayer;
 import net.minecraft.world.effect.MobEffectInstance;
 import net.minecraft.world.entity.EquipmentSlot;
+import net.minecraft.world.item.Item;
 import net.minecraft.world.item.ItemStack;
 import net.minecraft.world.item.enchantment.Enchantment;
 import net.minecraft.world.item.enchantment.EnchantmentHelper;
 import net.minecraftforge.network.NetworkEvent;
+import net.minecraftforge.registries.ForgeRegistries;
 import slimeknights.tconstruct.library.tools.helper.ModifierUtil;
+import slimeknights.tconstruct.library.tools.item.ModifiableItem;
 import slimeknights.tconstruct.library.tools.item.armor.ModifiableArmorItem;
 import slimeknights.tconstruct.library.tools.nbt.ModDataNBT;
 import slimeknights.tconstruct.library.tools.nbt.ToolStack;
 
 import java.util.Map;
+import java.util.Objects;
 import java.util.Random;
 import java.util.function.Supplier;
 
@@ -32,6 +37,7 @@ import static com.momosensei.momotinker.Modifiers.modifiers.OverCrystalline.crys
 import static com.momosensei.momotinker.Modifiers.modifiers.Red.ender;
 import static com.momosensei.momotinker.Modifiers.modifiers.Significance.signifincancecool;
 import static com.momosensei.momotinker.Modifiers.modifiers.Significance.signifincances;
+import static com.momosensei.momotinker.Momotinker.*;
 import static net.minecraft.world.item.enchantment.EnchantmentCategory.*;
 import static slimeknights.tconstruct.TConstruct.RANDOM;
 
@@ -195,6 +201,37 @@ public class KeyInputPKT {
                                 player.addEffect(new MobEffectInstance(MomotinkerEffects.FlameBathArmor.get(),2400,getArmorModifierlevel(player,MomotinkerModifiers.flamebath.getId())-1));
                             }
                             flamebathdata.putInt(flamebathcooldown, 240);
+                        }
+                    }
+                }
+            }
+            if ((getMainhandModifierlevel(player,MomotinkerModifiers.shortterminvestments.getId()) > 0)||(getMainhandModifierlevel(player,MomotinkerModifiers.longterminvestments.getId()) > 0)) {
+                if (player.getMainHandItem().getItem() instanceof ModifiableItem){
+                    ToolStack tool = ToolStack.from(player.getMainHandItem());
+                    ModDataNBT data = tool.getPersistentData();
+                    if (player.hasItemInSlot(EquipmentSlot.OFFHAND)) {
+                        Item item =player.getOffhandItem().getItem();
+                        boolean config = MomotinkerConfig.shortterminvestments_only_minecraft.get();
+                        boolean i= !config || Objects.requireNonNull(ForgeRegistries.ITEMS.getKey(item)).getNamespace().contains("minecraft");
+                        if (i&&!player.getOffhandItem().hasTag()) {
+                            if (data.getString(getResourceLocation("termname")).isEmpty()) {
+                                data.putFloat(getResource("termindex"), data.getFloat(getResource("termindex")) + 1);
+                                data.putString(getResourceLocation("termname"), ItemString(item));
+                                player.getItemBySlot(EquipmentSlot.OFFHAND).setCount(player.getItemBySlot(EquipmentSlot.OFFHAND).getCount() - 1);
+                            } else if (data.getString(getResourceLocation("termname")).equals(ItemString(item))) {
+                                data.putFloat(getResource("termindex"), data.getFloat(getResource("termindex")) + 1);
+                                player.getItemBySlot(EquipmentSlot.OFFHAND).setCount(player.getItemBySlot(EquipmentSlot.OFFHAND).getCount() - 1);
+                            }
+                        }
+                    }else if (player.getOffhandItem().isEmpty()&&!data.getString(getResourceLocation("termname")).isEmpty()){
+                        int a = (int) Math.floor(data.getFloat(getResource("termindex")));
+                        if (a!=0) {
+                            ItemStack items = new ItemStack(Objects.requireNonNull(ForgeRegistries.ITEMS.getValue(getResourceLocation(data.getString(getResourceLocation("termname"))))), a);
+                            ModifierUtil.dropItem(player, items);
+                            data.putFloat(getResource("termindex"), data.getFloat(getResource("termindex")) - a);
+                        }else {
+                            data.remove(getResource("termindex"));
+                            data.remove(getResourceLocation("termname"));
                         }
                     }
                 }

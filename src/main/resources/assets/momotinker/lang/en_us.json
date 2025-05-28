@@ -65,6 +65,8 @@
   "recipe.momotinker.modifier.cleansetheworld": "'Cleanse The World' requires 'Breakthrough Stars' as a prerequisite",
   "recipe.momotinker.modifier.shadowofdamnation": "'Shadow Of Damnation' requires 'Cleanse The World' as a prerequisite",
   "recipe.momotinker.modifier.expandedequipment": "This tool cannot apply reinforcement",
+  "recipe.momotinker.modifier.shortterminvestments": "'Short Term Investments' requires 'Greedy and plundering' as a prerequisite and is mutually exclusive with 'Long Term Investments'",
+  "recipe.momotinker.modifier.longterminvestments": "'Long Term Investments' requires 'Greedy and plundering' as a prerequisite and is mutually exclusive with 'Short Term Investments'",
 
   "key.momotinker.key": "Category Example",
   "key.momotinker.keya": "Tool Enhancement",
@@ -323,7 +325,7 @@
 
   "modifier.momotinker.intendingplunder": "Greedy and plundering",
   "modifier.momotinker.intendingplunder.flavor": "§9Plundering everything§",
-  "modifier.momotinker.intendingplunder.description": "Increase the number of killed creatures' drops by 50% at each level",
+  "modifier.momotinker.intendingplunder.description": "Increase the number of killed creatures' drops by 100% at each level",
   "modifier.momotinker.tooltip.intendingplunder1": "The current number of drops has increased:",
 
   "modifier.momotinker.overweightingwealthsin": "Over weighting wealth sin",
@@ -365,7 +367,7 @@
 
   "modifier.momotinker.unstained": "Unstained",
   "modifier.momotinker.unstained.flavor": "§6Dust is like clouds§",
-  "modifier.momotinker.unstained.description": "Immunity to all neutral and negative effects while carrying a backpack (except for the Seven Sins series effects). Wearing or holding the backpack may sometimes cause the original positive effect time to not return to zero and provide a chance to dodge attacks. The value is 10% of the total entries, with a maximum of 80% (the same name only takes effect once)",
+  "modifier.momotinker.unstained.description": "Immunity to all neutral and negative effects while carrying a backpack (except for the Seven Sins series effects). Wearing or holding the backpack may sometimes cause the minecraft' effect time to not return to zero and provide a chance to dodge attacks. The value is 10% of the total entries, with a maximum of 80% (the same name only takes effect once)",
 
   "modifier.momotinker.overcowardicesin": "Over cowardice sin",
   "modifier.momotinker.overcowardicesin.flavor": "§6The Price of Endless Fear and Neglect: Micro Force for Battle§",
@@ -555,7 +557,17 @@
   "modifier.momotinker.tooltip.selfcrystallization1": "Current damage reduction:",
 
   "modifier.momotinker.lifeprogram": "Life Program",
-  "modifier.momotinker.lifeprogram.flavor": "Why does the program that imitates life exist ..\n",
-  "modifier.momotinker.lifeprogram.description": "The treatment efficiency received increases by 40%+20% * the total number of items on the body. If the life is less than 50%, the treatment efficiency received increases by an additional 100%. If it is less than 25%, it increases by 300%. The total damage received will not exceed 90% of the maximum life"
+  "modifier.momotinker.lifeprogram.flavor": "Why does the program that imitates life exist...",
+  "modifier.momotinker.lifeprogram.description": "The treatment efficiency received increases by 40%+20% * the total number of items on the body. If the life is less than 50%, the treatment efficiency received increases by an additional 100%. If it is less than 25%, it increases by 300%. The total damage received will not exceed 90% of the maximum life",
+
+  "modifier.momotinker.shortterminvestments": "Short Term Investments",
+  "modifier.momotinker.shortterminvestments.flavor": "Investment carries risks...",
+  "modifier.momotinker.shortterminvestments.description": "When the deputy holds an item, press 'Category Example' will consume a record of the item and increase points. When holding this tool for certain actions, the points will randomly increase or decrease. When the point is greater than 1, pressing the special skill button while empty handed will clear the point and obtain an item equal to the number of points(Default only valid for minecraft' items)",
+  "modifier.momotinker.tooltip.terminvestments1":"Current recorded item:",
+  "modifier.momotinker.tooltip.terminvestments2":"Current points:",
+
+  "modifier.momotinker.longterminvestments": "Long Term Investments",
+  "modifier.momotinker.longterminvestments.flavor": "Perhaps it could be a bit longer...",
+  "modifier.momotinker.longterminvestments.description": "The general function is similar to 'Short Term Investments'. Compared to 'Short Term Investments', the probability of increasing points increases and the probability of decreasing points decreases, but the relative magnitude of growth and decrease is significantly reduced"
 
 }

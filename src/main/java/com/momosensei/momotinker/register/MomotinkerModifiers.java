@@ -14,7 +14,8 @@ public class MomotinkerModifiers {
     //2不要和其他模组的重复，可大写可小写,用于引用
     //3只能小写，并且影响你zh_cn的键名
     //一般建议2,3写一样的
-//    public static final StaticModifier<LaoMoChuJi> laomochuji=MODIFIERS.register("laomochuji", LaoMoChuJi::new);   //测试
+    public static final StaticModifier<Test> test=MODIFIERS.register("test", Test::new);
+    //public static final StaticModifier<LaoMoChuJi> laomochuji=MODIFIERS.register("laomochuji", LaoMoChuJi::new);   //测试
     public static final StaticModifier<Lethe> lethe=MODIFIERS.register("lethe", Lethe::new);
     public static final StaticModifier<Huangquan> huangquan=MODIFIERS.register("huangquan", Huangquan::new);
     public static final StaticModifier<Red> red=MODIFIERS.register("red", Red::new);
@@ -37,7 +38,6 @@ public class MomotinkerModifiers {
     public static final StaticModifier<OverEnvySin> overenvysin=MODIFIERS.register("overenvysin", OverEnvySin::new);
     public static final StaticModifier<FallingStars> fallingstars=MODIFIERS.register("fallingstars", FallingStars::new);
     public static final StaticModifier<UnknownReturnee> unknownreturnee=MODIFIERS.register("unknownreturnee", UnknownReturnee::new);
-    public static final StaticModifier<Test> test=MODIFIERS.register("test", Test::new);
     public static final StaticModifier<OverCrystalline> overcrystalline=MODIFIERS.register("overcrystalline", OverCrystalline::new);
     public static final StaticModifier<Crystallization> crystallization=MODIFIERS.register("crystallization", Crystallization::new);
     public static final StaticModifier<FromBrilliance> frombrilliance=MODIFIERS.register("frombrilliance", FromBrilliance::new);
@@ -68,5 +68,7 @@ public class MomotinkerModifiers {
     public static final StaticModifier<ThermonuclearZone> thermonuclearzone=MODIFIERS.register("thermonuclearzone", ThermonuclearZone::new);
     public static final StaticModifier<SelfCrystallization> selfcrystallization=MODIFIERS.register("selfcrystallization", SelfCrystallization::new);
     public static final StaticModifier<LifeProgram> lifeprogram=MODIFIERS.register("lifeprogram", LifeProgram::new);
+    public static final StaticModifier<ShortTermInvestments> shortterminvestments=MODIFIERS.register("shortterminvestments", ShortTermInvestments::new);
+    public static final StaticModifier<LongTermInvestments> longterminvestments=MODIFIERS.register("longterminvestments", LongTermInvestments::new);
 
 }
