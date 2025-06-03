@@ -1,0 +1,9 @@
+{
+  "type": "tconstruct:material_melting",
+  "input": "momotinker:timetrace_purple_gold",
+  "temperature": 1500,
+  "result": {
+    "fluid": "momotinker:molten_timetrace_purple_gold",
+    "amount": 90
+  }
+}

@@ -11,6 +11,7 @@
   "effect.momotinker.fallingstar": "falling star",
   "effect.momotinker.censored": "??????????",
   "effect.momotinker.flamebatharmor": "Flame Bath Armor",
+  "effect.momotinker.increaseallattributes": "Increase All Attributes",
 
   "fluid.momotinker.molten_laomo": "Molten Momo",
   "fluid.momotinker.molten_arriving_at_the_other_shore": "Molten Other Shore",
@@ -36,7 +37,10 @@
   "fluid.momotinker.molten_stellar_core_platinum": "Molten Stellar Core Platinum",
   "fluid.momotinker.molten_crystallized_platinum": "Molten Crystallized Platinum",
   "fluid.momotinker.molten_living_platinum": "Molten Bionics Platinum",
-
+  "fluid.momotinker.molten_twilight_purple_gold": "Molten Twilight Purple Gold",
+  "fluid.momotinker.molten_timetrace_purple_gold": "Molten Time Trace Purple Gold",
+  "fluid.momotinker.molten_reversetime_purple_gold": "Molten Reverse Time Purple Gold",
+  
   "item.momotinker.molten_laomo_bucket": "Molten Momo Bucket",
   "item.momotinker.molten_arriving_at_the_other_shore_bucket": "Molten Other Shore Bucket",
   "item.momotinker.molten_heartsteel_bucket": "Molten Heart Steel Bucket",
@@ -61,7 +65,10 @@
   "item.momotinker.molten_stellar_core_platinum_bucket": "Molten Stellar Core Platinum Bucket",
   "item.momotinker.molten_crystallized_platinum_bucket": "Molten Crystallized Platinum Bucket",
   "item.momotinker.molten_living_platinum_bucket": "Molten Bionics Platinum Bucket",
-
+  "item.momotinker.molten_twilight_purple_gold_bucket": "Molten Twilight Purple Gold Bucket",
+  "item.momotinker.molten_timetrace_purple_gold_bucket": "Molten Time Trace Purple Gold Bucket",
+  "item.momotinker.molten_reversetime_purple_gold_bucket": "Molten Reverse Time Purple Gold Bucket",
+  
   "recipe.momotinker.modifier.cleansetheworld": "'Cleanse The World' requires 'Breakthrough Stars' as a prerequisite",
   "recipe.momotinker.modifier.shadowofdamnation": "'Shadow Of Damnation' requires 'Cleanse The World' as a prerequisite",
   "recipe.momotinker.modifier.expandedequipment": "This tool cannot apply reinforcement",
@@ -168,6 +175,16 @@
   "momotinker.item.tooltip.living_platinum1": "The hidden program preset in ancient civilizations was accidentally activated, revealing a bizarre form that mimics living organisms",
   "momotinker.item.tooltip.living_platinum2": "§cHidden Material:§oExperimental note A9-23: In order to prevent it from developing consciousness, non intelligent organisms must be fed while ensuring that they are closest to their original form§",
 
+  "item.momotinker.twilight_purple_gold": "Twilight Purple Gold",
+  "momotinker.item.tooltip.twilight_purple_gold1": "",
+
+  "item.momotinker.timetrace_purple_gold": "Time Trace Purple Gold",
+  "momotinker.item.tooltip.timetrace_purple_gold1": "",
+
+  "item.momotinker.reversetime_purple_gold": "Reverse Time Purple Gold",
+  "momotinker.item.tooltip.reversetime_purple_gold1": "",
+  "momotinker.item.tooltip.reversetime_purple_gold2": "",
+
   "itemGroup.momotinker.tools": "Momotinker Tools",
 
   "item.momotinker.trigger_blade": "Trigger Blade",
@@ -219,6 +236,10 @@
   "item.momotinker.tooltip.pocket_watch1": "Currently remaining cooling:",
   "item.momotinker.tooltip.pocket_watch2": "The current recorded location is:(",
   "item.momotinker.tooltip.pocket_watch3": "The dimensions currently recorded are:",
+  "item.momotinker.tooltip.transmit": "[From Brilliance]Mission:Proactively use",
+  "item.momotinker.tooltip.transmit1": "transmission. Current number of transfers:",
+  "item.momotinker.tooltip.transmit2": "The mission of the ancient divine weapon has been completed!When used actively, it no longer consumes durability and significantly reduces cooling time, but when the holder dies, the tool will no longer be immune to death and teleportation",
+  "item.momotinker.tooltip.backtracking": "The hidden mission of ancient divine weapons has been completed!This tool will automatically record the holder's position 5 seconds ago, with a slight reduction in cooldown time, but the tool can no longer autonomously record position and teleportation",
 
   "item.momotinker.chain_sword": "Chain Sword",
   "item.momotinker.chain_sword.description": "[Two handed weapons]\nDuring use, it can continuously strike small range creatures in front of it. If used for too long, it will cannot be used normally. The higher the attack speed, the higher the damage",
@@ -277,6 +298,12 @@
   "material.momotinker.crystallized_platinum.encyclopedia": "Under the influence of a powerful soul, its structure is reassembled to form a completely new composite material",
   "material.momotinker.living_platinum": "Bionics Platinum",
   "material.momotinker.living_platinum.encyclopedia": "The hidden program preset in ancient civilizations was accidentally activated, revealing a bizarre form that mimics living organisms\n",
+  "material.momotinker.twilight_purple_gold": "Twilight Purple Gold",
+  "material.momotinker.twilight_purple_gold.encyclopedia": "",
+  "material.momotinker.timetrace_purple_gold": "Time Trace Purple Gold",
+  "material.momotinker.timetrace_purple_gold.encyclopedia": "",
+  "material.momotinker.reversetime_purple_gold": "Reverse Time Purple Gold",
+  "material.momotinker.reversetime_purple_gold.encyclopedia": "",
 
   "modifier.momotinker.laomochuji": "laomochuji",
   "modifier.momotinker.laomochuji.flavor": "Test flavor",

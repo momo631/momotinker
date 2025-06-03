@@ -197,7 +197,7 @@ public class SuperancientMetalsRealB extends momomodifier {
     private void livingattackevent(LivingAttackEvent event) {
         LivingEntity living = event.getEntity();
         int hadal_limit = MomotinkerConfig.hadal_limit.get();
-        int a =  getAllModifierlevel(living, MomotinkerModifiers.superancientmetalsrealb.getId());
+        int a = getAllModifierlevel(living, MomotinkerModifiers.superancientmetalsrealb.getId());
         int b = RANDOM.nextInt(100);
         if (event.getEntity() instanceof Player player&&a>0) {
             float bonus = getbonus(player, 2500);
@@ -258,7 +258,7 @@ public class SuperancientMetalsRealB extends momomodifier {
             builder.add(Component.translatable("modifier.momotinker.tooltip.hadal21").append(d+"%").withStyle(ChatFormatting.DARK_BLUE));
         }
         if (a.getInt(stellarcore)==stellarcore_limit) {
-            builder.add(Component.translatable("modifier.momotinker.tooltip.stellarcore2").withStyle(ChatFormatting.YELLOW));
+            builder.add(Component.translatable("modifier.momotinker.tooltip.stellarcore2").withStyle(ChatFormatting.GOLD));
         }
         if (a.getInt(crystallized)==crystallized_limit) {
             int crystallized_hurt_limit = MomotinkerConfig.crystallized_hurt_limit.get();

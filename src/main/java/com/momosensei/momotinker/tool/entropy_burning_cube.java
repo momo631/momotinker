@@ -117,7 +117,7 @@ public class entropy_burning_cube extends ModifiableItem {
             builder.add(Component.translatable("item.momotinker.tooltip.hadal2").withStyle(ChatFormatting.DARK_BLUE));
         }
         if (a.getInt(stellarcore)==stellarcore_limit) {
-            builder.add(Component.translatable("item.momotinker.tooltip.stellarcore2").withStyle(ChatFormatting.YELLOW));
+            builder.add(Component.translatable("item.momotinker.tooltip.stellarcore2").withStyle(ChatFormatting.GOLD));
         }
         if (a.getInt(crystallized)==crystallized_limit) {
             builder.add(Component.translatable("item.momotinker.tooltip.crystallized2").withStyle(ChatFormatting.AQUA));

@@ -44,6 +44,9 @@ public class  MomotinkerItem {
     public static final RegistryObject<Item> stellar_core_platinum = ITEMS.register("stellar_core_platinum", () -> new stellar_core_platinum(new Item.Properties().tab(MomotinkerTab.MATERIALS)));
     public static final RegistryObject<Item> crystallized_platinum = ITEMS.register("crystallized_platinum", () -> new crystallized_platinum(new Item.Properties().tab(MomotinkerTab.MATERIALS)));
     public static final RegistryObject<Item> living_platinum = ITEMS.register("living_platinum", () -> new living_platinum(new Item.Properties().tab(MomotinkerTab.MATERIALS)));
+    public static final RegistryObject<Item> twilight_purple_gold = ITEMS.register("twilight_purple_gold", () -> new twilight_purple_gold(new Item.Properties().tab(MomotinkerTab.MATERIALS)));
+    public static final RegistryObject<Item> timetrace_purple_gold = ITEMS.register("timetrace_purple_gold", () -> new timetrace_purple_gold(new Item.Properties().tab(MomotinkerTab.MATERIALS)));
+    public static final RegistryObject<Item> reversetime_purple_gold = ITEMS.register("reversetime_purple_gold", () -> new reversetime_purple_gold(new Item.Properties().tab(MomotinkerTab.MATERIALS)));
 
     public static final RegistryObject<ModifiableItem> trigger_blade = ITEMS.register("trigger_blade", () -> new trigger_blade(TOOL, MomotinkerToolDefinitions.TRIGGER_BLADE));
     public static final RegistryObject<ModifiableItem> divine_punishment_spear = ITEMS.register("divine_punishment_spear", () -> new divine_punishment_spear(TOOL, MomotinkerToolDefinitions.DIVINE_PUNISHMENT_SPEAR));

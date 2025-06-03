@@ -9,6 +9,7 @@ import net.minecraft.world.entity.LivingEntity;
 import net.minecraft.world.entity.ai.attributes.AttributeModifier;
 import net.minecraft.world.entity.ai.attributes.Attributes;
 import net.minecraft.world.phys.Vec3;
+import org.jetbrains.annotations.NotNull;
 
 import java.util.List;
 
@@ -22,7 +23,9 @@ public class FlameBathArmor extends StaticEffect {
     public boolean isDurationEffectTick(int pDuration, int pAmplifier) {
         return true;
     }
-
+    public @NotNull String getDescriptionId () {
+        return "effect.momotinker.flamebatharmor";
+    }
     @Override
     public void applyEffectTick(LivingEntity living, int amplifier) {
         if (living instanceof ServerPlayer player && player.level instanceof ServerLevel serverLevel&&living.getEffect(MomotinkerEffects.FlameBathArmor.get())!=null) {

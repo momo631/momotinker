@@ -70,5 +70,7 @@ public class MomotinkerModifiers {
     public static final StaticModifier<LifeProgram> lifeprogram=MODIFIERS.register("lifeprogram", LifeProgram::new);
     public static final StaticModifier<ShortTermInvestments> shortterminvestments=MODIFIERS.register("shortterminvestments", ShortTermInvestments::new);
     public static final StaticModifier<LongTermInvestments> longterminvestments=MODIFIERS.register("longterminvestments", LongTermInvestments::new);
+    public static final StaticModifier<SuperancientMetalsC> superancientmetalsc=MODIFIERS.register("superancientmetalsc", SuperancientMetalsC::new);
+    public static final StaticModifier<SuperancientMetalsRealC> superancientmetalsrealc=MODIFIERS.register("superancientmetalsrealc", SuperancientMetalsRealC::new);
 
 }

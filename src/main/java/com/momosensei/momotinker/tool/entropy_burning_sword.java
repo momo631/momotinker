@@ -181,7 +181,7 @@ public class entropy_burning_sword extends ModifiableItem {
             builder.add(Component.translatable("item.momotinker.tooltip.stellarcore").append(stellarcore_limit + "").append(Component.translatable("item.momotinker.tooltip.stellarcore1")).append(a.getInt(stellarcore) + "").withStyle(ChatFormatting.GOLD));
         }
         if (a.getInt(stellarcore)==stellarcore_limit) {
-            builder.add(Component.translatable("item.momotinker.tooltip.stellarcore2").withStyle(ChatFormatting.YELLOW));
+            builder.add(Component.translatable("item.momotinker.tooltip.stellarcore2").withStyle(ChatFormatting.GOLD));
         }
         if (a.getInt(liverization)>=liverization_limit) {
             if (a.getInt(liverization)==liverization_limit) {

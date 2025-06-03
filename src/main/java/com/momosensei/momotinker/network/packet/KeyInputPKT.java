@@ -218,9 +218,6 @@ public class KeyInputPKT {
                                 data.putFloat(getResource("termindex"), data.getFloat(getResource("termindex")) + 1);
                                 data.putString(getResourceLocation("termname"), ItemString(item));
                                 player.getItemBySlot(EquipmentSlot.OFFHAND).setCount(player.getItemBySlot(EquipmentSlot.OFFHAND).getCount() - 1);
-                            } else if (data.getString(getResourceLocation("termname")).equals(ItemString(item))) {
-                                data.putFloat(getResource("termindex"), data.getFloat(getResource("termindex")) + 1);
-                                player.getItemBySlot(EquipmentSlot.OFFHAND).setCount(player.getItemBySlot(EquipmentSlot.OFFHAND).getCount() - 1);
                             }
                         }
                     }else if (player.getOffhandItem().isEmpty()&&!data.getString(getResourceLocation("termname")).isEmpty()){

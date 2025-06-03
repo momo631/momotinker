@@ -237,7 +237,7 @@ public class SuperancientMetalsRealA extends momomodifier {
             builder.add(Component.translatable("modifier.momotinker.tooltip.hadal3").withStyle(ChatFormatting.DARK_BLUE));
         }
         if (a.getInt(stellarcore)==stellarcore_limit) {
-            builder.add(Component.translatable("modifier.momotinker.tooltip.stellarcore3").withStyle(ChatFormatting.YELLOW));
+            builder.add(Component.translatable("modifier.momotinker.tooltip.stellarcore3").withStyle(ChatFormatting.GOLD));
         }
         if (a.getInt(crystallized)==crystallized_limit) {
             float b= (float) Math.pow(1.15,a.getInt(crystallizedpoints));
