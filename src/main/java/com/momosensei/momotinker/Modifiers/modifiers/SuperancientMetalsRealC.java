@@ -52,6 +52,7 @@ public class SuperancientMetalsRealC extends momomodifier {
     public static final ResourceLocation overheat = Momotinker.getResource("overheat");
     public static final ResourceLocation overheatingcooling = Momotinker.getResource("overheatingcooling");
     public static final ResourceLocation durabilityrecovery = Momotinker.getResource("durabilityrecovery");
+    public static final ResourceLocation recorddamage = Momotinker.getResource("recorddamage");
 
     @Override
     public boolean isNoLevels() {
@@ -63,6 +64,7 @@ public class SuperancientMetalsRealC extends momomodifier {
         iToolStackView.getPersistentData().remove(overheat);
         iToolStackView.getPersistentData().remove(overheatingcooling);
         iToolStackView.getPersistentData().remove(durabilityrecovery);
+        iToolStackView.getPersistentData().remove(recorddamage);
         return null;
     }
     @Override
