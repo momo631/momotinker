@@ -145,6 +145,8 @@ dependencies {
     annotationProcessor "org.spongepowered:mixin:${mixin_version}:processor"
     implementation fg.deobf("dev.kosmx.player-anim:player-animation-lib-forge:${player_animator_version}")
     implementation fg.deobf("curse.maven:etst-lib-1206379:6266577")
+    implementation fg.deobf("curse.maven:mantle-74924:6258424")
+    implementation fg.deobf("curse.maven:tinkers-construct-74072:6266282")
     runtimeOnly fg.deobf("mezz.jei:jei-${jei_mc_version}-forge:${jei_version}")
     implementation fileTree(dir: 'lib', includes: ['*.jar'])
 }

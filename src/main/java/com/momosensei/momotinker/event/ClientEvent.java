@@ -1,29 +1,40 @@
 package com.momosensei.momotinker.event;
 
-
+import com.momosensei.momotinker.Momotinker;
 import com.momosensei.momotinker.capability.ender.EnderProvider;
 import com.momosensei.momotinker.gui.overlay.CensoredHUD;
 import com.momosensei.momotinker.gui.overlay.MomotinkerOverlay;
 import com.momosensei.momotinker.gui.overlay.ToolsTimeHUD;
 import com.momosensei.momotinker.key.key;
 import com.momosensei.momotinker.network.Channel;
+import com.momosensei.momotinker.network.packet.KeyAInputPKT;
+import com.momosensei.momotinker.network.packet.KeyInputPKT;
 import com.momosensei.momotinker.register.MomotinkerEntities;
 import com.momosensei.momotinker.renderer.*;
 import net.minecraft.client.renderer.entity.NoopRenderer;
 import net.minecraftforge.api.distmarker.Dist;
 import net.minecraftforge.client.event.EntityRenderersEvent;
+import net.minecraftforge.client.event.InputEvent;
 import net.minecraftforge.client.event.RegisterGuiOverlaysEvent;
 import net.minecraftforge.client.event.RegisterKeyMappingsEvent;
 import net.minecraftforge.client.gui.overlay.VanillaGuiOverlay;
 import net.minecraftforge.common.capabilities.RegisterCapabilitiesEvent;
 import net.minecraftforge.eventbus.api.SubscribeEvent;
 import net.minecraftforge.fml.common.Mod;
-import net.minecraftforge.fml.loading.FMLEnvironment;
 
 
-@Mod.EventBusSubscriber(bus = Mod.EventBusSubscriber.Bus.MOD,modid = "momotinker")
-public class ModEventListener {
+@Mod.EventBusSubscriber(modid = Momotinker.MOD_ID,value = Dist.CLIENT)
+public class ClientEvent {
 
+    @SubscribeEvent
+    public static void onKeyInput(InputEvent.Key event) {
+        if (key.KeyBinding.KEY.consumeClick()) {
+            Channel.INSTANCE.sendToServer(new KeyInputPKT());
+        }
+        if (key.KeyBinding.KEYA.consumeClick()) {
+            Channel.INSTANCE.sendToServer(new KeyAInputPKT());
+        }
+    }
     @SubscribeEvent
     public static void registerCapability(RegisterCapabilitiesEvent event) {
         event.register(EnderProvider.class);
@@ -31,12 +42,11 @@ public class ModEventListener {
 
     @SubscribeEvent
     public static void registerOverlay(RegisterGuiOverlaysEvent event) {
-        if (FMLEnvironment.dist == Dist.CLIENT) {
-            event.registerAbove(VanillaGuiOverlay.HOTBAR.id(), "ender", MomotinkerOverlay::render);
-            event.registerAboveAll( "censored_hud", CensoredHUD.CENSORED);
-            event.registerAboveAll( "tools_time_hud", ToolsTimeHUD.TOOS_TIME_HUD);
-        }
+        event.registerAbove(VanillaGuiOverlay.HOTBAR.id(), "ender", MomotinkerOverlay::render);
+        event.registerAboveAll("censored_hud", CensoredHUD.CENSORED);
+        event.registerAboveAll("tools_time_hud", ToolsTimeHUD.TOOS_TIME_HUD);
     }
+
     @SubscribeEvent
     static void registerRenderers(EntityRenderersEvent.RegisterRenderers event) {
         event.registerEntityRenderer(MomotinkerEntities.trigger_slash_a.get(), triggerSlashRenderer::new);
