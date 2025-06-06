@@ -75,6 +75,7 @@
   "recipe.momotinker.modifier.shortterminvestments": "短期投资需要贪夺作为前置且与长期投资互斥",
   "recipe.momotinker.modifier.longterminvestments": "长期投资需要贪夺作为前置且与短期投资互斥",
 
+  "momotinker": "墨工坊",
   "key.momotinker.key": "特殊技能",
   "key.momotinker.keya": "工具技能",
 

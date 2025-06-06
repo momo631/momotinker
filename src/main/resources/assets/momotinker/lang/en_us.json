@@ -75,6 +75,7 @@
   "recipe.momotinker.modifier.shortterminvestments": "'Short Term Investments' requires 'Greedy and plundering' as a prerequisite and is mutually exclusive with 'Long Term Investments'",
   "recipe.momotinker.modifier.longterminvestments": "'Long Term Investments' requires 'Greedy and plundering' as a prerequisite and is mutually exclusive with 'Short Term Investments'",
 
+  "momotinker": "Momotinker",
   "key.momotinker.key": "Category Example",
   "key.momotinker.keya": "Tool Enhancement",
 

@@ -12,15 +12,13 @@ import net.minecraft.resources.ResourceLocation;
 import net.minecraftforge.api.distmarker.Dist;
 import net.minecraftforge.client.event.EntityRenderersEvent;
 import net.minecraftforge.client.event.InputEvent;
-import net.minecraftforge.client.event.RegisterKeyMappingsEvent;
 import net.minecraftforge.common.capabilities.RegisterCapabilitiesEvent;
 import net.minecraftforge.eventbus.api.SubscribeEvent;
 import net.minecraftforge.fml.common.Mod;
 
 
-@Mod.EventBusSubscriber(modid = Momotinker.MOD_ID,value = Dist.CLIENT)
+@Mod.EventBusSubscriber(modid = Momotinker.MOD_ID, value = {Dist.CLIENT})
 public class ClientEvent {
-
     @SubscribeEvent
     public static void onKeyInput(InputEvent.Key event) {
         if (key.KeyBinding.KEY.consumeClick()) {
@@ -30,7 +28,6 @@ public class ClientEvent {
             Channel.INSTANCE.sendToServer(new KeyAInputPKT());
         }
     }
-
     public static final ModelLayerLocation HELM_LAYER = register("helm", "main");
     private static ModelLayerLocation register(String model, String layer) {
         return new ModelLayerLocation(new ResourceLocation("momotinker", model), layer);
@@ -43,12 +40,5 @@ public class ClientEvent {
     @SubscribeEvent
     public static void registerLayers(EntityRenderersEvent.RegisterLayerDefinitions event) {
         event.registerLayerDefinition(HELM_LAYER, HelmModel::createArmorLayer);
-    }
-
-    @SubscribeEvent
-    public static void onKeyRegister(RegisterKeyMappingsEvent event) {
-        event.register(key.KeyBinding.KEY);
-        event.register(key.KeyBinding.KEYA);
-
     }
 }
