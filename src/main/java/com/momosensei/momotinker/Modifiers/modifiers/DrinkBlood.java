@@ -4,7 +4,6 @@ import com.momosensei.momotinker.Modifiers.momomodifier;
 import com.momosensei.momotinker.register.MomotinkerModifiers;
 import net.minecraft.ChatFormatting;
 import net.minecraft.network.chat.Component;
-import net.minecraft.world.damagesource.DamageSource;
 import net.minecraft.world.entity.Entity;
 import net.minecraft.world.entity.EquipmentSlot;
 import net.minecraft.world.entity.LivingEntity;
@@ -39,7 +38,7 @@ public class DrinkBlood extends momomodifier {
         if (attacker instanceof Player player&&target != null&& modifier.getLevel() > 0) {
             float a = modifier.getLevel();
             if (attacker.getHealth() > attacker.getMaxHealth()*0.10000001f){
-                attacker.hurt(DamageSource.OUT_OF_WORLD.bypassArmor().bypassMagic().bypassInvul().bypassEnchantments(), attacker.getMaxHealth()*0.1f);
+                player.setHealth(player.getHealth()-player.getMaxHealth()*0.1f);
                 return damage * (1F + a*0.6F);
             }
             if (attacker.getHealth() < attacker.getMaxHealth()*0.1f){

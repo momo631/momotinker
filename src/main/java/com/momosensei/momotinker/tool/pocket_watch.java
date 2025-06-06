@@ -18,6 +18,7 @@ import net.minecraft.world.InteractionHand;
 import net.minecraft.world.InteractionResultHolder;
 import net.minecraft.world.entity.Entity;
 import net.minecraft.world.entity.LivingEntity;
+import net.minecraft.world.entity.ai.attributes.Attributes;
 import net.minecraft.world.entity.player.Player;
 import net.minecraft.world.item.ItemStack;
 import net.minecraft.world.item.TooltipFlag;
@@ -50,6 +51,7 @@ import slimeknights.tconstruct.tools.modifiers.upgrades.ranged.ScopeModifier;
 import java.util.Iterator;
 import java.util.List;
 
+import static com.momosensei.momotinker.Modifiers.modifiers.SuperancientMetalsRealA.tpprotection;
 import static com.momosensei.momotinker.Momotinker.getResource;
 import static com.momosensei.momotinker.Momotinker.getResourceLocation;
 import static net.minecraft.core.Registry.DIMENSION_REGISTRY;
@@ -80,23 +82,23 @@ public class pocket_watch extends ModifiableItem {
                 data.putFloat(getResource("fx"), data.getFloat(getResource("ex")));
                 data.putFloat(getResource("fy"), data.getFloat(getResource("ey")));
                 data.putFloat(getResource("fz"), data.getFloat(getResource("ez")));
-                data.putString(getResourceLocation("flevel"),player.level.dimension().location().toString());
+                data.putString(getResourceLocation("flevel"),data.getString(getResourceLocation("elevel")));
                 data.putFloat(getResource("ex"), data.getFloat(getResource("dx")));
                 data.putFloat(getResource("ey"), data.getFloat(getResource("dy")));
                 data.putFloat(getResource("ez"), data.getFloat(getResource("dz")));
-                data.putString(getResourceLocation("elevel"),player.level.dimension().location().toString());
+                data.putString(getResourceLocation("elevel"),data.getString(getResourceLocation("dlevel")));
                 data.putFloat(getResource("dx"), data.getFloat(getResource("cx")));
                 data.putFloat(getResource("dy"), data.getFloat(getResource("cy")));
                 data.putFloat(getResource("dz"), data.getFloat(getResource("cz")));
-                data.putString(getResourceLocation("dlevel"),player.level.dimension().location().toString());
+                data.putString(getResourceLocation("dlevel"),data.getString(getResourceLocation("clevel")));
                 data.putFloat(getResource("cx"), data.getFloat(getResource("bx")));
                 data.putFloat(getResource("cy"), data.getFloat(getResource("by")));
                 data.putFloat(getResource("cz"), data.getFloat(getResource("bz")));
-                data.putString(getResourceLocation("clevel"),player.level.dimension().location().toString());
+                data.putString(getResourceLocation("clevel"),data.getString(getResourceLocation("blevel")));
                 data.putFloat(getResource("bx"), data.getFloat(getResource("ax")));
                 data.putFloat(getResource("by"), data.getFloat(getResource("ay")));
                 data.putFloat(getResource("bz"), data.getFloat(getResource("az")));
-                data.putString(getResourceLocation("blevel"),player.level.dimension().location().toString());
+                data.putString(getResourceLocation("blevel"),data.getString(getResourceLocation("alevel")));
                 data.putFloat(getResource("ax"), (float) player.getX());
                 data.putFloat(getResource("ay"), (float) player.getY());
                 data.putFloat(getResource("az"), (float) player.getZ());
@@ -114,14 +116,23 @@ public class pocket_watch extends ModifiableItem {
                 ItemStack stack = player.getInventory().getItem(j);
                 ToolStack tool = ToolStack.from(stack);
                 ModDataNBT data =tool.getPersistentData();
-                if (stack.getItem() == MomotinkerItem.pocket_watch.get() && data.getInt(pocketwatch)==0&&data.getInt(transmit)!=transmit_limit) {
-                    event.setCanceled(true);
-                    player.setHealth(player.getMaxHealth()*0.2f);
-                    if (data.getInt(backtracking)==backtracking_limit){
-                        double x = data.getFloat(getResource("fx"));
-                        double y = data.getFloat(getResource("fy"));
-                        double z = data.getFloat(getResource("fz"));
-                        tryTeleport(stack,player,x,y,z,data.getString(getResourceLocation("flevel")));
+                if (stack.getItem() == MomotinkerItem.pocket_watch.get() &&data.getInt(transmit)!=transmit_limit) {
+                    double x = data.getFloat(getResource("pocketwatchx"));
+                    double y = data.getFloat(getResource("pocketwatchy"));
+                    double z = data.getFloat(getResource("pocketwatchz"));
+                    double x1 = data.getFloat(getResource("fx"));
+                    double y1 = data.getFloat(getResource("fy"));
+                    double z1 = data.getFloat(getResource("fz"));
+                    if (data.getInt(backtracking)==backtracking_limit&&data.getInt(pocketwatch)<=getcooltime(player,tool,400,120,8)*0.5f){
+                        if (tool.getModifierLevel(MomotinkerModifiers.superancientmetalsrealb.getId())==0&&data.getInt(pocketwatch)!=0){
+                            return;
+                        }
+                        event.setCanceled(true);
+                        player.setHealth(player.getMaxHealth()*0.2f);
+                        tryTeleport(stack,player,x1,y1,z1,data.getString(getResourceLocation("flevel")));
+                        if (tool.getModifierLevel(MomotinkerModifiers.superancientmetalsreala.getId())>0) {
+                            data.putInt(tpprotection,240);
+                        }
                         if (tool.getModifierLevel(MomotinkerModifiers.superancientmetalsrealc.getId())>0) {
                             player.heal((player.getMaxHealth() - player.getHealth()) * 0.4f);
                             List<LivingEntity> ls0 = player.level.getEntitiesOfClass(LivingEntity.class, player.getBoundingBox().inflate(4, 4, 4));
@@ -136,34 +147,35 @@ public class pocket_watch extends ModifiableItem {
                                 }
                             }
                         }
-                        int a = (int) (400/ (ConditionalStatModifierHook.getModifiedStat(tool,player,ToolStats.ATTACK_SPEED)+0.1f*ConditionalStatModifierHook.getModifiedStat(tool,player,ToolStats.ATTACK_DAMAGE)));
-                        if (a>120) {
-                            data.putInt(pocketwatch, 120);
-                        }else if (a<8) {
-                            data.putInt(pocketwatch, 8);
-                        }else if (a<120&&a>8){
-                            data.putInt(pocketwatch, a);
-                        }break;
-                    }else if (data.getInt(backtracking)!=backtracking_limit){
-                        double x = data.getFloat(getResource("pocketwatchx"));
-                        double y = data.getFloat(getResource("pocketwatchy"));
-                        double z = data.getFloat(getResource("pocketwatchz"));
+                        if (data.getInt(pocketwatch)>0){
+                            player.getAttribute(Attributes.MAX_HEALTH).setBaseValue(player.getMaxHealth() * 0.5f);
+                        }
+                        data.putInt(pocketwatch, getcooltime(player,tool,400,120,8));
+                        break;
+                    }else if (data.getInt(backtracking)!=backtracking_limit&& data.getInt(pocketwatch)==0){
+                        event.setCanceled(true);
+                        player.setHealth(player.getMaxHealth()*0.2f);
                         tryTeleport(stack,player,x,y,z,data.getString(getResourceLocation("pocketwatchlevel")));
                         if (tool.getPersistentData().getInt(backtracking)<backtracking_limit&&data.getInt(transmit)!=transmit_limit){
                             tool.getPersistentData().putInt(backtracking,tool.getPersistentData().getInt(backtracking)+1);
                         }
-                        int a = (int) (600/ (ConditionalStatModifierHook.getModifiedStat(tool,player,ToolStats.ATTACK_SPEED)+0.1f*ConditionalStatModifierHook.getModifiedStat(tool,player,ToolStats.ATTACK_DAMAGE)));
-                        if (a>180) {
-                            data.putInt(pocketwatch, 180);
-                        }else if (a<12) {
-                            data.putInt(pocketwatch, 12);
-                        }else if (a<180&&a>12){
-                            data.putInt(pocketwatch, a);
-                        }break;
+                        data.putInt(pocketwatch, getcooltime(player,tool,600,180,12));
+                        break;
                     }
                 }
             }
         }
+    }
+    public static int getcooltime(Player player,ToolStack tool,int i,int max,int min){
+        int a = (int) (i/ (ConditionalStatModifierHook.getModifiedStat(tool,player,ToolStats.ATTACK_SPEED)+0.1f*ConditionalStatModifierHook.getModifiedStat(tool,player,ToolStats.ATTACK_DAMAGE)));
+        if (a>max) {
+            return max;
+        }else if (a<min) {
+            return min;
+        }else if (a<max&&a>min){
+            return a;
+        }
+        return getcooltime(player,tool,i,max,min);
     }
     public InteractionResultHolder<ItemStack> use(Level level, Player player, InteractionHand hand) {
         ItemStack stack = player.getItemInHand(hand);
@@ -201,23 +213,9 @@ public class pocket_watch extends ModifiableItem {
                 player.getCooldowns().addCooldown(MomotinkerItem.pocket_watch.get(),10);
             }else if (!player.isShiftKeyDown()&&data.getInt(pocketwatch)==0) {
                 if (data.getInt(transmit)!=transmit_limit&&data.getInt(backtracking)!=backtracking_limit) {
-                    int a = (int) (600 / (ConditionalStatModifierHook.getModifiedStat(tool, player, ToolStats.ATTACK_SPEED) + 0.1f * ConditionalStatModifierHook.getModifiedStat(tool, player, ToolStats.ATTACK_DAMAGE)));
-                    if (a > 180) {
-                        data.putInt(pocketwatch, 180);
-                    } else if (a < 12) {
-                        data.putInt(pocketwatch, 12);
-                    } else if (a < 180 && a > 12) {
-                        data.putInt(pocketwatch, a);
-                    }
+                    data.putInt(pocketwatch, getcooltime(player,tool,600,180,12));
                 }else if (data.getInt(transmit)==transmit_limit) {
-                    int a = (int) (200 / (ConditionalStatModifierHook.getModifiedStat(tool, player, ToolStats.ATTACK_SPEED) + 0.1f * ConditionalStatModifierHook.getModifiedStat(tool, player, ToolStats.ATTACK_DAMAGE)));
-                    if (a > 60) {
-                        data.putInt(pocketwatch, 60);
-                    } else if (a < 4) {
-                        data.putInt(pocketwatch, 4);
-                    } else if (a < 60 && a > 4) {
-                        data.putInt(pocketwatch, a);
-                    }
+                    data.putInt(pocketwatch, getcooltime(player,tool,200,60,4));
                 }
                 double x = data.getFloat(getResource("pocketwatchx"));
                 double y = data.getFloat(getResource("pocketwatchy"));
@@ -311,8 +309,10 @@ public class pocket_watch extends ModifiableItem {
             int z1 = (int)tool.getPersistentData().getFloat(getResource("fz"));
             builder.add(Component.translatable("item.momotinker.tooltip.pocket_watch2").append(x1 + ",").append(y1 + ",").append(z1 + ")"));
         }
-        if (player != null) {
+        if (tool.getPersistentData().getInt(backtracking)!=backtracking_limit) {
             builder.add(Component.translatable("item.momotinker.tooltip.pocket_watch3").append(getResourceLocation(tool.getPersistentData().getString(getResourceLocation("pocketwatchlevel"))) + ""));
+        }else if (tool.getPersistentData().getInt(backtracking)==backtracking_limit){
+            builder.add(Component.translatable("item.momotinker.tooltip.pocket_watch3").append(getResourceLocation(tool.getPersistentData().getString(getResourceLocation("flevel"))) + ""));
         }
         if (tool.getPersistentData().getInt(backtracking)<backtracking_limit&&tool.getPersistentData().getInt(transmit)<transmit_limit) {
             builder.add(Component.translatable("item.momotinker.tooltip.transmit").append(transmit_limit+"").append(Component.translatable("item.momotinker.tooltip.transmit1")).append(tool.getPersistentData().getInt(transmit)+"").withStyle(ChatFormatting.GOLD));

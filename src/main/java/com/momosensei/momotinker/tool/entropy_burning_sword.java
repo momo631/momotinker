@@ -106,7 +106,7 @@ public class entropy_burning_sword extends ModifiableItem {
                 List<LivingEntity> ls0 = player.level.getEntitiesOfClass(LivingEntity.class, player.getBoundingBox().inflate(a+0.5, 1.5, a+0.5));
                 for (LivingEntity targets : ls0) {
                     if (targets != player&&targets!=null) {
-                        if (tool.getPersistentData().getInt(stellarcore) == stellarcore_limit && ls0.size() == 1) {
+                        if (tool.getPersistentData().getInt(stellarcore) == stellarcore_limit && ls0.size() == 2) {
                             targets.invulnerableTime = 0;
                             attackUtil.attackEntity(tool, player, InteractionHand.MAIN_HAND, targets, () -> 1, true, Util.getSlotType(InteractionHand.MAIN_HAND), tool.getStats().get(ToolStats.ATTACK_DAMAGE), 3f, false, true, true, false);
                         } else {

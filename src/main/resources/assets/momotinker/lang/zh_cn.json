@@ -460,7 +460,7 @@
   "modifier.momotinker.tooltip.liverization31": "当前活体值:",
   "modifier.momotinker.tooltip.liverization32": "当前进化所需活体值为:",
   "modifier.momotinker.tooltip.transmit3": "在背包中时会使获得的正面药水效果的持续时间增加100%",
-  "modifier.momotinker.tooltip.backtracking3": "该工具释放传送后拥有者会在24秒内免疫伤害，造成伤害、放置方块、破坏方块时效果立即消失",
+  "modifier.momotinker.tooltip.backtracking3": "该工具释放传送后拥有者会在12秒内免疫伤害，造成伤害、破坏方块时效果立即消失",
 
   "modifier.momotinker.superancientmetalsb": "超古代金属-贝塔",
   "modifier.momotinker.superancientmetalsb.flavor": "来自古代的奇特金属，表面看起来平平无奇",
@@ -482,7 +482,7 @@
   "modifier.momotinker.tooltip.degenerate3": "此工具完成击杀时会永久增加攻速和攻击伤害",
   "modifier.momotinker.tooltip.sanctification3": "此武器攻击有概率引雷",
   "modifier.momotinker.tooltip.transmit4": "该工具不再记录当前位置，潜行时右键轮换结构名称并尝试搜索最近的该结构的位置进行记录，若距离太远则无法记录",
-  "modifier.momotinker.tooltip.backtracking4": "当该工具能力的冷却小于总时长的50%但不为零时仍可触发，代价是损失当前最大生命的50%（死亡后重置）",
+  "modifier.momotinker.tooltip.backtracking4": "当该工具能力的冷却小于总时长的50%但不为零时仍可触发，代价是损失当前最大生命的50%（死亡后重置）。当前能力触发最大冷却:",
 
   "modifier.momotinker.superancientmetalsc": "超古代金属-伽马",
   "modifier.momotinker.superancientmetalsc.flavor": "来自古代的奇特金属，表面看起来平平无奇",
@@ -498,9 +498,9 @@
   "modifier.momotinker.tooltip.hadal4": "在背包时玩家不会窒息，该工具持有时在白天时造成的伤害增加60%，在夜晚时受到的伤害降低60%",
   "modifier.momotinker.tooltip.stellarcore4": "工具连续攻击时会“过热”，逐渐降低攻击速度（最大90%）并大幅提高伤害（最大270%），一段时间不攻击后快速复原",
   "modifier.momotinker.tooltip.crystallized4": "当护甲或武器的耐久不满时，该工具造成的伤害会恢复其耐久",
-  "modifier.momotinker.tooltip.liverization4": "在背包中时会尝试记录受到的伤害并累积，在下次攻击时会清除累积值并增加此次伤害",
+  "modifier.momotinker.tooltip.liverization4": "在背包中时会尝试记录受到伤害的50%，可以叠加但是会迅速衰减，在下次攻击时会增加此次伤害",
   "modifier.momotinker.tooltip.degenerate4": "攻击时若目标处在攻击距离的70%-80%之内时伤害会增加120%，目标所处位置离该范围越远增伤越低，最低20%",
-  "modifier.momotinker.tooltip.sanctification4": "在背包中时会使主世界的时间保持白天，攻击时工具上的词条格外生效一次但只有25%的效能",
+  "modifier.momotinker.tooltip.sanctification4": "在背包中时会使主世界的时间保持白天，攻击时工具上的词条格外生效一次但伤害增幅类只有25%的效能",
 
   "modifier.momotinker.crimsonqueen": "绯红女皇",
   "modifier.momotinker.crimsonqueen.flavor": "扳机横刀专属强化:机动剑",

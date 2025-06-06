@@ -45,6 +45,7 @@ import java.util.function.BiConsumer;
 import static com.momosensei.momotinker.tool.divine_punishment_spear.degenerate;
 import static com.momosensei.momotinker.tool.divine_punishment_spear.sanctification;
 import static com.momosensei.momotinker.tool.entropy_burning_cube.*;
+import static com.momosensei.momotinker.tool.pocket_watch.*;
 
 public class SuperancientMetalsRealB extends momomodifier {
     public SuperancientMetalsRealB() {
@@ -247,6 +248,8 @@ public class SuperancientMetalsRealB extends momomodifier {
         int liverization_limit = MomotinkerConfig.liverization_limit.get();
         int sanctification_limit = MomotinkerConfig.sanctification_limit.get();
         int degenerate_limit = MomotinkerConfig.degenerate_limit.get();
+        int transmit_limit = MomotinkerConfig.transmit_limit.get();
+        int backtracking_limit = MomotinkerConfig.backtracking_limit.get();
         ModDataNBT a = tool.getPersistentData();
         if (a.getInt(hadal)==hadal_limit&&player!=null) {
             float bonus = getbonus(player, 2500);
@@ -277,6 +280,12 @@ public class SuperancientMetalsRealB extends momomodifier {
         }
         if (a.getInt(degenerate)==degenerate_limit) {
             builder.add(Component.translatable("modifier.momotinker.tooltip.degenerate3").withStyle(ChatFormatting.DARK_RED));
+        }
+        if (a.getInt(transmit)==transmit_limit) {
+            builder.add(Component.translatable("modifier.momotinker.tooltip.transmit4").withStyle(ChatFormatting.GREEN));
+        }
+        if (a.getInt(backtracking)==backtracking_limit) {
+            builder.add(Component.translatable("modifier.momotinker.tooltip.backtracking4").append(getcooltime(player, (ToolStack) tool,400,120,8)*0.5f+"s").withStyle(ChatFormatting.DARK_PURPLE));
         }
     }
 }
