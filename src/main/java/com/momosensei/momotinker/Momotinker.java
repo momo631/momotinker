@@ -1,11 +1,19 @@
 package com.momosensei.momotinker;
 
 import com.momosensei.momotinker.event.LivingEvents;
+import com.momosensei.momotinker.gui.overlay.CensoredHUD;
+import com.momosensei.momotinker.gui.overlay.MomotinkerOverlay;
+import com.momosensei.momotinker.gui.overlay.ToolsTimeHUD;
 import com.momosensei.momotinker.network.Channel;
 import com.momosensei.momotinker.register.*;
+import com.momosensei.momotinker.renderer.*;
+import net.minecraft.client.renderer.entity.NoopRenderer;
 import net.minecraft.resources.ResourceLocation;
 import net.minecraft.world.item.Item;
 import net.minecraftforge.api.distmarker.Dist;
+import net.minecraftforge.client.event.EntityRenderersEvent;
+import net.minecraftforge.client.event.RegisterGuiOverlaysEvent;
+import net.minecraftforge.client.gui.overlay.VanillaGuiOverlay;
 import net.minecraftforge.common.MinecraftForge;
 import net.minecraftforge.eventbus.api.IEventBus;
 import net.minecraftforge.eventbus.api.SubscribeEvent;
@@ -15,6 +23,7 @@ import net.minecraftforge.fml.config.ModConfig;
 import net.minecraftforge.fml.event.lifecycle.FMLClientSetupEvent;
 import net.minecraftforge.fml.event.lifecycle.FMLCommonSetupEvent;
 import net.minecraftforge.fml.javafmlmod.FMLJavaModLoadingContext;
+import net.minecraftforge.fml.loading.FMLEnvironment;
 import net.minecraftforge.registries.ForgeRegistries;
 import org.jetbrains.annotations.NotNull;
 import slimeknights.tconstruct.library.client.model.TinkerItemProperties;
@@ -36,6 +45,7 @@ public class Momotinker {
         //注册表之类的东西
         //如果你新稿了别的注册表记得这边填一下
         IEventBus eventBus = FMLJavaModLoadingContext.get().getModEventBus();
+        eventBus.addListener(this::commonSetup);
         MinecraftForge.EVENT_BUS.register(this);
         MomotinkerItem.ITEMS.register(eventBus);
         MomotinkerItem.ARMOR.register(eventBus);
@@ -49,6 +59,7 @@ public class Momotinker {
         IEventBus bus = FMLJavaModLoadingContext.get().getModEventBus();
         ModLoadingContext.get().registerConfig(ModConfig.Type.COMMON, MomotinkerConfig.spec);
         MinecraftForge.EVENT_BUS.register(new LivingEvents());
+
     }
 
     //Resourcelocation
@@ -81,7 +92,7 @@ public class Momotinker {
         return new ResourceLocation(Momotinker.MOD_ID, path);
     }
 
-    @Mod.EventBusSubscriber(modid = MOD_ID, bus = Mod.EventBusSubscriber.Bus.MOD, value = Dist.CLIENT)
+    @Mod.EventBusSubscriber(modid = MOD_ID, bus = Mod.EventBusSubscriber.Bus.MOD,  value = {Dist.CLIENT})
     public static class ClientModEvents {
         @SubscribeEvent
         public static void onClientSetup(FMLClientSetupEvent event) {
@@ -112,4 +123,22 @@ public class Momotinker {
             });
         }
     }
+    @SubscribeEvent
+    static void registerRenderers(EntityRenderersEvent.RegisterRenderers event) {
+        event.registerEntityRenderer(MomotinkerEntities.trigger_slash_a.get(), triggerSlashRenderer::new);
+        event.registerEntityRenderer(MomotinkerEntities.spear_entity.get(), SpearEntityRenderer::new);
+        event.registerEntityRenderer(MomotinkerEntities.cleanse_entity.get(), CleanseEntityRenderer::new);
+        event.registerEntityRenderer(MomotinkerEntities.ray_entity.get(), NoopRenderer::new);
+        event.registerEntityRenderer(MomotinkerEntities.meteor_entity.get(), MeteorEntityRenderer::new);
+        event.registerEntityRenderer(MomotinkerEntities.starfall_entity.get(), StarfallEntityRenderer::new);
+    }
+    @SubscribeEvent
+    public static void registerOverlay(RegisterGuiOverlaysEvent event) {
+        if (FMLEnvironment.dist == Dist.CLIENT) {
+            event.registerAbove(VanillaGuiOverlay.HOTBAR.id(), "ender", MomotinkerOverlay::render);
+            event.registerAboveAll("censored_hud", CensoredHUD.CENSORED);
+            event.registerAboveAll("tools_time_hud", ToolsTimeHUD.TOOS_TIME_HUD);
+        }
+    }
+
 }

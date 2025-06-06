@@ -39,6 +39,8 @@ import javax.annotation.Nonnull;
 import java.util.UUID;
 import java.util.function.BiConsumer;
 
+import static com.momosensei.momotinker.tool.divine_punishment_spear.degenerate;
+import static com.momosensei.momotinker.tool.divine_punishment_spear.sanctification;
 import static com.momosensei.momotinker.tool.entropy_burning_cube.*;
 import static com.momosensei.momotinker.tool.pocket_watch.transmit;
 
@@ -89,8 +91,12 @@ public class SuperancientMetalsRealC extends momomodifier {
     public void onInventoryTick(IToolStackView tool, ModifierEntry modifier, Level world, LivingEntity entity, int index, boolean isSelected, boolean isCorrectSlot, ItemStack stack) {
         int transmit_limit = MomotinkerConfig.transmit_limit.get();
         int stellarcore_limit = MomotinkerConfig.stellarcore_limit.get();
+        int sanctification_limit = MomotinkerConfig.sanctification_limit.get();
         ModDataNBT a = tool.getPersistentData();
         if (entity instanceof Player player) {
+            if (a.getInt(sanctification) == sanctification_limit&&player.level instanceof ServerLevel level&&player.level.isNight()) {
+                level.setDayTime(1000);
+            }
             if (a.getInt(transmit) == transmit_limit) {
                 if (player.tickCount % 20 == 0&&a.getInt(transmitpoints)<400) {
                     a.putInt(transmitpoints, a.getInt(transmitpoints) + 1);
@@ -156,19 +162,28 @@ public class SuperancientMetalsRealC extends momomodifier {
     private void livinghurtevent(LivingHurtEvent event) {
         int hadal_limit = MomotinkerConfig.hadal_limit.get();
         int crystallized_limit = MomotinkerConfig.crystallized_limit.get();
+        int liverization_limit = MomotinkerConfig.liverization_limit.get();
         if (event.getEntity() instanceof Player player) {
             ToolStack tool = ToolStack.from(player.getMainHandItem());
             ModDataNBT data = tool.getPersistentData();
             if (tool.getModifierLevel(MomotinkerModifiers.superancientmetalsrealc.getId()) > 0) {
-                if (data.getInt(hadal) == hadal_limit &&player.level.isNight()) {
+                if (data.getInt(hadal) == hadal_limit && player.level.isNight()) {
                     event.setAmount(event.getAmount() * 0.4f);
+                }
+            }
+            for (int j = 0; j < player.getInventory().items.size(); j++) {
+                ItemStack stack = player.getInventory().getItem(j);
+                ToolStack tool1 = ToolStack.from(stack);
+                ModDataNBT data1 = tool.getPersistentData();
+                if (data1.getInt(liverization) == liverization_limit && tool1.getModifierLevel(MomotinkerModifiers.superancientmetalsrealc.getId()) > 0) {
+                    data.putFloat(recorddamage,event.getAmount());
                 }
             }
         }
         if (event.getSource().getEntity() instanceof Player player&&event.getEntity()!=null){
             ToolStack tool = ToolStack.from(player.getMainHandItem());
             ModDataNBT data = tool.getPersistentData();
-            if (data.getInt(crystallized)==crystallized_limit) {
+            if (data.getInt(crystallized)==crystallized_limit&&tool.getModifierLevel(MomotinkerModifiers.superancientmetalsrealc.getId()) > 0) {
                 data.putInt(durabilityrecovery, (int) (event.getAmount()*0.02f));
                 if (data.getInt(durabilityrecovery)>tool.getDamage()&&tool.getDamage()>0) {
                     tool.setDamage(0);
@@ -199,10 +214,13 @@ public class SuperancientMetalsRealC extends momomodifier {
     @Override
     public float getMeleeDamage(@Nonnull IToolStackView tool, ModifierEntry modifier, @Nonnull ToolAttackContext context, float baseDamage, float damage) {
         LivingEntity attacker =context.getAttacker();
+        LivingEntity entity =context.getLivingTarget();
         int hadal_limit = MomotinkerConfig.hadal_limit.get();
         int stellarcore_limit = MomotinkerConfig.stellarcore_limit.get();
         int crystallized_limit = MomotinkerConfig.crystallized_limit.get();
         int crystallized_hurt_limit = MomotinkerConfig.crystallized_hurt_limit.get();
+        int liverization_limit = MomotinkerConfig.liverization_limit.get();
+        int degenerate_limit = MomotinkerConfig.degenerate_limit.get();
         int sanctification_limit = MomotinkerConfig.sanctification_limit.get();
         if (attacker instanceof Player player){
             ModDataNBT a = tool.getPersistentData();
@@ -213,6 +231,25 @@ public class SuperancientMetalsRealC extends momomodifier {
                 a.putInt(overheatingcooling, 6);
                 if (a.getInt(overheat)>0) {
                     return damage*(1f+0.03f*a.getInt(overheat));
+                }
+            }
+            if (a.getInt(liverization) ==liverization_limit){
+                if (a.getFloat(recorddamage)>0) {
+                    return damage + a.getFloat(recorddamage);
+                }
+                a.putFloat(recorddamage,0);
+                return damage;
+            }
+            if (a.getInt(degenerate) ==degenerate_limit&&entity!=null){
+                double b = player.getAttackRange();
+                double c = entity.position().subtract(player.position()).length();
+                float d = (float) (c/b);
+                if (d<=0.8f&&d>=0.7f){
+                    return damage*2.2f;
+                }else if (d>0.8f){
+                    return damage*(1.2f+(1f-d)*5);
+                }else if (d<0.7f){
+                    return damage*(1.2f+d*10/7);
                 }
             }
         }

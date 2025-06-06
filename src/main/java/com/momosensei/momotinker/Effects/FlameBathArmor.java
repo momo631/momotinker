@@ -28,28 +28,28 @@ public class FlameBathArmor extends StaticEffect {
     }
     @Override
     public void applyEffectTick(LivingEntity living, int amplifier) {
-        if (living instanceof ServerPlayer player && player.level instanceof ServerLevel serverLevel&&living.getEffect(MomotinkerEffects.FlameBathArmor.get())!=null) {
+        if (living instanceof ServerPlayer player && player.level instanceof ServerLevel serverLevel&&player.getEffect(MomotinkerEffects.FlameBathArmor.get())!=null) {
             for (int i = 0; i <= 360; i++) {
                 double rad = i * 0.017453292519943295;
                 double r = 4D;
                 double x = r * Math.cos(rad);
                 double z = r * Math.sin(rad);
-                if (living.getEffect(MomotinkerEffects.FlameBathArmor.get()).getDuration()>2300) {
-                    int a = 100 / (living.getEffect(MomotinkerEffects.FlameBathArmor.get()).getDuration() - 2300);
+                if (player.getEffect(MomotinkerEffects.FlameBathArmor.get()).getDuration()>2300) {
+                    int a = 100 / (player.getEffect(MomotinkerEffects.FlameBathArmor.get()).getDuration() - 2300);
                     if (a < 10) {
                         serverLevel.sendParticles(ParticleTypes.FLAME, player.getX(), player.getY(), player.getZ(), (a/4)+1, x / 2, r / 2, z / 2, 2);
                     }
-                    if (a > 10 && (living.getEffect(MomotinkerEffects.FlameBathArmor.get()).getDuration() - 2300) <= 100) {
+                    if (a > 10 && (player.getEffect(MomotinkerEffects.FlameBathArmor.get()).getDuration() - 2300) <= 100) {
                         serverLevel.sendParticles(ParticleTypes.LAVA, player.getX(), player.getY(), player.getZ(), 3, x / 2, r / 2, z / 2, 1);
                         serverLevel.sendParticles(ParticleTypes.FLAME, player.getX(), player.getY(), player.getZ(), 4, x, r, z, 0.5);
                     }
                 }
-                if (living.getEffect(MomotinkerEffects.FlameBathArmor.get()).getDuration()>0&&living.tickCount%100==0){
+                if (player.getEffect(MomotinkerEffects.FlameBathArmor.get()).getDuration()>0&&player.tickCount%100==0){
                     serverLevel.sendParticles(ParticleTypes.FLAME, player.getX(), player.getY(), player.getZ(), 1, 0, 0, 0, 1.5);
                     List<LivingEntity> list = player.level.getEntitiesOfClass(LivingEntity.class, player.getBoundingBox().inflate(4));
                     for (LivingEntity entity : list) {
                         if (entity != null) {
-                            Vec3 vec = entity.position().subtract(living.position()).normalize().scale(0.004+0.003*amplifier);
+                            Vec3 vec = entity.position().subtract(player.position()).normalize().scale(0.004+0.003*amplifier);
                             entity.push(vec.x, vec.y, vec.z);
                         }
                     }

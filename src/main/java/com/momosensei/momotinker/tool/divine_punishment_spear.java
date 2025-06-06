@@ -7,7 +7,6 @@ import com.momosensei.momotinker.event.EntitySpawnEvent;
 import com.momosensei.momotinker.mobs.CoolTimeA;
 import com.momosensei.momotinker.network.Channel;
 import com.momosensei.momotinker.network.packet.CoolTimeChargeA;
-import com.momosensei.momotinker.network.packet.SpearEntityPacket;
 import com.momosensei.momotinker.network.packet.ToolsTimeCharge;
 import com.momosensei.momotinker.register.MomotinkerConfig;
 import com.momosensei.momotinker.register.MomotinkerItem;
@@ -62,6 +61,7 @@ import java.util.Iterator;
 import java.util.List;
 
 import static com.momosensei.momotinker.Modifiers.modifiers.BreakthroughStars.breakthroughstar;
+import static com.momosensei.momotinker.entity.MomotinkerEntitiesCreate.createSpear;
 import static slimeknights.tconstruct.library.modifiers.hook.interaction.GeneralInteractionModifierHook.KEY_DRAWTIME;
 
 public class divine_punishment_spear extends ModifiableItem {
@@ -203,7 +203,7 @@ public class divine_punishment_spear extends ModifiableItem {
                 Channel.sendToPlayer(new ToolsTimeCharge(0), player1);
                 if (a>0&&b==0&&i>=10){
                     player.giveExperiencePoints(-tool.getPersistentData().getInt(breakthroughstar));
-                    Channel.INSTANCE.sendToServer(new SpearEntityPacket(player.getId()));
+                    createSpear(player1);
                 }
                 if (a>0&&b>0&&i>=100) {
                     player.giveExperiencePoints(-tool.getPersistentData().getInt(breakthroughstar)*5);
