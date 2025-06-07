@@ -81,10 +81,14 @@ public class SelfCrystallization extends momomodifier {
                     tool6.setDamage(tool6.getDamage() + b6);
                 }
                 int b = b1 + b2 + b3 + b4 + b5 + b6;
-                if ((b * 0.02f) >= event.getAmount()&&a1 instanceof LivingEntity entity) {
-                    entity.hurt(DamageSource.playerAttack(player), b - event.getAmount() * 50);
+                if (b * 0.02f >= event.getAmount()) {
+                    if (a1 instanceof LivingEntity entity) {
+                        entity.hurt(DamageSource.playerAttack(player), (b* 0.02f - event.getAmount())*5f);
+                    }
+                    event.setAmount(0);
+                }else if (b * 0.02f < event.getAmount()){
+                    event.setAmount(event.getAmount()-b * 0.02f);
                 }
-                event.setAmount(0);
             }
         }
     }
@@ -115,7 +119,7 @@ public class SelfCrystallization extends momomodifier {
             if (tool6.getModifierLevel(MomotinkerModifiers.selfcrystallization.getId()) > 0) {
                 b += (int) (getRemainingDurability(tool6) * 0.05f);
             }
-            builder.add(Component.translatable("modifier.momotinker.tooltip.selfcrystallization1").append(String.format("%.0f", b * 0.02f)).withStyle(ChatFormatting.AQUA));
+            builder.add(Component.translatable("modifier.momotinker.tooltip.selfcrystallization1").append(String.format("%.0f",b*0.02f)).withStyle(ChatFormatting.AQUA));
         }
     }
 }

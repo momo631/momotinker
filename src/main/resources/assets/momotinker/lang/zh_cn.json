@@ -482,7 +482,7 @@
   "modifier.momotinker.tooltip.liverization2": "恢复耐久和生命值的能力增加，耐久不为满时仍会恢复生命，即将死亡时会尝试损失最大耐久的99%避免此次死亡（耐久不足时无法生效）",
   "modifier.momotinker.tooltip.degenerate3": "此工具完成击杀时会永久增加攻速和攻击伤害",
   "modifier.momotinker.tooltip.sanctification3": "此武器攻击有概率引雷",
-  "modifier.momotinker.tooltip.transmit4": "该工具不再记录当前位置，潜行时右键轮换结构名称并尝试搜索最近的该结构的位置进行记录，若距离太远则无法记录",
+  "modifier.momotinker.tooltip.transmit4": "该工具存在于背包中时，会持续削弱周围生物使其行动逐渐僵硬",
   "modifier.momotinker.tooltip.backtracking4": "当该工具能力的冷却小于总时长的50%但不为零时仍可触发，代价是损失当前最大生命的50%（死亡后重置）。当前能力触发最大冷却:",
 
   "modifier.momotinker.superancientmetalsc": "超古代金属-伽马",

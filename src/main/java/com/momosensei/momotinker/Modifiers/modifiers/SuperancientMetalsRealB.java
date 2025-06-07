@@ -4,12 +4,14 @@ package com.momosensei.momotinker.Modifiers.modifiers;
 import com.momosensei.momotinker.Modifiers.momomodifier;
 import com.momosensei.momotinker.Momotinker;
 import com.momosensei.momotinker.register.MomotinkerConfig;
+import com.momosensei.momotinker.register.MomotinkerEffects;
 import com.momosensei.momotinker.register.MomotinkerModifiers;
 import com.momosensei.momotinker.util.attackUtil;
 import net.minecraft.ChatFormatting;
 import net.minecraft.network.chat.Component;
 import net.minecraft.resources.ResourceLocation;
 import net.minecraft.world.InteractionHand;
+import net.minecraft.world.effect.MobEffectInstance;
 import net.minecraft.world.entity.*;
 import net.minecraft.world.entity.ai.attributes.Attribute;
 import net.minecraft.world.entity.ai.attributes.AttributeModifier;
@@ -88,6 +90,7 @@ public class SuperancientMetalsRealB extends momomodifier {
     public void onInventoryTick(IToolStackView tool, ModifierEntry modifier, Level world, LivingEntity entity, int index, boolean isSelected, boolean isCorrectSlot, ItemStack stack) {
         int stellarcore_limit = MomotinkerConfig.stellarcore_limit.get();
         int liverization_limit = MomotinkerConfig.liverization_limit.get();
+        int transmit_limit = MomotinkerConfig.transmit_limit.get();
         ModDataNBT a = tool.getPersistentData();
         if (tool.getDamage() > 0) {
             tool.setDamage(tool.getDamage() - 1);
@@ -125,6 +128,23 @@ public class SuperancientMetalsRealB extends momomodifier {
                     }else
                     if (e<2) {
                         attackUtil.attackEntity(tool, player, InteractionHand.MAIN_HAND, targets, () -> 1, true, Util.getSlotType(InteractionHand.MAIN_HAND), tool.getStats().get(ToolStats.ATTACK_DAMAGE), (b+2)*0.1f, false, true, true, false);
+                    }
+                }
+            }
+        }
+        if (a.getInt(transmit)==transmit_limit&&entity instanceof Player player&&player.tickCount%20==0) {
+            List<LivingEntity> list = player.level.getEntitiesOfClass(LivingEntity.class, player.getBoundingBox().inflate(4));
+            for (LivingEntity living : list) {
+                if (living != null&&living!=player) {
+                    if (living.getEffect(MomotinkerEffects.Stiffening.get())!=null&&living.hasEffect(MomotinkerEffects.Stiffening.get())) {
+                        int b = living.getEffect(MomotinkerEffects.Stiffening.get()).getAmplifier();
+                        if (b<20) {
+                            living.addEffect(new MobEffectInstance(MomotinkerEffects.Stiffening.get(), 400, b+1));
+                        }else if (b==20){
+                            living.addEffect(new MobEffectInstance(MomotinkerEffects.Stiffening.get(), 400, 20));
+                        }
+                    }else if (!living.hasEffect(MomotinkerEffects.Stiffening.get())){
+                        living.addEffect(new MobEffectInstance(MomotinkerEffects.Stiffening.get(), 400, 0));
                     }
                 }
             }
@@ -241,6 +261,7 @@ public class SuperancientMetalsRealB extends momomodifier {
             }
         }
     }
+
     public void addTooltip(IToolStackView tool, ModifierEntry modifierEntry, @Nullable Player player, List<Component> builder, TooltipKey tooltipKey, TooltipFlag tooltipFlag) {
         int hadal_limit = MomotinkerConfig.hadal_limit.get();
         int stellarcore_limit = MomotinkerConfig.stellarcore_limit.get();

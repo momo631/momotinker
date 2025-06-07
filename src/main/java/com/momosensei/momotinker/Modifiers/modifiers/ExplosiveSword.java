@@ -21,8 +21,6 @@ import java.util.List;
 
 
 public class ExplosiveSword extends momomodifier {
-    boolean config = MomotinkerConfig.explosion_destroys_limit.get();
-
     public ExplosiveSword() {
     }
 
@@ -40,6 +38,7 @@ public class ExplosiveSword extends momomodifier {
         return damage;
     }
     public void Explode(ToolStack tool,Player player,LivingEntity living,Level level,float damage,float damagemultiplier){
+        boolean config = MomotinkerConfig.explosion_destroys_limit.get();
         if (!level.isClientSide) {
             Explosion.BlockInteraction blockInteraction;
             boolean a;
