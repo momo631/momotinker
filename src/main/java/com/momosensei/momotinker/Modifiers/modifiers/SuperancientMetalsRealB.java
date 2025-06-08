@@ -133,7 +133,7 @@ public class SuperancientMetalsRealB extends momomodifier {
             }
         }
         if (a.getInt(transmit)==transmit_limit&&entity instanceof Player player&&player.tickCount%20==0) {
-            List<LivingEntity> list = player.level.getEntitiesOfClass(LivingEntity.class, player.getBoundingBox().inflate(4));
+            List<LivingEntity> list = player.level.getEntitiesOfClass(LivingEntity.class, player.getBoundingBox().inflate(12));
             for (LivingEntity living : list) {
                 if (living != null&&living!=player) {
                     if (living.getEffect(MomotinkerEffects.Stiffening.get())!=null&&living.hasEffect(MomotinkerEffects.Stiffening.get())) {

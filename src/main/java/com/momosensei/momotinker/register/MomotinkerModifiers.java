@@ -72,5 +72,7 @@ public class MomotinkerModifiers {
     public static final StaticModifier<LongTermInvestments> longterminvestments=MODIFIERS.register("longterminvestments", LongTermInvestments::new);
     public static final StaticModifier<SuperancientMetalsC> superancientmetalsc=MODIFIERS.register("superancientmetalsc", SuperancientMetalsC::new);
     public static final StaticModifier<SuperancientMetalsRealC> superancientmetalsrealc=MODIFIERS.register("superancientmetalsrealc", SuperancientMetalsRealC::new);
+    public static final StaticModifier<PolarizedSpacetime> polarizedspacetime=MODIFIERS.register("polarizedspacetime", PolarizedSpacetime::new);
+    public static final StaticModifier<TimeEchoes> timeechoes=MODIFIERS.register("timeechoes", TimeEchoes::new);
 
 }

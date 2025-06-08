@@ -6,8 +6,10 @@ import com.momosensei.momotinker.Momotinker;
 import com.momosensei.momotinker.register.MomotinkerConfig;
 import com.momosensei.momotinker.register.MomotinkerModifiers;
 import net.minecraft.ChatFormatting;
+import net.minecraft.core.particles.ParticleTypes;
 import net.minecraft.network.chat.Component;
 import net.minecraft.resources.ResourceLocation;
+import net.minecraft.server.level.ServerLevel;
 import net.minecraft.world.damagesource.DamageSource;
 import net.minecraft.world.entity.Entity;
 import net.minecraft.world.entity.EquipmentSlot;
@@ -54,7 +56,6 @@ public class SuperancientMetalsRealA extends momomodifier {
         MinecraftForge.EVENT_BUS.addListener(this::livinghurtevent);
         MinecraftForge.EVENT_BUS.addListener(EventPriority.LOWEST,this::onEntityDeath);
         MinecraftForge.EVENT_BUS.addListener(this::AddMobEffect);
-        MinecraftForge.EVENT_BUS.addListener(this::onBreakEvent);
         MinecraftForge.EVENT_BUS.addListener(this::onBreakEvent);
     }
     public static final ResourceLocation degeneratepoints = Momotinker.getResource("degeneratepoints");
@@ -155,6 +156,11 @@ public class SuperancientMetalsRealA extends momomodifier {
         }
         if (a.getInt(tpprotection)>0) {
             a.putInt(tpprotection,a.getInt(tpprotection)-1);
+            if (entity instanceof Player player&&player.level instanceof ServerLevel level) {
+                for (int i = 0; i < 32; ++i) {
+                    level.sendParticles(ParticleTypes.PORTAL, player.getX(), player.getY(), player.getZ(), 1, 0, 0, 0, 0.5);
+                }
+            }
         }
     }
     @Override

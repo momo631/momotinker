@@ -307,5 +307,6 @@ public abstract class momomodifier extends Modifier implements MeleeDamageModifi
     public static float getbonus(LivingEntity entity, int status) {
         return (float) (entity.getAttributeValue(Attributes.MOVEMENT_SPEED) * entity.getDeltaMovement().length() * status);
     }
+
 }
 

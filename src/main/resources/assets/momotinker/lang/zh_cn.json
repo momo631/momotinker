@@ -499,7 +499,7 @@
   "modifier.momotinker.tooltip.hadal4": "在背包时玩家不会窒息，该工具持有时在白天时造成的伤害增加60%，在夜晚时受到的伤害降低60%",
   "modifier.momotinker.tooltip.stellarcore4": "工具连续攻击时会“过热”，逐渐降低攻击速度（最大90%）并大幅提高伤害（最大270%），一段时间不攻击后快速复原",
   "modifier.momotinker.tooltip.crystallized4": "当护甲或武器的耐久不满时，该工具造成的伤害会恢复其耐久",
-  "modifier.momotinker.tooltip.liverization4": "在背包中时会尝试记录受到伤害的50%，可以叠加但是会迅速衰减，在下次攻击时会增加此次伤害",
+  "modifier.momotinker.tooltip.liverization4": "在背包中时会尝试记录受到伤害的50%，可以叠加但是会迅速衰减，在攻击时会增加此次伤害",
   "modifier.momotinker.tooltip.degenerate4": "攻击时若目标处在攻击距离的70%-80%之内时伤害会增加120%，目标所处位置离该范围越远增伤越低，最低20%",
   "modifier.momotinker.tooltip.sanctification4": "在背包中时会使主世界的时间保持白天，攻击时工具上的词条格外生效一次但伤害增幅类只有25%的效能",
 
@@ -619,6 +619,14 @@
 
   "modifier.momotinker.longterminvestments": "长期投资",
   "modifier.momotinker.longterminvestments.flavor": "或许可以更长远点...",
-  "modifier.momotinker.longterminvestments.description": "大致功能与“短期投资”相同，相较于“短期投资”，增长点数的概率增加，降低点数的概率减少，但相对的增长与降低的幅度大幅减小"
+  "modifier.momotinker.longterminvestments.description": "大致功能与“短期投资”相同，相较于“短期投资”，增长点数的概率增加，降低点数的概率减少，但相对的增长与降低的幅度大幅减小",
+
+  "modifier.momotinker.timeechoes": "岁月共鸣",
+  "modifier.momotinker.timeechoes.flavor": "扎根于此，与岁月共处",
+  "modifier.momotinker.timeechoes.description": "在背包中时会随时间逐渐降低最大耐久的同时提高其他属性，直至最大耐久不足500",
+
+  "modifier.momotinker.polarizedspacetime": "极化时空",
+  "modifier.momotinker.polarizedspacetime.flavor": "空间上的距离开始产生影响",
+  "modifier.momotinker.polarizedspacetime.description": "伤害源的位置越近受到的该伤害越低，造成伤害的位置距目标越远伤害越高，距离上限与身上总词条有关"
 
 }

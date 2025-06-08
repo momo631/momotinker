@@ -168,14 +168,9 @@ public class pocket_watch extends ModifiableItem {
     }
     public static int getcooltime(Player player,ToolStack tool,int i,int max,int min){
         int a = (int) (i/ (ConditionalStatModifierHook.getModifiedStat(tool,player,ToolStats.ATTACK_SPEED)+0.1f*ConditionalStatModifierHook.getModifiedStat(tool,player,ToolStats.ATTACK_DAMAGE)));
-        if (a>max) {
+        if (a>=max) {
             return max;
-        }else if (a<min) {
-            return min;
-        }else if (a<max&&a>min){
-            return a;
-        }
-        return getcooltime(player,tool,i,max,min);
+        }else return Math.max(a, min);
     }
     public InteractionResultHolder<ItemStack> use(Level level, Player player, InteractionHand hand) {
         ItemStack stack = player.getItemInHand(hand);

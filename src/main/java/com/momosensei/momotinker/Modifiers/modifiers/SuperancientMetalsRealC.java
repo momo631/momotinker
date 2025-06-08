@@ -129,8 +129,10 @@ public class SuperancientMetalsRealC extends momomodifier {
                 }
             }
             if (ToolStack.from(player.getMainHandItem()).getPersistentData().getInt(stellarcore) == stellarcore_limit&&player.tickCount % 5 == 0&&a.getInt(overheat)==90&& player.level instanceof ServerLevel serverLevel) {
-                serverLevel.sendParticles(ParticleTypes.LAVA, player.getX(), player.getY(), player.getZ(), 1/2, 0, 0, 0, 1);
-                serverLevel.sendParticles(ParticleTypes.FLAME, player.getX(), player.getY(), player.getZ(), 1, 0, 0, 0, 0.5);
+                for (int i = 0; i < 8; ++i) {
+                    serverLevel.sendParticles(ParticleTypes.LAVA, player.getX(), player.getY(), player.getZ(), 1 / 2, 0, 0, 0, 1);
+                    serverLevel.sendParticles(ParticleTypes.FLAME, player.getX(), player.getY(), player.getZ(), 1, 0, 0, 0, 0.5);
+                }
             }
             if (a.getInt(transmitpoints)<0){
                 a.putInt(transmitpoints, 0);
