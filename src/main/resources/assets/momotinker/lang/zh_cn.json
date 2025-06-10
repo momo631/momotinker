@@ -11,6 +11,7 @@
   "effect.momotinker.fallingstar": "落星",
   "effect.momotinker.censored": "??????????",
   "effect.momotinker.flamebatharmor": "浴炎战衣",
+  "effect.momotinker.increaseallattributes": "全属性增加",
 
   "fluid.momotinker.molten_laomo": "熔融墨",
   "fluid.momotinker.molten_arriving_at_the_other_shore": "熔融彼岸",
@@ -36,6 +37,9 @@
   "fluid.momotinker.molten_stellar_core_platinum": "熔融燃核铂金",
   "fluid.momotinker.molten_crystallized_platinum": "熔融晶化铂金",
   "fluid.momotinker.molten_living_platinum": "熔融仿生铂金",
+  "fluid.momotinker.molten_twilight_purple_gold": "熔融暮辉紫金",
+  "fluid.momotinker.molten_timetrace_purple_gold": "熔融时痕紫金",
+  "fluid.momotinker.molten_reversetime_purple_gold": "熔融溯时紫金",
 
   "item.momotinker.molten_laomo_bucket": "熔融墨桶",
   "item.momotinker.molten_arriving_at_the_other_shore_bucket": "熔融彼岸桶",
@@ -61,6 +65,9 @@
   "item.momotinker.molten_stellar_core_platinum_bucket": "熔融燃核铂金桶",
   "item.momotinker.molten_crystallized_platinum_bucket": "熔融晶化铂金桶",
   "item.momotinker.molten_living_platinum_bucket": "熔融仿生铂金桶",
+  "item.momotinker.molten_twilight_purple_gold_bucket": "熔融暮辉紫金桶",
+  "item.momotinker.molten_timetrace_purple_gold_bucket": "熔融时痕紫金桶",
+  "item.momotinker.molten_reversetime_purple_gold_bucket": "熔融溯时紫金桶",
 
   "recipe.momotinker.modifier.cleansetheworld": "荡涤天地需要贯星魔枪作为前置",
   "recipe.momotinker.modifier.shadowofdamnation": "天谴之影需要荡涤天地作为前置",
@@ -68,6 +75,7 @@
   "recipe.momotinker.modifier.shortterminvestments": "短期投资需要贪夺作为前置且与长期投资互斥",
   "recipe.momotinker.modifier.longterminvestments": "长期投资需要贪夺作为前置且与短期投资互斥",
 
+  "momotinker": "墨工坊",
   "key.momotinker.key": "特殊技能",
   "key.momotinker.keya": "工具技能",
 
@@ -168,6 +176,16 @@
   "momotinker.item.tooltip.living_platinum1": "远古文明预设在其中的隐藏程序被意外激活，展现出一种模仿活体生物的诡异形态",
   "momotinker.item.tooltip.living_platinum2": "§c隐藏材料:§o实验笔记A9-23:为了防止其产生意识，必须使用非智慧生物进行喂食的同时保证其最接近原始的形态§",
 
+  "item.momotinker.twilight_purple_gold": "暮辉紫金锭",
+  "momotinker.item.tooltip.twilight_purple_gold1": "来自远古的神秘金属，其身上的荣光与辉煌已被时间掩埋",
+
+  "item.momotinker.timetrace_purple_gold": "时痕紫金锭",
+  "momotinker.item.tooltip.timetrace_purple_gold1": "经过对时间的多次运用，它终于回想起如何掌控能力",
+
+  "item.momotinker.reversetime_purple_gold": "溯时紫金锭",
+  "momotinker.item.tooltip.reversetime_purple_gold1": "在无数次崩溃边缘的游历，它得以觉醒出不同与往的能力",
+  "momotinker.item.tooltip.reversetime_purple_gold2": "§5隐藏材料:最强烈且最无意的愿望或许能得到不一样的回应",
+
   "itemGroup.momotinker.tools": "墨工坊模组-工具",
 
   "item.momotinker.trigger_blade": "扳机横刀",
@@ -220,6 +238,10 @@
   "item.momotinker.tooltip.pocket_watch1": "目前剩余冷却:",
   "item.momotinker.tooltip.pocket_watch2": "目前记录的位置为:(",
   "item.momotinker.tooltip.pocket_watch3": "目前记录的维度为:",
+  "item.momotinker.tooltip.transmit": "古代神兵任务:主动使用",
+  "item.momotinker.tooltip.transmit1": "次传送。当前已传送次数:",
+  "item.momotinker.tooltip.transmit2": "古代神兵任务已完成！主动使用时不再消耗耐久，且冷却时间大幅缩减，但在持有者死亡时该工具不再会免疫死亡并传送",
+  "item.momotinker.tooltip.backtracking": "古代神兵隐藏任务已完成！该工具会自动记录5秒前持有者的位置，且冷却时间小幅缩减，但该工具无法再自主记录位置和传送",
 
   "item.momotinker.chain_sword": "链锯剑",
   "item.momotinker.chain_sword.description": "[双手武器]\n右键使用期间可对前方小范围生物进行持续打击，使用时间过长则会过热无法正常使用，攻速越高伤害越高",
@@ -278,6 +300,12 @@
   "material.momotinker.crystallized_platinum.encyclopedia": "在强大灵魂的浸染下其结构重新组合，形成了一种全新的复合材料",
   "material.momotinker.living_platinum": "仿生铂金",
   "material.momotinker.living_platinum.encyclopedia": "远古文明预设在其中的隐藏程序被意外激活，展现出一种模仿活体生物的诡异形态",
+  "material.momotinker.twilight_purple_gold": "暮辉紫金",
+  "material.momotinker.twilight_purple_gold.encyclopedia": "正如白日终将西沉，闪耀如日光的精妙造物也早已化为暮辉，但...",
+  "material.momotinker.timetrace_purple_gold": "时痕紫金",
+  "material.momotinker.timetrace_purple_gold.encyclopedia": "经过对时间的多次运用，它终于回想起如何掌控能力",
+  "material.momotinker.reversetime_purple_gold": "溯时紫金",
+  "material.momotinker.reversetime_purple_gold.encyclopedia": "在无数次崩溃边缘的游历，它得以觉醒出不同与往的能力",
 
   "modifier.momotinker.laomochuji": "牢墨出击",
   "modifier.momotinker.laomochuji.flavor": "词条标题",
@@ -432,6 +460,8 @@
   "modifier.momotinker.tooltip.liverization3": "击杀生物增长活体值，每次活体值为满时会进化一次以获得三种槽位各一个，完成进化后会清空活体值并使后续所需活体值翻倍",
   "modifier.momotinker.tooltip.liverization31": "当前活体值:",
   "modifier.momotinker.tooltip.liverization32": "当前进化所需活体值为:",
+  "modifier.momotinker.tooltip.transmit3": "在背包中时会使获得的正面药水效果的持续时间增加100%",
+  "modifier.momotinker.tooltip.backtracking3": "该工具释放传送后拥有者会在12秒内免疫伤害，造成伤害、破坏方块时效果立即消失",
 
   "modifier.momotinker.superancientmetalsb": "超古代金属-贝塔",
   "modifier.momotinker.superancientmetalsb.flavor": "来自古代的奇特金属，表面看起来平平无奇",
@@ -452,6 +482,26 @@
   "modifier.momotinker.tooltip.liverization2": "恢复耐久和生命值的能力增加，耐久不为满时仍会恢复生命，即将死亡时会尝试损失最大耐久的99%避免此次死亡（耐久不足时无法生效）",
   "modifier.momotinker.tooltip.degenerate3": "此工具完成击杀时会永久增加攻速和攻击伤害",
   "modifier.momotinker.tooltip.sanctification3": "此武器攻击有概率引雷",
+  "modifier.momotinker.tooltip.transmit4": "该工具存在于背包中时，会持续削弱周围生物使其行动逐渐僵硬",
+  "modifier.momotinker.tooltip.backtracking4": "当该工具能力的冷却小于总时长的50%但不为零时仍可触发，代价是损失当前最大生命的50%（死亡后重置）。当前能力触发最大冷却:",
+
+  "modifier.momotinker.superancientmetalsc": "超古代金属-伽马",
+  "modifier.momotinker.superancientmetalsc.flavor": "来自古代的奇特金属，表面看起来平平无奇",
+  "modifier.momotinker.superancientmetalsc.description": "大部分属性增加50%，耐久格外增加25%，可能会因为某些情况产生进化",
+
+  "modifier.momotinker.superancientmetalsrealc": "超古代金属-伽马-解放",
+  "modifier.momotinker.superancientmetalsrealc.flavor": "来自古代的奇特金属，因古代神兵的苏醒而展现独特姿态",
+  "modifier.momotinker.superancientmetalsrealc.description": "大部分属性增加100%，耐久格外增加50%，会根据古代神兵的觉醒结果提供独特效果",
+  "modifier.momotinker.tooltip.transmit1": "古代神兵认证:遗落怀表-时痕",
+  "modifier.momotinker.tooltip.transmit2": "存活时会逐渐增加拥有者的大部分属性（最大20%），死亡后重置并重新开始增加",
+  "modifier.momotinker.tooltip.backtracking1": "古代神兵认证:遗落怀表-溯时",
+  "modifier.momotinker.tooltip.backtracking2": "该工具释放传送后会在终点位置造成一次范围打击并格外恢复40%已损失的生命",
+  "modifier.momotinker.tooltip.hadal4": "在背包时玩家不会窒息，该工具持有时在白天时造成的伤害增加60%，在夜晚时受到的伤害降低60%",
+  "modifier.momotinker.tooltip.stellarcore4": "工具连续攻击时会“过热”，逐渐降低攻击速度（最大90%）并大幅提高伤害（最大270%），一段时间不攻击后快速复原",
+  "modifier.momotinker.tooltip.crystallized4": "当护甲或武器的耐久不满时，该工具造成的伤害会恢复其耐久",
+  "modifier.momotinker.tooltip.liverization4": "在背包中时会尝试记录受到伤害的50%，可以叠加但是会迅速衰减，在攻击时会增加此次伤害",
+  "modifier.momotinker.tooltip.degenerate4": "攻击时若目标处在攻击距离的70%-80%之内时伤害会增加120%，目标所处位置离该范围越远增伤越低，最低20%",
+  "modifier.momotinker.tooltip.sanctification4": "在背包中时会使主世界的时间保持白天，攻击时工具上的词条格外生效一次但伤害增幅类只有25%的效能",
 
   "modifier.momotinker.crimsonqueen": "绯红女皇",
   "modifier.momotinker.crimsonqueen.flavor": "扳机横刀专属强化:机动剑",
@@ -569,6 +619,14 @@
 
   "modifier.momotinker.longterminvestments": "长期投资",
   "modifier.momotinker.longterminvestments.flavor": "或许可以更长远点...",
-  "modifier.momotinker.longterminvestments.description": "大致功能与“短期投资”相同，相较于“短期投资”，增长点数的概率增加，降低点数的概率减少，但相对的增长与降低的幅度大幅减小"
+  "modifier.momotinker.longterminvestments.description": "大致功能与“短期投资”相同，相较于“短期投资”，增长点数的概率增加，降低点数的概率减少，但相对的增长与降低的幅度大幅减小",
+
+  "modifier.momotinker.timeechoes": "岁月共鸣",
+  "modifier.momotinker.timeechoes.flavor": "扎根于此，与岁月共处",
+  "modifier.momotinker.timeechoes.description": "在背包中时会随时间逐渐降低最大耐久的同时提高其他属性，直至最大耐久不足500",
+
+  "modifier.momotinker.polarizedspacetime": "极化时空",
+  "modifier.momotinker.polarizedspacetime.flavor": "空间上的距离开始产生影响",
+  "modifier.momotinker.polarizedspacetime.description": "伤害源的位置越近受到的该伤害越低，造成伤害的位置距目标越远伤害越高，距离上限与身上总词条有关"
 
 }

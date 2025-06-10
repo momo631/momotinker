@@ -53,6 +53,12 @@ public class MomotinkerConfig {
             .defineInRange("cleansetheworld cooldown time limit",600,0,Integer.MAX_VALUE);
     public static final ForgeConfigSpec.IntValue crystallized_hurt_limit=builder.comment("crystallized_hurt_limit")
             .defineInRange("crystallized hurt limit",60,0,Integer.MAX_VALUE);
+    //public static final ForgeConfigSpec.IntValue shortterminvestments_increase_ratio=builder.comment("shortterminvestments_increase_ratio")
+    //        .defineInRange("shortterminvestments increase ratio",25,0,Integer.MAX_VALUE);
+    //public static final ForgeConfigSpec.IntValue shortterminvestments_reduce_ratio=builder.comment("shortterminvestments_reduce_ratio")
+    //        .defineInRange("shortterminvestments reduce_ratio",50,0,Integer.MAX_VALUE);
+    public static final ForgeConfigSpec.BooleanValue shortterminvestments_only_minecraft=builder.comment("shortterminvestments_only_minecraft")
+            .define("shortterminvestments only valid for the minecraft' item",true);
 
     public static final ForgeConfigSpec.IntValue sanctification_limit=builder.comment("divine_punishment_spear_limit")
             .defineInRange("divine_punishment_spear sanctification limit",500,0,Integer.MAX_VALUE);
@@ -66,12 +72,10 @@ public class MomotinkerConfig {
             .defineInRange("entropy_burning_cannon crystallized limit",20,0,Integer.MAX_VALUE);
     public static final ForgeConfigSpec.IntValue liverization_limit=builder.comment("entropy_burning_cube_limit")
             .defineInRange("entropy_burning_cube liverization limit",100,0,Integer.MAX_VALUE);
-    //public static final ForgeConfigSpec.IntValue shortterminvestments_increase_ratio=builder.comment("shortterminvestments_increase_ratio")
-    //        .defineInRange("shortterminvestments increase ratio",25,0,Integer.MAX_VALUE);
-    //public static final ForgeConfigSpec.IntValue shortterminvestments_reduce_ratio=builder.comment("shortterminvestments_reduce_ratio")
-    //        .defineInRange("shortterminvestments reduce_ratio",50,0,Integer.MAX_VALUE);
-    public static final ForgeConfigSpec.BooleanValue shortterminvestments_only_minecraft=builder.comment("shortterminvestments_only_minecraft")
-            .define("shortterminvestments only valid for the minecraft' item",true);
+    public static final ForgeConfigSpec.IntValue transmit_limit=builder.comment("pocket_watch_limit")
+            .defineInRange("pocket_watch transmit limit",12,0,Integer.MAX_VALUE);
+    public static final ForgeConfigSpec.IntValue backtracking_limit=builder.comment("pocket_watch_limit")
+            .defineInRange("pocket_watch backtracking limit",12,0,Integer.MAX_VALUE);
 
     public static final ForgeConfigSpec.BooleanValue explosion_destroys_limit=builder.comment("explosion_destroys_limit")
             .define("explosion destroys limit",true);

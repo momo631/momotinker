@@ -5,9 +5,6 @@ import com.momosensei.momotinker.register.MomotinkerEntities;
 import com.momosensei.momotinker.util.attackUtil;
 import net.minecraft.core.Direction;
 import net.minecraft.core.particles.ParticleTypes;
-import net.minecraft.network.syncher.EntityDataAccessor;
-import net.minecraft.network.syncher.EntityDataSerializers;
-import net.minecraft.network.syncher.SynchedEntityData;
 import net.minecraft.server.level.ServerLevel;
 import net.minecraft.world.InteractionHand;
 import net.minecraft.world.entity.EntityType;
@@ -32,8 +29,6 @@ public class StarfallEntity extends Projectile {
     public ToolStack tool;
     public float damage=0;
     public float damagemultiplier=0;
-    boolean config = MomotinkerConfig.explosion_destroys_limit.get();
-    private static final EntityDataAccessor<Byte> EXPLOSION_POWER = SynchedEntityData.defineId(StarfallEntity.class, EntityDataSerializers.BYTE);
     public StarfallEntity(EntityType<? extends Projectile> p_37248_, Level p_37249_) {
         super(p_37248_, p_37249_);
     }
@@ -66,15 +61,11 @@ public class StarfallEntity extends Projectile {
         }
     }
 
-    @Override
-    protected void onHitEntity(EntityHitResult p_37259_) {
-        super.onHitEntity(p_37259_);
-        Explode();
-    }
     public void setToolstack(ToolStack tool){
         this.tool =tool;
     }
     public void Explode(){
+        boolean config = MomotinkerConfig.explosion_destroys_limit.get();
         if (!this.level().isClientSide) {
             Level.ExplosionInteraction explosionInteraction;
             boolean a;
@@ -85,7 +76,7 @@ public class StarfallEntity extends Projectile {
                 explosionInteraction=Level.ExplosionInteraction.NONE;
                 a=false;
             }
-            Explosion explosion =this.level().explode(this, this.getX(), this.getY(), this.getZ(), this.getEntityData().get(EXPLOSION_POWER) * 0.1f, a, explosionInteraction);
+            Explosion explosion =this.level().explode(this, this.getX(), this.getY(), this.getZ(), 5, a, explosionInteraction);
             List<LivingEntity> lis = this.level().getEntitiesOfClass(LivingEntity.class, this.getBoundingBox().inflate(8));
             for (LivingEntity entity : lis) {
                 if (entity != null&&this.getOwner() instanceof Player player&&entity!=this.getOwner()) {
@@ -94,21 +85,21 @@ public class StarfallEntity extends Projectile {
                 }
             }
         }
-        this.discard();
     }
 
     @Override
     protected void onHitBlock(BlockHitResult p_37258_) {
         super.onHitBlock(p_37258_);
         Explode();
+        this.discard();
     }
-
+    @Override
+    protected void onHitEntity(EntityHitResult p_37259_) {
+        super.onHitEntity(p_37259_);
+        Explode();
+        this.discard();
+    }
     @Override
     protected void defineSynchedData() {
-        this.entityData.define(EXPLOSION_POWER,(byte)0);
-    }
-
-    public void setExplosionPower(byte power){
-        this.entityData.set(EXPLOSION_POWER,power);
     }
 }

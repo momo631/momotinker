@@ -23,6 +23,7 @@ public class MomotinkerEffects  {
     public static final RegistryObject<MobEffect> FallingStar = EFFECT.register("fallingstar",  FallingStar::new);
     public static final RegistryObject<MobEffect> FlameBathArmor = EFFECT.register("flamebatharmor",  FlameBathArmor::new);
     public static final RegistryObject<MobEffect> Censored = EFFECT.register("censored",  Censored::new);
+    public static final RegistryObject<MobEffect> IncreaseAllAttributes = EFFECT.register("increaseallattributes",  IncreaseAllAttributes::new);
+    public static final RegistryObject<MobEffect> Stiffening = EFFECT.register("stiffening",  Stiffening::new);
     public static final RegistryObject<MobEffect> C = EFFECT.register("c",  C::new);
-
 }

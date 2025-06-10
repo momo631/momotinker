@@ -33,7 +33,6 @@ public class CleanseEntity extends Projectile {
     public ToolStack tool;
     public float damage=0;
     public int a = 0;
-    boolean config = MomotinkerConfig.explosion_destroys_limit.get();
     private static final EntityDataAccessor<Byte> EXPLOSION_POWER = SynchedEntityData.defineId(CleanseEntity.class, EntityDataSerializers.BYTE);
     public CleanseEntity(EntityType<? extends Projectile> p_37248_, Level p_37249_) {
         super(p_37248_, p_37249_);
@@ -130,6 +129,7 @@ public class CleanseEntity extends Projectile {
     }
 
     public void meteorExplode(){
+        boolean config = MomotinkerConfig.explosion_destroys_limit.get();
         if (!this.level().isClientSide) {
             if (this.tool==null&&this.getOwner() instanceof Player player){
                 this.tool=ToolStack.from(player.getMainHandItem());

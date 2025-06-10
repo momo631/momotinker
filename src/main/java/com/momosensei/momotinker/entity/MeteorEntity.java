@@ -28,7 +28,6 @@ import net.minecraft.world.phys.Vec3;
 import java.util.List;
 
 public class MeteorEntity extends Projectile {
-    boolean config = MomotinkerConfig.explosion_destroys_limit.get();
     private static final EntityDataAccessor<Byte> EXPLOSION_POWER = SynchedEntityData.defineId(MeteorEntity.class, EntityDataSerializers.BYTE);
     public MeteorEntity(EntityType<? extends Projectile> p_37248_, Level p_37249_) {
         super(p_37248_, p_37249_);
@@ -65,22 +64,19 @@ public class MeteorEntity extends Projectile {
         }
     }
 
-    @Override
-    protected void onHitEntity(EntityHitResult p_37259_) {
-        super.onHitEntity(p_37259_);
-        meteorExplode();
-    }
-
     public void meteorExplode(){
+        boolean config = MomotinkerConfig.explosion_destroys_limit.get();
         if (!this.level().isClientSide) {
             Level.ExplosionInteraction explosionInteraction;
+            boolean a;
             if (config) {
                 explosionInteraction=Level.ExplosionInteraction.BLOCK;
+                a=true;
             }else {
                 explosionInteraction=Level.ExplosionInteraction.NONE;
+                a=false;
             }
             Explosion explosion =this.level().explode(this, this.getX(), this.getY(), this.getZ(), this.getEntityData().get(EXPLOSION_POWER) * 0.1f, true, explosionInteraction);
-            List<BlockPos> list = explosion.getToBlow();
             List<Player> players = explosion.getHitPlayers().keySet().stream().toList();
             BlockPos blockPos= BlockPos.of(BlockPos.asLong((int) this.getX(), (int) this.getY(), (int) this.getZ()));
             if ((this.level().getBlockState(blockPos).isAir() || this.level().getBlockState(blockPos).is(Blocks.FIRE) || !(this.level().getFluidState(blockPos).is(Fluids.EMPTY)))) {
@@ -101,7 +97,11 @@ public class MeteorEntity extends Projectile {
         super.onHitBlock(p_37258_);
         meteorExplode();
     }
-
+    @Override
+    protected void onHitEntity(EntityHitResult p_37259_) {
+        super.onHitEntity(p_37259_);
+        meteorExplode();
+    }
     @Override
     protected void defineSynchedData() {
         this.entityData.define(EXPLOSION_POWER,(byte)0);

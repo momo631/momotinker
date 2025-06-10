@@ -2,13 +2,13 @@ package com.momosensei.momotinker;
 
 
 import com.momosensei.momotinker.event.LivingEvents;
+import com.momosensei.momotinker.key.key;
 import com.momosensei.momotinker.network.Channel;
 import com.momosensei.momotinker.register.*;
-import net.minecraft.network.chat.Component;
-import net.minecraft.network.chat.MutableComponent;
 import net.minecraft.resources.ResourceLocation;
 import net.minecraft.world.item.Item;
 import net.minecraftforge.api.distmarker.Dist;
+import net.minecraftforge.client.event.RegisterKeyMappingsEvent;
 import net.minecraftforge.common.MinecraftForge;
 import net.minecraftforge.eventbus.api.IEventBus;
 import net.minecraftforge.eventbus.api.SubscribeEvent;
@@ -19,13 +19,13 @@ import net.minecraftforge.fml.event.lifecycle.FMLClientSetupEvent;
 import net.minecraftforge.fml.event.lifecycle.FMLCommonSetupEvent;
 import net.minecraftforge.fml.javafmlmod.FMLJavaModLoadingContext;
 import net.minecraftforge.registries.ForgeRegistries;
+import org.jetbrains.annotations.NotNull;
 import slimeknights.tconstruct.library.client.model.TinkerItemProperties;
 import slimeknights.tconstruct.library.tools.capability.TinkerDataCapability;
 
 import java.util.Objects;
 
 import static com.momosensei.momotinker.register.MomotinkerTools.*;
-import static slimeknights.tconstruct.TConstruct.makeTranslationKey;
 
 @Mod(Momotinker.MOD_ID)
 @Mod.EventBusSubscriber(
@@ -37,6 +37,7 @@ public class Momotinker {
     public Momotinker() {
         FMLJavaModLoadingContext context = FMLJavaModLoadingContext.get();
         IEventBus eventBus = context.getModEventBus();
+        eventBus.addListener(this::commonSetup);
         MinecraftForge.EVENT_BUS.register(this);
         MomotinkerItem.ITEMS.register(eventBus);
         MomotinkerModifiers.MODIFIERS.register(eventBus);
@@ -76,11 +77,11 @@ public class Momotinker {
         return type + ".momotinker." + name;
     }
 
-    public static MutableComponent makeTranslation(String base, String name) {
-        return Component.translatable(makeTranslationKey(base, name));
+    public static ResourceLocation id(@NotNull String path) {
+        return new ResourceLocation(Momotinker.MOD_ID, path);
     }
 
-    @Mod.EventBusSubscriber(modid = MOD_ID, bus = Mod.EventBusSubscriber.Bus.MOD, value = Dist.CLIENT)
+    @Mod.EventBusSubscriber(modid = MOD_ID, bus = Mod.EventBusSubscriber.Bus.MOD,  value = {Dist.CLIENT})
     public static class ClientModEvents {
         @SubscribeEvent
         public static void onClientSetup(FMLClientSetupEvent event) {
@@ -107,8 +108,13 @@ public class Momotinker {
                 TinkerItemProperties.registerToolProperties(eclipse_container.get());
                 TinkerItemProperties.registerToolProperties(pocket_watch.get());
                 TinkerItemProperties.registerToolProperties(chain_sword.get());
-
+             //   TinkerItemProperties.registerToolProperties(aa.get());
             });
+        }
+        @SubscribeEvent
+        public static void onKeyRegister(RegisterKeyMappingsEvent event) {
+            event.register(key.KeyBinding.KEY);
+            event.register(key.KeyBinding.KEYA);
         }
     }
 }

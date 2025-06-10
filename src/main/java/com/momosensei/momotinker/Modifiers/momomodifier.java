@@ -127,6 +127,10 @@ public abstract class momomodifier extends Modifier implements MeleeDamageModifi
         return this.isNoLevels() ? super.getDisplayName() : super.getDisplayName(level);
     }
 
+    public Component getDisplayName(IToolStackView tool, ModifierEntry entry) {
+        return entry.getDisplayName();
+    }
+
     @Override
     public ItemStack findAmmo(IToolStackView tool, ModifierEntry modifiers, LivingEntity livingEntity, ItemStack itemStack, Predicate<ItemStack> predicate) {
         return this.modifierFindAmmo(tool, modifiers, livingEntity, itemStack, predicate);

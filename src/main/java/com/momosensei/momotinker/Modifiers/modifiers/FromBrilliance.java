@@ -27,6 +27,8 @@ import java.util.List;
 import static com.momosensei.momotinker.tool.divine_punishment_spear.degenerate;
 import static com.momosensei.momotinker.tool.divine_punishment_spear.sanctification;
 import static com.momosensei.momotinker.tool.entropy_burning_cube.*;
+import static com.momosensei.momotinker.tool.pocket_watch.backtracking;
+import static com.momosensei.momotinker.tool.pocket_watch.transmit;
 
 public class FromBrilliance extends momomodifier {
     public FromBrilliance() {
@@ -45,6 +47,7 @@ public class FromBrilliance extends momomodifier {
         iToolStackView.getPersistentData().remove(stellarcore);
         iToolStackView.getPersistentData().remove(crystallized);
         iToolStackView.getPersistentData().remove(liverization);
+        iToolStackView.getPersistentData().remove(backtracking);
         return null;
     }
 
@@ -55,6 +58,8 @@ public class FromBrilliance extends momomodifier {
         int hadal_limit = MomotinkerConfig.hadal_limit.get();
         int stellarcore_limit = MomotinkerConfig.stellarcore_limit.get();
         int crystallized_limit = MomotinkerConfig.crystallized_limit.get();
+        int backtracking_limit = MomotinkerConfig.backtracking_limit.get();
+        int transmit_limit = MomotinkerConfig.transmit_limit.get();
         ModDataNBT a = tool.getPersistentData();
         if (a.getInt(degenerate) > degenerate_limit) {
             a.putInt(degenerate, degenerate_limit);
@@ -70,6 +75,12 @@ public class FromBrilliance extends momomodifier {
         }
         if (a.getInt(crystallized) > crystallized_limit) {
             a.putInt(crystallized, crystallized_limit);
+        }
+        if (a.getInt(backtracking) > backtracking_limit) {
+            a.putInt(backtracking, backtracking_limit);
+        }
+        if (a.getInt(transmit) > transmit_limit) {
+            a.putInt(transmit, transmit_limit);
         }
     }
 
@@ -116,6 +127,8 @@ public class FromBrilliance extends momomodifier {
         int liverization_limit = MomotinkerConfig.liverization_limit.get();
         int sanctification_limit = MomotinkerConfig.sanctification_limit.get();
         int degenerate_limit = MomotinkerConfig.degenerate_limit.get();
+        int backtracking_limit = MomotinkerConfig.backtracking_limit.get();
+        int transmit_limit = MomotinkerConfig.transmit_limit.get();
         ModDataNBT a = tool.getPersistentData();
         if ((tool.getModifierLevel(MomotinkerModifiers.superancientmetalsreala.getId())>0)||(tool.getModifierLevel(MomotinkerModifiers.superancientmetalsrealb.getId())>0)){
             if (a.getInt(degenerate)==degenerate_limit) {
@@ -128,13 +141,19 @@ public class FromBrilliance extends momomodifier {
                 builder.add(Component.translatable("modifier.momotinker.tooltip.hadal1").withStyle(ChatFormatting.DARK_BLUE));
             }
             if (a.getInt(stellarcore)==stellarcore_limit) {
-                builder.add(Component.translatable("modifier.momotinker.tooltip.stellarcore1").withStyle(ChatFormatting.YELLOW));
+                builder.add(Component.translatable("modifier.momotinker.tooltip.stellarcore1").withStyle(ChatFormatting.GOLD));
             }
             if (a.getInt(crystallized)==crystallized_limit) {
                 builder.add(Component.translatable("modifier.momotinker.tooltip.crystallized1").withStyle(ChatFormatting.AQUA));
             }
             if (a.getInt(liverization)>=liverization_limit) {
                 builder.add(Component.translatable("modifier.momotinker.tooltip.liverization1").withStyle(ChatFormatting.RED));
+            }
+            if (a.getInt(transmit)==transmit_limit) {
+                builder.add(Component.translatable("modifier.momotinker.tooltip.transmit1").withStyle(ChatFormatting.GREEN));
+            }
+            if (a.getInt(backtracking)==backtracking_limit) {
+                builder.add(Component.translatable("modifier.momotinker.tooltip.backtracking1").withStyle(ChatFormatting.DARK_PURPLE));
             }
         }
     }

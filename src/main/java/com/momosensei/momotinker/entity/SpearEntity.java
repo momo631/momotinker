@@ -49,7 +49,7 @@ public class SpearEntity extends Projectile {
             this.tool=ToolStack.from(player.getMainHandItem());
         }
         super.tick();
-        if (this.tickCount >= 200) {
+        if (this.tickCount >= 60) {
             this.discard();
             return;
         }

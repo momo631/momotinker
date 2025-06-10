@@ -48,5 +48,8 @@ public class MomotinkerTables extends MomotinkerMod {
         output.accept(MomotinkerItem.stellar_core_platinum.get());
         output.accept(MomotinkerItem.crystallized_platinum.get());
         output.accept(MomotinkerItem.living_platinum.get());
+        output.accept(MomotinkerItem.twilight_purple_gold.get());
+        output.accept(MomotinkerItem.timetrace_purple_gold.get());
+        output.accept(MomotinkerItem.reversetime_purple_gold.get());
     }
 }

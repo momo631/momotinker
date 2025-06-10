@@ -57,7 +57,6 @@ public class StarfallArrow extends momomodifier {
                 entity.setToolstack(tool);
                 entity.damagemultiplier = getDamageMultiplier(tool,player);
                 entity.damage = (float) (arrow.getBaseDamage() - 2 + tool.getStats().get(ToolStats.PROJECTILE_DAMAGE));
-                entity.setExplosionPower((byte)50);
                 level.addFreshEntity(entity);
             }
         }

@@ -43,6 +43,9 @@ public class MomotinkerItem {
     public static final RegistryObject<Item> stellar_core_platinum = ITEMS.register("stellar_core_platinum", () -> new stellar_core_platinum(MomotinkerTables.material()));
     public static final RegistryObject<Item> crystallized_platinum = ITEMS.register("crystallized_platinum", () -> new crystallized_platinum(MomotinkerTables.material()));
     public static final RegistryObject<Item> living_platinum = ITEMS.register("living_platinum", () -> new living_platinum(MomotinkerTables.material()));
+    public static final RegistryObject<Item> twilight_purple_gold = ITEMS.register("twilight_purple_gold", () -> new twilight_purple_gold(MomotinkerTables.material()));
+    public static final RegistryObject<Item> timetrace_purple_gold = ITEMS.register("timetrace_purple_gold", () -> new timetrace_purple_gold(MomotinkerTables.material()));
+    public static final RegistryObject<Item> reversetime_purple_gold = ITEMS.register("reversetime_purple_gold", () -> new reversetime_purple_gold(MomotinkerTables.material()));
 
     public static final RegistryObject<Item> trigger_slash_a = ITEMS.register("trigger_slash_a", ()->new Item(new Item.Properties()));
     public static final RegistryObject<Item> spear_entity = ITEMS.register("spear_entity", ()->new Item(new Item.Properties()));

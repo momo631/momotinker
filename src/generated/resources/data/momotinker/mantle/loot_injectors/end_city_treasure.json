@@ -11,21 +11,21 @@
               "materials": [
                 {
                   "type": "tconstruct:fixed",
-                  "material": "momotinker:dim_dark_gold"
+                  "material": "momotinker:twilight_purple_gold"
                 },
                 {
                   "type": "tconstruct:fixed",
-                  "material": "momotinker:dim_dark_gold"
+                  "material": "momotinker:twilight_purple_gold"
                 },
                 {
                   "type": "tconstruct:fixed",
-                  "material": "momotinker:dim_dark_gold"
+                  "material": "momotinker:twilight_purple_gold"
                 }
               ]
             }
           ],
           "name": "momotinker:pocket_watch",
-          "weight": 2
+          "weight": 4
         }
       ],
       "name": "main"

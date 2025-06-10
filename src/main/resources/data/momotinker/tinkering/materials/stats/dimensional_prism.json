@@ -2,7 +2,7 @@
   "stats": {
     "tconstruct:binding": {},
     "tconstruct:handle": {
-      "durability": 0.618,
+      "durability": 0.5,
       "mining_speed": -0.3,
       "melee_speed": -0.3,
       "melee_damage": -0.3
@@ -20,7 +20,7 @@
       "accuracy": 10
     },
     "tconstruct:grip": {
-      "durability": 0.618,
+      "durability": 0.5,
       "accuracy": 10,
       "melee_damage": 2
     }
