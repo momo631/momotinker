@@ -177,14 +177,14 @@
   "momotinker.item.tooltip.living_platinum2": "§cHidden Material:§oExperimental note A9-23: In order to prevent it from developing consciousness, non intelligent organisms must be fed while ensuring that they are closest to their original form§",
 
   "item.momotinker.twilight_purple_gold": "Twilight Purple Gold",
-  "momotinker.item.tooltip.twilight_purple_gold1": "",
+  "momotinker.item.tooltip.twilight_purple_gold1": "Mysterious metal from ancient times, its glory and splendor have been buried by time",
 
   "item.momotinker.timetrace_purple_gold": "Time Trace Purple Gold",
-  "momotinker.item.tooltip.timetrace_purple_gold1": "",
+  "momotinker.item.tooltip.timetrace_purple_gold1": "After multiple uses of time, it finally recalled how to control its abilities",
 
   "item.momotinker.reversetime_purple_gold": "Reverse Time Purple Gold",
-  "momotinker.item.tooltip.reversetime_purple_gold1": "",
-  "momotinker.item.tooltip.reversetime_purple_gold2": "",
+  "momotinker.item.tooltip.reversetime_purple_gold1": "Through countless journeys on the brink of collapse, it was able to awaken its ability to be different and different",
+  "momotinker.item.tooltip.reversetime_purple_gold2": "§5Hidden Material:The strongest and most unintentional wish may receive a different response§",
 
   "itemGroup.momotinker.tools": "Momotinker Tools",
 
@@ -300,11 +300,11 @@
   "material.momotinker.living_platinum": "Bionics Platinum",
   "material.momotinker.living_platinum.encyclopedia": "The hidden program preset in ancient civilizations was accidentally activated, revealing a bizarre form that mimics living organisms\n",
   "material.momotinker.twilight_purple_gold": "Twilight Purple Gold",
-  "material.momotinker.twilight_purple_gold.encyclopedia": "",
+  "material.momotinker.twilight_purple_gold.encyclopedia": "Just as the sun will eventually set in the west, the exquisite creations that shine like sunlight have already turned into twilight, but...",
   "material.momotinker.timetrace_purple_gold": "Time Trace Purple Gold",
-  "material.momotinker.timetrace_purple_gold.encyclopedia": "",
+  "material.momotinker.timetrace_purple_gold.encyclopedia": "After multiple uses of time, it finally recalled how to control its abilities",
   "material.momotinker.reversetime_purple_gold": "Reverse Time Purple Gold",
-  "material.momotinker.reversetime_purple_gold.encyclopedia": "",
+  "material.momotinker.reversetime_purple_gold.encyclopedia": "Through countless journeys on the brink of collapse, it was able to awaken its ability to be different and different",
 
   "modifier.momotinker.laomochuji": "laomochuji",
   "modifier.momotinker.laomochuji.flavor": "Test flavor",
