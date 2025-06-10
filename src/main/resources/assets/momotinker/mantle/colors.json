@@ -23,7 +23,10 @@
     "hadal_platinum": "#514E95",
     "stellar_core_platinum": "#793D1A",
     "crystallized_platinum": "#BEFBFF",
-    "living_platinum": "#873D3D"
+    "living_platinum": "#873D3D",
+    "twilight_purple_gold": "#FF42D6",
+    "timetrace_purple_gold": "#5CF000",
+    "reversetime_purple_gold": "#D93DEB"
   },
   "modifier.momotinker": {
     "laomochuji": "#596d99",
@@ -80,6 +83,10 @@
     "selfcrystallization": "#BEFBFF",
     "lifeprogram": "#F873D3D",
     "longterminvestments": "#0065FF",
-    "shortterminvestments": "#00A6FF"
+    "shortterminvestments": "#00A6FF",
+    "superancientmetalsc": "#D88CE4",
+    "superancientmetalsrealc": "#EFCCF6",
+    "timeechoes": "#4AFFA4",
+    "polarizedspacetime": "#E742FF"
   }
 }

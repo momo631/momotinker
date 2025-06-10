@@ -124,7 +124,7 @@ public class SuperancientMetalsRealC extends momomodifier {
                 }
             }
             if (a.getInt(stellarcore) == stellarcore_limit){
-                if (player.tickCount % 5 == 0&&a.getInt(overheat)<90) {
+                if (player.tickCount % 5 == 0&&a.getInt(overheat)<90&&a.getInt(overheatingcooling)>0) {
                     a.putInt(overheat, a.getInt(overheat) + 1);
                 }
             }

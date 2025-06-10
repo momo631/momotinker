@@ -177,14 +177,14 @@
   "momotinker.item.tooltip.living_platinum2": "§c隐藏材料:§o实验笔记A9-23:为了防止其产生意识，必须使用非智慧生物进行喂食的同时保证其最接近原始的形态§",
 
   "item.momotinker.twilight_purple_gold": "暮辉紫金锭",
-  "momotinker.item.tooltip.twilight_purple_gold1": "",
+  "momotinker.item.tooltip.twilight_purple_gold1": "来自远古的神秘金属，其身上的荣光与辉煌已被时间掩埋",
 
   "item.momotinker.timetrace_purple_gold": "时痕紫金锭",
-  "momotinker.item.tooltip.timetrace_purple_gold1": "",
+  "momotinker.item.tooltip.timetrace_purple_gold1": "经过对时间的多次运用，它终于回想起如何掌控能力",
 
   "item.momotinker.reversetime_purple_gold": "溯时紫金锭",
-  "momotinker.item.tooltip.reversetime_purple_gold1": "",
-  "momotinker.item.tooltip.reversetime_purple_gold2": "",
+  "momotinker.item.tooltip.reversetime_purple_gold1": "在无数次崩溃边缘的游历，它得以觉醒出不同与往的能力",
+  "momotinker.item.tooltip.reversetime_purple_gold2": "§5隐藏材料:最强烈且最无意的愿望或许能得到不一样的回应",
 
   "itemGroup.momotinker.tools": "墨工坊模组-工具",
 
@@ -301,11 +301,11 @@
   "material.momotinker.living_platinum": "仿生铂金",
   "material.momotinker.living_platinum.encyclopedia": "远古文明预设在其中的隐藏程序被意外激活，展现出一种模仿活体生物的诡异形态",
   "material.momotinker.twilight_purple_gold": "暮辉紫金",
-  "material.momotinker.twilight_purple_gold.encyclopedia": "",
+  "material.momotinker.twilight_purple_gold.encyclopedia": "正如白日终将西沉，闪耀如日光的精妙造物也早已化为暮辉，但...",
   "material.momotinker.timetrace_purple_gold": "时痕紫金",
-  "material.momotinker.timetrace_purple_gold.encyclopedia": "",
+  "material.momotinker.timetrace_purple_gold.encyclopedia": "经过对时间的多次运用，它终于回想起如何掌控能力",
   "material.momotinker.reversetime_purple_gold": "溯时紫金",
-  "material.momotinker.reversetime_purple_gold.encyclopedia": "",
+  "material.momotinker.reversetime_purple_gold.encyclopedia": "在无数次崩溃边缘的游历，它得以觉醒出不同与往的能力",
 
   "modifier.momotinker.laomochuji": "牢墨出击",
   "modifier.momotinker.laomochuji.flavor": "词条标题",

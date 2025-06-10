@@ -23,7 +23,12 @@ public class PolarizedSpacetime extends momomodifier {
             int a=getAllModifierlevel(player,MomotinkerModifiers.polarizedspacetime.getId());
             if (a>0) {
                 double b = Objects.requireNonNull(event.getSource().getSourcePosition()).subtract(player.position()).length();
-                event.setAmount(event.getAmount()*0.9f*geti((int) Math.floor(b),12+a*2,1)/(12+a*2));
+                float c=0.9f*geti((int) Math.floor(b),6+a,1)/(6+a);
+                if (c>0.05f) {
+                    event.setAmount(event.getAmount() * c);
+                }else if (c<0.05f){
+                    event.setAmount(event.getAmount() * 0.05f);
+                }
             }
         }
         if (event.getSource().getEntity() instanceof Player player&&event.getEntity()!=null){

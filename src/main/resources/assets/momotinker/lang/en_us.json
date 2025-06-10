@@ -618,6 +618,14 @@
 
   "modifier.momotinker.longterminvestments": "Long Term Investments",
   "modifier.momotinker.longterminvestments.flavor": "Perhaps it could be a bit longer...",
-  "modifier.momotinker.longterminvestments.description": "The general function is similar to 'Short Term Investments'. Compared to 'Short Term Investments', the probability of increasing points increases and the probability of decreasing points decreases, but the relative magnitude of growth and decrease is significantly reduced"
+  "modifier.momotinker.longterminvestments.description": "The general function is similar to 'Short Term Investments'. Compared to 'Short Term Investments', the probability of increasing points increases and the probability of decreasing points decreases, but the relative magnitude of growth and decrease is significantly reduced",
+
+  "modifier.momotinker.timeechoes": "Time Echoes",
+  "modifier.momotinker.timeechoes.flavor": "Rooted here, coexisting with time",
+  "modifier.momotinker.timeechoes.description": "When in the backpack, the maximum durability will gradually decrease over time while improving other attributes until the maximum durability is less than 500",
+
+  "modifier.momotinker.polarizedspacetime": "Polarized Spacetime",
+  "modifier.momotinker.polarizedspacetime.flavor": "The distance in space is starting to have an impact",
+  "modifier.momotinker.polarizedspacetime.description": "The closer the damage source is, the lower the damage received, and the farther the damage is from the target, the higher the damage"
 
 }

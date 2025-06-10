@@ -39,10 +39,12 @@ public class TimeEchoes extends momomodifier {
         int b =a.getInt(echopoints);
         if (b > 0){
             ToolStats.DURABILITY.add(builder, -b*20);
-            ToolStats.ATTACK_SPEED.add(builder, b*0.1f);
-            ToolStats.ATTACK_DAMAGE.add(builder, b*0.002f);
+            ToolStats.ATTACK_SPEED.add(builder, b*0.002f);
+            ToolStats.ATTACK_DAMAGE.add(builder, b*0.1f);
             ToolStats.ACCURACY.add(builder, b*0.1f);
-            ToolStats.DRAW_SPEED.add(builder, b*0.005f);
+            if (builder.getStat(ToolStats.DRAW_SPEED)>b*0.005f) {
+                ToolStats.DRAW_SPEED.add(builder, -b * 0.005f);
+            }else {ToolStats.DRAW_SPEED.add(builder, -builder.getStat(ToolStats.DRAW_SPEED));}
             ToolStats.VELOCITY.add(builder, b*0.01f);
             ToolStats.MINING_SPEED.add(builder, b*0.01f);
             ToolStats.ARMOR.add(builder, b*0.2f);

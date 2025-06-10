@@ -73,9 +73,9 @@ public class MomotinkerConfig {
     public static final ForgeConfigSpec.IntValue liverization_limit=builder.comment("entropy_burning_cube_limit")
             .defineInRange("entropy_burning_cube liverization limit",100,0,Integer.MAX_VALUE);
     public static final ForgeConfigSpec.IntValue transmit_limit=builder.comment("pocket_watch_limit")
-            .defineInRange("pocket_watch transmit limit",1,0,Integer.MAX_VALUE);
+            .defineInRange("pocket_watch transmit limit",12,0,Integer.MAX_VALUE);
     public static final ForgeConfigSpec.IntValue backtracking_limit=builder.comment("pocket_watch_limit")
-            .defineInRange("pocket_watch backtracking limit",1,0,Integer.MAX_VALUE);
+            .defineInRange("pocket_watch backtracking limit",12,0,Integer.MAX_VALUE);
 
     public static final ForgeConfigSpec.BooleanValue explosion_destroys_limit=builder.comment("explosion_destroys_limit")
             .define("explosion destroys limit",true);
