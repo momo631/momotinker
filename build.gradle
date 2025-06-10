@@ -93,7 +93,7 @@ minecraft {
         }
 
         server {
-            property 'forge.enabledGameTestNamespaces', "momotinker"
+            property 'forge.enabledGameTestNamespaces', mod_id
             args '--nogui'
         }
 

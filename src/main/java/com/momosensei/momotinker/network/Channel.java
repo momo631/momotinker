@@ -34,9 +34,7 @@ public class Channel {
     }
 
     public static void init() {
-        INSTANCE.registerMessage(id++, triggerSlashPacket.class, triggerSlashPacket::encode, triggerSlashPacket::decode, triggerSlashPacket::handle);
-        INSTANCE.registerMessage(id++, SpearEntityPacket.class, SpearEntityPacket::encode, SpearEntityPacket::decode, SpearEntityPacket::handle);
-        INSTANCE.registerMessage(id++, RayEntityPacket.class, RayEntityPacket::encode, RayEntityPacket::decode, RayEntityPacket::handle);
+
         INSTANCE.messageBuilder(KeyInputPKT.class,id++, NetworkDirection.PLAY_TO_SERVER).decoder(KeyInputPKT::decode).encoder(KeyInputPKT::encode).consumerMainThread(KeyInputPKT::handlePacket).add();
         INSTANCE.messageBuilder(KeyAInputPKT.class,id++, NetworkDirection.PLAY_TO_SERVER).decoder(KeyAInputPKT::decode).encoder(KeyAInputPKT::encode).consumerMainThread(KeyAInputPKT::handlePacket).add();
         INSTANCE.messageBuilder(ToolsTimeCharge.class,id++, NetworkDirection.PLAY_TO_CLIENT).decoder(ToolsTimeCharge::new).encoder(ToolsTimeCharge::encode).consumerMainThread(ToolsTimeCharge::handle).add();

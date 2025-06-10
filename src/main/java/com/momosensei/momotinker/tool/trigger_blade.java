@@ -4,7 +4,6 @@ package com.momosensei.momotinker.tool;
 import com.momosensei.momotinker.entity.TriggerSlashEntity;
 import com.momosensei.momotinker.network.Channel;
 import com.momosensei.momotinker.network.packet.ToolsTimeCharge;
-import com.momosensei.momotinker.network.packet.triggerSlashPacket;
 import com.momosensei.momotinker.register.MomotinkerEntities;
 import com.momosensei.momotinker.register.MomotinkerItem;
 import com.momosensei.momotinker.register.MomotinkerModifiers;
@@ -101,10 +100,10 @@ public class trigger_blade extends ModifiableItem {
             int b = ModifierUtil.getModifierLevel(player.getMainHandItem(), MomotinkerModifiers.yamato.getId());
             if (a==0) {
                 if (b==0&&i >= 30) {
-                    Channel.INSTANCE.sendToServer(new triggerSlashPacket(player.getId()));
+                    createSlash(player);
                 }else
                 if (b>0&&i >= 20){
-                    Channel.INSTANCE.sendToServer(new triggerSlashPacket(player.getId()));
+                    createSlash(player);
                     if (i>24){
                         player.getCooldowns().addCooldown(player.getMainHandItem().getItem(), 20);
                     }

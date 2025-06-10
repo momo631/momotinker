@@ -1,7 +1,6 @@
 package com.momosensei.momotinker.tool;
 
 import com.momosensei.momotinker.network.Channel;
-import com.momosensei.momotinker.network.packet.RayEntityPacket;
 import com.momosensei.momotinker.network.packet.ToolsTimeCharge;
 import com.momosensei.momotinker.register.MomotinkerConfig;
 import net.minecraft.ChatFormatting;
@@ -40,6 +39,7 @@ import slimeknights.tconstruct.tools.modifiers.upgrades.ranged.ScopeModifier;
 import java.util.Iterator;
 import java.util.List;
 
+import static com.momosensei.momotinker.entity.MomotinkerEntitiesCreate.createRayExplosion;
 import static com.momosensei.momotinker.tool.entropy_burning_cube.*;
 import static slimeknights.tconstruct.library.modifiers.hook.interaction.GeneralInteractionModifierHook.KEY_DRAWTIME;
 import static slimeknights.tconstruct.library.tools.stat.ToolStats.ACCURACY;
@@ -93,7 +93,7 @@ public class entropy_burning_cannon extends ModifiableItem {
         if (livingEntity instanceof ServerPlayer player){
             player.awardStat(Stats.ITEM_USED.get(this));
             if (perc>=1) {
-                Channel.INSTANCE.sendToServer(new RayEntityPacket(player.getId()));
+                createRayExplosion(player);
                 player.giveExperiencePoints((int) (-player.totalExperience*0.02F));
             }
             Channel.sendToPlayer(new ToolsTimeCharge(0), player);
