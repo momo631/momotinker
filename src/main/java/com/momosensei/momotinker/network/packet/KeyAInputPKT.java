@@ -17,6 +17,7 @@ import java.util.List;
 import java.util.function.Supplier;
 
 import static com.momosensei.momotinker.Modifiers.modifiers.ProjectionOfSuffering.disaster;
+import static com.momosensei.momotinker.entity.MomotinkerEntitiesCreate.createPull;
 import static com.momosensei.momotinker.tool.entropy_burning_cube.liverization;
 
 public class KeyAInputPKT {
@@ -151,6 +152,10 @@ public class KeyAInputPKT {
                     player.setItemInHand(InteractionHand.MAIN_HAND, tool4.createStack());
                     player.setItemInHand(InteractionHand.OFF_HAND, tool5.createStack());
                 }
+            }
+
+            if (player!=null&&(player.getMainHandItem().is(MomotinkerItem.pneumatic_sword.get())||player.getOffhandItem().is(MomotinkerItem.pneumatic_sword.get()))) {
+                createPull(player);
             }
         });
         context.setPacketHandled(true);

@@ -59,6 +59,7 @@ public class  MomotinkerItem {
     public static final RegistryObject<ModifiableItem> moon_lock = ITEMS.register("moon_lock", () -> new moon_lock(TOOL, MomotinkerToolDefinitions.MOON_LOCK));
     public static final RegistryObject<ModifiableItem> pocket_watch = ITEMS.register("pocket_watch", () -> new pocket_watch(TOOL, MomotinkerToolDefinitions.POCKET_WATCH));
     public static final RegistryObject<ModifiableItem> chain_sword = ITEMS.register("chain_sword", () -> new chain_sword(TOOL, MomotinkerToolDefinitions.CHAIN_SWORD));
+    public static final RegistryObject<ModifiableItem> pneumatic_sword = ITEMS.register("pneumatic_sword", () -> new pneumatic_sword(TOOL, MomotinkerToolDefinitions.PNEUMATIC_SWORD));
 
     // public static final RegistryObject<ModifiableArmorItem> aa = ITEMS.register("aa", () -> new aa(MomotinkerToolDefinitions.AAA, EquipmentSlot.HEAD,TOOL, MomotinkerToolDefinitions.AA));
     /*public static final EnumObject<ArmorSlotType, ModifiableArmorItem> aa = new EnumObject.Builder<ArmorSlotType,ModifiableArmorItem>(ArmorSlotType.class)

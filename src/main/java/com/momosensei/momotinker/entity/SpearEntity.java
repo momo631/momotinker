@@ -57,6 +57,14 @@ public class SpearEntity extends Projectile {
         if (entity==null){
             return;
         }
+        for (int dx=-1;dx<=1;dx++){
+            for (int dz=-1;dz<=1;dz++){
+                if (!level.hasChunk(this.chunkPosition().x+dx,this.chunkPosition().z+dz)){
+                    this.discard();
+                    return;
+                }
+            }
+        }
         Vec3 movement =this.getDeltaMovement();
         this.setPos(movement.x+this.getX(),movement.y+this.getY(),movement.z+this.getZ());
         double angle =((this.tickCount * 100 % 360)*Math.PI)/180;

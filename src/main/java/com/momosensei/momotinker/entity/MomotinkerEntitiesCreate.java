@@ -32,14 +32,6 @@ public class MomotinkerEntitiesCreate {
         Level level = player.getLevel();
         EntityType<SpearEntity> entityType = getSpearType(tool.getStats().getInt(MomotinkerToolDefinitions.SLASH_COLOR));
         SpearEntity spear = new SpearEntity(entityType, level, color);
-        for (int dx=-1;dx<=1;dx++){
-            for (int dz=-1;dz<=1;dz++){
-                if (!level.hasChunk(spear.chunkPosition().x+dx,spear.chunkPosition().z+dz)){
-                    spear.discard();
-                    return;
-                }
-            }
-        }
         double x = player.getLookAngle().x;
         double y = player.getLookAngle().y;
         double z = player.getLookAngle().z;
@@ -60,7 +52,6 @@ public class MomotinkerEntitiesCreate {
     public static EntityType<SpearEntity> getSpearType(int index) {
         return MomotinkerEntities.spear_entity.get();
     }
-
     public static float getDamageMultiplier(ToolStack tool) {
         int a = tool.getModifierLevel(MomotinkerModifiers.breakthroughstars.getId());
         if (a == 0) {
@@ -116,5 +107,24 @@ public class MomotinkerEntitiesCreate {
             level.addFreshEntity(entity);
             ToolDamageUtil.damageAnimated(tool, 1, player, InteractionHand.MAIN_HAND);
         }
+    }
+    public static void createPull(ServerPlayer player) {
+        Level level = player.getLevel();
+        if (level.isClientSide)return;
+        if ((!player.getMainHandItem().is(MomotinkerItem.pneumatic_sword.get())&&!player.getOffhandItem().is(MomotinkerItem.pneumatic_sword.get()))|| player.getAttackStrengthScale(0) != 1) {
+            return;
+        }
+        ToolStack tool = ToolStack.from(player.getMainHandItem());
+        if (tool.isBroken()) {
+            return;
+        }
+        PullEntity pull = new PullEntity(MomotinkerEntities.pull_entity.get(), level);
+        pull.setOwner(player);
+        pull.setToolstack(tool);
+        pull.noPhysics = false;
+        pull.setDeltaMovement(player.getLookAngle());
+        pull.setPos(player.getX() , player.getY() + 0.7 * player.getBbHeight() , player.getZ() );
+        level.addFreshEntity(pull);
+        ToolDamageUtil.damageAnimated(tool, 1, player, InteractionHand.MAIN_HAND);
     }
 }
