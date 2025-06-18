@@ -2,7 +2,7 @@ package com.momosensei.momotinker.tool;
 
 
 import com.momosensei.momotinker.register.MomotinkerItem;
-import com.momosensei.momotinker.util.attackUtil;
+import com.momosensei.momotinker.util.AttackUtil;
 import net.minecraft.core.BlockPos;
 import net.minecraft.network.chat.Component;
 import net.minecraft.server.level.ServerPlayer;
@@ -77,7 +77,7 @@ public class chain_sword extends ModifiableItem {
                 List<Entity> ls0 = level.getEntities(living, living.getBoundingBox().expandTowards(player.getLookAngle().x(), player.getLookAngle().y(), player.getLookAngle().z()).inflate(1, 1, 1));
                 for (Entity targets : ls0) {
                     if (targets != player) {
-                        attackUtil.attackEntity(tool, player, InteractionHand.MAIN_HAND, targets, () -> 1, true, Util.getSlotType(InteractionHand.MAIN_HAND), tool.getStats().get(ToolStats.ATTACK_DAMAGE),a, false, true, true,true);
+                        AttackUtil.attackEntity(tool, player, InteractionHand.MAIN_HAND, targets, () -> 1, true, Util.getSlotType(InteractionHand.MAIN_HAND), tool.getStats().get(ToolStats.ATTACK_DAMAGE),a, false, true, true,true);
                     }
                 }
             }

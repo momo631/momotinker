@@ -43,7 +43,7 @@ import java.util.function.DoubleSupplier;
 
 import static slimeknights.tconstruct.library.tools.helper.ToolAttackUtil.*;
 
-public class attackUtil {
+public class AttackUtil {
     private static void disableKnockback(AttributeInstance instance) {
         instance.addTransientModifier(ANTI_KNOCKBACK_MODIFIER);
     }
@@ -144,7 +144,7 @@ public class attackUtil {
         boolean canceledKnockback = false;
         if (knockback < 0.4f) {
             canceledKnockback = true;
-            knockbackModifier.ifPresent(attackUtil::disableKnockback);
+            knockbackModifier.ifPresent(AttackUtil::disableKnockback);
         } else if (targetLiving != null) {
             knockback -= 0.4f;
         }
@@ -159,7 +159,7 @@ public class attackUtil {
         ModifierLootingHandler.setLootingSlot(attackerLiving, EquipmentSlot.MAINHAND);
 
         if (canceledKnockback) {
-            knockbackModifier.ifPresent(attackUtil::enableKnockback);
+            knockbackModifier.ifPresent(AttackUtil::enableKnockback);
         }
 
         if (!didHit) {

@@ -74,5 +74,6 @@ public class MomotinkerModifiers {
     public static final StaticModifier<SuperancientMetalsRealC> superancientmetalsrealc=MODIFIERS.register("superancientmetalsrealc", SuperancientMetalsRealC::new);
     public static final StaticModifier<PolarizedSpacetime> polarizedspacetime=MODIFIERS.register("polarizedspacetime", PolarizedSpacetime::new);
     public static final StaticModifier<TimeEchoes> timeechoes=MODIFIERS.register("timeechoes", TimeEchoes::new);
+    public static final StaticModifier<PressureSprint> pressuresprint=MODIFIERS.register("pressuresprint", PressureSprint::new);
 
 }

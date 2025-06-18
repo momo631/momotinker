@@ -6,7 +6,7 @@ import com.momosensei.momotinker.Momotinker;
 import com.momosensei.momotinker.register.MomotinkerConfig;
 import com.momosensei.momotinker.register.MomotinkerEffects;
 import com.momosensei.momotinker.register.MomotinkerModifiers;
-import com.momosensei.momotinker.util.attackUtil;
+import com.momosensei.momotinker.util.AttackUtil;
 import net.minecraft.ChatFormatting;
 import net.minecraft.network.chat.Component;
 import net.minecraft.resources.ResourceLocation;
@@ -124,10 +124,10 @@ public class SuperancientMetalsRealB extends momomodifier {
                     Vec3 d=new Vec3(targets.getX(),targets.getY(),targets.getZ());
                     float e = (float) c.distanceTo(d);
                     if (e>2&&e<b+2){
-                        attackUtil.attackEntity(tool, player, InteractionHand.MAIN_HAND, targets, () -> 1, true, Util.getSlotType(InteractionHand.MAIN_HAND), tool.getStats().get(ToolStats.ATTACK_DAMAGE), (b+2-e)*0.1f, false, true, true, false);
+                        AttackUtil.attackEntity(tool, player, InteractionHand.MAIN_HAND, targets, () -> 1, true, Util.getSlotType(InteractionHand.MAIN_HAND), tool.getStats().get(ToolStats.ATTACK_DAMAGE), (b+2-e)*0.1f, false, true, true, false);
                     }else
                     if (e<2) {
-                        attackUtil.attackEntity(tool, player, InteractionHand.MAIN_HAND, targets, () -> 1, true, Util.getSlotType(InteractionHand.MAIN_HAND), tool.getStats().get(ToolStats.ATTACK_DAMAGE), (b+2)*0.1f, false, true, true, false);
+                        AttackUtil.attackEntity(tool, player, InteractionHand.MAIN_HAND, targets, () -> 1, true, Util.getSlotType(InteractionHand.MAIN_HAND), tool.getStats().get(ToolStats.ATTACK_DAMAGE), (b+2)*0.1f, false, true, true, false);
                     }
                 }
             }
@@ -208,7 +208,7 @@ public class SuperancientMetalsRealB extends momomodifier {
                 List<LivingEntity> lis = level.getEntitiesOfClass(LivingEntity.class, lightning.getBoundingBox().inflate(1));
                 for (LivingEntity entity : lis) {
                     if (entity != null&&entity!=player) {
-                        attackUtil.attackEntity(tool, player, InteractionHand.MAIN_HAND, entity, ()->1, true, Util.getSlotType(InteractionHand.MAIN_HAND), damage, damagemultiplier,false, true, true,false);
+                        AttackUtil.attackEntity(tool, player, InteractionHand.MAIN_HAND, entity, ()->1, true, Util.getSlotType(InteractionHand.MAIN_HAND), damage, damagemultiplier,false, true, true,false);
                     }
                 }
             }

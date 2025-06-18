@@ -2,6 +2,7 @@ package com.momosensei.momotinker.entity;
 
 
 import com.momosensei.momotinker.register.MomotinkerEntities;
+import com.momosensei.momotinker.register.MomotinkerItem;
 import net.minecraft.core.Direction;
 import net.minecraft.nbt.CompoundTag;
 import net.minecraft.world.entity.Entity;
@@ -20,10 +21,13 @@ import net.minecraft.world.phys.Vec3;
 import org.jetbrains.annotations.NotNull;
 import slimeknights.tconstruct.library.tools.nbt.ToolStack;
 
+import static com.momosensei.momotinker.Momotinker.getResource;
+
 
 public class PullEntity extends Projectile {
     public ToolStack tool;
-    private boolean isPulling = false;
+    private boolean isPullingBlock = false;
+    private boolean isPullingEntity = false;
     public PullEntity(EntityType<? extends Projectile> p_37248_, Level p_37249_) {
         super(p_37248_, p_37249_);
         this.setNoGravity(true);
@@ -47,7 +51,15 @@ public class PullEntity extends Projectile {
     public void tick() {
         this.tickCount++;
         if (this.tickCount>200) this.discard();
-        if (!isPulling){
+        for (int dx=-1;dx<=1;dx++){
+            for (int dz=-1;dz<=1;dz++){
+                if (!level.hasChunk(this.chunkPosition().x+dx,this.chunkPosition().z+dz)){
+                    this.discard();
+                    return;
+                }
+            }
+        }
+        if (!isPullingBlock&&!isPullingEntity){
             if (this.onGround){
                 this.onHit(new BlockHitResult(this.position(), Direction.UP,this.blockPosition().below(),false));
             }
@@ -67,8 +79,12 @@ public class PullEntity extends Projectile {
         }
         if (this.getOwner() instanceof Player player) {
             Entity origin = this;
-            if (isPulling) {
-                double pullSpeed = 2.5D;
+            if (isPullingBlock||isPullingEntity) {
+                double pullSpeed = 1.5D;
+                if (isPullingEntity) {
+                    pullSpeed += 0.5D;
+                    if (player.position().subtract(origin.position()).length()<1.75)this.discard();
+                }
                 Vec3 distance = origin.position().subtract(player.position().add(0, player.getBbHeight() / 2, 0));
                 Vec3 motion = distance.normalize().scale(distance.length() < 5 ? (pullSpeed * distance.length()) / 5 : pullSpeed);
                 if (Math.abs(distance.y) < 0.1D)
@@ -77,8 +93,8 @@ public class PullEntity extends Projectile {
                     motion = new Vec3(0, motion.y, 0);
                 player.setDeltaMovement(motion);
                 player.hurtMarked = true;
+                if (player.getUseItem().finishUsingItem(this.level,player).is(MomotinkerItem.pneumatic_sword.get()))this.discard();
             }
-            if (player.position().subtract(origin.position()).length()<1.5)this.discard();
             if (player.isShiftKeyDown())this.discard();
         }
     }
@@ -86,16 +102,19 @@ public class PullEntity extends Projectile {
     @Override
     protected void onHitBlock(@NotNull BlockHitResult p_37258_) {
         super.onHitBlock(p_37258_);
-        this.isPulling = true;
+        this.isPullingBlock = true;
     }
     @Override
     protected void onHitEntity(@NotNull EntityHitResult p_37259_) {
         super.onHitEntity(p_37259_);
         if(!this.level.isClientSide && getOwner() instanceof Player player && p_37259_.getEntity() != player) {
-            if((p_37259_.getEntity() instanceof LivingEntity || p_37259_.getEntity() instanceof EnderDragonPart)) {
-                this.isPulling = true;
+            if((p_37259_.getEntity() instanceof LivingEntity || p_37259_.getEntity() instanceof EnderDragonPart)&& !(p_37259_.getEntity() instanceof PullEntity)) {
+                this.isPullingEntity = true;
                 this.setDeltaMovement(this.getDeltaMovement().scale(0));
                 this.setPos(p_37259_.getEntity().position().add(0,p_37259_.getEntity().getBbHeight()*0.8f,0));
+                if (!this.tool.getPersistentData().getBoolean(getResource("cansnick"))) {
+                    this.tool.getPersistentData().putBoolean(getResource("cansnick"), true);
+                }
             }
         }
     }
@@ -106,12 +125,14 @@ public class PullEntity extends Projectile {
     @Override
     public void readAdditionalSaveData(CompoundTag tag) {
         super.readAdditionalSaveData(tag);
-        isPulling = tag.getBoolean("isPulling");
+        isPullingBlock = tag.getBoolean("isPullingBlock");
+        isPullingEntity = tag.getBoolean("isPullingEntity");
     }
 
     @Override
     public void addAdditionalSaveData(CompoundTag tag) {
         super.addAdditionalSaveData(tag);
-        tag.putBoolean("isPulling", isPulling);
+        tag.putBoolean("isPullingBlock", isPullingBlock);
+        tag.putBoolean("isPullingEntity", isPullingEntity);
     }
 }

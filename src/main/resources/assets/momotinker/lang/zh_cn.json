@@ -246,6 +246,9 @@
   "item.momotinker.chain_sword": "链锯剑",
   "item.momotinker.chain_sword.description": "[双手武器]\n右键使用期间可对前方小范围生物进行持续打击，使用时间过长则会过热无法正常使用，攻速越高伤害越高",
 
+  "item.momotinker.pneumatic_sword": "气动剑",
+  "item.momotinker.pneumatic_sword.description": "高机动性的近战武器，右键可短暂向前上方冲刺，按下工具技能可发射绳索将自己拉向被击中的方块或生物（按“shift”可提前取消绳索），若目标是生物时会强化下一次在空中的冲刺和该冲刺伤害，若副手存在另一把气动剑则提升冲刺性能",
+
   "momotinker.tool.tooltip.offhand_hastool": "错误:副手有物品",
 
 

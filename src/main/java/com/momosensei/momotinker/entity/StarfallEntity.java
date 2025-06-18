@@ -2,7 +2,7 @@ package com.momosensei.momotinker.entity;
 
 import com.momosensei.momotinker.register.MomotinkerConfig;
 import com.momosensei.momotinker.register.MomotinkerEntities;
-import com.momosensei.momotinker.util.attackUtil;
+import com.momosensei.momotinker.util.AttackUtil;
 import net.minecraft.core.Direction;
 import net.minecraft.core.particles.ParticleTypes;
 import net.minecraft.server.level.ServerLevel;
@@ -92,7 +92,7 @@ public class StarfallEntity extends Projectile {
             for (LivingEntity entity : lis) {
                 if (entity != null&&this.getOwner() instanceof Player player&&entity!=this.getOwner()) {
                     entity.invulnerableTime = 0;
-                    attackUtil.attackEntity(this.tool, player, InteractionHand.MAIN_HAND, entity, ()->1, true, Util.getSlotType(InteractionHand.MAIN_HAND), this.damage, this.damagemultiplier,false, true, true,false);
+                    AttackUtil.attackEntity(this.tool, player, InteractionHand.MAIN_HAND, entity, ()->1, true, Util.getSlotType(InteractionHand.MAIN_HAND), this.damage, this.damagemultiplier,false, true, true,false);
                 }
             }
         }

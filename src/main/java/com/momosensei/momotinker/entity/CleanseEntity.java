@@ -2,7 +2,7 @@ package com.momosensei.momotinker.entity;
 
 import com.momosensei.momotinker.register.MomotinkerConfig;
 import com.momosensei.momotinker.register.MomotinkerEntities;
-import com.momosensei.momotinker.util.attackUtil;
+import com.momosensei.momotinker.util.AttackUtil;
 import net.minecraft.core.Direction;
 import net.minecraft.core.particles.ParticleTypes;
 import net.minecraft.network.syncher.EntityDataAccessor;
@@ -93,7 +93,7 @@ public class CleanseEntity extends Projectile {
                 for (Mob mob : lis) {
                     if (mob != null ) {
                         mob.invulnerableTime = 0;
-                        attackUtil.attackEntity(this.tool, player, InteractionHand.MAIN_HAND, mob, () -> 1, true, Util.getSlotType(InteractionHand.MAIN_HAND), this.damage,0.5f ,false, true, true,true);
+                        AttackUtil.attackEntity(this.tool, player, InteractionHand.MAIN_HAND, mob, () -> 1, true, Util.getSlotType(InteractionHand.MAIN_HAND), this.damage,0.5f ,false, true, true,true);
                         mob.invulnerableTime = 0;
                     }
                 }
@@ -102,7 +102,7 @@ public class CleanseEntity extends Projectile {
                 for (Mob mob : lis) {
                     if (mob != null ) {
                         mob.invulnerableTime = 0;
-                        attackUtil.attackEntity(this.tool, player, InteractionHand.MAIN_HAND, mob, () -> 1, true, Util.getSlotType(InteractionHand.MAIN_HAND), this.damage, 0.6f ,false, true, true,true);
+                        AttackUtil.attackEntity(this.tool, player, InteractionHand.MAIN_HAND, mob, () -> 1, true, Util.getSlotType(InteractionHand.MAIN_HAND), this.damage, 0.6f ,false, true, true,true);
                         mob.invulnerableTime = 0;
                     }
                 }
@@ -156,7 +156,7 @@ public class CleanseEntity extends Projectile {
             for (Mob mob : lis) {
                 if (mob != null&&this.getOwner() instanceof Player player) {
                     mob.invulnerableTime = 0;
-                    attackUtil.attackEntity(this.tool, player, InteractionHand.MAIN_HAND, mob, ()->1, true, Util.getSlotType(InteractionHand.MAIN_HAND), this.damage, 20f,false, true, true,false);
+                    AttackUtil.attackEntity(this.tool, player, InteractionHand.MAIN_HAND, mob, ()->1, true, Util.getSlotType(InteractionHand.MAIN_HAND), this.damage, 20f,false, true, true,false);
                     mob.invulnerableTime = 0;
                 }
             }

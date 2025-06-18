@@ -6,7 +6,7 @@ import com.momosensei.momotinker.network.Channel;
 import com.momosensei.momotinker.network.packet.CoolTimeChargeA;
 import com.momosensei.momotinker.network.packet.CoolTimeChargeB;
 import com.momosensei.momotinker.register.MomotinkerModifiers;
-import com.momosensei.momotinker.util.attackUtil;
+import com.momosensei.momotinker.util.AttackUtil;
 import net.minecraft.ChatFormatting;
 import net.minecraft.core.particles.ParticleTypes;
 import net.minecraft.network.chat.Component;
@@ -64,7 +64,7 @@ public class ModEvent {
                 }
             }
             if (CoolTimeB.getCoolTime() == 578&&player.isAlive()){
-                attackUtil.executeall(player.level, player.getX(), player.getY(), player.getZ(), player);
+                AttackUtil.executeall(player.level, player.getX(), player.getY(), player.getZ(), player);
             }
             if (player instanceof ServerPlayer player1) {
                 if (CoolTimeA.getCoolTime() < 0) {

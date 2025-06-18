@@ -110,21 +110,41 @@ public class MomotinkerEntitiesCreate {
     }
     public static void createPull(ServerPlayer player) {
         Level level = player.getLevel();
-        if (level.isClientSide)return;
-        if ((!player.getMainHandItem().is(MomotinkerItem.pneumatic_sword.get())&&!player.getOffhandItem().is(MomotinkerItem.pneumatic_sword.get()))|| player.getAttackStrengthScale(0) != 1) {
+        if (level.isClientSide) return;
+        ToolStack tool1 = ToolStack.from(player.getMainHandItem());
+        ToolStack tool2 = ToolStack.from(player.getMainHandItem());
+        if ((!player.getMainHandItem().is(MomotinkerItem.pneumatic_sword.get()) && !player.getOffhandItem().is(MomotinkerItem.pneumatic_sword.get())) || player.getAttackStrengthScale(0) != 1) {
             return;
         }
-        ToolStack tool = ToolStack.from(player.getMainHandItem());
-        if (tool.isBroken()) {
-            return;
+        if (player.getMainHandItem().is(MomotinkerItem.pneumatic_sword.get())) {
+            if (tool1.isBroken()) {
+                return;
+            }
+            PullEntity pull = new PullEntity(MomotinkerEntities.pull_entity.get(), level);
+            double x = player.getLookAngle().x;
+            double z = player.getLookAngle().z;
+            pull.setOwner(player);
+            pull.setToolstack(tool1);
+            pull.noPhysics = false;
+            pull.setDeltaMovement(player.getLookAngle());
+            pull.setPos(player.getX() + x+z*0.5, player.getY() + 0.5 * player.getBbHeight() , player.getZ() + z+x*0.5 );
+            level.addFreshEntity(pull);
+            ToolDamageUtil.damageAnimated(tool1, 1, player, InteractionHand.MAIN_HAND);
         }
-        PullEntity pull = new PullEntity(MomotinkerEntities.pull_entity.get(), level);
-        pull.setOwner(player);
-        pull.setToolstack(tool);
-        pull.noPhysics = false;
-        pull.setDeltaMovement(player.getLookAngle());
-        pull.setPos(player.getX() , player.getY() + 0.7 * player.getBbHeight() , player.getZ() );
-        level.addFreshEntity(pull);
-        ToolDamageUtil.damageAnimated(tool, 1, player, InteractionHand.MAIN_HAND);
+        if (player.getOffhandItem().is(MomotinkerItem.pneumatic_sword.get())) {
+            if (tool2.isBroken()) {
+                return;
+            }
+            PullEntity pull = new PullEntity(MomotinkerEntities.pull_entity.get(), level);
+            double x = player.getLookAngle().x;
+            double z = player.getLookAngle().z;
+            pull.setOwner(player);
+            pull.setToolstack(tool2);
+            pull.noPhysics = false;
+            pull.setDeltaMovement(player.getLookAngle());
+            pull.setPos(player.getX() + x-z*0.5, player.getY() + 0.5 * player.getBbHeight(), player.getZ() + z-x*0.5);
+            level.addFreshEntity(pull);
+            ToolDamageUtil.damageAnimated(tool2, 1, player, InteractionHand.OFF_HAND);
+        }
     }
 }

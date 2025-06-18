@@ -2,7 +2,7 @@ package com.momosensei.momotinker.tool;
 
 
 import com.momosensei.momotinker.register.MomotinkerItem;
-import com.momosensei.momotinker.util.attackUtil;
+import com.momosensei.momotinker.util.AttackUtil;
 import net.minecraft.ChatFormatting;
 import net.minecraft.core.BlockPos;
 import net.minecraft.core.particles.ParticleTypes;
@@ -112,7 +112,7 @@ public class eclipse_container extends ModifiableItem {
                 if (player.tickCount % 20 == 1) {
                     for (Entity entity : list1) {
                         if (entity instanceof LivingEntity && entity != player) {
-                            attackUtil.attackEntity(tool, player, InteractionHand.MAIN_HAND, entity, () -> 1, true, Util.getSlotType(InteractionHand.MAIN_HAND), tool.getStats().get(ToolStats.ATTACK_DAMAGE), 0.25f, false, true, false,true);
+                            AttackUtil.attackEntity(tool, player, InteractionHand.MAIN_HAND, entity, () -> 1, true, Util.getSlotType(InteractionHand.MAIN_HAND), tool.getStats().get(ToolStats.ATTACK_DAMAGE), 0.25f, false, true, false,true);
                         }
                     }
                 }
