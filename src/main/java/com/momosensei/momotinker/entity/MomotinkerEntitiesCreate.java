@@ -116,18 +116,19 @@ public class MomotinkerEntitiesCreate {
         if ((!player.getMainHandItem().is(MomotinkerItem.pneumatic_sword.get()) && !player.getOffhandItem().is(MomotinkerItem.pneumatic_sword.get())) || player.getAttackStrengthScale(0) != 1) {
             return;
         }
+        int a = 15;
+        double x = player.getLookAngle().x*0.8;
+        double z = player.getLookAngle().z*0.8;
         if (player.getMainHandItem().is(MomotinkerItem.pneumatic_sword.get())) {
             if (tool1.isBroken()) {
                 return;
             }
             PullEntity pull = new PullEntity(MomotinkerEntities.pull_entity.get(), level);
-            double x = player.getLookAngle().x;
-            double z = player.getLookAngle().z;
             pull.setOwner(player);
             pull.setToolstack(tool1);
             pull.noPhysics = false;
             pull.setDeltaMovement(player.getLookAngle());
-            pull.setPos(player.getX() + x+z*0.5, player.getY() + 0.5 * player.getBbHeight() , player.getZ() + z+x*0.5 );
+            pull.setPos(player.getX()+Math.cos(a)*x+Math.sin(a)*z, player.getY() + 0.5 * player.getBbHeight() , player.getZ()-Math.sin(a)*x+Math.cos(a)*z);
             level.addFreshEntity(pull);
             ToolDamageUtil.damageAnimated(tool1, 1, player, InteractionHand.MAIN_HAND);
         }
@@ -136,13 +137,11 @@ public class MomotinkerEntitiesCreate {
                 return;
             }
             PullEntity pull = new PullEntity(MomotinkerEntities.pull_entity.get(), level);
-            double x = player.getLookAngle().x;
-            double z = player.getLookAngle().z;
             pull.setOwner(player);
             pull.setToolstack(tool2);
             pull.noPhysics = false;
             pull.setDeltaMovement(player.getLookAngle());
-            pull.setPos(player.getX() + x-z*0.5, player.getY() + 0.5 * player.getBbHeight(), player.getZ() + z-x*0.5);
+            pull.setPos(player.getX()+Math.cos(a)*x-Math.sin(a)*z, player.getY() + 0.5 * player.getBbHeight(), player.getZ()+Math.sin(a)*x+Math.cos(a)*z);
             level.addFreshEntity(pull);
             ToolDamageUtil.damageAnimated(tool2, 1, player, InteractionHand.OFF_HAND);
         }
