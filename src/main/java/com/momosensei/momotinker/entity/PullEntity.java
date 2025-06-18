@@ -46,38 +46,39 @@ public class PullEntity extends Projectile {
     @Override
     public void tick() {
         this.tickCount++;
-        if (this.tickCount>80) this.discard();
-        if (this.onGround){
-            this.onHit(new BlockHitResult(this.position(), Direction.UP,this.blockPosition().below(),false));
-        }
-        HitResult hitresult = this.level.clip(new ClipContext(this.position(), this.position().add(this.getDeltaMovement()), ClipContext.Block.COLLIDER, ClipContext.Fluid.NONE, this));
-        EntityHitResult entityhitresult = ProjectileUtil.getEntityHitResult(this.level,this,this.position(), this.position().add(this.getDeltaMovement()),this.getBoundingBox().expandTowards(this.getDeltaMovement()).inflate(2),this::canHitEntity);
-        if (entityhitresult != null && entityhitresult.getType() != HitResult.Type.MISS) {
-            hitresult = entityhitresult;
-        }
-        if (hitresult.getType()!= HitResult.Type.MISS){
-            this.onHit(hitresult);
-        }
+        if (this.tickCount>200) this.discard();
         if (!isPulling){
+            if (this.onGround){
+                this.onHit(new BlockHitResult(this.position(), Direction.UP,this.blockPosition().below(),false));
+            }
+            HitResult hitresult = this.level.clip(new ClipContext(this.position(), this.position().add(this.getDeltaMovement()), ClipContext.Block.COLLIDER, ClipContext.Fluid.NONE, this));
+            EntityHitResult entityhitresult = ProjectileUtil.getEntityHitResult(this.level,this,this.position(), this.position().add(this.getDeltaMovement()),this.getBoundingBox().expandTowards(this.getDeltaMovement()).inflate(2),this::canHitEntity);
+            if (entityhitresult != null && entityhitresult.getType() != HitResult.Type.MISS) {
+                hitresult = entityhitresult;
+            }
+            if (hitresult.getType()!= HitResult.Type.MISS){
+                this.onHit(hitresult);
+            }
             Vec3 movement =this.getDeltaMovement();
             this.setPos(movement.x+this.getX(),movement.y+this.getY(),movement.z+this.getZ());
             if (getMold(movement)<=2){
-                this.setDeltaMovement(movement.scale(7));
+                this.setDeltaMovement(movement.scale(5));
             }
         }
-        if (this.getOwner() instanceof Player player&& isPulling) {
+        if (this.getOwner() instanceof Player player) {
             Entity origin = this;
-            double brakeZone = 6D;
-            double pullSpeed = 2D;
-            Vec3 distance = origin.position().subtract(player.position().add(0, player.getBbHeight() / 2, 0));
-            Vec3 motion = distance.normalize().scale(distance.length() < brakeZone ? (pullSpeed * distance.length()) / brakeZone : pullSpeed);
-            if (Math.abs(distance.y) < 0.1D)
-                motion = new Vec3(motion.x, 0, motion.z);
-            if (new Vec3(distance.x, 0, distance.z).length() < new Vec3(player.getBbWidth() / 2, 0, player.getBbWidth() / 2).length() / 1.4)
-                motion = new Vec3(0, motion.y, 0);
-            player.setDeltaMovement(motion);
-            player.hurtMarked = true;
-            if (origin.position().subtract(player.position()).length()<0.1)this.discard();
+            if (isPulling) {
+                double pullSpeed = 2.5D;
+                Vec3 distance = origin.position().subtract(player.position().add(0, player.getBbHeight() / 2, 0));
+                Vec3 motion = distance.normalize().scale(distance.length() < 5 ? (pullSpeed * distance.length()) / 5 : pullSpeed);
+                if (Math.abs(distance.y) < 0.1D)
+                    motion = new Vec3(motion.x, 0, motion.z);
+                if (new Vec3(distance.x, 0, distance.z).length() < new Vec3(player.getBbWidth() / 2, 0, player.getBbWidth() / 2).length() / 1.4)
+                    motion = new Vec3(0, motion.y, 0);
+                player.setDeltaMovement(motion);
+                player.hurtMarked = true;
+            }
+            if (player.position().subtract(origin.position()).length()<1.5)this.discard();
             if (player.isShiftKeyDown())this.discard();
         }
     }
@@ -93,7 +94,8 @@ public class PullEntity extends Projectile {
         if(!this.level.isClientSide && getOwner() instanceof Player player && p_37259_.getEntity() != player) {
             if((p_37259_.getEntity() instanceof LivingEntity || p_37259_.getEntity() instanceof EnderDragonPart)) {
                 this.isPulling = true;
-                this.setPos(p_37259_.getEntity().position());
+                this.setDeltaMovement(this.getDeltaMovement().scale(0));
+                this.setPos(p_37259_.getEntity().position().add(0,p_37259_.getEntity().getBbHeight()*0.8f,0));
             }
         }
     }
