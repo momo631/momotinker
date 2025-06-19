@@ -1,6 +1,8 @@
 package com.momosensei.momotinker.tool;
 
 
+import com.momosensei.momotinker.network.Channel;
+import com.momosensei.momotinker.network.packet.ToolsTimeCharge;
 import com.momosensei.momotinker.register.MomotinkerItem;
 import com.momosensei.momotinker.util.AttackUtil;
 import net.minecraft.core.BlockPos;
@@ -8,6 +10,7 @@ import net.minecraft.core.particles.ParticleTypes;
 import net.minecraft.network.chat.Component;
 import net.minecraft.server.level.ServerLevel;
 import net.minecraft.server.level.ServerPlayer;
+import net.minecraft.util.Mth;
 import net.minecraft.world.InteractionHand;
 import net.minecraft.world.InteractionResultHolder;
 import net.minecraft.world.entity.Entity;
@@ -60,10 +63,10 @@ public class pneumatic_sword extends ModifiableItem {
                     if (!data1.getBoolean(getResource("snicking"))) {
                         data1.putBoolean(getResource("snicking"), true);
                     }
-                }
+                }else
                 if (data1.getInt(getResource("issnick"))>0&&!player.getOffhandItem().is(MomotinkerItem.pneumatic_sword.get())){
                     data1.putInt(getResource("issnick"),data1.getInt(getResource("issnick"))-4);
-                }
+                }else
                 if (data2.getInt(getResource("issnick"))>0&&!player.getMainHandItem().is(MomotinkerItem.pneumatic_sword.get())){
                     data2.putInt(getResource("issnick"),data2.getInt(getResource("issnick"))-4);
                 }
@@ -76,62 +79,84 @@ public class pneumatic_sword extends ModifiableItem {
         if (entityIn instanceof Player player) {
             ModDataNBT data1 = ToolStack.from(player.getMainHandItem()).getPersistentData();
             ModDataNBT data2 = ToolStack.from(player.getOffhandItem()).getPersistentData();
-            if (data1.getInt(getResource("issnick"))>0&&!player.getOffhandItem().is(MomotinkerItem.pneumatic_sword.get())){
-                data1.putInt(getResource("issnick"),data1.getInt(getResource("issnick"))-1);
-                if (player.isOnGround())data1.putInt(getResource("issnick"),data1.getInt(getResource("issnick"))-4);
-                player.hasImpulse = true;
-                player.startAutoSpinAttack(4);
-                player.setDeltaMovement(player.getLookAngle().scale(2));
-                player.fallDistance = 0;
-                List<LivingEntity> ls0 = player.level.getEntitiesOfClass(LivingEntity.class, player.getBoundingBox().inflate(1));
-                for (LivingEntity targets : ls0) {
-                    if (targets != player && targets != null) {
-                        AttackUtil.attackEntity(ToolStack.from(player.getMainHandItem()), player, InteractionHand.MAIN_HAND, targets, () -> 1, true, Util.getSlotType(InteractionHand.MAIN_HAND), ToolStack.from(player.getMainHandItem()).getStats().get(ToolStats.ATTACK_DAMAGE), 1f, false, true, true, false);
+            if (player.getMainHandItem().is(MomotinkerItem.pneumatic_sword.get())&&player.getOffhandItem().is(MomotinkerItem.pneumatic_sword.get())){
+                if (data1.getInt(getResource("issnick")) > 0) {
+                    data1.putInt(getResource("issnick"), data1.getInt(getResource("issnick")) - 3);
+                    if (player.isOnGround() && !data1.getBoolean(getResource("snicking"))) {
+                        data1.putInt(getResource("issnick"), data1.getInt(getResource("issnick")) - 4);
                     }
+                    player.hasImpulse = true;
+                    player.startAutoSpinAttack(8);
+                    List<LivingEntity> ls0 = player.level.getEntitiesOfClass(LivingEntity.class, player.getBoundingBox().inflate(1));
+                    for (LivingEntity targets : ls0) {
+                        if (targets != player && targets != null) {
+                            AttackUtil.attackEntity(ToolStack.from(player.getMainHandItem()), player, InteractionHand.MAIN_HAND, targets, () -> 1, true, Util.getSlotType(InteractionHand.MAIN_HAND), ToolStack.from(player.getMainHandItem()).getStats().get(ToolStats.ATTACK_DAMAGE) + ToolStack.from(player.getOffhandItem()).getStats().get(ToolStats.ATTACK_DAMAGE), 1f, false, true, true, false);
+                        }
+                    }
+                    double c = 3;
+                    if (data1.getBoolean(getResource("snicking")) && ls0.size() != 1) {
+                        data1.putInt(getResource("issnick"), data1.getInt(getResource("issnick")) + 1);
+                        c = 0.1;
+                        player.setNoGravity(true);
+                    }
+                    player.setDeltaMovement(player.getLookAngle().scale(c));
+                    player.fallDistance = 0;
+                }
+                if (player instanceof ServerPlayer player1) {
+                    float perc = Mth.clamp( (3-data1.getFloat(getResource("pullcool"))) / 3, 0, 1);
+                    Channel.sendToPlayer(new ToolsTimeCharge(perc), player1);
                 }
             }else
-            if (data2.getInt(getResource("issnick"))>0&&!player.getMainHandItem().is(MomotinkerItem.pneumatic_sword.get())){
-                data2.putInt(getResource("issnick"),data2.getInt(getResource("issnick"))-1);
-                if (player.isOnGround())data2.putInt(getResource("issnick"),data2.getInt(getResource("issnick"))-4);
-                player.hasImpulse = true;
-                player.startAutoSpinAttack(4);
-                player.setDeltaMovement(player.getLookAngle().scale(2));
-                player.fallDistance = 0;
-                List<LivingEntity> ls0 = player.level.getEntitiesOfClass(LivingEntity.class, player.getBoundingBox().inflate(1));
-                for (LivingEntity targets : ls0) {
-                    if (targets != player && targets != null) {
-                        AttackUtil.attackEntity(ToolStack.from(player.getOffhandItem()), player, InteractionHand.OFF_HAND, targets, () -> 1, true, Util.getSlotType(InteractionHand.OFF_HAND), ToolStack.from(player.getOffhandItem()).getStats().get(ToolStats.ATTACK_DAMAGE), 1f, false, true, true, false);
+            if (player.getMainHandItem().is(MomotinkerItem.pneumatic_sword.get())&&!player.getOffhandItem().is(MomotinkerItem.pneumatic_sword.get())){
+                if (data1.getInt(getResource("issnick"))>0) {
+                    data1.putInt(getResource("issnick"), data1.getInt(getResource("issnick")) - 1);
+                    if (player.isOnGround())
+                        data1.putInt(getResource("issnick"), data1.getInt(getResource("issnick")) - 4);
+                    player.hasImpulse = true;
+                    player.startAutoSpinAttack(4);
+                    player.setDeltaMovement(player.getLookAngle().scale(3));
+                    player.fallDistance = 0;
+                    List<LivingEntity> ls0 = player.level.getEntitiesOfClass(LivingEntity.class, player.getBoundingBox().inflate(1));
+                    for (LivingEntity targets : ls0) {
+                        if (targets != player && targets != null) {
+                            AttackUtil.attackEntity(ToolStack.from(player.getMainHandItem()), player, InteractionHand.MAIN_HAND, targets, () -> 1, true, Util.getSlotType(InteractionHand.MAIN_HAND), ToolStack.from(player.getMainHandItem()).getStats().get(ToolStats.ATTACK_DAMAGE), 1f, false, true, true, false);
+                        }
                     }
+                }
+                if (player instanceof ServerPlayer player1) {
+                    float perc = Mth.clamp((8-data1.getFloat(getResource("pullcool"))) / 8, 0, 1);
+                    Channel.sendToPlayer(new ToolsTimeCharge(perc), player1);
                 }
             }else
-            if (data1.getInt(getResource("issnick"))>0&&player.getOffhandItem().is(MomotinkerItem.pneumatic_sword.get())) {
-                data1.putInt(getResource("issnick"), data1.getInt(getResource("issnick")) - 3);
-                if (player.isOnGround()&&!data1.getBoolean(getResource("snicking"))) {
-                    data1.putInt(getResource("issnick"), data1.getInt(getResource("issnick")) - 4);
-                }
-                player.hasImpulse = true;
-                player.startAutoSpinAttack(8);
-                List<LivingEntity> ls0 = player.level.getEntitiesOfClass(LivingEntity.class, player.getBoundingBox().inflate(1));
-                for (LivingEntity targets : ls0) {
-                    if (targets != player && targets != null) {
-                        AttackUtil.attackEntity(ToolStack.from(player.getMainHandItem()), player, InteractionHand.MAIN_HAND, targets, () -> 1, true, Util.getSlotType(InteractionHand.MAIN_HAND), ToolStack.from(player.getMainHandItem()).getStats().get(ToolStats.ATTACK_DAMAGE)+ToolStack.from(player.getOffhandItem()).getStats().get(ToolStats.ATTACK_DAMAGE), 1f, false, true, true, false);
+            if (!player.getMainHandItem().is(MomotinkerItem.pneumatic_sword.get())&&player.getOffhandItem().is(MomotinkerItem.pneumatic_sword.get())){
+                if (data2.getInt(getResource("issnick"))>0) {
+                    data2.putInt(getResource("issnick"), data2.getInt(getResource("issnick")) - 1);
+                    if (player.isOnGround())
+                        data2.putInt(getResource("issnick"), data2.getInt(getResource("issnick")) - 4);
+                    player.hasImpulse = true;
+                    player.startAutoSpinAttack(4);
+                    player.setDeltaMovement(player.getLookAngle().scale(3));
+                    player.fallDistance = 0;
+                    List<LivingEntity> ls0 = player.level.getEntitiesOfClass(LivingEntity.class, player.getBoundingBox().inflate(1));
+                    for (LivingEntity targets : ls0) {
+                        if (targets != player && targets != null) {
+                            AttackUtil.attackEntity(ToolStack.from(player.getOffhandItem()), player, InteractionHand.OFF_HAND, targets, () -> 1, true, Util.getSlotType(InteractionHand.OFF_HAND), ToolStack.from(player.getOffhandItem()).getStats().get(ToolStats.ATTACK_DAMAGE), 1f, false, true, true, false);
+                        }
                     }
                 }
-                double c = 3;
-                if (data1.getBoolean(getResource("snicking"))&&ls0.size()!=1) {
-                    data1.putInt(getResource("issnick"),data1.getInt(getResource("issnick"))+1);
-                    c = 0.1;
-                    player.setNoGravity(true);
+                if (player instanceof ServerPlayer player1) {
+                    float perc = Mth.clamp((8-data2.getFloat(getResource("pullcool"))) / 8, 0, 1);
+                    Channel.sendToPlayer(new ToolsTimeCharge(perc), player1);
                 }
-                player.setDeltaMovement(player.getLookAngle().scale(c));
-                player.fallDistance = 0;
             }
-            if (data1.getInt(getResource("issnick"))==0&&data1.getBoolean(getResource("snicking"))){
-                data1.putBoolean(getResource("snicking"),false);
+            ModDataNBT data = ToolStack.from(stack).getPersistentData();
+            if (data.getInt(getResource("issnick"))==0&&data.getBoolean(getResource("snicking"))){
+                data.putBoolean(getResource("snicking"),false);
                 player.setNoGravity(false);
             }
-            if (data1.getInt(getResource("issnick"))<0)data1.putInt(getResource("issnick"),0);
-            if (data2.getInt(getResource("issnick"))<0)data2.putInt(getResource("issnick"),0);
+            if (data.getInt(getResource("issnick"))<0)data.putInt(getResource("issnick"),0);
+            if (data.getFloat(getResource("pullcool"))<0)data.putFloat(getResource("pullcool"),0);
+            if (data.getFloat(getResource("pullcool"))>0&&player.tickCount%10==0)data.putFloat(getResource("pullcool"),data.getFloat(getResource("pullcool"))-1);
         }
     }
     public InteractionResultHolder<ItemStack> use(Level level, Player player, InteractionHand hand) {
@@ -166,13 +191,14 @@ public class pneumatic_sword extends ModifiableItem {
             return stack;
         }
         if (livingEntity instanceof Player player) {
-            if (!tool.getPersistentData().getBoolean(getResource("cansnick"))||player.isOnGround()) {
+            if ((!tool.getPersistentData().getBoolean(getResource("cansnick")))||player.isOnGround()) {
                 player.hasImpulse = true;
-                player.startAutoSpinAttack(2);
-                player.setDeltaMovement(player.getLookAngle().scale(3).add(0,1.2,0));
+                player.startAutoSpinAttack(3);
+                player.setDeltaMovement(player.getLookAngle().scale(3));
+                player.setDeltaMovement(player.getDeltaMovement().add(0,1.2,0));
                 player.fallDistance = 0;
                 int cool = 30;
-                if (player.getOffhandItem().is(MomotinkerItem.pneumatic_sword.get())) {
+                if (player.getMainHandItem().is(MomotinkerItem.pneumatic_sword.get())&&player.getOffhandItem().is(MomotinkerItem.pneumatic_sword.get())) {
                     cool /= 3;
                 }
                 player.getCooldowns().addCooldown(stack.getItem(), cool);
@@ -183,7 +209,7 @@ public class pneumatic_sword extends ModifiableItem {
                 }
             } else if (!player.isOnGround()&&tool.getPersistentData().getBoolean(getResource("cansnick"))) {
                 int c = 60;
-                if (player.getOffhandItem().is(MomotinkerItem.pneumatic_sword.get()))c=180;
+                if (player.getMainHandItem().is(MomotinkerItem.pneumatic_sword.get())&&player.getOffhandItem().is(MomotinkerItem.pneumatic_sword.get()))c=180;
                 tool.getPersistentData().putInt(getResource("issnick"), c);
                 tool.getPersistentData().putBoolean(getResource("cansnick"), false);
             }

@@ -41,11 +41,12 @@ public class ToolsTimeHUD {
                 ||player.getItemBySlot(EquipmentSlot.MAINHAND).is(entropy_burning_riding_spear.get())
                 ||player.getItemBySlot(EquipmentSlot.MAINHAND).is(entropy_burning_cannon.get())
                 ||player.getItemBySlot(EquipmentSlot.MAINHAND).is(coronal_key.get())
-                ||player.getItemBySlot(EquipmentSlot.MAINHAND).is(eclipse_container.get()))){
+                ||player.getItemBySlot(EquipmentSlot.MAINHAND).is(eclipse_container.get())
+                ||player.getItemBySlot(EquipmentSlot.MAINHAND).is(pneumatic_sword.get())
+                ||player.getItemBySlot(EquipmentSlot.OFFHAND).is(pneumatic_sword.get()))){
             return;
         }
-        ToolStack tool = ToolStack.from(player.getMainHandItem());
-        if (tool.isBroken()){
+        if (ToolStack.from(player.getMainHandItem()).isBroken()){
             return;
         }
         float perc = ToolsTimeDrawtime.getPercentage();

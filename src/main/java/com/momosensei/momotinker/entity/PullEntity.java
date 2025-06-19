@@ -95,6 +95,7 @@ public class PullEntity extends Projectile {
                 player.hurtMarked = true;
                 if (player.getUseItem().finishUsingItem(this.level,player).is(MomotinkerItem.pneumatic_sword.get()))this.discard();
             }
+            if (player.position().subtract(origin.position()).length()>150)this.discard();
             if (player.isShiftKeyDown())this.discard();
         }
     }

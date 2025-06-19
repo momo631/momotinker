@@ -34,7 +34,7 @@ public class PullEntityRenderer extends EntityRenderer<PullEntity> {
     }
 
     @Override
-    public ResourceLocation getTextureLocation(PullEntity starfallentity) {
+    public ResourceLocation getTextureLocation(PullEntity pullentity) {
         return InventoryMenu.BLOCK_ATLAS;
     }
 }

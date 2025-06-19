@@ -1,13 +1,12 @@
 package com.momosensei.momotinker.Modifiers.modifiers;
 
 import com.momosensei.momotinker.Modifiers.momomodifier;
+import net.minecraft.server.level.ServerPlayer;
 import net.minecraft.world.entity.LivingEntity;
-import net.minecraft.world.entity.player.Player;
+import net.minecraft.world.item.ItemStack;
+import net.minecraft.world.level.Level;
 import slimeknights.tconstruct.library.modifiers.ModifierEntry;
-import slimeknights.tconstruct.library.tools.context.ToolAttackContext;
 import slimeknights.tconstruct.library.tools.nbt.IToolStackView;
-
-import javax.annotation.Nonnull;
 
 
 public class PressureSprint extends momomodifier {
@@ -15,12 +14,9 @@ public class PressureSprint extends momomodifier {
     }
 
     @Override
-    public float getMeleeDamage(@Nonnull IToolStackView tool, ModifierEntry modifier, @Nonnull ToolAttackContext context, float baseDamage, float damage) {
-        Player player =context.getPlayerAttacker();
-        LivingEntity entity =context.getLivingTarget();
-        if (player != null && entity != null){
+    public void onInventoryTick(IToolStackView tool, ModifierEntry modifierEntry, Level level, LivingEntity entity, int index, boolean b, boolean b1, ItemStack itemStack) {
+        if (entity instanceof ServerPlayer player) {
 
         }
-        return damage;
     }
 }
