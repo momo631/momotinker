@@ -194,8 +194,12 @@ public class pneumatic_sword extends ModifiableItem {
             if ((!tool.getPersistentData().getBoolean(getResource("cansnick")))||player.isOnGround()) {
                 player.hasImpulse = true;
                 player.startAutoSpinAttack(3);
-                player.setDeltaMovement(player.getLookAngle().scale(3));
-                player.setDeltaMovement(player.getDeltaMovement().add(0,1.2,0));
+                player.setDeltaMovement(player.getDeltaMovement().add(player.getLookAngle().scale(3)));
+                double a = 1.2;
+                if (player.getDeltaMovement().y<0) {
+                   a+=player.getDeltaMovement().y;
+                }
+                player.setDeltaMovement(player.getDeltaMovement().add(0,a,0));
                 player.fallDistance = 0;
                 int cool = 30;
                 if (player.getMainHandItem().is(MomotinkerItem.pneumatic_sword.get())&&player.getOffhandItem().is(MomotinkerItem.pneumatic_sword.get())) {

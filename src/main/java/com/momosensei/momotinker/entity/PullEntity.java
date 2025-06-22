@@ -80,23 +80,27 @@ public class PullEntity extends Projectile {
         if (this.getOwner() instanceof Player player) {
             Entity origin = this;
             if (isPullingBlock||isPullingEntity) {
-                double pullSpeed = 1.5D;
+                double pullSpeed = 0.3D;
                 if (isPullingEntity) {
-                    pullSpeed += 0.5D;
+                    pullSpeed += 0.1D;
                     if (player.position().subtract(origin.position()).length()<1.75)this.discard();
+                }else {
+                    if (player.position().subtract(origin.position()).length()<4)this.discard();
                 }
                 Vec3 distance = origin.position().subtract(player.position().add(0, player.getBbHeight() / 2, 0));
-                Vec3 motion = distance.normalize().scale(distance.length() < 5 ? (pullSpeed * distance.length()) / 5 : pullSpeed);
+                Vec3 motion = distance.normalize().scale(distance.length() < 50 ? (pullSpeed * distance.length()) / 50 : pullSpeed);
                 if (Math.abs(distance.y) < 0.1D)
                     motion = new Vec3(motion.x, 0, motion.z);
                 if (new Vec3(distance.x, 0, distance.z).length() < new Vec3(player.getBbWidth() / 2, 0, player.getBbWidth() / 2).length() / 1.4)
                     motion = new Vec3(0, motion.y, 0);
-                player.setDeltaMovement(motion);
+                player.setDeltaMovement(player.getDeltaMovement().add(motion));
                 player.hurtMarked = true;
+                player.fallDistance=0;
                 if (player.getUseItem().finishUsingItem(this.level,player).is(MomotinkerItem.pneumatic_sword.get()))this.discard();
             }
             if (player.position().subtract(origin.position()).length()>150)this.discard();
             if (player.isShiftKeyDown())this.discard();
+            if (player.isDeadOrDying())this.discard();
         }
     }
 
