@@ -39,19 +39,18 @@ public class FlameBath extends momomodifier {
             if (entity.tickCount % 20 == 0 && a.getInt(flamebathcooldown) > 0) {
                 a.putInt(flamebathcooldown, a.getInt(flamebathcooldown) - 1);
             }
-            if (player.level instanceof ServerLevel serverLevel) {
+            if (player.level instanceof ServerLevel serverLevel&&a.getInt(flamebathcooldown)>234.9) {
                 for (int i = 0; i <= 360; i++) {
                     double rad = i * 0.017453292519943295;
                     double r = 4D;
                     double x = r * Math.cos(rad);
                     double z = r * Math.sin(rad);
-                    int c = 5 / (a.getInt(flamebathcooldown) - 235);
-                    if (c < 4) {
-                        serverLevel.sendParticles(ParticleTypes.FLAME, player.getX(), player.getY(), player.getZ(), c, x / 2, r / 2, z / 2, 2);
-                    }
-                    if (c > 4) {
-                        serverLevel.sendParticles(ParticleTypes.LAVA, player.getX(), player.getY(), player.getZ(), 3, x / 2, r / 2, z / 2, 1);
-                        serverLevel.sendParticles(ParticleTypes.FLAME, player.getX(), player.getY(), player.getZ(), 4, x, r, z, 0.5);
+                    int c = (int) (5 / (a.getInt(flamebathcooldown) - 234.9));
+                    if (c <= 4) {
+                        serverLevel.sendParticles(ParticleTypes.FLAME, player.getX(), player.getY(), player.getZ(), c+1, x / 2, r / 2, z / 2, 2);
+                    }else {
+                        serverLevel.sendParticles(ParticleTypes.LAVA, player.getX(), player.getY(), player.getZ(), 1, x / 2, r / 2, z / 2, 1);
+                        serverLevel.sendParticles(ParticleTypes.FLAME, player.getX(), player.getY(), player.getZ(), 3, x, r, z, 0.5);
                     }
                 }
             }

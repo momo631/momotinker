@@ -2,7 +2,6 @@ package com.momosensei.momotinker.entity;
 
 
 import com.momosensei.momotinker.register.MomotinkerEntities;
-import com.momosensei.momotinker.register.MomotinkerItem;
 import net.minecraft.core.Direction;
 import net.minecraft.nbt.CompoundTag;
 import net.minecraft.world.entity.Entity;
@@ -96,7 +95,7 @@ public class PullEntity extends Projectile {
                 player.setDeltaMovement(player.getDeltaMovement().add(motion));
                 player.hurtMarked = true;
                 player.fallDistance=0;
-                if (player.getUseItem().finishUsingItem(this.level,player).is(MomotinkerItem.pneumatic_sword.get()))this.discard();
+                //if (player.getUseItem().finishUsingItem(this.level,player).is(MomotinkerItem.pneumatic_sword.get()))this.discard();
             }
             if (player.position().subtract(origin.position()).length()>150)this.discard();
             if (player.isShiftKeyDown())this.discard();
