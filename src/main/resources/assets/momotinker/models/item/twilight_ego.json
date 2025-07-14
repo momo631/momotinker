@@ -1,0 +1,28 @@
+{
+  "parent": "item/generated",
+  "textures": {
+    "layer0": "momotinker:item/twilight_ego"
+  },
+  "display": {
+    "firstperson_righthand": {
+      "rotation": [ 20, 270, -16 ],
+      "translation": [0, 12, 2],
+      "scale": [2, 2, 1]
+    },
+    "thirdperson_righthand": {
+      "rotation": [ -35, 90, -16 ],
+      "translation": [0, 20, -2],
+      "scale": [ 2.5, 2.5, 1 ]
+    },
+    "firstperson_lefthand": {
+      "rotation": [ 110, 90, -75 ],
+      "translation": [0, 12, 2],
+      "scale": [2, 2, 1]
+    },
+    "thirdperson_lefthand": {
+      "rotation": [ -125, -90, -75 ],
+      "translation": [0, 20, -2],
+      "scale": [ 2.5, 2.5, 1 ]
+    }
+  }
+}
