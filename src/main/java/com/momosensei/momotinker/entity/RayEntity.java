@@ -1,7 +1,7 @@
 package com.momosensei.momotinker.entity;
 
 
-import com.momosensei.momotinker.util.attackUtil;
+import com.momosensei.momotinker.util.AttackUtil;
 import net.minecraft.core.particles.ParticleTypes;
 import net.minecraft.server.level.ServerLevel;
 import net.minecraft.world.InteractionHand;
@@ -85,7 +85,7 @@ public class RayEntity extends Projectile {
                     for (Entity target : ls0) {
                         if (target != null && !(target instanceof Player) && target != this.getOwner()&& this.getOwner() instanceof Player player&& !ls1.contains(target)) {
                             target.invulnerableTime = 0;
-                            attackUtil.attackEntity(this.tool, player, InteractionHand.MAIN_HAND, target, () -> 1, true, Util.getSlotType(InteractionHand.MAIN_HAND), this.damage,1f ,false, true, true,true);
+                            AttackUtil.attackEntity(this.tool, player, InteractionHand.MAIN_HAND, target, () -> 1, true, Util.getSlotType(InteractionHand.MAIN_HAND), this.damage,1f ,false, true, true,true);
                             target.invulnerableTime = 0;
                             ls1.add(target);
                         }

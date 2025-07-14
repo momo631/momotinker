@@ -245,6 +245,9 @@
   "item.momotinker.chain_sword": "Chain Sword",
   "item.momotinker.chain_sword.description": "[Two handed weapons]\nDuring use, it can continuously strike small range creatures in front of it. If used for too long, it will cannot be used normally. The higher the attack speed, the higher the damage",
 
+  "item.momotinker.pneumatic_sword": "气动剑",
+  "item.momotinker.pneumatic_sword.description": "高机动性的近战武器，右键可短暂向前上方冲刺，按下工具技能可发射绳索将自己拉向被击中的方块或生物（按“shift”可提前取消绳索），若目标是生物时会强化下一次在空中的冲刺和该冲刺伤害，若副手存在另一把气动剑则提升冲刺性能",
+
   "momotinker.tool.tooltip.offhand_hastool": "Error: The deputy has items",
 
 

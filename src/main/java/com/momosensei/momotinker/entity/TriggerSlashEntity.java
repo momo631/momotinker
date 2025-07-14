@@ -1,7 +1,7 @@
 package com.momosensei.momotinker.entity;
 
 
-import com.momosensei.momotinker.util.attackUtil;
+import com.momosensei.momotinker.util.AttackUtil;
 import net.minecraft.world.InteractionHand;
 import net.minecraft.world.entity.Entity;
 import net.minecraft.world.entity.EntityType;
@@ -81,7 +81,7 @@ public class TriggerSlashEntity extends Projectile {
             for (Entity targets : ls0) {
                 if (targets!=getOwner()) {
                     targets.invulnerableTime = 0;
-                    attackUtil.attackEntity(this.tool, player, InteractionHand.MAIN_HAND, targets, ()->1, true, Util.getSlotType(InteractionHand.MAIN_HAND), this.damage, this.damagemultiplier,false, true, true,true);
+                    AttackUtil.attackEntity(this.tool, player, InteractionHand.MAIN_HAND, targets, ()->1, true, Util.getSlotType(InteractionHand.MAIN_HAND), this.damage, this.damagemultiplier,false, true, true,true);
                     targets.invulnerableTime = 0;
                 }
             }

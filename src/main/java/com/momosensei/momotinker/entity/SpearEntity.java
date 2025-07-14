@@ -1,7 +1,7 @@
 package com.momosensei.momotinker.entity;
 
 
-import com.momosensei.momotinker.util.attackUtil;
+import com.momosensei.momotinker.util.AttackUtil;
 import net.minecraft.world.InteractionHand;
 import net.minecraft.world.entity.Entity;
 import net.minecraft.world.entity.EntityType;
@@ -69,7 +69,7 @@ public class SpearEntity extends Projectile {
             List<Entity> ls0 = this.level().getEntitiesOfClass(Entity.class, aabb);
             for (Entity targets : ls0) {
                 if (targets!=getOwner()) {
-                    attackUtil.attackEntity(this.tool, player, InteractionHand.MAIN_HAND, targets, ()->1, true, Util.getSlotType(InteractionHand.MAIN_HAND), this.damage, 1f,false, true, false,true);
+                    AttackUtil.attackEntity(this.tool, player, InteractionHand.MAIN_HAND, targets, ()->1, true, Util.getSlotType(InteractionHand.MAIN_HAND), this.damage, 1f,false, true, false,true);
                 }
             }
         }

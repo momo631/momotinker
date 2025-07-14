@@ -4,7 +4,7 @@ package com.momosensei.momotinker.tool;
 import com.momosensei.momotinker.register.MomotinkerConfig;
 import com.momosensei.momotinker.register.MomotinkerModifiers;
 import com.momosensei.momotinker.register.MomotinkerTools;
-import com.momosensei.momotinker.util.attackUtil;
+import com.momosensei.momotinker.util.AttackUtil;
 import net.minecraft.ChatFormatting;
 import net.minecraft.core.BlockPos;
 import net.minecraft.core.particles.ParticleTypes;
@@ -138,7 +138,7 @@ public class pocket_watch extends ModifiableItem {
                             List<LivingEntity> ls0 = player.level().getEntitiesOfClass(LivingEntity.class, player.getBoundingBox().inflate(4, 4, 4));
                             for (LivingEntity targets : ls0) {
                                 if (targets != player && targets != null) {
-                                    attackUtil.attackEntity(tool, player, InteractionHand.MAIN_HAND, targets, () -> 1, true, Util.getSlotType(InteractionHand.MAIN_HAND), tool.getStats().get(ToolStats.ATTACK_DAMAGE)+player.getMaxHealth(), 2f, false, true, true, false);
+                                    AttackUtil.attackEntity(tool, player, InteractionHand.MAIN_HAND, targets, () -> 1, true, Util.getSlotType(InteractionHand.MAIN_HAND), tool.getStats().get(ToolStats.ATTACK_DAMAGE)+player.getMaxHealth(), 2f, false, true, true, false);
                                 }
                             }
                             if (player.level() instanceof ServerLevel serverLevel) {

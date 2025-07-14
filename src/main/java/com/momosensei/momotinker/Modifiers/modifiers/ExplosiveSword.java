@@ -3,7 +3,7 @@ package com.momosensei.momotinker.Modifiers.modifiers;
 import com.momosensei.momotinker.Modifiers.momomodifier;
 import com.momosensei.momotinker.register.MomotinkerConfig;
 import com.momosensei.momotinker.register.MomotinkerModifiers;
-import com.momosensei.momotinker.util.attackUtil;
+import com.momosensei.momotinker.util.AttackUtil;
 import net.minecraft.world.InteractionHand;
 import net.minecraft.world.entity.LivingEntity;
 import net.minecraft.world.entity.player.Player;
@@ -55,7 +55,7 @@ public class ExplosiveSword extends momomodifier {
             for (LivingEntity entity : lis) {
                 if (entity != null&&entity!=player) {
                     entity.invulnerableTime = 0;
-                    attackUtil.attackEntity(tool, player, InteractionHand.MAIN_HAND, entity, ()->1, true, Util.getSlotType(InteractionHand.MAIN_HAND), damage, damagemultiplier,false, true, true,false);
+                    AttackUtil.attackEntity(tool, player, InteractionHand.MAIN_HAND, entity, ()->1, true, Util.getSlotType(InteractionHand.MAIN_HAND), damage, damagemultiplier,false, true, true,false);
                 }
             }
         }

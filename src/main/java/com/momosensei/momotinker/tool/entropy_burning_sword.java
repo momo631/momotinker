@@ -5,7 +5,7 @@ import com.momosensei.momotinker.network.Channel;
 import com.momosensei.momotinker.network.packet.ToolsTimeCharge;
 import com.momosensei.momotinker.register.MomotinkerConfig;
 import com.momosensei.momotinker.register.MomotinkerTools;
-import com.momosensei.momotinker.util.attackUtil;
+import com.momosensei.momotinker.util.AttackUtil;
 import net.minecraft.ChatFormatting;
 import net.minecraft.core.BlockPos;
 import net.minecraft.core.particles.ParticleTypes;
@@ -107,10 +107,10 @@ public class entropy_burning_sword extends ModifiableItem {
                     if (targets != player&&targets!=null) {
                         if (tool.getPersistentData().getInt(stellarcore) == stellarcore_limit && ls0.size() == 1) {
                             targets.invulnerableTime = 0;
-                            attackUtil.attackEntity(tool, player, InteractionHand.MAIN_HAND, targets, () -> 1, true, Util.getSlotType(InteractionHand.MAIN_HAND), tool.getStats().get(ToolStats.ATTACK_DAMAGE), 3f, false, true, true, false);
+                            AttackUtil.attackEntity(tool, player, InteractionHand.MAIN_HAND, targets, () -> 1, true, Util.getSlotType(InteractionHand.MAIN_HAND), tool.getStats().get(ToolStats.ATTACK_DAMAGE), 3f, false, true, true, false);
                         } else {
                             targets.invulnerableTime = 0;
-                            attackUtil.attackEntity(tool, player, InteractionHand.MAIN_HAND, targets, () -> 1, true, Util.getSlotType(InteractionHand.MAIN_HAND), tool.getStats().get(ToolStats.ATTACK_DAMAGE), 1.5f, false, true, true, false);
+                            AttackUtil.attackEntity(tool, player, InteractionHand.MAIN_HAND, targets, () -> 1, true, Util.getSlotType(InteractionHand.MAIN_HAND), tool.getStats().get(ToolStats.ATTACK_DAMAGE), 1.5f, false, true, true, false);
                         }
                     }
                 }

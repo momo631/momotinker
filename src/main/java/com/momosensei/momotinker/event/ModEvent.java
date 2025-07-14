@@ -2,11 +2,13 @@ package com.momosensei.momotinker.event;
 
 import com.momosensei.momotinker.mobs.CoolTimeA;
 import com.momosensei.momotinker.mobs.CoolTimeB;
+import com.momosensei.momotinker.mobs.CoolTimeC;
 import com.momosensei.momotinker.network.Channel;
 import com.momosensei.momotinker.network.packet.CoolTimeChargeA;
 import com.momosensei.momotinker.network.packet.CoolTimeChargeB;
+import com.momosensei.momotinker.network.packet.CoolTimeChargeC;
 import com.momosensei.momotinker.register.MomotinkerModifiers;
-import com.momosensei.momotinker.util.attackUtil;
+import com.momosensei.momotinker.util.AttackUtil;
 import net.minecraft.ChatFormatting;
 import net.minecraft.core.particles.ParticleTypes;
 import net.minecraft.network.chat.Component;
@@ -64,7 +66,7 @@ public class ModEvent {
                 }
             }
             if (CoolTimeB.getCoolTime() == 578&&player.isAlive()){
-                attackUtil.executeall(player.level(), player.getX(), player.getY(), player.getZ(), player);
+                AttackUtil.executeall(player.level(), player.getX(), player.getY(), player.getZ(), player);
             }
             if (player instanceof ServerPlayer player1) {
                 if (CoolTimeA.getCoolTime() < 0) {
@@ -73,12 +75,18 @@ public class ModEvent {
                 if (CoolTimeB.getCoolTime() < 0) {
                     Channel.sendToPlayer(new CoolTimeChargeB(0), player1);
                 }
+                if (CoolTimeC.getCoolTime() < 0) {
+                    Channel.sendToPlayer(new CoolTimeChargeC(0), player1);
+                }
                 if (player.tickCount % 20 == 0) {
                     if (CoolTimeA.getCoolTime() > 0) {
                         Channel.sendToPlayer(new CoolTimeChargeA(CoolTimeA.getCoolTime() - 1), player1);
                     }
                     if (CoolTimeB.getCoolTime() > 0) {
                         Channel.sendToPlayer(new CoolTimeChargeB(CoolTimeB.getCoolTime() - 1), player1);
+                    }
+                    if (CoolTimeC.getCoolTime() > 0) {
+                        Channel.sendToPlayer(new CoolTimeChargeC(CoolTimeC.getCoolTime() - 1), player1);
                     }
                 }
             }

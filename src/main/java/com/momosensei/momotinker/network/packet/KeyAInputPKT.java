@@ -11,12 +11,15 @@ import net.minecraftforge.network.NetworkEvent;
 import slimeknights.tconstruct.library.modifiers.ModifierEntry;
 import slimeknights.tconstruct.library.tools.item.ModifiableItem;
 import slimeknights.tconstruct.library.tools.nbt.MaterialNBT;
+import slimeknights.tconstruct.library.tools.nbt.ModDataNBT;
 import slimeknights.tconstruct.library.tools.nbt.ToolStack;
 
 import java.util.List;
 import java.util.function.Supplier;
 
 import static com.momosensei.momotinker.Modifiers.modifiers.ProjectionOfSuffering.disaster;
+import static com.momosensei.momotinker.Momotinker.getResource;
+import static com.momosensei.momotinker.entity.MomotinkerEntitiesCreate.createPull;
 import static com.momosensei.momotinker.register.MomotinkerTools.*;
 import static com.momosensei.momotinker.tool.entropy_burning_cube.liverization;
 
@@ -151,6 +154,23 @@ public class KeyAInputPKT {
                     }
                     player.setItemInHand(InteractionHand.MAIN_HAND, tool4.createStack());
                     player.setItemInHand(InteractionHand.OFF_HAND, tool5.createStack());
+                }
+            }
+
+            if (player!=null&&(player.getMainHandItem().is(MomotinkerTools.pneumatic_sword.get())||player.getOffhandItem().is(MomotinkerTools.pneumatic_sword.get()))) {
+                ModDataNBT data1 = ToolStack.from(player.getMainHandItem()).getPersistentData();
+                ModDataNBT data2 = ToolStack.from(player.getOffhandItem()).getPersistentData();
+                if (player.getMainHandItem().is(MomotinkerTools.pneumatic_sword.get())&&player.getOffhandItem().is(MomotinkerTools.pneumatic_sword.get())&&data1.getFloat(getResource("pullcool"))==0){
+                    data1.putFloat(getResource("pullcool"),3);
+                    createPull(player);
+                }else
+                if (player.getMainHandItem().is(MomotinkerTools.pneumatic_sword.get())&&!player.getOffhandItem().is(MomotinkerTools.pneumatic_sword.get())&&data1.getFloat(getResource("pullcool"))==0){
+                    data1.putFloat(getResource("pullcool"),8);
+                    createPull(player);
+                }else
+                if (!player.getMainHandItem().is(MomotinkerTools.pneumatic_sword.get())&&player.getOffhandItem().is(MomotinkerTools.pneumatic_sword.get())&&data2.getFloat(getResource("pullcool"))==0){
+                    data2.putFloat(getResource("pullcool"),8);
+                    createPull(player);
                 }
             }
         });

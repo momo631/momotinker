@@ -27,5 +27,6 @@ public class MomotinkerToolDefinitions {
     public static final ToolDefinition MOON_LOCK = ToolDefinition.create(MomotinkerTools.moon_lock);
     public static final ToolDefinition POCKET_WATCH = ToolDefinition.create(MomotinkerTools.pocket_watch);
     public static final ToolDefinition CHAIN_SWORD = ToolDefinition.create(MomotinkerTools.chain_sword);
+    public static final ToolDefinition PNEUMATIC_SWORD = ToolDefinition.create(MomotinkerTools.pneumatic_sword);
 
 }
