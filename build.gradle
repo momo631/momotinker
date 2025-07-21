@@ -127,7 +127,7 @@ repositories {
         }
     }
     maven { url = "https://maven.kosmx.dev/" }
-   // maven { url = "https://dl.cloudsmith.io/public/geckolib3/geckolib/maven/" }
+    //maven { url = "https://dl.cloudsmith.io/public/geckolib3/geckolib/maven/" }
     flatDir {
         dir 'libs'
     }
@@ -137,6 +137,7 @@ dependencies {
     // 依赖lib目录下的所有以.jar结尾的文件
     implementation fileTree(dir: 'lib', includes: ['*.jar'])
 
+
     // Specify the version of Minecraft to use. If this is any group other than 'net.minecraft', it is assumed
     // that the dep is a ForgeGradle 'patcher' dependency, and its patches will be applied.
     // The userdev artifact is a special name and will get all sorts of transformations applied to it.
@@ -145,9 +146,8 @@ dependencies {
     annotationProcessor "org.spongepowered:mixin:${mixin_version}:processor"
     implementation fg.deobf("slimeknights.tconstruct:TConstruct:1.19.2-${tcon_version}")
     implementation fg.deobf("slimeknights.mantle:Mantle:1.19.2-${mantle_version}")
-    //  implementation fg.deobf("software.bernie.geckolib:geckolib-forge-${geckolib_version}")
+    //implementation fg.deobf("software.bernie.geckolib:geckolib-forge-${geckolib_version}")
     implementation fg.deobf("dev.kosmx.player-anim:player-animation-lib-forge:${player_animator_version}")
-
     // Real mod deobf dependency examples - these get remapped to your current mappings
     // compileOnly fg.deobf("mezz.jei:jei-${mc_version}:${jei_version}:api") // Adds JEI API as a compile dependency
     // runtimeOnly fg.deobf("mezz.jei:jei-${mc_version}:${jei_version}") // Adds the full JEI mod as a runtime dependency

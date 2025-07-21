@@ -48,11 +48,12 @@ public class Momotinker {
         MomotinkerEffects.EFFECT.register(eventBus);
         MomotinkerEntities.ENTITIES.register(eventBus);
         MomotinkerSounds.SOUNDS.register(eventBus);
+        MomotinkerTags.init();
         MomotinkerLootModifiers.register(eventBus);
         IEventBus bus = FMLJavaModLoadingContext.get().getModEventBus();
         ModLoadingContext.get().registerConfig(ModConfig.Type.COMMON, MomotinkerConfig.spec);
         MinecraftForge.EVENT_BUS.register(new LivingEvents());
-
+        //GeckoLib.initialize();
     }
 
     //Resourcelocation

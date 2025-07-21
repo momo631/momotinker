@@ -266,4 +266,11 @@ public class AttackUtil {
             }
         }
     }
+
+    public static float getCooldownFunctionFloat(Player player, InteractionHand hand){
+        return (float) getCooldownFunction(player,hand).getAsDouble();
+    }
+    public static DoubleSupplier getCooldownFunction(Player player, InteractionHand hand) {
+        return () -> player.getAttackStrengthScale(0.5f);
+    }
 }

@@ -187,6 +187,12 @@
   "momotinker.item.tooltip.reversetime_purple_gold2": "§5Hidden Material:The strongest and most unintentional wish may receive a different response§",
 
   "item.momotinker.twilight_ego": "E.G.O:Twilight",
+  "momotinker.item.tooltip.twilight_ego1": "只有全属性超过 110 的员工才能拿起这把武器（包括饰品加成）",
+  "momotinker.item.tooltip.twilight_ego2": "这把武器会同时造成物理，精神，侵蚀和灵魂伤害（普通伤害，魔法伤害，虚空伤害，目标最大生命值的百分比伤害）。",
+  "momotinker.item.tooltip.twilight_ego3": "这把武器每隔一段时间可发起一次特殊攻击",
+  "momotinker.item.tooltip.twilight_ego4": "如果有员工持有这件E.G.O武器，则终末鸟就不会出现。",
+  "momotinker.item.tooltip.twilight_ego5": "大鸟那永不闭合的眼睛、高鸟那能衡量一切罪恶的天平、小鸟那能吞噬一切的巨口，这三者守护着黑森林的和平。",
+  "momotinker.item.tooltip.twilight_ego6": "而那些能够同时驾驭这三者的人也能带来和平。",
 
   "itemGroup.momotinker.tools": "Momotinker Tools",
 
