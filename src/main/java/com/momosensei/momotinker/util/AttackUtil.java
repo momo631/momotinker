@@ -273,4 +273,12 @@ public class AttackUtil {
     public static DoubleSupplier getCooldownFunction(Player player, InteractionHand hand) {
         return () -> player.getAttackStrengthScale(0.5f);
     }
+    public static float getCriticalFloat(Player player,float damageModifier){
+        float d = getCooldownFunctionFloat(player, InteractionHand.MAIN_HAND);
+        boolean fullyCharged = (0.2f + d * d * 0.8f) > 0.9f;
+        boolean isCritical = fullyCharged && player.fallDistance > 0.0F && !player.isOnGround() && !player.onClimbable() && !player.isInWater() && !player.hasEffect(MobEffects.BLINDNESS) && !player.isPassenger() && !player.isSprinting();
+        if (isCritical){
+            return damageModifier;
+        }else return 1f;
+    }
 }

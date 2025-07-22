@@ -23,12 +23,14 @@ import net.minecraft.world.level.block.state.BlockState;
 import net.minecraftforge.common.ForgeMod;
 import net.minecraftforge.common.MinecraftForge;
 import net.minecraftforge.event.entity.living.LivingHurtEvent;
+import net.minecraftforge.event.entity.player.CriticalHitEvent;
 import org.jetbrains.annotations.NotNull;
 import org.jetbrains.annotations.Nullable;
 
 import java.util.List;
 
 import static com.momosensei.momotinker.util.AttackUtil.getCooldownFunctionFloat;
+import static com.momosensei.momotinker.util.AttackUtil.getCriticalFloat;
 import static com.momosensei.momotinker.util.PenetratingDamage.reflectionPenetratingDamage;
 
 
@@ -43,6 +45,7 @@ public class twilight_ego extends Item /*implements IAnimatable*/ {
         builder.put(ForgeMod.ATTACK_RANGE.get(), new AttributeModifier( "Tool modifier", 3F, AttributeModifier.Operation.ADDITION));
         this.attributes = builder.build();
         MinecraftForge.EVENT_BUS.addListener(this::livinghurtevent);
+        MinecraftForge.EVENT_BUS.addListener(this::livingcriticalhitevent);
     }
 
     public Multimap<Attribute, AttributeModifier> getDefaultAttributeModifiers(EquipmentSlot equipmentSlot) {
@@ -72,7 +75,15 @@ public class twilight_ego extends Item /*implements IAnimatable*/ {
     public boolean canApplyAtEnchantingTable(ItemStack stack, Enchantment enchantment) {
         return Items.DIAMOND_SWORD.canApplyAtEnchantingTable(new ItemStack(Items.DIAMOND_SWORD), enchantment);
     }
-
+    private float damageModifier;
+    private void livingcriticalhitevent(CriticalHitEvent event) {
+        if (event.getTarget() != null) {
+            damageModifier=event.getDamageModifier();
+        }
+    }
+    public float getDamageModifier() {
+        return damageModifier;
+    }
     private void livinghurtevent(LivingHurtEvent event) {
         Entity a = event.getEntity();
         Entity b = event.getSource().getEntity();
@@ -81,7 +92,7 @@ public class twilight_ego extends Item /*implements IAnimatable*/ {
             if (!stack.isEmpty()&&stack.is(MomotinkerItem.twilight_ego.get())) {
                 float c = (float) player.getAttributeValue(Attributes.ATTACK_DAMAGE);
                 float d = getCooldownFunctionFloat(player, InteractionHand.MAIN_HAND);
-                float e = c * (0.2f + d * d * 0.8f);
+                float e = c * (0.2f + d * d * 0.8f) * getCriticalFloat(player,getDamageModifier());
                 float f = e * living.getMaxHealth() * 0.01f;
                 if (living.getMaxHealth() < 100) {
                     f = e;
