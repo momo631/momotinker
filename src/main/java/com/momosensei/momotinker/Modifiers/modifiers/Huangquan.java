@@ -30,7 +30,7 @@ import java.util.List;
 
 public class Huangquan extends momomodifier {
     public Huangquan() {
-        MinecraftForge.EVENT_BUS.addListener(this::livinghurtevent);
+        MinecraftForge.EVENT_BUS.addListener(this::livingattackevent);
     }
 
     @Override
@@ -38,7 +38,7 @@ public class Huangquan extends momomodifier {
         return true;
     }
 
-    public void livinghurtevent(LivingAttackEvent event) {
+    public void livingattackevent(LivingAttackEvent event) {
         Entity a = event.getSource().getEntity();
         if (a instanceof ServerPlayer player &&event.getEntity()!=null&&player.getEffect(MomotinkerEffects.End.get())!=null &&player.hasEffect(MomotinkerEffects.End.get())) {
             if (ModifierUtil.getModifierLevel(player.getItemBySlot(EquipmentSlot.MAINHAND), MomotinkerModifiers.huangquan.getId()) > 0) {

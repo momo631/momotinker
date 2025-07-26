@@ -20,10 +20,10 @@ import static com.momosensei.momotinker.util.PenetratingDamage.reflectionPenetra
 
 public class Origin extends momomodifier {
     public Origin() {
-        MinecraftForge.EVENT_BUS.addListener(this::livinghurtevent);
+        MinecraftForge.EVENT_BUS.addListener(this::livingattackevent);
     }
 
-    private void livinghurtevent(LivingAttackEvent event) {
+    private void livingattackevent(LivingAttackEvent event) {
         LivingEntity a = event.getEntity();
         Entity b = event.getSource().getEntity();
         if (b instanceof ServerPlayer player && a != null) {

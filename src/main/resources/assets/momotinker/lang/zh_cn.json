@@ -12,6 +12,7 @@
   "effect.momotinker.censored": "??????????",
   "effect.momotinker.flamebatharmor": "浴炎战衣",
   "effect.momotinker.increaseallattributes": "全属性增加",
+  "effect.momotinker.reduceallattributes": "全属性降低",
 
   "fluid.momotinker.molten_laomo": "熔融墨",
   "fluid.momotinker.molten_arriving_at_the_other_shore": "熔融彼岸",
@@ -662,11 +663,11 @@
 
   "modifier.momotinker.resentmentknives": "骇怨为刀",
   "modifier.momotinker.resentmentknives.flavor": "",
-  "modifier.momotinker.resentmentknives.description": "持有时攻击/受到攻击会将自身与目标/攻击者标为“相嫉”状态，若对方攻击大于自身，则自身攻击提高到对方水平，且对其造成的伤害将穿透防御;若小于则会使对方的攻击提高到自身水平。\n“相嫉”:每对生物只能同时存在一种该状态，其他生物对该状态单位造成和受到的伤害将大幅缩减，直至其中一方死亡",
+  "modifier.momotinker.resentmentknives.description": "持有时攻击/受到攻击会将自身与目标/攻击者标为“相嫉”状态，若对方攻击大于自身，则自身攻击提高到对方水平，且对其造成的伤害将穿透防御;若小于则会使对方的攻击提高到自身水平。\n“相嫉”:每对生物只能同时存在一种该状态，其他生物对该状态单位造成和受到的伤害将大幅缩减，直至其中一方死亡或相距较远",
 
   "modifier.momotinker.forbiddenfruit": "伊甸禁言",
   "modifier.momotinker.forbiddenfruit.flavor": "",
-  "modifier.momotinker.forbiddenfruit.description": "持有者攻击将直接削减目标护甲值，并根据削减值增加持有时的护甲。大范围内无护甲的生物将减少大部分属性，范围内护甲低于持有者的单位受到来自持有者的伤害将提高，对持有者造成的伤害将减少"
+  "modifier.momotinker.forbiddenfruit.description": "持有者攻击将直接削减目标护甲值，并根据削减值增加持有时的护甲。大范围内护甲低于持有者的生物将减少50%大部分属性。护甲低于持有者的单位受到来自持有者的伤害将按差值的一定百分比提高，对持有者造成的伤害将按差值的一定百分比减少（减少伤害最多95%）"
 
 
 }
