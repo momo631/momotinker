@@ -61,7 +61,7 @@ public class ForbiddenFruit extends momomodifier {
     private void livingattackevent(LivingAttackEvent event) {
         LivingEntity a = event.getEntity();
         Entity b = event.getSource().getEntity();
-        if (b instanceof Player player && a != null && getMainhandModifierlevel(player, MomotinkerModifiers.origin.getId()) > 0) {
+        if (b instanceof Player player && a != null && getMainhandModifierlevel(player, MomotinkerModifiers.forbiddenfruit.getId()) > 0) {
             ToolStack tool = ToolStack.from(player.getMainHandItem());
             a.getAttribute(Attributes.ARMOR).setBaseValue(a.getAttribute(Attributes.ARMOR).getValue() * 0.8F);
             tool.getPersistentData().putFloat(forbiddenfruitpoints, tool.getPersistentData().getFloat(forbiddenfruitpoints) + (float) (a.getAttribute(Attributes.ARMOR).getValue() * 0.2F));
@@ -77,14 +77,14 @@ public class ForbiddenFruit extends momomodifier {
     private void livinghurtevent(LivingHurtEvent event) {
         Entity a = event.getEntity();
         Entity b = event.getSource().getEntity();
-        if (a instanceof Player player&&b instanceof LivingEntity living && getMainhandModifierlevel(player, MomotinkerModifiers.eternalanger.getId()) > 0) {
+        if (a instanceof Player player&&b instanceof LivingEntity living && getMainhandModifierlevel(player, MomotinkerModifiers.forbiddenfruit.getId()) > 0) {
             if (living.getAttribute(Attributes.ARMOR).getValue() < player.getAttribute(Attributes.ARMOR).getValue()) {
                 float c = (float) (player.getAttribute(Attributes.ARMOR).getValue()-living.getAttribute(Attributes.ARMOR).getValue());
                 if (c>=475)c=475;
                 event.setAmount(event.getAmount()*(1f-c*0.002f));
             }
         }
-        if (b instanceof Player player&&a instanceof LivingEntity living && getMainhandModifierlevel(player, MomotinkerModifiers.eternalanger.getId()) > 0) {
+        if (b instanceof Player player&&a instanceof LivingEntity living && getMainhandModifierlevel(player, MomotinkerModifiers.forbiddenfruit.getId()) > 0) {
             if (living.getAttribute(Attributes.ARMOR).getValue() < player.getAttribute(Attributes.ARMOR).getValue()) {
                 float c = (float) (player.getAttribute(Attributes.ARMOR).getValue()-living.getAttribute(Attributes.ARMOR).getValue());
                 event.setAmount(event.getAmount()*(1f+c*0.008f));
