@@ -3,6 +3,7 @@ package com.momosensei.momotinker.Modifiers.modifiers;
 import com.momosensei.momotinker.Modifiers.momomodifier;
 import com.momosensei.momotinker.Momotinker;
 import com.momosensei.momotinker.register.MomotinkerModifiers;
+import net.minecraft.network.chat.Component;
 import net.minecraft.resources.ResourceLocation;
 import net.minecraft.world.damagesource.DamageSource;
 import net.minecraft.world.entity.Entity;
@@ -16,6 +17,7 @@ import net.minecraft.world.item.ItemStack;
 import net.minecraft.world.level.Level;
 import net.minecraftforge.common.MinecraftForge;
 import net.minecraftforge.event.entity.living.LivingHurtEvent;
+import slimeknights.tconstruct.library.modifiers.Modifier;
 import slimeknights.tconstruct.library.modifiers.ModifierEntry;
 import slimeknights.tconstruct.library.tools.nbt.IToolStackView;
 import slimeknights.tconstruct.library.tools.nbt.ModDataNBT;
@@ -30,7 +32,11 @@ public class ThermonuclearZone extends momomodifier {
         MinecraftForge.EVENT_BUS.addListener(this::livinghurtevent);
     }
     public static final ResourceLocation zonepoints = Momotinker.getResource("zonepoints");
-
+    @Override
+    public Component onRemoved(IToolStackView iToolStackView, Modifier modifier) {
+        iToolStackView.getPersistentData().remove(zonepoints);
+        return null;
+    }
     @Override
     public void addAttributes(IToolStackView tool, ModifierEntry modifierEntry, EquipmentSlot equipmentSlot, BiConsumer<Attribute, AttributeModifier> biConsumer) {
         ModDataNBT a = tool.getPersistentData();

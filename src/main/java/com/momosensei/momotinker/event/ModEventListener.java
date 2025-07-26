@@ -42,6 +42,7 @@ public class ModEventListener {
         event.registerEntityRenderer(MomotinkerEntities.ray_entity.get(), NoopRenderer::new);
         event.registerEntityRenderer(MomotinkerEntities.meteor_entity.get(), MeteorEntityRenderer::new);
         event.registerEntityRenderer(MomotinkerEntities.starfall_entity.get(), StarfallEntityRenderer::new);
-        event.registerEntityRenderer(MomotinkerEntities.pull_entity.get(), PullEntityRenderer::new);
+        event.registerEntityRenderer(MomotinkerEntities.pull_a_entity.get(), PullAEntityRenderer::new);
+        event.registerEntityRenderer(MomotinkerEntities.pull_b_entity.get(), PullBEntityRenderer::new);
     }
 }

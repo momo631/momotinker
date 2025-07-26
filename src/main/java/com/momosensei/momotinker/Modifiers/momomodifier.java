@@ -308,5 +308,27 @@ public abstract class momomodifier extends Modifier implements MeleeDamageModifi
         return (float) (entity.getAttributeValue(Attributes.MOVEMENT_SPEED) * entity.getDeltaMovement().length() * status);
     }
 
+    public static int getAllModifierAmount(LivingEntity entity, ModifierId modifierId) {
+        int a = 0;
+        if (ModifierUtil.getModifierLevel(entity.getItemBySlot(EquipmentSlot.MAINHAND), modifierId)>0){
+            a+=1;
+        }
+        if (ModifierUtil.getModifierLevel(entity.getItemBySlot(EquipmentSlot.OFFHAND), modifierId)>0){
+            a+=1;
+        }
+        if (ModifierUtil.getModifierLevel(entity.getItemBySlot(EquipmentSlot.HEAD), modifierId)>0){
+            a+=1;
+        }
+        if (ModifierUtil.getModifierLevel(entity.getItemBySlot(EquipmentSlot.CHEST), modifierId)>0){
+            a+=1;
+        }
+        if (ModifierUtil.getModifierLevel(entity.getItemBySlot(EquipmentSlot.LEGS), modifierId)>0){
+            a+=1;
+        }
+        if (ModifierUtil.getModifierLevel(entity.getItemBySlot(EquipmentSlot.FEET), modifierId)>0){
+            a+=1;
+        }
+        return a;
+    }
 }
 

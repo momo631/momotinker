@@ -74,6 +74,12 @@ public class MomotinkerModifiers {
     public static final StaticModifier<SuperancientMetalsRealC> superancientmetalsrealc=MODIFIERS.register("superancientmetalsrealc", SuperancientMetalsRealC::new);
     public static final StaticModifier<PolarizedSpacetime> polarizedspacetime=MODIFIERS.register("polarizedspacetime", PolarizedSpacetime::new);
     public static final StaticModifier<TimeEchoes> timeechoes=MODIFIERS.register("timeechoes", TimeEchoes::new);
-    public static final StaticModifier<PressureSprint> pressuresprint=MODIFIERS.register("pressuresprint", PressureSprint::new);
+    public static final StaticModifier<Resonance> resonance=MODIFIERS.register("resonance", Resonance::new);
+    public static final StaticModifier<EternalAnger> eternalanger=MODIFIERS.register("eternalanger", EternalAnger::new);
+    public static final StaticModifier<SlackAtmosphere> slackatmosphere=MODIFIERS.register("slackatmosphere", SlackAtmosphere::new);
+    public static final StaticModifier<ThePinnacleOfArrogance> thepinnacleofarrogance=MODIFIERS.register("thepinnacleofarrogance", ThePinnacleOfArrogance::new);
+    public static final StaticModifier<FilledWithHunger> filledwithhunger=MODIFIERS.register("filledwithhunger", FilledWithHunger::new);
+    public static final StaticModifier<ResentmentKnives> resentmentknives=MODIFIERS.register("resentmentknives", ResentmentKnives::new);
+    public static final StaticModifier<ForbiddenFruit> forbiddenfruit=MODIFIERS.register("forbiddenfruit", ForbiddenFruit::new);
 
 }

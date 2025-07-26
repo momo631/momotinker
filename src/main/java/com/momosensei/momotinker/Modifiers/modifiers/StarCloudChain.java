@@ -20,10 +20,10 @@ public class StarCloudChain extends momomodifier {
     private void livinghurtevent(LivingHurtEvent event) {
         Entity a = event.getEntity();
         Entity b = event.getSource().getEntity();
-        if (b instanceof Player player&&a instanceof LivingEntity){
+        if (b instanceof Player player&&a instanceof LivingEntity living){
             int c = getAllModifierlevel(player,MomotinkerModifiers.starcloudchain.getId());
-            if (c>0&&!a.getTags().contains("starchain")) {
-                a.addTag("starchain");
+            if (c>0&&!living.getTags().contains("starchain")) {
+                living.addTag("starchain");
             }
             if (c>0) {
                 List<LivingEntity> list = player.level.getEntitiesOfClass(LivingEntity.class, player.getBoundingBox().inflate(5 + 3 * c));
@@ -34,10 +34,10 @@ public class StarCloudChain extends momomodifier {
                 }
             }
         }
-        if (a instanceof Player player&&b instanceof LivingEntity){
+        if (a instanceof Player player&&b instanceof LivingEntity living){
             int c = getAllModifierlevel(player,MomotinkerModifiers.starcloudchain.getId());
-            if (c>0&&!b.getTags().contains("starchain")) {
-                b.addTag("starchain");
+            if (c>0&&!living.getTags().contains("starchain")) {
+                living.addTag("starchain");
             }
             if (c>0) {
                 List<LivingEntity> list = player.level.getEntitiesOfClass(LivingEntity.class, player.getBoundingBox().inflate(5 + 3 * c));

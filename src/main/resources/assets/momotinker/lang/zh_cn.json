@@ -255,7 +255,7 @@
   "item.momotinker.chain_sword.description": "[双手武器]\n右键使用期间可对前方小范围生物进行持续打击，使用时间过长则会过热无法正常使用，攻速越高伤害越高",
 
   "item.momotinker.pneumatic_sword": "气动剑",
-  "item.momotinker.pneumatic_sword.description": "高机动性的近战武器，右键可短暂向前上方冲刺，按下工具技能可发射绳索将自己拉向被击中的方块或生物（按“shift”可提前取消绳索），若目标是生物时会强化下一次在空中的冲刺和该冲刺伤害，若副手存在另一把气动剑则提升冲刺性能",
+  "item.momotinker.pneumatic_sword.description": "高机动性的近战武器，右键可短暂向前上方冲刺，按下工具技能可发射绳索将自己拉向被击中的方块或生物（按“shift”可提前取消绳索），若目标是生物时会强化下一次在空中的冲刺和该冲刺伤害，若副手存在另一把气动剑则提升各项性能",
 
   "momotinker.tool.tooltip.offhand_hastool": "错误:副手有物品",
 
@@ -637,7 +637,36 @@
   "modifier.momotinker.timeechoes.description": "在背包中时会随时间逐渐降低最大耐久的同时提高其他属性，直至最大耐久不足500",
 
   "modifier.momotinker.polarizedspacetime": "极化时空",
-  "modifier.momotinker.polarizedspacetime.flavor": "空间上的距离开始产生影响",
-  "modifier.momotinker.polarizedspacetime.description": "伤害源的位置越近受到的该伤害越低，造成伤害的位置距目标越远伤害越高，距离上限与身上总词条有关"
+  "modifier.momotinker.polarizedspacetime.flavor": "跨越灾险，与时空共进",
+  "modifier.momotinker.polarizedspacetime.description": "装备或持有时会逐渐适应同种类伤害，适应速度与全身词条等级有关，可同时适应的伤害种类的数量与已装备的拥有该词条的装备数量有关",
+
+  "modifier.momotinker.resonance": "共鸣",
+  "modifier.momotinker.resonance.flavor": "我们或许本就是一体",
+  "modifier.momotinker.resonance.description": "主副手武器都拥有该词条时生效。主手造成非额外的攻击时副手武器也将造成一次攻击",
+
+  "modifier.momotinker.eternalanger": "不灭之怒",
+  "modifier.momotinker.eternalanger.flavor": "",
+  "modifier.momotinker.eternalanger.description": "主手持有该工具濒死时可免死一次，恢复15%最大生命并小范围攻击一次，下次触发免死的几率减半（基础概率为160%），并且持有该工具造成的伤害和承受伤害都将增加，死亡后重置",
+
+  "modifier.momotinker.slackatmosphere": "懈怠气氛",
+  "modifier.momotinker.slackatmosphere.flavor": "",
+  "modifier.momotinker.slackatmosphere.description": "周围所有生物获得负面药水效果的等级翻倍（包括自身），所有非自身生物获得的正面药水效果的等级减半。攻击/被攻击时给予目标/攻击者随机负面药水效果（若是已有效果则增加等级）",
+
+  "modifier.momotinker.thepinnacleofarrogance": "傲于穹顶",
+  "modifier.momotinker.thepinnacleofarrogance.flavor": "",
+  "modifier.momotinker.thepinnacleofarrogance.description": "装备或持有时受到的最小伤害为自身最大生命的5%，受到的最大伤害为自身最大生命的50%，若伤害超过自身最大生命的2500%则不会生效",
+
+  "modifier.momotinker.filledwithhunger": "惶怒我身",
+  "modifier.momotinker.filledwithhunger.flavor": "",
+  "modifier.momotinker.filledwithhunger.description": "饱食度和饥饿值消耗的速度增加为500%。你的击杀会为你恢复饱食度和饥饿值，并且饱食度和饥饿值可突破上限。饱食度和饥饿值可当做格外生命值抵挡伤害，并提高造成的伤害。超过上限的饱食度和饥饿值可分别免疫一次死亡，使生命恢复至100%并清空消耗的超过上限的饱食度或饥饿值",
+
+  "modifier.momotinker.resentmentknives": "骇怨为刀",
+  "modifier.momotinker.resentmentknives.flavor": "",
+  "modifier.momotinker.resentmentknives.description": "持有时攻击/受到攻击会将自身与目标/攻击者标为“相嫉”状态，若对方攻击大于自身，则自身攻击提高到对方水平，且对其造成的伤害将穿透防御;若小于则会使对方的攻击提高到自身水平。\n“相嫉”:每对生物只能同时存在一种该状态，其他生物对该状态单位造成和受到的伤害将大幅缩减，直至其中一方死亡",
+
+  "modifier.momotinker.forbiddenfruit": "伊甸禁言",
+  "modifier.momotinker.forbiddenfruit.flavor": "",
+  "modifier.momotinker.forbiddenfruit.description": "持有者攻击将直接削减目标护甲值，并根据削减值增加持有时的护甲。大范围内无护甲的生物将减少大部分属性，范围内护甲低于持有者的单位受到来自持有者的伤害将提高，对持有者造成的伤害将减少"
+
 
 }

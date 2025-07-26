@@ -75,7 +75,7 @@ public class moon_lock extends ModifiableItem {
             if (result.getEntity() instanceof Player player) {
                 if (!player.level.isClientSide) {
                     boolean b = player.getUseItem().is(MomotinkerItem.moon_lock.get());
-                    int a = RANDOM.nextInt(10);
+                    int a = RANDOM.nextInt(9);
                     if (b&&a<5) {
                         event.setCanceled(true);
                     }

@@ -161,7 +161,7 @@ public class SuperancientMetalsRealC extends momomodifier {
                 ItemStack stack = player.getInventory().getItem(j);
                 ToolStack tool = ToolStack.from(stack);
                 ModDataNBT data = tool.getPersistentData();
-                if (stack.getItem() == MomotinkerItem.pocket_watch.get() &&data.getInt(transmit)==transmit_limit&& data.getInt(transmitpoints) != 0 &&tool.getModifierLevel(MomotinkerModifiers.superancientmetalsrealc.getId())>0) {
+                if (player.isDeadOrDying()&&stack.getItem() == MomotinkerItem.pocket_watch.get() &&data.getInt(transmit)==transmit_limit&& data.getInt(transmitpoints) != 0 &&tool.getModifierLevel(MomotinkerModifiers.superancientmetalsrealc.getId())>0) {
                     data.putInt(transmitpoints,0);
                 }
             }
