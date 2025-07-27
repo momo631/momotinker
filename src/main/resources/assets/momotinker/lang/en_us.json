@@ -12,6 +12,7 @@
   "effect.momotinker.censored": "??????????",
   "effect.momotinker.flamebatharmor": "Flame Bath Armor",
   "effect.momotinker.increaseallattributes": "Increase All Attributes",
+  "effect.momotinker.stiffening": "Stiffening",
   "effect.momotinker.reduceallattributes": "Reduce All Attributes",
 
   "fluid.momotinker.molten_laomo": "Molten Momo",
@@ -69,14 +70,19 @@
   "item.momotinker.molten_twilight_purple_gold_bucket": "Molten Twilight Purple Gold Bucket",
   "item.momotinker.molten_timetrace_purple_gold_bucket": "Molten Time Trace Purple Gold Bucket",
   "item.momotinker.molten_reversetime_purple_gold_bucket": "Molten Reverse Time Purple Gold Bucket",
-  
-  "recipe.momotinker.modifier.cleansetheworld": "'Cleanse The World' requires 'Breakthrough Stars' as a prerequisite",
-  "recipe.momotinker.modifier.shadowofdamnation": "'Shadow Of Damnation' requires 'Cleanse The World' as a prerequisite",
+
+
+  "recipe.momotinker.modifier.cleansetheworld": "[Cleanse The World] requires [Breakthrough Stars] as a prerequisite",
+  "recipe.momotinker.modifier.shadowofdamnation": "[Shadow Of Damnation] requires [Cleanse The World] as a prerequisite",
   "recipe.momotinker.modifier.expandedequipment": "This tool cannot apply reinforcement",
-  "recipe.momotinker.modifier.shortterminvestments": "'Short Term Investments' requires 'Greedy and plundering' as a prerequisite and is mutually exclusive with 'Long Term Investments'",
-  "recipe.momotinker.modifier.longterminvestments": "'Long Term Investments' requires 'Greedy and plundering' as a prerequisite and is mutually exclusive with 'Short Term Investments'",
+  "recipe.momotinker.modifier.shortterminvestments": "[Short Term Investments] requires [Greedy and plundering] as a prerequisite and is mutually exclusive with [Long Term Investments]",
+  "recipe.momotinker.modifier.longterminvestments": "[Long Term Investments] requires [Greedy and plundering] as a prerequisite and is mutually exclusive with [Short Term Investments]",
+  "recipe.momotinker.modifier.crimsonqueen": "[Crimson Queen] is mutually exclusive with [Dimensional Slash]",
+  "recipe.momotinker.modifier.yamato": "[Dimensional Slash] is mutually exclusive with [Crimson Queen]",
+
 
   "momotinker": "Momotinker",
+
   "key.momotinker.key": "Category Example",
   "key.momotinker.keya": "Tool Enhancement",
 
@@ -188,12 +194,12 @@
   "momotinker.item.tooltip.reversetime_purple_gold2": "§5Hidden Material:The strongest and most unintentional wish may receive a different response§",
 
   "item.momotinker.twilight_ego": "E.G.O:Twilight",
-  "momotinker.item.tooltip.twilight_ego1": "只有全属性超过 110 的员工才能拿起这把武器（包括饰品加成）",
-  "momotinker.item.tooltip.twilight_ego2": "这把武器会同时造成物理，精神，侵蚀和灵魂伤害（普通伤害，魔法伤害，虚空伤害，目标最大生命值的百分比伤害）。",
-  "momotinker.item.tooltip.twilight_ego3": "这把武器每隔一段时间可发起一次特殊攻击",
-  "momotinker.item.tooltip.twilight_ego4": "如果有员工持有这件E.G.O武器，则终末鸟就不会出现。",
-  "momotinker.item.tooltip.twilight_ego5": "大鸟那永不闭合的眼睛、高鸟那能衡量一切罪恶的天平、小鸟那能吞噬一切的巨口，这三者守护着黑森林的和平。",
-  "momotinker.item.tooltip.twilight_ego6": "而那些能够同时驾驭这三者的人也能带来和平。",
+  "momotinker.item.tooltip.twilight_ego1": "Only employees with all attributes exceeding 110 can pick up this weapon (including accessory bonuses)",
+  "momotinker.item.tooltip.twilight_ego2": "This weapon will cause physical, mental, erosion, and soul damage simultaneously.",
+  "momotinker.item.tooltip.twilight_ego3": "This weapon can launch a special attack every once in a while",
+  "momotinker.item.tooltip.twilight_ego4": "If an employee holds this E.G.O weapon, the End Bird will not appear.",
+  "momotinker.item.tooltip.twilight_ego5": "Just like how the ever-watching eyes, the scale that could measure any and all sin, and the beak that could swallow everything protected the peace of the Black Forest...",
+  "momotinker.item.tooltip.twilight_ego6": "The wielder of this armament may also bring peace as they did.",
 
   "itemGroup.momotinker.tools": "Momotinker Tools",
 
@@ -253,6 +259,10 @@
 
   "item.momotinker.chain_sword": "Chain Sword",
   "item.momotinker.chain_sword.description": "[Two handed weapons]\nDuring use, it can continuously strike small range creatures in front of it. If used for too long, it will cannot be used normally. The higher the attack speed, the higher the damage",
+
+  "item.momotinker.pneumatic_sword": "Pneumatic Sword",
+  "item.momotinker.pneumatic_sword.description": "Right click to briefly sprint forward and upward, pressing 'Tool Enhancement' to fire the rope (press 'shift' to cancel the rope in advance). If the target is a creature, it will enhance the next aerial sprint. If the deputy has another pneumatic sword, it will improve various performance",
+
 
   "momotinker.tool.tooltip.offhand_hastool": "Error: The deputy has items",
 
@@ -513,7 +523,7 @@
 
   "modifier.momotinker.crimsonqueen": "Crimson Queen",
   "modifier.momotinker.crimsonqueen.flavor": "'Trigger Blade' Exclusive Enhancement: Mobile Sword",
-  "modifier.momotinker.crimsonqueen.description": "Losing the original slash, it will be replaced by releasing it at a certain time after right clicking to recharge the weapon. When there is a recharge, the attack will consume layers, causing the attack to be corrected to 150% and ignoring armor. The maximum number of layers that can exist is 3 (if a perfect judgment is triggered, 3 layers will be directly obtained)",
+  "modifier.momotinker.crimsonqueen.description": "Losing the original slash, it will be replaced by releasing it at a certain time after right clicking to recharge the weapon. When there is a recharge, the attack will consume layers, causing the attack to be corrected to 200% and ignoring armor. The maximum number of layers that can exist is 3 (if a perfect judgment is triggered, 3 layers will be directly obtained)",
 
   "modifier.momotinker.berserk": "Berserk",
   "modifier.momotinker.berserk.flavor": "Completely insane",
@@ -523,7 +533,7 @@
 
   "modifier.momotinker.yamato": "Dimensional Slash",
   "modifier.momotinker.yamato.flavor": "'Trigger Blade' Exclusive enhancement: Yamato",
-  "modifier.momotinker.yamato.description": "A 4-strike combo with a slightly shortened cooldown time and 50% damage from a slash. After use, the weapon will experience a 1-second cooldown, but if released within a certain period of time after completing the charge, it will not cool down",
+  "modifier.momotinker.yamato.description": "A 4-strike combo with a slightly shortened cooldown time and 80% damage from a slash. After use, the weapon will experience a 1-second cooldown, but if released within a certain period of time after completing the charge, it will not cool down",
 
   "modifier.momotinker.starcloudchain": "Star Cloud Chain",
   "modifier.momotinker.starcloudchain.flavor": "Like a constellation",
@@ -638,31 +648,31 @@
   "modifier.momotinker.polarizedspacetime.description": "When equipped or held, it will gradually adapt to the same type of damage, and the adaptation speed is related to the level of the whole body entry. The number of damage types that can be adapted to at the same time is related to the number of equipment already equipped with that entry",
 
   "modifier.momotinker.resonance": "Resonance",
-  "modifier.momotinker.resonance.flavor": "我们或许本就是一体",
-  "modifier.momotinker.resonance.description": "主副手武器都拥有该词条时生效。主手造成非额外的攻击时副手武器也将造成一次攻击",
+  "modifier.momotinker.resonance.flavor": "We may already be one",
+  "modifier.momotinker.resonance.description": "This entry takes effect when both the main and deputy weapons possess it. When the main hand causes non additional attacks, the secondary weapon will also cause one attack",
 
-  "modifier.momotinker.eternalanger": "不灭之怒",
-  "modifier.momotinker.eternalanger.flavor": "",
-  "modifier.momotinker.eternalanger.description": "持有该工具濒死时可免死一次，恢复15%最大生命并小范围攻击一次，下次触发免死的几率减半（基础概率为160%），并且持有该工具造成的伤害和承受伤害都将增加，死亡后重置",
+  "modifier.momotinker.eternalanger": "Eternal Anger",
+  "modifier.momotinker.eternalanger.flavor": "Before going to hell, my anger knows no bounds",
+  "modifier.momotinker.eternalanger.description": "hen the main hand holds this tool and is on the brink of death, they can avoid death once and launch a small-scale attack once. The probability of triggering a death free attack next time is halved (the basic probability is 300%), and the damage caused and taken by holding this tool will increase. It will reset after death",
 
-  "modifier.momotinker.slackatmosphere": "懈怠气氛",
-  "modifier.momotinker.slackatmosphere.flavor": "",
-  "modifier.momotinker.slackatmosphere.description": "周围所有生物获得负面药水效果的等级翻倍（包括自身），所有非自身生物获得的正面药水效果的等级减半。被攻击时给予攻击者随机负面药水效果（若是已有效果则增加等级）",
+  "modifier.momotinker.slackatmosphere": "Slack Atmosphere",
+  "modifier.momotinker.slackatmosphere.flavor": "The slight drunkenness, like whiskey, can't help but make people addicted and unable to extricate themselves",
+  "modifier.momotinker.slackatmosphere.description": "The level of negative potion effects obtained by all surrounding creatures is doubled (including oneself), and the level of positive potion effects obtained by all non self creatures is halved. Give the target/attacker a random negative potion effect when attacking/being attacked",
 
-  "modifier.momotinker.thepinnacleofarrogance": "傲于穹顶",
-  "modifier.momotinker.thepinnacleofarrogance.flavor": "",
-  "modifier.momotinker.thepinnacleofarrogance.description": "装备或持有时受到的最小伤害为自身最大生命的5%，受到的最大伤害为自身最大生命的50%，若伤害超过自身最大生命的2500%则不会生效",
+  "modifier.momotinker.thepinnacleofarrogance": "The Pinnacle Of Arrogance",
+  "modifier.momotinker.thepinnacleofarrogance.flavor": "I once stood on the dome, overlooking the vast beings",
+  "modifier.momotinker.thepinnacleofarrogance.description": "The minimum damage received by equipment or holder is 5% of their maximum life, and the maximum damage received is 25% of their maximum life. If the damage exceeds 2500% of their maximum life, it will not take effect",
 
-  "modifier.momotinker.filledwithhunger": "惶怒我身",
-  "modifier.momotinker.filledwithhunger.flavor": "",
-  "modifier.momotinker.filledwithhunger.description": "饱食度消耗的速度增加为500%。你的击杀会为你恢复饱食度，不足以饥饿时也可以进食，并且饱食度可突破上限。饱食度可当做格外生命值抵挡伤害，并提高造成的伤害。存在超过上限的饱食度时你不会被秒杀",
+  "modifier.momotinker.filledwithhunger": "Filled With Hunger",
+  "modifier.momotinker.filledwithhunger.flavor": "With the stove of heaven and earth, I am the kitchen for the food",
+  "modifier.momotinker.filledwithhunger.description": "The satiety and hunger levels will rapidly and naturally decrease. Killing will restore satiety and hunger levels and can break through the upper limit. The satiety and hunger values can be considered as extra health and increase the damage caused. Exceeding the upper limit of satiety/hunger values can immunize against death and clear the excess satiety/hunger values",
 
-  "modifier.momotinker.resentmentknives": "骇怨为刀",
-  "modifier.momotinker.resentmentknives.flavor": "",
-  "modifier.momotinker.resentmentknives.description": "持有时攻击/受到攻击会将自身与目标/攻击者标为“相嫉”状态，若对方攻击大于自身，则自身攻击提高到对方水平，且对其造成的伤害将穿透防御;若小于则会使对方的攻击提高到自身水平。\n“相嫉”:每对生物只能同时存在一种该状态，其他生物对该状态单位造成和受到的伤害将大幅缩减，直至其中一方死亡",
+  "modifier.momotinker.resentmentknives": "Resentment Knives",
+  "modifier.momotinker.resentmentknives.flavor": "Have you ever thought that you are also hated by the world, someone who hates the world",
+  "modifier.momotinker.resentmentknives.description": "When holding, attacking/being attacked will mark oneself as 'jealous' of the target/attacker. If the opponent's attack is greater than oneself, the self attack will increase to the opponent's level, and the damage caused to them will penetrate the defense; If it is less than, it will increase the opponent's attack to its own level.\n'jealous': Each pair of organisms can only exist in one state at a time, and the damage caused and suffered by other organisms to units in that state will be greatly reduced until one of them dies or is far apart",
 
-  "modifier.momotinker.forbiddenfruit": "伊甸禁言",
-  "modifier.momotinker.forbiddenfruit.flavor": "",
-  "modifier.momotinker.forbiddenfruit.description": "持有者攻击将直接削减目标护甲值，并根据削减值增加持有时的护甲。大范围内无护甲的生物将减少大部分属性，范围内护甲低于持有者的单位受到来自持有者的伤害将提高，对持有者造成的伤害将减少"
+  "modifier.momotinker.forbiddenfruit": "Forbidden Fruit",
+  "modifier.momotinker.forbiddenfruit.flavor": "Perhaps we shouldn't have eaten that fruit from the beginning",
+  "modifier.momotinker.forbiddenfruit.description": "Holder attacks will directly reduce the target's armor value and increase armor. Creatures with armor lower than the holder within the range will experience a 50% reduction in most attributes. Units with armor lower than the holder's will receive increased damage from the holder and reduced damage to the holder (up to 95% reduction in damage)"
 
 }

@@ -4,7 +4,6 @@ import com.momosensei.momotinker.register.MomotinkerEffects;
 import net.minecraft.world.effect.MobEffectCategory;
 import net.minecraft.world.entity.ai.attributes.AttributeModifier;
 import net.minecraft.world.entity.ai.attributes.Attributes;
-import net.minecraft.world.entity.player.Player;
 import net.minecraftforge.common.MinecraftForge;
 import net.minecraftforge.event.entity.living.MobEffectEvent;
 import org.jetbrains.annotations.NotNull;
@@ -27,7 +26,7 @@ public class Stiffening extends StaticEffect{
         return "effect.momotinker.stiffening";
     }
     private void RemoveMobEffect(MobEffectEvent.Remove event) {
-        if (event.getEntity() instanceof Player player&&event.getEffect()==MomotinkerEffects.IncreaseAllAttributes.get()){
+        if (event.getEffect()==MomotinkerEffects.Stiffening.get()){
             event.setCanceled(true);
         }
     }

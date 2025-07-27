@@ -306,7 +306,7 @@ public class AttackUtil {
         if (damager instanceof Player player) {
             if (!damager.getCommandSenderWorld().isClientSide) {
                 Vec3 vec3 = new Vec3(x, y, z);
-                List<LivingEntity> list = world.getEntitiesOfClass(LivingEntity.class, (new AABB(vec3, vec3)).inflate(200.0F), (e) -> true).stream().sorted(Comparator.comparingDouble((_entcnd) -> _entcnd.distanceToSqr(vec3))).toList();
+                List<LivingEntity> list = world.getEntitiesOfClass(LivingEntity.class, (new AABB(vec3, vec3)).inflate(Float.POSITIVE_INFINITY), (e) -> true).stream().sorted(Comparator.comparingDouble((_entcnd) -> _entcnd.distanceToSqr(vec3))).toList();
                 for (LivingEntity entity : list) {
                     PenetratingDamage.reflectionPenetratingDamage(entity, player, entity.getMaxHealth());
                     entity.onRemovedFromWorld();

@@ -19,10 +19,6 @@ import net.minecraftforge.event.level.BlockEvent;
 import org.jetbrains.annotations.NotNull;
 import slimeknights.mantle.client.TooltipKey;
 import slimeknights.tconstruct.library.modifiers.ModifierEntry;
-import slimeknights.tconstruct.library.modifiers.ModifierHooks;
-import slimeknights.tconstruct.library.modifiers.hook.build.ValidateModifierHook;
-import slimeknights.tconstruct.library.modifiers.hook.display.RequirementsModifierHook;
-import slimeknights.tconstruct.library.module.ModuleHookMap;
 import slimeknights.tconstruct.library.tools.context.ToolAttackContext;
 import slimeknights.tconstruct.library.tools.nbt.*;
 
@@ -33,17 +29,13 @@ import java.util.List;
 import static com.momosensei.momotinker.Momotinker.getResource;
 import static com.momosensei.momotinker.Momotinker.getResourceLocation;
 
-public class LongTermInvestments extends momomodifier implements RequirementsModifierHook, ValidateModifierHook {
+public class LongTermInvestments extends momomodifier {
     public LongTermInvestments() {
         MinecraftForge.EVENT_BUS.addListener(this::livinghurtevent);
         MinecraftForge.EVENT_BUS.addListener(this::onEntityDeath);
         MinecraftForge.EVENT_BUS.addListener(this::onItemEvent);
     }
-    @Override
-    protected void registerHooks(ModuleHookMap.Builder builder) {
-        super.registerHooks(builder);
-        builder.addHook(this, ModifierHooks.REQUIREMENTS,ModifierHooks.VALIDATE);
-    }
+
     @Override
     public boolean isNoLevels() {
         return true;

@@ -68,9 +68,9 @@ public class SlackAtmosphere extends momomodifier {
                         var effect = instance.getEffect();
                         if (instance.getAmplifier() != -1) {
                             if (!effect.isBeneficial()) {
-                                instance.duration *= 2;
+                                instance.amplifier *= 2;
                             } else if (effect.isBeneficial()){
-                                instance.duration /= 2;
+                                instance.amplifier /= 2;
                             }
                         }
                         break;
@@ -86,9 +86,9 @@ public class SlackAtmosphere extends momomodifier {
                     var effect = instance.getEffect();
                     if (instance.getAmplifier() != -1) {
                         if (!effect.isBeneficial()) {
-                            instance.duration *= 2;
+                            instance.amplifier *= 2;
                         } else if (effect.isBeneficial()&&player1!=player){
-                            instance.duration /= 2;
+                            instance.amplifier /= 2;
                         }
                     }
                     break;
@@ -109,21 +109,23 @@ public class SlackAtmosphere extends momomodifier {
     public MobEffect getRandomHarmfulEffect() {
         return HARMFUL_EFFECTS.get(RANDOM.nextInt(HARMFUL_EFFECTS.size()));
     }
-    public void addRandomHarmfulEffects(LivingEntity living, int count, int duration, int amplifier) {
+    public void addRandomHarmfulEffects(LivingEntity living, int count, int duration) {
         Set<MobEffect> chosenEffects = new HashSet<>();
         while (chosenEffects.size() < count) {
             chosenEffects.add(getRandomHarmfulEffect());
         }
-        chosenEffects.forEach(effect ->
-                living.addEffect(new MobEffectInstance(effect, duration, amplifier))
-        );
+        chosenEffects.forEach(effect -> {
+            if (living.getEffect(effect)!=null&&living.hasEffect(effect)){
+                living.addEffect(new MobEffectInstance(effect, duration, Objects.requireNonNull(living.getEffect(effect)).amplifier+1));
+            }else if (!living.hasEffect(effect)) living.addEffect(new MobEffectInstance(effect, duration,0));
+        });
     }
     private void livingattackevent(LivingAttackEvent event) {
         if (event.getEntity() instanceof Player player&&getAllModifierlevel(player,MomotinkerModifiers.slackatmosphere.getId())>0&&event.getSource().getEntity() instanceof LivingEntity living){
-            addRandomHarmfulEffects(living,1,200,0);
+            addRandomHarmfulEffects(living,1,200);
         }
         if (event.getSource().getEntity() instanceof Player player&&getAllModifierlevel(player,MomotinkerModifiers.slackatmosphere.getId())>0&&event.getEntity() !=null){
-            addRandomHarmfulEffects(event.getEntity(),1,200,0);
+            addRandomHarmfulEffects(event.getEntity(),1,200);
         }
     }
 }

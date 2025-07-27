@@ -190,7 +190,7 @@ public class trigger_blade extends ModifiableItem {
         int a = tool.getModifierLevel(MomotinkerModifiers.yamato.getId());
         slash.damage = tool.getStats().get(ToolStats.ATTACK_DAMAGE);
         if (a>0){
-            slash.damagemultiplier = getDamageMultiplier(tool)*0.5f;
+            slash.damagemultiplier = getDamageMultiplier(tool)*0.8f;
         }else {
             slash.damagemultiplier = getDamageMultiplier(tool);
         }

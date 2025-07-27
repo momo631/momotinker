@@ -24,8 +24,8 @@ public class ThePinnacleOfArrogance extends momomodifier {
             if (event.getAmount()<player.getMaxHealth()*0.05f){
                 event.setAmount(player.getMaxHealth()*0.05f);
             }
-            if (event.getAmount()>player.getMaxHealth()*0.5f&&event.getAmount()<player.getMaxHealth()*25f){
-                event.setAmount(player.getMaxHealth()*0.5f);
+            if (event.getAmount()>player.getMaxHealth()*0.25f&&event.getAmount()<player.getMaxHealth()*25f){
+                event.setAmount(player.getMaxHealth()*0.25f);
             }
         }
     }

@@ -47,19 +47,9 @@ public class EternalAnger extends momomodifier {
             ToolStack tool = ToolStack.from(player.getMainHandItem());
             ModDataNBT data = tool.getPersistentData();
             int a = RANDOM.nextInt(99);
-            if (data.getFloat(eternalangerodds) == 0) {
-                data.putFloat(eternalangerodds, 160);
-            }
-            if (!player.isDeadOrDying() && data.getFloat(eternalangerodds) > 0) {
-                data.putFloat(eternalangerodds, data.getFloat(eternalangerodds) * 0.5f);
-                data.putInt(eternalangerpoints, data.getInt(eternalangerpoints) + 6);
-            } else if (player.isDeadOrDying()) {
-                data.putFloat(eternalangerodds, 160);
-                data.putInt(eternalangerpoints, 0);
-            }
             if (a < data.getFloat(eternalangerodds)) {
                 event.setCanceled(true);
-                player.heal(player.getMaxHealth() * 0.15f);
+                player.setHealth(player.getMaxHealth() * 0.15f);
                 List<LivingEntity> ls0 = player.level.getEntitiesOfClass(LivingEntity.class, player.getBoundingBox().inflate(2));
                 for (LivingEntity targets : ls0) {
                     if (targets != player && targets != null) {
@@ -68,6 +58,13 @@ public class EternalAnger extends momomodifier {
                         targets.invulnerableTime = 0;
                     }
                 }
+            }
+            if (!player.isDeadOrDying() && data.getFloat(eternalangerodds) > 0) {
+                data.putFloat(eternalangerodds, data.getFloat(eternalangerodds) * 0.5f);
+                data.putInt(eternalangerpoints, data.getInt(eternalangerpoints) + 6);
+            } else if (player.isDeadOrDying()) {
+                data.putFloat(eternalangerodds, 300);
+                data.putInt(eternalangerpoints, 0);
             }
         }
     }
@@ -78,12 +75,18 @@ public class EternalAnger extends momomodifier {
         if (a instanceof Player player&& getMainhandModifierlevel(player, MomotinkerModifiers.eternalanger.getId()) > 0){
             ToolStack tool = ToolStack.from(player.getMainHandItem());
             ModDataNBT data = tool.getPersistentData();
-            event.setAmount(event.getAmount()*data.getInt(eternalangerpoints)*0.05f);
+            event.setAmount(event.getAmount()*(1f+data.getInt(eternalangerpoints)*0.05f));
+            if (data.getFloat(eternalangerodds) == 0) {
+                data.putFloat(eternalangerodds, 300);
+            }
         }
         if (b instanceof Player player&&a instanceof LivingEntity&& getMainhandModifierlevel(player, MomotinkerModifiers.eternalanger.getId()) > 0){
             ToolStack tool = ToolStack.from(player.getMainHandItem());
             ModDataNBT data = tool.getPersistentData();
-            event.setAmount(event.getAmount()*data.getInt(eternalangerpoints)*0.1f);
+            event.setAmount(event.getAmount()*(1f+data.getInt(eternalangerpoints)*0.1f));
+            if (data.getFloat(eternalangerodds) == 0) {
+                data.putFloat(eternalangerodds, 300);
+            }
         }
     }
 }
