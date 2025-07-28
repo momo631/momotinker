@@ -2,6 +2,7 @@ package com.momosensei.momotinker.Modifiers.modifiers;
 
 import com.momosensei.momotinker.Modifiers.momomodifier;
 import com.momosensei.momotinker.register.MomotinkerModifiers;
+import net.minecraft.network.chat.Component;
 import net.minecraft.server.level.ServerPlayer;
 import net.minecraft.world.entity.Entity;
 import net.minecraft.world.entity.LivingEntity;
@@ -14,6 +15,7 @@ import net.minecraft.world.phys.EntityHitResult;
 import net.minecraftforge.common.MinecraftForge;
 import net.minecraftforge.event.entity.living.LivingDeathEvent;
 import net.minecraftforge.event.entity.living.LivingHurtEvent;
+import org.jetbrains.annotations.NotNull;
 import slimeknights.tconstruct.library.modifiers.ModifierEntry;
 import slimeknights.tconstruct.library.tools.context.ToolAttackContext;
 import slimeknights.tconstruct.library.tools.nbt.IToolStackView;
@@ -21,6 +23,8 @@ import slimeknights.tconstruct.library.tools.nbt.ModifierNBT;
 import slimeknights.tconstruct.library.tools.nbt.NamespacedNBT;
 
 import javax.annotation.Nonnull;
+import javax.annotation.Nullable;
+import java.util.List;
 
 
 public class FilledWithHunger extends momomodifier {
@@ -32,6 +36,28 @@ public class FilledWithHunger extends momomodifier {
     @Override
     public boolean isNoLevels() {
         return true;
+    }
+    @Nullable
+    @Override
+    public Component requirementsError(ModifierEntry entry) {
+        return Component.translatable("recipe.momotinker.modifier.filledwithhunger");
+    }
+    @Override
+    public @NotNull List<ModifierEntry> displayModifiers(ModifierEntry entry) {
+        return List.of(new ModifierEntry(MomotinkerModifiers.overeatingsin.getId(),1));
+    }
+    @Override
+    public Component validate(IToolStackView tool, ModifierEntry modifier) {
+        if (tool.getModifierLevel(MomotinkerModifiers.overeatingsin.getId())>0
+                &&tool.getModifierLevel(MomotinkerModifiers.eternalanger.getId())==0
+                &&tool.getModifierLevel(MomotinkerModifiers.slackatmosphere.getId())==0
+                &&tool.getModifierLevel(MomotinkerModifiers.thepinnacleofarrogance.getId())==0
+                &&tool.getModifierLevel(MomotinkerModifiers.resentmentknives.getId())==0
+                &&tool.getModifierLevel(MomotinkerModifiers.forbiddenfruit.getId())==0
+                &&tool.getModifierLevel(MomotinkerModifiers.gainsalone.getId())==0){
+            return null;
+        }
+        return requirementsError(modifier);
     }
 
     @Override

@@ -1,6 +1,6 @@
 {
   "parent": "item/generated",
   "textures": {
-    "layer0": "momotinker:item/twilight_purple_gold"
+    "layer0": "momotinker:item/ingot/twilight_purple_gold"
   }
 }

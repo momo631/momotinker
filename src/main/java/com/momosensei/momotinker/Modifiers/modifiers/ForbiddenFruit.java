@@ -22,12 +22,13 @@ import net.minecraft.world.level.Level;
 import net.minecraft.world.phys.EntityHitResult;
 import net.minecraftforge.common.MinecraftForge;
 import net.minecraftforge.event.entity.living.LivingHurtEvent;
-import slimeknights.tconstruct.library.modifiers.Modifier;
+import org.jetbrains.annotations.NotNull;
 import slimeknights.tconstruct.library.modifiers.ModifierEntry;
 import slimeknights.tconstruct.library.tools.context.ToolAttackContext;
 import slimeknights.tconstruct.library.tools.nbt.*;
 
 import javax.annotation.Nonnull;
+import javax.annotation.Nullable;
 import java.util.List;
 import java.util.UUID;
 import java.util.function.BiConsumer;
@@ -44,11 +45,29 @@ public class ForbiddenFruit extends momomodifier {
     public boolean isNoLevels() {
         return true;
     }
+    @Nullable
     @Override
-    public Component onRemoved(IToolStackView iToolStackView, Modifier modifier) {
-        iToolStackView.getPersistentData().remove(forbiddenfruitpoints);
-        return null;
+    public Component requirementsError(ModifierEntry entry) {
+        return Component.translatable("recipe.momotinker.modifier.forbiddenfruit");
     }
+    @Override
+    public @NotNull List<ModifierEntry> displayModifiers(ModifierEntry entry) {
+        return List.of(new ModifierEntry(MomotinkerModifiers.overindulgencesin.getId(),1));
+    }
+    @Override
+    public Component validate(IToolStackView tool, ModifierEntry modifier) {
+        if (tool.getModifierLevel(MomotinkerModifiers.overindulgencesin.getId())>0
+                &&tool.getModifierLevel(MomotinkerModifiers.eternalanger.getId())==0
+                &&tool.getModifierLevel(MomotinkerModifiers.slackatmosphere.getId())==0
+                &&tool.getModifierLevel(MomotinkerModifiers.thepinnacleofarrogance.getId())==0
+                &&tool.getModifierLevel(MomotinkerModifiers.filledwithhunger.getId())==0
+                &&tool.getModifierLevel(MomotinkerModifiers.resentmentknives.getId())==0
+                &&tool.getModifierLevel(MomotinkerModifiers.gainsalone.getId())==0){
+            return null;
+        }
+        return requirementsError(modifier);
+    }
+
     @Override
     public void onInventoryTick(IToolStackView tool, ModifierEntry modifierEntry, Level level, LivingEntity entity, int index, boolean b, boolean b1, ItemStack itemStack) {
         if (entity instanceof Player player&&player.tickCount%20==0) {

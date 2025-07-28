@@ -22,18 +22,23 @@ import net.minecraftforge.eventbus.api.EventPriority;
 import net.minecraftforge.eventbus.api.SubscribeEvent;
 import net.minecraftforge.fml.common.Mod;
 import slimeknights.tconstruct.library.tools.helper.ModifierUtil;
+import slimeknights.tconstruct.library.tools.nbt.ToolStack;
 
 import java.util.Random;
+
+import static com.momosensei.momotinker.Modifiers.modifiers.GainsAlone.gainsalonepoints;
+import static com.momosensei.momotinker.Modifiers.momomodifier.getRemainingDurability;
 
 @Mod.EventBusSubscriber(modid = "momotinker", bus = Mod.EventBusSubscriber.Bus.FORGE)
 public class ModEvent {
 
     @SubscribeEvent(priority = EventPriority.LOWEST)
-    public static void onMobDrop(LivingDropsEvent event) {
+    public static void onLivingDrop(LivingDropsEvent event) {
         LivingEntity killer = event.getEntity().getKillCredit();
         if (killer != null) {
             int a = ModifierUtil.getModifierLevel(killer.getMainHandItem(), MomotinkerModifiers.intendingplunder.getId());
             int b = ModifierUtil.getModifierLevel(killer.getMainHandItem(), MomotinkerModifiers.origin.getId());
+            int c = ModifierUtil.getModifierLevel(killer.getMainHandItem(), MomotinkerModifiers.gainsalone.getId());
             Random random = new Random();
             for (var stack : event.getDrops()) {
                 if (a > 0) {
@@ -42,9 +47,36 @@ public class ModEvent {
                 if (b > 0 && random.nextInt(16) <4+b) {
                     stack.getItem().setCount(0);
                 }
+                if (c > 0) {
+                    ToolStack tool = ToolStack.from(killer.getMainHandItem());
+                    int c1 = tool.getPersistentData().getInt(gainsalonepoints);
+                    double c2 = Math.pow(2,c1+1);
+                    if (!tool.isBroken()&&getRemainingDurability(tool)>1) {
+                        stack.getItem().setCount((int) (stack.getItem().getCount() * Math.floor(c2)));
+                    }
+                }
             }
         }
     }
+    /*
+    @SubscribeEvent(priority = EventPriority.LOWEST)
+    public static void onBlockDrop(BlockEvent.BreakEvent event) {
+        Block block= event.getState().getBlock();
+        ItemStack item = new ItemStack(block);
+        Player player=event.getPlayer();
+        ToolStack tool = ToolStack.from(player.getMainHandItem());
+        int c = ModifierUtil.getModifierLevel(player.getMainHandItem(), MomotinkerModifiers.gainsalone.getId());
+        if (player.level instanceof ServerLevel && c > 0 && event.getState() != null && !event.getState().isAir()&&!tool.isBroken()){
+            if (!block.canHarvestBlock(event.getState(),player.level,event.getPos(),player))return;
+            int c1 = tool.getPersistentData().getInt(gainsalonepoints);
+            int a = (int) Math.floor(Math.pow(2,c1+1));
+            for (int i = 0; i < a; ++i) {
+                if (item.isEmpty()) return;
+                ModifierUtil.dropItem(player, item);
+            }
+        }
+    }
+*/
 
     @SubscribeEvent
     public static void Livingtickevent(LivingEvent.LivingTickEvent event) {

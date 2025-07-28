@@ -36,6 +36,7 @@ import slimeknights.tconstruct.library.modifiers.hook.armor.ModifyDamageModifier
 import slimeknights.tconstruct.library.modifiers.hook.armor.OnAttackedModifierHook;
 import slimeknights.tconstruct.library.modifiers.hook.behavior.AttributesModifierHook;
 import slimeknights.tconstruct.library.modifiers.hook.behavior.ProcessLootModifierHook;
+import slimeknights.tconstruct.library.modifiers.hook.behavior.RepairFactorModifierHook;
 import slimeknights.tconstruct.library.modifiers.hook.behavior.ToolDamageModifierHook;
 import slimeknights.tconstruct.library.modifiers.hook.build.ModifierRemovalHook;
 import slimeknights.tconstruct.library.modifiers.hook.build.ToolStatsModifierHook;
@@ -72,7 +73,7 @@ public abstract class momomodifier extends Modifier implements MeleeDamageModifi
         BowAmmoModifierHook, ProjectileHitModifierHook, ProjectileLaunchModifierHook,KeybindInteractModifierHook, ProcessLootModifierHook,
         EquipmentChangeModifierHook, InventoryTickModifierHook, OnAttackedModifierHook, TooltipModifierHook, AttributesModifierHook,
         ModifyDamageModifierHook, ModifierRemovalHook, BlockBreakModifierHook, EntityInteractionModifierHook, ToolStatsModifierHook,
-        ToolDamageModifierHook, VolatileDataModifierHook, RequirementsModifierHook, ValidateModifierHook {
+        ToolDamageModifierHook, VolatileDataModifierHook, RequirementsModifierHook, ValidateModifierHook, RepairFactorModifierHook {
 
     @Override
     protected void registerHooks(ModuleHookMap.Builder builder) {
@@ -84,7 +85,7 @@ public abstract class momomodifier extends Modifier implements MeleeDamageModifi
         builder.addHook(this, ModifierHooks.BLOCK_BREAK, ModifierHooks.ENTITY_INTERACT, ModifierHooks.TOOL_STATS);
         builder.addHook(this, ModifierHooks.ARMOR_INTERACT, ModifierHooks.ATTRIBUTES, ModifierHooks.PROCESS_LOOT);
         builder.addHook(this, ModifierHooks.TOOL_DAMAGE, ModifierHooks.VOLATILE_DATA,ModifierHooks.REQUIREMENTS);
-        builder.addHook(this, ModifierHooks.VALIDATE);
+        builder.addHook(this, ModifierHooks.VALIDATE, ModifierHooks.REPAIR_FACTOR);
 
     }
 
@@ -94,6 +95,10 @@ public abstract class momomodifier extends Modifier implements MeleeDamageModifi
         MinecraftForge.EVENT_BUS.addListener(this::LivingDamageEvent);
     }
 
+    @Override
+    public float getRepairFactor(IToolStackView tool, ModifierEntry entry, float factor) {
+        return factor;
+    }
     @Override
     public Component requirementsError(ModifierEntry entry) {
         return null;

@@ -1,6 +1,6 @@
 {
   "parent": "item/generated",
   "textures": {
-    "layer0": "momotinker:item/reversetime_purple_gold"
+    "layer0": "momotinker:item/ingot/reversetime_purple_gold"
   }
 }

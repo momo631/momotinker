@@ -1,6 +1,6 @@
 {
   "parent": "item/generated",
   "textures": {
-    "layer0": "momotinker:item/starry_mysterious_gold"
+    "layer0": "momotinker:item/ingot/starry_mysterious_gold"
   }
 }

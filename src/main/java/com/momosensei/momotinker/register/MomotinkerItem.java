@@ -20,7 +20,6 @@ public class  MomotinkerItem {
     public static final DeferredRegister<Item> ITEMS = DeferredRegister.create(ForgeRegistries.ITEMS, MOD_ID);
     public static final ItemDeferredRegisterExtension ARMOR = new ItemDeferredRegisterExtension(MOD_ID);
 
-    //物品锭什么的注册照着复制就行，如果有单独类改new Item的Item字段为你的类名，tab为创造模式显示栏，在哪个栏位显示
     public static final RegistryObject<Item> laomo = ITEMS.register("laomo", () -> new Item(new Item.Properties().tab(MomotinkerTab.MATERIALS)));
     public static final RegistryObject<Item> interdimensional_crystal = ITEMS.register("interdimensional_crystal", () -> new interdimensional_crystal(new Item.Properties().tab(MomotinkerTab.MATERIALS)));
     public static final RegistryObject<Item> arriving_at_the_other_shore = ITEMS.register("arriving_at_the_other_shore", () -> new arriving_at_the_other_shore(new Item.Properties().tab(MomotinkerTab.MATERIALS)));
@@ -47,6 +46,7 @@ public class  MomotinkerItem {
     public static final RegistryObject<Item> twilight_purple_gold = ITEMS.register("twilight_purple_gold", () -> new twilight_purple_gold(new Item.Properties().tab(MomotinkerTab.MATERIALS)));
     public static final RegistryObject<Item> timetrace_purple_gold = ITEMS.register("timetrace_purple_gold", () -> new timetrace_purple_gold(new Item.Properties().tab(MomotinkerTab.MATERIALS)));
     public static final RegistryObject<Item> reversetime_purple_gold = ITEMS.register("reversetime_purple_gold", () -> new reversetime_purple_gold(new Item.Properties().tab(MomotinkerTab.MATERIALS)));
+    public static final RegistryObject<Item> core_of_felony = ITEMS.register("core_of_felony", () -> new core_of_felony(new Item.Properties().tab(MomotinkerTab.MATERIALS)));
 
     public static final RegistryObject<ModifiableItem> trigger_blade = ITEMS.register("trigger_blade", () -> new trigger_blade(TOOL, MomotinkerToolDefinitions.TRIGGER_BLADE));
     public static final RegistryObject<ModifiableItem> divine_punishment_spear = ITEMS.register("divine_punishment_spear", () -> new divine_punishment_spear(TOOL, MomotinkerToolDefinitions.DIVINE_PUNISHMENT_SPEAR));

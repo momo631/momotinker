@@ -59,15 +59,13 @@ public class GrudgeOthers extends momomodifier {
     private void onEntityDeath(LivingDeathEvent event) {
         LivingEntity a = event.getEntity();
         Entity b = event.getSource().getEntity();
-        if (b instanceof Player player && a instanceof Mob mob&&mob.isDeadOrDying()) {
+        if (b instanceof Player player && a instanceof Mob mob) {
             if (getMainhandModifierlevel(player,MomotinkerModifiers.grudgeothers.getId())>0) {
                 if (!mob.getItemBySlot(EquipmentSlot.MAINHAND).isEmpty()){
-                    ModifierUtil.dropItem(event.getEntity(), ToolStack.copyFrom(mob.getItemBySlot(EquipmentSlot.MAINHAND)).createStack());
-                    mob.setItemSlot(EquipmentSlot.MAINHAND, ItemStack.EMPTY);
+                    mob.setDropChance(EquipmentSlot.MAINHAND, 1);
                 }
                 if (!mob.getItemBySlot(EquipmentSlot.OFFHAND).isEmpty()){
-                    ModifierUtil.dropItem(event.getEntity(), ToolStack.copyFrom(mob.getItemBySlot(EquipmentSlot.OFFHAND)).createStack());
-                    mob.setItemSlot(EquipmentSlot.OFFHAND, ItemStack.EMPTY);
+                    mob.setDropChance(EquipmentSlot.OFFHAND, 1);
                 }
             }
         }

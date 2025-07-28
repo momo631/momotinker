@@ -33,7 +33,7 @@ public class OverweightingWealthSin extends momomodifier {
     @Override
     public void addAttributes(IToolStackView iToolStackView, ModifierEntry modifierEntry, EquipmentSlot equipmentSlot, BiConsumer<Attribute, AttributeModifier> biConsumer) {
         ModDataNBT a = iToolStackView.getPersistentData();
-        a.putFloat(wealthsin, modifierEntry.getLevel() * -0.2F);
+        a.putFloat(wealthsin, modifierEntry.getLevel() * -0.24F);
         biConsumer.accept(Attributes.ATTACK_SPEED, new AttributeModifier(UUID.fromString("8B238F4C-4F5D-A930-FC77-FD9D3294CCC4"), Attributes.ATTACK_SPEED.getDescriptionId(), a.getFloat(wealthsin), AttributeModifier.Operation.MULTIPLY_BASE));
     }
 }

@@ -83,7 +83,7 @@ public class entropy_burning_cube extends ModifiableItem {
         Entity a = event.getEntity();
         Entity b = event.getSource().getEntity();
         if (b instanceof Player player&&a!=null&&player.getMainHandItem().is(MomotinkerItem.entropy_burning_cube.get())){
-            event.setAmount(event.getAmount()*0.006f);
+            event.setAmount(event.getAmount()*0.0618f);
         }
     }
     public boolean canAttackBlock(BlockState blockState, Level level, BlockPos blockPos, Player player) {

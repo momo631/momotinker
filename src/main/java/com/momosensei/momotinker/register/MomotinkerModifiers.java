@@ -81,5 +81,6 @@ public class MomotinkerModifiers {
     public static final StaticModifier<FilledWithHunger> filledwithhunger=MODIFIERS.register("filledwithhunger", FilledWithHunger::new);
     public static final StaticModifier<ResentmentKnives> resentmentknives=MODIFIERS.register("resentmentknives", ResentmentKnives::new);
     public static final StaticModifier<ForbiddenFruit> forbiddenfruit=MODIFIERS.register("forbiddenfruit", ForbiddenFruit::new);
+    public static final StaticModifier<GainsAlone> gainsalone=MODIFIERS.register("gainsalone", GainsAlone::new);
 
 }

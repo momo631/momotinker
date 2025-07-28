@@ -13,13 +13,16 @@ import net.minecraft.world.entity.player.Player;
 import net.minecraftforge.common.MinecraftForge;
 import net.minecraftforge.event.entity.living.LivingDeathEvent;
 import net.minecraftforge.event.entity.living.LivingHurtEvent;
+import org.jetbrains.annotations.NotNull;
 import slimeknights.tconstruct.library.modifiers.Modifier;
+import slimeknights.tconstruct.library.modifiers.ModifierEntry;
 import slimeknights.tconstruct.library.tools.nbt.IToolStackView;
 import slimeknights.tconstruct.library.tools.nbt.ModDataNBT;
 import slimeknights.tconstruct.library.tools.nbt.ToolStack;
 import slimeknights.tconstruct.library.tools.stat.ToolStats;
 import slimeknights.tconstruct.library.utils.Util;
 
+import javax.annotation.Nullable;
 import java.util.List;
 
 
@@ -35,6 +38,28 @@ public class EternalAnger extends momomodifier {
     @Override
     public boolean isNoLevels() {
         return true;
+    }
+    @Nullable
+    @Override
+    public Component requirementsError(ModifierEntry entry) {
+        return Component.translatable("recipe.momotinker.modifier.eternalanger");
+    }
+    @Override
+    public @NotNull List<ModifierEntry> displayModifiers(ModifierEntry entry) {
+        return List.of(new ModifierEntry(MomotinkerModifiers.overangersin.getId(),1));
+    }
+    @Override
+    public Component validate(IToolStackView tool, ModifierEntry modifier) {
+        if (tool.getModifierLevel(MomotinkerModifiers.overangersin.getId())>0
+                &&tool.getModifierLevel(MomotinkerModifiers.slackatmosphere.getId())==0
+                &&tool.getModifierLevel(MomotinkerModifiers.thepinnacleofarrogance.getId())==0
+                &&tool.getModifierLevel(MomotinkerModifiers.filledwithhunger.getId())==0
+                &&tool.getModifierLevel(MomotinkerModifiers.resentmentknives.getId())==0
+                &&tool.getModifierLevel(MomotinkerModifiers.forbiddenfruit.getId())==0
+                &&tool.getModifierLevel(MomotinkerModifiers.gainsalone.getId())==0){
+            return null;
+        }
+        return requirementsError(modifier);
     }
     @Override
     public Component onRemoved(IToolStackView iToolStackView, Modifier modifier) {

@@ -1,7 +1,7 @@
 {
   "parent": "item/generated",
   "textures": {
-    "layer0": "momotinker:item/twilight_ego"
+    "layer0": "momotinker:item/other/twilight_ego"
   },
   "display": {
     "firstperson_righthand": {

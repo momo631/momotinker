@@ -1,6 +1,6 @@
 {
   "parent": "item/generated",
   "textures": {
-    "layer0": "momotinker:item/gluttony_core"
+    "layer0": "momotinker:item/other/gluttony_core"
   }
 }
