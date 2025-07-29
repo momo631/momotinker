@@ -3,6 +3,9 @@ package com.momosensei.momotinker.event;
 
 import com.momosensei.momotinker.Momotinker;
 import com.momosensei.momotinker.entity.MeteorEntity;
+import com.momosensei.momotinker.mobs.StageMeteor;
+import com.momosensei.momotinker.network.Channel;
+import com.momosensei.momotinker.network.packet.StageMeteorCharge;
 import com.momosensei.momotinker.register.MomotinkerConfig;
 import com.momosensei.momotinker.register.MomotinkerItem;
 import it.unimi.dsi.fastutil.ints.Int2ObjectMap;
@@ -74,11 +77,12 @@ public class LivingEvents {
 
     private void livinghurtevent(LivingHurtEvent event) {
         boolean configall = MomotinkerConfig.special_acquisition.get();
+        boolean configstage = MomotinkerConfig.stage_meteor.get();
         if (!configall)return;
         Entity a = event.getEntity();
         Entity b = event.getSource().getEntity();
         boolean configa = MomotinkerConfig.arriving_at_the_other_shore.get();
-        if (configa) {
+        if (configa&&(StageMeteor.getStageFloat()==1||!configstage)){
             if (a instanceof ServerPlayer player && player.getHealth() <= 1) {
                 if (event.getAmount() > player.getMaxHealth() && player.isAlive()) {
                     ItemStack a1 = new ItemStack(MomotinkerItem.arriving_at_the_other_shore.get());
@@ -87,7 +91,7 @@ public class LivingEvents {
             }
         }
         boolean configb = MomotinkerConfig.jealous_notes.get();
-        if (configb) {
+        if (configb&&(StageMeteor.getStageFloat()==1||!configstage)) {
             if (a instanceof ServerPlayer player && b instanceof LivingEntity entity && player.getItemBySlot(EquipmentSlot.MAINHAND).is(Items.WRITABLE_BOOK)) {
                 if (!player.hasItemInSlot(EquipmentSlot.HEAD) && !player.hasItemInSlot(EquipmentSlot.CHEST) && !player.hasItemInSlot(EquipmentSlot.LEGS) && !player.hasItemInSlot(EquipmentSlot.FEET)) {
                     if (entity.hasItemInSlot(EquipmentSlot.HEAD) || entity.hasItemInSlot(EquipmentSlot.CHEST) || entity.hasItemInSlot(EquipmentSlot.LEGS) || entity.hasItemInSlot(EquipmentSlot.FEET)) {
@@ -102,17 +106,18 @@ public class LivingEvents {
 
     private void onEntityDeath(LivingDeathEvent event) {
         boolean configall = MomotinkerConfig.special_acquisition.get();
+        boolean configstage = MomotinkerConfig.stage_meteor.get();
         if (!configall)return;
         if (event.getEntity() instanceof Warden warden) {
             boolean configa = MomotinkerConfig.heartsteel.get();
-            if (configa) {
+            if (configa&&(StageMeteor.getStageFloat()==1||!configstage)) {
                 if (event.getSource().getEntity() instanceof IronGolem) {
                     ItemStack a = new ItemStack(MomotinkerItem.heartsteel.get());
                     ModifierUtil.dropItem(event.getSource().getEntity(), a);
                 }
             }
             boolean configb = MomotinkerConfig.arrogance_proof.get();
-            if (configb) {
+            if (configb&&(StageMeteor.getStageFloat()==1||!configstage)) {
                 if (event.getSource().getEntity() instanceof ServerPlayer player) {
                     if (!player.hasItemInSlot(EquipmentSlot.HEAD) && !player.hasItemInSlot(EquipmentSlot.CHEST) && !player.hasItemInSlot(EquipmentSlot.LEGS) && !player.hasItemInSlot(EquipmentSlot.FEET)) {
                         ItemStack a = new ItemStack(MomotinkerItem.arrogance_proof.get());
@@ -131,7 +136,7 @@ public class LivingEvents {
             }
         }
         boolean configd = MomotinkerConfig.gluttony_core.get();
-        if (configd) {
+        if (configd&&(StageMeteor.getStageFloat()==1||!configstage)) {
             if (event.getEntity() instanceof Slime slime) {
                 if (event.getSource().getEntity() instanceof Frog) {
                     int b = RANDOM.nextInt(10);
@@ -143,7 +148,7 @@ public class LivingEvents {
             }
         }
         boolean confige = MomotinkerConfig.rage_stone_statue.get();
-        if (confige) {
+        if (confige&&(StageMeteor.getStageFloat()==1||!configstage)) {
             if (event.getSource().getEntity() instanceof Wolf wolf) {
                 if (event.getEntity() instanceof Sheep sheep) {
                     ModDataNBT a = ModDataNBT.readFromNBT(event.getSource().getEntity().getPersistentData());
@@ -166,9 +171,10 @@ public class LivingEvents {
 
     private void onBabyEntitySpawnEvent(BabyEntitySpawnEvent event) {
         boolean configall = MomotinkerConfig.special_acquisition.get();
+        boolean configstage = MomotinkerConfig.stage_meteor.get();
         if (!configall)return;
         boolean config = MomotinkerConfig.lust_mirror.get();
-        if (config) {
+        if (config&&(StageMeteor.getStageFloat()==1||!configstage)) {
             if (event.getParentA() != null && event.getParentB() != null && event.getChild() != null) {
                 ModDataNBT a = ModDataNBT.readFromNBT(event.getParentA().getPersistentData());
                 ModDataNBT b = ModDataNBT.readFromNBT(event.getParentB().getPersistentData());
@@ -189,9 +195,10 @@ public class LivingEvents {
 
     private void onBonemealEvent(BonemealEvent event) {
         boolean configall = MomotinkerConfig.special_acquisition.get();
+        boolean configstage = MomotinkerConfig.stage_meteor.get();
         if (!configall)return;
         boolean config = MomotinkerConfig.spirit_visage.get();
-        if (config) {
+        if (config&&(StageMeteor.getStageFloat()==1||!configstage)) {
             if (event.getBlock().getBlock() instanceof SaplingBlock) {
                 int b = RANDOM.nextInt(50);
                 if (b == 1) {
@@ -204,9 +211,10 @@ public class LivingEvents {
 
     private void onSleepingTimeCheckEvent(SleepingTimeCheckEvent event) {
         boolean configall = MomotinkerConfig.special_acquisition.get();
+        boolean configstage = MomotinkerConfig.stage_meteor.get();
         if (!configall)return;
         boolean config = MomotinkerConfig.lazy_grail.get();
-        if (config) {
+        if (config&&(StageMeteor.getStageFloat()==1||!configstage)) {
             if (event.getEntity() instanceof ServerPlayer player) {
                 if (player.getEffect(MobEffects.MOVEMENT_SLOWDOWN) != null && player.getEffect(MobEffects.WEAKNESS) != null) {
                     if (player.isSleepingLongEnough() && player.hasEffect(MobEffects.MOVEMENT_SLOWDOWN) && player.hasEffect(MobEffects.WEAKNESS)) {
@@ -220,9 +228,10 @@ public class LivingEvents {
 
     private void addCustomTrades(VillagerTradesEvent event) {
         boolean configall = MomotinkerConfig.special_acquisition.get();
+        boolean configstage = MomotinkerConfig.stage_meteor.get();
         if (!configall)return;
         boolean config = MomotinkerConfig.greedy_contract.get();
-        if (config) {
+        if (config&&(StageMeteor.getStageFloat()==1||!configstage)) {
             if (event.getType() != null) {
                 Int2ObjectMap<List<VillagerTrades.ItemListing>> trades = event.getTrades();
                 ItemStack a = new ItemStack(MomotinkerItem.greedy_contract.get());
@@ -235,10 +244,11 @@ public class LivingEvents {
 
     private void onItemEvent(BlockEvent.BreakEvent event) {
         boolean configall = MomotinkerConfig.special_acquisition.get();
+        boolean configstage = MomotinkerConfig.stage_meteor.get();
         if (!configall)return;
         Player player = event.getPlayer();
         boolean config = MomotinkerConfig.dimensional_prism.get();
-        if (config) {
+        if (config&&(StageMeteor.getStageFloat()==1||!configstage)) {
             if (player != null && event.getState().is(Blocks.GLASS)) {
                 int a = RANDOM.nextInt(10000);
                 if (player.getUseItem().isEnchanted() && player.getUseItem().getEnchantmentLevel(Enchantments.SILK_TOUCH) != 0) {
@@ -254,11 +264,12 @@ public class LivingEvents {
 
     private void onFallVoidEvent(ItemEvent event) {
         boolean configall = MomotinkerConfig.special_acquisition.get();
+        boolean configstage = MomotinkerConfig.stage_meteor.get();
         if (!configall)return;
         ItemEntity entity = event.getEntity();
         Level level = event.getEntity().level;
         boolean config = MomotinkerConfig.devouring_demon_gold.get();
-        if (config) {
+        if (config&&(StageMeteor.getStageFloat()==1||!configstage)) {
             if (entity != null && entity.getOnPos().getY() < level.getMinBuildHeight()) {
                 if (!entity.getItem().isEnchanted()) {
                     return;
@@ -274,13 +285,20 @@ public class LivingEvents {
         boolean configall = MomotinkerConfig.special_acquisition.get();
         if (!configall)return;
         boolean config = MomotinkerConfig.meteor_nucleus.get();
-        if (config) {
-            if (event.player.getLevel() instanceof ServerLevel level&& level.getGameTime() % 2000 == 0) {
-                Player player=event.player;
-                Random random = new Random();
-                CompoundTag tag = player.getPersistentData().getCompound(Player.PERSISTED_NBT_TAG);
-                String a = "meteor_nucleus_unlock";
-                if (random.nextInt(2) == 0 && tag.getBoolean(a)) {
+        Player player=event.player;
+        Random random = new Random();
+        if (player.getLevel() instanceof ServerLevel level) {
+            CompoundTag tag = player.getPersistentData().getCompound(Player.PERSISTED_NBT_TAG);
+            String a = "meteor_nucleus_unlock";
+            player.getPersistentData().getBoolean(a);
+            if (tag.getBoolean(a)&&StageMeteor.getStageFloat()!=1){
+                Channel.sendToPlayer(new StageMeteorCharge(1), (ServerPlayer) player);
+            }else if (!tag.getBoolean(a)&&StageMeteor.getStageFloat()!=0){
+                Channel.sendToPlayer(new StageMeteorCharge(0), (ServerPlayer) player);
+            }
+
+            if (config) {
+                if (random.nextInt(2) == 0 && tag.getBoolean(a)&& level.getGameTime() % 2000 == 0) {
                     Vec2 pos1 = new Vec2((float) (player.getX() + random.nextInt(180) - random.nextInt(180)), (float) (player.getZ() + random.nextInt(180) - random.nextInt(180)));
                     Vec2 pos2 = new Vec2((float) (player.getX() + random.nextInt(100) - random.nextInt(100)), (float) (player.getZ() + random.nextInt(100) - random.nextInt(100)));
                     Vec2 pos = new Vec2((float) Math.pow(Math.pow(pos1.x,2)-Math.pow(pos2.x,2), (double) 1 /2), (float) Math.pow(Math.pow(pos1.y,2)-Math.pow(pos2.y,2), (double) 1 /2));

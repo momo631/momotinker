@@ -2,6 +2,8 @@ package com.momosensei.momotinker.Effects;
 
 import com.momosensei.momotinker.register.MomotinkerEffects;
 import net.minecraft.world.effect.MobEffectCategory;
+import net.minecraft.world.entity.LivingEntity;
+import net.minecraft.world.entity.ai.attributes.AttributeMap;
 import net.minecraft.world.entity.ai.attributes.AttributeModifier;
 import net.minecraft.world.entity.ai.attributes.Attributes;
 import net.minecraftforge.common.MinecraftForge;
@@ -33,6 +35,12 @@ public class ReduceAllAttributes extends StaticEffect{
     private void RemoveMobEffect(MobEffectEvent.Remove event) {
         if (event.getEffect()==MomotinkerEffects.ReduceAllAttributes.get()){
             event.setCanceled(true);
+        }
+    }
+    public void addAttributeModifiers(@NotNull LivingEntity entity, @NotNull AttributeMap map, int level) {
+        super.addAttributeModifiers(entity, map, level);
+        if (entity.getHealth() > entity.getMaxHealth()) {
+            entity.setHealth(entity.getMaxHealth());
         }
     }
 }

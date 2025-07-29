@@ -36,6 +36,7 @@ public class MomotinkerFluid{
     public static final FluidObject<ForgeFlowingFluid> molten_arriving_at_the_other_shore = register("molten_arriving_at_the_other_shore", 5866);
     public static final FluidObject<ForgeFlowingFluid> molten_spirit_visage = register("molten_spirit_visage", 5865);
     public static final FluidObject<ForgeFlowingFluid> molten_heartsteel = register("molten_heartsteel", 5864);
+
     public static final FluidObject<ForgeFlowingFluid> molten_gluttony_core = register("molten_gluttony_core", 5863);
     public static final FluidObject<ForgeFlowingFluid> molten_greedy_contract = register("molten_greedy_contract", 5862);
     public static final FluidObject<ForgeFlowingFluid> molten_lust_mirror = register("molten_lust_mirror", 5861);
@@ -43,6 +44,8 @@ public class MomotinkerFluid{
     public static final FluidObject<ForgeFlowingFluid> molten_rage_stone_statue = register("molten_rage_stone_statue", 5859);
     public static final FluidObject<ForgeFlowingFluid> molten_lazy_grail = register("molten_lazy_grail", 5858);
     public static final FluidObject<ForgeFlowingFluid> molten_jealous_notes = register("molten_jealous_notes", 5857);
+    public static final FluidObject<ForgeFlowingFluid> molten_compassion_mask = register("molten_compassion_mask", 5857);
+
     public static final FluidObject<ForgeFlowingFluid> molten_interdimensional_crystal = register("molten_interdimensional_crystal", 5856);
     public static final FluidObject<ForgeFlowingFluid> molten_dimensional_prism = register("molten_dimensional_prism", 5855);
     public static final FluidObject<ForgeFlowingFluid> molten_dim_dark_gold = register("molten_dim_dark_gold", 5855);

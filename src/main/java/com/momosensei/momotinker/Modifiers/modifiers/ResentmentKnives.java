@@ -46,9 +46,9 @@ public class ResentmentKnives extends momomodifier {
     public Component validate(IToolStackView tool, ModifierEntry modifier) {
         if (tool.getModifierLevel(MomotinkerModifiers.overenvysin.getId())>0
                 &&tool.getModifierLevel(MomotinkerModifiers.eternalanger.getId())==0
+                &&tool.getModifierLevel(MomotinkerModifiers.slackatmosphere.getId())==0
                 &&tool.getModifierLevel(MomotinkerModifiers.thepinnacleofarrogance.getId())==0
                 &&tool.getModifierLevel(MomotinkerModifiers.filledwithhunger.getId())==0
-                &&tool.getModifierLevel(MomotinkerModifiers.resentmentknives.getId())==0
                 &&tool.getModifierLevel(MomotinkerModifiers.forbiddenfruit.getId())==0
                 &&tool.getModifierLevel(MomotinkerModifiers.gainsalone.getId())==0){
             return null;

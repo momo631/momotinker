@@ -28,7 +28,7 @@ public class interdimensional_crystal extends Item {
         }else {
             list.add(net.minecraft.network.chat.Component.translatable("momotinker.item.tooltip.interdimensional_crystal1").withStyle(ChatFormatting.LIGHT_PURPLE));
             if (config && configa) {
-                list.add(net.minecraft.network.chat.Component.translatable("item.tooltip.special_acquisition").withStyle(ChatFormatting.LIGHT_PURPLE));
+                list.add(net.minecraft.network.chat.Component.translatable("momotinker.item.tooltip.special_acquisition").withStyle(ChatFormatting.LIGHT_PURPLE));
             }
         }
         super.appendHoverText(stack, level, list, flag);

@@ -4,11 +4,23 @@
   "inputs": [
     {
       "item": "momotinker:lazy_grail",
-      "amount_needed": 16
+      "amount_needed": 7
     },
     {
       "item": "momotinker:core_of_felony",
       "amount_needed": 1
+    },
+    {
+      "item": "momotinker:lazy_grail",
+      "amount_needed": 7
+    },
+    {
+      "item": "momotinker:lazy_grail",
+      "amount_needed": 7
+    },
+    {
+      "item": "momotinker:lazy_grail",
+      "amount_needed": 7
     }
   ],
   "level": {

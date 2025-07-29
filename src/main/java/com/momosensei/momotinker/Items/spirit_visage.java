@@ -1,5 +1,6 @@
 package com.momosensei.momotinker.Items;
 
+import com.momosensei.momotinker.mobs.StageMeteor;
 import com.momosensei.momotinker.register.MomotinkerConfig;
 import net.minecraft.ChatFormatting;
 import net.minecraft.client.gui.screens.Screen;
@@ -22,12 +23,17 @@ public class spirit_visage extends Item {
     public void appendHoverText(@NotNull ItemStack stack, @Nullable Level level, List<Component> list, @NotNull TooltipFlag flag) {
         boolean config = MomotinkerConfig.special_acquisition.get();
         boolean configa = MomotinkerConfig.spirit_visage.get();
-        if (Screen.hasShiftDown()&&config&&configa) {
-            list.add(Component.translatable("momotinker.item.tooltip.spirit_visage2").withStyle(ChatFormatting.GREEN));
-        }else {
+        boolean configb = MomotinkerConfig.stage_meteor.get();
+        if (Screen.hasShiftDown() && config && configa) {
+            if (StageMeteor.getStageFloat() == 1 || !configb) {
+                list.add(Component.translatable("momotinker.item.tooltip.spirit_visage2").withStyle(ChatFormatting.GREEN));
+            } else {
+                list.add(Component.translatable("momotinker.item.tooltip.stage_meteor").withStyle(ChatFormatting.GOLD));
+            }
+        } else {
             list.add(net.minecraft.network.chat.Component.translatable("momotinker.item.tooltip.spirit_visage1").withStyle(ChatFormatting.GREEN));
             if (config && configa) {
-                list.add(net.minecraft.network.chat.Component.translatable("item.tooltip.special_acquisition").withStyle(ChatFormatting.GREEN));
+                list.add(net.minecraft.network.chat.Component.translatable("momotinker.item.tooltip.special_acquisition").withStyle(ChatFormatting.GREEN));
             }
         }
         super.appendHoverText(stack, level, list, flag);

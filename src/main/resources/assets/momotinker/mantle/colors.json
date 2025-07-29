@@ -4,6 +4,7 @@
     "arriving_at_the_other_shore": "#ff0000",
     "heartsteel": "#fb6d2c",
     "spirit_visage": "#7CE531",
+
     "gluttony_core": "#1FA300",
     "greedy_contract": "#0228FF",
     "lust_mirror": "#A433B5",
@@ -11,6 +12,8 @@
     "rage_stone_statue": "#2D2D2D",
     "lazy_grail": "#EE9200",
     "jealous_notes": "#EFFF1F",
+    "compassion_mask": "#B5B5B5",
+
     "interdimensional_crystal": "#C972FF",
     "dimensional_prism": "#98F6FF",
     "dim_dark_gold": "#574A1E",
@@ -34,10 +37,11 @@
     "huangquan": "#b8b8b8",
     "red": "#ff0000",
     "firmheart": "#18952d",
-    "feast": "#1FA300",
-    "overeatingsin": "#105200",
     "wildhearts": "#9E682E",
     "infinitevitality": "#7CFE69",
+
+    "feast": "#1FA300",
+    "overeatingsin": "#105200",
     "intendingplunder": "#0228FF",
     "overweightingwealthsin": "#00137D",
     "vehementdesire": "#A433B5",
@@ -50,6 +54,9 @@
     "overcowardicesin": "#E47700",
     "grudgeothers": "#EFFF1F",
     "overenvysin": "#D8C800",
+    "sacrificetospirit": "#A6A6A6",
+    "oversadsin": "#868686",
+
     "fallingstars": "#E1C0FF",
     "unknownreturnee": "#C972FF",
     "overcrystalline": "#96B0FF",
@@ -89,6 +96,7 @@
     "timeechoes": "#4AFFA4",
     "polarizedspacetime": "#E742FF",
     "resonance": "#B5B5B5",
+
     "eternalanger": "#666666",
     "slackatmosphere": "#FF9C00",
     "thepinnacleofarrogance": "#EC2424",

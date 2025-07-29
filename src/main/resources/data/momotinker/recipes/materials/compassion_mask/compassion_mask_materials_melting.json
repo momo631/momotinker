@@ -1,0 +1,9 @@
+{
+  "type": "tconstruct:material_melting",
+  "input": "momotinker:compassion_mask",
+  "temperature": 1500,
+  "result": {
+    "fluid": "momotinker:molten_compassion_mask",
+    "amount": 90
+  }
+}

@@ -26,6 +26,7 @@
   "fluid.momotinker.molten_rage_stone_statue": "熔融暴怒",
   "fluid.momotinker.molten_lazy_grail": "熔融怠惰",
   "fluid.momotinker.molten_jealous_notes": "熔融嫉妒",
+  "fluid.momotinker.molten_compassion_mask": "熔融悲悯",
   "fluid.momotinker.molten_interdimensional_crystal": "熔融苍星",
   "fluid.momotinker.molten_dimensional_prism": "熔融次元棱镜",
   "fluid.momotinker.molten_dim_dark_gold": "熔融黯淡玄金",
@@ -54,6 +55,7 @@
   "item.momotinker.molten_rage_stone_statue_bucket": "熔融暴怒桶",
   "item.momotinker.molten_lazy_grail_bucket": "熔融怠惰桶",
   "item.momotinker.molten_jealous_notes_bucket": "熔融嫉妒桶",
+  "item.momotinker.molten_compassion_mask_bucket": "熔融悲悯桶",
   "item.momotinker.molten_interdimensional_crystal_bucket": "熔融苍星桶",
   "item.momotinker.molten_dimensional_prism_bucket": "熔融次元棱镜桶",
   "item.momotinker.molten_dim_dark_gold_bucket": "熔融黯淡玄金桶",
@@ -93,7 +95,8 @@
   "key.momotinker.key": "特殊技能",
   "key.momotinker.keya": "工具技能",
 
-  "item.tooltip.special_acquisition": "按住“shift”查看获取",
+  "momotinker.item.tooltip.special_acquisition": "按住“shift”查看获取",
+  "momotinker.item.tooltip.stage_meteor": "或许流星知道些什么...",
 
   "block.momotinker.laomo_block": "墨块",
 
@@ -147,6 +150,10 @@
   "item.momotinker.jealous_notes": "§e嫉妒笔记§",
   "momotinker.item.tooltip.jealous_notes1": "§e以尔富资，铸吾薄怨§",
   "momotinker.item.tooltip.jealous_notes2": "§e在身上未装备任何护甲且受到装备任意护甲的生物的攻击时，会将主手上的书与笔转换为此物品§",
+
+  "item.momotinker.compassion_mask": "§7悲悯假面§",
+  "momotinker.item.tooltip.compassion_mask1": "§7以尔泣泪，铸吾祭言§",
+  "momotinker.item.tooltip.compassion_mask2": "§7村民被雷电击杀时掉落在其死亡的位置§",
 
   "item.momotinker.dim_dark_gold": "黯淡玄金锭",
   "momotinker.item.tooltip.dim_dark_gold1": "来自远古的神秘金属，其身上的荣光与辉煌已被时间掩埋",
@@ -208,6 +215,12 @@
   "momotinker.item.tooltip.twilight_ego5": "永不闭合的眼睛、衡量罪孽的天平、吞噬万物的巨口，这三者守护着黑森林的和平。",
   "momotinker.item.tooltip.twilight_ego6": "而那位能够同时驾驭这三者的人也能带来和平。",
 
+  "item.momotinker.core_of_felony": "大罪核心",
+  "momotinker.item.tooltip.core_of_felony1": "吾罪有何，吾罪因何，吾罪为何。",
+  "momotinker.item.tooltip.core_of_felony2": "我乃死，我乃生。我为暗，我亦为光。",
+  "momotinker.item.tooltip.core_of_felony3": "§7七罪以外或许存在着第八罪...§",
+
+
   "itemGroup.momotinker.tools": "墨工坊模组-工具",
 
   "item.momotinker.trigger_blade": "扳机横刀",
@@ -224,7 +237,7 @@
   "item.momotinker.entropy_burning_cube": "焓变遗骸·熵烬之心",
   "item.momotinker.entropy_burning_cube.description": "[古代神兵]:遗落于亚特兰蒂斯与沉睡的宝藏\n本身无使用功能，按下工具技能可以变化多种形态，变形后无法更换和拆卸部件\n§o“沉睡于深渊中的国度，无法理解的繁华，\n§o尽数崩解为烬”——虚空铁匠议会第三席§",
   "item.momotinker.tooltip.liverization": "古代神兵隐藏任务已完成！获得了一次“重构”机会！",
-  "item.momotinker.tooltip.liverization1": "在副手放置任意三部件及以下的工具时按下工具技能可吞噬副手装备永久获取其所有强化和材料特性，谨慎使用！",
+  "item.momotinker.tooltip.liverization1": "在副手放置任意三部件及以下的工具或防具时按下工具技能可吞噬副手装备永久获取其所有强化和材料特性，谨慎使用！",
   "item.momotinker.tooltip.liverization2": "已使用过“重构”",
   "item.momotinker.tooltip.other": "该古代神兵以完成其他形态的进化",
 
@@ -247,6 +260,7 @@
   "item.momotinker.tooltip.crystallized1": "只凋灵。当前击杀数为:",
   "item.momotinker.tooltip.crystallized2": "古代神兵任务已完成！射击距离翻倍且伤害段数略微增加",
 
+
   "item.momotinker.eclipse_container": "日蚀容器",
   "item.momotinker.eclipse_container.description": "[双手武器]\n超低攻速超高攻击的大范围近战武器，只会继承“日冕之钥”的强化（包括材料的强化点数等特征），期间消耗充能，右键蓄力一段时间后按住释放“日蚀刻”，持续吸引周围实体造成伤害",
   "item.momotinker.tooltip.eclipse_container1": "目前“日蚀刻”的吸引范围为:",
@@ -254,6 +268,7 @@
   "item.momotinker.coronal_key.description": "属性较弱的近战武器，持续战斗可增加充能条，充能增加可提高伤害，充能为满且副手为“新月之锁”时按下工具技能按键可与其合体为“日蚀容器”",
   "item.momotinker.moon_lock": "新月之锁",
   "item.momotinker.moon_lock.description": "[不存在之影]\n右键使用期间可获得50%的减伤并有50%的概率无视弹射物攻击，满足一定条件下时按下工具技能可合体为“日蚀容器”",
+
 
   "item.momotinker.pocket_watch": "遗落怀表",
   "item.momotinker.pocket_watch.description": "[古代神兵]:遗落于终末之城\n潜行时右键记录当前位置，若背包存在该工具时死亡会直接传送并恢复生命，免疫此次死亡并陷入冷却（可以右键主动使用但不会恢复生命）",
@@ -265,8 +280,10 @@
   "item.momotinker.tooltip.transmit2": "古代神兵任务已完成！主动使用时不再消耗耐久，且冷却时间大幅缩减，但在持有者死亡时该工具不再会免疫死亡并传送",
   "item.momotinker.tooltip.backtracking": "古代神兵隐藏任务已完成！该工具会自动记录5秒前持有者的位置，且冷却时间小幅缩减，但该工具无法再自主记录位置和传送",
 
+
   "item.momotinker.chain_sword": "链锯剑",
   "item.momotinker.chain_sword.description": "[双手武器]\n右键使用期间可对前方小范围生物进行持续打击，使用时间过长则会过热无法正常使用，攻速越高伤害越高",
+
 
   "item.momotinker.pneumatic_sword": "气动剑",
   "item.momotinker.pneumatic_sword.description": "高机动性的近战武器，右键可短暂向前上方冲刺，按下工具技能可发射绳索将自己拉向被击中的方块或生物（按“shift”可提前取消绳索），若目标是生物时会强化下一次在空中的冲刺和该冲刺伤害，若副手存在另一把气动剑则提升各项性能",
@@ -300,6 +317,8 @@
   "material.momotinker.lazy_grail.encyclopedia": "§6世急永不缠身§",
   "material.momotinker.jealous_notes": "嫉妒",
   "material.momotinker.jealous_notes.encyclopedia": "§e妒怨永不祛除§",
+  "material.momotinker.compassion_mask": "悲悯",
+  "material.momotinker.compassion_mask.encyclopedia": "§7忧伤永不释尽§",
   "material.momotinker.interdimensional_crystal": "苍星",
   "material.momotinker.interdimensional_crystal.encyclopedia": "§d自天堂归来§",
   "material.momotinker.dimensional_prism": "次元棱镜",
@@ -438,6 +457,14 @@
   "modifier.momotinker.overenvysin.flavor": "§e无尽妒怨之代价:临微浅恶§",
   "modifier.momotinker.overenvysin.description": "攻击血量上限比自身低的目标时会根据差值减少攻击力，数值为5%*词条等级*血量上限差值（最低时攻击不造成伤害）",
   "modifier.momotinker.tooltip.overenvysin1": "目前增伤可提供最大攻击力为:",
+
+  "modifier.momotinker.sacrificetospirit": "神祭",
+  "modifier.momotinker.sacrificetospirit.flavor": "§7为灵所祭§",
+  "modifier.momotinker.sacrificetospirit.description": "持有该工具时左键将不再发挥作用。持有时每固定2秒对周围所有生物造成一次伤害，原攻击速度会决定攻击的范围（最多200格），原攻击距离和词条等级会决定攻击的伤害倍率",
+
+  "modifier.momotinker.oversadsin": "尽哀之罪",
+  "modifier.momotinker.oversadsin.flavor": "§7无尽哀忧之代价:黯然神伤§",
+  "modifier.momotinker.oversadsin.description": "持有该工具会随着时间周期性的受到伤害，时间越久伤害越高，词条等级会决定伤害增长速度",
 
   "modifier.momotinker.fallingstars": "苍穹落星",
   "modifier.momotinker.fallingstars.flavor": "§d当流星于此降临§",

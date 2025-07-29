@@ -50,9 +50,12 @@ public class Momotinker {
         MomotinkerSounds.SOUNDS.register(eventBus);
         MomotinkerTags.init();
         MomotinkerLootModifiers.register(eventBus);
-        IEventBus bus = FMLJavaModLoadingContext.get().getModEventBus();
-        ModLoadingContext.get().registerConfig(ModConfig.Type.COMMON, MomotinkerConfig.spec);
         MinecraftForge.EVENT_BUS.register(new LivingEvents());
+
+        ModLoadingContext.get().registerConfig(ModConfig.Type.COMMON, MomotinkerConfig.Itemspec, "MomotinkerItem.toml");
+        ModLoadingContext.get().registerConfig(ModConfig.Type.COMMON, MomotinkerConfig.Modifierspec, "MomotinkerModifier.toml");
+        ModLoadingContext.get().registerConfig(ModConfig.Type.COMMON, MomotinkerConfig.Toolspec, "MomotinkerTool.toml");
+
         //GeckoLib.initialize();
     }
 

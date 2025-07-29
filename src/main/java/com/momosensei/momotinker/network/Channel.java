@@ -44,6 +44,7 @@ public class Channel {
         INSTANCE.messageBuilder(CoolTimeChargeA.class,id++, NetworkDirection.PLAY_TO_CLIENT).decoder(CoolTimeChargeA::new).encoder(CoolTimeChargeA::toByte).consumerMainThread(CoolTimeChargeA::handle).add();
         INSTANCE.messageBuilder(CoolTimeChargeB.class,id++, NetworkDirection.PLAY_TO_CLIENT).decoder(CoolTimeChargeB::new).encoder(CoolTimeChargeB::toByte).consumerMainThread(CoolTimeChargeB::handle).add();
         INSTANCE.messageBuilder(CoolTimeChargeC.class,id++, NetworkDirection.PLAY_TO_CLIENT).decoder(CoolTimeChargeC::new).encoder(CoolTimeChargeC::toByte).consumerMainThread(CoolTimeChargeC::handle).add();
+        INSTANCE.messageBuilder(StageMeteorCharge.class,id++, NetworkDirection.PLAY_TO_CLIENT).decoder(StageMeteorCharge::new).encoder(StageMeteorCharge::toByte).consumerMainThread(StageMeteorCharge::handle).add();
 
     }
 

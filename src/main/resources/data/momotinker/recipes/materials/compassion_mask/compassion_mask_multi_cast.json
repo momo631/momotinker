@@ -1,0 +1,13 @@
+{
+  "type": "tconstruct:casting_table",
+  "cast": {
+    "tag": "tconstruct:casts/multi_use/ingot"
+  },
+  "cast_consumed": false,
+  "fluid": {
+    "name": "momotinker:molten_compassion_mask",
+    "amount": 90
+  },
+  "result": "momotinker:compassion_mask",
+  "cooling_time": 66
+}

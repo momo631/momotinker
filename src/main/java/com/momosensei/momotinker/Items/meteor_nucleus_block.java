@@ -32,7 +32,7 @@ public class meteor_nucleus_block extends BlockItem {
         }else {
             list.add(Component.translatable("momotinker.item.tooltip.meteor_nucleus1").withStyle(ChatFormatting.GOLD));
             if (config && configa) {
-                list.add(Component.translatable("item.tooltip.special_acquisition").withStyle(ChatFormatting.GOLD));
+                list.add(Component.translatable("momotinker.item.tooltip.special_acquisition").withStyle(ChatFormatting.GOLD));
             }
         }
         super.appendHoverText(stack, level, list, flag);

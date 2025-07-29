@@ -26,6 +26,7 @@
   "fluid.momotinker.molten_rage_stone_statue": "Molten Rage",
   "fluid.momotinker.molten_lazy_grail": "Molten Lazy",
   "fluid.momotinker.molten_jealous_notes": "Molten Jealous",
+  "fluid.momotinker.molten_compassion_mask": "Molten Compassion",
   "fluid.momotinker.molten_interdimensional_crystal": "Molten Interdimensional Crystal",
   "fluid.momotinker.molten_dimensional_prism": "Molten Dimensional Prism",
   "fluid.momotinker.molten_dim_dark_gold": "Molten Dim Dark Gold",
@@ -54,6 +55,7 @@
   "item.momotinker.molten_rage_stone_statue_bucket": "Molten Rage Bucket",
   "item.momotinker.molten_lazy_grail_bucket": "Molten Lazy Bucket",
   "item.momotinker.molten_jealous_notes_bucket": "Molten Jealous Bucket",
+  "item.momotinker.molten_compassion_mask_bucket": "Molten Compassion Bucket",
   "item.momotinker.molten_interdimensional_crystal_bucket": "Molten Interdimensional Crystal Bucket",
   "item.momotinker.molten_dimensional_prism_bucket": "Molten Dimensional Prism Bucket",
   "item.momotinker.molten_dim_dark_gold_bucket": "Molten Dim Dark Gold Bucket",
@@ -93,7 +95,8 @@
   "key.momotinker.key": "Category Example",
   "key.momotinker.keya": "Tool Enhancement",
 
-  "item.tooltip.special_acquisition": "Press and hold 'shift' to view and retrieve",
+  "momotinker.item.tooltip.special_acquisition": "Press and hold 'shift' to view and retrieve",
+  "momotinker.item.tooltip.stage_meteor": "Perhaps Meteor knows something ..",
 
   "block.momotinker.laomo_block": "Momo Block",
 
@@ -147,6 +150,10 @@
   "item.momotinker.jealous_notes": "§eJealous Notes§",
   "momotinker.item.tooltip.jealous_notes1": "§eWith your abundant resources, forge my thin grievances§",
   "momotinker.item.tooltip.jealous_notes2": "§eWhen not equipped with any armor and attacked by creatures equipped with any armor, the writable book in the master's hand will be converted into this item§",
+
+  "item.momotinker.compassion_mask": "§7Compassion Mask§",
+  "momotinker.item.tooltip.compassion_mask1": "§7With your tears, forge my sacrificial ceremony§",
+  "momotinker.item.tooltip.compassion_mask2": "§7Villagers were killed by lightning and fell to the location where they died§",
 
   "item.momotinker.dim_dark_gold": "Dim Dark Gold",
   "momotinker.item.tooltip.dim_dark_gold1": "Mysterious metal from ancient times, its glory and splendor have been buried by time",
@@ -207,6 +214,12 @@
   "momotinker.item.tooltip.twilight_ego4": "If an employee holds this E.G.O weapon, the End Bird will not appear.",
   "momotinker.item.tooltip.twilight_ego5": "Just like how the ever-watching eyes, the scale that could measure any and all sin, and the beak that could swallow everything protected the peace of the Black Forest...",
   "momotinker.item.tooltip.twilight_ego6": "The wielder of this armament may also bring peace as they did.",
+
+  "item.momotinker.core_of_felony": "Core Of Felony",
+  "momotinker.item.tooltip.core_of_felony1": "What is my sin, why is my sin, what is my sin for.",
+  "momotinker.item.tooltip.core_of_felony2": "I am death and life. Darkness and light.",
+  "momotinker.item.tooltip.core_of_felony3": "§7There may be an eighth sin besides the seven sins...§",
+
 
   "itemGroup.momotinker.tools": "Momotinker Tools",
 
@@ -296,9 +309,11 @@
   "material.momotinker.rage_stone_statue": "Rage",
   "material.momotinker.rage_stone_statue.encyclopedia": "§0Anger never dissipates§",
   "material.momotinker.lazy_grail": "Lazy",
-  "material.momotinker.lazy_grail.encyclopedia": "§6Never be troubled by the urgency of the §6world",
+  "material.momotinker.lazy_grail.encyclopedia": "§6Never be troubled by the urgency of the §6 world",
   "material.momotinker.jealous_notes": "Jealous",
-  "material.momotinker.jealous_notes.encyclopedia": "§eJealousy and resentment will never be §edispelled",
+  "material.momotinker.jealous_notes.encyclopedia": "§eJealousy and resentment will never be §e dispelled",
+  "material.momotinker.compassion_mask": "Compassion",
+  "material.momotinker.compassion_mask.encyclopedia": "§7Sorrow never fades away§",
   "material.momotinker.interdimensional_crystal": "Interdimensional Crystal",
   "material.momotinker.interdimensional_crystal.encyclopedia": "§dReturning from heaven§",
   "material.momotinker.dimensional_prism": "Dimensional Prism",
@@ -437,6 +452,14 @@
   "modifier.momotinker.overenvysin.flavor": "§eThe Price of Endless Jealousy and Resentment: Facing Minor and Shallow Evil§",
   "modifier.momotinker.overenvysin.description": "When attacking targets with a lower health limit than oneself, the attack power will be reduced based on the difference, which is 5% * item level * health limit difference (attack does not cause damage at the lowest point)",
   "modifier.momotinker.tooltip.overenvysin1": "At present, the maximum attack power that can be provided by increasing damage is:",
+
+  "modifier.momotinker.sacrificetospirit": "Sacrifice to spirit",
+  "modifier.momotinker.sacrificetospirit.flavor": "§7Mourning for the souls§",
+  "modifier.momotinker.sacrificetospirit.description": "When holding this tool, the left button will no longer function. When held, it deals damage to all surrounding creatures every 2 seconds. The original attack speed determines the attack range (up to 200 squares), and the original attack distance and item level determine the damage multiplier of the attack",
+
+  "modifier.momotinker.oversadsin": "Over sad sin",
+  "modifier.momotinker.oversadsin.flavor": "§7The Price of Endless Sorrow: Melancholy and Sorrow§",
+  "modifier.momotinker.oversadsin.description": "Holding this tool will cause periodic damage over time, with higher damage occurring over time. The level of the entry will determine the rate of damage growth",
 
   "modifier.momotinker.fallingstars": "Falling stars",
   "modifier.momotinker.fallingstars.flavor": "§dWhen a meteor falls here§",

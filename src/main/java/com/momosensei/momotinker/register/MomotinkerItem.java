@@ -25,6 +25,7 @@ public class  MomotinkerItem {
     public static final RegistryObject<Item> arriving_at_the_other_shore = ITEMS.register("arriving_at_the_other_shore", () -> new arriving_at_the_other_shore(new Item.Properties().tab(MomotinkerTab.MATERIALS)));
     public static final RegistryObject<Item> spirit_visage = ITEMS.register("spirit_visage", () -> new spirit_visage(new Item.Properties().tab(MomotinkerTab.MATERIALS)));
     public static final RegistryObject<Item> heartsteel = ITEMS.register("heartsteel", () -> new heartsteel(new Item.Properties().tab(MomotinkerTab.MATERIALS)));
+
     public static final RegistryObject<Item> gluttony_core = ITEMS.register("gluttony_core", () -> new gluttony_core(new Item.Properties().tab(MomotinkerTab.MATERIALS)));
     public static final RegistryObject<Item> greedy_contract = ITEMS.register("greedy_contract", () -> new greedy_contract(new Item.Properties().tab(MomotinkerTab.MATERIALS)));
     public static final RegistryObject<Item> lust_mirror = ITEMS.register("lust_mirror", () -> new lust_mirror(new Item.Properties().tab(MomotinkerTab.MATERIALS)));
@@ -32,6 +33,8 @@ public class  MomotinkerItem {
     public static final RegistryObject<Item> rage_stone_statue = ITEMS.register("rage_stone_statue", () -> new rage_stone_statue(new Item.Properties().tab(MomotinkerTab.MATERIALS)));
     public static final RegistryObject<Item> lazy_grail = ITEMS.register("lazy_grail", () -> new lazy_grail(new Item.Properties().tab(MomotinkerTab.MATERIALS)));
     public static final RegistryObject<Item> jealous_notes = ITEMS.register("jealous_notes", () -> new jealous_notes(new Item.Properties().tab(MomotinkerTab.MATERIALS)));
+    public static final RegistryObject<Item> compassion_mask = ITEMS.register("compassion_mask", () -> new compassion_mask(new Item.Properties().tab(MomotinkerTab.MATERIALS)));
+
     public static final RegistryObject<Item> dim_dark_gold = ITEMS.register("dim_dark_gold", () -> new dim_dark_gold(new Item.Properties().tab(MomotinkerTab.MATERIALS)));
     public static final RegistryObject<Item> stained_blood_gold = ITEMS.register("stained_blood_gold", () -> new stained_blood_gold(new Item.Properties().tab(MomotinkerTab.MATERIALS)));
     public static final RegistryObject<Item> starry_mysterious_gold = ITEMS.register("starry_mysterious_gold", () -> new starry_mysterious_gold(new Item.Properties().tab(MomotinkerTab.MATERIALS)));

@@ -33,8 +33,42 @@ public class GainsAlone extends momomodifier {
         MinecraftForge.EVENT_BUS.addListener(this::onEntityDeath);
         MinecraftForge.EVENT_BUS.addListener(this::onBreakBlockEvent);
     }
-
     public static final ResourceLocation gainsalonepoints = Momotinker.getResource("gainsalonepoints");
+
+    @Override
+    public boolean isNoLevels() {
+        return true;
+    }
+    //    @Override
+//    public Component onRemoved(IToolStackView iToolStackView, Modifier modifier) {
+//        iToolStackView.getPersistentData().remove(gainsalonepoints);
+//        return null;
+//    }
+    @Nullable
+    @Override
+    public Component requirementsError(ModifierEntry entry) {
+        return Component.translatable("recipe.momotinker.modifier.gainsalone");
+    }
+
+    @Override
+    public @NotNull List<ModifierEntry> displayModifiers(ModifierEntry entry) {
+        return List.of(new ModifierEntry(MomotinkerModifiers.overweightingwealthsin.getId(), 1));
+    }
+
+    @Override
+    public Component validate(IToolStackView tool, ModifierEntry modifier) {
+        if (tool.getModifierLevel(MomotinkerModifiers.overweightingwealthsin.getId()) > 0
+                && tool.getModifierLevel(MomotinkerModifiers.eternalanger.getId()) == 0
+                && tool.getModifierLevel(MomotinkerModifiers.slackatmosphere.getId()) == 0
+                && tool.getModifierLevel(MomotinkerModifiers.thepinnacleofarrogance.getId()) == 0
+                && tool.getModifierLevel(MomotinkerModifiers.filledwithhunger.getId()) == 0
+                && tool.getModifierLevel(MomotinkerModifiers.resentmentknives.getId()) == 0
+                && tool.getModifierLevel(MomotinkerModifiers.forbiddenfruit.getId()) == 0) {
+            return null;
+        }
+        return requirementsError(modifier);
+    }
+
     @Override
     public float getRepairFactor(IToolStackView tool, ModifierEntry entry, float factor) {
         int c = tool.getPersistentData().getInt(gainsalonepoints);
@@ -63,39 +97,6 @@ public class GainsAlone extends momomodifier {
                 }
             }
         }
-    }
-    @Override
-    public boolean isNoLevels() {
-        return true;
-    }
-//    @Override
-//    public Component onRemoved(IToolStackView iToolStackView, Modifier modifier) {
-//        iToolStackView.getPersistentData().remove(gainsalonepoints);
-//        return null;
-//    }
-    @Nullable
-    @Override
-    public Component requirementsError(ModifierEntry entry) {
-        return Component.translatable("recipe.momotinker.modifier.gainsalone");
-    }
-
-    @Override
-    public @NotNull List<ModifierEntry> displayModifiers(ModifierEntry entry) {
-        return List.of(new ModifierEntry(MomotinkerModifiers.overweightingwealthsin.getId(), 1));
-    }
-
-    @Override
-    public Component validate(IToolStackView tool, ModifierEntry modifier) {
-        if (tool.getModifierLevel(MomotinkerModifiers.overweightingwealthsin.getId()) > 0
-                && tool.getModifierLevel(MomotinkerModifiers.eternalanger.getId()) == 0
-                && tool.getModifierLevel(MomotinkerModifiers.slackatmosphere.getId()) == 0
-                && tool.getModifierLevel(MomotinkerModifiers.thepinnacleofarrogance.getId()) == 0
-                && tool.getModifierLevel(MomotinkerModifiers.filledwithhunger.getId()) == 0
-                && tool.getModifierLevel(MomotinkerModifiers.resentmentknives.getId()) == 0
-                && tool.getModifierLevel(MomotinkerModifiers.forbiddenfruit.getId()) == 0) {
-            return null;
-        }
-        return requirementsError(modifier);
     }
     
     @Override

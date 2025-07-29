@@ -1,0 +1,9 @@
+{
+  "type": "tconstruct:material",
+  "ingredient": {
+    "item": "momotinker:compassion_mask"
+  },
+  "value": 1,
+  "needed": 1,
+  "material": "momotinker:compassion_mask"
+}

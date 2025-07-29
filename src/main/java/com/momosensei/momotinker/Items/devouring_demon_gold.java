@@ -27,7 +27,7 @@ public class devouring_demon_gold extends Item {
             list.add(Component.translatable("momotinker.item.tooltip.devouring_demon_gold2").withStyle(ChatFormatting.DARK_PURPLE));
         }else{
             if (config&&configa){
-                list.add(Component.translatable("item.tooltip.special_acquisition").withStyle(ChatFormatting.DARK_PURPLE));
+                list.add(Component.translatable("momotinker.item.tooltip.special_acquisition").withStyle(ChatFormatting.DARK_PURPLE));
             }
             list.add(Component.translatable("momotinker.item.tooltip.devouring_demon_gold1").withStyle(ChatFormatting.DARK_PURPLE));
         }

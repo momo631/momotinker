@@ -355,5 +355,6 @@ public abstract class momomodifier extends Modifier implements MeleeDamageModifi
         }
         return a;
     }
+
 }
 

@@ -10,6 +10,7 @@ import net.minecraft.world.item.ItemStack;
 import net.minecraftforge.network.NetworkEvent;
 import slimeknights.tconstruct.library.modifiers.ModifierEntry;
 import slimeknights.tconstruct.library.tools.item.ModifiableItem;
+import slimeknights.tconstruct.library.tools.item.armor.ModifiableArmorItem;
 import slimeknights.tconstruct.library.tools.nbt.MaterialNBT;
 import slimeknights.tconstruct.library.tools.nbt.ModDataNBT;
 import slimeknights.tconstruct.library.tools.nbt.ToolStack;
@@ -88,7 +89,8 @@ public class KeyAInputPKT {
                 }
             }
             int liverization_limit = MomotinkerConfig.liverization_limit.get();
-            if (player!=null&&player.getMainHandItem().is(MomotinkerItem.entropy_burning_cube.get())&&player.getOffhandItem().getItem() instanceof ModifiableItem) {
+            if (player!=null&&player.getMainHandItem().is(MomotinkerItem.entropy_burning_cube.get())
+                    &&(player.getOffhandItem().getItem() instanceof ModifiableItem||player.getOffhandItem().getItem() instanceof ModifiableArmorItem)) {
                 ToolStack tool = ToolStack.from(player.getMainHandItem());
                 ToolStack tool1 = ToolStack.from(player.getOffhandItem());
                 if (tool1.getMaterials().size()<=3&&tool1.getMaterials().size()>=0&&tool.getPersistentData().getInt(liverization)==liverization_limit) {
