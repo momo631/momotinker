@@ -154,7 +154,7 @@
 
   "item.momotinker.compassion_mask": "§7Compassion Mask§",
   "momotinker.item.tooltip.compassion_mask1": "§7With your tears, forge my sacrificial ceremony§",
-  "momotinker.item.tooltip.compassion_mask2": "§7Villagers were killed by lightning and fell to the location where they died§",
+  "momotinker.item.tooltip.compassion_mask2": "§7When a witch dies due to fall damage, this item will fall to its place of death§",
 
   "item.momotinker.dim_dark_gold": "Dim Dark Gold",
   "momotinker.item.tooltip.dim_dark_gold1": "Mysterious metal from ancient times, its glory and splendor have been buried by time",

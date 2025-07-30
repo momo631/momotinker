@@ -202,7 +202,7 @@ public class SuperancientMetalsRealB extends momomodifier {
             if (lightning != null) {
                 lightning.setVisualOnly(true);
                 lightning.getTags().add(player.getStringUUID());
-                lightning.setDamage(0);
+                lightning.setDamage(damage);
                 lightning.setPos(living.position());
                 level.addFreshEntity(lightning);
                 List<LivingEntity> lis = level.getEntitiesOfClass(LivingEntity.class, lightning.getBoundingBox().inflate(1));
@@ -216,19 +216,17 @@ public class SuperancientMetalsRealB extends momomodifier {
     }
 
     private void livingattackevent(LivingAttackEvent event) {
-        LivingEntity living = event.getEntity();
         int hadal_limit = MomotinkerConfig.hadal_limit.get();
-        int a = getAllModifierlevel(living, MomotinkerModifiers.superancientmetalsrealb.getId());
         int b = RANDOM.nextInt(100);
-        if (event.getEntity() instanceof Player player&&a>0) {
+        if (event.getEntity() instanceof Player player) {
             float bonus = getbonus(player, 2500);
             int d = Math.round(bonus);
             ModDataNBT c = ToolStack.from(player.getMainHandItem()).getPersistentData();
-            if (c.getInt(hadal)==hadal_limit) {
-                if (d>=50){
-                    d=50;
+            if (c.getInt(hadal) == hadal_limit&&getAllModifierlevel(player, MomotinkerModifiers.superancientmetalsrealb.getId())>0) {
+                if (d >= 50) {
+                    d = 50;
                 }
-                if (b<d) {
+                if (b < d) {
                     event.setCanceled(true);
                 }
             }

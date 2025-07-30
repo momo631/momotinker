@@ -154,7 +154,7 @@
 
   "item.momotinker.compassion_mask": "§7悲悯假面§",
   "momotinker.item.tooltip.compassion_mask1": "§7以尔泣泪，铸吾祭言§",
-  "momotinker.item.tooltip.compassion_mask2": "§7村民被雷电击杀时掉落在其死亡的位置§",
+  "momotinker.item.tooltip.compassion_mask2": "§7女巫死于摔落伤害时掉落在其死亡的位置§",
 
   "item.momotinker.dim_dark_gold": "黯淡玄金锭",
   "momotinker.item.tooltip.dim_dark_gold1": "来自远古的神秘金属，其身上的荣光与辉煌已被时间掩埋",
@@ -217,8 +217,8 @@
   "momotinker.item.tooltip.twilight_ego6": "而那位能够同时驾驭这三者的人也能带来和平。",
 
   "item.momotinker.core_of_felony": "大罪核心",
-  "momotinker.item.tooltip.core_of_felony1": "§o吾罪有何，吾罪因何，吾罪为何。§",
-  "momotinker.item.tooltip.core_of_felony2": "§o我乃死，我乃生。我为暗，我亦为光。§",
+  "momotinker.item.tooltip.core_of_felony1": "吾罪有何，吾罪因何，吾罪为何。",
+  "momotinker.item.tooltip.core_of_felony2": "我乃死，我乃生。我为暗，我亦为光。",
   "momotinker.item.tooltip.core_of_felony3": "§7七罪以外或许存在着第八罪...§",
 
 
