@@ -88,6 +88,7 @@
   "recipe.momotinker.modifier.resentmentknives": "[骇怨为刀]需要[尽妒之罪]作为前置且与其他[侵蚀我心，大罪共鸣]强化互斥",
   "recipe.momotinker.modifier.forbiddenfruit": "[伊甸禁言]需要[尽纵之罪]作为前置且与其他[侵蚀我心，大罪共鸣]强化互斥",
   "recipe.momotinker.modifier.gainsalone": "[只身向财]需要[尽掠之罪]作为前置且与其他[侵蚀我心，大罪共鸣]强化互斥",
+  "recipe.momotinker.modifier.compassionateeverything": "[悲悼众生]需要[尽哀之罪]作为前置且与其他[侵蚀我心，大罪共鸣]强化互斥",
 
 
   "momotinker": "墨工坊",
@@ -216,8 +217,8 @@
   "momotinker.item.tooltip.twilight_ego6": "而那位能够同时驾驭这三者的人也能带来和平。",
 
   "item.momotinker.core_of_felony": "大罪核心",
-  "momotinker.item.tooltip.core_of_felony1": "吾罪有何，吾罪因何，吾罪为何。",
-  "momotinker.item.tooltip.core_of_felony2": "我乃死，我乃生。我为暗，我亦为光。",
+  "momotinker.item.tooltip.core_of_felony1": "§o吾罪有何，吾罪因何，吾罪为何。§",
+  "momotinker.item.tooltip.core_of_felony2": "§o我乃死，我乃生。我为暗，我亦为光。§",
   "momotinker.item.tooltip.core_of_felony3": "§7七罪以外或许存在着第八罪...§",
 
 
@@ -712,6 +713,10 @@
 
   "modifier.momotinker.gainsalone": "[侵蚀我心，大罪共鸣]只身向财",
   "modifier.momotinker.gainsalone.flavor": "无论代价，无关他人，只为了这个执念",
-  "modifier.momotinker.gainsalone.description": "该工具造成的击杀或挖掘行为产生的掉落物数量增加（剩余耐久过低时无法生效）。该工具将减少大部分属性并大幅增加维修消耗和耐久消耗。每生效一次都会加重一级惩罚并且使产生掉落物的数量在原基础上翻倍（去除该强化只会取消惩罚，再次打上该强化会继承之前的惩罚等级）"
+  "modifier.momotinker.gainsalone.description": "该工具造成的击杀或挖掘行为产生的掉落物数量增加（剩余耐久过低时无法生效）。该工具将减少大部分属性并大幅增加维修消耗和耐久消耗。每生效一次都会加重一级惩罚并且使产生掉落物的数量在原基础上翻倍（去除该强化只会取消惩罚，再次打上该强化会继承之前的惩罚等级）",
+
+  "modifier.momotinker.compassionateeverything": "[侵蚀我心，大罪共鸣]悲悼众生",
+  "modifier.momotinker.compassionateeverything.flavor": "我们悲悯世间一切生灵，皆因其诸行不易",
+  "modifier.momotinker.compassionateeverything.description": "持有时你的攻击和受到的攻击都将无视防御。持有时会将造成的伤害转换为暂时的最大生命值并使该次伤害归零。攻击时若目标最大生命值小于持有者的暂时生命则会直接击杀并消耗等数额的暂时生命"
 
 }

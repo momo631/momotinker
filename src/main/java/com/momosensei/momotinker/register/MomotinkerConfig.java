@@ -9,7 +9,7 @@ public class MomotinkerConfig {
     public static final ForgeConfigSpec.BooleanValue special_acquisition=item.comment("special_acquisition")
             .define("recipe special acquisition is it enabled",true);
     public static final ForgeConfigSpec.BooleanValue stage_meteor=item.comment("stage_meteor")
-            .define("Whether to join the stage:Meteor",false);
+            .define("Whether to join the stage:Meteor(This invalid for Compassion Mask)",false);
     public static final ForgeConfigSpec.BooleanValue arriving_at_the_other_shore=item.comment("arriving_at_the_other_shore")
             .define("arriving_at_the_other_shore is special acquisition",true);
     public static final ForgeConfigSpec.BooleanValue jealous_notes=item.comment("jealous_notes")

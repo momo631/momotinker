@@ -15,9 +15,11 @@ import net.minecraft.network.chat.Component;
 import net.minecraft.resources.ResourceLocation;
 import net.minecraft.server.level.ServerLevel;
 import net.minecraft.server.level.ServerPlayer;
+import net.minecraft.world.damagesource.DamageSource;
 import net.minecraft.world.effect.MobEffects;
 import net.minecraft.world.entity.Entity;
 import net.minecraft.world.entity.EquipmentSlot;
+import net.minecraft.world.entity.LightningBolt;
 import net.minecraft.world.entity.LivingEntity;
 import net.minecraft.world.entity.animal.IronGolem;
 import net.minecraft.world.entity.animal.Sheep;
@@ -27,6 +29,7 @@ import net.minecraft.world.entity.boss.wither.WitherBoss;
 import net.minecraft.world.entity.item.ItemEntity;
 import net.minecraft.world.entity.monster.Slime;
 import net.minecraft.world.entity.monster.warden.Warden;
+import net.minecraft.world.entity.npc.Villager;
 import net.minecraft.world.entity.npc.VillagerTrades;
 import net.minecraft.world.entity.player.Player;
 import net.minecraft.world.item.ItemStack;
@@ -164,6 +167,15 @@ public class LivingEvents {
                         ItemStack b = new ItemStack(MomotinkerItem.rage_stone_statue.get());
                         ModifierUtil.dropItem(player, b);
                     }
+                }
+            }
+        }
+        boolean configf = MomotinkerConfig.compassion_mask.get();
+        if (configf&&StageMeteor.getStageFloat()==1) {
+            if (event.getEntity() instanceof Villager) {
+                if (event.getSource().getEntity() instanceof LightningBolt||event.getSource()==DamageSource.LIGHTNING_BOLT) {
+                    ItemStack a = new ItemStack(MomotinkerItem.compassion_mask.get());
+                    ModifierUtil.dropItem(event.getEntity(), a);
                 }
             }
         }

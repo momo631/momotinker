@@ -88,6 +88,7 @@
   "recipe.momotinker.modifier.resentmentknives": "[Resentment Knives] needs to use [Over envy sin] as a prerequisite and strengthen mutual exclusion with other [Resonance of major sin]",
   "recipe.momotinker.modifier.forbiddenfruit": "[Forbidden Fruit] needs to use [Over indulgence sin] as a prerequisite and strengthen mutual exclusion with other [Resonance of major sin]",
   "recipe.momotinker.modifier.gainsalone": "[Gains Alone] needs to use [Over weighting wealth sin] as a prerequisite and strengthen mutual exclusion with other [Resonance of major sin]",
+  "recipe.momotinker.modifier.compassionateeverything": "[Compassionate Everything] needs to use [Over sad sin] as a prerequisite and strengthen mutual exclusion with other [Resonance of major sin]",
 
 
   "momotinker": "Momotinker",
@@ -707,6 +708,10 @@
 
   "modifier.momotinker.gainsalone": "[Resonance of major sin]Gains Alone",
   "modifier.momotinker.gainsalone.flavor": "No matter the cost, just for this obsession",
-  "modifier.momotinker.gainsalone.description": "This tool will reduce most attributes and significantly increase maintenance and durability consumption. Each kill or dig caused by this tool will increase the penalty by one level and double the number of dropped objects generated on the original basis (removing the enhancement will only cancel the penalty, and hitting it again will inherit the penalty level) (it will not take effect when the remaining durability is too low)"
+  "modifier.momotinker.gainsalone.description": "This tool will reduce most attributes and significantly increase maintenance and durability consumption. Each kill or dig caused by this tool will increase the penalty by one level and double the number of dropped objects generated on the original basis (removing the enhancement will only cancel the penalty, and hitting it again will inherit the penalty level) (it will not take effect when the remaining durability is too low)",
+
+  "modifier.momotinker.compassionateeverything": "[Resonance of major sin]Compassionate Everything",
+  "modifier.momotinker.compassionateeverything.flavor": "We sympathize with all living beings in the world because of their hardships",
+  "modifier.momotinker.compassionateeverything.description": "When holding, both your attacks and the attacks you receive will ignore the defense. When held, it will convert the damage caused to a temporary maximum health and reset the damage to zero. If the maximum health of the target during the attack is less than the temporary health of the holder, it will be directly killed and an equal amount of temporary health will be consumed"
 
 }

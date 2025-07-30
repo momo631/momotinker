@@ -50,7 +50,8 @@ public class ResentmentKnives extends momomodifier {
                 &&tool.getModifierLevel(MomotinkerModifiers.thepinnacleofarrogance.getId())==0
                 &&tool.getModifierLevel(MomotinkerModifiers.filledwithhunger.getId())==0
                 &&tool.getModifierLevel(MomotinkerModifiers.forbiddenfruit.getId())==0
-                &&tool.getModifierLevel(MomotinkerModifiers.gainsalone.getId())==0){
+                &&tool.getModifierLevel(MomotinkerModifiers.gainsalone.getId())==0
+                &&tool.getModifierLevel(MomotinkerModifiers.compassionateeverything.getId())==0){
             return null;
         }
         return requirementsError(modifier);

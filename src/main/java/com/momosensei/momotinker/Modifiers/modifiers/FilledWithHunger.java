@@ -54,7 +54,8 @@ public class FilledWithHunger extends momomodifier {
                 &&tool.getModifierLevel(MomotinkerModifiers.thepinnacleofarrogance.getId())==0
                 &&tool.getModifierLevel(MomotinkerModifiers.resentmentknives.getId())==0
                 &&tool.getModifierLevel(MomotinkerModifiers.forbiddenfruit.getId())==0
-                &&tool.getModifierLevel(MomotinkerModifiers.gainsalone.getId())==0){
+                &&tool.getModifierLevel(MomotinkerModifiers.gainsalone.getId())==0
+                &&tool.getModifierLevel(MomotinkerModifiers.compassionateeverything.getId())==0){
             return null;
         }
         return requirementsError(modifier);

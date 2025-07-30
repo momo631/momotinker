@@ -27,9 +27,9 @@ public class core_of_felony extends Item {
                 list.add(Component.translatable("momotinker.item.tooltip.stage_meteor").withStyle(ChatFormatting.GOLD));
             }
         }else {
-            list.add(Component.translatable("momotinker.item.tooltip.core_of_felony1").withStyle(ChatFormatting.GRAY));
-            list.add(Component.translatable("momotinker.item.tooltip.core_of_felony2").withStyle(ChatFormatting.GRAY));
-            list.add(Component.translatable("momotinker.item.tooltip.special_acquisition").withStyle(ChatFormatting.GRAY));
+            list.add(Component.translatable("momotinker.item.tooltip.core_of_felony1").withStyle(ChatFormatting.WHITE));
+            list.add(Component.translatable("momotinker.item.tooltip.core_of_felony2").withStyle(ChatFormatting.WHITE));
+            list.add(Component.translatable("momotinker.item.tooltip.special_acquisition").withStyle(ChatFormatting.WHITE));
         }
     }
 

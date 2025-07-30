@@ -63,7 +63,8 @@ public class GainsAlone extends momomodifier {
                 && tool.getModifierLevel(MomotinkerModifiers.thepinnacleofarrogance.getId()) == 0
                 && tool.getModifierLevel(MomotinkerModifiers.filledwithhunger.getId()) == 0
                 && tool.getModifierLevel(MomotinkerModifiers.resentmentknives.getId()) == 0
-                && tool.getModifierLevel(MomotinkerModifiers.forbiddenfruit.getId()) == 0) {
+                && tool.getModifierLevel(MomotinkerModifiers.forbiddenfruit.getId()) == 0
+                && tool.getModifierLevel(MomotinkerModifiers.compassionateeverything.getId()) == 0) {
             return null;
         }
         return requirementsError(modifier);
@@ -103,7 +104,7 @@ public class GainsAlone extends momomodifier {
     public void addToolStats(IToolContext context, ModifierEntry modifier, ModifierStatsBuilder builder) {
         ModDataNBT a = (ModDataNBT) context.getPersistentData();
         int b =a.getInt(gainsalonepoints);
-        double c = Math.pow(0.2,b+1);
+        double c = Math.pow(0.4,b+1);
         if (b > 0){
             ToolStats.DURABILITY.multiply(builder, c);
             ToolStats.ATTACK_SPEED.multiply(builder, c);
