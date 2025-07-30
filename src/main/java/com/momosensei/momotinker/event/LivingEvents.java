@@ -302,10 +302,12 @@ public class LivingEvents {
             CompoundTag tag = player.getPersistentData().getCompound(Player.PERSISTED_NBT_TAG);
             String a = "meteor_nucleus_unlock";
             player.getPersistentData().getBoolean(a);
-            if (tag.getBoolean(a)&&StageMeteor.getStageFloat()!=1){
-                Channel.sendToPlayer(new StageMeteorCharge(1), (ServerPlayer) player);
-            }else if (!tag.getBoolean(a)&&StageMeteor.getStageFloat()!=0){
-                Channel.sendToPlayer(new StageMeteorCharge(0), (ServerPlayer) player);
+            if (player instanceof ServerPlayer player1) {
+                if (tag.getBoolean(a) && StageMeteor.getStageFloat() != 1) {
+                    Channel.sendToPlayer(new StageMeteorCharge(1), player1);
+                } else if (!tag.getBoolean(a) && StageMeteor.getStageFloat() != 0) {
+                    Channel.sendToPlayer(new StageMeteorCharge(0), player1);
+                }
             }
 
             if (config) {
