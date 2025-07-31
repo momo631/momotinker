@@ -1,0 +1,43 @@
+{
+  "type": "minecraft:crafting_shaped",
+  "category": "misc",
+  "pattern": [
+    "ABC",
+    "DXE",
+    "FGH"
+  ],
+  "key": {
+    "A": {
+      "item": "momotinker:gluttony_core"
+    },
+    "B": {
+      "item": "momotinker:greedy_contract"
+    },
+    "C": {
+      "item": "momotinker:lust_mirror"
+    },
+    "F": {
+      "item": "momotinker:arrogance_proof"
+    },
+    "H": {
+      "item": "momotinker:rage_stone_statue"
+    },
+    "G": {
+      "item": "momotinker:lazy_grail"
+    },
+    "D": {
+      "item": "momotinker:jealous_notes"
+    },
+    "E": {
+      "item": "momotinker:compassion_mask"
+    },
+    "X": {
+      "item": "minecraft:nether_star"
+    }
+  },
+  "result": {
+    "count": 1,
+    "item": "momotinker:core_of_felony"
+  },
+  "show_notification": true
+}

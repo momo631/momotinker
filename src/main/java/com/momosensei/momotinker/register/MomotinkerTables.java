@@ -27,6 +27,7 @@ public class MomotinkerTables extends MomotinkerMod {
         output.accept(MomotinkerItem.arriving_at_the_other_shore.get());
         output.accept(MomotinkerItem.spirit_visage.get());
         output.accept(MomotinkerItem.heartsteel.get());
+
         output.accept(MomotinkerItem.gluttony_core.get());
         output.accept(MomotinkerItem.greedy_contract.get());
         output.accept(MomotinkerItem.lust_mirror.get());
@@ -34,6 +35,9 @@ public class MomotinkerTables extends MomotinkerMod {
         output.accept(MomotinkerItem.lazy_grail.get());
         output.accept(MomotinkerItem.rage_stone_statue.get());
         output.accept(MomotinkerItem.jealous_notes.get());
+        output.accept(MomotinkerItem.compassion_mask.get());
+        output.accept(MomotinkerItem.core_of_felony.get());
+
         output.accept(MomotinkerItem.interdimensional_crystal.get());
         output.accept(MomotinkerItem.dimensional_prism.get());
         output.accept(MomotinkerItem.dim_dark_gold.get());

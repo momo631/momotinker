@@ -22,8 +22,12 @@ import net.minecraftforge.eventbus.api.EventPriority;
 import net.minecraftforge.eventbus.api.SubscribeEvent;
 import net.minecraftforge.fml.common.Mod;
 import slimeknights.tconstruct.library.tools.helper.ModifierUtil;
+import slimeknights.tconstruct.library.tools.nbt.ToolStack;
 
 import java.util.Random;
+
+import static com.momosensei.momotinker.Modifiers.modifiers.GainsAlone.gainsalonepoints;
+import static com.momosensei.momotinker.Modifiers.momomodifier.getRemainingDurability;
 
 @Mod.EventBusSubscriber(modid = "momotinker", bus = Mod.EventBusSubscriber.Bus.FORGE)
 public class ModEvent {
@@ -34,13 +38,22 @@ public class ModEvent {
         if (killer != null) {
             int a = ModifierUtil.getModifierLevel(killer.getMainHandItem(), MomotinkerModifiers.intendingplunder.getId());
             int b = ModifierUtil.getModifierLevel(killer.getMainHandItem(), MomotinkerModifiers.origin.getId());
+            int c = ModifierUtil.getModifierLevel(killer.getMainHandItem(), MomotinkerModifiers.gainsalone.getId());
             Random random = new Random();
             for (var stack : event.getDrops()) {
                 if (a > 0) {
-                    stack.getItem().setCount((int) (stack.getItem().getCount() * (1 + a * 0.5)));
+                    stack.getItem().setCount(stack.getItem().getCount() * (1 + a));
                 }
                 if (b > 0 && random.nextInt(16) <4+b) {
                     stack.getItem().setCount(0);
+                }
+                if (c > 0) {
+                    ToolStack tool = ToolStack.from(killer.getMainHandItem());
+                    int c1 = tool.getPersistentData().getInt(gainsalonepoints);
+                    double c2 = Math.pow(2,c1+1);
+                    if (!tool.isBroken()&&getRemainingDurability(tool)>1) {
+                        stack.getItem().setCount((int) (stack.getItem().getCount() * Math.floor(c2)));
+                    }
                 }
             }
         }

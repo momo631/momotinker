@@ -1,6 +1,6 @@
 {
   "parent": "item/generated",
   "textures": {
-    "layer0": "momotinker:item/spirit_visage"
+    "layer0": "momotinker:item/other/spirit_visage"
   }
 }

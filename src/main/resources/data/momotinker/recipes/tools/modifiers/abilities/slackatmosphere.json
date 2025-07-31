@@ -1,0 +1,41 @@
+{
+  "type": "tconstruct:modifier",
+  "allow_crystal": true,
+  "inputs": [
+    {
+      "item": "momotinker:lazy_grail",
+      "amount_needed": 7
+    },
+    {
+      "item": "momotinker:core_of_felony",
+      "amount_needed": 1
+    },
+    {
+      "item": "momotinker:lazy_grail",
+      "amount_needed": 7
+    },
+    {
+      "item": "momotinker:lazy_grail",
+      "amount_needed": 7
+    },
+    {
+      "item": "momotinker:lazy_grail",
+      "amount_needed": 7
+    }
+  ],
+  "level": {
+    "max": 1
+  },
+  "result": "momotinker:slackatmosphere",
+  "slots": {
+    "abilities": 3
+  },
+  "tools": {
+    "tag": "tconstruct:modifiable/durability"
+  },
+  "requirements": {
+    "name": "momotinker:overcowardicesin",
+    "level": 1,
+    "error": "recipe.momotinker.modifier.slackatmosphere"
+  }
+}

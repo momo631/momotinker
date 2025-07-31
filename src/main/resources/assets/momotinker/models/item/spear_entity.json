@@ -1,7 +1,7 @@
 {
   "parent": "item/generated",
   "textures": {
-    "layer0": "momotinker:item/spear_entity"
+    "layer0": "momotinker:item/entity/spear_entity"
   },
   "display": {
     "ground": {

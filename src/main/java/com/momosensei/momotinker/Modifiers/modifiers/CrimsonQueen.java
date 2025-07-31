@@ -46,7 +46,19 @@ public class CrimsonQueen extends momomodifier {
     public boolean isNoLevels() {
         return true;
     }
+    @Nullable
+    @Override
+    public Component requirementsError(ModifierEntry entry) {
+        return Component.translatable("recipe.momotinker.modifier.crimsonqueen");
+    }
 
+    @Override
+    public Component validate(IToolStackView tool, ModifierEntry modifier) {
+        if (tool.getModifierLevel(MomotinkerModifiers.yamato.getId())==0){
+            return null;
+        }
+        return requirementsError(modifier);
+    }
     @Override
     public @Nullable Component onRemoved(IToolStackView iToolStackView, Modifier modifier) {
         iToolStackView.getPersistentData().remove(crimsontime);
@@ -87,7 +99,7 @@ public class CrimsonQueen extends momomodifier {
             if (ModifierUtil.getModifierLevel(player.getMainHandItem(), MomotinkerModifiers.crimsonqueen.getId()) > 0) {
                 if (c.getFloat(crimsonlayers) >= 1) {
                     a.invulnerableTime = 0;
-                    event.setAmount(event.getAmount() * 1.5F);
+                    event.setAmount(event.getAmount() * 2.4F);
                     a.invulnerableTime = 0;
                     c.putFloat(crimsonlayers, c.getFloat(crimsonlayers) - 1);
                     c.putFloat(crimsontime, 20);

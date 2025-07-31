@@ -1,5 +1,6 @@
 package com.momosensei.momotinker.Items;
 
+import com.momosensei.momotinker.mobs.StageMeteor;
 import com.momosensei.momotinker.register.MomotinkerConfig;
 import net.minecraft.ChatFormatting;
 import net.minecraft.client.gui.screens.Screen;
@@ -26,12 +27,17 @@ public class dimensional_prism extends BlockItem {
     public void appendHoverText(@NotNull ItemStack itemstack, Level world, @NotNull List<Component> list, @NotNull TooltipFlag flag) {
         boolean config = MomotinkerConfig.special_acquisition.get();
         boolean configa = MomotinkerConfig.dimensional_prism.get();
+        boolean configb = MomotinkerConfig.stage_meteor.get();
         if (Screen.hasShiftDown()&&config&&configa) {
-            list.add(Component.translatable("momotinker.block.tooltip.dimensional_prism2").withStyle(ChatFormatting.AQUA));
+            if (StageMeteor.getStageFloat()==1||!configb) {
+                list.add(Component.translatable("momotinker.block.tooltip.dimensional_prism2").withStyle(ChatFormatting.AQUA));
+            }else {
+                list.add(Component.translatable("momotinker.item.tooltip.stage_meteor").withStyle(ChatFormatting.GOLD));
+            }
         }else{
             list.add(Component.translatable("momotinker.block.tooltip.dimensional_prism1").withStyle(ChatFormatting.AQUA));
             if (config&&configa){
-                list.add(Component.translatable("item.tooltip.special_acquisition").withStyle(ChatFormatting.AQUA));
+                list.add(Component.translatable("momotinker.item.tooltip.special_acquisition").withStyle(ChatFormatting.AQUA));
             }
         }
         super.appendHoverText(itemstack, world, list, flag);

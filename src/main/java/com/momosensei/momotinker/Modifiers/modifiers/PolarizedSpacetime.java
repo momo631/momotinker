@@ -1,42 +1,78 @@
 package com.momosensei.momotinker.Modifiers.modifiers;
 
 import com.momosensei.momotinker.Modifiers.momomodifier;
+import com.momosensei.momotinker.Momotinker;
+import com.momosensei.momotinker.mobs.CapStorageData;
+import com.momosensei.momotinker.mobs.SerialClass;
 import com.momosensei.momotinker.register.MomotinkerModifiers;
+import net.minecraft.network.chat.Component;
+import net.minecraft.resources.ResourceLocation;
 import net.minecraft.world.entity.player.Player;
 import net.minecraftforge.common.MinecraftForge;
 import net.minecraftforge.event.entity.living.LivingHurtEvent;
+import slimeknights.tconstruct.library.modifiers.Modifier;
+import slimeknights.tconstruct.library.tools.nbt.IToolStackView;
 
-import java.util.Objects;
+import javax.annotation.Nullable;
+import java.util.ArrayList;
+import java.util.HashMap;
+import java.util.function.Supplier;
+
+import static com.momosensei.momotinker.mobs.CapStorageData.cast;
 
 
 public class PolarizedSpacetime extends momomodifier {
     public PolarizedSpacetime() {
         MinecraftForge.EVENT_BUS.addListener(this::livinghurtevent);
     }
-    public static int geti(int i,int max,int min){
-        if (i>=max) {
-            return max;
-        }else return Math.max(i, min);
+    public static final ResourceLocation polarized = Momotinker.getResource("polarized");
+    @Override
+    public Component onRemoved(IToolStackView iToolStackView, Modifier modifier) {
+        iToolStackView.getPersistentData().remove(polarized);
+        return null;
     }
     private void livinghurtevent(LivingHurtEvent event) {
-        if (event.getEntity() instanceof Player player&&event.getSource()!=null){
-            int a=getAllModifierlevel(player,MomotinkerModifiers.polarizedspacetime.getId());
-            if (a>0) {
-                double b = Objects.requireNonNull(event.getSource().getSourcePosition()).subtract(player.position()).length();
-                float c=0.9f*geti((int) Math.floor(b),6+a,1)/(6+a);
-                if (c>0.05f) {
-                    event.setAmount(event.getAmount() * c);
-                }else if (c<0.05f){
-                    event.setAmount(event.getAmount() * 0.05f);
+        Data data = getOrCreateData(polarized, Data::new);
+        String id = event.getSource().getMsgId();
+        if (event.getEntity() instanceof Player player&&getAllModifierlevel(player, MomotinkerModifiers.polarizedspacetime.getId())>0) {
+            int a = getAllModifierlevel(player, MomotinkerModifiers.polarizedspacetime.getId());
+            if (data.memory.contains(id)) {
+                data.memory.remove(id);
+                data.memory.add(0, id);
+                int val = data.level.compute(id, (k, old) -> old == null ? 1 : old + 1);
+                double b = 0.9-0.05*a;
+                if (b<0.4)b=0.4;
+                double factor = Math.pow(b, val - 1);
+                event.setAmount((float) (event.getAmount() * factor));
+            } else {
+                data.memory.add(0, id);
+                data.level.put(id, 1);
+                int b =getAllModifierAmount(player,MomotinkerModifiers.polarizedspacetime.getId());
+                if (data.memory.size() > b) {
+                    String old = data.memory.remove(data.memory.size() - 1);
+                    data.level.remove(old);
                 }
             }
         }
-        if (event.getSource().getEntity() instanceof Player player&&event.getEntity()!=null){
-            int a=getAllModifierlevel(player,MomotinkerModifiers.polarizedspacetime.getId());
-            if (a>0) {
-                double b = event.getEntity().position().subtract(player.position()).length();
-                event.setAmount(event.getAmount()*(1f+(0.1f+a*0.01f)*geti((int) Math.floor(b),6+a,1)));
-            }
-        }
+    }
+
+    @SerialClass.SerialField
+    private final HashMap<ResourceLocation, CapStorageData> data = new HashMap<>();
+    public <T extends CapStorageData> T getOrCreateData(ResourceLocation id, Supplier<T> sup) {
+        return cast(data.computeIfAbsent(id, e -> sup.get()));
+    }
+    @Nullable
+    public <T extends CapStorageData> T getData(ResourceLocation id) {
+        return cast(this.data.get(id));
+    }
+    @SerialClass
+    public static class Data extends CapStorageData {
+
+        @SerialClass.SerialField
+        public final ArrayList<String> memory = new ArrayList<>();
+
+        @SerialClass.SerialField
+        public final HashMap<String, Integer> level = new HashMap<>();
+
     }
 }

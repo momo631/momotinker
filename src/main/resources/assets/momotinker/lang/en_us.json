@@ -12,6 +12,8 @@
   "effect.momotinker.censored": "??????????",
   "effect.momotinker.flamebatharmor": "Flame Bath Armor",
   "effect.momotinker.increaseallattributes": "Increase All Attributes",
+  "effect.momotinker.stiffening": "Stiffening",
+  "effect.momotinker.reduceallattributes": "Reduce All Attributes",
 
   "fluid.momotinker.molten_laomo": "Molten Momo",
   "fluid.momotinker.molten_arriving_at_the_other_shore": "Molten Other Shore",
@@ -24,6 +26,7 @@
   "fluid.momotinker.molten_rage_stone_statue": "Molten Rage",
   "fluid.momotinker.molten_lazy_grail": "Molten Lazy",
   "fluid.momotinker.molten_jealous_notes": "Molten Jealous",
+  "fluid.momotinker.molten_compassion_mask": "Molten Compassion",
   "fluid.momotinker.molten_interdimensional_crystal": "Molten Interdimensional Crystal",
   "fluid.momotinker.molten_dimensional_prism": "Molten Dimensional Prism",
   "fluid.momotinker.molten_dim_dark_gold": "Molten Dim Dark Gold",
@@ -52,6 +55,7 @@
   "item.momotinker.molten_rage_stone_statue_bucket": "Molten Rage Bucket",
   "item.momotinker.molten_lazy_grail_bucket": "Molten Lazy Bucket",
   "item.momotinker.molten_jealous_notes_bucket": "Molten Jealous Bucket",
+  "item.momotinker.molten_compassion_mask_bucket": "Molten Compassion Bucket",
   "item.momotinker.molten_interdimensional_crystal_bucket": "Molten Interdimensional Crystal Bucket",
   "item.momotinker.molten_dimensional_prism_bucket": "Molten Dimensional Prism Bucket",
   "item.momotinker.molten_dim_dark_gold_bucket": "Molten Dim Dark Gold Bucket",
@@ -68,18 +72,32 @@
   "item.momotinker.molten_twilight_purple_gold_bucket": "Molten Twilight Purple Gold Bucket",
   "item.momotinker.molten_timetrace_purple_gold_bucket": "Molten Time Trace Purple Gold Bucket",
   "item.momotinker.molten_reversetime_purple_gold_bucket": "Molten Reverse Time Purple Gold Bucket",
-  
-  "recipe.momotinker.modifier.cleansetheworld": "'Cleanse The World' requires 'Breakthrough Stars' as a prerequisite",
-  "recipe.momotinker.modifier.shadowofdamnation": "'Shadow Of Damnation' requires 'Cleanse The World' as a prerequisite",
+
+
+  "recipe.momotinker.modifier.cleansetheworld": "[Cleanse The World] requires [Breakthrough Stars] as a prerequisite",
+  "recipe.momotinker.modifier.shadowofdamnation": "[Shadow Of Damnation] requires [Cleanse The World] as a prerequisite",
   "recipe.momotinker.modifier.expandedequipment": "This tool cannot apply reinforcement",
-  "recipe.momotinker.modifier.shortterminvestments": "'Short Term Investments' requires 'Greedy and plundering' as a prerequisite and is mutually exclusive with 'Long Term Investments'",
-  "recipe.momotinker.modifier.longterminvestments": "'Long Term Investments' requires 'Greedy and plundering' as a prerequisite and is mutually exclusive with 'Short Term Investments'",
+  "recipe.momotinker.modifier.shortterminvestments": "[Short Term Investments] requires [Greedy and plundering] as a prerequisite and is mutually exclusive with [Long Term Investments]",
+  "recipe.momotinker.modifier.longterminvestments": "[Long Term Investments] requires [Greedy and plundering] as a prerequisite and is mutually exclusive with [Short Term Investments]",
+  "recipe.momotinker.modifier.crimsonqueen": "[Crimson Queen] is mutually exclusive with [Dimensional Slash]",
+  "recipe.momotinker.modifier.yamato": "[Dimensional Slash] is mutually exclusive with [Crimson Queen]",
+  "recipe.momotinker.modifier.eternalanger": "[Eternal Anger] needs to use [Over anger sin] as a prerequisite and strengthen mutual exclusion with other [Resonance of major sin]",
+  "recipe.momotinker.modifier.slackatmosphere": "[Slack Atmosphere] needs to use [Over cowardice sin] as a prerequisite and strengthen mutual exclusion with other [Resonance of major sin]",
+  "recipe.momotinker.modifier.thepinnacleofarrogance": "[The Pinnacle Of Arrogance] needs to use [Over disdain sin] as a prerequisite and strengthen mutual exclusion with other [Resonance of major sin]",
+  "recipe.momotinker.modifier.filledwithhunger": "[Filled With Hunger] needs to use [Over eating sin] as a prerequisite and strengthen mutual exclusion with other [Resonance of major sin]",
+  "recipe.momotinker.modifier.resentmentknives": "[Resentment Knives] needs to use [Over envy sin] as a prerequisite and strengthen mutual exclusion with other [Resonance of major sin]",
+  "recipe.momotinker.modifier.forbiddenfruit": "[Forbidden Fruit] needs to use [Over indulgence sin] as a prerequisite and strengthen mutual exclusion with other [Resonance of major sin]",
+  "recipe.momotinker.modifier.gainsalone": "[Gains Alone] needs to use [Over weighting wealth sin] as a prerequisite and strengthen mutual exclusion with other [Resonance of major sin]",
+  "recipe.momotinker.modifier.compassionateeverything": "[Compassionate Everything] needs to use [Over sad sin] as a prerequisite and strengthen mutual exclusion with other [Resonance of major sin]",
+
 
   "momotinker": "Momotinker",
+
   "key.momotinker.key": "Category Example",
   "key.momotinker.keya": "Tool Enhancement",
 
-  "item.tooltip.special_acquisition": "Press and hold 'shift' to view and retrieve",
+  "momotinker.item.tooltip.special_acquisition": "Press and hold 'shift' to view and retrieve",
+  "momotinker.item.tooltip.stage_meteor": "Perhaps Meteor knows something ..",
 
   "block.momotinker.laomo_block": "Momo Block",
 
@@ -134,6 +152,10 @@
   "momotinker.item.tooltip.jealous_notes1": "§eWith your abundant resources, forge my thin grievances§",
   "momotinker.item.tooltip.jealous_notes2": "§eWhen not equipped with any armor and attacked by creatures equipped with any armor, the writable book in the master's hand will be converted into this item§",
 
+  "item.momotinker.compassion_mask": "§7Compassion Mask§",
+  "momotinker.item.tooltip.compassion_mask1": "§7With your tears, forge my sacrificial ceremony§",
+  "momotinker.item.tooltip.compassion_mask2": "§7When a witch dies due to fall damage, this item will fall to its place of death§",
+
   "item.momotinker.dim_dark_gold": "Dim Dark Gold",
   "momotinker.item.tooltip.dim_dark_gold1": "Mysterious metal from ancient times, its glory and splendor have been buried by time",
 
@@ -185,6 +207,20 @@
   "item.momotinker.reversetime_purple_gold": "Reverse Time Purple Gold",
   "momotinker.item.tooltip.reversetime_purple_gold1": "Through countless journeys on the brink of collapse, it was able to awaken its ability to be different and different",
   "momotinker.item.tooltip.reversetime_purple_gold2": "§5Hidden Material:The strongest and most unintentional wish may receive a different response§",
+
+  "item.momotinker.twilight_ego": "E.G.O:Twilight",
+  "momotinker.item.tooltip.twilight_ego1": "Only employees with all attributes exceeding 110 can pick up this weapon (including accessory bonuses)",
+  "momotinker.item.tooltip.twilight_ego2": "This weapon will cause physical, mental, erosion, and soul damage simultaneously.",
+  "momotinker.item.tooltip.twilight_ego3": "This weapon can launch a special attack every once in a while",
+  "momotinker.item.tooltip.twilight_ego4": "If an employee holds this E.G.O weapon, the End Bird will not appear.",
+  "momotinker.item.tooltip.twilight_ego5": "Just like how the ever-watching eyes, the scale that could measure any and all sin, and the beak that could swallow everything protected the peace of the Black Forest...",
+  "momotinker.item.tooltip.twilight_ego6": "The wielder of this armament may also bring peace as they did.",
+
+  "item.momotinker.core_of_felony": "Core Of Felony",
+  "momotinker.item.tooltip.core_of_felony1": "What is my sin, why is my sin, what is my sin for.",
+  "momotinker.item.tooltip.core_of_felony2": "I am death and life. Darkness and light.",
+  "momotinker.item.tooltip.core_of_felony3": "§7There may be an eighth sin besides the seven sins...§",
+
 
   "itemGroup.momotinker.tools": "Momotinker Tools",
 
@@ -245,8 +281,9 @@
   "item.momotinker.chain_sword": "Chain Sword",
   "item.momotinker.chain_sword.description": "[Two handed weapons]\nDuring use, it can continuously strike small range creatures in front of it. If used for too long, it will cannot be used normally. The higher the attack speed, the higher the damage",
 
-  "item.momotinker.pneumatic_sword": "气动剑",
-  "item.momotinker.pneumatic_sword.description": "高机动性的近战武器，右键可短暂向前上方冲刺，按下工具技能可发射绳索将自己拉向被击中的方块或生物（按“shift”可提前取消绳索），若目标是生物时会强化下一次在空中的冲刺和该冲刺伤害，若副手存在另一把气动剑则提升冲刺性能",
+  "item.momotinker.pneumatic_sword": "Pneumatic Sword",
+  "item.momotinker.pneumatic_sword.description": "Right click to briefly sprint forward and upward, pressing 'Tool Enhancement' to fire the rope (press 'shift' to cancel the rope in advance). If the target is a creature, it will enhance the next aerial sprint. If the deputy has another pneumatic sword, it will improve various performance",
+
 
   "momotinker.tool.tooltip.offhand_hastool": "Error: The deputy has items",
 
@@ -273,9 +310,11 @@
   "material.momotinker.rage_stone_statue": "Rage",
   "material.momotinker.rage_stone_statue.encyclopedia": "§0Anger never dissipates§",
   "material.momotinker.lazy_grail": "Lazy",
-  "material.momotinker.lazy_grail.encyclopedia": "§6Never be troubled by the urgency of the §6world",
+  "material.momotinker.lazy_grail.encyclopedia": "§6Never be troubled by the urgency of the §6 world",
   "material.momotinker.jealous_notes": "Jealous",
-  "material.momotinker.jealous_notes.encyclopedia": "§eJealousy and resentment will never be §edispelled",
+  "material.momotinker.jealous_notes.encyclopedia": "§eJealousy and resentment will never be §e dispelled",
+  "material.momotinker.compassion_mask": "Compassion",
+  "material.momotinker.compassion_mask.encyclopedia": "§7Sorrow never fades away§",
   "material.momotinker.interdimensional_crystal": "Interdimensional Crystal",
   "material.momotinker.interdimensional_crystal.encyclopedia": "§dReturning from heaven§",
   "material.momotinker.dimensional_prism": "Dimensional Prism",
@@ -415,6 +454,14 @@
   "modifier.momotinker.overenvysin.description": "When attacking targets with a lower health limit than oneself, the attack power will be reduced based on the difference, which is 5% * item level * health limit difference (attack does not cause damage at the lowest point)",
   "modifier.momotinker.tooltip.overenvysin1": "At present, the maximum attack power that can be provided by increasing damage is:",
 
+  "modifier.momotinker.sacrificetospirit": "Sacrifice to spirit",
+  "modifier.momotinker.sacrificetospirit.flavor": "§7Mourning for the souls§",
+  "modifier.momotinker.sacrificetospirit.description": "When holding this tool, the left button will no longer function. When held, it deals damage to all surrounding creatures every 2 seconds. The original attack speed determines the attack range (up to 200 squares), and the original attack distance and item level determine the damage multiplier of the attack",
+
+  "modifier.momotinker.oversadsin": "Over sad sin",
+  "modifier.momotinker.oversadsin.flavor": "§7The Price of Endless Sorrow: Melancholy and Sorrow§",
+  "modifier.momotinker.oversadsin.description": "Holding this tool will cause periodic damage over time, with higher damage occurring over time. The level of the entry will determine the rate of damage growth",
+
   "modifier.momotinker.fallingstars": "Falling stars",
   "modifier.momotinker.fallingstars.flavor": "§dWhen a meteor falls here§",
   "modifier.momotinker.fallingstars.description": "Press 'Category Example' and lift it into the air. Pressing it again within the next 3 seconds will result in a 1-second 'Falling Star' effect, and the tool will receive 120 seconds of cooldown (if the second skill is not used, it will only have 30 seconds)\n§d[Falling Star]§:Quickly sprint and stop when colliding with blocks or hitting entities, producing an explosion that causes explosive type damage to nearby creatures (without damaging the blocks),",
@@ -507,7 +554,7 @@
 
   "modifier.momotinker.crimsonqueen": "Crimson Queen",
   "modifier.momotinker.crimsonqueen.flavor": "'Trigger Blade' Exclusive Enhancement: Mobile Sword",
-  "modifier.momotinker.crimsonqueen.description": "Losing the original slash, it will be replaced by releasing it at a certain time after right clicking to recharge the weapon. When there is a recharge, the attack will consume layers, causing the attack to be corrected to 150% and ignoring armor. The maximum number of layers that can exist is 3 (if a perfect judgment is triggered, 3 layers will be directly obtained)",
+  "modifier.momotinker.crimsonqueen.description": "Losing the original slash, it will be replaced by releasing it at a certain time after right clicking to recharge the weapon. When there is a recharge, the attack will consume layers, causing the attack to be corrected to 200% and ignoring armor. The maximum number of layers that can exist is 3 (if a perfect judgment is triggered, 3 layers will be directly obtained)",
 
   "modifier.momotinker.berserk": "Berserk",
   "modifier.momotinker.berserk.flavor": "Completely insane",
@@ -517,7 +564,7 @@
 
   "modifier.momotinker.yamato": "Dimensional Slash",
   "modifier.momotinker.yamato.flavor": "'Trigger Blade' Exclusive enhancement: Yamato",
-  "modifier.momotinker.yamato.description": "A 4-strike combo with a slightly shortened cooldown time and 50% damage from a slash. After use, the weapon will experience a 1-second cooldown, but if released within a certain period of time after completing the charge, it will not cool down",
+  "modifier.momotinker.yamato.description": "A 4-strike combo with a slightly shortened cooldown time and 80% damage from a slash. After use, the weapon will experience a 1-second cooldown, but if released within a certain period of time after completing the charge, it will not cool down",
 
   "modifier.momotinker.starcloudchain": "Star Cloud Chain",
   "modifier.momotinker.starcloudchain.flavor": "Like a constellation",
@@ -628,7 +675,43 @@
   "modifier.momotinker.timeechoes.description": "When in the backpack, the maximum durability will gradually decrease over time while improving other attributes until the maximum durability is less than 500",
 
   "modifier.momotinker.polarizedspacetime": "Polarized Spacetime",
-  "modifier.momotinker.polarizedspacetime.flavor": "The distance in space is starting to have an impact",
-  "modifier.momotinker.polarizedspacetime.description": "The closer the damage source is, the lower the damage received, and the farther the damage is from the target, the higher the damage"
+  "modifier.momotinker.polarizedspacetime.flavor": "Crossing disaster risks and advancing with time and space",
+  "modifier.momotinker.polarizedspacetime.description": "When equipped or held, it will gradually adapt to the same type of damage, and the adaptation speed is related to the level of the whole body entry. The number of damage types that can be adapted to at the same time is related to the number of equipment already equipped with that entry",
+
+  "modifier.momotinker.resonance": "Resonance",
+  "modifier.momotinker.resonance.flavor": "We may already be one",
+  "modifier.momotinker.resonance.description": "This entry takes effect when both the main and deputy weapons possess it. When the main hand causes non additional attacks, the secondary weapon will also cause one attack",
+
+  "modifier.momotinker.eternalanger": "[Resonance of major sin]Eternal Anger",
+  "modifier.momotinker.eternalanger.flavor": "Before going to hell, my anger knows no bounds",
+  "modifier.momotinker.eternalanger.description": "hen the main hand holds this tool and is on the brink of death, they can avoid death once and launch a small-scale attack once. The probability of triggering a death free attack next time is halved (the basic probability is 300%), and the damage caused and taken by holding this tool will increase. It will reset after death",
+
+  "modifier.momotinker.slackatmosphere": "[Resonance of major sin]Slack Atmosphere",
+  "modifier.momotinker.slackatmosphere.flavor": "The slight drunkenness, like whiskey, can't help but make people addicted and unable to extricate themselves",
+  "modifier.momotinker.slackatmosphere.description": "The level of negative potion effects obtained by all surrounding creatures is doubled (including oneself), and the level of positive potion effects obtained by all non self creatures is halved. Give the target/attacker a random negative potion effect when attacking/being attacked",
+
+  "modifier.momotinker.thepinnacleofarrogance": "[Resonance of major sin]The Pinnacle Of Arrogance",
+  "modifier.momotinker.thepinnacleofarrogance.flavor": "I once stood on the dome, overlooking the vast beings",
+  "modifier.momotinker.thepinnacleofarrogance.description": "The minimum damage received by equipment or holder is 5% of their maximum life, and the maximum damage received is 15% of their maximum life. If the damage exceeds 2500% of their maximum life, it will not take effect",
+
+  "modifier.momotinker.filledwithhunger": "[Resonance of major sin]Filled With Hunger",
+  "modifier.momotinker.filledwithhunger.flavor": "With the stove of heaven and earth, I am the kitchen for the food",
+  "modifier.momotinker.filledwithhunger.description": "The satiety and hunger levels will rapidly and naturally decrease. Killing will restore satiety and hunger levels and can break through the upper limit. The satiety and hunger values can be considered as extra health and increase the damage caused. Exceeding the upper limit of satiety/hunger values can immunize against death and clear the excess satiety/hunger values",
+
+  "modifier.momotinker.resentmentknives": "[Resonance of major sin]Resentment Knives",
+  "modifier.momotinker.resentmentknives.flavor": "Have you ever thought that you are also hated by the world, someone who hates the world",
+  "modifier.momotinker.resentmentknives.description": "When holding, attacking/being attacked will mark oneself as 'jealous' of the target/attacker. If the opponent's attack is greater than oneself, the self attack will increase to the opponent's level, and the damage caused to them will penetrate the defense; If it is less than, it will increase the opponent's attack to its own level.\n'jealous': Each pair of organisms can only exist in one state at a time, and the damage caused and suffered by other organisms to units in that state will be greatly reduced until one of them dies or is far apart",
+
+  "modifier.momotinker.forbiddenfruit": "[Resonance of major sin]Forbidden Fruit",
+  "modifier.momotinker.forbiddenfruit.flavor": "Perhaps we shouldn't have eaten that fruit from the beginning",
+  "modifier.momotinker.forbiddenfruit.description": "Holder attacks will directly reduce the target's armor value and increase armor. Creatures with armor lower than the holder within the range will experience a 50% reduction in most attributes. Units with armor lower than the holder's will receive increased damage from the holder and reduced damage to the holder (up to 95% reduction in damage)",
+
+  "modifier.momotinker.gainsalone": "[Resonance of major sin]Gains Alone",
+  "modifier.momotinker.gainsalone.flavor": "No matter the cost, just for this obsession",
+  "modifier.momotinker.gainsalone.description": "This tool will reduce most attributes and significantly increase maintenance and durability consumption. Each kill or dig caused by this tool will increase the penalty by one level and double the number of dropped objects generated on the original basis (removing the enhancement will only cancel the penalty, and hitting it again will inherit the penalty level) (it will not take effect when the remaining durability is too low)",
+
+  "modifier.momotinker.compassionateeverything": "[Resonance of major sin]Compassionate Everything",
+  "modifier.momotinker.compassionateeverything.flavor": "We sympathize with all living beings in the world because of their hardships",
+  "modifier.momotinker.compassionateeverything.description": "When holding, both your attacks and the attacks you receive will ignore the defense. When held, it will convert the damage caused to a temporary maximum health and reset the damage to zero. If the maximum health of the target during the attack is less than the temporary health of the holder, it will be directly killed and an equal amount of temporary health will be consumed"
 
 }

@@ -1,0 +1,41 @@
+{
+  "type": "tconstruct:modifier",
+  "allow_crystal": true,
+  "inputs": [
+    {
+      "item": "momotinker:lust_mirror",
+      "amount_needed": 7
+    },
+    {
+      "item": "momotinker:core_of_felony",
+      "amount_needed": 1
+    },
+    {
+      "item": "momotinker:lust_mirror",
+      "amount_needed": 7
+    },
+    {
+      "item": "momotinker:lust_mirror",
+      "amount_needed": 7
+    },
+    {
+      "item": "momotinker:lust_mirror",
+      "amount_needed": 7
+    }
+  ],
+  "level": {
+    "max": 1
+  },
+  "result": "momotinker:forbiddenfruit",
+  "slots": {
+    "abilities": 3
+  },
+  "tools": {
+    "tag": "tconstruct:modifiable/durability"
+  },
+  "requirements": {
+    "name": "momotinker:overindulgencesin",
+    "level": 1,
+    "error": "recipe.momotinker.modifier.forbiddenfruit"
+  }
+}

@@ -46,10 +46,15 @@ public class Momotinker {
         MomotinkerEffects.EFFECT.register(eventBus);
         MomotinkerEntities.ENTITIES.register(eventBus);
         MomotinkerLootModifiers.register(eventBus);
-        ModLoadingContext.get().registerConfig(ModConfig.Type.COMMON, MomotinkerConfig.spec);
         eventBus.register(new MomotinkerTools());
         MomotinkerTables.initRegisters();
         MinecraftForge.EVENT_BUS.register(new LivingEvents());
+
+        ModLoadingContext.get().registerConfig(ModConfig.Type.COMMON, MomotinkerConfig.Itemspec, "MomotinkerItem.toml");
+        ModLoadingContext.get().registerConfig(ModConfig.Type.COMMON, MomotinkerConfig.Modifierspec, "MomotinkerModifier.toml");
+        ModLoadingContext.get().registerConfig(ModConfig.Type.COMMON, MomotinkerConfig.Toolspec, "MomotinkerTool.toml");
+
+        //GeckoLib.initialize();
     }
     //Resourcelocation
     public static ResourceLocation getResource(String id) {

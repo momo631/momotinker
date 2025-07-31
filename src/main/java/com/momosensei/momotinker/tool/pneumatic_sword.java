@@ -54,7 +54,7 @@ public class pneumatic_sword extends ModifiableItem {
     private void livinghurtevent(LivingHurtEvent event) {
         Entity a = event.getEntity();
         Entity b = event.getSource().getEntity();
-        if (b instanceof Player player&&a!=null&&(player.getMainHandItem().is(MomotinkerTools.pneumatic_sword.get())||player.getOffhandItem().is(MomotinkerTools.pneumatic_sword.get()))){
+        if (b instanceof Player player&&a instanceof LivingEntity living&&(player.getMainHandItem().is(MomotinkerTools.pneumatic_sword.get())||player.getOffhandItem().is(MomotinkerTools.pneumatic_sword.get()))){
             ModDataNBT data1 = ToolStack.from(player.getMainHandItem()).getPersistentData();
             ModDataNBT data2 = ToolStack.from(player.getOffhandItem()).getPersistentData();
             if (player.isAutoSpinAttack()){
@@ -90,7 +90,11 @@ public class pneumatic_sword extends ModifiableItem {
                     List<LivingEntity> ls0 = player.level().getEntitiesOfClass(LivingEntity.class, player.getBoundingBox().inflate(1));
                     for (LivingEntity targets : ls0) {
                         if (targets != player && targets != null) {
-                            AttackUtil.attackEntity(ToolStack.from(player.getMainHandItem()), player, InteractionHand.MAIN_HAND, targets, () -> 1, true, Util.getSlotType(InteractionHand.MAIN_HAND), ToolStack.from(player.getMainHandItem()).getStats().get(ToolStats.ATTACK_DAMAGE) + ToolStack.from(player.getOffhandItem()).getStats().get(ToolStats.ATTACK_DAMAGE), 1f, false, true, true, false);
+                            targets.invulnerableTime=0;
+                            AttackUtil.attackEntity(ToolStack.from(player.getMainHandItem()), player, InteractionHand.MAIN_HAND, targets, () -> 1, true, Util.getSlotType(InteractionHand.MAIN_HAND), ToolStack.from(player.getMainHandItem()).getStats().get(ToolStats.ATTACK_DAMAGE), 0.3f, false, true, true, false);
+                            targets.invulnerableTime=0;
+                            AttackUtil.attackEntity(ToolStack.from(player.getOffhandItem()), player, InteractionHand.OFF_HAND, targets, () -> 1, true, Util.getSlotType(InteractionHand.OFF_HAND), ToolStack.from(player.getOffhandItem()).getStats().get(ToolStats.ATTACK_DAMAGE), 0.3f, false, true, true, false);
+                            targets.invulnerableTime=0;
                         }
                     }
                     double c = 3;
@@ -171,11 +175,7 @@ public class pneumatic_sword extends ModifiableItem {
         }
         return InteractionResultHolder.consume(stack);
     }
-    @Override
-    public void onUseTick(Level level, LivingEntity living, ItemStack stack, int chargeRemaining) {
-        ToolStack tool = ToolStack.from(stack);
 
-    }
     public int getUseDuration(ItemStack stack) {
         return 1;
     }

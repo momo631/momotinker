@@ -40,7 +40,7 @@ public class FlameBath extends momomodifier {
                 a.putInt(flamebathcooldown, a.getInt(flamebathcooldown) - 1);
             }
             if (player.level() instanceof ServerLevel serverLevel&&a.getInt(flamebathcooldown)>234.9) {
-                for (int i = 0; i <= 360; i++) {
+                for (int i = 0; i <= 120; i++) {
                     double rad = i * 0.017453292519943295;
                     double r = 4D;
                     double x = r * Math.cos(rad);

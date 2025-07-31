@@ -180,7 +180,7 @@ public class KeyInputPKT {
             if (getMainhandModifierlevel(player, MomotinkerModifiers.significance.getId()) > 0 && !player.getItemBySlot(EquipmentSlot.OFFHAND).is(MomotinkerItem.nihilism.get())) {
                 ModDataNBT significancedata = ToolStack.from(player.getItemBySlot(EquipmentSlot.MAINHAND)).getPersistentData();
                 if (significancedata.getInt(signifincancecool)==0){
-                    significancedata.putInt(signifincances,10);
+                    significancedata.putInt(signifincances,13);
                     significancedata.putInt(signifincancecool,90);
                 }
             }
@@ -223,7 +223,7 @@ public class KeyInputPKT {
                     }else if (player.getOffhandItem().isEmpty()&&!data.getString(getResourceLocation("termname")).isEmpty()){
                         int a = (int) Math.floor(data.getFloat(getResource("termindex")));
                         if (a!=0) {
-                            ItemStack items = new ItemStack(Objects.requireNonNull(ForgeRegistries.ITEMS.getValue(getResourceLocation(data.getString(getResourceLocation("termname"))))), a);
+                            ItemStack items = new ItemStack(ForgeRegistries.ITEMS.getValue(getResourceLocation(data.getString(getResourceLocation("termname")))), a);
                             ModifierUtil.dropItem(player, items);
                             data.putFloat(getResource("termindex"), data.getFloat(getResource("termindex")) - a);
                         }else {

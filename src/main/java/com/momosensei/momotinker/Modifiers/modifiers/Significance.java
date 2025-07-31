@@ -54,13 +54,16 @@ public class Significance extends momomodifier {
             if (a.getInt(signifincances)<0){
                 a.putInt(signifincances,0);
             }
+            if (a.getInt(signifincances)==1){
+                player.getAttribute(Attributes.MAX_HEALTH).setBaseValue(20);
+            }
             if (a.getInt(signifincancecool)<0){
                 a.putInt(signifincancecool,0);
             }
             if (a.getInt(signifincancecool)>0&&player.tickCount%20==0){
                 a.putInt(signifincancecool,a.getInt(signifincancecool)-1);
             }
-            if (a.getInt(signifincances)>0){
+            if (a.getInt(signifincances)>1){
                 if (player.tickCount%20==0) {
                     a.putInt(signifincances, a.getInt(signifincances) - 1);
                 }
@@ -76,7 +79,7 @@ public class Significance extends momomodifier {
                 List<LivingEntity> list = player.level().getEntitiesOfClass(LivingEntity.class, player.getBoundingBox().inflate(12));
                 for (LivingEntity e : list) {
                     if (e != null && e != player) {
-                        e.getAttribute(Attributes.MAX_HEALTH).setBaseValue(e.getMaxHealth()*(0.97f));
+                        e.getAttribute(Attributes.MAX_HEALTH).setBaseValue(e.getMaxHealth()*(0.95f));
                         if (e.getHealth()>e.getMaxHealth()){
                             e.setHealth(e.getMaxHealth());
                         }

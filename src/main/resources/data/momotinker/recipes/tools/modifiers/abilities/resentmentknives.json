@@ -1,0 +1,41 @@
+{
+  "type": "tconstruct:modifier",
+  "allow_crystal": true,
+  "inputs": [
+    {
+      "item": "momotinker:jealous_notes",
+      "amount_needed": 7
+    },
+    {
+      "item": "momotinker:core_of_felony",
+      "amount_needed": 1
+    },
+    {
+      "item": "momotinker:jealous_notes",
+      "amount_needed": 7
+    },
+    {
+      "item": "momotinker:jealous_notes",
+      "amount_needed": 7
+    },
+    {
+      "item": "momotinker:jealous_notes",
+      "amount_needed": 7
+    }
+  ],
+  "level": {
+    "max": 1
+  },
+  "result": "momotinker:resentmentknives",
+  "slots": {
+    "abilities": 3
+  },
+  "tools": {
+    "tag": "tconstruct:modifiable/durability"
+  },
+  "requirements": {
+    "name": "momotinker:overenvysin",
+    "level": 1,
+    "error": "recipe.momotinker.modifier.resentmentknives"
+  }
+}

@@ -252,12 +252,61 @@ public class AttackUtil {
         }
         return true;
     }
+    public static float attackdamage(IToolStackView tool, LivingEntity attackerLiving, InteractionHand hand, Entity targetEntity, DoubleSupplier cooldownFunction, boolean isExtraAttack, EquipmentSlot sourceSlot,float DamageMultiplier) {
+        float damage = 0;
+        if (tool.isBroken() || !tool.hasTag(TinkerTags.Items.MELEE)) {
+            return damage;
+        }
+        if (attackerLiving.level().isClientSide || !targetEntity.isAttackable() || targetEntity.skipAttackInteraction(attackerLiving)) {
+            return damage;
+        }
+        LivingEntity targetLiving = getLivingEntity(targetEntity);
+        Player attackerPlayer = null;
+        if (attackerLiving instanceof Player player) {
+            attackerPlayer = player;
+        }
+
+        damage = tool.getStats().get(ToolStats.ATTACK_DAMAGE);
+
+        float cooldown = (float)cooldownFunction.getAsDouble();
+        boolean fullyCharged = cooldown > 0.9f;
+
+        boolean isCritical = (!isExtraAttack && fullyCharged && attackerLiving.fallDistance > 0.0F && !attackerLiving.onGround() && !attackerLiving.onClimbable()
+                && !attackerLiving.isInWater() && !attackerLiving.hasEffect(MobEffects.BLINDNESS)
+                && !attackerLiving.isPassenger() && targetLiving != null && !attackerLiving.isSprinting());
+
+        ToolAttackContext context = new ToolAttackContext(attackerLiving, attackerPlayer, hand, sourceSlot, targetEntity, targetLiving, isCritical, cooldown, isExtraAttack);
+
+        float baseDamage = damage;
+        List<ModifierEntry> modifiers = tool.getModifierList();
+        for (ModifierEntry entry : modifiers) {
+            damage = entry.getHook(ModifierHooks.MELEE_DAMAGE).getMeleeDamage(tool, entry, context, baseDamage, damage);
+        }
+        float criticalModifier = isCritical ? 1.5f: 1.0f;
+        if (attackerPlayer != null) {
+            CriticalHitEvent hitResult = ForgeHooks.getCriticalHit(attackerPlayer, targetEntity, isCritical, isCritical ? 1.5F : 1.0F);
+            isCritical = hitResult != null;
+            if (isCritical) {
+                criticalModifier = hitResult.getDamageModifier();
+            }
+        }
+        if (isCritical) {
+            damage *= criticalModifier;
+        }
+        if (DamageMultiplier>=0){
+            damage *= DamageMultiplier;
+        }
+        if (cooldown < 1) {
+            damage *= (0.2f + cooldown * cooldown * 0.8f);
+        }
+        return damage;
+    }
 
     public static void executeall(LevelAccessor world, double x, double y, double z, LivingEntity damager) {
         if (damager instanceof Player player) {
             if (!damager.getCommandSenderWorld().isClientSide) {
                 Vec3 vec3 = new Vec3(x, y, z);
-                List<LivingEntity> list = world.getEntitiesOfClass(LivingEntity.class, (new AABB(vec3, vec3)).inflate(200.0F), (e) -> true).stream().sorted(Comparator.comparingDouble((_entcnd) -> _entcnd.distanceToSqr(vec3))).toList();
+                List<LivingEntity> list = world.getEntitiesOfClass(LivingEntity.class, (new AABB(vec3, vec3)).inflate(200F), (e) -> true).stream().sorted(Comparator.comparingDouble((_entcnd) -> _entcnd.distanceToSqr(vec3))).toList();
                 for (LivingEntity entity : list) {
                     PenetratingDamage.reflectionPenetratingDamage(entity,player, entity.getMaxHealth());
                     entity.onRemovedFromWorld();
@@ -265,5 +314,20 @@ public class AttackUtil {
                 }
             }
         }
+    }
+
+    public static float getCooldownFunctionFloat(Player player, InteractionHand hand){
+        return (float) getCooldownFunction(player,hand).getAsDouble();
+    }
+    public static DoubleSupplier getCooldownFunction(Player player, InteractionHand hand) {
+        return () -> player.getAttackStrengthScale(0.5f);
+    }
+    public static float getCriticalFloat(Player player,float damageModifier){
+        float d = getCooldownFunctionFloat(player, InteractionHand.MAIN_HAND);
+        boolean fullyCharged = (0.2f + d * d * 0.8f) > 0.9f;
+        boolean isCritical = fullyCharged && player.fallDistance > 0.0F && !player.onGround() && !player.onClimbable() && !player.isInWater() && !player.hasEffect(MobEffects.BLINDNESS) && !player.isPassenger() && !player.isSprinting();
+        if (isCritical){
+            return damageModifier;
+        }else return 1f;
     }
 }

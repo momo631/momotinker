@@ -1,6 +1,6 @@
 {
   "parent": "item/generated",
   "textures": {
-    "layer0": "momotinker:item/lust_mirror"
+    "layer0": "momotinker:item/other/lust_mirror"
   }
 }

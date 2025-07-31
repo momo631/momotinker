@@ -26,7 +26,7 @@ public class nihilism extends Item {
             list.add(Component.translatable("momotinker.item.tooltip.nihilism2"));
         }else{
             list.add(Component.translatable("momotinker.item.tooltip.nihilism1"));
-            list.add(Component.translatable("item.tooltip.special_acquisition"));
+            list.add(Component.translatable("momotinker.item.tooltip.special_acquisition"));
         }
         super.appendHoverText(stack, level, list, flag);
     }
