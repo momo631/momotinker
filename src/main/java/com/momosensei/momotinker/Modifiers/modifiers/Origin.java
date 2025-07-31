@@ -42,8 +42,12 @@ public class Origin extends momomodifier {
                 if (a.getHealth()>a.getMaxHealth()){
                     a.setHealth(a.getMaxHealth());
                 }
+                a.getAttribute(Attributes.MAX_HEALTH).setBaseValue(a.getMaxHealth()*(1f-0.2f*c));
                 reflectionPenetratingDamage(a,player, attackdamage(ToolStack.from(player.getMainHandItem()), player, InteractionHand.MAIN_HAND, a, ()->1, true, EquipmentSlot.MAINHAND, 1f));
-                a.getAttribute(Attributes.MAX_HEALTH).setBaseValue(a.getMaxHealth()*(1f-0.1f*c));
+                if (a.getHealth()<0){
+                    a.onRemovedFromWorld();
+                    a.setPos(Double.NaN, Double.NaN, Double.NaN);
+                }
             }
         }
     }
