@@ -63,7 +63,7 @@ public class SlackAtmosphere extends momomodifier {
     private void onlivingtickevent(LivingEvent.LivingTickEvent event) {
         var entity=event.getEntity();
         String s = "slackatmosphere";
-        if (entity.level().isClientSide)return;
+        if (entity.level.isClientSide)return;
         if (entity.tickCount%10!=0)return;
         var target=getSlackTarget(entity);
         if (target==null)return;
@@ -90,7 +90,7 @@ public class SlackAtmosphere extends momomodifier {
     private static LivingEntity getSlackTarget(LivingEntity living){
         var nbt=living.getPersistentData();
         String s = "slackatmosphere";
-        if (living.level() instanceof ServerLevel serverLevel&&nbt.contains(s)){
+        if (living.level instanceof ServerLevel serverLevel&&nbt.contains(s)){
             var uuid=nbt.getUUID(s);
             var entity=serverLevel.getEntity(uuid);
             if (entity instanceof LivingEntity living1){
@@ -108,8 +108,8 @@ public class SlackAtmosphere extends momomodifier {
     }
     @Override
     public void onInventoryTick(IToolStackView tool, ModifierEntry modifierEntry, Level level, LivingEntity entity, int index, boolean b, boolean b1, ItemStack itemStack) {
-        if (entity instanceof Player player && !player.level().isClientSide) {
-            List<LivingEntity> ls0 = player.level().getEntitiesOfClass(LivingEntity.class, player.getBoundingBox().inflate(25));
+        if (entity instanceof Player player && !player.level.isClientSide) {
+            List<LivingEntity> ls0 = player.level.getEntitiesOfClass(LivingEntity.class, player.getBoundingBox().inflate(25));
             for (LivingEntity living0 : ls0) {
                 if (living0 != null&&getSlackTarget(living0)==null) {
                    setSlackTarget(player,living0);
@@ -119,7 +119,7 @@ public class SlackAtmosphere extends momomodifier {
     }
     public void AddMobEffect(MobEffectEvent.Added event) {
         LivingEntity living = event.getEntity();
-        if (living != null&&!living.level().isClientSide&&getSlackTarget(living)!=null) {
+        if (living != null&&!living.level.isClientSide&&getSlackTarget(living)!=null) {
             var instance = event.getEffectInstance();
             var effect = instance.getEffect();
             if (instance.getAmplifier() != -1) {
