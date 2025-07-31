@@ -21,9 +21,11 @@ import slimeknights.tconstruct.library.tools.helper.ModifierUtil;
 import slimeknights.tconstruct.library.tools.nbt.IToolStackView;
 import slimeknights.tconstruct.library.tools.nbt.ModDataNBT;
 import slimeknights.tconstruct.library.tools.nbt.ModifierNBT;
+import slimeknights.tconstruct.library.tools.nbt.ToolStack;
 
 import java.util.List;
 
+import static com.momosensei.momotinker.util.AttackUtil.attackdamage;
 import static com.momosensei.momotinker.util.PenetratingDamage.reflectionPenetratingDamage;
 
 public class Origin extends momomodifier {
@@ -40,6 +42,7 @@ public class Origin extends momomodifier {
                 if (a.getHealth()>a.getMaxHealth()){
                     a.setHealth(a.getMaxHealth());
                 }
+                reflectionPenetratingDamage(a,player, attackdamage(ToolStack.from(player.getMainHandItem()), player, InteractionHand.MAIN_HAND, a, ()->1, true, EquipmentSlot.MAINHAND, 1f));
                 a.getAttribute(Attributes.MAX_HEALTH).setBaseValue(a.getMaxHealth()*(1f-0.1f*c));
             }
         }
