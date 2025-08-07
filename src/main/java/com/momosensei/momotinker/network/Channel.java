@@ -34,9 +34,9 @@ public class Channel {
     }
 
     public static void init() {
-
         INSTANCE.messageBuilder(KeyInputPKT.class,id++, NetworkDirection.PLAY_TO_SERVER).decoder(KeyInputPKT::decode).encoder(KeyInputPKT::encode).consumerMainThread(KeyInputPKT::handlePacket).add();
         INSTANCE.messageBuilder(KeyAInputPKT.class,id++, NetworkDirection.PLAY_TO_SERVER).decoder(KeyAInputPKT::decode).encoder(KeyAInputPKT::encode).consumerMainThread(KeyAInputPKT::handlePacket).add();
+        INSTANCE.messageBuilder(TriggerDamagePacket.class,id++, NetworkDirection.PLAY_TO_SERVER).decoder(TriggerDamagePacket::decode).encoder(TriggerDamagePacket::encode).consumerMainThread(TriggerDamagePacket::handlePacket).add();
 
         INSTANCE.messageBuilder(ToolsTimeCharge.class,id++, NetworkDirection.PLAY_TO_CLIENT).decoder(ToolsTimeCharge::new).encoder(ToolsTimeCharge::encode).consumerMainThread(ToolsTimeCharge::handle).add();
         INSTANCE.messageBuilder(CensoredCharge.class,id++, NetworkDirection.PLAY_TO_CLIENT).decoder(CensoredCharge::new).encoder(CensoredCharge::toByte).consumerMainThread(CensoredCharge::handle).add();

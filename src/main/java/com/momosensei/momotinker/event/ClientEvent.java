@@ -34,9 +34,4 @@ public class ClientEvent {
     public static void registerCapability(RegisterCapabilitiesEvent event) {
         event.register(EnderProvider.class);
     }
-/*
-    @SubscribeEvent
-    public static void registerLayers(EntityRenderersEvent.RegisterLayerDefinitions event) {
-        event.registerLayerDefinition(HELM_LAYER, HelmModel::createArmorLayer);
-    }*/
 }

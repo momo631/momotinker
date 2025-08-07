@@ -49,6 +49,7 @@ public class Momotinker {
         eventBus.register(new MomotinkerTools());
         MomotinkerTables.initRegisters();
         MinecraftForge.EVENT_BUS.register(new LivingEvents());
+        //MinecraftForge.EVENT_BUS.register(new ItemSightEventHandler());
 
         ModLoadingContext.get().registerConfig(ModConfig.Type.COMMON, MomotinkerConfig.Itemspec, "MomotinkerItem.toml");
         ModLoadingContext.get().registerConfig(ModConfig.Type.COMMON, MomotinkerConfig.Modifierspec, "MomotinkerModifier.toml");
