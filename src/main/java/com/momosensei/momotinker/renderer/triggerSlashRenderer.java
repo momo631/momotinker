@@ -30,7 +30,10 @@ public class triggerSlashRenderer extends EntityRenderer<TriggerSlashEntity> {
             matrixStackIn.mulPose(Vector3f.ZP.rotationDegrees(Mth.lerp(entityYaw, entity.xRotO, entity.getXRot())));
             matrixStackIn.mulPose(Vector3f.XP.rotationDegrees(270+entity.angle));
             matrixStackIn.translate(-0.03125*Math.max(1, getMold(entity.getDeltaMovement())), -0.09375*Math.max(1, getMold(entity.getDeltaMovement())),0);
+
+            float a = (float) entity.range;
             matrixStackIn.scale((float)Math.max(1, getMold(entity.getDeltaMovement())),(float) Math.max(1, getMold(entity.getDeltaMovement())),(float) Math.max(1, getMold(entity.getDeltaMovement())));
+
             this.itemRenderer.renderStatic(entity.getSlash(), ItemTransforms.TransformType.GROUND, packedLightIn, OverlayTexture.NO_OVERLAY, matrixStackIn, bufferIn, entity.getId());
             matrixStackIn.popPose();
             super.render(entity, entityYaw, partialTicks, matrixStackIn, bufferIn, packedLightIn);

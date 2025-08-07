@@ -1,13 +1,9 @@
 package com.momosensei.momotinker.tool;
 
 
-import com.momosensei.momotinker.entity.TriggerSlashEntity;
 import com.momosensei.momotinker.network.Channel;
 import com.momosensei.momotinker.network.packet.ToolsTimeCharge;
-import com.momosensei.momotinker.register.MomotinkerEntities;
-import com.momosensei.momotinker.register.MomotinkerItem;
 import com.momosensei.momotinker.register.MomotinkerModifiers;
-import com.momosensei.momotinker.register.MomotinkerToolDefinitions;
 import net.minecraft.ChatFormatting;
 import net.minecraft.core.BlockPos;
 import net.minecraft.network.chat.Component;
@@ -16,7 +12,6 @@ import net.minecraft.stats.Stats;
 import net.minecraft.util.Mth;
 import net.minecraft.world.InteractionHand;
 import net.minecraft.world.InteractionResultHolder;
-import net.minecraft.world.entity.EntityType;
 import net.minecraft.world.entity.EquipmentSlot;
 import net.minecraft.world.entity.LivingEntity;
 import net.minecraft.world.entity.player.Player;
@@ -30,6 +25,7 @@ import slimeknights.mantle.client.TooltipKey;
 import slimeknights.tconstruct.common.TinkerTags;
 import slimeknights.tconstruct.library.modifiers.ModifierEntry;
 import slimeknights.tconstruct.library.modifiers.ModifierHooks;
+import slimeknights.tconstruct.library.modifiers.hook.build.ConditionalStatModifierHook;
 import slimeknights.tconstruct.library.modifiers.hook.display.TooltipModifierHook;
 import slimeknights.tconstruct.library.tools.definition.ToolDefinition;
 import slimeknights.tconstruct.library.tools.helper.ModifierUtil;
@@ -48,7 +44,7 @@ import java.util.List;
 
 import static com.momosensei.momotinker.Modifiers.modifiers.CrimsonQueen.crimsonlayers;
 import static com.momosensei.momotinker.Modifiers.modifiers.CrimsonQueen.crimsontime;
-import static slimeknights.tconstruct.TConstruct.RANDOM;
+import static com.momosensei.momotinker.entity.MomotinkerEntitiesCreate.createSlash;
 import static slimeknights.tconstruct.library.modifiers.hook.interaction.GeneralInteractionModifierHook.KEY_DRAWTIME;
 import static slimeknights.tconstruct.library.tools.stat.ToolStats.ACCURACY;
 
@@ -62,7 +58,7 @@ public class trigger_blade extends ModifiableItem {
     }
 
     public int getUseDuration(ItemStack stack) {
-        return 72000;
+        return 72500;
     }
     @Override
     public UseAnim getUseAnimation(ItemStack stack) {
@@ -73,13 +69,16 @@ public class trigger_blade extends ModifiableItem {
         if ( living instanceof ServerPlayer player) {
             int a = ModifierUtil.getModifierLevel(player.getMainHandItem(), MomotinkerModifiers.crimsonqueen.getId());
             int b = ModifierUtil.getModifierLevel(player.getMainHandItem(), MomotinkerModifiers.yamato.getId());
+            int drawTime = (int) (50/ ConditionalStatModifierHook.getModifiedStat(ToolStack.from(stack),player,ToolStats.ATTACK_SPEED));
+            int drawTime1 = (int) (25/ ConditionalStatModifierHook.getModifiedStat(ToolStack.from(stack),player,ToolStats.ATTACK_SPEED));
+
             if (a==0) {
                 if (b==0) {
-                    float perc = Mth.clamp((float) (this.getUseDuration(stack) - chargeRemaining) / 30, 0, 1);
+                    float perc = Mth.clamp((float) (this.getUseDuration(stack) - chargeRemaining) / drawTime, 0, 1);
                     Channel.sendToPlayer(new ToolsTimeCharge(perc), player);
                 }
                 if (b>0) {
-                    float perc = Mth.clamp((float) (this.getUseDuration(stack) - chargeRemaining) / 20, 0, 1);
+                    float perc = Mth.clamp((float) (this.getUseDuration(stack) - chargeRemaining) / drawTime1, 0, 1);
                     Channel.sendToPlayer(new ToolsTimeCharge(perc), player);
                 }
             }
@@ -99,14 +98,17 @@ public class trigger_blade extends ModifiableItem {
             int i = this.getUseDuration(stack) - duration;
             int a = ModifierUtil.getModifierLevel(player.getMainHandItem(), MomotinkerModifiers.crimsonqueen.getId());
             int b = ModifierUtil.getModifierLevel(player.getMainHandItem(), MomotinkerModifiers.yamato.getId());
+            int drawTime = (int) (50/ ConditionalStatModifierHook.getModifiedStat(ToolStack.from(stack),player,ToolStats.ATTACK_SPEED));
+            int drawTime1 = (int) (25/ ConditionalStatModifierHook.getModifiedStat(ToolStack.from(stack),player,ToolStats.ATTACK_SPEED));
+
             if (a==0) {
-                if (b==0&&i >= 30) {
+                if (b==0&&i >= drawTime) {
                     createSlash(player);
                 }else
-                if (b>0&&i >= 20){
+                if (b>0&&i >= drawTime1){
                     createSlash(player);
-                    if (i>24){
-                        player.getCooldowns().addCooldown(player.getMainHandItem().getItem(), 20);
+                    if (i>drawTime1+4){
+                        player.getCooldowns().addCooldown(player.getMainHandItem().getItem(), 25);
                     }
                 }
                 Channel.sendToPlayer(new ToolsTimeCharge(0),player);
@@ -115,15 +117,15 @@ public class trigger_blade extends ModifiableItem {
                 if ( i >= 0 && i <= 9) {
                     if (dataNBT.getFloat(crimsonlayers)<3){
                         dataNBT.putFloat(crimsonlayers, dataNBT.getFloat(crimsonlayers) + 1);
-                        dataNBT.putFloat(crimsontime, 20);
+                        dataNBT.putFloat(crimsontime, 25);
                     }else
                     if (dataNBT.getFloat(crimsonlayers) == 3) {
-                        dataNBT.putFloat(crimsontime, 20);
+                        dataNBT.putFloat(crimsontime, 25);
                     }
                 }
                 if ( i >= 3 && i <= 6) {
                     dataNBT.putFloat(crimsonlayers, 3);
-                    dataNBT.putFloat(crimsontime, 20);
+                    dataNBT.putFloat(crimsontime, 25);
                 }
             }
             player.awardStat(Stats.ITEM_USED.get(this));
@@ -137,11 +139,14 @@ public class trigger_blade extends ModifiableItem {
         ToolStack tool = ToolStack.from(stack);
         int a = ModifierUtil.getModifierLevel(player.getMainHandItem(), MomotinkerModifiers.crimsonqueen.getId());
         int b = ModifierUtil.getModifierLevel(player.getMainHandItem(), MomotinkerModifiers.yamato.getId());
+        int drawTime = (int) (50/ ConditionalStatModifierHook.getModifiedStat(tool,player,ToolStats.ATTACK_SPEED));
+        int drawTime1 = (int) (25/ ConditionalStatModifierHook.getModifiedStat(tool,player,ToolStats.ATTACK_SPEED));
+
         if (b==0&&a==0) {
-            tool.getPersistentData().putInt(KEY_DRAWTIME, 30);
+            tool.getPersistentData().putInt(KEY_DRAWTIME, drawTime);
         }else
         if (b>0&&a==0) {
-            tool.getPersistentData().putInt(KEY_DRAWTIME, 20);
+            tool.getPersistentData().putInt(KEY_DRAWTIME, drawTime1);
         }
         player.startUsingItem(hand);
         if (!checkOffHand(player)){
@@ -172,47 +177,7 @@ public class trigger_blade extends ModifiableItem {
         return true;
     }
 
-    public static void createSlash(ServerPlayer player) {
-        if (!(player.getMainHandItem().getItem() instanceof trigger_blade) || player.getAttackStrengthScale(0) != 1 || !checkOffHand(player)) {
-            return;
-        }
-        ToolStack tool = ToolStack.from(player.getMainHandItem());
-        if (tool.isBroken()) {
-            return;
-        }
-        ItemStack color = getSlash(tool.getStats().getInt(MomotinkerToolDefinitions.SLASH_COLOR));
-        Level level = player.getLevel();
-        EntityType<TriggerSlashEntity> entityType = getSlashType(tool.getStats().getInt(MomotinkerToolDefinitions.SLASH_COLOR));
-        TriggerSlashEntity slash = new TriggerSlashEntity(entityType, level, color);
-        double x = player.getLookAngle().x;
-        double y = player.getLookAngle().y;
-        double z = player.getLookAngle().z;
-        int a = tool.getModifierLevel(MomotinkerModifiers.yamato.getId());
-        slash.damage = tool.getStats().get(ToolStats.ATTACK_DAMAGE);
-        if (a>0){
-            slash.damagemultiplier = getDamageMultiplier(tool)*0.8f;
-        }else {
-            slash.damagemultiplier = getDamageMultiplier(tool);
-        }
-        slash.setOwner(player);
-        slash.setToolstack(tool);
-        slash.noPhysics = false;
-        slash.setint(a);
-        slash.setDeltaMovement(player.getLookAngle());
-        slash.setPos(player.getX()+x*2,player.getY()+0.7*player.getBbHeight()+y*1.5,player.getZ()+z*2);
-        level.addFreshEntity(slash);
-        ToolDamageUtil.damageAnimated(tool,1,player, InteractionHand.MAIN_HAND);
-    }
-    public static ItemStack getSlash(int index){
-       return new ItemStack(MomotinkerItem.trigger_slash_a.get());
-    }
-    public static EntityType<TriggerSlashEntity> getSlashType(int index) {
-       return MomotinkerEntities.trigger_slash_a.get();
-    }
-    public static float getDamageMultiplier(ToolStack tool) {
-        float b = RANDOM.nextInt((int) (tool.getStats().get(ACCURACY) * 100));
-        return (1F + 0.005F * b + 0.2F * tool.getStats().get(ToolStats.VELOCITY));
-    }
+
     public static boolean checkOffHand(Player player){
         return player!=null&& !player.hasItemInSlot(EquipmentSlot.OFFHAND);
     }
