@@ -168,7 +168,7 @@
 
   "item.momotinker.devouring_demon_gold": "Devouring Demon Gold",
   "momotinker.item.tooltip.devouring_demon_gold1": "The extreme will reverse, and excessive enchantment led to the birth of this object",
-  "momotinker.item.tooltip.devouring_demon_gold2": "When throwing equipment with enchanting types greater than or equal to 5 in the void, it will be converted into that item",
+  "momotinker.item.tooltip.devouring_demon_gold2": "When an anvil around the player hits equipment with an enchanting type greater than or equal to 5, it will be converted into that item",
 
   "item.momotinker.nihilism": "Conceptual Endpoint · Nihilism",
   "momotinker.item.tooltip.nihilism1": "You are just reflections cast by 'existence', and at this moment, it should recede with the tide of dusk",

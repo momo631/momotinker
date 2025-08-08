@@ -24,12 +24,14 @@ import net.minecraft.world.entity.animal.Sheep;
 import net.minecraft.world.entity.animal.Wolf;
 import net.minecraft.world.entity.animal.frog.Frog;
 import net.minecraft.world.entity.boss.wither.WitherBoss;
+import net.minecraft.world.entity.item.FallingBlockEntity;
 import net.minecraft.world.entity.item.ItemEntity;
 import net.minecraft.world.entity.monster.Slime;
 import net.minecraft.world.entity.monster.Witch;
 import net.minecraft.world.entity.monster.warden.Warden;
 import net.minecraft.world.entity.npc.VillagerTrades;
 import net.minecraft.world.entity.player.Player;
+import net.minecraft.world.item.Item;
 import net.minecraft.world.item.ItemStack;
 import net.minecraft.world.item.Items;
 import net.minecraft.world.item.enchantment.Enchantments;
@@ -37,11 +39,12 @@ import net.minecraft.world.item.trading.MerchantOffer;
 import net.minecraft.world.level.Level;
 import net.minecraft.world.level.block.Blocks;
 import net.minecraft.world.level.block.SaplingBlock;
+import net.minecraft.world.phys.AABB;
 import net.minecraft.world.phys.Vec2;
 import net.minecraft.world.phys.Vec3;
 import net.minecraftforge.common.MinecraftForge;
 import net.minecraftforge.event.TickEvent;
-import net.minecraftforge.event.entity.item.ItemEvent;
+import net.minecraftforge.event.entity.EntityJoinLevelEvent;
 import net.minecraftforge.event.entity.living.BabyEntitySpawnEvent;
 import net.minecraftforge.event.entity.living.LivingDeathEvent;
 import net.minecraftforge.event.entity.living.LivingHurtEvent;
@@ -68,7 +71,7 @@ public class LivingEvents {
         MinecraftForge.EVENT_BUS.addListener(this::onSleepingTimeCheckEvent);
         MinecraftForge.EVENT_BUS.addListener(this::addCustomTrades);
         MinecraftForge.EVENT_BUS.addListener(this::onItemEvent);
-        MinecraftForge.EVENT_BUS.addListener(this::onFallVoidEvent);
+        MinecraftForge.EVENT_BUS.addListener(this::onAnvilFall);
         MinecraftForge.EVENT_BUS.addListener(this::playertick);
         MinecraftForge.EVENT_BUS.addListener(this::playerpickup);
     }
@@ -272,25 +275,23 @@ public class LivingEvents {
         }
     }
 
-    private void onFallVoidEvent(ItemEvent event) {
-        boolean configall = MomotinkerConfig.special_acquisition.get();
-        boolean configstage = MomotinkerConfig.stage_meteor.get();
-        if (!configall)return;
-        ItemEntity entity = event.getEntity();
-        Level level = event.getEntity().level();
-        boolean config = MomotinkerConfig.devouring_demon_gold.get();
-        if (config&&(StageMeteor.getStageFloat()==1||!configstage)) {
-            if (entity != null && entity.getOnPos().getY() < level.getMinBuildHeight()) {
-                if (!entity.getItem().isEnchanted()) {
-                    return;
-                }
-                if (entity.getItem().getAllEnchantments().size() >= 5) {
-                    entity.setItem(MomotinkerItem.devouring_demon_gold.get().getDefaultInstance());
-                }
+    public void onAnvilFall(EntityJoinLevelEvent event) {
+        if (event.getEntity() instanceof FallingBlockEntity fallingBlock) {
+            if (fallingBlock.getBlockState().getBlock() == Blocks.ANVIL
+                    ||fallingBlock.getBlockState().getBlock() ==Blocks.CHIPPED_ANVIL
+                    ||fallingBlock.getBlockState().getBlock() ==Blocks.DAMAGED_ANVIL) {
+                // 检测铁砧下落
+                fallingBlock.addTag("falling_anvil");
             }
         }
     }
 
+    private void convertItem(ItemEntity itemEntity, Item targetItem) {
+        Level level = itemEntity.level();
+        itemEntity.discard();
+        ItemEntity newItem = new ItemEntity(level, itemEntity.getX(), itemEntity.getY(), itemEntity.getZ(), new ItemStack(targetItem));
+        level.addFreshEntity(newItem);
+    }
     private void playertick(TickEvent.PlayerTickEvent event) {
         boolean configall = MomotinkerConfig.special_acquisition.get();
         if (!configall)return;
@@ -298,6 +299,34 @@ public class LivingEvents {
         Player player=event.player;
         Random random = new Random();
         if (player.level() instanceof ServerLevel level) {
+            boolean configa = MomotinkerConfig.devouring_demon_gold.get();
+            boolean configstage = MomotinkerConfig.stage_meteor.get();
+            if (configa&&(StageMeteor.getStageFloat()==1||!configstage)) {
+                double range = 30.0;
+                AABB area = new AABB(player.getX() - range,
+                        player.getY() - range,
+                        player.getZ() - range,
+                        player.getX() + range,
+                        player.getY() + range,
+                        player.getZ() + range);
+                for (FallingBlockEntity anvil : level.getEntitiesOfClass(FallingBlockEntity.class, area
+                        , entity -> true)) {
+                    if ((anvil.getBlockState().getBlock() == Blocks.ANVIL||anvil.getBlockState().getBlock() ==Blocks.CHIPPED_ANVIL
+                            ||anvil.getBlockState().getBlock() ==Blocks.DAMAGED_ANVIL )&& anvil.getTags().contains("falling_anvil")) {
+                        AABB hitbox = anvil.getBoundingBox().inflate(0.2);
+                        // 检测碰撞的掉落物
+                        for (ItemEntity itemEntity : level.getEntitiesOfClass(ItemEntity.class, hitbox)) {
+                            if (!itemEntity.getItem().isEnchanted()) {
+                                return;
+                            }
+                            if (itemEntity.getItem().getAllEnchantments().size() >= 5) {
+                                convertItem(itemEntity, MomotinkerItem.devouring_demon_gold.get().getDefaultInstance().getItem()); // 转换物品
+                            }
+                        }
+                    }
+                }
+            }
+
             CompoundTag tag = player.getPersistentData().getCompound(Player.PERSISTED_NBT_TAG);
             String a = "meteor_nucleus_unlock";
             player.getPersistentData().getBoolean(a);
