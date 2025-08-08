@@ -168,7 +168,7 @@
 
   "item.momotinker.devouring_demon_gold": "噬魔金",
   "momotinker.item.tooltip.devouring_demon_gold1": "物极必反，过度的附魔导致了此物的诞生",
-  "momotinker.item.tooltip.devouring_demon_gold2": "在虚空时将拥有附魔种类大于等于5的装备丢出时，其会转换为该物品",
+  "momotinker.item.tooltip.devouring_demon_gold2": "玩家周围的铁砧砸中拥有附魔种类大于等于5的装备时，其会转换为该物品",
 
   "item.momotinker.nihilism": "概念终点·虚无主义",
   "momotinker.item.tooltip.nihilism1": "你们不过是‘存在’投下的倒影，此刻，该随黄昏的潮汐退去了",
