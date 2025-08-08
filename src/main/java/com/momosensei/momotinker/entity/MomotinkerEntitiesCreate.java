@@ -3,6 +3,7 @@ package com.momosensei.momotinker.entity;
 import com.momosensei.momotinker.register.*;
 import com.momosensei.momotinker.tool.divine_punishment_spear;
 import com.momosensei.momotinker.tool.entropy_burning_cannon;
+import com.momosensei.momotinker.tool.trigger_blade;
 import net.minecraft.server.level.ServerPlayer;
 import net.minecraft.world.InteractionHand;
 import net.minecraft.world.entity.EntityType;
@@ -19,6 +20,47 @@ import static slimeknights.tconstruct.library.modifiers.Modifier.RANDOM;
 import static slimeknights.tconstruct.library.tools.stat.ToolStats.ACCURACY;
 
 public class MomotinkerEntitiesCreate {
+    public static void createSlash(ServerPlayer player) {
+        if (!(player.getMainHandItem().getItem() instanceof trigger_blade) || player.getAttackStrengthScale(0) != 1 || !checkOffHand(player)) {
+            return;
+        }
+        ToolStack tool = ToolStack.from(player.getMainHandItem());
+        if (tool.isBroken()) {
+            return;
+        }
+        ItemStack color = getSlash(tool.getStats().getInt(MomotinkerToolDefinitions.SLASH_COLOR));
+        Level level = player.level();
+        EntityType<TriggerSlashEntity> entityType = getSlashType(tool.getStats().getInt(MomotinkerToolDefinitions.SLASH_COLOR));
+        TriggerSlashEntity slash = new TriggerSlashEntity(entityType, level, color);
+        double x = player.getLookAngle().x;
+        double y = player.getLookAngle().y;
+        double z = player.getLookAngle().z;
+        int a = tool.getModifierLevel(MomotinkerModifiers.yamato.getId());
+        slash.damage = tool.getStats().get(ToolStats.ATTACK_DAMAGE);
+        if (a>0){
+            slash.damagemultiplier = getSlashDamageMultiplier(tool)*0.8f;
+        }else {
+            slash.damagemultiplier = getSlashDamageMultiplier(tool);
+        }
+        slash.setOwner(player);
+        slash.setToolstack(tool);
+        slash.noPhysics = false;
+        slash.setint(a);
+        slash.setDeltaMovement(player.getLookAngle());
+        slash.setPos(player.getX()+x*2,player.getY()+0.7*player.getBbHeight()+y*1.5,player.getZ()+z*2);
+        level.addFreshEntity(slash);
+        ToolDamageUtil.damageAnimated(tool,1,player, InteractionHand.MAIN_HAND);
+    }
+    public static ItemStack getSlash(int index){
+        return new ItemStack(MomotinkerItem.trigger_slash_a.get());
+    }
+    public static EntityType<TriggerSlashEntity> getSlashType(int index) {
+        return MomotinkerEntities.trigger_slash_a.get();
+    }
+    public static float getSlashDamageMultiplier(ToolStack tool) {
+        float b = RANDOM.nextInt((int) (tool.getStats().get(ACCURACY) * 100));
+        return (1F + 0.005F * b + 0.2F * tool.getStats().get(ToolStats.VELOCITY));
+    }
     public static void createSpear(ServerPlayer player) {
         if (!(player.getMainHandItem().getItem() instanceof divine_punishment_spear) || player.getAttackStrengthScale(0) != 1 || !checkOffHand(player)) {
             return;

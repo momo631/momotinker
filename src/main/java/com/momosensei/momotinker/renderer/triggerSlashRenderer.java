@@ -26,11 +26,14 @@ public class triggerSlashRenderer extends EntityRenderer<TriggerSlashEntity> {
     public void render(TriggerSlashEntity entity, float entityYaw, float partialTicks, PoseStack matrixStackIn, MultiBufferSource bufferIn, int packedLightIn) {
         if (entity.tickCount >= 0 || !(this.entityRenderDispatcher.camera.getEntity().distanceToSqr(entity) < 12.25D)) {
             matrixStackIn.pushPose();
-            matrixStackIn.mulPose(Axis.YP.rotationDegrees(Mth.lerp(entityYaw, entity.yRotO, entity.getYRot())- 90.0F ));
+            matrixStackIn.mulPose(Axis.YP.rotationDegrees(Mth.lerp(entityYaw, entity.yRotO, entity.getYRot()) - 105F -entity.angle*0.5F));
             matrixStackIn.mulPose(Axis.ZP.rotationDegrees(Mth.lerp(entityYaw, entity.xRotO, entity.getXRot())));
-            matrixStackIn.mulPose(Axis.XP.rotationDegrees(270+entity.angle));
+            matrixStackIn.mulPose(Axis.XP.rotationDegrees(270-entity.angle));
             matrixStackIn.translate(-0.03125*Math.max(1, getMold(entity.getDeltaMovement())), -0.09375*Math.max(1, getMold(entity.getDeltaMovement())),0);
-            matrixStackIn.scale((float)Math.max(1, getMold(entity.getDeltaMovement())),(float) Math.max(1, getMold(entity.getDeltaMovement())),(float) Math.max(1, getMold(entity.getDeltaMovement())));
+            float a = (float) entity.getRange()*0.5F;
+            float b = 1/a;
+            float baseScale = (float)Math.max(1, getMold(entity.getDeltaMovement()));
+            matrixStackIn.scale(baseScale * a, baseScale* b, baseScale * b);
             this.itemRenderer.renderStatic(entity.getSlash(), ItemDisplayContext.GROUND, packedLightIn, OverlayTexture.NO_OVERLAY, matrixStackIn, bufferIn, entity.level(),entity.getId());
             matrixStackIn.popPose();
             super.render(entity, entityYaw, partialTicks, matrixStackIn, bufferIn, packedLightIn);

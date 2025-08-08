@@ -44,6 +44,7 @@ import slimeknights.mantle.client.TooltipKey;
 import slimeknights.tconstruct.common.TinkerTags;
 import slimeknights.tconstruct.library.modifiers.ModifierEntry;
 import slimeknights.tconstruct.library.modifiers.ModifierHooks;
+import slimeknights.tconstruct.library.modifiers.hook.build.ConditionalStatModifierHook;
 import slimeknights.tconstruct.library.modifiers.hook.display.TooltipModifierHook;
 import slimeknights.tconstruct.library.modifiers.hook.interaction.InventoryTickModifierHook;
 import slimeknights.tconstruct.library.tools.definition.ToolDefinition;
@@ -147,11 +148,13 @@ public class divine_punishment_spear extends ModifiableItem {
         ToolStack tool = ToolStack.from(stack);
         int a = ModifierUtil.getModifierLevel(player.getMainHandItem(), MomotinkerModifiers.breakthroughstars.getId());
         int b = ModifierUtil.getModifierLevel(player.getMainHandItem(), MomotinkerModifiers.cleansetheworld.getId());
+        int drawTime = (int) (50/ ConditionalStatModifierHook.getModifiedStat(ToolStack.from(stack),player,ToolStats.ATTACK_SPEED));
+
         if (a==0&&b==0) {
-            tool.getPersistentData().putInt(KEY_DRAWTIME, 20);
+            tool.getPersistentData().putInt(KEY_DRAWTIME, drawTime);
         }else
         if (a>0&&b==0) {
-            tool.getPersistentData().putInt(KEY_DRAWTIME, 10);
+            tool.getPersistentData().putInt(KEY_DRAWTIME, drawTime/2);
         }else
         if (b>0) {
             tool.getPersistentData().putInt(KEY_DRAWTIME, 100);
@@ -191,8 +194,10 @@ public class divine_punishment_spear extends ModifiableItem {
             int a = ModifierUtil.getModifierLevel(player.getMainHandItem(), MomotinkerModifiers.breakthroughstars.getId());
             int b = ModifierUtil.getModifierLevel(player.getMainHandItem(), MomotinkerModifiers.cleansetheworld.getId());
             int c = ModifierUtil.getModifierLevel(player.getMainHandItem(), MomotinkerModifiers.shadowofdamnation.getId());
+            int drawTime = (int) (50/ ConditionalStatModifierHook.getModifiedStat(ToolStack.from(stack),player,ToolStats.ATTACK_SPEED));
+
             player.awardStat(Stats.ITEM_USED.get(this));
-            if (a==0&&i >= 20){
+            if (a==0&&i >= drawTime){
                 player.hasImpulse = true;
                 player.startAutoSpinAttack(2);
                 player.setDeltaMovement(player.getLookAngle().scale(4));
@@ -202,7 +207,7 @@ public class divine_punishment_spear extends ModifiableItem {
             ToolDamageUtil.damageAnimated(tool,1,player);
             if (livingEntity instanceof ServerPlayer player1){
                 Channel.sendToPlayer(new ToolsTimeCharge(0), player1);
-                if (a>0&&b==0&&i>=10){
+                if (a>0&&b==0&&i>=drawTime*0.5f){
                     player.giveExperiencePoints(-tool.getPersistentData().getInt(breakthroughstar));
                     createSpear(player1);
                 }
@@ -235,12 +240,14 @@ public class divine_punishment_spear extends ModifiableItem {
         if (living instanceof ServerPlayer player) {
             int a = ModifierUtil.getModifierLevel(stack, MomotinkerModifiers.breakthroughstars.getId());
             int b = ModifierUtil.getModifierLevel(stack, MomotinkerModifiers.cleansetheworld.getId());
+            int drawTime = (int) (50/ ConditionalStatModifierHook.getModifiedStat(ToolStack.from(stack),player,ToolStats.ATTACK_SPEED));
+
             if (a==0&&b==0) {
-                float perc = Mth.clamp((float) (this.getUseDuration(stack) - chargeRemaining) / 20, 0, 1);
+                float perc = Mth.clamp((float) (this.getUseDuration(stack) - chargeRemaining) / drawTime, 0, 1);
                 Channel.sendToPlayer(new ToolsTimeCharge(perc), player);
             }else
             if (a>0&&b==0) {
-                float perc = Mth.clamp((float) (this.getUseDuration(stack) - chargeRemaining) / 10, 0, 1);
+                float perc = Mth.clamp((float) (this.getUseDuration(stack) - chargeRemaining) / (drawTime*0.5f), 0, 1);
                 Channel.sendToPlayer(new ToolsTimeCharge(perc), player);
             }else
             if (b>0) {
