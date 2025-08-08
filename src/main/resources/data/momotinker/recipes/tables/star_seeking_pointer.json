@@ -1,0 +1,22 @@
+{
+  "type": "minecraft:crafting_shaped",
+  "category": "misc",
+  "pattern": [
+    " B ",
+    "BXB",
+    " B "
+  ],
+  "key": {
+    "B": {
+      "item": "momotinker:meteor_nucleus"
+    },
+    "X": {
+      "item": "momotinker:interdimensional_crystal"
+    }
+  },
+  "result": {
+    "count": 1,
+    "item": "momotinker:star_seeking_pointer"
+  },
+  "show_notification": true
+}

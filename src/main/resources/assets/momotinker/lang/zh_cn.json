@@ -222,6 +222,13 @@
   "momotinker.item.tooltip.core_of_felony3": "§7七罪以外或许存在着第八罪...§",
 
 
+  "item.momotinker.star_seeking_pointer": "寻星共鸣器",
+  "momotinker.item.tooltip.star_seeking_pointer1": "依靠流星们之间的共鸣与感应，它将指引你",
+  "momotinker.item.tooltip.star_seeking_pointer2": "该物品会不停搜索在128格以内距离你最近的流星之核",
+  "momotinker.item.tooltip.star_seeking_pointer3": "当前所追寻的目标位置:(",
+  "momotinker.item.tooltip.star_seeking_pointer4": "未找到目标",
+
+
   "itemGroup.momotinker.tools": "墨工坊模组-工具",
 
   "item.momotinker.trigger_blade": "扳机横刀",
