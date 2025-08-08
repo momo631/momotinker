@@ -221,6 +221,11 @@
   "momotinker.item.tooltip.core_of_felony2": "I am death and life. Darkness and light.",
   "momotinker.item.tooltip.core_of_felony3": "§7There may be an eighth sin besides the seven sins...§",
 
+  "item.momotinker.star_seeking_pointer": "Star Seeking Pointer",
+  "momotinker.item.tooltip.star_seeking_pointer1": "Relying on the resonance and induction between shooting stars, it will guide you",
+  "momotinker.item.tooltip.star_seeking_pointer2": "This item will continuously search for the closest 'Meteor Nucleus' within 128 grids",
+  "momotinker.item.tooltip.star_seeking_pointer3": "The current target location being pursued:(",
+  "momotinker.item.tooltip.star_seeking_pointer4": "Target not found",
 
   "itemGroup.momotinker.tools": "Momotinker Tools",
 
@@ -611,7 +616,7 @@
 
   "modifier.momotinker.origin": "Chapter 1: Origins",
   "modifier.momotinker.origin.flavor": "The starting point of all living beings comes from nothingness, and precisely because of this, they will also return to nothingness",
-  "modifier.momotinker.origin.description": "Reduced response to injury, attacks ignore defense and reduce the target's maximum health by 10% * level. If the maximum life of the target within the attack range is lower than that of the holder, it will be cleared, and there is a chance that the dropped object will be cleared",
+  "modifier.momotinker.origin.description": "Reduced response to injury, attacks ignore defense and reduce the target's maximum health by 20% * level. If the maximum life of the target within the attack range is lower than that of the holder, it will be cleared, and there is a chance that the dropped object will be cleared",
 
   "modifier.momotinker.significance": "Chapter 2: Meaning",
   "modifier.momotinker.significance.flavor": "All things exist because of their relationship and meaning, therefore, they should be deprived",

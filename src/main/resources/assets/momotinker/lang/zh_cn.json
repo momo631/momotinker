@@ -222,6 +222,13 @@
   "momotinker.item.tooltip.core_of_felony3": "§7七罪以外或许存在着第八罪...§",
 
 
+  "item.momotinker.star_seeking_pointer": "寻星共鸣器",
+  "momotinker.item.tooltip.star_seeking_pointer1": "依靠流星们之间的共鸣与感应，它将指引你",
+  "momotinker.item.tooltip.star_seeking_pointer2": "该物品会不停搜索在128格以内距离你最近的流星之核",
+  "momotinker.item.tooltip.star_seeking_pointer3": "当前所追寻的目标位置:(",
+  "momotinker.item.tooltip.star_seeking_pointer4": "未找到目标",
+
+
   "itemGroup.momotinker.tools": "墨工坊模组-工具",
 
   "item.momotinker.trigger_blade": "扳机横刀",
@@ -616,7 +623,7 @@
 
   "modifier.momotinker.origin": "第一终章:起源",
   "modifier.momotinker.origin.flavor": "一切生灵的起点，都来自于虚无，正因如此，也将归于虚无",
-  "modifier.momotinker.origin.description": "对受伤的反应降低，攻击无视防御并且会削减目标10%*等级的最大生命值，攻击范围内的目标最大生命若低于自身会直接归于虚无，且掉落物有几率被清空",
+  "modifier.momotinker.origin.description": "对受伤的反应降低，攻击无视防御并且会削减目标20%*等级的最大生命值，攻击范围内的目标最大生命若低于自身会直接归于虚无，且掉落物有几率被清空",
 
   "modifier.momotinker.significance": "第二终章:意义",
   "modifier.momotinker.significance.flavor": "万物之所以存在，皆因系与意义，故此，予其剥夺",

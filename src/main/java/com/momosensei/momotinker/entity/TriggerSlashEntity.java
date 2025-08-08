@@ -26,12 +26,12 @@ public class TriggerSlashEntity extends Projectile {
     public int a=0;
     public float damagemultiplier=0;
     public float angle ;
-    public double range ;
+    private double range ;
 
     public TriggerSlashEntity(EntityType<? extends Projectile> p_37248_, Level p_37249_, ItemStack slash) {
         super(p_37248_, p_37249_);
         this.Slash = slash;
-        this.angle = -40;
+        this.angle = new Random().nextFloat(20,60);
     }
     private final float randomRotation = new Random().nextFloat() * 45f;
     public float getRandomRotation() {
@@ -52,8 +52,11 @@ public class TriggerSlashEntity extends Projectile {
     public void setint(int a){
         this.a =a;
     }
-    public void setdouble(double range){
+    public void setRange(double range){
         this.range =range;
+    }
+    public double getRange(){
+        return range;
     }
     @Override
     protected void defineSynchedData() {
@@ -83,6 +86,7 @@ public class TriggerSlashEntity extends Projectile {
             return;
         }
         if (entity instanceof Player player) {
+            setRange((player.getAttackRange()/2)-0.5);
             Vec3 vec3 = new Vec3(rayVec3.x, rayVec3.y+2, rayVec3.z);
             double dy = vec3.y +offset.y-1;
             AABB aabb = this.getBoundingBox().expandTowards(vec3.scale(1)).expandTowards(vec3.scale(-0.5)).expandTowards(new Vec3(0,dy,0).cross(vec3)).expandTowards(new Vec3(0,-dy,0).cross(vec3)).inflate(this.range);

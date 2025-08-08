@@ -76,6 +76,7 @@ public class  MomotinkerItem {
     public static final RegistryObject<Item> twilight_ego = ITEMS.register("twilight_ego", () -> new twilight_ego(new Item.Properties().tab(MomotinkerTab.MATERIALS)));
     public static final RegistryObject<Item> pull_entity = ITEMS.register("pull_entity", () -> new pull_entity(new Item.Properties()));
 
+    public static final RegistryObject<Item> star_seeking_pointer = ITEMS.register("star_seeking_pointer", () -> new star_seeking_pointer(new Item.Properties().tab(MomotinkerTab.MATERIALS)));
     //方块类要这样,略有变动
 
     public static final RegistryObject<BlockItem> Laomo_block = ITEMS.register("laomo_block", () -> new BlockItem(MomotinkerBlock.Laomo_block.get(), new Item.Properties().tab(MomotinkerTab.MATERIALS)));

@@ -46,7 +46,6 @@ public class MomotinkerEntitiesCreate {
         slash.setToolstack(tool);
         slash.noPhysics = false;
         slash.setint(a);
-        slash.setdouble((player.getAttackRange()/2)-0.5);
         slash.setDeltaMovement(player.getLookAngle());
         slash.setPos(player.getX()+x*2,player.getY()+0.7*player.getBbHeight()+y*1.5,player.getZ()+z*2);
         level.addFreshEntity(slash);
