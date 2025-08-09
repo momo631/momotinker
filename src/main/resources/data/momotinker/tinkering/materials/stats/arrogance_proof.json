@@ -17,11 +17,11 @@
       "durability": 6666,
       "draw_speed": 0.6,
       "velocity": 0.6,
-      "accuracy": 6
+      "accuracy": 0.8
     },
     "tconstruct:grip": {
       "durability": 0.6,
-      "accuracy": 6,
+      "accuracy": 0.8,
       "melee_damage": 6
     },
     "tconstruct:maille": {},

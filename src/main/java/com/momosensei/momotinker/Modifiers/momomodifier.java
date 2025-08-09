@@ -34,14 +34,12 @@ import slimeknights.tconstruct.library.modifiers.ModifierId;
 import slimeknights.tconstruct.library.modifiers.hook.armor.EquipmentChangeModifierHook;
 import slimeknights.tconstruct.library.modifiers.hook.armor.ModifyDamageModifierHook;
 import slimeknights.tconstruct.library.modifiers.hook.armor.OnAttackedModifierHook;
+import slimeknights.tconstruct.library.modifiers.hook.armor.ProtectionModifierHook;
 import slimeknights.tconstruct.library.modifiers.hook.behavior.AttributesModifierHook;
 import slimeknights.tconstruct.library.modifiers.hook.behavior.ProcessLootModifierHook;
 import slimeknights.tconstruct.library.modifiers.hook.behavior.RepairFactorModifierHook;
 import slimeknights.tconstruct.library.modifiers.hook.behavior.ToolDamageModifierHook;
-import slimeknights.tconstruct.library.modifiers.hook.build.ModifierRemovalHook;
-import slimeknights.tconstruct.library.modifiers.hook.build.ToolStatsModifierHook;
-import slimeknights.tconstruct.library.modifiers.hook.build.ValidateModifierHook;
-import slimeknights.tconstruct.library.modifiers.hook.build.VolatileDataModifierHook;
+import slimeknights.tconstruct.library.modifiers.hook.build.*;
 import slimeknights.tconstruct.library.modifiers.hook.combat.DamageDealtModifierHook;
 import slimeknights.tconstruct.library.modifiers.hook.combat.MeleeDamageModifierHook;
 import slimeknights.tconstruct.library.modifiers.hook.combat.MeleeHitModifierHook;
@@ -73,7 +71,8 @@ public abstract class momomodifier extends Modifier implements MeleeDamageModifi
         BowAmmoModifierHook, ProjectileHitModifierHook, ProjectileLaunchModifierHook,KeybindInteractModifierHook, ProcessLootModifierHook,
         EquipmentChangeModifierHook, InventoryTickModifierHook, OnAttackedModifierHook, TooltipModifierHook, AttributesModifierHook,
         ModifyDamageModifierHook, ModifierRemovalHook, BlockBreakModifierHook, EntityInteractionModifierHook, ToolStatsModifierHook,
-        ToolDamageModifierHook, VolatileDataModifierHook, RequirementsModifierHook, ValidateModifierHook, RepairFactorModifierHook {
+        ToolDamageModifierHook, VolatileDataModifierHook, RequirementsModifierHook, ValidateModifierHook, RepairFactorModifierHook,
+        ModifierTraitHook, ProtectionModifierHook {
 
     @Override
     protected void registerHooks(ModuleHookMap.Builder builder) {
@@ -85,7 +84,8 @@ public abstract class momomodifier extends Modifier implements MeleeDamageModifi
         builder.addHook(this, ModifierHooks.BLOCK_BREAK, ModifierHooks.ENTITY_INTERACT, ModifierHooks.TOOL_STATS);
         builder.addHook(this, ModifierHooks.ARMOR_INTERACT, ModifierHooks.ATTRIBUTES, ModifierHooks.PROCESS_LOOT);
         builder.addHook(this, ModifierHooks.TOOL_DAMAGE, ModifierHooks.VOLATILE_DATA,ModifierHooks.REQUIREMENTS);
-        builder.addHook(this, ModifierHooks.VALIDATE, ModifierHooks.REPAIR_FACTOR);
+        builder.addHook(this, ModifierHooks.VALIDATE, ModifierHooks.REPAIR_FACTOR, ModifierHooks.MODIFIER_TRAITS);
+        builder.addHook(this, ModifierHooks.PROTECTION);
 
     }
 
@@ -94,7 +94,13 @@ public abstract class momomodifier extends Modifier implements MeleeDamageModifi
         MinecraftForge.EVENT_BUS.addListener(this::LivingAttackEvent);
         MinecraftForge.EVENT_BUS.addListener(this::LivingDamageEvent);
     }
-
+    @Override
+    public float getProtectionModifier(IToolStackView tool, ModifierEntry modifier, EquipmentContext context, EquipmentSlot slotType, DamageSource source, float modifierValue) {
+        return modifierValue;
+    }
+    @Override
+    public void addTraits(IToolContext context, ModifierEntry modifier, ModifierTraitHook.TraitBuilder builder, boolean firstEncounter) {
+    }
     @Override
     public float getRepairFactor(IToolStackView tool, ModifierEntry entry, float factor) {
         return factor;
@@ -161,8 +167,8 @@ public abstract class momomodifier extends Modifier implements MeleeDamageModifi
     }
 
     @Override
-    public void onProjectileLaunch(IToolStackView tool, ModifierEntry modifiers, LivingEntity livingEntity, Projectile projectile, @Nullable AbstractArrow abstractArrow, NamespacedNBT namespacedNBT, boolean primary) {
-        this.modifierOnProjectileLaunch(tool, modifiers, livingEntity, projectile, abstractArrow, namespacedNBT, primary);
+    public void onProjectileLaunch(IToolStackView tool, ModifierEntry modifier, LivingEntity shooter, Projectile projectile, @javax.annotation.Nullable AbstractArrow arrow, NamespacedNBT persistentData, boolean primary) {
+        this.modifierOnProjectileLaunch(tool, modifier, shooter, projectile, arrow, persistentData, primary);
     }
 
     @Override

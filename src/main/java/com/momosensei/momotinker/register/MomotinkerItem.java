@@ -34,6 +34,7 @@ public class  MomotinkerItem {
     public static final RegistryObject<Item> lazy_grail = ITEMS.register("lazy_grail", () -> new lazy_grail(new Item.Properties().tab(MomotinkerTab.MATERIALS)));
     public static final RegistryObject<Item> jealous_notes = ITEMS.register("jealous_notes", () -> new jealous_notes(new Item.Properties().tab(MomotinkerTab.MATERIALS)));
     public static final RegistryObject<Item> compassion_mask = ITEMS.register("compassion_mask", () -> new compassion_mask(new Item.Properties().tab(MomotinkerTab.MATERIALS)));
+    public static final RegistryObject<Item> core_of_felony = ITEMS.register("core_of_felony", () -> new core_of_felony(new Item.Properties().tab(MomotinkerTab.MATERIALS)));
 
     public static final RegistryObject<Item> dim_dark_gold = ITEMS.register("dim_dark_gold", () -> new dim_dark_gold(new Item.Properties().tab(MomotinkerTab.MATERIALS)));
     public static final RegistryObject<Item> stained_blood_gold = ITEMS.register("stained_blood_gold", () -> new stained_blood_gold(new Item.Properties().tab(MomotinkerTab.MATERIALS)));
@@ -49,7 +50,7 @@ public class  MomotinkerItem {
     public static final RegistryObject<Item> twilight_purple_gold = ITEMS.register("twilight_purple_gold", () -> new twilight_purple_gold(new Item.Properties().tab(MomotinkerTab.MATERIALS)));
     public static final RegistryObject<Item> timetrace_purple_gold = ITEMS.register("timetrace_purple_gold", () -> new timetrace_purple_gold(new Item.Properties().tab(MomotinkerTab.MATERIALS)));
     public static final RegistryObject<Item> reversetime_purple_gold = ITEMS.register("reversetime_purple_gold", () -> new reversetime_purple_gold(new Item.Properties().tab(MomotinkerTab.MATERIALS)));
-    public static final RegistryObject<Item> core_of_felony = ITEMS.register("core_of_felony", () -> new core_of_felony(new Item.Properties().tab(MomotinkerTab.MATERIALS)));
+    public static final RegistryObject<Item> rhythm_slime = ITEMS.register("rhythm_slime", () -> new rhythm_slime(new Item.Properties().tab(MomotinkerTab.MATERIALS)));
 
     public static final RegistryObject<ModifiableItem> trigger_blade = ITEMS.register("trigger_blade", () -> new trigger_blade(TOOL, MomotinkerToolDefinitions.TRIGGER_BLADE));
     public static final RegistryObject<ModifiableItem> divine_punishment_spear = ITEMS.register("divine_punishment_spear", () -> new divine_punishment_spear(TOOL, MomotinkerToolDefinitions.DIVINE_PUNISHMENT_SPEAR));
@@ -64,6 +65,9 @@ public class  MomotinkerItem {
     public static final RegistryObject<ModifiableItem> chain_sword = ITEMS.register("chain_sword", () -> new chain_sword(TOOL, MomotinkerToolDefinitions.CHAIN_SWORD));
     public static final RegistryObject<ModifiableItem> pneumatic_sword = ITEMS.register("pneumatic_sword", () -> new pneumatic_sword(TOOL, MomotinkerToolDefinitions.PNEUMATIC_SWORD));
 
+    public static final RegistryObject<Item> twilight_ego = ITEMS.register("twilight_ego", () -> new twilight_ego(new Item.Properties().tab(MomotinkerTab.TOOLS)));
+    public static final RegistryObject<Item> star_seeking_pointer = ITEMS.register("star_seeking_pointer", () -> new star_seeking_pointer(new Item.Properties().tab(MomotinkerTab.TOOLS)));
+
     // public static final RegistryObject<ModifiableArmorItem> aa = ITEMS.register("aa", () -> new aa(MomotinkerToolDefinitions.AAA, EquipmentSlot.HEAD,TOOL, MomotinkerToolDefinitions.AA));
     /*public static final EnumObject<ArmorSlotType, ModifiableArmorItem> aa = new EnumObject.Builder<ArmorSlotType,ModifiableArmorItem>(ArmorSlotType.class)
            .putAll(ARMOR.registerEnum("aa", new ArmorSlotType[] {ArmorSlotType.BOOTS, ArmorSlotType.LEGGINGS, ArmorSlotType.CHESTPLATE}, type -> new MultilayerArmorItem(MomotinkerToolDefinitions.AAA, type, TOOL)))
@@ -73,10 +77,8 @@ public class  MomotinkerItem {
     public static final RegistryObject<Item> trigger_slash_a = ITEMS.register("trigger_slash_a", ()->new Item(new Item.Properties()));
     public static final RegistryObject<Item> spear_entity = ITEMS.register("spear_entity", ()->new Item(new Item.Properties()));
     public static final RegistryObject<Item> cleanse_item = ITEMS.register("cleanse_item",()-> new Item(new Item.Properties()));
-    public static final RegistryObject<Item> twilight_ego = ITEMS.register("twilight_ego", () -> new twilight_ego(new Item.Properties().tab(MomotinkerTab.MATERIALS)));
     public static final RegistryObject<Item> pull_entity = ITEMS.register("pull_entity", () -> new pull_entity(new Item.Properties()));
 
-    public static final RegistryObject<Item> star_seeking_pointer = ITEMS.register("star_seeking_pointer", () -> new star_seeking_pointer(new Item.Properties().tab(MomotinkerTab.MATERIALS)));
     //方块类要这样,略有变动
 
     public static final RegistryObject<BlockItem> Laomo_block = ITEMS.register("laomo_block", () -> new BlockItem(MomotinkerBlock.Laomo_block.get(), new Item.Properties().tab(MomotinkerTab.MATERIALS)));

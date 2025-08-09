@@ -17,7 +17,7 @@
       "durability": 2024,
       "draw_speed": 0.3,
       "velocity": 8,
-      "accuracy": 1.2
+      "accuracy": 0.9
     },
     "tconstruct:grip": {
       "durability": 1.7,

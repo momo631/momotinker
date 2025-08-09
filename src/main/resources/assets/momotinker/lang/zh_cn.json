@@ -501,7 +501,7 @@
 
   "modifier.momotinker.frombrilliance": "古代神兵",
   "modifier.momotinker.frombrilliance.flavor": "§e来自辉煌的时代§",
-  "modifier.momotinker.frombrilliance.description": "玩家无法自主锻造，可以在某些地点获得固定材料部件的工具，达成某种条件可使武器进化！",
+  "modifier.momotinker.frombrilliance.description": "该工具的所有特性均翻倍且拆卸会返还所有部件，但是玩家无法自主锻造，可以在某些地点获得固定材料部件的工具，达成某种条件可使武器进化！",
 
   "modifier.momotinker.superancientmetalsa": "超古代金属-阿尔法",
   "modifier.momotinker.superancientmetalsa.flavor": "来自古代的奇特金属，表面看起来平平无奇",
@@ -635,7 +635,7 @@
   "modifier.momotinker.blank.description": "副手持有“概念终点·虚无主义”时按下特殊技能按键可消耗一个该物品吟唱“§k最终之诗§r”（全局冷却600s），进入读条并在时间结束后在世界活物之章上画上句点（读条中途死亡会中断并进入冷却300s）",
   "modifier.momotinker.tooltip.blank1": "“第三终章:留白”冷却还剩:",
   "msg.blank1": "§o河流将逆流而上，归还于云","msg.blank2": "§o飞鸟将折返蛋壳，重归为卵","msg.blank3": "§o呼吸吧，最后一次——","msg.blank4": "§o尔等的欢笑、泪水、爱恨，都将沉入永恒的‘无’",
-  "msg.blank5": "§o没有痛苦，没有哀伤，只有未曾存在的安宁","msg.blank6": "§o吾乃‘无’之书写者，以沉默著就万物的诗篇","msg.blank7": "§o睡吧生灵们，你们将不复存在",
+  "msg.blank5": "§o没有痛苦，没有哀伤，只有未曾存在的安宁","msg.blank6": "§o吾乃‘无’之书写者，以沉默著就万物的诗篇","msg.blank7": "§o睡吧，睡吧，你们将回归",
 
   "modifier.momotinker.flamebath": "星炎战衣",
   "modifier.momotinker.flamebath.flavor": "运用流星的能量包裹自身",
@@ -724,6 +724,14 @@
 
   "modifier.momotinker.compassionateeverything": "[侵蚀我心，大罪共鸣]悲悼众生",
   "modifier.momotinker.compassionateeverything.flavor": "我们悲悯世间一切生灵，皆因其诸行不易",
-  "modifier.momotinker.compassionateeverything.description": "持有时你的攻击和受到的攻击都将无视防御。持有时会将造成的伤害转换为暂时的最大生命值并使该次伤害归零。攻击时若目标最大生命值小于持有者的暂时生命则会直接击杀并消耗等数额的暂时生命"
+  "modifier.momotinker.compassionateeverything.description": "持有时你的攻击和受到的攻击都将无视防御。持有时会将造成的伤害转换为暂时的最大生命值并使该次伤害归零。攻击时若目标最大生命值小于持有者的暂时生命则会直接击杀并消耗等数额的暂时生命",
+
+  "modifier.momotinker.slimeresonance": "共振",
+  "modifier.momotinker.slimeresonance.flavor": "史莱姆家族的偶像?",
+  "modifier.momotinker.slimeresonance.description": "该词条每1级都会使该工具上所有拥有“黏液之友”标签的特性都将上升2级",
+
+  "modifier.momotinker.slimerhythm": "律动",
+  "modifier.momotinker.slimerhythm.flavor": "这才是真正的，音乐?",
+  "modifier.momotinker.slimerhythm.description": "(使用该武器/装备该护甲时)，有节奏的(攻击/被攻击)都会恢复一定的粘液镀层(随等级提升)，当保持时间够长时(攻击/被攻击)将(格外触发一次装备上拥有“黏液之友”标签的特性/消耗全身护甲的粘液镀层进行减伤)"
 
 }

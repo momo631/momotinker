@@ -1,0 +1,16 @@
+{
+  "default": [
+    {
+      "name": "momotinker:slimeresonance",
+      "level": 1
+    },
+    {
+      "name": "momotinker:slimerhythm",
+      "level": 1
+    },
+    {
+      "name": "tconstruct:overslime",
+      "level": 2
+    }
+  ]
+}
