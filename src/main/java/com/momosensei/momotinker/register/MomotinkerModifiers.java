@@ -21,7 +21,7 @@ public class MomotinkerModifiers {
     public static final StaticModifier<Feast> feast=MODIFIERS.register("feast", Feast::new);
     public static final StaticModifier<OverEatingSin> overeatingsin=MODIFIERS.register("overeatingsin", OverEatingSin::new);
     public static final StaticModifier<WildHearts> wildhearts=MODIFIERS.register("wildhearts", WildHearts::new);
-   public static final StaticModifier<OverweightingWealthSin> overweightingwealthsin=MODIFIERS.register("overweightingwealthsin", OverweightingWealthSin::new);
+    public static final StaticModifier<OverweightingWealthSin> overweightingwealthsin=MODIFIERS.register("overweightingwealthsin", OverweightingWealthSin::new);
     public static final StaticModifier<VehementDesire> vehementdesire=MODIFIERS.register("vehementdesire", VehementDesire::new);
     public static final StaticModifier<OverIndulgenceSin> overindulgencesin=MODIFIERS.register("overindulgencesin", OverIndulgenceSin::new);
     public static final StaticModifier<Dominate> dominate=MODIFIERS.register("dominate", Dominate::new);
