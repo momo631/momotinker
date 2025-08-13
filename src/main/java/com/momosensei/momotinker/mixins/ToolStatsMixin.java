@@ -1,10 +1,6 @@
 package com.momosensei.momotinker.mixins;
 
-import org.spongepowered.asm.mixin.Mixin;
-import org.spongepowered.asm.mixin.injection.Constant;
-import org.spongepowered.asm.mixin.injection.ModifyConstant;
-import slimeknights.tconstruct.library.tools.stat.ToolStats;
-
+/*
 @Mixin({ToolStats.class})
 public class ToolStatsMixin {
 
@@ -20,4 +16,4 @@ public class ToolStatsMixin {
     private static float modifyMaxValue(float constant) {
         return Float.MAX_VALUE;
     }
-}
+}*/
