@@ -84,8 +84,9 @@ public class CompassionateEverything extends momomodifier {
             ToolStack tool = ToolStack.from(player.getMainHandItem());
             ModDataNBT data = tool.getPersistentData();
             if (data.getFloat(compassionateeverythingpoints)>a.getMaxHealth()){
-                reflectionPenetratingDamage(a,player,a.getMaxHealth()*0.25f);
-                data.putFloat(compassionateeverythingpoints,data.getFloat(compassionateeverythingpoints)-a.getMaxHealth());
+                reflectionPenetratingDamage(a,player,a.getMaxHealth());
+                a.onRemovedFromWorld();
+                data.putFloat(compassionateeverythingpoints,data.getFloat(compassionateeverythingpoints)-a.getMaxHealth()*0.25f);
             }
         }
         if (a instanceof Player player&&getMainhandModifierlevel(player,MomotinkerModifiers.compassionateeverything.getId())>0){
