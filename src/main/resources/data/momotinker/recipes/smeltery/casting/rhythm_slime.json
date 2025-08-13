@@ -1,0 +1,13 @@
+{
+  "type": "tconstruct:casting_table",
+  "cast": {
+    "item": "tconstruct:slimesteel_ingot"
+  },
+  "cast_consumed": true,
+  "cooling_time": 270,
+  "fluid": {
+    "amount": 270,
+    "name": "momotinker:molten_interdimensional_crystal"
+  },
+  "result": "momotinker:rhythm_slime"
+}
