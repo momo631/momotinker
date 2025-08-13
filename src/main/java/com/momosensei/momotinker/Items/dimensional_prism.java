@@ -32,12 +32,12 @@ public class dimensional_prism extends BlockItem {
             if (StageMeteor.getStageFloat()==1||!configb) {
                 list.add(Component.translatable("momotinker.block.tooltip.dimensional_prism2").withStyle(ChatFormatting.AQUA));
             }else {
-                list.add(Component.translatable("momotinker.item.tooltip.stage_meteor").withStyle(ChatFormatting.GOLD));
+                list.add(Component.translatable("item.momotinker.tooltip.stage_meteor").withStyle(ChatFormatting.GOLD));
             }
         }else{
             list.add(Component.translatable("momotinker.block.tooltip.dimensional_prism1").withStyle(ChatFormatting.AQUA));
             if (config&&configa){
-                list.add(Component.translatable("momotinker.item.tooltip.special_acquisition").withStyle(ChatFormatting.AQUA));
+                list.add(Component.translatable("item.momotinker.tooltip.special_acquisition").withStyle(ChatFormatting.AQUA));
             }
         }
         super.appendHoverText(itemstack, world, list, flag);

@@ -27,14 +27,14 @@ public class greedy_contract extends Item{
         boolean configb = MomotinkerConfig.stage_meteor.get();
         if (Screen.hasShiftDown() && config && configa) {
             if (StageMeteor.getStageFloat() == 1 || !configb) {
-                list.add(Component.translatable("momotinker.item.tooltip.greedy_contract2").withStyle(ChatFormatting.BLUE));
+                list.add(Component.translatable("item.momotinker.tooltip.greedy_contract2").withStyle(ChatFormatting.BLUE));
             } else {
-                list.add(Component.translatable("momotinker.item.tooltip.stage_meteor").withStyle(ChatFormatting.GOLD));
+                list.add(Component.translatable("item.momotinker.tooltip.stage_meteor").withStyle(ChatFormatting.GOLD));
             }
         } else {
-            list.add(net.minecraft.network.chat.Component.translatable("momotinker.item.tooltip.greedy_contract1").withStyle(ChatFormatting.BLUE));
+            list.add(net.minecraft.network.chat.Component.translatable("item.momotinker.tooltip.greedy_contract1").withStyle(ChatFormatting.BLUE));
             if (config && configa) {
-                list.add(net.minecraft.network.chat.Component.translatable("momotinker.item.tooltip.special_acquisition").withStyle(ChatFormatting.BLUE));
+                list.add(net.minecraft.network.chat.Component.translatable("item.momotinker.tooltip.special_acquisition").withStyle(ChatFormatting.BLUE));
             }
         }
         super.appendHoverText(stack, level, list, flag);

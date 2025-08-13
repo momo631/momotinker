@@ -21,7 +21,7 @@ public class stellar_core_platinum extends Item {
     }
     @Override
     public void appendHoverText(@NotNull ItemStack stack, @Nullable Level level, List<Component> list, @NotNull TooltipFlag flag) {
-        list.add(Component.translatable("momotinker.item.tooltip.stellar_core_platinum1"));
+        list.add(Component.translatable("item.momotinker.tooltip.stellar_core_platinum1"));
         super.appendHoverText(stack, level, list, flag);
     }
 

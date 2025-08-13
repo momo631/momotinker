@@ -18,7 +18,7 @@ public class starry_mysterious_gold extends Item {
 
     @Override
     public void appendHoverText(@NotNull ItemStack stack, @Nullable Level level, List<Component> list, @NotNull TooltipFlag flag) {
-        list.add(Component.translatable("momotinker.item.tooltip.starry_mysterious_gold1"));
+        list.add(Component.translatable("item.momotinker.tooltip.starry_mysterious_gold1"));
         super.appendHoverText(stack, level, list, flag);
     }
 

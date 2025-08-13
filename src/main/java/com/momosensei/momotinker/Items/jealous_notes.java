@@ -27,14 +27,14 @@ public class jealous_notes extends Item {
         boolean configb = MomotinkerConfig.stage_meteor.get();
         if (Screen.hasShiftDown() && config && configa) {
             if (StageMeteor.getStageFloat() == 1 || !configb) {
-                list.add(Component.translatable("momotinker.item.tooltip.jealous_notes2").withStyle(ChatFormatting.YELLOW));
+                list.add(Component.translatable("item.momotinker.tooltip.jealous_notes2").withStyle(ChatFormatting.YELLOW));
             } else {
-                list.add(Component.translatable("momotinker.item.tooltip.stage_meteor").withStyle(ChatFormatting.GOLD));
+                list.add(Component.translatable("item.momotinker.tooltip.stage_meteor").withStyle(ChatFormatting.GOLD));
             }
         } else {
-            list.add(net.minecraft.network.chat.Component.translatable("momotinker.item.tooltip.jealous_notes1").withStyle(ChatFormatting.YELLOW));
+            list.add(net.minecraft.network.chat.Component.translatable("item.momotinker.tooltip.jealous_notes1").withStyle(ChatFormatting.YELLOW));
             if (config && configa) {
-                list.add(net.minecraft.network.chat.Component.translatable("momotinker.item.tooltip.special_acquisition").withStyle(ChatFormatting.YELLOW));
+                list.add(net.minecraft.network.chat.Component.translatable("item.momotinker.tooltip.special_acquisition").withStyle(ChatFormatting.YELLOW));
             }
         }
         super.appendHoverText(stack, level, list, flag);

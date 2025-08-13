@@ -27,14 +27,14 @@ public class lust_mirror extends Item {
         boolean configb = MomotinkerConfig.stage_meteor.get();
         if (Screen.hasShiftDown()&&config&&configa) {
             if (StageMeteor.getStageFloat() == 1 || !configb) {
-                list.add(Component.translatable("momotinker.item.tooltip.lust_mirror2").withStyle(ChatFormatting.DARK_PURPLE));
+                list.add(Component.translatable("item.momotinker.tooltip.lust_mirror2").withStyle(ChatFormatting.DARK_PURPLE));
             }else {
-                list.add(Component.translatable("momotinker.item.tooltip.stage_meteor").withStyle(ChatFormatting.GOLD));
+                list.add(Component.translatable("item.momotinker.tooltip.stage_meteor").withStyle(ChatFormatting.GOLD));
             }
         }else {
-            list.add(net.minecraft.network.chat.Component.translatable("momotinker.item.tooltip.lust_mirror1").withStyle(ChatFormatting.DARK_PURPLE));
+            list.add(net.minecraft.network.chat.Component.translatable("item.momotinker.tooltip.lust_mirror1").withStyle(ChatFormatting.DARK_PURPLE));
             if (config && configa) {
-                list.add(net.minecraft.network.chat.Component.translatable("momotinker.item.tooltip.special_acquisition").withStyle(ChatFormatting.DARK_PURPLE));
+                list.add(net.minecraft.network.chat.Component.translatable("item.momotinker.tooltip.special_acquisition").withStyle(ChatFormatting.DARK_PURPLE));
             }
         }
         super.appendHoverText(stack, level, list, flag);

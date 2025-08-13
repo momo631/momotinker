@@ -76,6 +76,7 @@ public class MomotinkerModifiers {
     public static final StaticModifier<Resonance> resonance=MODIFIERS.register("resonance", Resonance::new);
     public static final StaticModifier<SlimeResonance> slimeresonance=MODIFIERS.register("slimeresonance", SlimeResonance::new);
     public static final StaticModifier<SlimeRhythm> slimerhythm=MODIFIERS.register("slimerhythm", SlimeRhythm::new);
+    public static final StaticModifier<SlimeRhythmA> slimerhythma=MODIFIERS.register("slimerhythma", SlimeRhythmA::new);
 
     public static final StaticModifier<EternalAnger> eternalanger=MODIFIERS.register("eternalanger", EternalAnger::new);
     public static final StaticModifier<SlackAtmosphere> slackatmosphere=MODIFIERS.register("slackatmosphere", SlackAtmosphere::new);

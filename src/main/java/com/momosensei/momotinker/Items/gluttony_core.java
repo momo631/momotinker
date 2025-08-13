@@ -26,14 +26,14 @@ public class gluttony_core extends Item {
         boolean configb = MomotinkerConfig.stage_meteor.get();
         if (Screen.hasShiftDown()&&config&&configa) {
             if (StageMeteor.getStageFloat()==1||!configb) {
-                list.add(Component.translatable("momotinker.item.tooltip.gluttony_core2").withStyle(ChatFormatting.DARK_GREEN));
+                list.add(Component.translatable("item.momotinker.tooltip.gluttony_core2").withStyle(ChatFormatting.DARK_GREEN));
             }else {
-                list.add(Component.translatable("momotinker.item.tooltip.stage_meteor").withStyle(ChatFormatting.GOLD));
+                list.add(Component.translatable("item.momotinker.tooltip.stage_meteor").withStyle(ChatFormatting.GOLD));
             }
         }else {
-            list.add(net.minecraft.network.chat.Component.translatable("momotinker.item.tooltip.gluttony_core1").withStyle(ChatFormatting.DARK_GREEN));
+            list.add(net.minecraft.network.chat.Component.translatable("item.momotinker.tooltip.gluttony_core1").withStyle(ChatFormatting.DARK_GREEN));
             if (config && configa) {
-                list.add(net.minecraft.network.chat.Component.translatable("momotinker.item.tooltip.special_acquisition").withStyle(ChatFormatting.DARK_GREEN));
+                list.add(net.minecraft.network.chat.Component.translatable("item.momotinker.tooltip.special_acquisition").withStyle(ChatFormatting.DARK_GREEN));
             }
         }
         super.appendHoverText(stack, level, list, flag);

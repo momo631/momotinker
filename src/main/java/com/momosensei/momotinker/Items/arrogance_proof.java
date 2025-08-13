@@ -26,15 +26,15 @@ public class arrogance_proof extends Item {
         boolean configb = MomotinkerConfig.stage_meteor.get();
         if (Screen.hasShiftDown()&&config&&configa) {
             if (StageMeteor.getStageFloat()==1||!configb) {
-                list.add(Component.translatable("momotinker.item.tooltip.arrogance_proof2").withStyle(ChatFormatting.RED));
+                list.add(Component.translatable("item.momotinker.tooltip.arrogance_proof2").withStyle(ChatFormatting.RED));
             }else {
-                list.add(Component.translatable("momotinker.item.tooltip.stage_meteor").withStyle(ChatFormatting.GOLD));
+                list.add(Component.translatable("item.momotinker.tooltip.stage_meteor").withStyle(ChatFormatting.GOLD));
             }
         }else{
             if (config&&configa) {
-                list.add(net.minecraft.network.chat.Component.translatable("momotinker.item.tooltip.special_acquisition").withStyle(ChatFormatting.RED));
+                list.add(net.minecraft.network.chat.Component.translatable("item.momotinker.tooltip.special_acquisition").withStyle(ChatFormatting.RED));
             }
-            list.add(net.minecraft.network.chat.Component.translatable("momotinker.item.tooltip.arrogance_proof1").withStyle(ChatFormatting.RED));
+            list.add(net.minecraft.network.chat.Component.translatable("item.momotinker.tooltip.arrogance_proof1").withStyle(ChatFormatting.RED));
         }super.appendHoverText(stack, level, list, flag);
     }
 }

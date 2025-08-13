@@ -21,8 +21,8 @@ public class reversetime_purple_gold extends Item {
     }
     @Override
     public void appendHoverText(@NotNull ItemStack stack, @Nullable Level level, List<Component> list, @NotNull TooltipFlag flag) {
-        list.add(Component.translatable("momotinker.item.tooltip.reversetime_purple_gold1"));
-        list.add(Component.translatable("momotinker.item.tooltip.reversetime_purple_gold2"));
+        list.add(Component.translatable("item.momotinker.tooltip.reversetime_purple_gold1"));
+        list.add(Component.translatable("item.momotinker.tooltip.reversetime_purple_gold2"));
         super.appendHoverText(stack, level, list, flag);
     }
 

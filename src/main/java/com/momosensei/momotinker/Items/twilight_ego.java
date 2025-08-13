@@ -110,12 +110,12 @@ public class twilight_ego extends Item /*implements IAnimatable*/ {
 
     @Override
     public void appendHoverText(@NotNull ItemStack stack, @Nullable Level level, List<Component> list, @NotNull TooltipFlag flag) {
-        list.add(Component.translatable("momotinker.item.tooltip.twilight_ego1").withStyle(ChatFormatting.GOLD));
-        list.add(Component.translatable("momotinker.item.tooltip.twilight_ego2").withStyle(ChatFormatting.GOLD));
-        list.add(Component.translatable("momotinker.item.tooltip.twilight_ego3").withStyle(ChatFormatting.GOLD));
-        list.add(Component.translatable("momotinker.item.tooltip.twilight_ego4").withStyle(ChatFormatting.GOLD));
-        list.add(Component.translatable("momotinker.item.tooltip.twilight_ego5"));
-        list.add(Component.translatable("momotinker.item.tooltip.twilight_ego6"));
+        list.add(Component.translatable("item.momotinker.tooltip.twilight_ego1").withStyle(ChatFormatting.GOLD));
+        list.add(Component.translatable("item.momotinker.tooltip.twilight_ego2").withStyle(ChatFormatting.GOLD));
+        list.add(Component.translatable("item.momotinker.tooltip.twilight_ego3").withStyle(ChatFormatting.GOLD));
+        list.add(Component.translatable("item.momotinker.tooltip.twilight_ego4").withStyle(ChatFormatting.GOLD));
+        list.add(Component.translatable("item.momotinker.tooltip.twilight_ego5"));
+        list.add(Component.translatable("item.momotinker.tooltip.twilight_ego6"));
     }
     /*
     @Override

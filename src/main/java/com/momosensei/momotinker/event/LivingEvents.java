@@ -361,7 +361,7 @@ public class LivingEvents {
                             }
                             entity.setExplosionPower((byte) (random.nextInt(55) + 25));
                             level.addFreshEntity(entity);
-                            player.sendSystemMessage(Component.translatable("momotinker.item.tooltip.meteor_nucleus5").withStyle(ChatFormatting.GOLD));
+                            player.sendSystemMessage(Component.translatable("item.momotinker.tooltip.meteor_nucleus5").withStyle(ChatFormatting.GOLD));
                         }
                     }
                 }
@@ -378,7 +378,7 @@ public class LivingEvents {
                 CompoundTag tag = player.getPersistentData().getCompound(Player.PERSISTED_NBT_TAG);
                 String a = "meteor_nucleus_unlock";
                 if (event.getItem().getItem().is(MomotinkerItem.interdimensional_crystal.get()) && !tag.getBoolean(a)) {
-                    player.sendSystemMessage(Component.translatable("momotinker.item.tooltip.interdimensional_crystal3").withStyle(ChatFormatting.GOLD));
+                    player.sendSystemMessage(Component.translatable("item.momotinker.tooltip.interdimensional_crystal3").withStyle(ChatFormatting.GOLD));
                     player.getPersistentData().getBoolean(a);
                     tag.putBoolean(a, true);
                     player.getPersistentData().put(Player.PERSISTED_NBT_TAG, tag);

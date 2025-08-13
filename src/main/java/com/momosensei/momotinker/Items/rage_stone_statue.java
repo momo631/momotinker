@@ -27,14 +27,14 @@ public class rage_stone_statue extends Item {
         boolean configb = MomotinkerConfig.stage_meteor.get();
         if (Screen.hasShiftDown() && config && configa) {
             if (StageMeteor.getStageFloat() == 1 || !configb) {
-                list.add(Component.translatable("momotinker.item.tooltip.rage_stone_statue2").withStyle(ChatFormatting.DARK_GRAY));
+                list.add(Component.translatable("item.momotinker.tooltip.rage_stone_statue2").withStyle(ChatFormatting.DARK_GRAY));
             } else {
-                list.add(Component.translatable("momotinker.item.tooltip.stage_meteor").withStyle(ChatFormatting.GOLD));
+                list.add(Component.translatable("item.momotinker.tooltip.stage_meteor").withStyle(ChatFormatting.GOLD));
             }
         } else {
-            list.add(net.minecraft.network.chat.Component.translatable("momotinker.item.tooltip.rage_stone_statue1").withStyle(ChatFormatting.DARK_GRAY));
+            list.add(net.minecraft.network.chat.Component.translatable("item.momotinker.tooltip.rage_stone_statue1").withStyle(ChatFormatting.DARK_GRAY));
             if (config && configa) {
-                list.add(net.minecraft.network.chat.Component.translatable("momotinker.item.tooltip.special_acquisition").withStyle(ChatFormatting.DARK_GRAY));
+                list.add(net.minecraft.network.chat.Component.translatable("item.momotinker.tooltip.special_acquisition").withStyle(ChatFormatting.DARK_GRAY));
             }
         }
         super.appendHoverText(stack, level, list, flag);

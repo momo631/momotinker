@@ -26,14 +26,14 @@ public class compassion_mask extends Item {
         boolean configb = MomotinkerConfig.stage_meteor.get();
         if (Screen.hasShiftDown()&&config&&configa) {
             if (StageMeteor.getStageFloat()==1) {
-                list.add(Component.translatable("momotinker.item.tooltip.compassion_mask2").withStyle(ChatFormatting.GRAY));
+                list.add(Component.translatable("item.momotinker.tooltip.compassion_mask2").withStyle(ChatFormatting.GRAY));
             }else {
-                list.add(Component.translatable("momotinker.item.tooltip.stage_meteor").withStyle(ChatFormatting.GOLD));
+                list.add(Component.translatable("item.momotinker.tooltip.stage_meteor").withStyle(ChatFormatting.GOLD));
             }
         }else {
-            list.add(Component.translatable("momotinker.item.tooltip.compassion_mask1").withStyle(ChatFormatting.GRAY));
+            list.add(Component.translatable("item.momotinker.tooltip.compassion_mask1").withStyle(ChatFormatting.GRAY));
             if (config&&configa) {
-                list.add(Component.translatable("momotinker.item.tooltip.special_acquisition").withStyle(ChatFormatting.GRAY));
+                list.add(Component.translatable("item.momotinker.tooltip.special_acquisition").withStyle(ChatFormatting.GRAY));
             }
         }
     }
