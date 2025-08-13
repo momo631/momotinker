@@ -1,0 +1,9 @@
+{
+  "type": "tconstruct:casting_table",
+  "fluid": {
+    "name": "momotinker:molten_interdimensional_crystal",
+    "amount": 90
+  },
+  "result": "momotinker:interdimensional_crystal",
+  "cooling_time": 66
+}

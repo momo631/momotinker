@@ -1,0 +1,9 @@
+{
+  "type": "tconstruct:casting_table",
+  "fluid": {
+    "name": "momotinker:molten_rage_stone_statue",
+    "amount": 90
+  },
+  "result": "momotinker:rage_stone_statue",
+  "cooling_time": 66
+}

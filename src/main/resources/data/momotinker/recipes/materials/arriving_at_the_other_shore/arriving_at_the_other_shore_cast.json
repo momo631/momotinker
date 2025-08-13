@@ -1,0 +1,9 @@
+{
+  "type": "tconstruct:casting_table",
+  "fluid": {
+    "name": "momotinker:molten_arriving_at_the_other_shore",
+    "amount": 90
+  },
+  "result": "momotinker:arriving_at_the_other_shore",
+  "cooling_time": 66
+}

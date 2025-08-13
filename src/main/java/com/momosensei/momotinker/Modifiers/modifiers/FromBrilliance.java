@@ -15,7 +15,9 @@ import net.minecraft.world.level.Level;
 import slimeknights.mantle.client.TooltipKey;
 import slimeknights.tconstruct.library.modifiers.Modifier;
 import slimeknights.tconstruct.library.modifiers.ModifierEntry;
+import slimeknights.tconstruct.library.modifiers.hook.build.ModifierTraitHook;
 import slimeknights.tconstruct.library.tools.context.ToolAttackContext;
+import slimeknights.tconstruct.library.tools.nbt.IToolContext;
 import slimeknights.tconstruct.library.tools.nbt.IToolStackView;
 import slimeknights.tconstruct.library.tools.nbt.ModDataNBT;
 import slimeknights.tconstruct.library.tools.nbt.ToolStack;
@@ -38,7 +40,14 @@ public class FromBrilliance extends momomodifier {
     public boolean isNoLevels() {
         return true;
     }
-
+    @Override
+    public void addTraits(IToolContext context, ModifierEntry modifier, ModifierTraitHook.TraitBuilder builder, boolean firstEncounter) {
+        for (ModifierEntry entry : context.getModifierList()) {
+            if (entry.getModifier() != modifier.getModifier()&&firstEncounter) {
+                builder.add(entry.getId(),entry.getLevel());
+            }
+        }
+    }
     @Override
     public @Nullable Component onRemoved(IToolStackView iToolStackView, Modifier modifier) {
         iToolStackView.getPersistentData().remove(sanctification);

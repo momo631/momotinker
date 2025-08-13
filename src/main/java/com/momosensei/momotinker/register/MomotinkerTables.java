@@ -55,7 +55,8 @@ public class MomotinkerTables extends MomotinkerMod {
         output.accept(MomotinkerItem.twilight_purple_gold.get());
         output.accept(MomotinkerItem.timetrace_purple_gold.get());
         output.accept(MomotinkerItem.reversetime_purple_gold.get());
+        output.accept(MomotinkerItem.rhythm_slime.get());
 
-        output.accept(MomotinkerItem.star_seeking_pointer.get());
+
     }
 }

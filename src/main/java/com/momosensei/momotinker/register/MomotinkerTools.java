@@ -63,6 +63,9 @@ public final class MomotinkerTools extends MomotinkerTables {
         acceptTool(output, pocket_watch);
         acceptTool(output, chain_sword);
         acceptTool(output, pneumatic_sword);
+
+        tab.accept(MomotinkerItem.twilight_ego.get());
+        tab.accept(MomotinkerItem.star_seeking_pointer.get());
     }
     private static void acceptTool(Consumer<ItemStack> output, Supplier<? extends IModifiable> tool) {
         ToolBuildHandler.addVariants(output, tool.get(), "");

@@ -17,11 +17,11 @@
       "durability": 100000,
       "draw_speed": 0.3,
       "velocity": 0.9,
-      "accuracy": 10
+      "accuracy": 6.18
     },
     "tconstruct:grip": {
       "durability": 0.5,
-      "accuracy": 10,
+      "accuracy": 6.18,
       "melee_damage": 2
     }
   }

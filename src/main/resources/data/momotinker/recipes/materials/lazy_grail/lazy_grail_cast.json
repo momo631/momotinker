@@ -1,0 +1,9 @@
+{
+  "type": "tconstruct:casting_table",
+  "fluid": {
+    "name": "momotinker:molten_lazy_grail",
+    "amount": 90
+  },
+  "result": "momotinker:lazy_grail",
+  "cooling_time": 66
+}

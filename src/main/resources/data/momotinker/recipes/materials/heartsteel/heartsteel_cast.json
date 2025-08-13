@@ -1,0 +1,9 @@
+{
+  "type": "tconstruct:casting_table",
+  "fluid": {
+    "name": "momotinker:molten_heartsteel",
+    "amount": 90
+  },
+  "result": "momotinker:heartsteel",
+  "cooling_time": 66
+}

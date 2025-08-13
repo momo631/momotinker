@@ -43,7 +43,8 @@
   "fluid.momotinker.molten_twilight_purple_gold": "Molten Twilight Purple Gold",
   "fluid.momotinker.molten_timetrace_purple_gold": "Molten Time Trace Purple Gold",
   "fluid.momotinker.molten_reversetime_purple_gold": "Molten Reverse Time Purple Gold",
-  
+  "fluid.momotinker.molten_rhythm_slime": "Molten Rhythm Slime",
+
   "item.momotinker.molten_laomo_bucket": "Molten Momo Bucket",
   "item.momotinker.molten_arriving_at_the_other_shore_bucket": "Molten Other Shore Bucket",
   "item.momotinker.molten_heartsteel_bucket": "Molten Heart Steel Bucket",
@@ -72,6 +73,7 @@
   "item.momotinker.molten_twilight_purple_gold_bucket": "Molten Twilight Purple Gold Bucket",
   "item.momotinker.molten_timetrace_purple_gold_bucket": "Molten Time Trace Purple Gold Bucket",
   "item.momotinker.molten_reversetime_purple_gold_bucket": "Molten Reverse Time Purple Gold Bucket",
+  "item.momotinker.molten_rhythm_slime_bucket": "Molten Rhythm Slime Bucket",
 
 
   "recipe.momotinker.modifier.cleansetheworld": "[Cleanse The World] requires [Breakthrough Stars] as a prerequisite",
@@ -96,8 +98,8 @@
   "key.momotinker.key": "Category Example",
   "key.momotinker.keya": "Tool Enhancement",
 
-  "momotinker.item.tooltip.special_acquisition": "Press and hold 'shift' to view and retrieve",
-  "momotinker.item.tooltip.stage_meteor": "Perhaps Meteor knows something ..",
+  "item.momotinker.tooltip.special_acquisition": "Press and hold 'shift' to view and retrieve",
+  "item.momotinker.tooltip.stage_meteor": "Perhaps Meteor knows something ..",
 
   "block.momotinker.laomo_block": "Momo Block",
 
@@ -108,124 +110,128 @@
   "item.momotinker.laomo": "Momo",
 
   "item.momotinker.interdimensional_crystal": "§dInterdimensional Crystal§",
-  "momotinker.item.tooltip.interdimensional_crystal1": "§dReturning from heaven§",
-  "momotinker.item.tooltip.interdimensional_crystal2": "§dWhen the witherBoss dies at a height greater than or equal to 300 in the world and falls to its location§",
-  "momotinker.item.tooltip.interdimensional_crystal3": "The stars twinkled, and shooting stars noticed you as they crossed the horizon, trying to give you a gift",
+  "item.momotinker.tooltip.interdimensional_crystal1": "§dReturning from heaven§",
+  "item.momotinker.tooltip.interdimensional_crystal2": "§dWhen the witherBoss dies at a height greater than or equal to 300 in the world and falls to its location§",
+  "item.momotinker.tooltip.interdimensional_crystal3": "The stars twinkled, and shooting stars noticed you as they crossed the horizon, trying to give you a gift",
 
   "item.momotinker.arriving_at_the_other_shore": "\u00A74Other Shore\u00A7",
-  "momotinker.item.tooltip.arriving_at_the_other_shore1": "§7Thousands of passing things, all crossing the other shore§",
-  "momotinker.item.tooltip.arriving_at_the_other_shore2": "§4When the player's current health value is equal to or less than 1, they receive a single damage equivalent to their maximum life§",
+  "item.momotinker.tooltip.arriving_at_the_other_shore1": "§7Thousands of passing things, all crossing the other shore§",
+  "item.momotinker.tooltip.arriving_at_the_other_shore2": "§4When the player's current health value is equal to or less than 1, they receive a single damage equivalent to their maximum life§",
 
   "item.momotinker.heartsteel": "§6Heart Steel§",
-  "momotinker.item.tooltip.heartsteel1": "§2As strong as steel§",
-  "momotinker.item.tooltip.heartsteel2": "§2When the iron golem kills the warden, it falls to the location where the iron golem is located§",
+  "item.momotinker.tooltip.heartsteel1": "§2As strong as steel§",
+  "item.momotinker.tooltip.heartsteel2": "§2When the iron golem kills the warden, it falls to the location where the iron golem is located§",
 
   "item.momotinker.spirit_visage": "§aSpirit Visage§",
-  "momotinker.item.tooltip.spirit_visage1": "§aBrace up§",
-  "momotinker.item.tooltip.spirit_visage2": "§aWhen uses bone powder to ripen any sapling, there is a 2% chance that it will fall to the sapling's location§",
+  "item.momotinker.tooltip.spirit_visage1": "§aBrace up§",
+  "item.momotinker.tooltip.spirit_visage2": "§aWhen uses bone powder to ripen any sapling, there is a 2% chance that it will fall to the sapling's location§",
 
   "item.momotinker.gluttony_core": "§2Gluttony Core§",
-  "momotinker.item.tooltip.gluttony_core1": "§2With your soul, forge my flesh and blood§",
-  "momotinker.item.tooltip.gluttony_core2": "§2When a frog kills a slime, there is a 10% chance that it will drop at the frog's location§",
+  "item.momotinker.tooltip.gluttony_core1": "§2With your soul, forge my flesh and blood§",
+  "item.momotinker.tooltip.gluttony_core2": "§2When a frog kills a slime, there is a 10% chance that it will drop at the frog's location§",
 
   "item.momotinker.greedy_contract": "§9Greedy Contract§",
-  "momotinker.item.tooltip.greedy_contract1": "§9With your soul, forge my wealth§",
-  "momotinker.item.tooltip.greedy_contract2": "§9Any villager with a profession will add this item to the trading list when they reach the master level§",
+  "item.momotinker.tooltip.greedy_contract1": "§9With your soul, forge my wealth§",
+  "item.momotinker.tooltip.greedy_contract2": "§9Any villager with a profession will add this item to the trading list when they reach the master level§",
 
   "item.momotinker.lust_mirror": "§5Lust Mirror§",
-  "momotinker.item.tooltip.lust_mirror1": "§5With your bones, forge my full desires§",
-  "momotinker.item.tooltip.lust_mirror2": "§5A breeding organism will drop this item at its location after participating in three rounds of breeding, with a maximum of two drops per organism§",
+  "item.momotinker.tooltip.lust_mirror1": "§5With your bones, forge my full desires§",
+  "item.momotinker.tooltip.lust_mirror2": "§5A breeding organism will drop this item at its location after participating in three rounds of breeding, with a maximum of two drops per organism§",
 
   "item.momotinker.arrogance_proof": "§cArrogance Proof§",
-  "momotinker.item.tooltip.arrogance_proof1": "§cWith your strike weakly, forge my armor§",
-  "momotinker.item.tooltip.arrogance_proof2": "§cFalling at the player's location when killing warden without wearing any armor§",
+  "item.momotinker.tooltip.arrogance_proof1": "§cWith your strike weakly, forge my armor§",
+  "item.momotinker.tooltip.arrogance_proof2": "§cFalling at the player's location when killing warden without wearing any armor§",
 
   "item.momotinker.rage_stone_statue": "§8Rage Stone Statue§",
-  "momotinker.item.tooltip.rage_stone_statue1": "§8With your blood, forge my long years§",
-  "momotinker.item.tooltip.rage_stone_statue2": "§8When killing a wolf that has previously killed a sheep and is in a state of anger, it falls to the player's location§",
+  "item.momotinker.tooltip.rage_stone_statue1": "§8With your blood, forge my long years§",
+  "item.momotinker.tooltip.rage_stone_statue2": "§8When killing a wolf that has previously killed a sheep and is in a state of anger, it falls to the player's location§",
 
   "item.momotinker.lazy_grail": "§6Lazy Grail§",
-  "momotinker.item.tooltip.lazy_grail1": "§6With your tired of exhaustion, forge my clear soul§",
-  "momotinker.item.tooltip.lazy_grail2": "§6When the player has slow and weak effects, they will get enough sleep and fall to their location when they wake up§",
+  "item.momotinker.tooltip.lazy_grail1": "§6With your tired of exhaustion, forge my clear soul§",
+  "item.momotinker.tooltip.lazy_grail2": "§6When the player has slow and weak effects, they will get enough sleep and fall to their location when they wake up§",
 
   "item.momotinker.jealous_notes": "§eJealous Notes§",
-  "momotinker.item.tooltip.jealous_notes1": "§eWith your abundant resources, forge my thin grievances§",
-  "momotinker.item.tooltip.jealous_notes2": "§eWhen not equipped with any armor and attacked by creatures equipped with any armor, the writable book in the master's hand will be converted into this item§",
+  "item.momotinker.tooltip.jealous_notes1": "§eWith your abundant resources, forge my thin grievances§",
+  "item.momotinker.tooltip.jealous_notes2": "§eWhen not equipped with any armor and attacked by creatures equipped with any armor, the writable book in the master's hand will be converted into this item§",
 
   "item.momotinker.compassion_mask": "§7Compassion Mask§",
-  "momotinker.item.tooltip.compassion_mask1": "§7With your tears, forge my sacrificial ceremony§",
-  "momotinker.item.tooltip.compassion_mask2": "§7When a witch dies due to fall damage, this item will fall to its place of death§",
+  "item.momotinker.tooltip.compassion_mask1": "§7With your tears, forge my sacrificial ceremony§",
+  "item.momotinker.tooltip.compassion_mask2": "§7When a witch dies due to fall damage, this item will fall to its place of death§",
 
   "item.momotinker.dim_dark_gold": "Dim Dark Gold",
-  "momotinker.item.tooltip.dim_dark_gold1": "Mysterious metal from ancient times, its glory and splendor have been buried by time",
+  "item.momotinker.tooltip.dim_dark_gold1": "Mysterious metal from ancient times, its glory and splendor have been buried by time",
 
   "item.momotinker.stained_blood_gold": "Stained Blood Gold",
-  "momotinker.item.tooltip.stained_blood_gold1": "The existence of taboos born after countless killings and the infiltration of vengeful souls",
-  "momotinker.item.tooltip.stained_blood_gold2": "§4Hidden Material: Why Sacred Weapons Should Be Used for Wrong Killings§",
+  "item.momotinker.tooltip.stained_blood_gold1": "The existence of taboos born after countless killings and the infiltration of vengeful souls",
+  "item.momotinker.tooltip.stained_blood_gold2": "§4Hidden Material: Why Sacred Weapons Should Be Used for Wrong Killings§",
 
   "item.momotinker.starry_mysterious_gold": "Starry Mysterious Gold",
-  "momotinker.item.tooltip.starry_mysterious_gold1": "Due to the awakening of 'From Brilliance', it shines again and is reborn from the cocoon",
+  "item.momotinker.tooltip.starry_mysterious_gold1": "Due to the awakening of 'From Brilliance', it shines again and is reborn from the cocoon",
 
   "item.momotinker.devouring_demon_gold": "Devouring Demon Gold",
-  "momotinker.item.tooltip.devouring_demon_gold1": "The extreme will reverse, and excessive enchantment led to the birth of this object",
-  "momotinker.item.tooltip.devouring_demon_gold2": "When an anvil around the player hits equipment with an enchanting type greater than or equal to 5, it will be converted into that item",
+  "item.momotinker.tooltip.devouring_demon_gold1": "The extreme will reverse, and excessive enchantment led to the birth of this object",
+  "item.momotinker.tooltip.devouring_demon_gold2": "When an anvil around the player hits equipment with an enchanting type greater than or equal to 5, it will be converted into that item",
 
   "item.momotinker.nihilism": "Conceptual Endpoint · Nihilism",
-  "momotinker.item.tooltip.nihilism1": "You are just reflections cast by 'existence', and at this moment, it should recede with the tide of dusk",
-  "momotinker.item.tooltip.nihilism2": "",
+  "item.momotinker.tooltip.nihilism1": "You are just reflections cast by 'existence', and at this moment, it should recede with the tide of dusk",
+  "item.momotinker.tooltip.nihilism2": "",
 
   "item.momotinker.meteor_nucleus": "§6Meteor Ingot",
   "block.momotinker.meteor_nucleus_block": "§6Meteor Nucleus",
-  "momotinker.item.tooltip.meteor_nucleus1": "The stars falling from the sky contain energy that never existed in this world",
-  "momotinker.item.tooltip.meteor_nucleus2": "Since the player first picks up the 'Interdimensional Crystal', there is a chance for it to fall in the form of a meteor within a 300 grid area centered around the player every period of time",
-  "momotinker.item.tooltip.meteor_nucleus3": "The metal ingot poured by the melting meteor in the sky contains enormous energy",
-  "momotinker.item.tooltip.meteor_nucleus4": "'The core of the meteor can continuously release a large amount of heat energy without any signs of decay after melting, which may provide new assistance in our craftsmanship work'",
-  "momotinker.item.tooltip.meteor_nucleus5": "The gift of shooting stars is coming soon",
+  "item.momotinker.tooltip.meteor_nucleus1": "The stars falling from the sky contain energy that never existed in this world",
+  "item.momotinker.tooltip.meteor_nucleus2": "Since the player first picks up the 'Interdimensional Crystal', there is a chance for it to fall in the form of a meteor within a 300 grid area centered around the player every period of time",
+  "item.momotinker.tooltip.meteor_nucleus3": "The metal ingot poured by the melting meteor in the sky contains enormous energy",
+  "item.momotinker.tooltip.meteor_nucleus4": "'The core of the meteor can continuously release a large amount of heat energy without any signs of decay after melting, which may provide new assistance in our craftsmanship work'",
+  "item.momotinker.tooltip.meteor_nucleus5": "The gift of shooting stars is coming soon",
 
   "item.momotinker.ashen_platinum": "Ashen Platinum",
-  "momotinker.item.tooltip.ashen_platinum1": "Mysterious metal from ancient times, its glory and splendor have been buried by time",
+  "item.momotinker.tooltip.ashen_platinum1": "Mysterious metal from ancient times, its glory and splendor have been buried by time",
 
   "item.momotinker.hadal_platinum": "Abyss Platinum",
-  "momotinker.item.tooltip.hadal_platinum1": "After countless eras of being diluted by the bloodline of the deep sea, it finally reappears",
+  "item.momotinker.tooltip.hadal_platinum1": "After countless eras of being diluted by the bloodline of the deep sea, it finally reappears",
 
   "item.momotinker.stellar_core_platinum": "Stellar Core Platinum",
-  "momotinker.item.tooltip.stellar_core_platinum1": "The metal carved into creation recalls its mission from beneath the lava of the star core",
+  "item.momotinker.tooltip.stellar_core_platinum1": "The metal carved into creation recalls its mission from beneath the lava of the star core",
 
   "item.momotinker.crystallized_platinum": "Crystallized Platinum",
-  "momotinker.item.tooltip.crystallized_platinum1": "Under the influence of a powerful soul, its structure is reassembled to form a completely new composite material",
+  "item.momotinker.tooltip.crystallized_platinum1": "Under the influence of a powerful soul, its structure is reassembled to form a completely new composite material",
 
   "item.momotinker.living_platinum": "Bionics Platinum",
-  "momotinker.item.tooltip.living_platinum1": "The hidden program preset in ancient civilizations was accidentally activated, revealing a bizarre form that mimics living organisms",
-  "momotinker.item.tooltip.living_platinum2": "§cHidden Material:§oExperimental note A9-23: In order to prevent it from developing consciousness, non intelligent organisms must be fed while ensuring that they are closest to their original form§",
+  "item.momotinker.tooltip.living_platinum1": "The hidden program preset in ancient civilizations was accidentally activated, revealing a bizarre form that mimics living organisms",
+  "item.momotinker.tooltip.living_platinum2": "§cHidden Material:§oExperimental note A9-23: In order to prevent it from developing consciousness, non intelligent organisms must be fed while ensuring that they are closest to their original form§",
 
   "item.momotinker.twilight_purple_gold": "Twilight Purple Gold",
-  "momotinker.item.tooltip.twilight_purple_gold1": "Mysterious metal from ancient times, its glory and splendor have been buried by time",
+  "item.momotinker.tooltip.twilight_purple_gold1": "Mysterious metal from ancient times, its glory and splendor have been buried by time",
 
   "item.momotinker.timetrace_purple_gold": "Time Trace Purple Gold",
-  "momotinker.item.tooltip.timetrace_purple_gold1": "After multiple uses of time, it finally recalled how to control its abilities",
+  "item.momotinker.tooltip.timetrace_purple_gold1": "After multiple uses of time, it finally recalled how to control its abilities",
 
   "item.momotinker.reversetime_purple_gold": "Reverse Time Purple Gold",
-  "momotinker.item.tooltip.reversetime_purple_gold1": "Through countless journeys on the brink of collapse, it was able to awaken its ability to be different and different",
-  "momotinker.item.tooltip.reversetime_purple_gold2": "§5Hidden Material:The strongest and most unintentional wish may receive a different response§",
+  "item.momotinker.tooltip.reversetime_purple_gold1": "Through countless journeys on the brink of collapse, it was able to awaken its ability to be different and different",
+  "item.momotinker.tooltip.reversetime_purple_gold2": "§5Hidden Material:The strongest and most unintentional wish may receive a different response§",
 
   "item.momotinker.twilight_ego": "E.G.O:Twilight",
-  "momotinker.item.tooltip.twilight_ego1": "Only employees with all attributes exceeding 110 can pick up this weapon (including accessory bonuses)",
-  "momotinker.item.tooltip.twilight_ego2": "This weapon will cause physical, mental, erosion, and soul damage simultaneously.",
-  "momotinker.item.tooltip.twilight_ego3": "This weapon can launch a special attack every once in a while",
-  "momotinker.item.tooltip.twilight_ego4": "If an employee holds this E.G.O weapon, the End Bird will not appear.",
-  "momotinker.item.tooltip.twilight_ego5": "Just like how the ever-watching eyes, the scale that could measure any and all sin, and the beak that could swallow everything protected the peace of the Black Forest...",
-  "momotinker.item.tooltip.twilight_ego6": "The wielder of this armament may also bring peace as they did.",
+  "item.momotinker.tooltip.twilight_ego1": "Only employees with all attributes exceeding 110 can pick up this weapon (including accessory bonuses)",
+  "item.momotinker.tooltip.twilight_ego2": "This weapon will cause physical, mental, erosion, and soul damage simultaneously.",
+  "item.momotinker.tooltip.twilight_ego3": "This weapon can launch a special attack every once in a while",
+  "item.momotinker.tooltip.twilight_ego4": "If an employee holds this E.G.O weapon, the End Bird will not appear.",
+  "item.momotinker.tooltip.twilight_ego5": "Just like how the ever-watching eyes, the scale that could measure any and all sin, and the beak that could swallow everything protected the peace of the Black Forest...",
+  "item.momotinker.tooltip.twilight_ego6": "The wielder of this armament may also bring peace as they did.",
 
   "item.momotinker.core_of_felony": "Core Of Felony",
-  "momotinker.item.tooltip.core_of_felony1": "What is my sin, why is my sin, what is my sin for.",
-  "momotinker.item.tooltip.core_of_felony2": "I am death and life. Darkness and light.",
-  "momotinker.item.tooltip.core_of_felony3": "§7There may be an eighth sin besides the seven sins...§",
+  "item.momotinker.tooltip.core_of_felony1": "What is my sin, why is my sin, what is my sin for.",
+  "item.momotinker.tooltip.core_of_felony2": "I am death and life. Darkness and light.",
+  "item.momotinker.tooltip.core_of_felony3": "§7There may be an eighth sin besides the seven sins...§",
 
   "item.momotinker.star_seeking_pointer": "Star Seeking Pointer",
-  "momotinker.item.tooltip.star_seeking_pointer1": "Relying on the resonance and induction between shooting stars, it will guide you",
-  "momotinker.item.tooltip.star_seeking_pointer2": "This item will continuously search for the closest 'Meteor Nucleus' within 128 grids",
-  "momotinker.item.tooltip.star_seeking_pointer3": "The current target location being pursued:(",
-  "momotinker.item.tooltip.star_seeking_pointer4": "Target not found",
+  "item.momotinker.tooltip.star_seeking_pointer1": "Relying on the resonance and induction between shooting stars, it will guide you",
+  "item.momotinker.tooltip.star_seeking_pointer2": "This item will continuously search for the closest 'Meteor Nucleus' within 128 grids",
+  "item.momotinker.tooltip.star_seeking_pointer3": "The current target location being pursued:(",
+  "item.momotinker.tooltip.star_seeking_pointer4": "Target not found",
+
+  "item.momotinker.rhythm_slime": "Rhythm Slime",
+  "item.momotinker.tooltip.rhythm_slime1": "Oh, look at this little guy",
+
 
   "itemGroup.momotinker.tools": "Momotinker Tools",
 
@@ -352,6 +358,8 @@
   "material.momotinker.timetrace_purple_gold.encyclopedia": "After multiple uses of time, it finally recalled how to control its abilities",
   "material.momotinker.reversetime_purple_gold": "Reverse Time Purple Gold",
   "material.momotinker.reversetime_purple_gold.encyclopedia": "Through countless journeys on the brink of collapse, it was able to awaken its ability to be different and different",
+  "material.momotinker.rhythm_slime": "§dRhythm Slime",
+  "material.momotinker.rhythm_slime.encyclopedia": "What does Slime's dance look like",
 
   "modifier.momotinker.laomochuji": "laomochuji",
   "modifier.momotinker.laomochuji.flavor": "Test flavor",
@@ -717,6 +725,19 @@
 
   "modifier.momotinker.compassionateeverything": "[Resonance of major sin]Compassionate Everything",
   "modifier.momotinker.compassionateeverything.flavor": "We sympathize with all living beings in the world because of their hardships",
-  "modifier.momotinker.compassionateeverything.description": "When holding, both your attacks and the attacks you receive will ignore the defense. When held, it will convert the damage caused to a temporary maximum health and reset the damage to zero. If the maximum health of the target during the attack is less than the temporary health of the holder, it will be directly killed and an equal amount of temporary health will be consumed"
+  "modifier.momotinker.compassionateeverything.description": "When holding, both your attacks and the attacks you receive will ignore the defense. When held, it will convert the damage caused to a temporary maximum health and reset the damage to zero. If the maximum health of the target during the attack is less than the temporary health of the holder, it will be directly killed and an equal amount of temporary health will be consumed",
+
+  "modifier.momotinker.slimeresonance": "Slime Resonance",
+  "modifier.momotinker.slimeresonance.flavor": "The idol of the slime family?",
+  "modifier.momotinker.slimeresonance.description": "Each level of this entry will increase all features on the tool that have the [Over Slime Friend] tag by 2 levels",
+
+  "modifier.momotinker.slimerhythm": "Slime Rhythm",
+  "modifier.momotinker.slimerhythm.flavor": "Is this the real music?",
+  "modifier.momotinker.slimerhythm.description": "Rhythmic attacks will restore a certain amount of slime coating, and when held for a long time, it will trigger an additional feature on the equipment that has the [Over Slime Friend] tag (if it is a ranged attack, it will not trigger damage amplification)",
+
+  "modifier.momotinker.slimerhythma": "Slime Rhythm",
+  "modifier.momotinker.slimerhythma.flavor": "Is this the real music?",
+  "modifier.momotinker.slimerhythma.description": "Rhythmically receiving damage will restore a certain amount of mucus coating to your armor. When held for a long time, it will consume the mucus coating of your entire armor to reduce damage"
+
 
 }

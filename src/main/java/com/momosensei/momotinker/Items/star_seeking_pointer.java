@@ -76,15 +76,15 @@ public class star_seeking_pointer extends Item {
     @Override
     public void appendHoverText(ItemStack stack, @Nullable Level world, List<Component> tooltip, TooltipFlag flag) {
         super.appendHoverText(stack, world, tooltip, flag);
-        tooltip.add(Component.translatable("momotinker.item.tooltip.star_seeking_pointer1").withStyle(ChatFormatting.LIGHT_PURPLE));
-        tooltip.add(Component.translatable("momotinker.item.tooltip.star_seeking_pointer2").withStyle(ChatFormatting.LIGHT_PURPLE));
+        tooltip.add(Component.translatable("item.momotinker.tooltip.star_seeking_pointer1").withStyle(ChatFormatting.LIGHT_PURPLE));
+        tooltip.add(Component.translatable("item.momotinker.tooltip.star_seeking_pointer2").withStyle(ChatFormatting.LIGHT_PURPLE));
         if (stack.hasTag() && stack.getTag().getBoolean("hasTarget")) {
             int x = stack.getTag().getInt("targetX");
             int y = stack.getTag().getInt("targetY");
             int z = stack.getTag().getInt("targetZ");
-            tooltip.add(Component.translatable("momotinker.item.tooltip.star_seeking_pointer3").append(x+",").append(y+",").append(z+")").withStyle(ChatFormatting.LIGHT_PURPLE));
+            tooltip.add(Component.translatable("item.momotinker.tooltip.star_seeking_pointer3").append(x+",").append(y+",").append(z+")").withStyle(ChatFormatting.LIGHT_PURPLE));
         } else {
-            tooltip.add(Component.translatable("momotinker.item.tooltip.star_seeking_pointer4").withStyle(ChatFormatting.LIGHT_PURPLE));
+            tooltip.add(Component.translatable("item.momotinker.tooltip.star_seeking_pointer4").withStyle(ChatFormatting.LIGHT_PURPLE));
 
         }
     }

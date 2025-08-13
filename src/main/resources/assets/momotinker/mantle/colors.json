@@ -29,7 +29,8 @@
     "living_platinum": "#873D3D",
     "twilight_purple_gold": "#FF42D6",
     "timetrace_purple_gold": "#5CF000",
-    "reversetime_purple_gold": "#D93DEB"
+    "reversetime_purple_gold": "#D93DEB",
+    "rhythm_slime": "#FB9BE1"
   },
   "modifier.momotinker": {
     "laomochuji": "#596d99",
@@ -96,6 +97,9 @@
     "timeechoes": "#4AFFA4",
     "polarizedspacetime": "#E742FF",
     "resonance": "#B5B5B5",
+    "slimeresonance": "#FB9BE1",
+    "slimerhythm": "#FA9CCA",
+    "slimerhythma": "#FA9CCA",
 
     "eternalanger": "#535353",
     "slackatmosphere": "#FF9C00",

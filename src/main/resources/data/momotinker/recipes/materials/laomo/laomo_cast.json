@@ -1,0 +1,9 @@
+{
+  "type": "tconstruct:casting_table",
+  "fluid": {
+    "name": "momotinker:molten_laomo",
+    "amount": 90
+  },
+  "result": "momotinker:laomo",
+  "cooling_time": 200
+}

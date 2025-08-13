@@ -26,17 +26,17 @@ public class core_of_felony extends Item {
     public void appendHoverText(@NotNull ItemStack stack, @Nullable Level level, @NotNull List<Component> list, @NotNull TooltipFlag flag) {
         if (Screen.hasShiftDown()) {
             if (StageMeteor.getStageFloat()==1) {
-                list.add(Component.translatable("momotinker.item.tooltip.core_of_felony3").withStyle(ChatFormatting.GRAY));
+                list.add(Component.translatable("item.momotinker.tooltip.core_of_felony3").withStyle(ChatFormatting.GRAY));
             }else {
-                list.add(Component.translatable("momotinker.item.tooltip.stage_meteor").withStyle(ChatFormatting.GOLD));
+                list.add(Component.translatable("item.momotinker.tooltip.stage_meteor").withStyle(ChatFormatting.GOLD));
             }
         }else {
-//            list.add(Component.literal(RainbowText.makeColour2(Component.translatable("momotinker.item.tooltip.core_of_felony1").withStyle(ChatFormatting.ITALIC).getString())));
-//            list.add(Component.literal(RainbowText.makeColour2(Component.translatable("momotinker.item.tooltip.core_of_felony2").withStyle(ChatFormatting.ITALIC).getString())));
-//            list.add(Component.literal(RainbowText.makeColour2(Component.translatable("momotinker.item.tooltip.special_acquisition").getString())));
-            list.add((Component.translatable("momotinker.item.tooltip.core_of_felony1")));
-            list.add((Component.translatable("momotinker.item.tooltip.core_of_felony2")));
-            list.add((Component.translatable("momotinker.item.tooltip.special_acquisition")));
+//            list.add(Component.literal(RainbowText.makeColour2(Component.translatable("item.momotinker.tooltip.core_of_felony1").withStyle(ChatFormatting.ITALIC).getString())));
+//            list.add(Component.literal(RainbowText.makeColour2(Component.translatable("item.momotinker.tooltip.core_of_felony2").withStyle(ChatFormatting.ITALIC).getString())));
+//            list.add(Component.literal(RainbowText.makeColour2(Component.translatable("item.momotinker.tooltip.special_acquisition").getString())));
+            list.add((Component.translatable("item.momotinker.tooltip.core_of_felony1")));
+            list.add((Component.translatable("item.momotinker.tooltip.core_of_felony2")));
+            list.add((Component.translatable("item.momotinker.tooltip.special_acquisition")));
         }
     }
     public void initializeClient(Consumer<IClientItemExtensions> consumer) {

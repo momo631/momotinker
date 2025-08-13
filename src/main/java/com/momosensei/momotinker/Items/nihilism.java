@@ -23,10 +23,10 @@ public class nihilism extends Item {
     @Override
     public void appendHoverText(@NotNull ItemStack stack, @Nullable Level level, List<Component> list, @NotNull TooltipFlag flag) {
         if (Screen.hasShiftDown()) {
-            list.add(Component.translatable("momotinker.item.tooltip.nihilism2"));
+            list.add(Component.translatable("item.momotinker.tooltip.nihilism2"));
         }else{
-            list.add(Component.translatable("momotinker.item.tooltip.nihilism1"));
-            list.add(Component.translatable("momotinker.item.tooltip.special_acquisition"));
+            list.add(Component.translatable("item.momotinker.tooltip.nihilism1"));
+            list.add(Component.translatable("item.momotinker.tooltip.special_acquisition"));
         }
         super.appendHoverText(stack, level, list, flag);
     }

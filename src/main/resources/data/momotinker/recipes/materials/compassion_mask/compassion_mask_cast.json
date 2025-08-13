@@ -1,0 +1,9 @@
+{
+  "type": "tconstruct:casting_table",
+  "fluid": {
+    "name": "momotinker:molten_compassion_mask",
+    "amount": 90
+  },
+  "result": "momotinker:compassion_mask",
+  "cooling_time": 66
+}

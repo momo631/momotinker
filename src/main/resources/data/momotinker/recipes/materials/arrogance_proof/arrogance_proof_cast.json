@@ -1,0 +1,9 @@
+{
+  "type": "tconstruct:casting_table",
+  "fluid": {
+    "name": "momotinker:molten_arrogance_proof",
+    "amount": 90
+  },
+  "result": "momotinker:arrogance_proof",
+  "cooling_time": 66
+}

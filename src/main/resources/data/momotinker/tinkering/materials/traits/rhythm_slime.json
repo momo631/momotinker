@@ -1,0 +1,46 @@
+{
+  "perStat": {
+    "tconstruct:melee_harvest": [
+      {
+        "name": "momotinker:slimeresonance",
+        "level": 1
+      },
+      {
+        "name": "momotinker:slimerhythm",
+        "level": 1
+      },
+      {
+        "name": "tconstruct:overslime",
+        "level": 2
+      }
+    ],
+    "tconstruct:armor": [
+      {
+        "name": "momotinker:slimeresonance",
+        "level": 1
+      },
+      {
+        "name": "momotinker:slimerhythma",
+        "level": 1
+      },
+      {
+        "name": "tconstruct:overslime",
+        "level": 2
+      }
+    ],
+    "tconstruct:ranged": [
+      {
+        "name": "momotinker:slimeresonance",
+        "level": 1
+      },
+      {
+        "name": "momotinker:slimerhythm",
+        "level": 1
+      },
+      {
+        "name": "tconstruct:overslime",
+        "level": 2
+      }
+    ]
+  }
+}

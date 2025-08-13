@@ -24,11 +24,11 @@ public class interdimensional_crystal extends Item {
         boolean config = MomotinkerConfig.special_acquisition.get();
         boolean configa = MomotinkerConfig.interdimensional_crystal.get();
         if (Screen.hasShiftDown()&&config&&configa) {
-            list.add(Component.translatable("momotinker.item.tooltip.interdimensional_crystal2").withStyle(ChatFormatting.LIGHT_PURPLE));
+            list.add(Component.translatable("item.momotinker.tooltip.interdimensional_crystal2").withStyle(ChatFormatting.LIGHT_PURPLE));
         }else {
-            list.add(net.minecraft.network.chat.Component.translatable("momotinker.item.tooltip.interdimensional_crystal1").withStyle(ChatFormatting.LIGHT_PURPLE));
+            list.add(net.minecraft.network.chat.Component.translatable("item.momotinker.tooltip.interdimensional_crystal1").withStyle(ChatFormatting.LIGHT_PURPLE));
             if (config && configa) {
-                list.add(net.minecraft.network.chat.Component.translatable("momotinker.item.tooltip.special_acquisition").withStyle(ChatFormatting.LIGHT_PURPLE));
+                list.add(net.minecraft.network.chat.Component.translatable("item.momotinker.tooltip.special_acquisition").withStyle(ChatFormatting.LIGHT_PURPLE));
             }
         }
         super.appendHoverText(stack, level, list, flag);

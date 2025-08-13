@@ -26,14 +26,14 @@ public class arriving_at_the_other_shore extends Item {
         boolean configb = MomotinkerConfig.stage_meteor.get();
         if (Screen.hasShiftDown()&&config&&configa) {
             if (StageMeteor.getStageFloat()==1||!configb) {
-                list.add(Component.translatable("momotinker.item.tooltip.arriving_at_the_other_shore2").withStyle(ChatFormatting.DARK_RED));
+                list.add(Component.translatable("item.momotinker.tooltip.arriving_at_the_other_shore2").withStyle(ChatFormatting.DARK_RED));
             }else {
-                list.add(Component.translatable("momotinker.item.tooltip.stage_meteor").withStyle(ChatFormatting.GOLD));
+                list.add(Component.translatable("item.momotinker.tooltip.stage_meteor").withStyle(ChatFormatting.GOLD));
             }
         }else {
-            list.add(net.minecraft.network.chat.Component.translatable("momotinker.item.tooltip.arriving_at_the_other_shore1").withStyle(ChatFormatting.DARK_GRAY));
+            list.add(net.minecraft.network.chat.Component.translatable("item.momotinker.tooltip.arriving_at_the_other_shore1").withStyle(ChatFormatting.DARK_GRAY));
             if (config&&configa) {
-                list.add(net.minecraft.network.chat.Component.translatable("momotinker.item.tooltip.special_acquisition").withStyle(ChatFormatting.DARK_RED));
+                list.add(net.minecraft.network.chat.Component.translatable("item.momotinker.tooltip.special_acquisition").withStyle(ChatFormatting.DARK_RED));
             }
         }
     }

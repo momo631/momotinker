@@ -1,0 +1,9 @@
+{
+  "type": "tconstruct:casting_table",
+  "fluid": {
+    "name": "momotinker:molten_gluttony_core",
+    "amount": 90
+  },
+  "result": "momotinker:gluttony_core",
+  "cooling_time": 66
+}

@@ -25,9 +25,9 @@ public class meteor_nucleus extends Item {
     public void appendHoverText(@NotNull ItemStack stack, @Nullable Level level, List<Component> list, @NotNull TooltipFlag flag) {
         boolean config = MomotinkerConfig.special_acquisition.get();
         boolean configa = MomotinkerConfig.meteor_nucleus.get();
-        list.add(Component.translatable("momotinker.item.tooltip.meteor_nucleus3").withStyle(ChatFormatting.GOLD));
+        list.add(Component.translatable("item.momotinker.tooltip.meteor_nucleus3").withStyle(ChatFormatting.GOLD));
         if (config&&configa) {
-            list.add(Component.translatable("momotinker.item.tooltip.meteor_nucleus4").withStyle(ChatFormatting.GOLD));
+            list.add(Component.translatable("item.momotinker.tooltip.meteor_nucleus4").withStyle(ChatFormatting.GOLD));
         }
     }
 }
