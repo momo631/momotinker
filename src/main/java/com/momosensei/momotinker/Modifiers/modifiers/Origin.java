@@ -2,8 +2,9 @@ package com.momosensei.momotinker.Modifiers.modifiers;
 
 import com.momosensei.momotinker.Modifiers.momomodifier;
 import com.momosensei.momotinker.register.MomotinkerModifiers;
-import net.minecraft.server.level.ServerPlayer;
+import net.minecraft.world.InteractionHand;
 import net.minecraft.world.entity.Entity;
+import net.minecraft.world.entity.EquipmentSlot;
 import net.minecraft.world.entity.LivingEntity;
 import net.minecraft.world.entity.ai.attributes.Attributes;
 import net.minecraft.world.entity.player.Player;
@@ -12,9 +13,11 @@ import net.minecraft.world.level.Level;
 import net.minecraftforge.event.entity.living.LivingAttackEvent;
 import slimeknights.tconstruct.library.modifiers.ModifierEntry;
 import slimeknights.tconstruct.library.tools.nbt.IToolStackView;
+import slimeknights.tconstruct.library.tools.nbt.ToolStack;
 
 import java.util.List;
 
+import static com.momosensei.momotinker.util.AttackUtil.attackdamage;
 import static com.momosensei.momotinker.util.PenetratingDamage.reflectionPenetratingDamage;
 
 public class Origin extends momomodifier {
@@ -25,14 +28,19 @@ public class Origin extends momomodifier {
     public void OnLivingAttack(LivingAttackEvent event) {
         LivingEntity a = event.getEntity();
         Entity b = event.getSource().getEntity();
-        if (b instanceof ServerPlayer player && a != null) {
+        if (b instanceof Player player && a != null) {
             int c = getMainhandModifierlevel(player, MomotinkerModifiers.origin.getId());
             if (c > 0) {
                 event.getSource().bypassArmor().bypassMagic().bypassInvul().bypassEnchantments();
                 if (a.getHealth() > a.getMaxHealth()) {
                     a.setHealth(a.getMaxHealth());
                 }
-                a.getAttribute(Attributes.MAX_HEALTH).setBaseValue(a.getMaxHealth() * (1f - 0.1f * c));
+                a.getAttribute(Attributes.MAX_HEALTH).setBaseValue(a.getMaxHealth()*(1f-0.2f*c));
+                reflectionPenetratingDamage(a,player, attackdamage(ToolStack.from(player.getMainHandItem()), player, InteractionHand.MAIN_HAND, a, ()->1, true, EquipmentSlot.MAINHAND, 1f));
+                if (a.getHealth()<0){
+                    a.onRemovedFromWorld();
+                    a.setPos(Double.NaN, Double.NaN, Double.NaN);
+                }
             }
         }
     }
