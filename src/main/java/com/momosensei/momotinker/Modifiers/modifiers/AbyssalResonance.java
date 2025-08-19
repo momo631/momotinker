@@ -14,7 +14,6 @@ import net.minecraft.world.entity.player.Player;
 import net.minecraft.world.item.ItemStack;
 import net.minecraft.world.item.TooltipFlag;
 import net.minecraft.world.level.Level;
-import net.minecraftforge.common.MinecraftForge;
 import net.minecraftforge.event.entity.living.LivingHurtEvent;
 import slimeknights.mantle.client.TooltipKey;
 import slimeknights.tconstruct.library.modifiers.ModifierEntry;
@@ -28,7 +27,6 @@ import java.util.function.BiConsumer;
 
 public class AbyssalResonance extends momomodifier {
     public AbyssalResonance() {
-        MinecraftForge.EVENT_BUS.addListener(this::livinghurtevent);
     }
 
     @Override
@@ -55,7 +53,8 @@ public class AbyssalResonance extends momomodifier {
         }
     }
 
-    private void livinghurtevent(LivingHurtEvent event) {
+    @Override
+    public void OnLivingHurt(LivingHurtEvent event) {
         Entity a = event.getEntity();
         if (a instanceof Player player) {
             int c = getAllModifierlevel(player, MomotinkerModifiers.abyssalresonance.getId());

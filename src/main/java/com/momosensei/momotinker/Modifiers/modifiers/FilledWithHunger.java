@@ -30,7 +30,6 @@ import java.util.List;
 public class FilledWithHunger extends momomodifier {
     public FilledWithHunger() {
         MinecraftForge.EVENT_BUS.addListener(this::onEntityDeath);
-        MinecraftForge.EVENT_BUS.addListener(this::livinghurtevent);
     }
 
     @Override
@@ -87,7 +86,8 @@ public class FilledWithHunger extends momomodifier {
         }
     }
 
-    private void livinghurtevent(LivingHurtEvent event) {
+    @Override
+    public void OnLivingHurt(LivingHurtEvent event) {
         Entity a = event.getEntity();
         Entity b = event.getSource().getEntity();
         if (a instanceof Player player&&getAllModifierlevel(player,MomotinkerModifiers.filledwithhunger.getId())>0){

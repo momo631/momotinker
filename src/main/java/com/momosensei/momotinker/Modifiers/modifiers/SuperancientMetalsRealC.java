@@ -55,9 +55,7 @@ import static com.momosensei.momotinker.tool.pocket_watch.transmit;
 public class SuperancientMetalsRealC extends momomodifier {
     public SuperancientMetalsRealC() {
         MinecraftForge.EVENT_BUS.addListener(this::onEntityDeath);
-        MinecraftForge.EVENT_BUS.addListener(this::livingattackevent);
-        MinecraftForge.EVENT_BUS.addListener(this::livinghurtevent);
-    }
+        }
     public static final ResourceLocation transmitpoints = Momotinker.getResource("transmitpoints");
     public static final ResourceLocation overheat = Momotinker.getResource("overheat");
     public static final ResourceLocation overheatingcooling = Momotinker.getResource("overheatingcooling");
@@ -80,7 +78,7 @@ public class SuperancientMetalsRealC extends momomodifier {
     @Override
     public void addToolStats(IToolContext context, ModifierEntry modifier, ModifierStatsBuilder builder) {
         if (modifier.getLevel() > 0) {
-            ToolStats.DURABILITY.multiply(builder, 2.5);
+            ToolStats.DURABILITY.multiply(builder, 4.4);
             ToolStats.ATTACK_SPEED.multiply(builder, 2);
             ToolStats.ATTACK_DAMAGE.multiply(builder, 2);
             ToolStats.ACCURACY.multiply(builder, 2);
@@ -168,7 +166,8 @@ public class SuperancientMetalsRealC extends momomodifier {
         }
     }
 
-    private void livingattackevent(LivingAttackEvent event) {
+     @Override
+    public void OnLivingAttack(LivingAttackEvent event) {
         //if (event.getEntity().level.isClientSide) return;
         int hadal_limit = MomotinkerConfig.hadal_limit.get();
         if (event.getEntity() instanceof Player player){
@@ -184,7 +183,8 @@ public class SuperancientMetalsRealC extends momomodifier {
             }
         }
     }
-    private void livinghurtevent(LivingHurtEvent event) {
+    @Override
+    public void OnLivingHurt(LivingHurtEvent event) {
         int hadal_limit = MomotinkerConfig.hadal_limit.get();
         int crystallized_limit = MomotinkerConfig.crystallized_limit.get();
         int liverization_limit = MomotinkerConfig.liverization_limit.get();

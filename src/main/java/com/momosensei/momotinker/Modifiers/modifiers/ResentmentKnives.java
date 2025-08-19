@@ -21,9 +21,7 @@ import java.util.List;
 
 public class ResentmentKnives extends momomodifier {
     public ResentmentKnives() {
-        MinecraftForge.EVENT_BUS.addListener(this::livingattackevent);
         MinecraftForge.EVENT_BUS.addListener(this::onlivingtickevent);
-        MinecraftForge.EVENT_BUS.addListener(this::livinghurtevent);
     }
 
     @Override
@@ -90,7 +88,8 @@ public class ResentmentKnives extends momomodifier {
             target.getAttribute(Attributes.ATTACK_DAMAGE).setBaseValue(1);
         }
     }
-    private void livingattackevent(LivingAttackEvent event) {
+     @Override
+    public void OnLivingAttack(LivingAttackEvent event) {
         LivingEntity living = event.getEntity();
         Entity living1 = event.getSource().getEntity();
         String e = "mutual_jealousy_damage";
@@ -117,7 +116,8 @@ public class ResentmentKnives extends momomodifier {
             }
         }
     }
-    private void livinghurtevent(LivingHurtEvent event) {
+    @Override
+    public void OnLivingHurt(LivingHurtEvent event) {
         LivingEntity living = event.getEntity();
         Entity living1 = event.getSource().getEntity();
         if (!(living1 instanceof LivingEntity attacker))return;

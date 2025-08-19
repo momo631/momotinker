@@ -12,7 +12,6 @@ import net.minecraft.world.entity.LivingEntity;
 import net.minecraft.world.entity.player.Player;
 import net.minecraft.world.item.ItemStack;
 import net.minecraft.world.level.Level;
-import net.minecraftforge.common.MinecraftForge;
 import net.minecraftforge.event.entity.living.LivingHurtEvent;
 import slimeknights.tconstruct.library.modifiers.ModifierEntry;
 import slimeknights.tconstruct.library.tools.nbt.IToolStackView;
@@ -24,7 +23,7 @@ import static com.momosensei.momotinker.Modifiers.modifiers.ProjectionOfSufferin
 
 public class UltimateDarkness extends momomodifier {
     public UltimateDarkness() {
-        MinecraftForge.EVENT_BUS.addListener(this::livinghurtevent);
+
     }
 
     @Override
@@ -32,7 +31,8 @@ public class UltimateDarkness extends momomodifier {
         return true;
     }
 
-    private void livinghurtevent(LivingHurtEvent event) {
+    @Override
+    public void OnLivingHurt(LivingHurtEvent event) {
         Entity a = event.getEntity();
         Entity b = event.getSource().getEntity();
         if (b instanceof Player player && a != null && player.getMainHandItem().is(MomotinkerItem.eclipse_container.get())) {

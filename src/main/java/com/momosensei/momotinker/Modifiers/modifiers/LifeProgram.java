@@ -12,7 +12,6 @@ import net.minecraftforge.event.entity.living.LivingHurtEvent;
 public class LifeProgram extends momomodifier {
     public LifeProgram() {
         MinecraftForge.EVENT_BUS.addListener(this::livinghealevent);
-        MinecraftForge.EVENT_BUS.addListener(this::livinghurtevent);
     }
 
     private void livinghealevent(LivingHealEvent event) {
@@ -30,7 +29,8 @@ public class LifeProgram extends momomodifier {
         }
     }
 
-    private void livinghurtevent(LivingHurtEvent event) {
+    @Override
+    public void OnLivingHurt(LivingHurtEvent event) {
         LivingEntity a = event.getEntity();
         if (a instanceof Player player) {
             int d = getAllModifierlevel(player, MomotinkerModifiers.lifeprogram.getId());

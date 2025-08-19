@@ -308,8 +308,9 @@ public class AttackUtil {
                 Vec3 vec3 = new Vec3(x, y, z);
                 List<LivingEntity> list = world.getEntitiesOfClass(LivingEntity.class, (new AABB(vec3, vec3)).inflate(200F), (e) -> true).stream().sorted(Comparator.comparingDouble((_entcnd) -> _entcnd.distanceToSqr(vec3))).toList();
                 for (LivingEntity entity : list) {
-                    PenetratingDamage.reflectionPenetratingDamage(entity, player, entity.getMaxHealth());
+                    PenetratingDamage.reflectionPenetratingDamage(entity, player,Float.MAX_VALUE);
                     entity.onRemovedFromWorld();
+                    entity.remove(Entity.RemovalReason.KILLED);
                     entity.setPos(Double.NaN, Double.NaN, Double.NaN);
                 }
             }

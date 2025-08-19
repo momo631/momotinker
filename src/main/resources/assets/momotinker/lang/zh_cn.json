@@ -221,8 +221,6 @@
   "item.momotinker.core_of_felony": "大罪核心",
   "item.momotinker.tooltip.core_of_felony1": "吾罪有何，吾罪因何，吾罪为何。",
   "item.momotinker.tooltip.core_of_felony2": "我乃死，我乃生。我为暗，我亦为光。",
-  "item.momotinker.tooltip.core_of_felony3": "§7七罪以外或许存在着第八罪...§",
-
 
   "item.momotinker.star_seeking_pointer": "寻星共鸣器",
   "item.momotinker.tooltip.star_seeking_pointer1": "依靠流星们之间的共鸣与感应，它将指引你",
@@ -232,6 +230,10 @@
 
   "item.momotinker.rhythm_slime": "§d音律史莱姆§",
   "item.momotinker.tooltip.rhythm_slime1": "哦，瞧瞧这个小家伙",
+
+  "item.momotinker.dragon_jade": "§5末影龙的大宝玉§",
+  "item.momotinker.tooltip.dragon_jade1": "在及其长寿的末影龙体内以极低概率生成的巨大宝玉",
+  "item.momotinker.tooltip.dragon_jade2": "末影龙存活超过24000游戏刻后，其死亡时会掉落",
 
 
   "itemGroup.momotinker.tools": "墨工坊模组-工具",
@@ -366,6 +368,8 @@
   "material.momotinker.reversetime_purple_gold.encyclopedia": "在无数次崩溃边缘的游历，它得以觉醒出不同与往的能力",
   "material.momotinker.rhythm_slime": "音律史莱姆",
   "material.momotinker.rhythm_slime.encyclopedia": "史莱姆的舞蹈是什么样子的呢",
+  "material.momotinker.dragon_jade": "末影龙玉",
+  "material.momotinker.dragon_jade.encyclopedia": "在及其长寿的末影龙体内以极低概率生成的巨大宝玉",
 
   "modifier.momotinker.laomochuji": "牢墨出击",
   "modifier.momotinker.laomochuji.flavor": "词条标题",
@@ -555,11 +559,11 @@
 
   "modifier.momotinker.superancientmetalsc": "超古代金属-伽马",
   "modifier.momotinker.superancientmetalsc.flavor": "来自古代的奇特金属，表面看起来平平无奇",
-  "modifier.momotinker.superancientmetalsc.description": "大部分属性增加50%，耐久格外增加25%，可能会因为某些情况产生进化",
+  "modifier.momotinker.superancientmetalsc.description": "大部分属性增加50%，耐久格外增加120%，可能会因为某些情况产生进化",
 
   "modifier.momotinker.superancientmetalsrealc": "超古代金属-伽马-解放",
   "modifier.momotinker.superancientmetalsrealc.flavor": "来自古代的奇特金属，因古代神兵的苏醒而展现独特姿态",
-  "modifier.momotinker.superancientmetalsrealc.description": "大部分属性增加100%，耐久格外增加50%，会根据古代神兵的觉醒结果提供独特效果",
+  "modifier.momotinker.superancientmetalsrealc.description": "大部分属性增加100%，耐久格外增加240%，会根据古代神兵的觉醒结果提供独特效果",
   "modifier.momotinker.tooltip.transmit1": "古代神兵认证:遗落怀表-时痕",
   "modifier.momotinker.tooltip.transmit2": "存活时会逐渐增加拥有者的大部分属性（最大20%），死亡后重置并重新开始增加",
   "modifier.momotinker.tooltip.backtracking1": "古代神兵认证:遗落怀表-溯时",
@@ -743,6 +747,26 @@
 
   "modifier.momotinker.slimerhythma": "律动",
   "modifier.momotinker.slimerhythma.flavor": "这才是真正的，音乐?",
-  "modifier.momotinker.slimerhythma.description": "装备该护甲时有节奏的受到伤害都会恢复一定的粘液镀层(随等级提升)，当保持时间够长时被攻击将消耗全身护甲的粘液镀层进行减伤"
+  "modifier.momotinker.slimerhythma.description": "装备该护甲时有节奏的受到伤害都会恢复一定的粘液镀层(随等级提升)，当保持时间够长时被攻击将消耗全身护甲的粘液镀层进行减伤",
+
+  "modifier.momotinker.rare_crystals": "珍稀宝晶",
+  "modifier.momotinker.rare_crystals.flavor": "哪有素材这样直接打造的",
+  "modifier.momotinker.rare_crystals.description": "装备会随着其拥有该材料的部件数量占比降低属性。装备在拥有该词条时强化[素材再锻]，其获得的收益将不受等级限制且各收益翻倍",
+
+  "modifier.momotinker.dragon_source": "龙之本源",
+  "modifier.momotinker.dragon_source.flavor": "据说龙的各个能力，来源于龙玉的能量释放",
+  "modifier.momotinker.dragon_source.description": "免疫受到的无来源伤害，增加部分属性并且使装备者可以飞行",
+
+  "modifier.momotinker.ancient_bloodline": "远古血脉",
+  "modifier.momotinker.ancient_bloodline.flavor": "龙的起源可以追溯至很远",
+  "modifier.momotinker.ancient_bloodline.description": "会根据总游戏刻时长增加造成的伤害和减少受到的伤害(最高减伤95%)(同名只生效一次)",
+  "modifier.momotinker.tooltip.ancient_bloodline1": "[远古血脉]已提供的增伤为:",
+  "modifier.momotinker.tooltip.ancient_bloodline2": "提供的减伤为:",
+
+  "modifier.momotinker.material_reforging": "素材再锻",
+  "modifier.momotinker.material_reforging.flavor": "合理的打造才能发挥其最大的效果",
+  "modifier.momotinker.material_reforging.description": "该强化将提升大部分属性，其数值会在一定范围内随机选取，强化次数越多该范围的最小值和最大值都将越大，最高上限5级(再次打上该强化只会重新随机属性不会增加最小和最大值)",
+  "modifier.momotinker.tooltip.material_reforging1": "[素材再锻]当前已格外提供属性:",
+  "modifier.momotinker.tooltip.material_reforging2": "当前可随机到的范围为:["
 
 }

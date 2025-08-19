@@ -20,7 +20,6 @@ import net.minecraft.world.entity.projectile.Projectile;
 import net.minecraft.world.item.ItemStack;
 import net.minecraft.world.level.Level;
 import net.minecraft.world.phys.EntityHitResult;
-import net.minecraftforge.common.MinecraftForge;
 import net.minecraftforge.event.entity.living.LivingHurtEvent;
 import org.jetbrains.annotations.NotNull;
 import slimeknights.tconstruct.library.modifiers.ModifierEntry;
@@ -36,7 +35,6 @@ import java.util.function.BiConsumer;
 
 public class ForbiddenFruit extends momomodifier {
     public ForbiddenFruit() {
-        MinecraftForge.EVENT_BUS.addListener(this::livinghurtevent);
     }
 
     public static final ResourceLocation forbiddenfruitpoints = Momotinker.getResource("forbiddenfruitpoints");
@@ -88,7 +86,8 @@ public class ForbiddenFruit extends momomodifier {
             biConsumer.accept(Attributes.ARMOR, new AttributeModifier(UUID.fromString("B9F145FA-2B39-AF5A-2111-1C0781E0B18C"), Attributes.ARMOR.getDescriptionId(), 0.1*a.getFloat(forbiddenfruitpoints), AttributeModifier.Operation.ADDITION));
         }
     }
-    private void livinghurtevent(LivingHurtEvent event) {
+    @Override
+    public void OnLivingHurt(LivingHurtEvent event) {
         Entity a = event.getEntity();
         Entity b = event.getSource().getEntity();
         if (a instanceof Player player&&b instanceof LivingEntity living && getMainhandModifierlevel(player, MomotinkerModifiers.forbiddenfruit.getId()) > 0) {

@@ -31,7 +31,6 @@ import static com.momosensei.momotinker.Momotinker.getResourceLocation;
 
 public class LongTermInvestments extends momomodifier {
     public LongTermInvestments() {
-        MinecraftForge.EVENT_BUS.addListener(this::livinghurtevent);
         MinecraftForge.EVENT_BUS.addListener(this::onEntityDeath);
         MinecraftForge.EVENT_BUS.addListener(this::onItemEvent);
     }
@@ -100,7 +99,8 @@ public class LongTermInvestments extends momomodifier {
         }
         return false;
     }
-    private void livinghurtevent(LivingHurtEvent event) {
+    @Override
+    public void OnLivingHurt(LivingHurtEvent event) {
         Entity a = event.getEntity();
         //int increase = MomotinkerConfig.shortterminvestments_increase_ratio.get();
         //int reduce = MomotinkerConfig.shortterminvestments_reduce_ratio.get();

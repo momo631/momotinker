@@ -35,7 +35,7 @@ public class SuperancientMetalsC extends momomodifier {
     @Override
     public void addToolStats(IToolContext context, ModifierEntry modifier, ModifierStatsBuilder builder) {
         if (modifier.getLevel() > 0) {
-            ToolStats.DURABILITY.multiply(builder, 1.75);
+            ToolStats.DURABILITY.multiply(builder, 2.7);
             ToolStats.ATTACK_SPEED.multiply(builder, 1.5);
             ToolStats.ATTACK_DAMAGE.multiply(builder, 1.5);
             ToolStats.ACCURACY.multiply(builder, 1.5);

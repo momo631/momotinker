@@ -11,7 +11,6 @@ import net.minecraft.world.entity.LivingEntity;
 import net.minecraft.world.entity.player.Player;
 import net.minecraft.world.item.ItemStack;
 import net.minecraft.world.level.Level;
-import net.minecraftforge.common.MinecraftForge;
 import net.minecraftforge.event.entity.living.LivingAttackEvent;
 import slimeknights.tconstruct.library.modifiers.ModifierEntry;
 import slimeknights.tconstruct.library.tools.nbt.IToolStackView;
@@ -23,7 +22,7 @@ import java.util.List;
 
 public class Unstained extends momomodifier {
     public Unstained() {
-        MinecraftForge.EVENT_BUS.addListener(this::livingattackevent);
+        
     }
     private static final List<MobEffect> BENEFICIAL_EFFECTS = new ArrayList<>(List.of(
             MobEffects.LUCK, MobEffects.DIG_SPEED, MobEffects.FIRE_RESISTANCE, MobEffects.MOVEMENT_SPEED,
@@ -53,7 +52,8 @@ public class Unstained extends momomodifier {
         }
     }
 
-    private void livingattackevent(LivingAttackEvent event) {
+     @Override
+    public void OnLivingAttack(LivingAttackEvent event) {
         LivingEntity living = event.getEntity();
         int a =  getAllModifierlevel(living,MomotinkerModifiers.unstained.getId());
         int b = RANDOM.nextInt(10);

@@ -24,6 +24,7 @@ import net.minecraft.world.entity.animal.IronGolem;
 import net.minecraft.world.entity.animal.Sheep;
 import net.minecraft.world.entity.animal.Wolf;
 import net.minecraft.world.entity.animal.frog.Frog;
+import net.minecraft.world.entity.boss.enderdragon.EnderDragon;
 import net.minecraft.world.entity.boss.wither.WitherBoss;
 import net.minecraft.world.entity.item.FallingBlockEntity;
 import net.minecraft.world.entity.item.ItemEntity;
@@ -72,7 +73,7 @@ public class LivingEvents {
         MinecraftForge.EVENT_BUS.addListener(this::onSleepingTimeCheckEvent);
         MinecraftForge.EVENT_BUS.addListener(this::addCustomTrades);
         MinecraftForge.EVENT_BUS.addListener(this::onItemEvent);
-        MinecraftForge.EVENT_BUS.addListener(this::onAnvilFall);
+        MinecraftForge.EVENT_BUS.addListener(this::onEntityJoinLevel);
         MinecraftForge.EVENT_BUS.addListener(this::playertick);
         MinecraftForge.EVENT_BUS.addListener(this::playerpickup);
     }
@@ -181,6 +182,16 @@ public class LivingEvents {
                 }
             }
         }
+        boolean configg = MomotinkerConfig.dragon_jade.get();
+        if (configg&&(StageMeteor.getStageFloat()==1||!configstage)) {
+            if (event.getEntity() instanceof EnderDragon enderDragon&&isDragonAliveLongEnough(enderDragon)&&enderDragon.level instanceof ServerLevel level) {
+                ItemEntity itemEntity = new ItemEntity(level, enderDragon.getX(), enderDragon.getY(), enderDragon.getZ(), MomotinkerItem.dragon_jade.get().getDefaultInstance());
+                itemEntity.setGlowingTag(true);
+                itemEntity.setNoGravity(true);
+                itemEntity.setPickUpDelay(20);
+                level.addFreshEntity(itemEntity);
+            }
+        }
     }
 
     private void onBabyEntitySpawnEvent(BabyEntitySpawnEvent event) {
@@ -276,7 +287,7 @@ public class LivingEvents {
         }
     }
 
-    public void onAnvilFall(EntityJoinLevelEvent event) {
+    public void onEntityJoinLevel(EntityJoinLevelEvent event) {
         if (event.getEntity() instanceof FallingBlockEntity fallingBlock) {
             if (fallingBlock.getBlockState().getBlock() == Blocks.ANVIL
                     ||fallingBlock.getBlockState().getBlock() ==Blocks.CHIPPED_ANVIL
@@ -285,8 +296,20 @@ public class LivingEvents {
                 fallingBlock.addTag("falling_anvil");
             }
         }
+        if (event.getEntity() instanceof EnderDragon enderDragon) {
+            long spawnTime = event.getLevel().getGameTime();
+            String s = "if_dragon_jade";
+            enderDragon.getPersistentData().putLong(s,spawnTime);
+        }
     }
-
+    public boolean isDragonAliveLongEnough(EnderDragon dragon) {
+        CompoundTag nbt = dragon.getPersistentData();
+        String s = "if_dragon_jade";
+        if (!nbt.contains(s)) return false;
+        long spawnTime = nbt.getLong(s);
+        long currentTime = dragon.level.getGameTime();
+        return (currentTime - spawnTime) >= 24000;
+    }
     private void convertItem(ItemEntity itemEntity, Item targetItem) {
         Level level = itemEntity.level;
         itemEntity.discard();

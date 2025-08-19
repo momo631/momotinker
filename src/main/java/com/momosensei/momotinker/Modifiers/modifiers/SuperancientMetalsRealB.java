@@ -51,7 +51,7 @@ import static com.momosensei.momotinker.tool.pocket_watch.*;
 
 public class SuperancientMetalsRealB extends momomodifier {
     public SuperancientMetalsRealB() {
-        MinecraftForge.EVENT_BUS.addListener(this::livingattackevent);
+        
         MinecraftForge.EVENT_BUS.addListener(EventPriority.LOWEST,this::onEntityDeath);
     }
     public static final ResourceLocation degeneratedeath = Momotinker.getResource("degeneratedeath");
@@ -215,7 +215,8 @@ public class SuperancientMetalsRealB extends momomodifier {
         }
     }
 
-    private void livingattackevent(LivingAttackEvent event) {
+     @Override
+    public void OnLivingAttack(LivingAttackEvent event) {
         int hadal_limit = MomotinkerConfig.hadal_limit.get();
         int b = RANDOM.nextInt(100);
         if (event.getEntity() instanceof Player player) {

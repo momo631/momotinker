@@ -18,7 +18,6 @@ import net.minecraft.world.entity.player.Player;
 import net.minecraft.world.item.ItemStack;
 import net.minecraft.world.item.TooltipFlag;
 import net.minecraft.world.level.Level;
-import net.minecraftforge.common.MinecraftForge;
 import net.minecraftforge.event.entity.living.LivingHurtEvent;
 import slimeknights.mantle.client.TooltipKey;
 import slimeknights.tconstruct.library.modifiers.Modifier;
@@ -36,7 +35,7 @@ import java.util.function.BiConsumer;
 
 public class WildHearts extends momomodifier {
     public WildHearts() {
-        MinecraftForge.EVENT_BUS.addListener(this::livinghurtevent);
+
     }
 
     private static final ResourceLocation wildheart = Momotinker.getResource("wildheart");
@@ -96,7 +95,8 @@ public class WildHearts extends momomodifier {
         }
     }
 
-    private void livinghurtevent(LivingHurtEvent event) {
+    @Override
+    public void OnLivingHurt(LivingHurtEvent event) {
         LivingEntity living = event.getEntity();
         if (living instanceof Player player) {
             if (living.getEffect(MomotinkerEffects.WildHeart.get()) != null && living.hasEffect(MomotinkerEffects.WildHeart.get())) {

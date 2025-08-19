@@ -14,7 +14,6 @@ import net.minecraft.world.entity.monster.Slime;
 import net.minecraft.world.entity.player.Player;
 import net.minecraft.world.item.ItemStack;
 import net.minecraft.world.level.Level;
-import net.minecraftforge.common.MinecraftForge;
 import net.minecraftforge.event.entity.living.LivingHurtEvent;
 import slimeknights.tconstruct.library.modifiers.Modifier;
 import slimeknights.tconstruct.library.modifiers.ModifierEntry;
@@ -30,7 +29,7 @@ import java.util.Random;
 
 public class SlimeRhythmA extends momomodifier {
     public SlimeRhythmA() {
-        MinecraftForge.EVENT_BUS.addListener(this::livinghurtevent);
+
     }
 
     public static final ResourceLocation rhythmaobbsa = Momotinker.getResource("rhythmaobbsa");
@@ -103,7 +102,8 @@ public class SlimeRhythmA extends momomodifier {
     private boolean getRhythmPointsTure(ToolStack tool1,ToolStack tool2,ToolStack tool3,ToolStack tool4){
         return getRhythmPoints(tool1) > 0 || getRhythmPoints(tool2) > 0 || getRhythmPoints(tool3) > 0 || getRhythmPoints(tool4) > 0;
     }
-    private void livinghurtevent(LivingHurtEvent event) {
+    @Override
+    public void OnLivingHurt(LivingHurtEvent event) {
         LivingEntity a = event.getEntity();
         OverslimeModifier overslime = TinkerModifiers.overslime.get();
         if (a instanceof Player player) {

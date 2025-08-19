@@ -18,7 +18,10 @@ import javax.annotation.Nonnull;
 public class Resonance extends momomodifier {
     public Resonance() {
     }
-
+    @Override
+    public boolean isNoLevels() {
+        return true;
+    }
     @Override
     public float getMeleeDamage(@Nonnull IToolStackView tool, ModifierEntry modifier, @Nonnull ToolAttackContext context, float baseDamage, float damage) {
         LivingEntity attacker = context.getAttacker();

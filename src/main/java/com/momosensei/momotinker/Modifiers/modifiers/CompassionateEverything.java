@@ -12,7 +12,6 @@ import net.minecraft.world.entity.ai.attributes.Attribute;
 import net.minecraft.world.entity.ai.attributes.AttributeModifier;
 import net.minecraft.world.entity.ai.attributes.Attributes;
 import net.minecraft.world.entity.player.Player;
-import net.minecraftforge.common.MinecraftForge;
 import net.minecraftforge.event.entity.living.LivingAttackEvent;
 import net.minecraftforge.event.entity.living.LivingHurtEvent;
 import org.jetbrains.annotations.NotNull;
@@ -32,8 +31,6 @@ import static com.momosensei.momotinker.util.PenetratingDamage.reflectionPenetra
 
 public class CompassionateEverything extends momomodifier {
     public CompassionateEverything() {
-        MinecraftForge.EVENT_BUS.addListener(this::livingattackevent);
-        MinecraftForge.EVENT_BUS.addListener(this::livinghurtevent);
     }
     public static final ResourceLocation compassionateeverythingpoints = Momotinker.getResource("compassionateeverythingpoints");
 
@@ -74,7 +71,8 @@ public class CompassionateEverything extends momomodifier {
         return requirementsError(modifier);
     }
 
-    private void livingattackevent(LivingAttackEvent event) {
+    @Override
+    public void OnLivingAttack(LivingAttackEvent event) {
         LivingEntity a = event.getEntity();
         Entity b = event.getSource().getEntity();
         if (b instanceof Player player&&a!=null&&getMainhandModifierlevel(player,MomotinkerModifiers.compassionateeverything.getId())>0){
@@ -95,7 +93,8 @@ public class CompassionateEverything extends momomodifier {
             player.invulnerableTime=0;
         }
     }
-    private void livinghurtevent(LivingHurtEvent event) {
+    @Override
+    public void OnLivingHurt(LivingHurtEvent event) {
         Entity a = event.getEntity();
         Entity b = event.getSource().getEntity();
         if (b instanceof Player player&&a instanceof LivingEntity&& getMainhandModifierlevel(player, MomotinkerModifiers.compassionateeverything.getId()) > 0){

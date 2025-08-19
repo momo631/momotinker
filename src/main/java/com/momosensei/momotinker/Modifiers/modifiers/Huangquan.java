@@ -14,7 +14,6 @@ import net.minecraft.world.entity.projectile.AbstractArrow;
 import net.minecraft.world.entity.projectile.Projectile;
 import net.minecraft.world.item.TooltipFlag;
 import net.minecraft.world.phys.EntityHitResult;
-import net.minecraftforge.common.MinecraftForge;
 import net.minecraftforge.event.entity.living.LivingAttackEvent;
 import slimeknights.mantle.client.TooltipKey;
 import slimeknights.tconstruct.library.modifiers.ModifierEntry;
@@ -30,7 +29,6 @@ import java.util.List;
 
 public class Huangquan extends momomodifier {
     public Huangquan() {
-        MinecraftForge.EVENT_BUS.addListener(this::livingattackevent);
     }
 
     @Override
@@ -38,7 +36,8 @@ public class Huangquan extends momomodifier {
         return true;
     }
 
-    public void livingattackevent(LivingAttackEvent event) {
+    @Override
+    public void OnLivingAttack(LivingAttackEvent event) {
         Entity a = event.getSource().getEntity();
         if (a instanceof ServerPlayer player &&event.getEntity()!=null&&player.getEffect(MomotinkerEffects.End.get())!=null &&player.hasEffect(MomotinkerEffects.End.get())) {
             if (ModifierUtil.getModifierLevel(player.getItemBySlot(EquipmentSlot.MAINHAND), MomotinkerModifiers.huangquan.getId()) > 0) {

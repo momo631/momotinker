@@ -5,9 +5,7 @@ import com.momosensei.momotinker.network.packet.ItemStackPKT;
 import com.momosensei.momotinker.register.MomotinkerModifiers;
 import it.unimi.dsi.fastutil.ints.IntArrayList;
 import it.unimi.dsi.fastutil.ints.IntList;
-import net.minecraft.client.Minecraft;
 import net.minecraft.core.Registry;
-import net.minecraft.world.entity.player.Player;
 import net.minecraft.world.item.ItemStack;
 import org.spongepowered.asm.mixin.Mixin;
 import org.spongepowered.asm.mixin.injection.At;
@@ -26,11 +24,12 @@ import java.util.List;
 @Mixin(PartBuilderToolRecycle.class)
 public abstract class PartBuilderToolRecycleMixin {
 
-    @Inject(method = "getLeftover", at = @At("HEAD"), remap = false)
+    @Inject(method = "getLeftover", at = @At("HEAD"),cancellable = true, remap = false)
     public void modifyLeftover(IPartBuilderContainer inv, Pattern pattern, CallbackInfoReturnable<ItemStack> cir) {
         ToolStack tool = ToolStack.from(inv.getStack());
-        Player player= Minecraft.getInstance().player;
-        if (tool.getModifierLevel(MomotinkerModifiers.frombrilliance.getId())>0){
+        if (tool.getModifierLevel(MomotinkerModifiers.frombrilliance.getId()) > 0) {
+            cir.setReturnValue(ItemStack.EMPTY);
+            cir.cancel();
             List<IToolPart> parts = new ArrayList<>();
             IntList indices = new IntArrayList();
             boolean found = false;
@@ -44,12 +43,12 @@ public abstract class PartBuilderToolRecycleMixin {
                     found = true;
                 }
             }
-            for (int i=0;i<indices.size();i++){
-                ItemStack stack=parts.get(i).withMaterial(tool.getMaterial(indices.getInt(i)).getVariant());
+            for (int i = 0; i < indices.size(); i++) {
+                ItemStack stack = parts.get(i).withMaterial(tool.getMaterial(indices.getInt(i)).getVariant());
                 Channel.sendToServer(new ItemStackPKT(stack));
-
             }
         }
+
     }
 
 }
