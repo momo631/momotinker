@@ -53,7 +53,7 @@ import static com.momosensei.momotinker.tool.pocket_watch.transmit;
 
 public class SuperancientMetalsRealA extends momomodifier {
     public SuperancientMetalsRealA() {
-        MinecraftForge.EVENT_BUS.addListener(this::livinghurtevent);
+
         MinecraftForge.EVENT_BUS.addListener(EventPriority.LOWEST,this::onEntityDeath);
         MinecraftForge.EVENT_BUS.addListener(this::AddMobEffect);
         MinecraftForge.EVENT_BUS.addListener(this::onBreakEvent);
@@ -209,7 +209,8 @@ public class SuperancientMetalsRealA extends momomodifier {
         }
     }
 
-    private void livinghurtevent(LivingHurtEvent event) {
+    @Override
+    public void OnLivingHurt(LivingHurtEvent event) {
         int backtracking_limit = MomotinkerConfig.backtracking_limit.get();
         Entity a = event.getEntity();
         Entity b = event.getSource().getEntity();

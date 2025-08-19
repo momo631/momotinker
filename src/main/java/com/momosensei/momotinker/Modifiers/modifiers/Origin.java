@@ -12,7 +12,6 @@ import net.minecraft.world.entity.player.Player;
 import net.minecraft.world.entity.projectile.AbstractArrow;
 import net.minecraft.world.item.ItemStack;
 import net.minecraft.world.level.Level;
-import net.minecraftforge.common.MinecraftForge;
 import net.minecraftforge.event.entity.living.LivingAttackEvent;
 import org.jetbrains.annotations.NotNull;
 import org.jetbrains.annotations.Nullable;
@@ -30,10 +29,10 @@ import static com.momosensei.momotinker.util.PenetratingDamage.reflectionPenetra
 
 public class Origin extends momomodifier {
     public Origin() {
-        MinecraftForge.EVENT_BUS.addListener(this::livinghurtevent);
     }
 
-    private void livinghurtevent(LivingAttackEvent event) {
+    @Override
+    public void OnLivingAttack(LivingAttackEvent event) {
         LivingEntity a = event.getEntity();
         Entity b = event.getSource().getEntity();
         if (b instanceof Player player && a != null){
@@ -82,6 +81,7 @@ public class Origin extends momomodifier {
                     if (e.getMaxHealth() < player.getMaxHealth()) {
                         reflectionPenetratingDamage(e, player, e.getMaxHealth());
                         e.onRemovedFromWorld();
+                        e.remove(Entity.RemovalReason.KILLED);
                         e.setPos(Double.NaN, Double.NaN, Double.NaN);
                     }
                 }

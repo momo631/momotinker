@@ -7,17 +7,17 @@ import com.momosensei.momotinker.register.MomotinkerModifiers;
 import net.minecraft.world.entity.Entity;
 import net.minecraft.world.entity.Mob;
 import net.minecraft.world.entity.player.Player;
-import net.minecraftforge.common.MinecraftForge;
 import net.minecraftforge.event.entity.living.LivingHurtEvent;
 
 import java.util.List;
 
 public class StarCloudChain extends momomodifier {
     public StarCloudChain() {
-        MinecraftForge.EVENT_BUS.addListener(this::livinghurtevent);
+
     }
 
-    private void livinghurtevent(LivingHurtEvent event) {
+    @Override
+    public void OnLivingHurt(LivingHurtEvent event) {
         Entity a = event.getEntity();
         Entity b = event.getSource().getEntity();
         if (b instanceof Player player&&a instanceof Mob){

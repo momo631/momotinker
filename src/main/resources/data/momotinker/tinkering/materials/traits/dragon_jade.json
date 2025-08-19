@@ -1,0 +1,16 @@
+{
+  "default": [
+    {
+      "name": "momotinker:rare_crystals",
+      "level": 1
+    },
+    {
+      "name": "momotinker:dragon_source",
+      "level": 1
+    },
+    {
+      "name": "momotinker:ancient_bloodline",
+      "level": 1
+    }
+  ]
+}

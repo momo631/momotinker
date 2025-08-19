@@ -30,7 +30,7 @@ import java.util.*;
 public class SlackAtmosphere extends momomodifier {
     public SlackAtmosphere() {
         MinecraftForge.EVENT_BUS.addListener(this::AddMobEffect);
-        MinecraftForge.EVENT_BUS.addListener(this::livingattackevent);
+
         MinecraftForge.EVENT_BUS.addListener(this::onlivingtickevent);
     }
     @Override
@@ -172,7 +172,8 @@ public class SlackAtmosphere extends momomodifier {
             }else if (!living.hasEffect(effect)) living.addEffect(new MobEffectInstance(effect, duration,0));
         });
     }
-    private void livingattackevent(LivingAttackEvent event) {
+    @Override
+    public void OnLivingAttack(LivingAttackEvent event) {
         if (event.getEntity() instanceof Player player&&getAllModifierlevel(player,MomotinkerModifiers.slackatmosphere.getId())>0&&event.getSource().getEntity() instanceof LivingEntity living){
             addRandomHarmfulEffects(living,1,200);
         }

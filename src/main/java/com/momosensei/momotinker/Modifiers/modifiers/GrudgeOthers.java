@@ -27,11 +27,11 @@ import javax.annotation.Nonnull;
 
 public class GrudgeOthers extends momomodifier {
     public GrudgeOthers() {
-        MinecraftForge.EVENT_BUS.addListener(this::livinghurtevent);
         MinecraftForge.EVENT_BUS.addListener(this::onEntityDeath);
     }
 
-    private void livinghurtevent(LivingHurtEvent event) {
+    @Override
+    public void OnLivingHurt(LivingHurtEvent event) {
         LivingEntity entity = event.getEntity();
         Entity holder = event.getSource().getEntity();
         if (holder instanceof Player player && entity instanceof Mob mob) {

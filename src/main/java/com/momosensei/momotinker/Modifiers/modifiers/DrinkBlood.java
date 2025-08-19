@@ -12,7 +12,6 @@ import net.minecraft.world.entity.projectile.AbstractArrow;
 import net.minecraft.world.entity.projectile.Projectile;
 import net.minecraft.world.item.TooltipFlag;
 import net.minecraft.world.phys.EntityHitResult;
-import net.minecraftforge.common.MinecraftForge;
 import net.minecraftforge.event.entity.living.LivingHurtEvent;
 import slimeknights.mantle.client.TooltipKey;
 import slimeknights.tconstruct.library.modifiers.ModifierEntry;
@@ -28,7 +27,6 @@ import java.util.List;
 
 public class DrinkBlood extends momomodifier {
     public DrinkBlood() {
-        MinecraftForge.EVENT_BUS.addListener(this::livinghurtevent);
     }
 
     @Override
@@ -38,7 +36,7 @@ public class DrinkBlood extends momomodifier {
         if (attacker instanceof Player player&&target != null&& modifier.getLevel() > 0) {
             float a = modifier.getLevel();
             if (attacker.getHealth() > attacker.getMaxHealth()*0.10000001f){
-                player.setHealth(player.getHealth()-player.getMaxHealth()*0.1f);
+                player.hurt(player.level().damageSources().fellOutOfWorld(),player.getMaxHealth()*0.1f);
                 return damage * (1F + a*0.6F);
             }
             if (attacker.getHealth() < attacker.getMaxHealth()*0.1f){
@@ -59,7 +57,8 @@ public class DrinkBlood extends momomodifier {
         return false;
     }
 
-    private void livinghurtevent(LivingHurtEvent event) {
+    @Override
+    public void OnLivingHurt(LivingHurtEvent event) {
         Entity entity=event.getSource().getEntity();
         if (entity instanceof LivingEntity attacker){
             int a = ModifierUtil.getModifierLevel(attacker.getItemBySlot(EquipmentSlot.MAINHAND), MomotinkerModifiers.drinkblood.getId());

@@ -15,12 +15,12 @@ public class MomotinkerModifiers {
     public static final StaticModifier<Huangquan> huangquan=MODIFIERS.register("huangquan", Huangquan::new);
     public static final StaticModifier<Red> red=MODIFIERS.register("red", Red::new);
     public static final StaticModifier<Firmheart> firmheart=MODIFIERS.register("firmheart", Firmheart::new);
+    public static final StaticModifier<WildHearts> wildhearts=MODIFIERS.register("wildhearts", WildHearts::new);
     public static final StaticModifier<InfiniteVitality> infinitevitality=MODIFIERS.register("infinitevitality", InfiniteVitality::new);
-    public static final StaticModifier<IntendingPlunder> intendingplunder=MODIFIERS.register("intendingplunder", IntendingPlunder::new);
 
     public static final StaticModifier<Feast> feast=MODIFIERS.register("feast", Feast::new);
     public static final StaticModifier<OverEatingSin> overeatingsin=MODIFIERS.register("overeatingsin", OverEatingSin::new);
-    public static final StaticModifier<WildHearts> wildhearts=MODIFIERS.register("wildhearts", WildHearts::new);
+    public static final StaticModifier<IntendingPlunder> intendingplunder=MODIFIERS.register("intendingplunder", IntendingPlunder::new);
     public static final StaticModifier<OverweightingWealthSin> overweightingwealthsin=MODIFIERS.register("overweightingwealthsin", OverweightingWealthSin::new);
     public static final StaticModifier<VehementDesire> vehementdesire=MODIFIERS.register("vehementdesire", VehementDesire::new);
     public static final StaticModifier<OverIndulgenceSin> overindulgencesin=MODIFIERS.register("overindulgencesin", OverIndulgenceSin::new);
@@ -77,6 +77,10 @@ public class MomotinkerModifiers {
     public static final StaticModifier<SlimeResonance> slimeresonance=MODIFIERS.register("slimeresonance", SlimeResonance::new);
     public static final StaticModifier<SlimeRhythm> slimerhythm=MODIFIERS.register("slimerhythm", SlimeRhythm::new);
     public static final StaticModifier<SlimeRhythmA> slimerhythma=MODIFIERS.register("slimerhythma", SlimeRhythmA::new);
+    public static final StaticModifier<RareCrystals> rare_crystals=MODIFIERS.register("rare_crystals", RareCrystals::new);
+    public static final StaticModifier<DragonSource> dragon_source=MODIFIERS.register("dragon_source", DragonSource::new);
+    public static final StaticModifier<AncientBloodline> ancient_bloodline=MODIFIERS.register("ancient_bloodline", AncientBloodline::new);
+    public static final StaticModifier<MaterialReforging> material_reforging=MODIFIERS.register("material_reforging", MaterialReforging::new);
 
     public static final StaticModifier<EternalAnger> eternalanger=MODIFIERS.register("eternalanger", EternalAnger::new);
     public static final StaticModifier<SlackAtmosphere> slackatmosphere=MODIFIERS.register("slackatmosphere", SlackAtmosphere::new);

@@ -14,7 +14,6 @@ import net.minecraft.world.entity.ai.attributes.Attributes;
 import net.minecraft.world.entity.player.Player;
 import net.minecraft.world.item.ItemStack;
 import net.minecraft.world.level.Level;
-import net.minecraftforge.common.MinecraftForge;
 import net.minecraftforge.event.entity.living.LivingHurtEvent;
 import slimeknights.tconstruct.library.modifiers.Modifier;
 import slimeknights.tconstruct.library.modifiers.ModifierEntry;
@@ -28,7 +27,7 @@ import java.util.function.BiConsumer;
 
 public class ThermonuclearZone extends momomodifier {
     public ThermonuclearZone() {
-        MinecraftForge.EVENT_BUS.addListener(this::livinghurtevent);
+
     }
     public static final ResourceLocation zonepoints = Momotinker.getResource("zonepoints");
     @Override
@@ -60,7 +59,8 @@ public class ThermonuclearZone extends momomodifier {
             }
         }
     }
-    private void livinghurtevent(LivingHurtEvent event) {
+    @Override
+    public void OnLivingHurt(LivingHurtEvent event) {
         LivingEntity a = event.getEntity();
         Entity b = event.getSource().getEntity();
         if (a instanceof Player player&&b instanceof LivingEntity entity) {

@@ -20,7 +20,6 @@ import net.minecraft.world.entity.player.Player;
 import net.minecraft.world.entity.projectile.AbstractArrow;
 import net.minecraft.world.item.ItemStack;
 import net.minecraft.world.level.Level;
-import net.minecraftforge.common.MinecraftForge;
 import net.minecraftforge.event.entity.living.LivingHurtEvent;
 import org.jetbrains.annotations.NotNull;
 import slimeknights.tconstruct.library.modifiers.Modifier;
@@ -37,7 +36,6 @@ import static com.momosensei.momotinker.register.MomotinkerTools.trigger_blade;
 
 public class CrimsonQueen extends momomodifier {
     public CrimsonQueen() {
-        MinecraftForge.EVENT_BUS.addListener(this::livinghurtevent);
     }
     public static final ResourceLocation crimsontime = Momotinker.getResource("crimsontime");
     public static final ResourceLocation crimsonlayers = Momotinker.getResource("crimsonlayers");
@@ -91,8 +89,9 @@ public class CrimsonQueen extends momomodifier {
             }
         }
     }
-    private void livinghurtevent(LivingHurtEvent event) {
-        LivingEntity a = event.getEntity();
+    @Override
+    public void OnLivingHurt(LivingHurtEvent event) {
+        Entity a = event.getEntity();
         Entity b = event.getSource().getEntity();
         if (b instanceof Player player&&a!=null) {
             ModDataNBT c = ToolStack.from(player.getItemBySlot(EquipmentSlot.MAINHAND)).getPersistentData();

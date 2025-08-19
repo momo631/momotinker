@@ -8,7 +8,6 @@ import com.momosensei.momotinker.register.MomotinkerModifiers;
 import net.minecraft.network.chat.Component;
 import net.minecraft.resources.ResourceLocation;
 import net.minecraft.world.entity.player.Player;
-import net.minecraftforge.common.MinecraftForge;
 import net.minecraftforge.event.entity.living.LivingHurtEvent;
 import slimeknights.tconstruct.library.modifiers.Modifier;
 import slimeknights.tconstruct.library.tools.nbt.IToolStackView;
@@ -23,7 +22,6 @@ import static com.momosensei.momotinker.mobs.CapStorageData.cast;
 
 public class PolarizedSpacetime extends momomodifier {
     public PolarizedSpacetime() {
-        MinecraftForge.EVENT_BUS.addListener(this::livinghurtevent);
     }
     public static final ResourceLocation polarized = Momotinker.getResource("polarized");
     @Override
@@ -31,7 +29,8 @@ public class PolarizedSpacetime extends momomodifier {
         iToolStackView.getPersistentData().remove(polarized);
         return null;
     }
-    private void livinghurtevent(LivingHurtEvent event) {
+    @Override
+    public void OnLivingHurt(LivingHurtEvent event) {
         Data data = getOrCreateData(polarized, Data::new);
         String id = event.getSource().getMsgId();
         if (event.getEntity() instanceof Player player&&getAllModifierlevel(player, MomotinkerModifiers.polarizedspacetime.getId())>0) {

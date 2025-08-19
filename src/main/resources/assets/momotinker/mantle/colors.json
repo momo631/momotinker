@@ -30,7 +30,8 @@
     "twilight_purple_gold": "#FF42D6",
     "timetrace_purple_gold": "#5CF000",
     "reversetime_purple_gold": "#D93DEB",
-    "rhythm_slime": "#FB9BE1"
+    "rhythm_slime": "#FB9BE1",
+    "dragon_jade": "#BE3FFF"
   },
   "modifier.momotinker": {
     "laomochuji": "#596d99",
@@ -100,6 +101,10 @@
     "slimeresonance": "#FB9BE1",
     "slimerhythm": "#FA9CCA",
     "slimerhythma": "#FA9CCA",
+    "rare_crystals": "#BE3FFF",
+    "dragon_source": "#B82FFF",
+    "ancient_bloodline": "#9000DA",
+    "material_reforging": "#CC59FF",
 
     "eternalanger": "#535353",
     "slackatmosphere": "#FF9C00",

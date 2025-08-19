@@ -29,7 +29,6 @@ import java.util.List;
 public class EternalAnger extends momomodifier {
     public EternalAnger() {
         MinecraftForge.EVENT_BUS.addListener(this::onEntityDeath);
-        MinecraftForge.EVENT_BUS.addListener(this::livinghurtevent);
     }
 
     public static final ResourceLocation eternalangerodds = Momotinker.getResource("eternalangerodds");
@@ -95,7 +94,8 @@ public class EternalAnger extends momomodifier {
         }
     }
 
-    private void livinghurtevent(LivingHurtEvent event) {
+    @Override
+    public void OnLivingHurt(LivingHurtEvent event) {
         Entity a = event.getEntity();
         Entity b = event.getSource().getEntity();
         if (a instanceof Player player&& getMainhandModifierlevel(player, MomotinkerModifiers.eternalanger.getId()) > 0){

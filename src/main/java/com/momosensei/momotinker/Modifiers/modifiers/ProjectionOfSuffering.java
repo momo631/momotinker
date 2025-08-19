@@ -15,7 +15,6 @@ import net.minecraft.world.entity.LivingEntity;
 import net.minecraft.world.entity.player.Player;
 import net.minecraft.world.item.ItemStack;
 import net.minecraft.world.level.Level;
-import net.minecraftforge.common.MinecraftForge;
 import net.minecraftforge.event.entity.living.LivingHurtEvent;
 import slimeknights.tconstruct.library.modifiers.Modifier;
 import slimeknights.tconstruct.library.modifiers.ModifierEntry;
@@ -28,7 +27,7 @@ import javax.annotation.Nullable;
 
 public class ProjectionOfSuffering extends momomodifier {
     public ProjectionOfSuffering() {
-        MinecraftForge.EVENT_BUS.addListener(this::livinghurtevent);
+
     }
 
     public static final ResourceLocation disaster = Momotinker.getResource("disaster");
@@ -46,7 +45,8 @@ public class ProjectionOfSuffering extends momomodifier {
         return null;
     }
     
-    private void livinghurtevent(LivingHurtEvent event) {
+    @Override
+    public void OnLivingHurt(LivingHurtEvent event) {
         Entity a = event.getEntity();
         Entity b = event.getSource().getEntity();
         if (b instanceof Player player && a != null && player.getMainHandItem().is(MomotinkerTools.coronal_key.get())) {

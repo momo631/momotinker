@@ -51,6 +51,7 @@ public class MomotinkerItem {
     public static final RegistryObject<Item> reversetime_purple_gold = ITEMS.register("reversetime_purple_gold", () -> new reversetime_purple_gold(MomotinkerTables.material()));
     public static final RegistryObject<Item> core_of_felony = ITEMS.register("core_of_felony", () -> new core_of_felony(MomotinkerTables.material()));
     public static final RegistryObject<Item> rhythm_slime = ITEMS.register("rhythm_slime", () -> new rhythm_slime(MomotinkerTables.material()));
+    public static final RegistryObject<Item> dragon_jade = ITEMS.register("dragon_jade", () -> new dragon_jade(MomotinkerTables.material()));
 
     public static final RegistryObject<Item> trigger_slash_a = ITEMS.register("trigger_slash_a", ()->new Item(new Item.Properties()));
     public static final RegistryObject<Item> spear_entity = ITEMS.register("spear_entity", ()->new Item(new Item.Properties()));

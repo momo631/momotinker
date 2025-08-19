@@ -1,0 +1,34 @@
+{
+  "type": "tconstruct:modifier",
+  "allow_crystal": true,
+  "inputs": [
+    {
+      "item": "tconstruct:dragon_scale",
+      "amount_needed": 4
+    },
+    {
+      "item": "momotinker:dragon_jade",
+      "amount_needed": 1
+    },
+    {
+      "item": "tconstruct:dragon_scale",
+      "amount_needed": 4
+    },
+    {
+      "item": "minecraft:netherite_ingot",
+      "amount_needed": 1
+    },
+    {
+      "item": "minecraft:netherite_ingot",
+      "amount_needed": 1
+    }
+  ],
+
+  "tools": {
+    "tag": "tconstruct:modifiable/durability"
+  },
+  "result": "momotinker:material_reforging",
+  "slots": {
+    "upgrades": 1
+  }
+}

@@ -13,7 +13,6 @@ import net.minecraft.world.entity.projectile.AbstractArrow;
 import net.minecraft.world.entity.projectile.Projectile;
 import net.minecraft.world.item.ItemStack;
 import net.minecraft.world.phys.EntityHitResult;
-import net.minecraftforge.common.MinecraftForge;
 import net.minecraftforge.event.entity.living.LivingHurtEvent;
 import slimeknights.tconstruct.library.modifiers.ModifierEntry;
 import slimeknights.tconstruct.library.tools.context.ToolAttackContext;
@@ -31,7 +30,7 @@ import static com.momosensei.momotinker.Modifiers.modifiers.DrinkingDemon.*;
 
 public class SweetAfterTaste extends momomodifier {
     public SweetAfterTaste() {
-        MinecraftForge.EVENT_BUS.addListener(this::livinghurtevent);
+
     }
 
     @Override
@@ -39,7 +38,8 @@ public class SweetAfterTaste extends momomodifier {
         return true;
     }
 
-    private void livinghurtevent(LivingHurtEvent event) {
+    @Override
+    public void OnLivingHurt(LivingHurtEvent event) {
         Entity a = event.getEntity();
         if (a instanceof ServerPlayer player) {
             for (ItemStack stack : player.getInventory().armor) {

@@ -11,7 +11,6 @@ import net.minecraft.world.entity.player.Player;
 import net.minecraft.world.item.ItemStack;
 import net.minecraft.world.item.TooltipFlag;
 import net.minecraft.world.level.Level;
-import net.minecraftforge.common.MinecraftForge;
 import net.minecraftforge.event.entity.living.LivingHurtEvent;
 import slimeknights.mantle.client.TooltipKey;
 import slimeknights.tconstruct.library.modifiers.ModifierEntry;
@@ -26,7 +25,7 @@ import java.util.List;
 
 public class SelfCrystallization extends momomodifier {
     public SelfCrystallization() {
-        MinecraftForge.EVENT_BUS.addListener(this::livinghurtevent);
+
     }
     @Override
     public void addToolStats(IToolContext context, ModifierEntry modifier, ModifierStatsBuilder builder) {
@@ -42,7 +41,8 @@ public class SelfCrystallization extends momomodifier {
         }
     }
 
-    private void livinghurtevent(LivingHurtEvent event) {
+    @Override
+    public void OnLivingHurt(LivingHurtEvent event) {
         LivingEntity a = event.getEntity();
         Entity a1 = event.getSource().getEntity();
         if (a instanceof Player player) {

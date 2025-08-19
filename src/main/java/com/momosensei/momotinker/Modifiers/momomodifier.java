@@ -22,6 +22,9 @@ import net.minecraft.world.level.Level;
 import net.minecraft.world.level.storage.loot.LootContext;
 import net.minecraft.world.phys.BlockHitResult;
 import net.minecraft.world.phys.EntityHitResult;
+import net.minecraftforge.common.MinecraftForge;
+import net.minecraftforge.event.entity.living.LivingAttackEvent;
+import net.minecraftforge.event.entity.living.LivingHurtEvent;
 import org.jetbrains.annotations.NotNull;
 import org.jetbrains.annotations.Nullable;
 import slimeknights.mantle.client.TooltipKey;
@@ -73,6 +76,8 @@ public abstract class momomodifier extends Modifier implements MeleeDamageModifi
         RepairFactorModifierHook, ModifierTraitHook, ProtectionModifierHook {
 
     public momomodifier() {
+        MinecraftForge.EVENT_BUS.addListener(this::OnLivingHurt);
+        MinecraftForge.EVENT_BUS.addListener(this::OnLivingAttack);
     }
 
     @Override
@@ -245,7 +250,10 @@ public abstract class momomodifier extends Modifier implements MeleeDamageModifi
     }
     public void onModifierRemoved(IToolStackView tool) {
     }
-
+    public void OnLivingHurt(LivingHurtEvent event) {
+    }
+    public void OnLivingAttack(LivingAttackEvent event) {
+    }
 
 
     public static int getAllModifierlevel(LivingEntity entity, ModifierId modifierId) {
