@@ -413,7 +413,7 @@
 
   "modifier.momotinker.intendingplunder": "Greedy and plundering",
   "modifier.momotinker.intendingplunder.flavor": "§9Plundering everything§",
-  "modifier.momotinker.intendingplunder.description": "Increase the number of killed creatures' drops by 100% at each level",
+  "modifier.momotinker.intendingplunder.description": "Holding this tool in the main hand increases the number of items dropped by killing creatures by 100% at each level",
   "modifier.momotinker.tooltip.intendingplunder1": "The current number of drops has increased:",
 
   "modifier.momotinker.overweightingwealthsin": "Over weighting wealth sin",
