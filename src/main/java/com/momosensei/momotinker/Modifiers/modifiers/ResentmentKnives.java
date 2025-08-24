@@ -90,8 +90,9 @@ public class ResentmentKnives extends momomodifier {
             target.getPersistentData().remove(s);
             entity.getPersistentData().remove(e);
             target.getPersistentData().remove(e);
-            entity.getAttribute(Attributes.ATTACK_DAMAGE).setBaseValue(1);
-            target.getAttribute(Attributes.ATTACK_DAMAGE).setBaseValue(1);
+            if (entity.getAttribute(Attributes.ATTACK_DAMAGE)!=null&&entity.getAttribute(Attributes.ATTACK_DAMAGE).getBaseValue()!=0) entity.getAttribute(Attributes.ATTACK_DAMAGE).setBaseValue(1);
+            if (target.getAttribute(Attributes.ATTACK_DAMAGE)!=null&&target.getAttribute(Attributes.ATTACK_DAMAGE).getBaseValue()!=0) target.getAttribute(Attributes.ATTACK_DAMAGE).setBaseValue(1);
+
         }
     }
      @Override
