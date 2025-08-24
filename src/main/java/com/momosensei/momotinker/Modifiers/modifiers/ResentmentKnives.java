@@ -105,6 +105,7 @@ public class ResentmentKnives extends momomodifier {
         if (getAllModifierlevel(attacker,MomotinkerModifiers.resentmentknives.getId())>0||getAllModifierlevel(living,MomotinkerModifiers.resentmentknives.getId())>0){
             if (getEnvyTarget(living)==null&&getEnvyTarget(attacker)==null){
                 setEnvyTarget(attacker,living);
+                if (living.getAttribute(Attributes.ATTACK_DAMAGE)==null||attacker.getAttribute(Attributes.ATTACK_DAMAGE)==null)return;
                 double c = attacker.getAttributeValue(Attributes.ATTACK_DAMAGE);
                 double d = living.getAttributeValue(Attributes.ATTACK_DAMAGE);
                 if (d == 0) d = 1;
