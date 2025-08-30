@@ -1,6 +1,7 @@
 package com.momosensei.momotinker;
 
 import com.momosensei.momotinker.event.LivingEvents;
+import com.momosensei.momotinker.event.ModFeatures;
 import com.momosensei.momotinker.key.key;
 import com.momosensei.momotinker.network.Channel;
 import com.momosensei.momotinker.register.*;
@@ -40,7 +41,6 @@ public class Momotinker {
         IEventBus eventBus = FMLJavaModLoadingContext.get().getModEventBus();
         eventBus.addListener(this::commonSetup);
         MinecraftForge.EVENT_BUS.register(this);
-        MomotinkerItem.ITEMS.register(eventBus);
         MomotinkerItem.ARMOR.register(eventBus);
         MomotinkerModifiers.MODIFIERS.register(eventBus);
         MomotinkerFluid.FLUIDS.register(eventBus);
@@ -52,6 +52,9 @@ public class Momotinker {
         MomotinkerLootModifiers.register(eventBus);
         MinecraftForge.EVENT_BUS.register(new LivingEvents());
 
+        MomotinkerModule.initRegisters();
+        MinecraftForge.EVENT_BUS.register(new ModFeatures());
+
         ModLoadingContext.get().registerConfig(ModConfig.Type.COMMON, MomotinkerConfig.Itemspec, "MomotinkerItem.toml");
         ModLoadingContext.get().registerConfig(ModConfig.Type.COMMON, MomotinkerConfig.Modifierspec, "MomotinkerModifier.toml");
         ModLoadingContext.get().registerConfig(ModConfig.Type.COMMON, MomotinkerConfig.Toolspec, "MomotinkerTool.toml");
@@ -61,7 +64,7 @@ public class Momotinker {
 
     //Resourcelocation
     public static ResourceLocation getResource(String id) {
-        return new ResourceLocation("momotinker", id);
+        return new ResourceLocation(MOD_ID, id);
     }
 
     public static ResourceLocation getResourceLocation(String id) {

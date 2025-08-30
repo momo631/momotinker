@@ -4,8 +4,6 @@ import com.momosensei.momotinker.Items.*;
 import com.momosensei.momotinker.tool.*;
 import net.minecraft.world.item.BlockItem;
 import net.minecraft.world.item.Item;
-import net.minecraftforge.registries.DeferredRegister;
-import net.minecraftforge.registries.ForgeRegistries;
 import net.minecraftforge.registries.RegistryObject;
 import slimeknights.tconstruct.common.registration.ItemDeferredRegisterExtension;
 import slimeknights.tconstruct.library.tools.item.ModifiableItem;
@@ -13,12 +11,11 @@ import slimeknights.tconstruct.library.tools.item.ModifiableItem;
 import static com.momosensei.momotinker.Momotinker.MOD_ID;
 
 
-public class  MomotinkerItem {
+public class  MomotinkerItem extends MomotinkerModule{
     public MomotinkerItem() {
     }
     private static final Item.Properties TOOL =(new Item.Properties().tab(MomotinkerTab.TOOLS).stacksTo(1));
-    public static final DeferredRegister<Item> ITEMS = DeferredRegister.create(ForgeRegistries.ITEMS, MOD_ID);
-    public static final ItemDeferredRegisterExtension ARMOR = new ItemDeferredRegisterExtension(MOD_ID);
+     public static final ItemDeferredRegisterExtension ARMOR = new ItemDeferredRegisterExtension(MOD_ID);
 
     public static final RegistryObject<Item> laomo = ITEMS.register("laomo", () -> new Item(new Item.Properties().tab(MomotinkerTab.MATERIALS)));
     public static final RegistryObject<Item> interdimensional_crystal = ITEMS.register("interdimensional_crystal", () -> new interdimensional_crystal(new Item.Properties().tab(MomotinkerTab.MATERIALS)));
@@ -85,5 +82,9 @@ public class  MomotinkerItem {
     public static final RegistryObject<BlockItem> Laomo_block = ITEMS.register("laomo_block", () -> new BlockItem(MomotinkerBlock.Laomo_block.get(), new Item.Properties().tab(MomotinkerTab.MATERIALS)));
     public static final RegistryObject<BlockItem> dimensional_prism = ITEMS.register("dimensional_prism", () -> new dimensional_prism(MomotinkerBlock.dimensional_prism.get(), new Item.Properties().tab(MomotinkerTab.MATERIALS)));
     public static final RegistryObject<BlockItem> meteor_nucleus_block = ITEMS.register("meteor_nucleus_block", () -> new meteor_nucleus_block(MomotinkerBlock.meteor_nucleus_block.get(), new Item.Properties().tab(MomotinkerTab.MATERIALS)));
+
+    public static final RegistryObject<BlockItem> ancient_peach_log = ITEMS.register("ancient_peach_log", () -> new BlockItem(MomotinkerBlock.ancient_peach_log.get(), new Item.Properties().tab(MomotinkerTab.MATERIALS)));
+    public static final RegistryObject<BlockItem> ancient_peach_leaves = ITEMS.register("ancient_peach_leaves", () -> new BlockItem(MomotinkerBlock.ancient_peach_leaves.get(), new Item.Properties().tab(MomotinkerTab.MATERIALS)));
+    public static final RegistryObject<Item> ancient_peach_sapling = ITEMS.register("ancient_peach_sapling", () -> new BlockItem(MomotinkerBlock.ancient_peach_sapling.get(), new Item.Properties().tab(MomotinkerTab.MATERIALS)));
 
 }

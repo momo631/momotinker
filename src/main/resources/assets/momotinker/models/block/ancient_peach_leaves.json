@@ -1,0 +1,7 @@
+{
+    "parent": "block/leaves",
+    "textures": {
+        "all": "momotinker:block/ancient_peach_leaves"
+    },
+    "render_type": "cutout"
+}

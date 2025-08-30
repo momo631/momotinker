@@ -235,6 +235,9 @@
   "item.momotinker.tooltip.dragon_jade1": "A huge gem generated with a very low probability within the extremely long-lived EnderDragon",
   "item.momotinker.tooltip.dragon_jade2": "After EnderDragon surviving for over 24000 game ticks, it will drop upon death",
 
+  "block.momotinker.ancient_peach_log": "Ancient Peach Log",
+  "block.momotinker.ancient_peach_leaves": "Ancient Peach Leaves",
+  "block.momotinker.ancient_peach_sapling": "Ancient Peach Sapling",
 
   "itemGroup.momotinker.tools": "Momotinker Tools",
 

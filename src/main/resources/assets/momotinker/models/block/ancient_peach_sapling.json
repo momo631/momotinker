@@ -1,0 +1,7 @@
+{
+    "parent": "block/cross",
+    "textures": {
+        "cross": "momotinker:block/ancient_peach_sapling"
+    },
+    "render_type": "cutout"
+}

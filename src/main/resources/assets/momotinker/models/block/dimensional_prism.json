@@ -1,6 +1,7 @@
 {
-  "parent": "block/cube_all",
+  "parent": "block/leaves",
   "textures": {
     "all": "momotinker:block/dimensional_prism"
-  }
+  },
+  "render_type": "cutout"
 }
