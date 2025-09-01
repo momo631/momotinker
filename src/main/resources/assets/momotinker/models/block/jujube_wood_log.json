@@ -1,0 +1,7 @@
+{
+    "parent": "minecraft:block/cube_column",
+    "textures": {
+        "end": "momotinker:block/jujube_wood/jujube_wood_log_top",
+        "side": "momotinker:block/jujube_wood/jujube_wood_log"
+    }
+}

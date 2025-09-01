@@ -1,0 +1,46 @@
+{
+  "perStat": {
+    "tconstruct:melee_harvest": [
+      {
+        "name": "momotinker:ward_off_evil",
+        "level": 1
+      },
+      {
+        "name": "momotinker:thunder_decree",
+        "level": 1
+      },
+      {
+        "name": "tconstruct:cultivated",
+        "level": 1
+      }
+    ],
+    "tconstruct:armor": [
+      {
+        "name": "momotinker:ward_off_evil_a",
+        "level": 1
+      },
+      {
+        "name": "momotinker:thunder_decree_a",
+        "level": 1
+      },
+      {
+        "name": "tconstruct:cultivated",
+        "level": 1
+      }
+    ],
+    "tconstruct:ranged": [
+      {
+        "name": "momotinker:ward_off_evil",
+        "level": 1
+      },
+      {
+        "name": "momotinker:thunder_decree",
+        "level": 1
+      },
+      {
+        "name": "tconstruct:cultivated",
+        "level": 1
+      }
+    ]
+  }
+}

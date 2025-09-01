@@ -1,0 +1,7 @@
+{
+    "parent": "block/leaves",
+    "textures": {
+        "all": "momotinker:block/jujube_wood/jujube_wood_leaves"
+    },
+    "render_type": "cutout"
+}

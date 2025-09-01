@@ -1,7 +1,0 @@
-{
-    "parent": "minecraft:block/cube_column",
-    "textures": {
-        "end": "momotinker:block/ancient_peach_log_top",
-        "side": "momotinker:block/ancient_peach_log"
-    }
-}

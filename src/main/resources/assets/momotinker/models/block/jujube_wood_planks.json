@@ -1,0 +1,6 @@
+{
+  "parent": "block/cube_all",
+  "textures": {
+    "all": "momotinker:block/jujube_wood/jujube_wood_planks"
+  }
+}

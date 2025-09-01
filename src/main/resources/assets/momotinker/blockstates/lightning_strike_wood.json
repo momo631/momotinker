@@ -1,0 +1,16 @@
+{
+  "variants": {
+    "axis=x": {
+      "model": "momotinker:block/lightning_strike_wood_horizontal",
+      "x": 90,
+      "y": 90
+    },
+    "axis=y": {
+      "model": "momotinker:block/lightning_strike_wood"
+    },
+    "axis=z": {
+      "model": "momotinker:block/lightning_strike_wood_horizontal",
+      "x": 90
+    }
+  }
+}

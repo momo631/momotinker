@@ -1,6 +1,6 @@
 package com.momosensei.momotinker.register;
 
-import com.momosensei.momotinker.event.AncientPeachSaplingGenerator;
+import com.momosensei.momotinker.event.tree.AncientPeachSaplingGenerator;
 import net.minecraft.world.level.block.*;
 import net.minecraft.world.level.block.state.BlockBehaviour;
 import net.minecraftforge.registries.DeferredRegister;
@@ -18,12 +18,16 @@ public class MomotinkerBlock {
     public static final RegistryObject<Block> meteor_nucleus_block = BLOCK.register("meteor_nucleus_block",
             () -> new Block(BlockBehaviour.Properties.copy(Blocks.BLUE_WOOL)));
 
-    public static final RegistryObject<Block> ancient_peach_log = BLOCK.register("ancient_peach_log",
+    public static final RegistryObject<Block> jujube_wood_log = BLOCK.register("jujube_wood_log",
             () -> new RotatedPillarBlock(BlockBehaviour.Properties.copy(Blocks.OAK_LOG)));
-    public static final RegistryObject<Block> ancient_peach_leaves = BLOCK.register("ancient_peach_leaves",
+    public static final RegistryObject<Block> jujube_wood_leaves = BLOCK.register("jujube_wood_leaves",
             () -> new LeavesBlock(BlockBehaviour.Properties.copy(Blocks.OAK_LEAVES)));
-    public static final RegistryObject<Block> ancient_peach_sapling = BLOCK.register("ancient_peach_sapling",
+    public static final RegistryObject<Block> jujube_wood_sapling = BLOCK.register("jujube_wood_sapling",
             () -> new SaplingBlock(new AncientPeachSaplingGenerator(), BlockBehaviour.Properties.copy(Blocks.OAK_SAPLING)));
+    public static final RegistryObject<Block> jujube_wood_planks = BLOCK.register("jujube_wood_planks",
+            () -> new Block(BlockBehaviour.Properties.copy(Blocks.OAK_PLANKS)));
 
+    public static final RegistryObject<Block> lightning_strike_wood = BLOCK.register("lightning_strike_wood",
+            () -> new RotatedPillarBlock(BlockBehaviour.Properties.copy(Blocks.OAK_LOG)));
 
 }

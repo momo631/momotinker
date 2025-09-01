@@ -1,7 +1,7 @@
 package com.momosensei.momotinker;
 
 import com.momosensei.momotinker.event.LivingEvents;
-import com.momosensei.momotinker.event.ModFeatures;
+import com.momosensei.momotinker.event.tree.ModFeatures;
 import com.momosensei.momotinker.key.key;
 import com.momosensei.momotinker.network.Channel;
 import com.momosensei.momotinker.register.*;

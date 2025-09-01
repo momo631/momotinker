@@ -31,7 +31,9 @@
     "timetrace_purple_gold": "#5CF000",
     "reversetime_purple_gold": "#D93DEB",
     "rhythm_slime": "#FB9BE1",
-    "dragon_jade": "#BE3FFF"
+    "dragon_jade": "#BE3FFF",
+    "jujube_wood": "#B25632",
+    "lightning_strike_wood": "#C56D4B"
   },
   "modifier.momotinker": {
     "laomochuji": "#596d99",
@@ -113,6 +115,13 @@
     "resentmentknives": "#FFDE00",
     "forbiddenfruit": "#FF00D3",
     "gainsalone": "#561FFF",
-    "compassionateeverything": "#C8C8C8"
+    "compassionateeverything": "#C8C8C8",
+
+    "suppressing_evil": "#B25632",
+    "suppressing_evil_a": "#B25632",
+    "ward_off_evil": "#CB7C5E",
+    "ward_off_evil_a": "#CB7C5E",
+    "thunder_decree": "#CD8E75",
+    "thunder_decree_a": "#CD8E75"
   }
 }

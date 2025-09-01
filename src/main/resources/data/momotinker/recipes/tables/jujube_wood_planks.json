@@ -1,0 +1,13 @@
+{
+  "type": "minecraft:crafting_shapeless",
+  "group": "planks",
+  "ingredients": [
+    {
+      "tag": "momotinker:jujube_wood_log"
+    }
+  ],
+  "result": {
+    "count": 4,
+    "item": "momotinker:jujube_wood_planks"
+  }
+}

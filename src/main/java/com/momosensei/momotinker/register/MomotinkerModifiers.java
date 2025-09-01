@@ -91,4 +91,13 @@ public class MomotinkerModifiers {
     public static final StaticModifier<GainsAlone> gainsalone=MODIFIERS.register("gainsalone", GainsAlone::new);
     public static final StaticModifier<CompassionateEverything> compassionateeverything=MODIFIERS.register("compassionateeverything", CompassionateEverything::new);
 
+    public static final StaticModifier<SuppressingEvil> suppressing_evil=MODIFIERS.register("suppressing_evil", SuppressingEvil::new);
+    public static final StaticModifier<SuppressingEvilA> suppressing_evil_a=MODIFIERS.register("suppressing_evil_a", SuppressingEvilA::new);
+
+    public static final StaticModifier<WardOffEvil> ward_off_evil=MODIFIERS.register("ward_off_evil", WardOffEvil::new);
+    public static final StaticModifier<ThunderDecree> thunder_decree=MODIFIERS.register("thunder_decree", ThunderDecree::new);
+    public static final StaticModifier<WardOffEvilA> ward_off_evil_a=MODIFIERS.register("ward_off_evil_a", WardOffEvilA::new);
+    public static final StaticModifier<ThunderDecreeA> thunder_decree_a=MODIFIERS.register("thunder_decree_a", ThunderDecreeA::new);
+
+
 }
