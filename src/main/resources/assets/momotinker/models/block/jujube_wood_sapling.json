@@ -1,0 +1,7 @@
+{
+    "parent": "block/cross",
+    "textures": {
+        "cross": "momotinker:block/jujube_wood/jujube_wood_sapling"
+    },
+    "render_type": "cutout"
+}

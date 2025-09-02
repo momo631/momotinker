@@ -2,14 +2,18 @@ package com.momosensei.momotinker;
 
 
 import com.momosensei.momotinker.event.LivingEvents;
+import com.momosensei.momotinker.event.tree.ModFeatures;
+import com.momosensei.momotinker.event.tree.MomotinkerStructures;
 import com.momosensei.momotinker.key.key;
 import com.momosensei.momotinker.network.Channel;
 import com.momosensei.momotinker.register.*;
+import net.minecraft.core.RegistrySetBuilder;
 import net.minecraft.resources.ResourceLocation;
 import net.minecraft.world.item.Item;
 import net.minecraftforge.api.distmarker.Dist;
 import net.minecraftforge.client.event.RegisterKeyMappingsEvent;
 import net.minecraftforge.common.MinecraftForge;
+import net.minecraftforge.data.event.GatherDataEvent;
 import net.minecraftforge.eventbus.api.IEventBus;
 import net.minecraftforge.eventbus.api.SubscribeEvent;
 import net.minecraftforge.fml.ModLoadingContext;
@@ -49,7 +53,9 @@ public class Momotinker {
         eventBus.register(new MomotinkerTools());
         MomotinkerTables.initRegisters();
         MinecraftForge.EVENT_BUS.register(new LivingEvents());
-        //MinecraftForge.EVENT_BUS.register(new ItemSightEventHandler());
+
+        MinecraftForge.EVENT_BUS.register(new MomotinkerStructures());
+        MomotinkerModule.initRegisters();
 
         ModLoadingContext.get().registerConfig(ModConfig.Type.COMMON, MomotinkerConfig.Itemspec, "MomotinkerItem.toml");
         ModLoadingContext.get().registerConfig(ModConfig.Type.COMMON, MomotinkerConfig.Modifierspec, "MomotinkerModifier.toml");
@@ -86,7 +92,12 @@ public class Momotinker {
     public static ResourceLocation id(@NotNull String path) {
         return new ResourceLocation(Momotinker.MOD_ID, path);
     }
+    @SubscribeEvent
+    static void gatherData(final GatherDataEvent event) {
+        RegistrySetBuilder registrySetBuilder = new RegistrySetBuilder();
+        ModFeatures.register(registrySetBuilder);
 
+    }
     @Mod.EventBusSubscriber(modid = MOD_ID, bus = Mod.EventBusSubscriber.Bus.MOD,  value = {Dist.CLIENT})
     public static class ClientModEvents {
         @SubscribeEvent

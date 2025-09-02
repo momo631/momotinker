@@ -66,4 +66,11 @@ public class MomotinkerItem {
     public static final RegistryObject<BlockItem> dimensional_prism = ITEMS.register("dimensional_prism", () -> new dimensional_prism(MomotinkerBlock.dimensional_prism.get(), new Item.Properties()));
     public static final RegistryObject<BlockItem> meteor_nucleus_block = ITEMS.register("meteor_nucleus_block", () -> new meteor_nucleus_block(MomotinkerBlock.meteor_nucleus_block.get(), new Item.Properties()));
 
+    public static final RegistryObject<BlockItem> jujube_wood_log = ITEMS.register("jujube_wood_log", () -> new BlockItem(MomotinkerBlock.jujube_wood_log.get(), new Item.Properties()));
+    public static final RegistryObject<BlockItem> jujube_wood_leaves = ITEMS.register("jujube_wood_leaves", () -> new BlockItem(MomotinkerBlock.jujube_wood_leaves.get(), new Item.Properties()));
+    public static final RegistryObject<Item> jujube_wood_sapling = ITEMS.register("jujube_wood_sapling", () -> new BlockItem(MomotinkerBlock.jujube_wood_sapling.get(), new Item.Properties()));
+    public static final RegistryObject<BlockItem> jujube_wood_planks = ITEMS.register("jujube_wood_planks", () -> new BlockItem(MomotinkerBlock.jujube_wood_planks.get(), new Item.Properties()));
+
+    public static final RegistryObject<BlockItem> lightning_strike_wood = ITEMS.register("lightning_strike_wood", () -> new lightning_strike_wood(MomotinkerBlock.lightning_strike_wood.get(), new Item.Properties()));
+
 }

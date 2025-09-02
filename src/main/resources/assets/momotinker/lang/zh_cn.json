@@ -104,8 +104,8 @@
   "block.momotinker.laomo_block": "墨块",
 
   "block.momotinker.dimensional_prism": "§b次元棱镜§",
-  "momotinker.block.tooltip.dimensional_prism1": "§b异次元空间的碎片§",
-  "momotinker.block.tooltip.dimensional_prism2": "§b当玩家破坏玻璃时有6.18%的概率掉落该物品§",
+  "block.momotinker.tooltip.dimensional_prism1": "§b异次元空间的碎片§",
+  "block.momotinker.tooltip.dimensional_prism2": "§b当玩家破坏玻璃时有6.18%的概率掉落该物品§",
 
   "item.momotinker.laomo": "墨",
 
@@ -234,6 +234,15 @@
   "item.momotinker.dragon_jade": "§5末影龙的大宝玉§",
   "item.momotinker.tooltip.dragon_jade1": "在及其长寿的末影龙体内以极低概率生成的巨大宝玉",
   "item.momotinker.tooltip.dragon_jade2": "末影龙存活超过24000游戏刻后，其死亡时会掉落",
+
+  "block.momotinker.jujube_wood_log": "赤金檀",
+  "block.momotinker.jujube_wood_leaves": "赤金檀树叶",
+  "block.momotinker.jujube_wood_sapling": "赤金檀树苗",
+  "block.momotinker.jujube_wood_planks": "赤金檀木板",
+
+  "block.momotinker.lightning_strike_wood": "雷击木",
+  "block.momotinker.tooltip.lightning_strike_wood1": "天为阳，地为阴；雷火为极阳，妖邪鬼祟属阴",
+  "block.momotinker.tooltip.lightning_strike_wood2": "赤金檀木被雷电击中时会转换为雷击木",
 
 
   "itemGroup.momotinker.tools": "墨工坊模组-工具",
@@ -369,7 +378,12 @@
   "material.momotinker.rhythm_slime": "音律史莱姆",
   "material.momotinker.rhythm_slime.encyclopedia": "史莱姆的舞蹈是什么样子的呢",
   "material.momotinker.dragon_jade": "末影龙玉",
-  "material.momotinker.dragon_jade.encyclopedia": "在及其长寿的末影龙体内以极低概率生成的巨大宝玉",
+  "material.momotinker.dragon_jade.encyclopedia": "在极其长寿的末影龙体内以极低概率生成的巨大宝玉",
+  "material.momotinker.jujube_wood": "赤金檀",
+  "material.momotinker.jujube_wood.encyclopedia": "时过境迁，多亏了先祖们为后世留下的树种，赤金檀得以传承\n不会自然生成，需要去深谙古城中寻找到树苗",
+  "material.momotinker.lightning_strike_wood": "雷击木",
+  "material.momotinker.lightning_strike_wood.encyclopedia": "天为阳，地为阴；雷火为阳，邪祟为阴",
+
 
   "modifier.momotinker.laomochuji": "牢墨出击",
   "modifier.momotinker.laomochuji.flavor": "词条标题",
@@ -767,6 +781,30 @@
   "modifier.momotinker.material_reforging.flavor": "合理的打造才能发挥其最大的效果",
   "modifier.momotinker.material_reforging.description": "该强化将提升大部分属性，其数值会在一定范围内随机选取，强化次数越多该范围的最小值和最大值都将越大，最高上限5级(再次打上该强化只会重新随机属性不会增加最小和最大值)",
   "modifier.momotinker.tooltip.material_reforging1": "[素材再锻]当前已格外提供属性:",
-  "modifier.momotinker.tooltip.material_reforging2": "当前可随机到的范围为:["
+  "modifier.momotinker.tooltip.material_reforging2": "当前可随机到的范围为:[",
+
+  "modifier.momotinker.suppressing_evil": "镇邪",
+  "modifier.momotinker.suppressing_evil.flavor": "果为红，可祭祀供东侧，属阳",
+  "modifier.momotinker.suppressing_evil.description": "每级对亡灵生物造成的基础伤害将提升25%",
+
+  "modifier.momotinker.suppressing_evil_a": "镇邪",
+  "modifier.momotinker.suppressing_evil_a.flavor": "果为红，可祭祀供东侧，属阳",
+  "modifier.momotinker.suppressing_evil_a.description": "已穿戴护甲中，每级使受到来自亡灵生物的伤害减少20%，受到的魔法伤害减少10%(最高95%且各自独立)",
+
+  "modifier.momotinker.ward_off_evil": "辟邪驱恶",
+  "modifier.momotinker.ward_off_evil.flavor": "树木吸收了雷电之力，可以破除一切污秽之物",
+  "modifier.momotinker.ward_off_evil.description": "每级对怪物的伤害提升25%。若目标为亡灵生物则该加成翻4倍",
+
+  "modifier.momotinker.ward_off_evil_a": "辟邪驱恶",
+  "modifier.momotinker.ward_off_evil_a.flavor": "树木吸收了雷电之力，可以破除一切污秽之物",
+  "modifier.momotinker.ward_off_evil_a.description": "已穿戴护甲中，每级使受到来自怪物的伤害和魔法伤害减少20%(最高95%)。若该生物为亡灵生物则使该减伤达到最大，并免疫其对自身造成的小于自身最大生命25%的伤害",
+
+  "modifier.momotinker.thunder_decree": "天雷敕令",
+  "modifier.momotinker.thunder_decree.flavor": "传说当年天公乘坐火轿车巡视人间，在乘下途中不慎撞在其上",
+  "modifier.momotinker.thunder_decree.description": "造成的伤害减少40%。攻击格外造成一次魔法伤害",
+
+  "modifier.momotinker.thunder_decree_a": "天雷敕令",
+  "modifier.momotinker.thunder_decree_a.flavor": "传说当年天公乘坐火轿车巡视人间，在乘下途中不慎撞在其上",
+  "modifier.momotinker.thunder_decree_a.description": "受到攻击时对攻击者造成相当于伤害值40%的魔法伤害。若受到的伤害为魔法伤害则反击伤害将无视魔法防御且反击量翻倍，若目标为亡灵生物则使反击伤害格外增加相当于自身和目标最大生命之和的20%，两种加成相互独立可同时触发"
 
 }

@@ -1,0 +1,7 @@
+{
+    "parent": "minecraft:block/cube_column",
+    "textures": {
+        "end": "momotinker:block/lightning_strike_wood_top",
+        "side": "momotinker:block/lightning_strike_wood"
+    }
+}

@@ -1,9 +1,0 @@
-{
-  "type": "tconstruct:material_melting",
-  "input": "momotinker:dragon_jade",
-  "temperature": 1500,
-  "result": {
-    "fluid": "momotinker:molten_dragon_jade",
-    "amount": 90
-  }
-}

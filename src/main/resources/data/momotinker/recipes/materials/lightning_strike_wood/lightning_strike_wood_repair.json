@@ -1,0 +1,9 @@
+{
+  "type": "tconstruct:material",
+  "ingredient": {
+    "item": "momotinker:lightning_strike_wood"
+  },
+  "value": 4,
+  "needed": 1,
+  "material": "momotinker:lightning_strike_wood"
+}

@@ -57,6 +57,10 @@ public class MomotinkerTables extends MomotinkerMod {
         output.accept(MomotinkerItem.reversetime_purple_gold.get());
         output.accept(MomotinkerItem.rhythm_slime.get());
         output.accept(MomotinkerItem.dragon_jade.get());
-
+        output.accept(MomotinkerItem.jujube_wood_log.get());
+        output.accept(MomotinkerItem.jujube_wood_leaves.get());
+        output.accept(MomotinkerItem.jujube_wood_sapling.get());
+        output.accept(MomotinkerItem.jujube_wood_planks.get());
+        output.accept(MomotinkerItem.lightning_strike_wood.get());
     }
 }

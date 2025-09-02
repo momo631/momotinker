@@ -6,10 +6,12 @@ import com.momosensei.momotinker.entity.MeteorEntity;
 import com.momosensei.momotinker.mobs.StageMeteor;
 import com.momosensei.momotinker.network.Channel;
 import com.momosensei.momotinker.network.packet.StageMeteorCharge;
+import com.momosensei.momotinker.register.MomotinkerBlock;
 import com.momosensei.momotinker.register.MomotinkerConfig;
 import com.momosensei.momotinker.register.MomotinkerItem;
 import it.unimi.dsi.fastutil.ints.Int2ObjectMap;
 import net.minecraft.ChatFormatting;
+import net.minecraft.core.BlockPos;
 import net.minecraft.nbt.CompoundTag;
 import net.minecraft.network.chat.Component;
 import net.minecraft.resources.ResourceLocation;
@@ -18,6 +20,7 @@ import net.minecraft.server.level.ServerPlayer;
 import net.minecraft.world.effect.MobEffects;
 import net.minecraft.world.entity.Entity;
 import net.minecraft.world.entity.EquipmentSlot;
+import net.minecraft.world.entity.LightningBolt;
 import net.minecraft.world.entity.LivingEntity;
 import net.minecraft.world.entity.animal.IronGolem;
 import net.minecraft.world.entity.animal.Sheep;
@@ -38,8 +41,10 @@ import net.minecraft.world.item.Items;
 import net.minecraft.world.item.enchantment.Enchantments;
 import net.minecraft.world.item.trading.MerchantOffer;
 import net.minecraft.world.level.Level;
+import net.minecraft.world.level.block.Block;
 import net.minecraft.world.level.block.Blocks;
 import net.minecraft.world.level.block.SaplingBlock;
+import net.minecraft.world.level.block.state.BlockState;
 import net.minecraft.world.phys.AABB;
 import net.minecraft.world.phys.Vec2;
 import net.minecraft.world.phys.Vec3;
@@ -75,6 +80,7 @@ public class LivingEvents {
         MinecraftForge.EVENT_BUS.addListener(this::onEntityJoinLevel);
         MinecraftForge.EVENT_BUS.addListener(this::playertick);
         MinecraftForge.EVENT_BUS.addListener(this::playerpickup);
+        MinecraftForge.EVENT_BUS.addListener(this::OnLivingTick);
     }
 
     private static final ResourceLocation lusttest = Momotinker.getResource("lusttest");
@@ -383,7 +389,7 @@ public class LivingEvents {
                             }
                             entity.setExplosionPower((byte) (random.nextInt(55) + 25));
                             level.addFreshEntity(entity);
-                            player.sendSystemMessage(Component.translatable("momotinker.item.tooltip.meteor_nucleus5").withStyle(ChatFormatting.GOLD));
+                            player.sendSystemMessage(Component.translatable("item.momotinker.tooltip.meteor_nucleus5").withStyle(ChatFormatting.GOLD));
                         }
                     }
                 }
@@ -400,10 +406,39 @@ public class LivingEvents {
                 CompoundTag tag = player.getPersistentData().getCompound(Player.PERSISTED_NBT_TAG);
                 String a = "meteor_nucleus_unlock";
                 if (event.getItem().getItem().is(MomotinkerItem.interdimensional_crystal.get()) && !tag.getBoolean(a)) {
-                    player.sendSystemMessage(Component.translatable("momotinker.item.tooltip.interdimensional_crystal3").withStyle(ChatFormatting.GOLD));
+                    player.sendSystemMessage(Component.translatable("item.momotinker.tooltip.interdimensional_crystal3").withStyle(ChatFormatting.GOLD));
                     player.getPersistentData().getBoolean(a);
                     tag.putBoolean(a, true);
                     player.getPersistentData().put(Player.PERSISTED_NBT_TAG, tag);
+                }
+            }
+        }
+    }
+    private void OnLivingTick(TickEvent.LevelTickEvent event) {
+        if (event.phase != TickEvent.Phase.END || event.level.isClientSide) return;
+        boolean configall = MomotinkerConfig.special_acquisition.get();
+        if (!configall)return;
+        boolean config = MomotinkerConfig.lightning_strike_wood.get();
+        if (config) {
+            for (Player player : event.level.players()) {
+                List<Entity> list = event.level.getEntitiesOfClass(Entity.class, player.getBoundingBox().inflate(200));
+                for (Entity entity : list) {
+                    if (entity instanceof LightningBolt bolt) {
+                        Vec3 vec3 = bolt.position();
+                        BlockPos strikePos = new BlockPos((int) vec3.x, (int) (vec3.y - 1.0E-6), (int) vec3.z);
+                        for (int x = -1; x <= 1; x++) {
+                            for (int y = -3; y <= 4; y++) {
+                                for (int z = -1; z <= 1; z++) {
+                                    BlockPos targetPos = strikePos.offset(x, y, z); // 计算目标方块的坐标
+                                    BlockState blockState = event.level.getBlockState(targetPos); // 获取该位置的方块状态
+                                    Block block = blockState.getBlock(); // 获取方块对象
+                                    if (block == MomotinkerBlock.jujube_wood_log.get()) {
+                                        event.level.setBlock(targetPos, MomotinkerBlock.lightning_strike_wood.get().defaultBlockState(), 3);
+                                    }
+                                }
+                            }
+                        }
+                    }
                 }
             }
         }

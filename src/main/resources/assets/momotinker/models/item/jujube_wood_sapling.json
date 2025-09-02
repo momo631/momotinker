@@ -1,0 +1,6 @@
+{
+    "parent": "item/generated",
+    "textures": {
+        "layer0": "momotinker:block/jujube_wood/jujube_wood_sapling"
+    }
+}

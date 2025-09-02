@@ -33,7 +33,12 @@
             }
           ],
           "name": "momotinker:divine_punishment_spear",
-          "weight": 3
+          "weight": 2
+        },
+        {
+          "type": "minecraft:item",
+          "name": "momotinker:jujube_wood_sapling",
+          "weight": 4
         }
       ],
       "name": "main"

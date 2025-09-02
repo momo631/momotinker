@@ -1,0 +1,34 @@
+{
+  "perStat": {
+    "tconstruct:melee_harvest": [
+      {
+        "name": "momotinker:suppressing_evil",
+        "level": 1
+      },
+      {
+        "name": "tconstruct:cultivated",
+        "level": 1
+      }
+    ],
+    "tconstruct:armor": [
+      {
+        "name": "momotinker:suppressing_evil_a",
+        "level": 1
+      },
+      {
+        "name": "tconstruct:cultivated",
+        "level": 1
+      }
+    ],
+    "tconstruct:ranged": [
+      {
+        "name": "momotinker:suppressing_evil",
+        "level": 1
+      },
+      {
+        "name": "tconstruct:cultivated",
+        "level": 1
+      }
+    ]
+  }
+}
