@@ -24,7 +24,7 @@ public class ThunderDecreeA extends momomodifier {
         if (a instanceof LivingEntity living) {
             int c = getArmorModifierlevel(living, MomotinkerModifiers.thunder_decree_a.getId());
             if (c > 0 && b instanceof LivingEntity living1) {
-                DamageSource damageSource=DamageSource.mobAttack(living).setMagic().bypassInvul();
+                DamageSource damageSource=DamageSource.mobAttack(living).setMagic();
                 float d = 0;
                 if (event.getSource().isMagic()) {
                     damageSource.bypassMagic();
@@ -32,7 +32,9 @@ public class ThunderDecreeA extends momomodifier {
                 if (living1.getMobType()==MobType.UNDEAD){
                     d = (living1.getMaxHealth()+living.getMaxHealth())*0.2f;
                 }
+                living1.invulnerableTime=0;
                 living1.hurt(damageSource, event.getAmount() * 0.4f+d);
+                living1.invulnerableTime=0;
             }
         }
     }

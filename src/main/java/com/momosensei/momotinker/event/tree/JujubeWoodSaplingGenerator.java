@@ -7,8 +7,8 @@ import net.minecraft.world.level.levelgen.feature.ConfiguredFeature;
 
 import javax.annotation.Nullable;
 
-public class AncientPeachSaplingGenerator extends AbstractTreeGrower {
-    public AncientPeachSaplingGenerator(){}
+public class JujubeWoodSaplingGenerator extends AbstractTreeGrower {
+    public JujubeWoodSaplingGenerator(){}
     @Nullable
     @Override
     public Holder<? extends ConfiguredFeature<?, ?>> getConfiguredFeature(RandomSource random, boolean hasFlowers) {

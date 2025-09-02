@@ -26,8 +26,10 @@ public class ThunderDecree extends momomodifier {
 
     @Override
     public float getMeleeDamage(@Nonnull IToolStackView tool, ModifierEntry modifier, @Nonnull ToolAttackContext context, float baseDamage, float damage) {
-        if (context.getLivingTarget() != null&&context.getPlayerAttacker() != null){
-            context.getLivingTarget().hurt(DamageSource.MAGIC.bypassInvul(),damage*0.6f);
+        if (context.getLivingTarget() != null){
+            context.getLivingTarget().invulnerableTime=0;
+            context.getLivingTarget().hurt(DamageSource.MAGIC,damage*0.6f);
+            context.getLivingTarget().invulnerableTime=0;
             return damage*0.6f;
         }
         return damage;
@@ -40,7 +42,9 @@ public class ThunderDecree extends momomodifier {
                 arrow.setBaseDamage(arrow.getBaseDamage()*0.6f);
                 float f = (float) arrow.getDeltaMovement().length();
                 float i = (float) Mth.clamp((double) f * arrow.getBaseDamage(), 0.0D, Float.MAX_VALUE);
-                target.hurt(DamageSource.MAGIC.bypassInvul(), i);
+                target.invulnerableTime=0;
+                target.hurt(DamageSource.MAGIC, i);
+                target.invulnerableTime=0;
             }
         }
         return false;

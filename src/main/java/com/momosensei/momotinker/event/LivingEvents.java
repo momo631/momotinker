@@ -417,20 +417,25 @@ public class LivingEvents {
     }
     private void OnLivingTick(TickEvent.LevelTickEvent event) {
         if (event.phase != TickEvent.Phase.END || event.level.isClientSide) return;
-        for (Player player : event.level.players()) {
-            List<Entity> list = event.level.getEntitiesOfClass(Entity.class,player.getBoundingBox().inflate(200));
-            for (Entity entity:list){
-                if (entity instanceof LightningBolt bolt){
-                    Vec3 vec3 = bolt.position();
-                    BlockPos strikePos = new BlockPos(vec3.x, vec3.y - 1.0E-6, vec3.z);
-                    for (int x = -1; x <= 1; x++) {
-                        for (int y = -3; y <= 4; y++) {
-                            for (int z = -1; z <= 1; z++) {
-                                BlockPos targetPos = strikePos.offset(x, y, z); // 计算目标方块的坐标
-                                BlockState blockState = event.level.getBlockState(targetPos); // 获取该位置的方块状态
-                                Block block = blockState.getBlock(); // 获取方块对象
-                                if (block == MomotinkerBlock.jujube_wood_log.get()){
-                                    event.level.setBlock(targetPos,MomotinkerBlock.lightning_strike_wood.get().defaultBlockState(),3);
+        boolean configall = MomotinkerConfig.special_acquisition.get();
+        if (!configall)return;
+        boolean config = MomotinkerConfig.lightning_strike_wood.get();
+        if (config) {
+            for (Player player : event.level.players()) {
+                List<Entity> list = event.level.getEntitiesOfClass(Entity.class, player.getBoundingBox().inflate(200));
+                for (Entity entity : list) {
+                    if (entity instanceof LightningBolt bolt) {
+                        Vec3 vec3 = bolt.position();
+                        BlockPos strikePos = new BlockPos(vec3.x, vec3.y - 1.0E-6, vec3.z);
+                        for (int x = -1; x <= 1; x++) {
+                            for (int y = -3; y <= 4; y++) {
+                                for (int z = -1; z <= 1; z++) {
+                                    BlockPos targetPos = strikePos.offset(x, y, z); // 计算目标方块的坐标
+                                    BlockState blockState = event.level.getBlockState(targetPos); // 获取该位置的方块状态
+                                    Block block = blockState.getBlock(); // 获取方块对象
+                                    if (block == MomotinkerBlock.jujube_wood_log.get()) {
+                                        event.level.setBlock(targetPos, MomotinkerBlock.lightning_strike_wood.get().defaultBlockState(), 3);
+                                    }
                                 }
                             }
                         }
