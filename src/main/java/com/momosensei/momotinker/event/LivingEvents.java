@@ -9,6 +9,7 @@ import com.momosensei.momotinker.network.packet.StageMeteorCharge;
 import com.momosensei.momotinker.register.MomotinkerBlock;
 import com.momosensei.momotinker.register.MomotinkerConfig;
 import com.momosensei.momotinker.register.MomotinkerItem;
+import com.momosensei.momotinker.util.TeleportEntityManager;
 import it.unimi.dsi.fastutil.ints.Int2ObjectMap;
 import net.minecraft.ChatFormatting;
 import net.minecraft.core.BlockPos;
@@ -17,11 +18,9 @@ import net.minecraft.network.chat.Component;
 import net.minecraft.resources.ResourceLocation;
 import net.minecraft.server.level.ServerLevel;
 import net.minecraft.server.level.ServerPlayer;
+import net.minecraft.tags.FluidTags;
 import net.minecraft.world.effect.MobEffects;
-import net.minecraft.world.entity.Entity;
-import net.minecraft.world.entity.EquipmentSlot;
-import net.minecraft.world.entity.LightningBolt;
-import net.minecraft.world.entity.LivingEntity;
+import net.minecraft.world.entity.*;
 import net.minecraft.world.entity.animal.IronGolem;
 import net.minecraft.world.entity.animal.Sheep;
 import net.minecraft.world.entity.animal.Wolf;
@@ -54,11 +53,14 @@ import net.minecraftforge.event.entity.EntityJoinLevelEvent;
 import net.minecraftforge.event.entity.living.BabyEntitySpawnEvent;
 import net.minecraftforge.event.entity.living.LivingDeathEvent;
 import net.minecraftforge.event.entity.living.LivingHurtEvent;
+import net.minecraftforge.event.entity.living.MobSpawnEvent;
 import net.minecraftforge.event.entity.player.BonemealEvent;
 import net.minecraftforge.event.entity.player.EntityItemPickupEvent;
-import net.minecraftforge.event.entity.player.SleepingTimeCheckEvent;
+import net.minecraftforge.event.entity.player.PlayerDestroyItemEvent;
+import net.minecraftforge.event.entity.player.PlayerWakeUpEvent;
 import net.minecraftforge.event.level.BlockEvent;
 import net.minecraftforge.event.village.VillagerTradesEvent;
+import net.minecraftforge.eventbus.api.Event;
 import slimeknights.tconstruct.library.tools.helper.ModifierUtil;
 import slimeknights.tconstruct.library.tools.nbt.ModDataNBT;
 
@@ -70,23 +72,25 @@ import static slimeknights.tconstruct.TConstruct.RANDOM;
 
 public class LivingEvents {
     public LivingEvents() {
-        MinecraftForge.EVENT_BUS.addListener(this::livinghurtevent);
-        MinecraftForge.EVENT_BUS.addListener(this::onEntityDeath);
-        MinecraftForge.EVENT_BUS.addListener(this::onBabyEntitySpawnEvent);
-        MinecraftForge.EVENT_BUS.addListener(this::onBonemealEvent);
-        MinecraftForge.EVENT_BUS.addListener(this::onSleepingTimeCheckEvent);
-        MinecraftForge.EVENT_BUS.addListener(this::addCustomTrades);
-        MinecraftForge.EVENT_BUS.addListener(this::onItemEvent);
-        MinecraftForge.EVENT_BUS.addListener(this::onEntityJoinLevel);
-        MinecraftForge.EVENT_BUS.addListener(this::playertick);
-        MinecraftForge.EVENT_BUS.addListener(this::playerpickup);
+        MinecraftForge.EVENT_BUS.addListener(this::OnLivingHurt);
+        MinecraftForge.EVENT_BUS.addListener(this::OnEntityDeath);
+        MinecraftForge.EVENT_BUS.addListener(this::OnBabyEntitySpawn);
+        MinecraftForge.EVENT_BUS.addListener(this::OnBonemeal);
+        MinecraftForge.EVENT_BUS.addListener(this::OnPlayerWakeUp);
+        MinecraftForge.EVENT_BUS.addListener(this::OnAddCustomTrades);
+        MinecraftForge.EVENT_BUS.addListener(this::OnBreakEvent);
+        MinecraftForge.EVENT_BUS.addListener(this::OnEntityJoinLevel);
+        MinecraftForge.EVENT_BUS.addListener(this::OnPlayerTick);
+        MinecraftForge.EVENT_BUS.addListener(this::OnPlayerPickUp);
         MinecraftForge.EVENT_BUS.addListener(this::OnLivingTick);
+        MinecraftForge.EVENT_BUS.addListener(this::OnCheckSpawn);
+        MinecraftForge.EVENT_BUS.addListener(this::OnPlayerDestroyItem);
     }
 
     private static final ResourceLocation lusttest = Momotinker.getResource("lusttest");
     private static final ResourceLocation ragetest = Momotinker.getResource("ragetest");
 
-    private void livinghurtevent(LivingHurtEvent event) {
+    private void OnLivingHurt(LivingHurtEvent event) {
         boolean configall = MomotinkerConfig.special_acquisition.get();
         boolean configstage = MomotinkerConfig.stage_meteor.get();
         if (!configall)return;
@@ -115,7 +119,7 @@ public class LivingEvents {
         }
     }
 
-    private void onEntityDeath(LivingDeathEvent event) {
+    private void OnEntityDeath(LivingDeathEvent event) {
         boolean configall = MomotinkerConfig.special_acquisition.get();
         boolean configstage = MomotinkerConfig.stage_meteor.get();
         if (!configall)return;
@@ -199,7 +203,7 @@ public class LivingEvents {
         }
     }
 
-    private void onBabyEntitySpawnEvent(BabyEntitySpawnEvent event) {
+    private void OnBabyEntitySpawn(BabyEntitySpawnEvent event) {
         boolean configall = MomotinkerConfig.special_acquisition.get();
         boolean configstage = MomotinkerConfig.stage_meteor.get();
         if (!configall)return;
@@ -223,7 +227,7 @@ public class LivingEvents {
         }
     }
 
-    private void onBonemealEvent(BonemealEvent event) {
+    private void OnBonemeal(BonemealEvent event) {
         boolean configall = MomotinkerConfig.special_acquisition.get();
         boolean configstage = MomotinkerConfig.stage_meteor.get();
         if (!configall)return;
@@ -239,12 +243,18 @@ public class LivingEvents {
         }
     }
 
-    private void onSleepingTimeCheckEvent(SleepingTimeCheckEvent event) {
+    private void OnPlayerWakeUp(PlayerWakeUpEvent event) {
+        if (event.getEntity() instanceof ServerPlayer player && !player.level().isClientSide) {
+            if (player.level().dimension().location().toString().equals("momotinker:mountains_memory") && player.isSleepingLongEnough()) {
+                String s = "minecraft:overworld";
+                TeleportEntityManager.teleportEntityToDimension(player, s, player.getX(), player.getY(), player.getZ());
+            }
+        }
         boolean configall = MomotinkerConfig.special_acquisition.get();
+        if (!configall) return;
         boolean configstage = MomotinkerConfig.stage_meteor.get();
-        if (!configall)return;
         boolean config = MomotinkerConfig.lazy_grail.get();
-        if (config&&(StageMeteor.getStageFloat()==1||!configstage)) {
+        if (config && (StageMeteor.getStageFloat() == 1 || !configstage)) {
             if (event.getEntity() instanceof ServerPlayer player) {
                 if (player.getEffect(MobEffects.MOVEMENT_SLOWDOWN) != null && player.getEffect(MobEffects.WEAKNESS) != null) {
                     if (player.isSleepingLongEnough() && player.hasEffect(MobEffects.MOVEMENT_SLOWDOWN) && player.hasEffect(MobEffects.WEAKNESS)) {
@@ -256,7 +266,7 @@ public class LivingEvents {
         }
     }
 
-    private void addCustomTrades(VillagerTradesEvent event) {
+    private void OnAddCustomTrades(VillagerTradesEvent event) {
         boolean configall = MomotinkerConfig.special_acquisition.get();
         boolean configstage = MomotinkerConfig.stage_meteor.get();
         if (!configall)return;
@@ -272,7 +282,7 @@ public class LivingEvents {
         }
     }
 
-    private void onItemEvent(BlockEvent.BreakEvent event) {
+    private void OnBreakEvent(BlockEvent.BreakEvent event) {
         boolean configall = MomotinkerConfig.special_acquisition.get();
         boolean configstage = MomotinkerConfig.stage_meteor.get();
         if (!configall)return;
@@ -292,7 +302,7 @@ public class LivingEvents {
         }
     }
 
-    public void onEntityJoinLevel(EntityJoinLevelEvent event) {
+    public void OnEntityJoinLevel(EntityJoinLevelEvent event) {
         if (event.getEntity() instanceof FallingBlockEntity fallingBlock) {
             if (fallingBlock.getBlockState().getBlock() == Blocks.ANVIL
                     ||fallingBlock.getBlockState().getBlock() ==Blocks.CHIPPED_ANVIL
@@ -321,7 +331,7 @@ public class LivingEvents {
         ItemEntity newItem = new ItemEntity(level, itemEntity.getX(), itemEntity.getY(), itemEntity.getZ(), new ItemStack(targetItem));
         level.addFreshEntity(newItem);
     }
-    private void playertick(TickEvent.PlayerTickEvent event) {
+    private void OnPlayerTick(TickEvent.PlayerTickEvent event) {
         boolean configall = MomotinkerConfig.special_acquisition.get();
         if (!configall)return;
         boolean config = MomotinkerConfig.meteor_nucleus.get();
@@ -397,7 +407,7 @@ public class LivingEvents {
         }
     }
 
-    private void playerpickup(EntityItemPickupEvent event) {
+    private void OnPlayerPickUp(EntityItemPickupEvent event) {
         boolean configall = MomotinkerConfig.special_acquisition.get();
         if (!configall)return;
         boolean config = MomotinkerConfig.meteor_nucleus.get();
@@ -435,6 +445,9 @@ public class LivingEvents {
                                     if (block == MomotinkerBlock.jujube_wood_log.get()) {
                                         event.level.setBlock(targetPos, MomotinkerBlock.lightning_strike_wood.get().defaultBlockState(), 3);
                                     }
+                                    if (block == MomotinkerBlock.jujube_wood_leaves.get()) {
+                                        event.level.setBlock(targetPos, Blocks.AIR.defaultBlockState(), 3);
+                                    }
                                 }
                             }
                         }
@@ -442,5 +455,45 @@ public class LivingEvents {
                 }
             }
         }
+        boolean configa = MomotinkerConfig.mountain_river_paintings.get();
+        if (configa) {
+            Random random=new Random();
+            for (Player player : event.level.players()) {
+                List<ItemEntity> list = event.level.getEntitiesOfClass(ItemEntity.class, player.getBoundingBox().inflate(200));
+                for (ItemEntity entity : list) {
+                    if (entity.getItem().is(Items.MAP)&&player.tickCount%20==0&&entity.level().getFluidState(entity.blockPosition()).is(FluidTags.WATER)&&random.nextInt(20)==0){
+                        entity.getItem().setCount(entity.getItem().getCount()-1);
+                        ItemStack b = new ItemStack(MomotinkerItem.mountain_river_paintings.get().getDefaultInstance().getItem());
+                        ModifierUtil.dropItem(entity, b);
+                    }
+                }
+            }
+        }
+    }
+    private void OnCheckSpawn(MobSpawnEvent.SpawnPlacementCheck event) {
+        if (event.getLevel().getLevel().dimension().location().toString().equals("momotinker:mountains_memory")) {
+            if (event.getSpawnType() == MobSpawnType.NATURAL) {
+                event.setResult(Event.Result.DENY);
+            }
+        }
+    }
+    private void OnPlayerDestroyItem(PlayerDestroyItemEvent event) {
+        boolean configall = MomotinkerConfig.special_acquisition.get();
+        if (!configall)return;
+        boolean config = MomotinkerConfig.immortal_weiqi.get();
+        if (config) {
+            if (!isMidnightToNoonStrict(event.getEntity().level().getDayTime()))return;
+            Random random=new Random();
+            if (random.nextInt(4)!=0)return;
+            if (event.getOriginal().is(Items.WOODEN_AXE)) {
+                ItemStack b = new ItemStack(MomotinkerItem.immortal_weiqi.get().getDefaultInstance().getItem());
+                ModifierUtil.dropItem(event.getEntity(), b);
+            }
+        }
+    }
+    public static boolean isMidnightToNoonStrict(long minecraftTime) {
+        long time = minecraftTime % 24000;
+        if (time < 0) time += 24000;
+        return (time < 6000)||(time > 18000);
     }
 }

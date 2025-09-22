@@ -1,0 +1,12 @@
+{
+  "type": "tconstruct:melting",
+  "ingredient": {
+    "item": "momotinker:immortal_weiqi"
+  },
+  "result": {
+    "fluid": "momotinker:molten_immortal_weiqi",
+    "amount": 90
+  },
+  "temperature": 1500,
+  "time": 66
+}

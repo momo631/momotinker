@@ -95,9 +95,12 @@ public class MomotinkerModifiers {
     public static final StaticModifier<SuppressingEvilA> suppressing_evil_a=MODIFIERS.register("suppressing_evil_a", SuppressingEvilA::new);
 
     public static final StaticModifier<WardOffEvil> ward_off_evil=MODIFIERS.register("ward_off_evil", WardOffEvil::new);
-    public static final StaticModifier<WardOffEvilA> ward_off_evil_a=MODIFIERS.register("ward_off_evil_a", WardOffEvilA::new);
     public static final StaticModifier<ThunderDecree> thunder_decree=MODIFIERS.register("thunder_decree", ThunderDecree::new);
+    public static final StaticModifier<WardOffEvilA> ward_off_evil_a=MODIFIERS.register("ward_off_evil_a", WardOffEvilA::new);
     public static final StaticModifier<ThunderDecreeA> thunder_decree_a=MODIFIERS.register("thunder_decree_a", ThunderDecreeA::new);
 
+    public static final StaticModifier<YearsInWeiqi> years_in_weiqi=MODIFIERS.register("years_in_weiqi", YearsInWeiqi::new);
+
+    public static final StaticModifier<MemoriesOfMountains> memories_of_mountains=MODIFIERS.register("memories_of_mountains", MemoriesOfMountains::new);
 
 }

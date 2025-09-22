@@ -4,14 +4,15 @@ import com.momosensei.momotinker.register.MomotinkerBlock;
 import net.minecraft.ChatFormatting;
 import net.minecraft.core.BlockPos;
 import net.minecraft.network.chat.Component;
-import net.minecraft.world.entity.Entity;
+import net.minecraft.world.InteractionHand;
+import net.minecraft.world.InteractionResultHolder;
+import net.minecraft.world.entity.LivingEntity;
 import net.minecraft.world.entity.player.Player;
-import net.minecraft.world.item.Item;
-import net.minecraft.world.item.ItemStack;
-import net.minecraft.world.item.Rarity;
-import net.minecraft.world.item.TooltipFlag;
+import net.minecraft.world.item.*;
 import net.minecraft.world.level.Level;
 import net.minecraft.world.level.block.Block;
+import slimeknights.tconstruct.library.tools.nbt.ToolStack;
+import slimeknights.tconstruct.tools.modifiers.ability.interaction.BlockingModifier;
 
 import javax.annotation.Nullable;
 import java.util.List;
@@ -23,23 +24,31 @@ public class star_seeking_pointer extends Item {
         super(properties.stacksTo(1).rarity(Rarity.EPIC).fireResistant());
         this.targetBlock = MomotinkerBlock.meteor_nucleus_block.get();
     }
-
     @Override
-    public void inventoryTick(ItemStack stack, Level world, Entity entity, int slot, boolean selected) {
-        super.inventoryTick(stack,world, entity, slot, selected);
-        if (!world.isClientSide) {
-            if (entity instanceof Player player) {
-                updateCompass(stack, world, player);
+    public int getUseDuration(ItemStack stack) {
+        return 1;
+    }
+    @Override
+    public UseAnim getUseAnimation(ItemStack stack) {
+        return BlockingModifier.blockWhileCharging(ToolStack.from(stack), UseAnim.BLOCK);
+    }
+    @Override
+    public void releaseUsing(ItemStack stack, Level level, LivingEntity livingEntity, int duration) {
+        if (!level.isClientSide) {
+            if (livingEntity instanceof Player player) {
+                updateCompass(stack, level, player);
             }
         }
     }
+    @Override
+    public InteractionResultHolder<ItemStack> use(Level level, Player player, InteractionHand hand) {
+        ItemStack stack = player.getItemInHand(hand);
+        return InteractionResultHolder.consume(stack);
+    }
 
     private void updateCompass(ItemStack stack, Level world, Player player) {
-        // 查找最近的targetBlock
         BlockPos nearestPos = findNearestBlock(world, player.blockPosition(), targetBlock);
-
         if (nearestPos != null) {
-            // 存储目标位置到NBT
             stack.getOrCreateTag().putInt("targetX", nearestPos.getX());
             stack.getOrCreateTag().putInt("targetY", nearestPos.getY());
             stack.getOrCreateTag().putInt("targetZ", nearestPos.getZ());

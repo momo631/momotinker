@@ -69,4 +69,7 @@ public class MomotinkerFluid{
     public static final FluidObject<ForgeFlowingFluid> molten_reversetime_purple_gold = register("molten_reversetime_purple_gold", 1500,10,false);
     public static final FluidObject<ForgeFlowingFluid> molten_rhythm_slime = register("molten_rhythm_slime", 1500,10,false);
 
+    public static final FluidObject<ForgeFlowingFluid> molten_immortal_weiqi = register("molten_immortal_weiqi", 1500,10,false);
+    public static final FluidObject<ForgeFlowingFluid> molten_mountain_river_paintings = register("molten_mountain_river_paintings", 1500,10,false);
+
 }

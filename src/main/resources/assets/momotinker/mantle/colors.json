@@ -33,7 +33,9 @@
     "rhythm_slime": "#FB9BE1",
     "dragon_jade": "#BE3FFF",
     "jujube_wood": "#B25632",
-    "lightning_strike_wood": "#C56D4B"
+    "lightning_strike_wood": "#C56D4B",
+    "immortal_weiqi": "#CED8E4",
+    "mountain_river_paintings": "#B2A684"
   },
   "modifier.momotinker": {
     "laomochuji": "#596d99",
@@ -122,6 +124,9 @@
     "ward_off_evil": "#CB7C5E",
     "ward_off_evil_a": "#CB7C5E",
     "thunder_decree": "#CD8E75",
-    "thunder_decree_a": "#CD8E75"
+    "thunder_decree_a": "#CD8E75",
+
+    "years_in_weiqi": "#CED8E4",
+    "memories_of_mountains": "#B2A684"
   }
 }

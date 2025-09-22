@@ -44,6 +44,10 @@ public class MomotinkerConfig {
             .define("dragon_jade is special acquisition",true);
     public static final ForgeConfigSpec.BooleanValue lightning_strike_wood=item.comment("lightning_strike_wood")
             .define("lightning_strike_wood is special acquisition",true);
+    public static final ForgeConfigSpec.BooleanValue immortal_weiqi=item.comment("immortal_weiqi")
+            .define("immortal_weiqi is special acquisition",true);
+    public static final ForgeConfigSpec.BooleanValue mountain_river_paintings=item.comment("mountain_river_paintings")
+            .define("mountain_river_paintings is special acquisition",true);
 
     public static final ForgeConfigSpec Itemspec=item.pop().build();
 

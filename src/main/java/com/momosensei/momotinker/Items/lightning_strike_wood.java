@@ -23,7 +23,6 @@ public class lightning_strike_wood extends BlockItem {
     public boolean isFireResistant() {
         return true;
     }
-
     @Override
     public void appendHoverText(@NotNull ItemStack itemstack, Level world, @NotNull List<Component> list, @NotNull TooltipFlag flag) {
         boolean config = MomotinkerConfig.special_acquisition.get();

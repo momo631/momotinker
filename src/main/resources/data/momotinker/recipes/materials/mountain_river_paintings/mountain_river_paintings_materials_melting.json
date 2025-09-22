@@ -1,0 +1,9 @@
+{
+  "type": "tconstruct:material_melting",
+  "input": "momotinker:mountain_river_paintings",
+  "temperature": 1500,
+  "result": {
+    "fluid": "momotinker:molten_mountain_river_paintings",
+    "amount": 90
+  }
+}

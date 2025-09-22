@@ -1,0 +1,9 @@
+{
+  "type": "tconstruct:casting_table",
+  "fluid": {
+    "name": "momotinker:molten_mountain_river_paintings",
+    "amount": 90
+  },
+  "result": "momotinker:mountain_river_paintings",
+  "cooling_time": 66
+}

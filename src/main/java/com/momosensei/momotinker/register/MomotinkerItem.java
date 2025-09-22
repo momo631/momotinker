@@ -53,6 +53,9 @@ public class MomotinkerItem {
     public static final RegistryObject<Item> rhythm_slime = ITEMS.register("rhythm_slime", () -> new rhythm_slime(MomotinkerTables.material()));
     public static final RegistryObject<Item> dragon_jade = ITEMS.register("dragon_jade", () -> new dragon_jade(MomotinkerTables.material()));
 
+    public static final RegistryObject<Item> immortal_weiqi = ITEMS.register("immortal_weiqi", () -> new immortal_weiqi(MomotinkerTables.material()));
+    public static final RegistryObject<Item> mountain_river_paintings = ITEMS.register("mountain_river_paintings", () -> new mountain_river_paintings(MomotinkerTables.material()));
+
     public static final RegistryObject<Item> trigger_slash_a = ITEMS.register("trigger_slash_a", ()->new Item(new Item.Properties()));
     public static final RegistryObject<Item> spear_entity = ITEMS.register("spear_entity", ()->new Item(new Item.Properties()));
     public static final RegistryObject<Item> cleanse_item = ITEMS.register("cleanse_item",()-> new Item(new Item.Properties()));

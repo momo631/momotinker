@@ -62,5 +62,8 @@ public class MomotinkerTables extends MomotinkerMod {
         output.accept(MomotinkerItem.jujube_wood_sapling.get());
         output.accept(MomotinkerItem.jujube_wood_planks.get());
         output.accept(MomotinkerItem.lightning_strike_wood.get());
+
+        output.accept(MomotinkerItem.immortal_weiqi.get());
+        output.accept(MomotinkerItem.mountain_river_paintings.get());
     }
 }
