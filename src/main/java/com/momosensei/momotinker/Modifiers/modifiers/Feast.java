@@ -42,7 +42,7 @@ public class Feast extends momomodifier {
     private void LivingDeathEvent(LivingDeathEvent event) {
         LivingEntity b = event.getEntity();
         Entity attacker=event.getSource().getEntity();
-        if (b != null && attacker instanceof Player player && event.getSource() != null && event.getSource().isCreativePlayer()){
+        if (b != null && attacker instanceof Player player && event.getSource() != null ){
             ModDataNBT tool = ToolStack.from(player.getItemBySlot(EquipmentSlot.MAINHAND)).getPersistentData();
             if (b.getMaxHealth() * (0.1F + (0.05F * (ModifierUtil.getModifierLevel(player.getMainHandItem(), MomotinkerModifiers.feast.getId())))) > tool.getFloat(edible)) {
                 tool.putFloat(edible, b.getMaxHealth() * (0.1F + (0.05F * (ModifierUtil.getModifierLevel(player.getMainHandItem(), MomotinkerModifiers.feast.getId())))));

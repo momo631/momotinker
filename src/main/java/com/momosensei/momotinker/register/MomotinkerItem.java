@@ -50,6 +50,9 @@ public class  MomotinkerItem extends MomotinkerModule{
     public static final RegistryObject<Item> rhythm_slime = ITEMS.register("rhythm_slime", () -> new rhythm_slime(new Item.Properties().tab(MomotinkerTab.MATERIALS)));
     public static final RegistryObject<Item> dragon_jade = ITEMS.register("dragon_jade", () -> new dragon_jade(new Item.Properties().tab(MomotinkerTab.MATERIALS)));
 
+    public static final RegistryObject<Item> immortal_weiqi = ITEMS.register("immortal_weiqi", () -> new immortal_weiqi(new Item.Properties().tab(MomotinkerTab.MATERIALS)));
+    public static final RegistryObject<Item> mountain_river_paintings = ITEMS.register("mountain_river_paintings", () -> new mountain_river_paintings(new Item.Properties().tab(MomotinkerTab.MATERIALS)));
+
     public static final RegistryObject<ModifiableItem> trigger_blade = ITEMS.register("trigger_blade", () -> new trigger_blade(TOOL, MomotinkerToolDefinitions.TRIGGER_BLADE));
     public static final RegistryObject<ModifiableItem> divine_punishment_spear = ITEMS.register("divine_punishment_spear", () -> new divine_punishment_spear(TOOL, MomotinkerToolDefinitions.DIVINE_PUNISHMENT_SPEAR));
     public static final RegistryObject<ModifiableItem> entropy_burning_cube = ITEMS.register("entropy_burning_cube", () -> new entropy_burning_cube(TOOL, MomotinkerToolDefinitions.ENTROPY_BURNING_CUBE));

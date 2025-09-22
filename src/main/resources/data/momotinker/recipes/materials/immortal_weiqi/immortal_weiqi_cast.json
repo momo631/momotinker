@@ -1,0 +1,9 @@
+{
+  "type": "tconstruct:casting_table",
+  "fluid": {
+    "name": "momotinker:molten_immortal_weiqi",
+    "amount": 90
+  },
+  "result": "momotinker:immortal_weiqi",
+  "cooling_time": 66
+}

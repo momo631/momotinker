@@ -57,7 +57,9 @@ public class ModEvent {
                 }
             }
         }
+
     }
+
     /*
     @SubscribeEvent(priority = EventPriority.LOWEST)
     public static void onBlockDrop(BlockEvent.BreakEvent event) {

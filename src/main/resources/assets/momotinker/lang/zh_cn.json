@@ -1,4 +1,6 @@
 {
+  "dimension.momotinker.mountains_memory": "江山忆",
+
   "effect.momotinker.hongwen": "红温",
   "effect.momotinker.none": "忘阙人",
   "effect.momotinker.end": "引渡人",
@@ -44,6 +46,8 @@
   "fluid.momotinker.molten_timetrace_purple_gold": "熔融时痕紫金",
   "fluid.momotinker.molten_reversetime_purple_gold": "熔融溯时紫金",
   "fluid.momotinker.molten_rhythm_slime": "熔融音律史莱姆",
+  "fluid.momotinker.molten_immortal_weiqi": "仙棋神意",
+  "fluid.momotinker.molten_mountain_river_paintings": "山河卷意",
 
   "item.momotinker.molten_laomo_bucket": "熔融墨桶",
   "item.momotinker.molten_arriving_at_the_other_shore_bucket": "熔融彼岸桶",
@@ -74,6 +78,8 @@
   "item.momotinker.molten_timetrace_purple_gold_bucket": "熔融时痕紫金桶",
   "item.momotinker.molten_reversetime_purple_gold_bucket": "熔融溯时紫金桶",
   "item.momotinker.molten_rhythm_slime_bucket": "熔融音律史莱姆桶",
+  "item.momotinker.molten_immortal_weiqi_bucket": "仙棋神意桶",
+  "item.momotinker.molten_mountain_river_paintings_bucket": "山河卷意桶",
 
 
   "recipe.momotinker.modifier.cleansetheworld": "[荡涤天地]需要[贯星魔枪]作为前置",
@@ -224,7 +230,7 @@
 
   "item.momotinker.star_seeking_pointer": "寻星共鸣器",
   "item.momotinker.tooltip.star_seeking_pointer1": "依靠流星们之间的共鸣与感应，它将指引你",
-  "item.momotinker.tooltip.star_seeking_pointer2": "该物品会不停搜索在128格以内距离你最近的流星之核",
+  "item.momotinker.tooltip.star_seeking_pointer2": "使用该物品可搜索在128格以内距离你最近的流星之核",
   "item.momotinker.tooltip.star_seeking_pointer3": "当前所追寻的目标位置:(",
   "item.momotinker.tooltip.star_seeking_pointer4": "未找到目标",
 
@@ -243,6 +249,14 @@
   "block.momotinker.lightning_strike_wood": "雷击木",
   "block.momotinker.tooltip.lightning_strike_wood1": "天为阳，地为阴；雷火为极阳，妖邪鬼祟属阴",
   "block.momotinker.tooltip.lightning_strike_wood2": "赤金檀木被雷电击中时会转换为雷击木",
+
+  "item.momotinker.immortal_weiqi": "神仙棋",
+  "item.momotinker.tooltip.immortal_weiqi1": "斧柯尽烂，无复时人",
+  "item.momotinker.tooltip.immortal_weiqi2": "",
+
+  "item.momotinker.mountain_river_paintings": "山河图",
+  "item.momotinker.tooltip.mountain_river_paintings1": "自在吾心，山河依在",
+  "item.momotinker.tooltip.mountain_river_paintings2": "",
 
 
   "itemGroup.momotinker.tools": "墨工坊模组-工具",
@@ -383,7 +397,10 @@
   "material.momotinker.jujube_wood.encyclopedia": "时过境迁，多亏了先祖们为后世留下的树种，赤金檀得以传承\n不会自然生成，需要去深谙古城中寻找到树苗",
   "material.momotinker.lightning_strike_wood": "雷击木",
   "material.momotinker.lightning_strike_wood.encyclopedia": "天为阳，地为阴；雷火为阳，邪祟为阴",
-
+  "material.momotinker.immortal_weiqi": "仙棋神意",
+  "material.momotinker.immortal_weiqi.encyclopedia": "斧柯尽烂，无复时人",
+  "material.momotinker.mountain_river_paintings": "山河卷意",
+  "material.momotinker.mountain_river_paintings.encyclopedia": "自在吾心，山河依在",
 
   "modifier.momotinker.laomochuji": "牢墨出击",
   "modifier.momotinker.laomochuji.flavor": "词条标题",
@@ -622,7 +639,7 @@
 
   "modifier.momotinker.drinkingdemon": "饮魔",
   "modifier.momotinker.drinkingdemon.flavor": "饮下鸠毒，春种秋收",
-  "modifier.momotinker.drinkingdemon.description": "按下特殊技能按键可吸收副手带有附魔的物品，消耗已有点数总和*50点的经验并根据物品上的附魔数量获得相应种类的点数，使用后工具冷却90秒（若经验不足则无法吸收）",
+  "modifier.momotinker.drinkingdemon.description": "按下[特殊技能]按键可吸收副手带有附魔的物品，消耗已有点数总和*50点的经验并根据物品上的附魔数量获得相应种类的点数，使用后工具冷却90秒（若经验不足则无法吸收）",
   "modifier.momotinker.tooltip.drinkingdemon1": "当前经验点数不足以使用饮魔", "modifier.momotinker.tooltip.drinkingdemon2": "当前经验点数可以使用饮魔",
   "modifier.momotinker.tooltip.drinkingdemon3": "饮魔诅咒点数:", "modifier.momotinker.tooltip.drinkingdemon4": "当前减少饮魔经验消耗:",
   "modifier.momotinker.tooltip.drinkingdemon5": "饮魔总防御点数:", "modifier.momotinker.tooltip.drinkingdemon6": "当前减少受到伤害:",
@@ -652,19 +669,19 @@
 
   "modifier.momotinker.significance": "第二终章:意义",
   "modifier.momotinker.significance.flavor": "万物之所以存在，皆因系与意义，故此，予其剥夺",
-  "modifier.momotinker.significance.description": "按下特殊技能按键使大范围生物的最大生命持续衰减直到死亡并且身上所有药水效果都会被清除，最大生命低于自身最大生命的300%时会直接归于虚无，自身最大生命也会降低但是速度大幅减少",
+  "modifier.momotinker.significance.description": "按下[特殊技能]按键使大范围生物的最大生命持续衰减直到死亡并且身上所有药水效果都会被清除，最大生命低于自身最大生命的300%时会直接归于虚无，自身最大生命也会降低但是速度大幅减少",
   "modifier.momotinker.tooltip.significance1": "“第二终章:意义”冷却还剩:",
 
   "modifier.momotinker.blank": "第三终章:留白",
   "modifier.momotinker.blank.flavor": "如文章一般，在一切的最后，当终结被终结时，只留下未完成的空白",
-  "modifier.momotinker.blank.description": "副手持有“概念终点·虚无主义”时按下特殊技能按键可消耗一个该物品吟唱“§k最终之诗§r”（全局冷却600s），进入读条并在时间结束后在世界活物之章上画上句点（读条中途死亡会中断并进入冷却300s）",
+  "modifier.momotinker.blank.description": "副手持有“概念终点·虚无主义”时按下[特殊技能]按键可消耗一个该物品吟唱“§k最终之诗§r”（全局冷却600s），进入读条并在时间结束后在世界活物之章上画上句点（读条中途死亡会中断并进入冷却300s）",
   "modifier.momotinker.tooltip.blank1": "“第三终章:留白”冷却还剩:",
   "msg.blank1": "§o河流将逆流而上，归还于云","msg.blank2": "§o飞鸟将折返蛋壳，重归为卵","msg.blank3": "§o呼吸吧，最后一次——","msg.blank4": "§o尔等的欢笑、泪水、爱恨，都将沉入永恒的‘无’",
   "msg.blank5": "§o没有痛苦，没有哀伤，只有未曾存在的安宁","msg.blank6": "§o吾乃‘无’之书写者，以沉默著就万物的诗篇","msg.blank7": "§o睡吧，睡吧，你们将回归",
 
   "modifier.momotinker.flamebath": "星炎战衣",
   "modifier.momotinker.flamebath.flavor": "运用流星的能量包裹自身",
-  "modifier.momotinker.flamebath.description": "穿戴时按下特殊技能按键获得120s的“浴炎战衣”效果，等级为已穿戴总等级，冷却240s（持续期间再次释放会覆盖上一个效果）\n§6[浴炎战衣]:持续期间获得60%*等级的护甲和40%*等级的护甲韧性，并且每5秒击退近身的生物",
+  "modifier.momotinker.flamebath.description": "穿戴时按下[特殊技能]按键获得120s的“浴炎战衣”效果，等级为已穿戴总等级，冷却240s（持续期间再次释放会覆盖上一个效果）\n§6[浴炎战衣]:持续期间获得60%*等级的护甲和40%*等级的护甲韧性，并且每5秒击退近身的生物",
   "modifier.momotinker.tooltip.flamebath1": "“星炎战衣”冷却还剩:",
 
   "modifier.momotinker.starfallarrow": "星落箭",
@@ -699,7 +716,7 @@
 
   "modifier.momotinker.shortterminvestments": "短期投资",
   "modifier.momotinker.shortterminvestments.flavor": "投资有风险...",
-  "modifier.momotinker.shortterminvestments.description": "副手持有某物品时按下特殊技能按键消耗一个该物品记录并增加点数，手持该工具进行某些行为时会随机涨降点数，点数大于1时在空手时按下特殊技能按键会清空点数并获得等于点数数量的该物品，点数不足1时清空信息并可记录其他物品（默认只对原版物品有效）",
+  "modifier.momotinker.shortterminvestments.description": "副手持有某物品时按下[特殊技能]按键消耗一个该物品记录并增加点数，手持该工具进行某些行为时会随机涨降点数，点数大于1时在空手时按下[特殊技能]按键会清空点数并获得等于点数数量的该物品，点数不足1时清空信息并可记录其他物品（默认只对原版物品有效）",
   "modifier.momotinker.tooltip.terminvestments1":"当前记录物品:",
   "modifier.momotinker.tooltip.terminvestments2":"当前点数:",
 
@@ -805,6 +822,14 @@
 
   "modifier.momotinker.thunder_decree_a": "天雷敕令",
   "modifier.momotinker.thunder_decree_a.flavor": "传说当年天公乘坐火轿车巡视人间，在乘下途中不慎撞在其上",
-  "modifier.momotinker.thunder_decree_a.description": "受到攻击时对攻击者造成相当于伤害值40%的魔法伤害。若受到的伤害为魔法伤害则反击伤害将无视魔法防御且反击量翻倍，若目标为亡灵生物则使反击伤害格外增加相当于自身和目标最大生命之和的20%，两种加成相互独立可同时触发"
+  "modifier.momotinker.thunder_decree_a.description": "受到攻击时对攻击者造成相当于伤害值40%的魔法伤害。若受到的伤害为魔法伤害则反击伤害将无视魔法防御且反击量翻倍，若目标为亡灵生物则使反击伤害格外增加相当于自身和目标最大生命之和的20%，两种加成相互独立可同时触发",
+
+  "modifier.momotinker.years_in_weiqi": "烂柯缘",
+  "modifier.momotinker.years_in_weiqi.flavor": "山中方一日，世上已千年",
+  "modifier.momotinker.years_in_weiqi.description": "手持该工具会逐渐加速周围4格内的方块活动，361秒后加速到达最大值，加速时会加快自身饱食度消耗，饱食度为0时该加速失效\n(慎重与其他加速模组如时间之瓶等同时使用)",
+
+  "modifier.momotinker.memories_of_mountains": "忆江山",
+  "modifier.momotinker.memories_of_mountains.flavor": "随山将万转，趣途无百里",
+  "modifier.momotinker.memories_of_mountains.description": "击中生物后尝试将目标移动到[江山忆]维度，该维度不会自然生成怪物且该生物在该维度时每隔一段时间将会受到一次伤害，该生物死亡后会将战利品掉落在玩家位置(伤害数值以触发移动效果时造成的伤害为基础)\n(该特性涉及到区块强制加载，作用于过多生物且生物未死亡时可能会造成卡顿)"
 
 }

@@ -19,7 +19,6 @@ import net.minecraftforge.fml.event.lifecycle.FMLClientSetupEvent;
 import net.minecraftforge.fml.event.lifecycle.FMLCommonSetupEvent;
 import net.minecraftforge.fml.javafmlmod.FMLJavaModLoadingContext;
 import net.minecraftforge.registries.ForgeRegistries;
-import org.jetbrains.annotations.NotNull;
 import slimeknights.tconstruct.library.client.model.TinkerItemProperties;
 import slimeknights.tconstruct.library.tools.capability.TinkerDataCapability;
 
@@ -34,10 +33,9 @@ import static com.momosensei.momotinker.register.MomotinkerItem.*;
 )
 
 public class Momotinker {
-    public static final String MOD_ID = "momotinker"; //是你的模组名，需要英文
+    public static final String MOD_ID = "momotinker";
+    public static final String VERSION = "1.19.2-1.2.9";
     public Momotinker() {
-        //注册表之类的东西
-        //如果你新稿了别的注册表记得这边填一下
         IEventBus eventBus = FMLJavaModLoadingContext.get().getModEventBus();
         eventBus.addListener(this::commonSetup);
         MinecraftForge.EVENT_BUS.register(this);
@@ -58,7 +56,6 @@ public class Momotinker {
         ModLoadingContext.get().registerConfig(ModConfig.Type.COMMON, MomotinkerConfig.Itemspec, "MomotinkerItem.toml");
         ModLoadingContext.get().registerConfig(ModConfig.Type.COMMON, MomotinkerConfig.Modifierspec, "MomotinkerModifier.toml");
         ModLoadingContext.get().registerConfig(ModConfig.Type.COMMON, MomotinkerConfig.Toolspec, "MomotinkerTool.toml");
-
         //GeckoLib.initialize();
     }
 
@@ -83,13 +80,8 @@ public class Momotinker {
         Channel.init();
     }
 
-    //生成键名用的
     public static String makeDescriptionId(String type, String name) {
         return type + ".momotinker." + name;
-    }
-
-    public static ResourceLocation id(@NotNull String path) {
-        return new ResourceLocation(Momotinker.MOD_ID, path);
     }
 
     @Mod.EventBusSubscriber(modid = MOD_ID, bus = Mod.EventBusSubscriber.Bus.MOD,  value = {Dist.CLIENT})
