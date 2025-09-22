@@ -248,15 +248,15 @@
 
   "block.momotinker.lightning_strike_wood": "Lightning Strike Wood",
   "block.momotinker.tooltip.lightning_strike_wood1": "Heaven is yang, earth is yin; Thunder and fire are yang, evil spirits are yin",
-  "block.momotinker.tooltip.lightning_strike_wood2": "When red [Jujube Wood] is struck by lightning, it will transform into [Lightning Strike Wood]",
+  "block.momotinker.tooltip.lightning_strike_wood2": "When red [Jujube Wood] is struck by lightning, it will transform into [Lightning Strike Wood] (requiring a player to be present within 200 squares)",
 
   "item.momotinker.immortal_weiqi": "Immortal Weiqi",
   "item.momotinker.tooltip.immortal_weiqi1": "The axe is all rotten, and the old friends are also gone",
-  "item.momotinker.tooltip.immortal_weiqi2": "",
+  "item.momotinker.tooltip.immortal_weiqi2": "Between midnight and noon the next day, there is a 25% chance that a broken wooden axe will appear at the player's position",
 
   "item.momotinker.mountain_river_paintings": "Mountain River Paintings",
   "item.momotinker.tooltip.mountain_river_paintings1": "The freedom in my heart allows me to see the mountains and rivers of the past",
-  "item.momotinker.tooltip.mountain_river_paintings2": "",
+  "item.momotinker.tooltip.mountain_river_paintings2": "When a map is soaked in water, there is a 5% chance that it will change to that item every second (requiring a player to be present within 200 squares)",
 
   "itemGroup.momotinker.tools": "Momotinker Tools",
 

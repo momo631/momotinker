@@ -239,7 +239,7 @@
 
   "item.momotinker.dragon_jade": "§5末影龙的大宝玉§",
   "item.momotinker.tooltip.dragon_jade1": "在及其长寿的末影龙体内以极低概率生成的巨大宝玉",
-  "item.momotinker.tooltip.dragon_jade2": "末影龙存活超过24000游戏刻后，其死亡时会掉落",
+  "item.momotinker.tooltip.dragon_jade2": "末影龙自诞生到死亡的间隔时间超过24000游戏刻时，其死亡时会掉落",
 
   "block.momotinker.jujube_wood_log": "赤金檀",
   "block.momotinker.jujube_wood_leaves": "赤金檀树叶",
@@ -248,15 +248,15 @@
 
   "block.momotinker.lightning_strike_wood": "雷击木",
   "block.momotinker.tooltip.lightning_strike_wood1": "天为阳，地为阴；雷火为极阳，妖邪鬼祟属阴",
-  "block.momotinker.tooltip.lightning_strike_wood2": "赤金檀木被雷电击中时会转换为雷击木",
+  "block.momotinker.tooltip.lightning_strike_wood2": "赤金檀木被雷电击中时会转换为雷击木(需要周围200格内存在玩家)",
 
   "item.momotinker.immortal_weiqi": "神仙棋",
   "item.momotinker.tooltip.immortal_weiqi1": "斧柯尽烂，无复时人",
-  "item.momotinker.tooltip.immortal_weiqi2": "",
+  "item.momotinker.tooltip.immortal_weiqi2": "在午夜到第二天正午的这段时间内，用坏木斧时有25%的概率出现在玩家位置",
 
   "item.momotinker.mountain_river_paintings": "山河图",
   "item.momotinker.tooltip.mountain_river_paintings1": "自在吾心，山河依在",
-  "item.momotinker.tooltip.mountain_river_paintings2": "",
+  "item.momotinker.tooltip.mountain_river_paintings2": "空白地图在水中浸泡时每秒都有5%的概率变化为该物品(需要周围200格内存在玩家)",
 
 
   "itemGroup.momotinker.tools": "墨工坊模组-工具",

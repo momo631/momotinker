@@ -18,6 +18,7 @@ import net.minecraft.network.chat.Component;
 import net.minecraft.resources.ResourceLocation;
 import net.minecraft.server.level.ServerLevel;
 import net.minecraft.server.level.ServerPlayer;
+import net.minecraft.tags.FluidTags;
 import net.minecraft.world.damagesource.DamageSource;
 import net.minecraft.world.effect.MobEffects;
 import net.minecraft.world.entity.*;
@@ -56,6 +57,7 @@ import net.minecraftforge.event.entity.living.LivingHurtEvent;
 import net.minecraftforge.event.entity.living.LivingSpawnEvent;
 import net.minecraftforge.event.entity.player.BonemealEvent;
 import net.minecraftforge.event.entity.player.EntityItemPickupEvent;
+import net.minecraftforge.event.entity.player.PlayerDestroyItemEvent;
 import net.minecraftforge.event.entity.player.PlayerWakeUpEvent;
 import net.minecraftforge.event.level.BlockEvent;
 import net.minecraftforge.event.village.VillagerTradesEvent;
@@ -83,6 +85,7 @@ public class LivingEvents {
         MinecraftForge.EVENT_BUS.addListener(this::OnPlayerPickUp);
         MinecraftForge.EVENT_BUS.addListener(this::OnLivingTick);
         MinecraftForge.EVENT_BUS.addListener(this::OnCheckSpawn);
+        MinecraftForge.EVENT_BUS.addListener(this::OnPlayerDestroyItem);
     }
 
     private static final ResourceLocation lusttest = Momotinker.getResource("lusttest");
@@ -453,6 +456,20 @@ public class LivingEvents {
                 }
             }
         }
+        boolean configa = MomotinkerConfig.mountain_river_paintings.get();
+        if (configa) {
+            Random random=new Random();
+            for (Player player : event.level.players()) {
+                List<ItemEntity> list = event.level.getEntitiesOfClass(ItemEntity.class, player.getBoundingBox().inflate(200));
+                for (ItemEntity entity : list) {
+                    if (entity.getItem().is(Items.MAP)&&player.tickCount%20==0&&entity.level.getFluidState(entity.blockPosition()).is(FluidTags.WATER)&&random.nextInt(20)==0){
+                        entity.getItem().setCount(entity.getItem().getCount()-1);
+                        ItemStack b = new ItemStack(MomotinkerItem.mountain_river_paintings.get().getDefaultInstance().getItem());
+                        ModifierUtil.dropItem(entity, b);
+                    }
+                }
+            }
+        }
     }
     private void OnCheckSpawn(LivingSpawnEvent.CheckSpawn event) {
         if (event.getEntity().level.dimension().location().toString().equals("momotinker:mountains_memory")) {
@@ -461,5 +478,24 @@ public class LivingEvents {
                 event.setResult(Event.Result.DENY);
             }
         }
+    }
+    private void OnPlayerDestroyItem(PlayerDestroyItemEvent event) {
+        boolean configall = MomotinkerConfig.special_acquisition.get();
+        if (!configall)return;
+        boolean config = MomotinkerConfig.immortal_weiqi.get();
+        if (config) {
+            if (!isMidnightToNoonStrict(event.getEntity().level.getDayTime()))return;
+            Random random=new Random();
+            if (random.nextInt(4)!=0)return;
+            if (event.getOriginal().is(Items.WOODEN_AXE)) {
+                ItemStack b = new ItemStack(MomotinkerItem.immortal_weiqi.get().getDefaultInstance().getItem());
+                ModifierUtil.dropItem(event.getEntity(), b);
+            }
+        }
+    }
+    public static boolean isMidnightToNoonStrict(long minecraftTime) {
+        long time = minecraftTime % 24000;
+        if (time < 0) time += 24000;
+        return (time < 6000)||(time > 18000);
     }
 }
