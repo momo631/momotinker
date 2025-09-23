@@ -46,6 +46,7 @@ public class Origin extends momomodifier {
                 reflectionPenetratingDamage(a,player, attackdamage(ToolStack.from(player.getMainHandItem()), player, InteractionHand.MAIN_HAND, a, ()->1, true, EquipmentSlot.MAINHAND, 1f));
                 if (a.getHealth()<0){
                     a.onRemovedFromWorld();
+                    a.remove(Entity.RemovalReason.KILLED);
                     a.setPos(Double.NaN, Double.NaN, Double.NaN);
                 }
             }
