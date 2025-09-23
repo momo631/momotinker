@@ -1,7 +1,6 @@
 package com.momosensei.momotinker.Modifiers.modifiers;
 
 import com.momosensei.momotinker.Modifiers.momomodifier;
-import com.momosensei.momotinker.Momotinker;
 import com.momosensei.momotinker.network.Channel;
 import com.momosensei.momotinker.network.packet.SignifiCharge;
 import net.minecraft.network.chat.Component;
@@ -26,15 +25,18 @@ import javax.annotation.Nullable;
 import java.util.Collection;
 import java.util.List;
 
+import static com.momosensei.momotinker.Momotinker.getResource;
 import static com.momosensei.momotinker.util.PenetratingDamage.reflectionPenetratingDamage;
+import static com.momosensei.momotinker.util.PenetratingDamage.setCachedValue;
 
 
 public class Significance extends momomodifier {
     public Significance() {
     }
 
-    public static final ResourceLocation signifincances = Momotinker.getResource("signifincances");
-    public static final ResourceLocation signifincancecool = Momotinker.getResource("signifincancecool");
+    public static final ResourceLocation signifincances = getResource("signifincances");
+    public static final ResourceLocation signifincancecool = getResource("signifincancecool");
+    public static final ResourceLocation losthealth = getResource("losthealth");
 
     @Override
     public boolean isNoLevels() {
@@ -55,8 +57,9 @@ public class Significance extends momomodifier {
             if (a.getInt(signifincances)<0){
                 a.putInt(signifincances,0);
             }
-            if (a.getInt(signifincances)==1){
-                player.getAttribute(Attributes.MAX_HEALTH).setBaseValue(20);
+            if (a.getInt(signifincances)==1&&player.getPersistentData().getDouble(losthealth.toString())!=0){
+                setCachedValue(player.getAttribute(Attributes.MAX_HEALTH),player.getAttributeValue(Attributes.MAX_HEALTH)+player.getPersistentData().getDouble(losthealth.toString()));
+                player.getPersistentData().remove(losthealth.toString());
             }
             if (a.getInt(signifincancecool)<0){
                 a.putInt(signifincancecool,0);
@@ -68,7 +71,8 @@ public class Significance extends momomodifier {
                 if (player.tickCount%20==0) {
                     a.putInt(signifincances, a.getInt(signifincances) - 1);
                 }
-                player.getAttribute(Attributes.MAX_HEALTH).setBaseValue(player.getMaxHealth()*(0.99f));
+                player.getPersistentData().putDouble(losthealth.toString(),player.getPersistentData().getDouble(losthealth.toString())+player.getAttributeValue(Attributes.MAX_HEALTH)*0.01f);
+                setCachedValue(player.getAttribute(Attributes.MAX_HEALTH),player.getAttributeValue(Attributes.MAX_HEALTH)*(0.99f));
                 if (player.getHealth()>player.getMaxHealth()){
                     player.setHealth(player.getMaxHealth());
                 }
@@ -80,7 +84,7 @@ public class Significance extends momomodifier {
                 List<LivingEntity> list = player.level.getEntitiesOfClass(LivingEntity.class, player.getBoundingBox().inflate(12));
                 for (LivingEntity e : list) {
                     if (e != null && e != player) {
-                        e.getAttribute(Attributes.MAX_HEALTH).setBaseValue(e.getMaxHealth()*(0.95f));
+                        setCachedValue(e.getAttribute(Attributes.MAX_HEALTH),e.getAttributeValue(Attributes.MAX_HEALTH)*(0.95f));
                         if (e.getHealth()>e.getMaxHealth()){
                             e.setHealth(e.getMaxHealth());
                         }
@@ -107,7 +111,7 @@ public class Significance extends momomodifier {
     public void addTooltip(IToolStackView tool, ModifierEntry modifierEntry, @org.jetbrains.annotations.Nullable Player player, List<Component> tooltip, TooltipKey tooltipKey, TooltipFlag tooltipFlag) {
         int a = tool.getPersistentData().getInt(signifincancecool);
         if (player != null&&a!=0) {
-            tooltip.add(net.minecraft.network.chat.Component.translatable("modifier.momotinker.tooltip.significance1").append(a+"s"));
+            tooltip.add(Component.translatable("modifier.momotinker.tooltip.significance1").append(a+"s"));
         }
     }
 }

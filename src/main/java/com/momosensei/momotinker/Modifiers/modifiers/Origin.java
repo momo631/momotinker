@@ -19,6 +19,7 @@ import java.util.List;
 
 import static com.momosensei.momotinker.util.AttackUtil.attackdamage;
 import static com.momosensei.momotinker.util.PenetratingDamage.reflectionPenetratingDamage;
+import static com.momosensei.momotinker.util.PenetratingDamage.setCachedValue;
 
 public class Origin extends momomodifier {
     public Origin() {
@@ -35,7 +36,7 @@ public class Origin extends momomodifier {
                 if (a.getHealth() > a.getMaxHealth()) {
                     a.setHealth(a.getMaxHealth());
                 }
-                a.getAttribute(Attributes.MAX_HEALTH).setBaseValue(a.getMaxHealth()*(1f-0.2f*c));
+                setCachedValue(a.getAttribute(Attributes.MAX_HEALTH),a.getAttributeValue(Attributes.MAX_HEALTH)*(1f-0.2f*c));
                 reflectionPenetratingDamage(a,player, attackdamage(ToolStack.from(player.getMainHandItem()), player, InteractionHand.MAIN_HAND, a, ()->1, true, EquipmentSlot.MAINHAND, 1f));
                 if (a.getHealth()<0){
                     a.onRemovedFromWorld();

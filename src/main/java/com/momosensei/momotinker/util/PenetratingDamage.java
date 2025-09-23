@@ -1,9 +1,11 @@
 package com.momosensei.momotinker.util;
 
+import com.momosensei.momotinker.mixins.AttributeInstanceAccessor;
 import net.minecraft.network.syncher.EntityDataAccessor;
 import net.minecraft.world.damagesource.DamageSource;
 import net.minecraft.world.entity.Entity;
 import net.minecraft.world.entity.LivingEntity;
+import net.minecraft.world.entity.ai.attributes.AttributeInstance;
 import net.minecraft.world.entity.player.Player;
 import net.minecraftforge.fml.common.Mod;
 
@@ -42,4 +44,13 @@ public class PenetratingDamage {
             living.die(DamageSource.playerAttack(player));
         }
     }
+
+    public static void setCachedValue(AttributeInstance attribute, double value) {
+        ((AttributeInstanceAccessor) attribute).setCachedValue(value);
+    }
+
+    public static double getCachedValue(AttributeInstance attribute) {
+        return ((AttributeInstanceAccessor) attribute).getCachedValue();
+    }
+
 }
