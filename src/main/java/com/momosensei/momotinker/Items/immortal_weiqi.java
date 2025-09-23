@@ -25,7 +25,7 @@ public class immortal_weiqi extends Item {
         boolean configa = MomotinkerConfig.immortal_weiqi.get();
         boolean configb = MomotinkerConfig.stage_meteor.get();
         if (Screen.hasShiftDown()&&config&&configa) {
-            if (StageMeteor.getStageFloat()==1||!configb) {
+            if (StageMeteor.getStageFloat()==1) {
                 list.add(Component.translatable("item.momotinker.tooltip.immortal_weiqi2").withStyle(ChatFormatting.WHITE));
             }else {
                 list.add(Component.translatable("item.momotinker.tooltip.stage_meteor").withStyle(ChatFormatting.GOLD));
