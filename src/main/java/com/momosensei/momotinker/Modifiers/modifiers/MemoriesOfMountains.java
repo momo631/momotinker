@@ -21,7 +21,6 @@ import net.minecraftforge.common.MinecraftForge;
 import net.minecraftforge.common.util.ITeleporter;
 import net.minecraftforge.event.TickEvent;
 import net.minecraftforge.event.entity.living.LivingDropsEvent;
-import net.minecraftforge.event.entity.living.LivingEvent;
 import slimeknights.tconstruct.library.modifiers.ModifierEntry;
 import slimeknights.tconstruct.library.tools.context.ToolAttackContext;
 import slimeknights.tconstruct.library.tools.nbt.IToolStackView;
@@ -35,13 +34,11 @@ import java.util.Map;
 import java.util.UUID;
 import java.util.function.Function;
 
-import static com.momosensei.momotinker.util.ChunkLoadManager.cleanupOrphanedChunks;
 import static net.minecraft.core.registries.Registries.DIMENSION;
 
 
 public class MemoriesOfMountains extends momomodifier {
     public MemoriesOfMountains() {
-        MinecraftForge.EVENT_BUS.addListener(this::OnLivingTick);
         MinecraftForge.EVENT_BUS.addListener(this::OnLivingDrop);
         MinecraftForge.EVENT_BUS.addListener(this::OnWorldTick);
     }
@@ -106,27 +103,28 @@ public class MemoriesOfMountains extends momomodifier {
         if (event.phase != TickEvent.Phase.END || event.level.isClientSide) return;
         if (event.level instanceof ServerLevel level) {
             if (level.dimension().location().toString().equals("momotinker:mountains_memory")) {
-                cleanupOrphanedChunks(level.getServer());
+                for (Entity entity : level.getAllEntities()) {
+                    if (entity.level().isClientSide)return;
+                    if (!entity.level().dimension().location().toString().equals("momotinker:mountains_memory"))return;
+                    if (entity instanceof LivingEntity living) {
+                        float a = getMemoriesTag(living) + 1;
+                        if (a > 1 && entity.isAlive()) {
+                            ChunkLoadManager.startForceLoadingForEntity(living);
+                            if (living.tickCount % 20 != 0) return;
+                            if (Livings.get(living.getUUID()) instanceof Player player) {
+                                living.invulnerableTime = 0;
+                                living.hurt(LegacyDamageSource.playerAttack(player).setBypassInvulnerableTime().setBypassInvul().setBypassShield().setBypassMagic().setBypassArmor().setBypassEnchantment(), a);
+                                living.invulnerableTime = 0;
+                            }
+                            setMemoriesTag(living, a * 1.1f);
+                        }
+                    }
+                }
+                //cleanupOrphanedChunks(level.getServer());
             }
         }
     }
 
-    private void OnLivingTick(LivingEvent.LivingTickEvent event) {
-        var entity=event.getEntity();
-        if (entity.level().isClientSide)return;
-        if (!entity.level().dimension().location().toString().equals("momotinker:mountains_memory"))return;
-        float a = getMemoriesTag(entity)+1;
-        if (a>1&&entity.isAlive()) {
-            ChunkLoadManager.startForceLoadingForEntity(entity);
-            if (entity.tickCount % 20 != 0) return;
-            if (Livings.get(entity.getUUID()) instanceof Player player) {
-                entity.invulnerableTime = 0;
-                entity.hurt(LegacyDamageSource.playerAttack(player).setBypassInvulnerableTime().setBypassInvul().setBypassShield().setBypassMagic().setBypassArmor().setBypassEnchantment(), a);
-                entity.invulnerableTime = 0;
-            }
-            setMemoriesTag(entity, a * 1.1f);
-        }
-    }
 
     private static void setMemoriesTag(LivingEntity target,float a){
         String s = "memories_mountains";
