@@ -25,7 +25,7 @@ public class mountain_river_paintings extends Item {
         boolean configa = MomotinkerConfig.mountain_river_paintings.get();
         boolean configb = MomotinkerConfig.stage_meteor.get();
         if (Screen.hasShiftDown()&&config&&configa) {
-            if (StageMeteor.getStageFloat()==1||!configb) {
+            if (StageMeteor.getStageFloat()==1) {
                 list.add(Component.translatable("item.momotinker.tooltip.mountain_river_paintings2").withStyle(ChatFormatting.WHITE));
             }else {
                 list.add(Component.translatable("item.momotinker.tooltip.stage_meteor").withStyle(ChatFormatting.GOLD));

@@ -21,6 +21,8 @@ import slimeknights.tconstruct.library.tools.nbt.IToolStackView;
 import slimeknights.tconstruct.library.tools.nbt.ModDataNBT;
 import slimeknights.tconstruct.library.tools.nbt.ToolStack;
 
+import javax.annotation.Nullable;
+
 
 public class YearsInWeiqi extends momomodifier {
     public YearsInWeiqi() {
@@ -29,7 +31,11 @@ public class YearsInWeiqi extends momomodifier {
     public static final ResourceLocation in_weiqi = Momotinker.getResource("in_weiqi");
 
     @Override
-    public Component onRemoved(IToolStackView iToolStackView, Modifier modifier) {
+    public boolean isNoLevels() {
+        return true;
+    }
+    @Override
+    public @Nullable Component onRemoved(IToolStackView iToolStackView, Modifier modifier) {
         iToolStackView.getPersistentData().remove(in_weiqi);
         return null;
     }
@@ -62,7 +68,7 @@ public class YearsInWeiqi extends momomodifier {
                         ticker.tick(level, pos, targetTE.getBlockState(), targetTE);
                     }
                 } else if (serverWorld != null && blockState.isRandomlyTicking()) {
-                    if (level.random.nextInt(300) == 0) {
+                    if (level.random.nextInt(40) == 0) {
                         blockState.randomTick(serverWorld, pos, level.random);
                     }
                 }

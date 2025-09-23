@@ -457,7 +457,7 @@ public class LivingEvents {
             }
         }
         boolean configa = MomotinkerConfig.mountain_river_paintings.get();
-        if (configa) {
+        if (configa&&StageMeteor.getStageFloat()==1) {
             Random random=new Random();
             for (Player player : event.level.players()) {
                 List<ItemEntity> list = event.level.getEntitiesOfClass(ItemEntity.class, player.getBoundingBox().inflate(200));
@@ -474,7 +474,6 @@ public class LivingEvents {
     private void OnCheckSpawn(LivingSpawnEvent.CheckSpawn event) {
         if (event.getEntity().level.dimension().location().toString().equals("momotinker:mountains_memory")) {
             if (event.getSpawnReason() == MobSpawnType.NATURAL) {
-                if (event.isCancelable()) event.setCanceled(true);
                 event.setResult(Event.Result.DENY);
             }
         }
@@ -483,7 +482,7 @@ public class LivingEvents {
         boolean configall = MomotinkerConfig.special_acquisition.get();
         if (!configall)return;
         boolean config = MomotinkerConfig.immortal_weiqi.get();
-        if (config) {
+        if (config&&StageMeteor.getStageFloat()==1) {
             if (!isMidnightToNoonStrict(event.getEntity().level.getDayTime()))return;
             Random random=new Random();
             if (random.nextInt(4)!=0)return;

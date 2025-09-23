@@ -1,21 +1,16 @@
 package com.momosensei.momotinker.util;
 
-import net.minecraft.core.BlockPos;
-import net.minecraft.nbt.CompoundTag;
 import net.minecraft.resources.ResourceKey;
 import net.minecraft.resources.ResourceLocation;
 import net.minecraft.server.MinecraftServer;
 import net.minecraft.server.level.ServerLevel;
 import net.minecraft.world.entity.Entity;
-import net.minecraft.world.entity.LivingEntity;
 import net.minecraft.world.level.ChunkPos;
 import net.minecraft.world.level.Level;
-import net.minecraftforge.common.world.ForgeChunkManager;
 
 import javax.annotation.Nullable;
 import java.util.*;
 
-import static com.momosensei.momotinker.Momotinker.MOD_ID;
 import static net.minecraft.core.Registry.DIMENSION_REGISTRY;
 
 public class ChunkLoadManager {
@@ -154,7 +149,6 @@ public class ChunkLoadManager {
                 }
             }
         }
-
         return hasValidEntity;
     }
 
@@ -163,140 +157,140 @@ public class ChunkLoadManager {
         entityChunkMap.entrySet().removeIf(entry -> entry.getValue().equals(chunkPos));
     }
 
-    public static final String CHUNK_LOADED_KEY = "ChunkLoaded";
-    // 跟踪活跃的区块加载
-    public static final Map<UUID, LoadedChunkInfo> ACTIVE_LOADS = new HashMap<>();
+//    public static final String CHUNK_LOADED_KEY = "ChunkLoaded";
+//    // 跟踪活跃的区块加载
+//    public static final Map<UUID, LoadedChunkInfo> ACTIVE_LOADS = new HashMap<>();
 
     // 区块加载信息记录
-    public static class LoadedChunkInfo {
-        public final ChunkPos chunkPos;
-        public final ServerLevel level;
+//    public static class LoadedChunkInfo {
+//        public final ChunkPos chunkPos;
+//        public final ServerLevel level;
+//
+//        public LoadedChunkInfo(ChunkPos chunkPos, ServerLevel level) {
+//            this.chunkPos = chunkPos;
+//            this.level = level;
+//        }
+//    }
 
-        public LoadedChunkInfo(ChunkPos chunkPos, ServerLevel level) {
-            this.chunkPos = chunkPos;
-            this.level = level;
-        }
-    }
-
-    public static boolean forceLoadEntityChunk(LivingEntity entity) {
-        if (entity.level.isClientSide()) return false;
-        ServerLevel serverLevel = (ServerLevel) entity.level;
-        UUID entityUUID = entity.getUUID();
-        CompoundTag nbt = entity.getPersistentData();
-
-        if (nbt.getBoolean(CHUNK_LOADED_KEY)) {
-            return true;
-        }
-        BlockPos entityPos = entity.blockPosition();
-        ChunkPos chunkPos = new ChunkPos(entityPos);
-        try {
-            boolean success = ForgeChunkManager.forceChunk(serverLevel, MOD_ID, entity, chunkPos.x, chunkPos.z, true, true
-            );
-            if (success) {
-                // 更新状态
-                nbt.putBoolean(CHUNK_LOADED_KEY, true);
-                ACTIVE_LOADS.put(entityUUID, new LoadedChunkInfo(chunkPos, serverLevel));
-                return true;
-            }
-
-        } catch (Exception e) {
-
-        }
-        return false;
-    }
-
-    public static boolean unforceLoadEntityChunk(LivingEntity entity) {
-        if (entity.level.isClientSide()) return false;
-        ServerLevel serverLevel = (ServerLevel) entity.level;
-        UUID entityUUID = entity.getUUID();
-        CompoundTag nbt = entity.getPersistentData();
-
-        if (!nbt.getBoolean(CHUNK_LOADED_KEY)) {
-            return true;
-        }
-        LoadedChunkInfo loadInfo = ACTIVE_LOADS.get(entityUUID);
-        try {
-            boolean success;
-            if (loadInfo != null) {
-                // 使用记录的区块位置进行卸载
-                success = ForgeChunkManager.forceChunk(
-                        loadInfo.level, MOD_ID, entity,
-                        loadInfo.chunkPos.x, loadInfo.chunkPos.z, false, false
-                );
-            } else {
-                // 没有记录信息，尝试使用当前位置卸载
-                BlockPos entityPos = entity.blockPosition();
-                ChunkPos chunkPos = new ChunkPos(entityPos);
-
-                success = ForgeChunkManager.forceChunk(
-                        serverLevel, MOD_ID, entity, chunkPos.x, chunkPos.z, false, false
-                );
-            }
-
-            if (success) {
-                // 更新状态
-                nbt.putBoolean(CHUNK_LOADED_KEY, false);
-                ACTIVE_LOADS.remove(entityUUID);
-                return true;
-            } else {
-                return false;
-            }
-
-        } catch (Exception e) {
-        }
-        return false;
-    }
-
-    public static void updateChunkLoadPosition(LivingEntity entity, LoadedChunkInfo oldLoadInfo, ChunkPos newChunkPos) {
-        ServerLevel serverLevel = (ServerLevel) entity.level;
-        try {
-            // 卸载旧区块
-            boolean unloadSuccess = ForgeChunkManager.forceChunk(
-                    oldLoadInfo.level, MOD_ID, entity,
-                    oldLoadInfo.chunkPos.x, oldLoadInfo.chunkPos.z, false, false
-            );
-
-            if (!unloadSuccess) {
-                return;
-            }
-
-            // 加载新区块
-            boolean loadSuccess = ForgeChunkManager.forceChunk(
-                    serverLevel, MOD_ID, entity, newChunkPos.x, newChunkPos.z, true, true
-            );
-
-            if (loadSuccess) {
-                ACTIVE_LOADS.put(entity.getUUID(), new LoadedChunkInfo(newChunkPos, serverLevel));
-
-            }
-        } catch (Exception e) {
-
-        }
-    }
-
-    /**
-     * 清理方法：当生物异常消失时手动清理
-     */
-    public static void cleanupOrphanedLoads() {
-        for (Map.Entry<UUID, LoadedChunkInfo> entry : ACTIVE_LOADS.entrySet()) {
-            UUID entityUUID = entry.getKey();
-            LoadedChunkInfo loadInfo = entry.getValue();
-
-            // 检查生物是否还存在
-            Entity entity = loadInfo.level.getEntity(entityUUID);
-            if (entity == null || !entity.isAlive()) {
-                try {
-                    // 尝试清理孤儿加载
-                    ForgeChunkManager.forceChunk(
-                            loadInfo.level, MOD_ID, entity,
-                            loadInfo.chunkPos.x, loadInfo.chunkPos.z, false, false
-                    );
-                    ACTIVE_LOADS.remove(entityUUID);
-
-                } catch (Exception e) {
-
-                }
-            }
-        }
-    }
+//    public static boolean forceLoadEntityChunk(LivingEntity entity) {
+//        if (entity.level().isClientSide()) return false;
+//        ServerLevel serverLevel = (ServerLevel) entity.level();
+//        UUID entityUUID = entity.getUUID();
+//        CompoundTag nbt = entity.getPersistentData();
+//
+//        if (nbt.getBoolean(CHUNK_LOADED_KEY)) {
+//            return true;
+//        }
+//        BlockPos entityPos = entity.blockPosition();
+//        ChunkPos chunkPos = new ChunkPos(entityPos);
+//        try {
+//            boolean success = ForgeChunkManager.forceChunk(serverLevel, MOD_ID, entity, chunkPos.x, chunkPos.z, true, true
+//            );
+//            if (success) {
+//                // 更新状态
+//                nbt.putBoolean(CHUNK_LOADED_KEY, true);
+//                ACTIVE_LOADS.put(entityUUID, new LoadedChunkInfo(chunkPos, serverLevel));
+//                return true;
+//            }
+//
+//        } catch (Exception e) {
+//
+//        }
+//        return false;
+//    }
+//
+//    public static boolean unforceLoadEntityChunk(LivingEntity entity) {
+//        if (entity.level().isClientSide()) return false;
+//        ServerLevel serverLevel = (ServerLevel) entity.level();
+//        UUID entityUUID = entity.getUUID();
+//        CompoundTag nbt = entity.getPersistentData();
+//
+//        if (!nbt.getBoolean(CHUNK_LOADED_KEY)) {
+//            return true;
+//        }
+//        LoadedChunkInfo loadInfo = ACTIVE_LOADS.get(entityUUID);
+//        try {
+//            boolean success;
+//            if (loadInfo != null) {
+//                // 使用记录的区块位置进行卸载
+//                success = ForgeChunkManager.forceChunk(
+//                        loadInfo.level, MOD_ID, entity,
+//                        loadInfo.chunkPos.x, loadInfo.chunkPos.z, false, false
+//                );
+//            } else {
+//                // 没有记录信息，尝试使用当前位置卸载
+//                BlockPos entityPos = entity.blockPosition();
+//                ChunkPos chunkPos = new ChunkPos(entityPos);
+//
+//                success = ForgeChunkManager.forceChunk(
+//                        serverLevel, MOD_ID, entity, chunkPos.x, chunkPos.z, false, false
+//                );
+//            }
+//
+//            if (success) {
+//                // 更新状态
+//                nbt.putBoolean(CHUNK_LOADED_KEY, false);
+//                ACTIVE_LOADS.remove(entityUUID);
+//                return true;
+//            } else {
+//                return false;
+//            }
+//
+//        } catch (Exception e) {
+//        }
+//        return false;
+//    }
+//
+//    public static void updateChunkLoadPosition(LivingEntity entity, LoadedChunkInfo oldLoadInfo, ChunkPos newChunkPos) {
+//        ServerLevel serverLevel = (ServerLevel) entity.level();
+//        try {
+//            // 卸载旧区块
+//            boolean unloadSuccess = ForgeChunkManager.forceChunk(
+//                    oldLoadInfo.level, MOD_ID, entity,
+//                    oldLoadInfo.chunkPos.x, oldLoadInfo.chunkPos.z, false, false
+//            );
+//
+//            if (!unloadSuccess) {
+//                return;
+//            }
+//
+//            // 加载新区块
+//            boolean loadSuccess = ForgeChunkManager.forceChunk(
+//                    serverLevel, MOD_ID, entity, newChunkPos.x, newChunkPos.z, true, true
+//            );
+//
+//            if (loadSuccess) {
+//                ACTIVE_LOADS.put(entity.getUUID(), new LoadedChunkInfo(newChunkPos, serverLevel));
+//
+//            }
+//        } catch (Exception e) {
+//
+//        }
+//    }
+//
+//    /**
+//     * 清理方法：当生物异常消失时手动清理
+//     */
+//    public static void cleanupOrphanedLoads() {
+//        for (Map.Entry<UUID, LoadedChunkInfo> entry : ACTIVE_LOADS.entrySet()) {
+//            UUID entityUUID = entry.getKey();
+//            LoadedChunkInfo loadInfo = entry.getValue();
+//
+//            // 检查生物是否还存在
+//            Entity entity = loadInfo.level.getEntity(entityUUID);
+//            if (entity == null || !entity.isAlive()) {
+//                try {
+//                    // 尝试清理孤儿加载
+//                    ForgeChunkManager.forceChunk(
+//                            loadInfo.level, MOD_ID, entity,
+//                            loadInfo.chunkPos.x, loadInfo.chunkPos.z, false, false
+//                    );
+//                    ACTIVE_LOADS.remove(entityUUID);
+//
+//                } catch (Exception e) {
+//
+//                }
+//            }
+//        }
+//    }
 }
