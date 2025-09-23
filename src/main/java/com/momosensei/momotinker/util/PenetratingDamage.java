@@ -1,8 +1,10 @@
 package com.momosensei.momotinker.util;
 
+import com.momosensei.momotinker.mixins.AttributeInstanceAccessor;
 import net.minecraft.network.syncher.EntityDataAccessor;
 import net.minecraft.world.entity.Entity;
 import net.minecraft.world.entity.LivingEntity;
+import net.minecraft.world.entity.ai.attributes.AttributeInstance;
 import net.minecraft.world.entity.player.Player;
 import net.minecraftforge.fml.common.Mod;
 
@@ -31,14 +33,24 @@ public class PenetratingDamage {
         }
         return null;
     }
+
     public static void reflectionPenetratingDamage(Entity target, Player player, float value) {
         if (!(target instanceof LivingEntity living)) return;
         if (DATA_HEALTH_ID == null) return;
         float currentHealth = living.getEntityData().get(DATA_HEALTH_ID);
-        float newHealth = currentHealth-value;
+        float newHealth = currentHealth - value;
         living.getEntityData().set(DATA_HEALTH_ID, newHealth);
         if (living.getHealth() <= 0.0F) {
             living.die(player.damageSources().playerAttack(player));
         }
     }
+
+    public static void setCachedValue(AttributeInstance attribute, double value) {
+        ((AttributeInstanceAccessor) attribute).setCachedValue(value);
+    }
+
+    public static double getCachedValue(AttributeInstance attribute) {
+        return ((AttributeInstanceAccessor) attribute).getCachedValue();
+    }
+
 }

@@ -35,7 +35,7 @@ public class Blank extends momomodifier {
 
     public void addTooltip(IToolStackView tool, ModifierEntry modifierEntry, @org.jetbrains.annotations.Nullable Player player, List<Component> tooltip, TooltipKey tooltipKey, TooltipFlag tooltipFlag) {
         if (player != null&&CoolTimeB.getCoolTime()!=0) {
-            tooltip.add(net.minecraft.network.chat.Component.translatable("modifier.momotinker.tooltip.blank1").append(CoolTimeB.getCoolTime()+"s").withStyle(ChatFormatting.GRAY));
+            tooltip.add(Component.translatable("modifier.momotinker.tooltip.blank1").append(CoolTimeB.getCoolTime()+"s").withStyle(ChatFormatting.GRAY));
         }
     }
 }
