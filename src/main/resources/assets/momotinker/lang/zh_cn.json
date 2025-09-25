@@ -828,7 +828,7 @@
   "modifier.momotinker.years_in_weiqi.flavor": "山中方一日，世上已千年",
   "modifier.momotinker.years_in_weiqi.description": "手持该工具会逐渐加速周围4格内的方块活动，361秒后加速到达最大值，加速时会加快自身饱食度消耗，饱食度为0时该加速失效\n(慎重与其他加速模组如时间之瓶等同时使用)",
 
-  "modifier.momotinker.memories_of_mountains": "忆江山",
+  "modifier.momotinker.memories_of_mountains": "忆江山A",
   "modifier.momotinker.memories_of_mountains.flavor": "随山将万转，趣途无百里",
   "modifier.momotinker.memories_of_mountains.description": "击中生物后尝试将目标移动到[江山忆]维度，该维度不会自然生成怪物且该生物在该维度时每隔一段时间将会受到一次伤害，该生物死亡后会将战利品掉落在玩家位置(伤害数值以触发移动效果时造成的伤害为基础)\n(该特性涉及到区块强制加载，作用于过多生物且生物未死亡时可能会造成卡顿)"
 
