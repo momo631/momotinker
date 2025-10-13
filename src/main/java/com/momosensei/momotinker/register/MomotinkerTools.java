@@ -48,6 +48,7 @@ public final class MomotinkerTools extends MomotinkerTables {
     public static final ItemObject<ModifiableItem> pocket_watch = ITEMS.register("pocket_watch", () -> new pocket_watch(UNSTACKABLE_PROPS, MomotinkerToolDefinitions.POCKET_WATCH));
     public static final ItemObject<ModifiableItem> chain_sword = ITEMS.register("chain_sword", () -> new chain_sword(UNSTACKABLE_PROPS, MomotinkerToolDefinitions.CHAIN_SWORD));
     public static final ItemObject<ModifiableItem> pneumatic_sword = ITEMS.register("pneumatic_sword", () -> new pneumatic_sword(UNSTACKABLE_PROPS, MomotinkerToolDefinitions.PNEUMATIC_SWORD));
+    public static final ItemObject<ModifiableItem> box = ITEMS.register("box", () -> new box(UNSTACKABLE_PROPS, MomotinkerToolDefinitions.BOX));
 
     private static void addTabItems(CreativeModeTab.ItemDisplayParameters itemDisplayParameters, CreativeModeTab.Output tab) {
         Consumer<ItemStack> output = tab::accept;

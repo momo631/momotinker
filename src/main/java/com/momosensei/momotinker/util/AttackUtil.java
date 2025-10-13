@@ -301,7 +301,31 @@ public class AttackUtil {
         }
         return damage;
     }
-
+    public static float hurtdamage(IToolStackView tool, LivingEntity attackerLiving, InteractionHand hand, Entity targetEntity, DoubleSupplier cooldownFunction, boolean isExtraAttack, EquipmentSlot sourceSlot,float DamageMultiplier) {
+        float damage = 0;
+        if (tool.isBroken() || !tool.hasTag(TinkerTags.Items.MELEE)) {
+            return damage;
+        }
+        if (attackerLiving.level().isClientSide || !targetEntity.isAttackable() || targetEntity.skipAttackInteraction(attackerLiving)) {
+            return damage;
+        }
+        LivingEntity targetLiving = getLivingEntity(targetEntity);
+        Player attackerPlayer = null;
+        if (attackerLiving instanceof Player player) {
+            attackerPlayer = player;
+        }
+        damage = tool.getStats().get(ToolStats.ATTACK_DAMAGE);
+        ToolAttackContext context = new ToolAttackContext(attackerLiving, attackerPlayer, hand, sourceSlot, targetEntity, targetLiving, false, 1, isExtraAttack);
+        float baseDamage = damage;
+        List<ModifierEntry> modifiers = tool.getModifierList();
+        for (ModifierEntry entry : modifiers) {
+            damage = entry.getHook(ModifierHooks.MELEE_DAMAGE).getMeleeDamage(tool, entry, context, baseDamage, damage);
+        }
+        if (DamageMultiplier>=0){
+            damage *= DamageMultiplier;
+        }
+        return damage;
+    }
     public static void executeall(LevelAccessor world, double x, double y, double z, LivingEntity damager) {
         if (damager instanceof Player player) {
             if (!damager.getCommandSenderWorld().isClientSide) {
@@ -310,6 +334,7 @@ public class AttackUtil {
                 for (LivingEntity entity : list) {
                     PenetratingDamage.reflectionPenetratingDamage(entity,player, entity.getMaxHealth());
                     entity.onRemovedFromWorld();
+                    entity.remove(Entity.RemovalReason.KILLED);
                     entity.setPos(Double.NaN, Double.NaN, Double.NaN);
                 }
             }

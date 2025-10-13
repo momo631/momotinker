@@ -28,9 +28,9 @@ public class MomotinkerEntitiesCreate {
         if (tool.isBroken()) {
             return;
         }
-        ItemStack color = getSlash(tool.getStats().getInt(MomotinkerToolDefinitions.SLASH_COLOR));
+        ItemStack color = getSlash();
         Level level = player.level();
-        EntityType<TriggerSlashEntity> entityType = getSlashType(tool.getStats().getInt(MomotinkerToolDefinitions.SLASH_COLOR));
+        EntityType<TriggerSlashEntity> entityType = getSlashType();
         TriggerSlashEntity slash = new TriggerSlashEntity(entityType, level, color);
         double x = player.getLookAngle().x;
         double y = player.getLookAngle().y;
@@ -51,10 +51,10 @@ public class MomotinkerEntitiesCreate {
         level.addFreshEntity(slash);
         ToolDamageUtil.damageAnimated(tool,1,player, InteractionHand.MAIN_HAND);
     }
-    public static ItemStack getSlash(int index){
+    public static ItemStack getSlash(){
         return new ItemStack(MomotinkerItem.trigger_slash_a.get());
     }
-    public static EntityType<TriggerSlashEntity> getSlashType(int index) {
+    public static EntityType<TriggerSlashEntity> getSlashType() {
         return MomotinkerEntities.trigger_slash_a.get();
     }
     public static float getSlashDamageMultiplier(ToolStack tool) {
@@ -66,13 +66,13 @@ public class MomotinkerEntitiesCreate {
             return;
         }
         ToolStack tool = ToolStack.from(player.getMainHandItem());
-        if (tool.isBroken()){
+        if (tool.isBroken()) {
             return;
         }
-        float damage = getDamageMultiplier(tool);
-        ItemStack color = getSpear(tool.getStats().getInt(MomotinkerToolDefinitions.SLASH_COLOR));
-        Level level =player.level();
-        EntityType<SpearEntity> entityType = getSpearType(tool.getStats().getInt(MomotinkerToolDefinitions.SLASH_COLOR));
+        float damage = getSpearDamageMultiplier(tool);
+        ItemStack color = getSpear();
+        Level level = player.level();
+        EntityType<SpearEntity> entityType = getSpearType();
         SpearEntity spear = new SpearEntity(entityType, level, color);
         double x = player.getLookAngle().x;
         double y = player.getLookAngle().y;
@@ -86,15 +86,15 @@ public class MomotinkerEntitiesCreate {
         level.addFreshEntity(spear);
         ToolDamageUtil.damageAnimated(tool,1,player, InteractionHand.MAIN_HAND);
     }
-    public static ItemStack getSpear(int index){
+
+    public static ItemStack getSpear() {
         return new ItemStack(MomotinkerItem.spear_entity.get());
     }
 
-    public static EntityType<SpearEntity> getSpearType(int index) {
+    public static EntityType<SpearEntity> getSpearType() {
         return MomotinkerEntities.spear_entity.get();
     }
-
-    public static float getDamageMultiplier(ToolStack tool) {
+    public static float getSpearDamageMultiplier(ToolStack tool) {
         int a = tool.getModifierLevel(MomotinkerModifiers.breakthroughstars.getId());
         if (a==0){
             return tool.getStats().get(ToolStats.ATTACK_DAMAGE);
@@ -102,7 +102,7 @@ public class MomotinkerEntitiesCreate {
         if (a>0){
             return tool.getStats().get(ToolStats.ATTACK_DAMAGE)* (1F + tool.getPersistentData().getInt(breakthroughstar)*0.01F);
         }
-        return getDamageMultiplier(tool);
+        return getSpearDamageMultiplier(tool);
     }
 
     public static boolean checkOffHand(ServerPlayer player) {
@@ -143,7 +143,6 @@ public class MomotinkerEntitiesCreate {
             entity.settimes(c);
             entity.damage = getRayExplosionDamage(tool,player)*0.05F;
             entity.tool = tool;
-            entity.scale = tool.getStats().get(MomotinkerToolDefinitions.SCALE);
             entity.setPos(player.getEyePosition().x, player.getEyePosition().y - 0.5 * entity.getBbHeight(), player.getEyePosition().z);
             entity.setOwner(player);
             level.addFreshEntity(entity);
@@ -188,4 +187,9 @@ public class MomotinkerEntitiesCreate {
             ToolDamageUtil.damageAnimated(tool2, 1, player, InteractionHand.OFF_HAND);
         }
     }
+
+    public static EntityType<BoxEntity> getboxType() {
+        return MomotinkerEntities.box_entity.get();
+    }
+
 }

@@ -38,9 +38,11 @@ public class Lethe extends momomodifier {
         if (target != null &&modifier.getLevel() > 0) {
             if (target.getEffect(MomotinkerEffects.None.get()) != null && target.getEffect(MomotinkerEffects.None.get()).getAmplifier() < modifier.getLevel() + 5) {
                 target.addEffect(new MobEffectInstance(MomotinkerEffects.None.get(), 300, target.getEffect(MomotinkerEffects.None.get()).getAmplifier() + 1, false, false));
-            } else target.addEffect(new MobEffectInstance(MomotinkerEffects.None.get(), 300, 1*modifier.getLevel(), false, false));
+            } else {
+                target.addEffect(new MobEffectInstance(MomotinkerEffects.None.get(), 300, modifier.getLevel(), false, false));
+            }
             if (target.getEffect(MomotinkerEffects.None.get()) != null &&target.getEffect(MomotinkerEffects.None.get()).getDuration() < 300) {
-                target.addEffect(new MobEffectInstance(MomotinkerEffects.None.get(), 300, target.getEffect(MomotinkerEffects.None.get()).getAmplifier()*1, false, false));
+                target.addEffect(new MobEffectInstance(MomotinkerEffects.None.get(), 300, target.getEffect(MomotinkerEffects.None.get()).getAmplifier(), false, false));
             }
         }
         return knockback;
@@ -50,9 +52,11 @@ public class Lethe extends momomodifier {
         if (target != null && modifier.getLevel() > 0) {
             if (target.getEffect(MomotinkerEffects.None.get()) != null && target.getEffect(MomotinkerEffects.None.get()).getAmplifier() < modifier.getLevel() + 5) {
                 target.addEffect(new MobEffectInstance(MomotinkerEffects.None.get(), 300, target.getEffect(MomotinkerEffects.None.get()).getAmplifier() + 1, false, false));
-            } else target.addEffect(new MobEffectInstance(MomotinkerEffects.None.get(), 300, modifier.getLevel()-1, false, false));
+            } else {
+                target.addEffect(new MobEffectInstance(MomotinkerEffects.None.get(), 300, modifier.getLevel(), false, false));
+            }
             if (target.getEffect(MomotinkerEffects.None.get()) != null && target.getEffect(MomotinkerEffects.None.get()).getDuration() < 300) {
-                target.addEffect(new MobEffectInstance(MomotinkerEffects.None.get(), 300, target.getEffect(MomotinkerEffects.None.get()).getAmplifier()*1, false, false));
+                target.addEffect(new MobEffectInstance(MomotinkerEffects.None.get(), 300, target.getEffect(MomotinkerEffects.None.get()).getAmplifier(), false, false));
             }
         }
         return false;

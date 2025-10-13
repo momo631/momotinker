@@ -44,5 +44,7 @@ public class ModEventListener {
         event.registerEntityRenderer(MomotinkerEntities.starfall_entity.get(), StarfallEntityRenderer::new);
         event.registerEntityRenderer(MomotinkerEntities.pull_a_entity.get(), PullAEntityRenderer::new);
         event.registerEntityRenderer(MomotinkerEntities.pull_b_entity.get(), PullBEntityRenderer::new);
+        event.registerEntityRenderer(MomotinkerEntities.box_entity.get(), BoxRenderer::new);
+
     }
 }

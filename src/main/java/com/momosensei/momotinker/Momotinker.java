@@ -52,6 +52,7 @@ public class Momotinker {
         MomotinkerLootModifiers.register(eventBus);
         eventBus.register(new MomotinkerTools());
         MomotinkerTables.initRegisters();
+        MomotinkerTags.init();
         MinecraftForge.EVENT_BUS.register(new LivingEvents());
 
         MinecraftForge.EVENT_BUS.register(new MomotinkerStructures());
@@ -65,7 +66,7 @@ public class Momotinker {
     }
     //Resourcelocation
     public static ResourceLocation getResource(String id) {
-        return new ResourceLocation("momotinker", id);
+        return new ResourceLocation(MOD_ID, id);
     }
 
     public static ResourceLocation getResourceLocation(String id) {
