@@ -43,7 +43,8 @@ public class ToolsTimeHUD {
                 ||player.getItemBySlot(EquipmentSlot.MAINHAND).is(coronal_key.get())
                 ||player.getItemBySlot(EquipmentSlot.MAINHAND).is(eclipse_container.get())
                 ||player.getItemBySlot(EquipmentSlot.MAINHAND).is(pneumatic_sword.get())
-                ||player.getItemBySlot(EquipmentSlot.OFFHAND).is(pneumatic_sword.get()))){
+                ||player.getItemBySlot(EquipmentSlot.OFFHAND).is(pneumatic_sword.get())
+                ||player.getItemBySlot(EquipmentSlot.MAINHAND).is(box.get()))){
             return;
         }
         if (ToolStack.from(player.getMainHandItem()).isBroken()){

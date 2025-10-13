@@ -116,7 +116,10 @@ public class MemoriesOfMountains extends momomodifier {
                                 living.hurt(DamageSource.playerAttack(player).bypassEnchantments().bypassInvul().bypassMagic().bypassArmor(), a);
                                 living.invulnerableTime = 0;
                             }
-                            setMemoriesTag(living, a * 1.1f);
+                            float b = a * 1.1f;
+                            if (b>Float.MAX_VALUE)b=Float.MAX_VALUE;
+                            setMemoriesTag(living, b);
+
                         }
                     }
                 }

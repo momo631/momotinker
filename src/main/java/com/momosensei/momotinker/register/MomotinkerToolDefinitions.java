@@ -5,17 +5,13 @@ import com.momosensei.momotinker.Momotinker;
 import slimeknights.tconstruct.common.Sounds;
 import slimeknights.tconstruct.library.tools.definition.ModifiableArmorMaterial;
 import slimeknights.tconstruct.library.tools.definition.ToolDefinition;
-import slimeknights.tconstruct.library.tools.stat.FloatToolStat;
 import slimeknights.tconstruct.library.tools.stat.ToolStatId;
-import slimeknights.tconstruct.library.tools.stat.ToolStats;
 
 import static com.momosensei.momotinker.Momotinker.getResource;
 
 public class MomotinkerToolDefinitions {
     public MomotinkerToolDefinitions() {
     }
-    public static final FloatToolStat SLASH_COLOR = ToolStats.register(new FloatToolStat(name("slash_color"), -3135232, 0.0F, 0.0F, 11));
-    public static final FloatToolStat SCALE = ToolStats.register(new FloatToolStat(name("scale"), -3135232, 1.0F, 0.0F, Integer.MAX_VALUE));
 
     public static final ModifiableArmorMaterial AAA = ModifiableArmorMaterial.create(getResource("aa"), Sounds.EQUIP_PLATE.getSound());
 
@@ -34,6 +30,7 @@ public class MomotinkerToolDefinitions {
     public static final ToolDefinition POCKET_WATCH = ToolDefinition.create(MomotinkerItem.pocket_watch);
     public static final ToolDefinition CHAIN_SWORD = ToolDefinition.create(MomotinkerItem.chain_sword);
     public static final ToolDefinition PNEUMATIC_SWORD = ToolDefinition.create(MomotinkerItem.pneumatic_sword);
+    public static final ToolDefinition BOX = ToolDefinition.create(MomotinkerItem.box);
 
 
     //public static final ToolDefinition AA = ToolDefinition.create(MomotinkerItem.aa);
