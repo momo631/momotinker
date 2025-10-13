@@ -64,6 +64,7 @@ public final class MomotinkerTools extends MomotinkerTables {
         acceptTool(output, pocket_watch);
         acceptTool(output, chain_sword);
         acceptTool(output, pneumatic_sword);
+        acceptTool(output, box);
 
         tab.accept(MomotinkerItem.twilight_ego.get());
         tab.accept(MomotinkerItem.star_seeking_pointer.get());
