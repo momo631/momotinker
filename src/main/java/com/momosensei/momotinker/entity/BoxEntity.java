@@ -67,33 +67,90 @@ public class BoxEntity extends Projectile {
         return this.entityData.get(DATA_SPAWN_PITCH);
     }
 
-    public final Random RANDOM = new Random();
-    public final RandomMaterial randomMaterial = RandomMaterial.random().allowHidden().build();
-    public Map<ResourceLocation, ToolDefinition> getTools() {
-        return ToolDefinitionLoader.getInstance()
+//    public final Random RANDOM = new Random();
+//    public final RandomMaterial randomMaterial = RandomMaterial.random().allowHidden().build();
+//    public Map<ResourceLocation, ToolDefinition> getTools() {
+//        return ToolDefinitionLoader.getInstance()
+//                .getRegisteredToolDefinitions()
+//                .stream()
+//                .collect(Collectors.toMap(ToolDefinition::getId, Function.identity()));
+//    }
+//    public ToolDefinition getRandomToolDefinition() {
+//        Map<ResourceLocation, ToolDefinition> tools = getTools();
+//        if (tools.isEmpty()) {
+//            throw new IllegalStateException("No tool definitions available for mod " );
+//        }
+//        List<ToolDefinition> toolList = new ArrayList<>(tools.values());
+//        return toolList.get(RANDOM.nextInt(toolList.size()));
+//    }
+//    public ToolStack buildTools(Item item,ToolDefinition definition, MaterialNBT materials) {
+//        return ToolStack.createTool(item, definition, materials);
+//    }
+//
+//    private ToolStack getRandomTools(MaterialNBT materials) {
+//        ToolDefinition definition = getRandomToolDefinition();
+//        Item item=ForgeRegistries.ITEMS.getValue(definition.getId());
+//        return buildTools(item,definition,materials);
+//    }
+//    private ToolStack getToolRandomMaterials() {
+//        ToolDefinition definition = getRandomToolDefinition();
+//        Item item = ForgeRegistries.ITEMS.getValue(definition.getId());
+//        List<MaterialStatsId> stats = ToolMaterialHook.stats(definition);
+//        return buildTools(item, definition, RandomMaterial.build(stats, Collections.nCopies(stats.size(), randomMaterial), RandomSource.create()));
+//    }
+    private static final Random RANDOM = new Random();
+    private static final RandomMaterial randomMaterial = RandomMaterial.random().allowHidden().build();
+    private static final Map<ResourceLocation, ToolDefinition> TOOLS_CACHE = new HashMap<>();
+    private static final Map<ResourceLocation, Item> DEFINITION_TO_ITEM_MAP = new HashMap<>();
+    private static final List<ToolDefinition> TOOL_DEFINITION_LIST = new ArrayList<>();
+
+    static {
+        Map<ResourceLocation, ToolDefinition> tempTools = ToolDefinitionLoader.getInstance()
                 .getRegisteredToolDefinitions()
                 .stream()
                 .collect(Collectors.toMap(ToolDefinition::getId, Function.identity()));
-    }
-    public ToolDefinition getRandomToolDefinition() {
-        Map<ResourceLocation, ToolDefinition> tools = getTools();
-        if (tools.isEmpty()) {
-            throw new IllegalStateException("No tool definitions available for mod " );
+
+        TOOLS_CACHE.putAll(tempTools);
+        TOOL_DEFINITION_LIST.addAll(tempTools.values());
+
+        for (ToolDefinition definition : TOOL_DEFINITION_LIST) {
+            Item item = ForgeRegistries.ITEMS.getValue(definition.getId());
+            if (item != null && item != Items.AIR) {
+                DEFINITION_TO_ITEM_MAP.put(definition.getId(), item);
+            }
         }
-        List<ToolDefinition> toolList = new ArrayList<>(tools.values());
-        return toolList.get(RANDOM.nextInt(toolList.size()));
     }
-    public ToolStack buildTools(Item item,ToolDefinition definition, MaterialNBT materials) {
+
+    public static Map<ResourceLocation, ToolDefinition> getTools() {
+        return new HashMap<>(TOOLS_CACHE);
+    }
+
+    public static ToolDefinition getRandomToolDefinition() {
+        if (TOOL_DEFINITION_LIST.isEmpty()) {
+            throw new IllegalStateException("No tool definitions available");
+        }
+        return TOOL_DEFINITION_LIST.get(RANDOM.nextInt(TOOL_DEFINITION_LIST.size()));
+    }
+
+    public static ToolStack buildTools(Item item, ToolDefinition definition, MaterialNBT materials) {
         return ToolStack.createTool(item, definition, materials);
     }
-    private ToolStack getRandomTools(MaterialNBT materials) {
+
+    public static ToolStack getRandomTools(MaterialNBT materials) {
         ToolDefinition definition = getRandomToolDefinition();
-        Item item=ForgeRegistries.ITEMS.getValue(definition.getId());
-        return buildTools(item,definition,materials);
+        Item item = DEFINITION_TO_ITEM_MAP.get(definition.getId());
+        if (item == null) {
+            throw new IllegalStateException("No item found for tool definition: " + definition.getId());
+        }
+        return buildTools(item, definition, materials);
     }
-    private ToolStack getToolRandomMaterials() {
+
+    public static ToolStack getToolRandomMaterials() {
         ToolDefinition definition = getRandomToolDefinition();
-        Item item = ForgeRegistries.ITEMS.getValue(definition.getId());
+        Item item = DEFINITION_TO_ITEM_MAP.get(definition.getId());
+        if (item == null) {
+            throw new IllegalStateException("No item found for tool definition: " + definition.getId());
+        }
         List<MaterialStatsId> stats = ToolMaterialHook.stats(definition);
         return buildTools(item, definition, RandomMaterial.build(stats, Collections.nCopies(stats.size(), randomMaterial), RandomSource.create()));
     }
