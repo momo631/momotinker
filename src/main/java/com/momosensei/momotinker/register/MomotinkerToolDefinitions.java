@@ -2,18 +2,12 @@ package com.momosensei.momotinker.register;
 
 
 import com.momosensei.momotinker.Momotinker;
-import slimeknights.tconstruct.common.Sounds;
-import slimeknights.tconstruct.library.tools.definition.ModifiableArmorMaterial;
 import slimeknights.tconstruct.library.tools.definition.ToolDefinition;
 import slimeknights.tconstruct.library.tools.stat.ToolStatId;
-
-import static com.momosensei.momotinker.Momotinker.getResource;
 
 public class MomotinkerToolDefinitions {
     public MomotinkerToolDefinitions() {
     }
-
-    public static final ModifiableArmorMaterial AAA = ModifiableArmorMaterial.create(getResource("aa"), Sounds.EQUIP_PLATE.getSound());
 
     private static ToolStatId name(String name) {
         return new ToolStatId(Momotinker.MOD_ID, name);
