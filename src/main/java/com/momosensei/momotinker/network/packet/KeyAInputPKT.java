@@ -5,6 +5,7 @@ import com.momosensei.momotinker.register.MomotinkerItem;
 import com.momosensei.momotinker.register.MomotinkerToolDefinitions;
 import net.minecraft.network.FriendlyByteBuf;
 import net.minecraft.server.level.ServerPlayer;
+import net.minecraft.util.Mth;
 import net.minecraft.world.InteractionHand;
 import net.minecraft.world.item.ItemStack;
 import net.minecraftforge.network.NetworkEvent;
@@ -14,6 +15,7 @@ import slimeknights.tconstruct.library.tools.item.armor.ModifiableArmorItem;
 import slimeknights.tconstruct.library.tools.nbt.MaterialNBT;
 import slimeknights.tconstruct.library.tools.nbt.ModDataNBT;
 import slimeknights.tconstruct.library.tools.nbt.ToolStack;
+import slimeknights.tconstruct.library.tools.stat.ToolStats;
 
 import java.util.List;
 import java.util.function.Supplier;
@@ -21,6 +23,7 @@ import java.util.function.Supplier;
 import static com.momosensei.momotinker.Modifiers.modifiers.ProjectionOfSuffering.disaster;
 import static com.momosensei.momotinker.Momotinker.getResource;
 import static com.momosensei.momotinker.entity.MomotinkerEntitiesCreate.createPull;
+import static com.momosensei.momotinker.tool.box.createBox;
 import static com.momosensei.momotinker.tool.entropy_burning_cube.liverization;
 
 public class KeyAInputPKT {
@@ -173,6 +176,15 @@ public class KeyAInputPKT {
                     data2.putFloat(getResource("pullcool"),8);
                     createPull(player);
                 }
+            }
+
+            if (player!=null&&(player.getMainHandItem().is(MomotinkerItem.box.get()))) {
+                ToolStack tool = ToolStack.from(player.getMainHandItem());
+                float perc = Mth.clamp(tool.getStats().get(ToolStats.ATTACK_SPEED)/120,0,1);
+                int a = (int) Math.floor(perc*10);
+                if (a<1)a=1;
+                if (a>10)a=10;
+                createBox(player, a+2, 2);
             }
         });
         context.setPacketHandled(true);

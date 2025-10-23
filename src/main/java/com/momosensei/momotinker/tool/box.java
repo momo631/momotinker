@@ -1,8 +1,9 @@
 package com.momosensei.momotinker.tool;
 
 
-import com.momosensei.momotinker.entity.BoxEntity;
+import com.momosensei.momotinker.entity.Boxentity.BoxEntity;
 import com.momosensei.momotinker.network.Channel;
+import com.momosensei.momotinker.network.packet.BoxPacket;
 import com.momosensei.momotinker.network.packet.ToolsTimeCharge;
 import net.minecraft.core.BlockPos;
 import net.minecraft.network.chat.Component;
@@ -11,6 +12,7 @@ import net.minecraft.stats.Stats;
 import net.minecraft.util.Mth;
 import net.minecraft.world.InteractionHand;
 import net.minecraft.world.InteractionResultHolder;
+import net.minecraft.world.entity.Entity;
 import net.minecraft.world.entity.EntityType;
 import net.minecraft.world.entity.EquipmentSlot;
 import net.minecraft.world.entity.LivingEntity;
@@ -20,6 +22,8 @@ import net.minecraft.world.item.TooltipFlag;
 import net.minecraft.world.item.UseAnim;
 import net.minecraft.world.level.Level;
 import net.minecraft.world.level.block.state.BlockState;
+import net.minecraftforge.common.MinecraftForge;
+import net.minecraftforge.event.entity.player.PlayerInteractEvent;
 import org.jetbrains.annotations.Nullable;
 import slimeknights.mantle.client.TooltipKey;
 import slimeknights.tconstruct.library.modifiers.ModifierEntry;
@@ -36,17 +40,21 @@ import slimeknights.tconstruct.tools.modifiers.upgrades.ranged.ScopeModifier;
 
 import java.util.Iterator;
 import java.util.List;
+import java.util.Random;
 
 import static com.momosensei.momotinker.entity.MomotinkerEntitiesCreate.getboxType;
+import static com.momosensei.momotinker.util.AttackUtil.getCooldownFunctionFloat;
 import static slimeknights.tconstruct.library.modifiers.hook.interaction.GeneralInteractionModifierHook.KEY_DRAWTIME;
 
 public class box extends ModifiableItem {
     public box(Properties properties, ToolDefinition toolDefinition) {
         super(properties, toolDefinition);
+        MinecraftForge.EVENT_BUS.addListener(this::LeftClick);
+        MinecraftForge.EVENT_BUS.addListener(this::LeftClickBlock);
     }
 
-    public static void createBox(ServerPlayer player) {
-        if (!(ToolStack.from(player.getMainHandItem()).getItem() instanceof box) || player.getAttackStrengthScale(0) != 1 || !checkOffHand(player)) {
+    public static void createBox(ServerPlayer player,int quantity,int form) {
+        if (!(ToolStack.from(player.getMainHandItem()).getItem() instanceof box) || player.getAttackStrengthScale(0) != 1 ) {
             return;
         }
         ToolStack tool=ToolStack.from(player.getMainHandItem());
@@ -55,15 +63,87 @@ public class box extends ModifiableItem {
         }
         Level level = player.getLevel();
         EntityType<BoxEntity> entityType = getboxType();
-        BoxEntity box = new BoxEntity(entityType, level);
-        box.setOwner(player);
-        box.noPhysics = false;
-        box.setSpawnRotation(player.getYRot(), player.getXRot());
-        box.setPos(player.getX(), player.getY() + 0.7 * player.getBbHeight(), player.getZ());
-        level.addFreshEntity(box);
+
+        Random random = new Random();
+        double minDistance = 1;
+        double maxDistance = 3;
+        if (form==0){
+            minDistance=0.8;
+            maxDistance=2;
+        }
+        for (int i = 0; i < quantity; i++) {
+            BoxEntity box = new BoxEntity(entityType, level);
+            box.setOwner(player);
+            box.noPhysics = true;
+            box.setForm(form);
+            box.setSpawnRotation(player.getYRot(), player.getXRot());
+
+            double x, y, z;
+
+            if (form == 2) {
+                double radius = 2.0;
+                double angleStep = 2 * Math.PI / quantity;
+                double currentAngle = i * angleStep;
+
+                x = player.getX() + Math.cos(currentAngle) * radius;
+                y = player.getY() + 0.7 * player.getBbHeight();
+                z = player.getZ() + Math.sin(currentAngle) * radius;
+
+                box.setPos(x, y, z);
+                box.getPersistentData().putInt("OrbitIndex", i);
+                box.getPersistentData().putInt("TotalOrbiters", quantity);
+                box.getPersistentData().putDouble("BaseOrbitAngle", 0);
+            } else {
+                double distance = minDistance + random.nextDouble() * (maxDistance - minDistance);
+                double angle = random.nextDouble() * 2 * Math.PI;
+
+                x = player.getX() + Math.cos(angle) * distance;
+                y = player.getY() + 0.7 * player.getBbHeight() + random.nextDouble() * 2;
+                z = player.getZ() + Math.sin(angle) * distance;
+
+                box.setPos(x, y, z);
+            }
+            level.addFreshEntity(box);
+        }
         ToolDamageUtil.damageAnimated(tool, 1, player, InteractionHand.MAIN_HAND);
     }
+//    @Override
+//    public boolean onEntitySwing(ItemStack stack, LivingEntity entity) {
+//        boolean retval = super.onEntitySwing(stack, entity);
+//        if (entity instanceof ServerPlayer player&&player.getMainHandItem().getItem() instanceof box) {
+//            float d = getCooldownFunctionFloat(player, InteractionHand.MAIN_HAND);
+//            if (d>0.9f) {
+//                createBox(player, 1, 0);
+//            }
+//        }
+//        return retval;
+//    }
 
+    private void LeftClick(PlayerInteractEvent.LeftClickEmpty event) {
+        Player player=event.getEntity();
+        if (player != null && player.getMainHandItem().getItem() instanceof box) {
+            Channel.sendToServer(new BoxPacket(player.getId()));
+        }
+    }
+    private void LeftClickBlock(PlayerInteractEvent.LeftClickBlock event) {
+        Player player=event.getEntity();
+        if (player instanceof ServerPlayer serverPlayer&&player.getMainHandItem().getItem() instanceof box) {
+            float d = getCooldownFunctionFloat(serverPlayer, InteractionHand.MAIN_HAND);
+            if (d>0.9f) {
+                createBox(serverPlayer, 1, 0);
+            }
+        }
+    }
+    @Override
+    public boolean onLeftClickEntity(ItemStack stack, Player player, Entity target) {
+        if (player instanceof ServerPlayer serverPlayer){
+            float d = getCooldownFunctionFloat(serverPlayer, InteractionHand.MAIN_HAND);
+            if (d>0.9f) {
+                createBox(serverPlayer, 1, 0);
+            }
+        }
+        return super.onLeftClickEntity(stack, player, target);
+    }
     @Override
     public void releaseUsing(ItemStack stack, Level level, LivingEntity livingEntity, int duration) {
         ScopeModifier.stopScoping(livingEntity);
@@ -74,24 +154,23 @@ public class box extends ModifiableItem {
         }
         if (livingEntity instanceof ServerPlayer player) {
             int i = this.getUseDuration(stack) - duration;
-            float perc = Mth.clamp((float) i / (20 / tool.getStats().get(ToolStats.ATTACK_SPEED)),0,1);
-            if (perc >= 1) {
-                createBox(player);
+            float perc = Mth.clamp((float) i / (120 / tool.getStats().get(ToolStats.ATTACK_SPEED)),0,1);
+            if (perc>=0.25f) {
+                int a = (int) Math.floor(perc * 4);
+                createBox(player, a + 1, 1);
+                Channel.sendToPlayer(new ToolsTimeCharge(0), player);
+                player.awardStat(Stats.ITEM_USED.get(this));
+                ToolDamageUtil.damageAnimated(tool, 1, player);
             }
-            Channel.sendToPlayer(new ToolsTimeCharge(0),player);
-            player.awardStat(Stats.ITEM_USED.get(this));
-            ToolDamageUtil.damageAnimated(tool,1,player);
         }
         tool.getPersistentData().remove(KEY_DRAWTIME);
     }
-    public static boolean checkOffHand(ServerPlayer player) {
-        return player != null && !player.hasItemInSlot(EquipmentSlot.OFFHAND);
-    }
+
     @Override
     public void onUseTick(Level level, LivingEntity living, ItemStack stack, int chargeRemaining) {
         if ( living instanceof ServerPlayer player) {
             int i = this.getUseDuration(stack) - chargeRemaining;
-            float perc = Mth.clamp((float) i / (20 / ToolStack.from(stack).getStats().get(ToolStats.ATTACK_SPEED)),0,1);
+            float perc = Mth.clamp((float) i / (120 / ToolStack.from(stack).getStats().get(ToolStats.ATTACK_SPEED)),0,1);
             Channel.sendToPlayer(new ToolsTimeCharge(perc), player);
         }
     }

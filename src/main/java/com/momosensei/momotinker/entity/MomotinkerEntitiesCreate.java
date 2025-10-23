@@ -1,5 +1,6 @@
 package com.momosensei.momotinker.entity;
 
+import com.momosensei.momotinker.entity.Boxentity.BoxEntity;
 import com.momosensei.momotinker.register.MomotinkerConfig;
 import com.momosensei.momotinker.register.MomotinkerEntities;
 import com.momosensei.momotinker.register.MomotinkerItem;

@@ -1,7 +1,8 @@
-package com.momosensei.momotinker.entity;
+package com.momosensei.momotinker.entity.Boxentity;
 
 
 import com.momosensei.momotinker.register.MomotinkerModifiers;
+import com.momosensei.momotinker.tool.box;
 import com.momosensei.momotinker.util.AttackUtil;
 import net.minecraft.network.syncher.EntityDataAccessor;
 import net.minecraft.network.syncher.EntityDataSerializers;
@@ -13,12 +14,14 @@ import net.minecraft.world.InteractionHand;
 import net.minecraft.world.entity.Entity;
 import net.minecraft.world.entity.EntityType;
 import net.minecraft.world.entity.LivingEntity;
+import net.minecraft.world.entity.MoverType;
 import net.minecraft.world.entity.player.Player;
 import net.minecraft.world.entity.projectile.Projectile;
 import net.minecraft.world.item.Item;
 import net.minecraft.world.item.ItemStack;
 import net.minecraft.world.item.Items;
 import net.minecraft.world.level.Level;
+import net.minecraft.world.phys.Vec3;
 import net.minecraftforge.registries.ForgeRegistries;
 import slimeknights.tconstruct.common.TinkerTags;
 import slimeknights.tconstruct.library.materials.RandomMaterial;
@@ -35,6 +38,8 @@ import java.util.*;
 import java.util.function.Function;
 import java.util.stream.Collectors;
 
+import static com.momosensei.momotinker.entity.MomotinkerEntitiesMove.*;
+
 
 public class BoxEntity extends Projectile {
     public ToolStack tool;
@@ -42,15 +47,18 @@ public class BoxEntity extends Projectile {
     public BoxEntity(EntityType<? extends Projectile> p_37248_, Level p_37249_) {
         super(p_37248_, p_37249_);
     }
+
     private static final EntityDataAccessor<ItemStack> DATA_TOOL = SynchedEntityData.defineId(BoxEntity.class, EntityDataSerializers.ITEM_STACK);
     private static final EntityDataAccessor<Float> DATA_SPAWN_YAW = SynchedEntityData.defineId(BoxEntity.class, EntityDataSerializers.FLOAT);
     private static final EntityDataAccessor<Float> DATA_SPAWN_PITCH = SynchedEntityData.defineId(BoxEntity.class, EntityDataSerializers.FLOAT);
+    private static final EntityDataAccessor<Integer> DATA_FORM = SynchedEntityData.defineId(BoxEntity.class, EntityDataSerializers.INT);
 
     @Override
     protected void defineSynchedData() {
         this.entityData.define(DATA_TOOL, ItemStack.EMPTY);
         this.entityData.define(DATA_SPAWN_YAW, 0f);
         this.entityData.define(DATA_SPAWN_PITCH, 0f);
+        this.entityData.define(DATA_FORM, 0);
     }
     public void setSpawnRotation(float yaw, float pitch) {
         this.entityData.set(DATA_SPAWN_YAW, yaw);
@@ -67,6 +75,13 @@ public class BoxEntity extends Projectile {
         return this.entityData.get(DATA_SPAWN_PITCH);
     }
 
+    public void setForm(int form) {
+        this.entityData.set(DATA_FORM, form);
+    }
+
+    public int getForm() {
+        return this.entityData.get(DATA_FORM);
+    }
 //    public final Random RANDOM = new Random();
 //    public final RandomMaterial randomMaterial = RandomMaterial.random().allowHidden().build();
 //    public Map<ResourceLocation, ToolDefinition> getTools() {
@@ -209,6 +224,7 @@ public class BoxEntity extends Projectile {
         if (toolStack == null) return false;
         if (toolStack.getStats().get(ToolStats.ATTACK_DAMAGE)==0) return false;
         if (!toolStack.hasTag(TinkerTags.Items.INTERACTABLE_RIGHT)) return false;
+        if (toolStack.getItem() instanceof box) return false;
         ItemStack itemStack = toolStack.createStack();
         return !itemStack.isEmpty() && itemStack.getItem() != Items.AIR;
     }
@@ -223,7 +239,16 @@ public class BoxEntity extends Projectile {
     @Override
     public void tick() {
         super.tick();
-        if (this.tickCount >= 300) {
+        int discardTime = switch (getForm()) {
+            case 1 -> 160;
+            case 2 -> 240;
+            default -> 120;
+        };
+        if (this.tickCount >= discardTime) {
+            this.discard();
+            return;
+        }
+        if (!isInLoadedChunk(this)) {
             this.discard();
             return;
         }
@@ -231,13 +256,32 @@ public class BoxEntity extends Projectile {
         if (entity == null) {
             return;
         }
-        for (int dx = -1; dx <= 1; dx++) {
-            for (int dz = -1; dz <= 1; dz++) {
-                if (!level.hasChunk(this.chunkPosition().x + dx, this.chunkPosition().z + dz)) {
-                    this.discard();
-                    return;
+        if (!this.level.isClientSide) {
+            updateEntityIgnoredTargets(this);
+            if (getForm()!=2) {
+                LivingEntity target = findNearestTargetWithTransfer(this, entity, 20);
+                double speed = 1.2;
+                float spawnYaw = this.getSpawnYaw();
+                float spawnPitch = this.getSpawnPitch();
+                if (target == null || getForm() == 0) {
+                    Vec3 movementVector = calculateMovementVector(spawnYaw, spawnPitch);
+                    this.setDeltaMovement(movementVector.scale(speed));
+                } else if (getForm() == 1) {
+                    if (this.tickCount > 5) {
+                        moveTowardsTargetWithTransfer(this, target, 1.8, 1.5);
+                    } else {
+                        Vec3 movementVector = calculateMovementVector(spawnYaw, spawnPitch);
+                        this.setDeltaMovement(movementVector.scale(speed));
+                    }
+                }
+            }else{
+                if (entity.isAlive()) {
+                    //circularMotionNew(BoxEntity.class,this,entity,entity,2,2,3,0.05);
+                    circularMotion(this,entity,2,0.05);
                 }
             }
+            updateRotation();
+            super.move(MoverType.SELF, this.getDeltaMovement());
         }
 
         ToolStack tool =ToolStack.from(getItem());
@@ -248,6 +292,7 @@ public class BoxEntity extends Projectile {
                     AttackUtil.attackEntity(tool, player, InteractionHand.MAIN_HAND, targets, () -> 1, true, Util.getSlotType(InteractionHand.MAIN_HAND), tool.getStats().get(ToolStats.ATTACK_DAMAGE) + 1, 1f, false, true, true, true);
                 }
             }
+            if (player.isDeadOrDying())this.discard();
 //            if (this.tickCount == 1) {
 //                sendDebugMessages(tool, player);
 //            }
@@ -259,6 +304,13 @@ public class BoxEntity extends Projectile {
 //        player.sendSystemMessage(Component.literal("this.tool修饰符: " + tool.getModifierList()));
 //        player.sendSystemMessage(Component.literal("this.tool攻击伤害: " + tool.getStats().get(ToolStats.ATTACK_DAMAGE)));
 //    }
+
+    @Override
+    public void remove(Entity.RemovalReason reason) {
+        super.remove(reason);
+        cleanupEntityData(this);
+    }
+
     @Override
     public boolean ignoreExplosion() {
         return true;
@@ -275,5 +327,24 @@ public class BoxEntity extends Projectile {
 
     @Override
     public void push(double x, double y, double z) {
+    }
+
+    @Override
+    public boolean isNoGravity() {
+        return true;
+    }
+
+    @Override
+    protected void checkInsideBlocks() {
+    }
+
+    @Override
+    public boolean canCollideWith(Entity entity) {
+        return false;
+    }
+
+    @Override
+    public boolean canBeCollidedWith() {
+        return false;
     }
 }

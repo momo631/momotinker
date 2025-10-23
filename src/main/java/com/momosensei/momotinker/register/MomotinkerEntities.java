@@ -1,5 +1,6 @@
 package com.momosensei.momotinker.register;
 
+import com.momosensei.momotinker.entity.Boxentity.BoxEntity;
 import com.momosensei.momotinker.entity.*;
 import net.minecraft.world.entity.EntityType;
 import net.minecraft.world.entity.MobCategory;
