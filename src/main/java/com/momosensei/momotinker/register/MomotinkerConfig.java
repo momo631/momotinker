@@ -69,14 +69,20 @@ public class MomotinkerConfig {
             .defineInRange("cleansetheworld cooldown time limit",600,0,Integer.MAX_VALUE);
     public static final ForgeConfigSpec.IntValue crystallized_hurt_limit=modifier.comment("crystallized_hurt_limit")
             .defineInRange("crystallized hurt limit",60,0,Integer.MAX_VALUE);
-    //public static final ForgeConfigSpec.IntValue shortterminvestments_increase_ratio=modifier.comment("shortterminvestments_increase_ratio")
-    //        .defineInRange("shortterminvestments increase ratio",25,0,Integer.MAX_VALUE);
-    //public static final ForgeConfigSpec.IntValue shortterminvestments_reduce_ratio=modifier.comment("shortterminvestments_reduce_ratio")
-    //        .defineInRange("shortterminvestments reduce_ratio",50,0,Integer.MAX_VALUE);
+    public static final ForgeConfigSpec.IntValue shortterminvestments_increase_ratio=modifier.comment("shortterminvestments_increase_ratio")
+            .defineInRange("shortterminvestments increase ratio",25,0,Integer.MAX_VALUE);
+    public static final ForgeConfigSpec.IntValue shortterminvestments_reduce_ratio=modifier.comment("shortterminvestments_reduce_ratio")
+            .defineInRange("shortterminvestments reduce_ratio",50,0,Integer.MAX_VALUE);
     public static final ForgeConfigSpec.BooleanValue shortterminvestments_only_minecraft=modifier.comment("shortterminvestments_only_minecraft")
             .define("shortterminvestments only valid for the minecraft' item",true);
     public static final ForgeConfigSpec.BooleanValue explosion_destroys_limit=modifier.comment("explosion_destroys_limit")
             .define("explosion destroys limit",true);
+    public static final ForgeConfigSpec.BooleanValue meteor_explosion_limit=modifier.comment("meteor_explosion_limit")
+            .define("exclusive explosion destruction switch for meteor nucleus",true);
+    public static final ForgeConfigSpec.IntValue meteor_time_limit=modifier.comment("meteor_time_limit")
+            .defineInRange("The time interval of meteor nucleus generation.By default, there is a 50% probability every 100 seconds",2000,1,Integer.MAX_VALUE);
+    public static final ForgeConfigSpec.IntValue meteor_probability_limit=modifier.comment("meteor_probability_limit")
+            .defineInRange("The probability of meteor nucleus generation.By default, there is a 50% probability every 100 seconds",50,0,Integer.MAX_VALUE);
 
     public static final ForgeConfigSpec Modifierspec=modifier.pop().build();
 

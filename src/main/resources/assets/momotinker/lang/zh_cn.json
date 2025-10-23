@@ -185,7 +185,7 @@
   "item.momotinker.meteor_nucleus": "§6流星锭",
   "block.momotinker.meteor_nucleus_block": "§6流星之核",
   "item.momotinker.tooltip.meteor_nucleus1": "从天际坠落于此的星星，蕴含着此世间不曾存在的能量",
-  "item.momotinker.tooltip.meteor_nucleus2": "自玩家第一次拾取到“天外来星”开始，每一段时间就会有几率以流星的方式坠落在以玩家为中心的300格以内区域",
+  "item.momotinker.tooltip.meteor_nucleus2": "自玩家第一次拾取到“天外来星”开始，每一段时间就会有几率以流星的方式坠落在以玩家为中心的180格以内区域",
   "item.momotinker.tooltip.meteor_nucleus3": "熔融天际流星浇筑出的金属锭，蕴含着巨大的能量",
   "item.momotinker.tooltip.meteor_nucleus4": "“流星之核在熔融之后能源源不断释放大量热能还没有任何衰减的迹象，这或许能在我们的工匠工作上提供新的帮助”",
   "item.momotinker.tooltip.meteor_nucleus5": "流星的馈赠即将到来",

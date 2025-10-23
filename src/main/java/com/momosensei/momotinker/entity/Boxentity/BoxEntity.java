@@ -38,6 +38,7 @@ import java.util.*;
 import java.util.function.Function;
 import java.util.stream.Collectors;
 
+import static com.momosensei.momotinker.entity.Boxentity.OrbitDefenseSystem.interceptProjectiles;
 import static com.momosensei.momotinker.entity.MomotinkerEntitiesMove.*;
 
 
@@ -277,7 +278,8 @@ public class BoxEntity extends Projectile {
             }else{
                 if (entity.isAlive()) {
                     //circularMotionNew(BoxEntity.class,this,entity,entity,2,2,3,0.05);
-                    circularMotion(this,entity,2,0.05);
+                    circularMotion(this,entity,2.5,0.075);
+                    interceptProjectiles(entity,this);
                 }
             }
             updateRotation();
@@ -285,25 +287,22 @@ public class BoxEntity extends Projectile {
         }
 
         ToolStack tool =ToolStack.from(getItem());
+        float damage = tool.getStats().get(ToolStats.ATTACK_DAMAGE)*0.8f;
+        float a = 1.5f;
+        if (getForm()==2){
+            damage=tool.getStats().get(ToolStats.ATTACK_DAMAGE)*0.2f;
+            a=0.75f;
+        }
         if (entity instanceof Player player && this.level instanceof ServerLevel serverLevel) {
-            List<LivingEntity> ls0 = serverLevel.getEntitiesOfClass(LivingEntity.class, this.getBoundingBox().inflate(1.5));
+            List<LivingEntity> ls0 = serverLevel.getEntitiesOfClass(LivingEntity.class, this.getBoundingBox().inflate(a));
             for (LivingEntity targets : ls0) {
                 if (targets != this.getOwner() && targets != null) {
-                    AttackUtil.attackEntity(tool, player, InteractionHand.MAIN_HAND, targets, () -> 1, true, Util.getSlotType(InteractionHand.MAIN_HAND), tool.getStats().get(ToolStats.ATTACK_DAMAGE) + 1, 1f, false, true, true, true);
+                    AttackUtil.attackEntity(tool, player, InteractionHand.MAIN_HAND, targets, () -> 1, true, Util.getSlotType(InteractionHand.MAIN_HAND), damage+1, 1f, false, true, true, true);
                 }
             }
             if (player.isDeadOrDying())this.discard();
-//            if (this.tickCount == 1) {
-//                sendDebugMessages(tool, player);
-//            }
         }
     }
-//    private void sendDebugMessages(ToolStack tool,Player player) {
-//        player.sendSystemMessage(Component.literal("=== 工具调试信息 ==="));
-//        player.sendSystemMessage(Component.literal("this.tool: " + tool.getItem().getDescriptionId()));
-//        player.sendSystemMessage(Component.literal("this.tool修饰符: " + tool.getModifierList()));
-//        player.sendSystemMessage(Component.literal("this.tool攻击伤害: " + tool.getStats().get(ToolStats.ATTACK_DAMAGE)));
-//    }
 
     @Override
     public void remove(Entity.RemovalReason reason) {

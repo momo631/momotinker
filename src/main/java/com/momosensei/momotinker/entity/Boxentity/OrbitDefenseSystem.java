@@ -1,22 +1,17 @@
 package com.momosensei.momotinker.entity.Boxentity;
 
-import net.minecraft.core.particles.ParticleTypes;
-import net.minecraft.server.level.ServerLevel;
 import net.minecraft.server.level.ServerPlayer;
 import net.minecraft.world.entity.Entity;
-import net.minecraft.world.entity.projectile.AbstractArrow;
 import net.minecraft.world.entity.projectile.Projectile;
-import net.minecraft.world.entity.projectile.ThrowableProjectile;
-import net.minecraft.world.phys.EntityHitResult;
 import net.minecraft.world.phys.Vec3;
 import net.minecraftforge.event.entity.EntityJoinLevelEvent;
 import net.minecraftforge.event.entity.EntityLeaveLevelEvent;
-import net.minecraftforge.event.entity.ProjectileImpactEvent;
 import net.minecraftforge.event.entity.living.LivingHurtEvent;
 import net.minecraftforge.eventbus.api.SubscribeEvent;
 import net.minecraftforge.fml.common.Mod;
 
 import java.util.HashMap;
+import java.util.List;
 import java.util.Map;
 import java.util.UUID;
 
@@ -53,18 +48,6 @@ public class OrbitDefenseSystem {
             }
         }
     }
-    @SubscribeEvent
-    public static void onProjectileImpact(ProjectileImpactEvent event) {
-        if (event.getRayTraceResult() instanceof EntityHitResult entityHit) {
-            if (entityHit.getEntity() instanceof ServerPlayer player) {
-                int orbitCount = playerOrbitCounts.getOrDefault(player.getUUID(), 0);
-                if (orbitCount > 0 && shouldReflectProjectile(orbitCount)) {
-                    reflectProjectile(event, player, orbitCount);
-                    event.setCanceled(true);
-                }
-            }
-        }
-    }
 
     private static void incrementOrbitCount(ServerPlayer player) {
         UUID playerId = player.getUUID();
@@ -80,65 +63,61 @@ public class OrbitDefenseSystem {
 
     private static void applyDamageReduction(LivingHurtEvent event, int orbitCount) {
         float originalDamage = event.getAmount();
-        float reductionPercent = (float) Math.pow(0.95,orbitCount);
+        float reductionPercent = (float) Math.pow(0.85,orbitCount);
         float reducedDamage = originalDamage * (1 - reductionPercent);
         event.setAmount(reducedDamage);
     }
 
-    private static boolean shouldReflectProjectile(int orbitCount) {
-        double baseChance = Math.min(orbitCount * 0.08+0.04, 1);
-        return Math.random() < baseChance;
+    public static void interceptProjectiles(Entity owner,Entity entity) {
+        List<Projectile> nearbyProjectiles = entity.level.getEntitiesOfClass(Projectile.class, entity.getBoundingBox().inflate(0.4,1.4,0.4));
+        for (Projectile projectile : nearbyProjectiles) {
+            if (shouldInterceptProjectile(owner,projectile)) {
+                reflectProjectile(entity,owner,projectile);
+            }
+        }
+    }
+
+    public static boolean shouldInterceptProjectile(Entity owner,Projectile projectile) {
+        if (projectile.getOwner() == owner) {
+            return false;
+        }
+        // 检查弹射物是否朝向玩家（从外向内）
+        if (!isProjectileMovingTowardOwner(owner,projectile)) {
+            return false;
+        }
+        return Math.random() < 0.6;
+    }
+
+    // 判断弹射物是否朝向玩家（从外向内）
+    public static boolean isProjectileMovingTowardOwner(Entity owner,Projectile projectile) {
+        if (owner == null) return false;
+        Vec3 projectilePos = projectile.position();
+        Vec3 ownerPos = owner.position();
+        Vec3 projectileMotion = projectile.getDeltaMovement();
+        Vec3 toOwner = ownerPos.subtract(projectilePos).normalize();
+        double dotProduct = projectileMotion.normalize().dot(toOwner);
+        return dotProduct > 0.6;
     }
 
     // 反弹弹射物
-    private static void reflectProjectile(ProjectileImpactEvent event, ServerPlayer player, int orbitCount) {
-        Entity projectile = event.getProjectile();
-
-        Vec3 playerPos = player.position();
+    public static void reflectProjectile(Entity entity,Entity owner,Projectile projectile) {
+        Vec3 interceptPos = entity.position();
         Vec3 projectilePos = projectile.position();
-        Vec3 reflectDirection = projectilePos.subtract(playerPos).normalize();
 
-        double reflectSpeed = getReflectSpeed(projectile, orbitCount);
+        Vec3 reflectDirection = projectilePos.subtract(interceptPos).normalize();
+
+        Entity originalShooter = projectile.getOwner();
+        if (originalShooter != null && originalShooter.isAlive()) {
+            Vec3 shooterPos = originalShooter.position();
+            Vec3 toShooter = shooterPos.subtract(interceptPos).normalize();
+            reflectDirection = new Vec3(toShooter.x, toShooter.y, toShooter.z).normalize();
+        }
+        // 设置反弹速度
+        double originalSpeed = projectile.getDeltaMovement().length();
+        double reflectSpeed = originalSpeed * 1.5;
         projectile.setDeltaMovement(reflectDirection.scale(reflectSpeed));
-
-        resetProjectileProperties(projectile, player);
-    }
-
-    // 获取反弹速度
-    private static double getReflectSpeed(Entity projectile, int orbitCount) {
-        double speedBonus = orbitCount * 0.2;
-        return projectile.getDeltaMovement().length() * 1.1 * (1 + speedBonus);
-    }
-
-    // 重置弹射物属性
-    private static void resetProjectileProperties(Entity projectile, ServerPlayer player) {
-        if (projectile instanceof AbstractArrow arrow) {
-            arrow.setOwner(player);
-            arrow.setCritArrow(true);
-        }
-
-        if (projectile instanceof ThrowableProjectile throwable) {
-            throwable.setOwner(player);
-        }
-
-        projectile.setNoGravity(true);
-        if (projectile instanceof Projectile proj) {
-            proj.setNoGravity(true);
-        }
-
-        new java.util.Timer().schedule(
-                new java.util.TimerTask() {
-                    public void run() {
-                        if (projectile.isAlive()) {
-                            ((ServerLevel) projectile.level).sendParticles(ParticleTypes.GLOW,
-                                    projectile.getX(), projectile.getY(), projectile.getZ(),
-                                    5, 0.2, 0.2, 0.2, 0.05);
-                            projectile.setNoGravity(false);
-                        }
-                    }
-                },
-                1000
-        );
+        // 改变所有者
+        projectile.setOwner(owner);
     }
 
     public static int getOrbitCount(ServerPlayer player) {

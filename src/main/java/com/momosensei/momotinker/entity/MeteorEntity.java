@@ -43,7 +43,7 @@ public class MeteorEntity extends Projectile {
     public void tick() {
         super.tick();
         this.tickCount++;
-        if (this.tickCount>1200) this.discard();
+        if (this.tickCount>3600) this.discard();
         if (this.getDeltaMovement().length() > 1) {
             this.setDeltaMovement(this.getDeltaMovement().scale(0.9));
         }
@@ -67,9 +67,10 @@ public class MeteorEntity extends Projectile {
 
     public void meteorExplode(){
         boolean config = MomotinkerConfig.explosion_destroys_limit.get();
+        boolean configa = MomotinkerConfig.meteor_explosion_limit.get();
         if (!this.level.isClientSide) {
             Explosion.BlockInteraction blockInteraction;
-            if (config) {
+            if (config&&configa) {
                 blockInteraction=Explosion.BlockInteraction.DESTROY;
             }else {
                 blockInteraction=Explosion.BlockInteraction.NONE;
