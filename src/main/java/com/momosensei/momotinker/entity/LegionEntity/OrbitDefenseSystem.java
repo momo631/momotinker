@@ -1,4 +1,4 @@
-package com.momosensei.momotinker.entity.Boxentity;
+package com.momosensei.momotinker.entity.LegionEntity;
 
 import net.minecraft.server.level.ServerPlayer;
 import net.minecraft.world.entity.Entity;
@@ -23,8 +23,8 @@ public class OrbitDefenseSystem {
 
     @SubscribeEvent
     public static void onEntityJoinLevel(EntityJoinLevelEvent event) {
-        if (event.getEntity() instanceof BoxEntity box && box.getForm() == 2) {
-            if (box.getOwner() instanceof ServerPlayer player) {
+        if (event.getEntity() instanceof LegionEntity legion && legion.getForm() == 2) {
+            if (legion.getOwner() instanceof ServerPlayer player) {
                 incrementOrbitCount(player);
             }
         }
@@ -32,8 +32,8 @@ public class OrbitDefenseSystem {
     
     @SubscribeEvent
     public static void onEntityLeaveLevel(EntityLeaveLevelEvent event) {
-        if (event.getEntity() instanceof BoxEntity box && box.getForm() == 2) {
-            if (box.getOwner() instanceof ServerPlayer player) {
+        if (event.getEntity() instanceof LegionEntity legion && legion.getForm() == 2) {
+            if (legion.getOwner() instanceof ServerPlayer player) {
                 decrementOrbitCount(player);
             }
         }

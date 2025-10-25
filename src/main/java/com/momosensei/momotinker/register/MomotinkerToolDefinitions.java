@@ -24,7 +24,7 @@ public class MomotinkerToolDefinitions {
     public static final ToolDefinition POCKET_WATCH = ToolDefinition.create(MomotinkerItem.pocket_watch);
     public static final ToolDefinition CHAIN_SWORD = ToolDefinition.create(MomotinkerItem.chain_sword);
     public static final ToolDefinition PNEUMATIC_SWORD = ToolDefinition.create(MomotinkerItem.pneumatic_sword);
-    public static final ToolDefinition BOX = ToolDefinition.create(MomotinkerItem.box);
+    public static final ToolDefinition BOX = ToolDefinition.create(MomotinkerItem.legion);
 
 
     //public static final ToolDefinition AA = ToolDefinition.create(MomotinkerItem.aa);

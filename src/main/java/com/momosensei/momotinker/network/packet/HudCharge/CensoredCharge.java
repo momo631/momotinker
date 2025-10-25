@@ -1,6 +1,6 @@
-package com.momosensei.momotinker.network.packet;
+package com.momosensei.momotinker.network.packet.HudCharge;
 
-import com.momosensei.momotinker.mobs.Censoreddatatime;
+import com.momosensei.momotinker.gui.hudhelder.CensoredDataTime;
 import net.minecraft.network.FriendlyByteBuf;
 import net.minecraftforge.network.NetworkEvent;
 
@@ -23,7 +23,7 @@ public class CensoredCharge {
     public boolean handle( Supplier<NetworkEvent.Context> supplier) {
         NetworkEvent.Context context =supplier.get();
         context.enqueueWork(()->{
-            Censoreddatatime.setCensoreddata(censoreddata);
+            CensoredDataTime.setCensoreddata(censoreddata);
         });
         return true;
     }

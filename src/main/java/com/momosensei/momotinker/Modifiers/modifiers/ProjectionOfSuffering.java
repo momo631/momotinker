@@ -3,7 +3,7 @@ package com.momosensei.momotinker.Modifiers.modifiers;
 import com.momosensei.momotinker.Modifiers.momomodifier;
 import com.momosensei.momotinker.Momotinker;
 import com.momosensei.momotinker.network.Channel;
-import com.momosensei.momotinker.network.packet.ToolsTimeCharge;
+import com.momosensei.momotinker.network.packet.HudCharge.ToolsTimeCharge;
 import com.momosensei.momotinker.register.MomotinkerItem;
 import net.minecraft.network.chat.Component;
 import net.minecraft.resources.ResourceLocation;

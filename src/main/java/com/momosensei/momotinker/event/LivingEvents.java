@@ -66,6 +66,7 @@ import slimeknights.tconstruct.library.tools.nbt.ModDataNBT;
 
 import java.util.List;
 import java.util.Random;
+import java.util.UUID;
 
 import static slimeknights.tconstruct.TConstruct.RANDOM;
 
@@ -332,15 +333,16 @@ public class LivingEvents {
         level.addFreshEntity(newItem);
     }
     private void OnPlayerTick(TickEvent.PlayerTickEvent event) {
+        if (event.phase != TickEvent.Phase.START) return;
         boolean configall = MomotinkerConfig.special_acquisition.get();
         if (!configall)return;
         boolean config = MomotinkerConfig.meteor_nucleus.get();
-        Player player=event.player;
+        Player player1=event.player;
         Random random = new Random();
-        if (player.level instanceof ServerLevel level) {
+        if (player1.level instanceof ServerLevel level&&player1 instanceof ServerPlayer player) {
             boolean configa = MomotinkerConfig.devouring_demon_gold.get();
             boolean configstage = MomotinkerConfig.stage_meteor.get();
-            if (configa&&(StageMeteor.getStageFloat()==1||!configstage)) {
+            if (configa && (StageMeteor.getStageFloat() == 1 || !configstage)) {
                 double range = 30.0;
                 AABB area = new AABB(player.getX() - range,
                         player.getY() - range,
@@ -350,10 +352,9 @@ public class LivingEvents {
                         player.getZ() + range);
                 for (FallingBlockEntity anvil : level.getEntitiesOfClass(FallingBlockEntity.class, area
                         , entity -> true)) {
-                    if ((anvil.getBlockState().getBlock() == Blocks.ANVIL||anvil.getBlockState().getBlock() ==Blocks.CHIPPED_ANVIL
-                            ||anvil.getBlockState().getBlock() ==Blocks.DAMAGED_ANVIL )&& anvil.getTags().contains("falling_anvil")) {
+                    if ((anvil.getBlockState().getBlock() == Blocks.ANVIL || anvil.getBlockState().getBlock() == Blocks.CHIPPED_ANVIL
+                            || anvil.getBlockState().getBlock() == Blocks.DAMAGED_ANVIL) && anvil.getTags().contains("falling_anvil")) {
                         AABB hitbox = anvil.getBoundingBox().inflate(0.2);
-                        // 检测碰撞的掉落物
                         for (ItemEntity itemEntity : level.getEntitiesOfClass(ItemEntity.class, hitbox)) {
                             if (!itemEntity.getItem().isEnchanted()) {
                                 return;
@@ -366,23 +367,27 @@ public class LivingEvents {
                 }
             }
 
+
+            UUID playerId = player.getUUID();
             CompoundTag tag = player.getPersistentData().getCompound(Player.PERSISTED_NBT_TAG);
             String a = "meteor_nucleus_unlock";
-            player.getPersistentData().getBoolean(a);
-            if (player instanceof ServerPlayer player1) {
-                if (tag.getBoolean(a) && StageMeteor.getStageFloat() != 1) {
-                    Channel.sendToPlayer(new StageMeteorCharge(1), player1);
-                } else if (!tag.getBoolean(a) && StageMeteor.getStageFloat() != 0) {
-                    Channel.sendToPlayer(new StageMeteorCharge(0), player1);
-                }
+            boolean meteorUnlocked = tag.getBoolean(a);
+            float currentStageFloat = StageMeteor.getStageFloat(playerId);
+            if (meteorUnlocked && currentStageFloat != 1) {
+                Channel.sendToPlayer(new StageMeteorCharge(1), player);
+                StageMeteor.setStageFloat(playerId, 1);
+            } else if (!meteorUnlocked && currentStageFloat != 0) {
+                Channel.sendToPlayer(new StageMeteorCharge(0), player);
+                StageMeteor.setStageFloat(playerId, 0);
             }
+
 
             if (config) {
                 int time = MomotinkerConfig.meteor_time_limit.get();
                 int probability = MomotinkerConfig.meteor_probability_limit.get();
-                if (random.nextInt(100) <= probability && tag.getBoolean(a) && level.getGameTime() % time == 0) {
+                if ( meteorUnlocked && level.getGameTime() % time == 0 && random.nextInt(100) <= probability) {
                     double angle = random.nextDouble() * 2 * Math.PI;
-                    double distance = 60 + random.nextDouble() * 120;
+                    double distance = 80 + random.nextDouble() * 100;
 
                     float meteorX = (float) (player.getX() + Math.cos(angle) * distance);
                     float meteorZ = (float) (player.getZ() + Math.sin(angle) * distance);

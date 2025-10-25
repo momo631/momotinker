@@ -1,8 +1,8 @@
-package com.momosensei.momotinker.entity.Boxentity;
+package com.momosensei.momotinker.entity.LegionEntity;
 
 
 import com.momosensei.momotinker.register.MomotinkerModifiers;
-import com.momosensei.momotinker.tool.box;
+import com.momosensei.momotinker.register.MomotinkerTags;
 import com.momosensei.momotinker.util.AttackUtil;
 import net.minecraft.network.syncher.EntityDataAccessor;
 import net.minecraft.network.syncher.EntityDataSerializers;
@@ -38,21 +38,21 @@ import java.util.*;
 import java.util.function.Function;
 import java.util.stream.Collectors;
 
-import static com.momosensei.momotinker.entity.Boxentity.OrbitDefenseSystem.interceptProjectiles;
+import static com.momosensei.momotinker.entity.LegionEntity.OrbitDefenseSystem.interceptProjectiles;
 import static com.momosensei.momotinker.entity.MomotinkerEntitiesMove.*;
 
 
-public class BoxEntity extends Projectile {
+public class LegionEntity extends Projectile {
     public ToolStack tool;
     public float damage = 0;
-    public BoxEntity(EntityType<? extends Projectile> p_37248_, Level p_37249_) {
+    public LegionEntity(EntityType<? extends Projectile> p_37248_, Level p_37249_) {
         super(p_37248_, p_37249_);
     }
 
-    private static final EntityDataAccessor<ItemStack> DATA_TOOL = SynchedEntityData.defineId(BoxEntity.class, EntityDataSerializers.ITEM_STACK);
-    private static final EntityDataAccessor<Float> DATA_SPAWN_YAW = SynchedEntityData.defineId(BoxEntity.class, EntityDataSerializers.FLOAT);
-    private static final EntityDataAccessor<Float> DATA_SPAWN_PITCH = SynchedEntityData.defineId(BoxEntity.class, EntityDataSerializers.FLOAT);
-    private static final EntityDataAccessor<Integer> DATA_FORM = SynchedEntityData.defineId(BoxEntity.class, EntityDataSerializers.INT);
+    private static final EntityDataAccessor<ItemStack> DATA_TOOL = SynchedEntityData.defineId(LegionEntity.class, EntityDataSerializers.ITEM_STACK);
+    private static final EntityDataAccessor<Float> DATA_SPAWN_YAW = SynchedEntityData.defineId(LegionEntity.class, EntityDataSerializers.FLOAT);
+    private static final EntityDataAccessor<Float> DATA_SPAWN_PITCH = SynchedEntityData.defineId(LegionEntity.class, EntityDataSerializers.FLOAT);
+    private static final EntityDataAccessor<Integer> DATA_FORM = SynchedEntityData.defineId(LegionEntity.class, EntityDataSerializers.INT);
 
     @Override
     protected void defineSynchedData() {
@@ -186,8 +186,7 @@ public class BoxEntity extends Projectile {
                     ToolStack originalStack = ToolStack.from(player.getMainHandItem());
                     ToolStack resultStack = null;
 
-                    // 重试逻辑：最多尝试10次
-                    int maxAttempts = 10;
+                    int maxAttempts = 20;
                     for (int i = 0; i < maxAttempts; i++) {
                         if (originalStack.getModifierLevel(MomotinkerModifiers.laomochuji.get()) > 0) {
                             resultStack = getToolRandomMaterials();
@@ -222,10 +221,10 @@ public class BoxEntity extends Projectile {
         return this.tool;
     }
     private boolean isValidToolStack(ToolStack toolStack) {
-        if (toolStack == null) return false;
-        if (toolStack.getStats().get(ToolStats.ATTACK_DAMAGE)==0) return false;
-        if (!toolStack.hasTag(TinkerTags.Items.INTERACTABLE_RIGHT)) return false;
-        if (toolStack.getItem() instanceof box) return false;
+        if (toolStack == null
+                ||toolStack.getStats().get(ToolStats.ATTACK_DAMAGE)==0
+                ||(!toolStack.hasTag(TinkerTags.Items.INTERACTABLE_RIGHT))
+                ||toolStack.hasTag(MomotinkerTags.Items.LEGION)) return false;
         ItemStack itemStack = toolStack.createStack();
         return !itemStack.isEmpty() && itemStack.getItem() != Items.AIR;
     }
@@ -278,7 +277,7 @@ public class BoxEntity extends Projectile {
             }else{
                 if (entity.isAlive()) {
                     //circularMotionNew(BoxEntity.class,this,entity,entity,2,2,3,0.05);
-                    circularMotion(this,entity,2.5,0.075);
+                    circularMotion(this,entity,2.5,0.125);
                     interceptProjectiles(entity,this);
                 }
             }

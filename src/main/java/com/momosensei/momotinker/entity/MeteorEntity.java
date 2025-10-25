@@ -44,10 +44,10 @@ public class MeteorEntity extends Projectile {
         super.tick();
         this.tickCount++;
         if (this.tickCount>3600) this.discard();
-        if (this.getDeltaMovement().length() > 1) {
-            this.setDeltaMovement(this.getDeltaMovement().scale(0.9));
-        }
-        this.setDeltaMovement(this.getDeltaMovement().add(0, -0.25, 0));
+//        if (this.getDeltaMovement().length() > 1) {
+//            this.setDeltaMovement(this.getDeltaMovement().scale(0.9));
+//        }
+        this.setDeltaMovement(this.getDeltaMovement().add(0, -0.4, 0));
         HitResult hitresult = this.level.clip(new ClipContext(this.position(), this.position().add(this.getDeltaMovement()), ClipContext.Block.COLLIDER, ClipContext.Fluid.NONE, this));
         EntityHitResult entityhitresult = ProjectileUtil.getEntityHitResult(this.level,this,this.position(), this.position().add(this.getDeltaMovement()),this.getBoundingBox().expandTowards(this.getDeltaMovement()).inflate(1),this::canHitEntity);
         super.move(MoverType.SELF,this.getDeltaMovement());

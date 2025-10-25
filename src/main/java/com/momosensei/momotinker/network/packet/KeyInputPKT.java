@@ -1,7 +1,5 @@
 package com.momosensei.momotinker.network.packet;
 
-import com.momosensei.momotinker.mobs.CoolTimeB;
-import com.momosensei.momotinker.network.Channel;
 import com.momosensei.momotinker.register.MomotinkerConfig;
 import com.momosensei.momotinker.register.MomotinkerEffects;
 import com.momosensei.momotinker.register.MomotinkerItem;
@@ -38,6 +36,7 @@ import static com.momosensei.momotinker.Modifiers.modifiers.Red.ender;
 import static com.momosensei.momotinker.Modifiers.modifiers.Significance.signifincancecool;
 import static com.momosensei.momotinker.Modifiers.modifiers.Significance.signifincances;
 import static com.momosensei.momotinker.Momotinker.*;
+import static com.momosensei.momotinker.mobs.CoolTimeB.tryActivateSkill;
 import static net.minecraft.world.item.enchantment.EnchantmentCategory.*;
 import static slimeknights.tconstruct.TConstruct.RANDOM;
 
@@ -184,11 +183,8 @@ public class KeyInputPKT {
                     significancedata.putInt(signifincancecool,90);
                 }
             }
-            if (getMainhandModifierlevel(player, MomotinkerModifiers.blank.getId()) > 0 && CoolTimeB.getCoolTime() == 0) {
-                if (player.getItemBySlot(EquipmentSlot.OFFHAND).is(MomotinkerItem.nihilism.get())){
-                    Channel.sendToClient(new CoolTimeChargeB(600));
-                    player.getItemBySlot(EquipmentSlot.OFFHAND).setCount(player.getItemBySlot(EquipmentSlot.OFFHAND).getCount() - 1);
-                }
+            if (getMainhandModifierlevel(player, MomotinkerModifiers.blank.getId()) > 0) {
+                tryActivateSkill(player);
             }
             if (getAllModifierlevel(player,MomotinkerModifiers.flamebath.getId()) > 0) {
                 for (ItemStack stack : player.getInventory().armor) {

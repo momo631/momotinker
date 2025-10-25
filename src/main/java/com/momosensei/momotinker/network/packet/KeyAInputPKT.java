@@ -23,8 +23,8 @@ import java.util.function.Supplier;
 import static com.momosensei.momotinker.Modifiers.modifiers.ProjectionOfSuffering.disaster;
 import static com.momosensei.momotinker.Momotinker.getResource;
 import static com.momosensei.momotinker.entity.MomotinkerEntitiesCreate.createPull;
-import static com.momosensei.momotinker.tool.box.createBox;
 import static com.momosensei.momotinker.tool.entropy_burning_cube.liverization;
+import static com.momosensei.momotinker.tool.legion.*;
 
 public class KeyAInputPKT {
     public int key;
@@ -178,13 +178,17 @@ public class KeyAInputPKT {
                 }
             }
 
-            if (player!=null&&(player.getMainHandItem().is(MomotinkerItem.box.get()))) {
+            if (player!=null&&(player.getMainHandItem().is(MomotinkerItem.legion.get()))) {
                 ToolStack tool = ToolStack.from(player.getMainHandItem());
-                float perc = Mth.clamp(tool.getStats().get(ToolStats.ATTACK_SPEED)/120,0,1);
-                int a = (int) Math.floor(perc*10);
-                if (a<1)a=1;
-                if (a>10)a=10;
-                createBox(player, a+2, 2);
+                ModDataNBT data = tool.getPersistentData();
+                if (!data.getBoolean(legion_on)&&data.getFloat(legion_cooldown)==60) {
+                    data.putBoolean(legion_on,true);
+                    float perc = Mth.clamp(tool.getStats().get(ToolStats.ATTACK_SPEED) / 120, 0, 1);
+                    int a = (int) Math.floor(perc * 10);
+                    if (a < 1) a = 1;
+                    if (a > 10) a = 10;
+                    createBox(player, a + 2, 2);
+                }
             }
         });
         context.setPacketHandled(true);

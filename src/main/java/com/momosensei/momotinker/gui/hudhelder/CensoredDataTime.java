@@ -1,6 +1,6 @@
-package com.momosensei.momotinker.mobs;
+package com.momosensei.momotinker.gui.hudhelder;
 
-public class Censoreddatatime {
+public class CensoredDataTime {
     public static float censoreddata;
     public static void setCensoreddata(float f){
         censoreddata  =f;

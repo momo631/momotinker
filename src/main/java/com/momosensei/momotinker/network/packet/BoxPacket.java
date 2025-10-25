@@ -7,7 +7,7 @@ import net.minecraftforge.network.NetworkEvent;
 
 import java.util.function.Supplier;
 
-import static com.momosensei.momotinker.tool.box.createBox;
+import static com.momosensei.momotinker.tool.legion.createBox;
 import static com.momosensei.momotinker.util.AttackUtil.getCooldownFunctionFloat;
 
 
@@ -31,7 +31,7 @@ public class BoxPacket {
                 ServerPlayer player =supplier.get().getSender();
                 if (player !=null&&player.getId()==packet.playerID) {
                     float d = getCooldownFunctionFloat(player, InteractionHand.MAIN_HAND);
-                    if (d > 0.9f) {
+                    if (d >= 0.9f) {
                         createBox(player, 1, 0);
                     }
                 }

@@ -16,6 +16,7 @@ public class MomotinkerTags {
         public static final TagKey<Item> TRIGGER_BLADE = local("trigger_blade");
         public static final TagKey<Item> DIVINE_PUNISHMENT_SPEAR = local( "divine_punishment_spear");
         public static final TagKey<Item> ENTROPY_BURNING = local("entropy_burning");
+        public static final TagKey<Item> LEGION = local("legion");
 
     }
     private static TagKey<Item> local(String name) {

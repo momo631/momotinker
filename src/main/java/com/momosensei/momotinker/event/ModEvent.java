@@ -16,8 +16,10 @@ import net.minecraft.server.level.ServerLevel;
 import net.minecraft.server.level.ServerPlayer;
 import net.minecraft.world.entity.LivingEntity;
 import net.minecraft.world.entity.player.Player;
+import net.minecraft.world.level.Level;
 import net.minecraftforge.event.entity.living.LivingDropsEvent;
 import net.minecraftforge.event.entity.living.LivingEvent;
+import net.minecraftforge.event.entity.player.PlayerEvent;
 import net.minecraftforge.eventbus.api.EventPriority;
 import net.minecraftforge.eventbus.api.SubscribeEvent;
 import net.minecraftforge.fml.common.Mod;
@@ -79,51 +81,106 @@ public class ModEvent {
         }
     }
 */
+    @SubscribeEvent
+    public static void onPlayerLogin(PlayerEvent.PlayerLoggedInEvent event) {
+        if (event.getEntity() instanceof ServerPlayer serverPlayer) {
+            Channel.sendToPlayer(new CoolTimeChargeB(CoolTimeB.getCoolTime(),false), serverPlayer);
+        }
+    }
 
     @SubscribeEvent
-    public static void Livingtickevent(LivingEvent.LivingTickEvent event) {
-        if (event.getEntity() instanceof Player player){
-            String[] array = new String[]{"msg.blank1", "msg.blank2", "msg.blank3", "msg.blank4", "msg.blank5", "msg.blank6", "msg.blank7"};
-            if (CoolTimeB.getCoolTime() >= 579 && CoolTimeB.getCoolTime() <= 599) {
-                if (player.level instanceof ServerLevel serverLevel&&player.tickCount%10==0){
-                    for (int i = 0; i <= 360; i++) {
-                        double rad = i * 0.017453292519943295;
-                        double r = 0.5D;
-                        double x = r * Math.cos(rad);
-                        double z = r * Math.sin(rad);
-                        serverLevel.sendParticles(ParticleTypes.ASH, player.getX()+x, player.getY()+player.getBbHeight(), player.getZ()+z, 1/2, 0, 0.5, 0, 0.5);
+    public static void onLivingTick(LivingEvent.LivingTickEvent event) {
+        if (event.getEntity() instanceof Player player) {
+            int coolTimeB = CoolTimeB.getCoolTime();
+            Level level = player.level;
+            int tickCount = player.tickCount;
+            handleNegativeCoolTimes(player);
+            if (CoolTimeB.getOwner()) {
+                if (level instanceof ServerLevel serverLevel) {
+                    if (coolTimeB >= 579 && coolTimeB <= 599) {
+                        if (tickCount % 10 == 0) {
+                            spawnParticleRing(serverLevel, player);
+                        }
                     }
-                }
-                int i = (599 - CoolTimeB.getCoolTime()) / 3;
-                if (player.level.isClientSide()&&player.tickCount%60==0) {
-                    player.sendSystemMessage(Component.translatable(array[i]).withStyle(ChatFormatting.GRAY));
+                } else if (tickCount % 60 == 0) {
+                    sendCoolTimeMessage(player, coolTimeB);
                 }
             }
-            if (CoolTimeB.getCoolTime() == 578&&player.isAlive()){
-                AttackUtil.executeall(player.level, player.getX(), player.getY(), player.getZ(), player);
-            }
-            if (player instanceof ServerPlayer player1) {
-                if (CoolTimeA.getCoolTime() < 0) {
-                    Channel.sendToPlayer(new CoolTimeChargeA(0), player1);
-                }
-                if (CoolTimeB.getCoolTime() < 0) {
-                    Channel.sendToPlayer(new CoolTimeChargeB(0), player1);
-                }
-                if (CoolTimeC.getCoolTime() < 0) {
-                    Channel.sendToPlayer(new CoolTimeChargeC(0), player1);
-                }
-                if (player.tickCount % 20 == 0) {
-                    if (CoolTimeA.getCoolTime() > 0) {
-                        Channel.sendToPlayer(new CoolTimeChargeA(CoolTimeA.getCoolTime() - 1), player1);
-                    }
-                    if (CoolTimeB.getCoolTime() > 0) {
-                        Channel.sendToPlayer(new CoolTimeChargeB(CoolTimeB.getCoolTime() - 1), player1);
-                    }
-                    if (CoolTimeC.getCoolTime() > 0) {
-                        Channel.sendToPlayer(new CoolTimeChargeC(CoolTimeC.getCoolTime() - 1), player1);
-                    }
+
+            if (tickCount % 20 == 0 && player instanceof ServerPlayer serverPlayer) {
+                handleCoolTimeDecrement(serverPlayer);
+                if (coolTimeB == 578 && player.isAlive()&&CoolTimeB.getOwner()) {
+                    AttackUtil.executeall(player.level, player.getX(), player.getY(), player.getZ(), player);
                 }
             }
+        }
+    }
+
+    private static void spawnParticleRing(ServerLevel serverLevel, Player player) {
+        final double radius = 0.5D;
+        final double height = player.getBbHeight();
+        final int particles = 360;
+
+        for (int i = 0; i < particles; i++) {
+            double angle = i * (2 * Math.PI / particles);
+            double x = radius * Math.cos(angle);
+            double z = radius * Math.sin(angle);
+
+            serverLevel.sendParticles(ParticleTypes.ASH,
+                    player.getX() + x,
+                    player.getY() + height,
+                    player.getZ() + z,
+                    1/2, 0, 0.5, 0, 0.75);
+        }
+    }
+
+    private static void sendCoolTimeMessage(Player player, int coolTimeB) {
+        String[] messages = new String[]{
+                "msg.blank1", "msg.blank2", "msg.blank3", "msg.blank4",
+                "msg.blank5", "msg.blank6", "msg.blank7"
+        };
+
+        int index = (599 - coolTimeB) / 3;
+        if (index >= 0 && index < messages.length) {
+            player.sendSystemMessage(
+                    Component.translatable(messages[index]).withStyle(ChatFormatting.GRAY)
+            );
+        }
+    }
+
+    private static void handleNegativeCoolTimes(Player player) {
+        if (player instanceof ServerPlayer serverPlayer) {
+            checkAndSyncNegativeCoolTime(serverPlayer, CoolTimeA.getCoolTime(), CoolTimeChargeA.class);
+            checkAndSyncNegativeCoolTime(serverPlayer, CoolTimeB.getCoolTime(), CoolTimeChargeB.class);
+            checkAndSyncNegativeCoolTime(serverPlayer, CoolTimeC.getCoolTime(), CoolTimeChargeC.class);
+        }
+    }
+
+    private static void handleCoolTimeDecrement(ServerPlayer player) {
+        checkAndSyncPositiveCoolTime(player, CoolTimeA.getCoolTime(), CoolTimeChargeA.class);
+        checkAndSyncPositiveCoolTime(player, CoolTimeB.getCoolTime(), CoolTimeChargeB.class);
+        checkAndSyncPositiveCoolTime(player, CoolTimeC.getCoolTime(), CoolTimeChargeC.class);
+    }
+
+    private static <T> void checkAndSyncNegativeCoolTime(ServerPlayer player, int coolTime, Class<T> packetClass) {
+        if (coolTime < 0) {
+            sendCoolTimePacket(player, 0, packetClass);
+        }
+    }
+
+    private static <T> void checkAndSyncPositiveCoolTime(ServerPlayer player, int coolTime, Class<T> packetClass) {
+        if (coolTime > 0) {
+            sendCoolTimePacket(player, coolTime - 1, packetClass);
+        }
+    }
+
+    private static <T> void sendCoolTimePacket(ServerPlayer player, int coolTime, Class<T> packetClass) {
+        if (packetClass == CoolTimeChargeA.class) {
+            Channel.sendToPlayer(new CoolTimeChargeA(coolTime), player);
+        } else if (packetClass == CoolTimeChargeB.class) {
+            Channel.sendToPlayer(new CoolTimeChargeB(coolTime,CoolTimeB.getOwner()), player);
+        } else if (packetClass == CoolTimeChargeC.class) {
+            Channel.sendToPlayer(new CoolTimeChargeC(coolTime), player);
         }
     }
 }

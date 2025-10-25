@@ -1,6 +1,6 @@
 package com.momosensei.momotinker.entity;
 
-import com.momosensei.momotinker.entity.Boxentity.BoxEntity;
+import com.momosensei.momotinker.entity.LegionEntity.LegionEntity;
 import com.momosensei.momotinker.register.MomotinkerConfig;
 import com.momosensei.momotinker.register.MomotinkerEntities;
 import com.momosensei.momotinker.register.MomotinkerItem;
@@ -192,7 +192,7 @@ public class MomotinkerEntitiesCreate {
         }
     }
 
-    public static EntityType<BoxEntity> getboxType() {
+    public static EntityType<LegionEntity> getboxType() {
         return MomotinkerEntities.box_entity.get();
     }
 

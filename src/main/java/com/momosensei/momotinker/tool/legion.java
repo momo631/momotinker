@@ -1,12 +1,14 @@
 package com.momosensei.momotinker.tool;
 
 
-import com.momosensei.momotinker.entity.Boxentity.BoxEntity;
+import com.momosensei.momotinker.entity.LegionEntity.LegionEntity;
 import com.momosensei.momotinker.network.Channel;
 import com.momosensei.momotinker.network.packet.BoxPacket;
-import com.momosensei.momotinker.network.packet.ToolsTimeCharge;
+import com.momosensei.momotinker.network.packet.HudCharge.LegionChargingCharge;
+import com.momosensei.momotinker.network.packet.HudCharge.LegionCooldownCharge;
 import net.minecraft.core.BlockPos;
 import net.minecraft.network.chat.Component;
+import net.minecraft.resources.ResourceLocation;
 import net.minecraft.server.level.ServerPlayer;
 import net.minecraft.stats.Stats;
 import net.minecraft.util.Mth;
@@ -28,33 +30,35 @@ import org.jetbrains.annotations.Nullable;
 import slimeknights.mantle.client.TooltipKey;
 import slimeknights.tconstruct.library.modifiers.ModifierEntry;
 import slimeknights.tconstruct.library.modifiers.ModifierHooks;
+import slimeknights.tconstruct.library.modifiers.hook.interaction.InventoryTickModifierHook;
 import slimeknights.tconstruct.library.tools.definition.ToolDefinition;
 import slimeknights.tconstruct.library.tools.helper.ToolDamageUtil;
 import slimeknights.tconstruct.library.tools.helper.TooltipBuilder;
 import slimeknights.tconstruct.library.tools.item.ModifiableItem;
 import slimeknights.tconstruct.library.tools.nbt.IToolStackView;
+import slimeknights.tconstruct.library.tools.nbt.ModDataNBT;
 import slimeknights.tconstruct.library.tools.nbt.ToolStack;
 import slimeknights.tconstruct.library.tools.stat.ToolStats;
 import slimeknights.tconstruct.tools.modifiers.ability.interaction.BlockingModifier;
 import slimeknights.tconstruct.tools.modifiers.upgrades.ranged.ScopeModifier;
 
-import java.util.Iterator;
-import java.util.List;
-import java.util.Random;
+import java.util.*;
+import java.util.concurrent.ConcurrentHashMap;
 
+import static com.momosensei.momotinker.Momotinker.getResource;
 import static com.momosensei.momotinker.entity.MomotinkerEntitiesCreate.getboxType;
 import static com.momosensei.momotinker.util.AttackUtil.getCooldownFunctionFloat;
 import static slimeknights.tconstruct.library.modifiers.hook.interaction.GeneralInteractionModifierHook.KEY_DRAWTIME;
 
-public class box extends ModifiableItem {
-    public box(Properties properties, ToolDefinition toolDefinition) {
+public class legion extends ModifiableItem {
+    public legion(Properties properties, ToolDefinition toolDefinition) {
         super(properties, toolDefinition);
         MinecraftForge.EVENT_BUS.addListener(this::LeftClick);
         MinecraftForge.EVENT_BUS.addListener(this::LeftClickBlock);
     }
 
     public static void createBox(ServerPlayer player,int quantity,int form) {
-        if (!(ToolStack.from(player.getMainHandItem()).getItem() instanceof box) || player.getAttackStrengthScale(0) != 1 ) {
+        if (!(ToolStack.from(player.getMainHandItem()).getItem() instanceof legion) || player.getAttackStrengthScale(0) != 1 ) {
             return;
         }
         ToolStack tool=ToolStack.from(player.getMainHandItem());
@@ -62,7 +66,7 @@ public class box extends ModifiableItem {
             return;
         }
         Level level = player.getLevel();
-        EntityType<BoxEntity> entityType = getboxType();
+        EntityType<LegionEntity> entityType = getboxType();
 
         Random random = new Random();
         double minDistance = 1;
@@ -72,11 +76,11 @@ public class box extends ModifiableItem {
             maxDistance=2;
         }
         for (int i = 0; i < quantity; i++) {
-            BoxEntity box = new BoxEntity(entityType, level);
-            box.setOwner(player);
-            box.noPhysics = true;
-            box.setForm(form);
-            box.setSpawnRotation(player.getYRot(), player.getXRot());
+            LegionEntity legion = new LegionEntity(entityType, level);
+            legion.setOwner(player);
+            legion.noPhysics = true;
+            legion.setForm(form);
+            legion.setSpawnRotation(player.getYRot(), player.getXRot());
 
             double x, y, z;
 
@@ -89,10 +93,10 @@ public class box extends ModifiableItem {
                 y = player.getY() + 0.7 * player.getBbHeight();
                 z = player.getZ() + Math.sin(currentAngle) * radius;
 
-                box.setPos(x, y, z);
-                box.getPersistentData().putInt("OrbitIndex", i);
-                box.getPersistentData().putInt("TotalOrbiters", quantity);
-                box.getPersistentData().putDouble("BaseOrbitAngle", 0);
+                legion.setPos(x, y, z);
+                legion.getPersistentData().putInt("OrbitIndex", i);
+                legion.getPersistentData().putInt("TotalOrbiters", quantity);
+                legion.getPersistentData().putDouble("BaseOrbitAngle", 0);
             } else {
                 double distance = minDistance + random.nextDouble() * (maxDistance - minDistance);
                 double angle = random.nextDouble() * 2 * Math.PI;
@@ -101,33 +105,60 @@ public class box extends ModifiableItem {
                 y = player.getY() + 0.7 * player.getBbHeight() + random.nextDouble() * 2;
                 z = player.getZ() + Math.sin(angle) * distance;
 
-                box.setPos(x, y, z);
+                legion.setPos(x, y, z);
             }
-            level.addFreshEntity(box);
+            level.addFreshEntity(legion);
         }
         ToolDamageUtil.damageAnimated(tool, 1, player, InteractionHand.MAIN_HAND);
     }
-//    @Override
-//    public boolean onEntitySwing(ItemStack stack, LivingEntity entity) {
-//        boolean retval = super.onEntitySwing(stack, entity);
-//        if (entity instanceof ServerPlayer player&&player.getMainHandItem().getItem() instanceof box) {
-//            float d = getCooldownFunctionFloat(player, InteractionHand.MAIN_HAND);
-//            if (d>0.9f) {
-//                createBox(player, 1, 0);
-//            }
-//        }
-//        return retval;
-//    }
+    public static final ResourceLocation legion_cooldown = getResource("legion_cooldown");
+    public static final ResourceLocation legion_on = getResource("legion_on");
+    private final Map<UUID, Integer> stageCache = new ConcurrentHashMap<>();
+
+    @Override
+    public void inventoryTick(ItemStack stack, Level worldIn, Entity entityIn, int itemSlot, boolean isSelected) {
+        InventoryTickModifierHook.heldInventoryTick(stack, worldIn, entityIn, itemSlot, isSelected);
+        ModDataNBT data = ToolStack.from(stack).getPersistentData();
+        if (entityIn instanceof Player player && player.tickCount % 20 == 0) {
+            if (data.getBoolean(legion_on)) {
+                if (data.getFloat(legion_cooldown) > 0) {
+                    data.putFloat(legion_cooldown, data.getFloat(legion_cooldown) - 5);
+                } else if (data.getFloat(legion_cooldown) == 0) {
+                    data.putBoolean(legion_on, false);
+                }
+            } else {
+                if (data.getFloat(legion_cooldown) < 60) {
+                    data.putFloat(legion_cooldown, data.getFloat(legion_cooldown) + 1);
+                }
+            }
+            if (data.getFloat(legion_cooldown) < 0) {
+                data.putFloat(legion_cooldown, 0);
+            }
+            if (data.getFloat(legion_cooldown) > 60) {
+                data.putFloat(legion_cooldown, 60);
+            }
+        }
+
+        float perc = Mth.clamp(data.getFloat(legion_cooldown) / 60, 0, 1);
+        int currentStage = (int)Math.floor(perc * 8);
+        if (entityIn instanceof ServerPlayer player1&&stack == player1.getMainHandItem()) {
+            UUID playerId = player1.getUUID();
+            if (stageCache.getOrDefault(playerId, -1) != currentStage) {
+                Channel.sendToPlayer(new LegionCooldownCharge(perc), player1);
+                stageCache.put(playerId, currentStage);
+            }
+        }
+    }
 
     private void LeftClick(PlayerInteractEvent.LeftClickEmpty event) {
         Player player=event.getEntity();
-        if (player != null && player.getMainHandItem().getItem() instanceof box) {
+        if (player != null && player.getMainHandItem().getItem() instanceof legion) {
             Channel.sendToServer(new BoxPacket(player.getId()));
         }
     }
     private void LeftClickBlock(PlayerInteractEvent.LeftClickBlock event) {
         Player player=event.getEntity();
-        if (player instanceof ServerPlayer serverPlayer&&player.getMainHandItem().getItem() instanceof box) {
+        if (player instanceof ServerPlayer serverPlayer&&player.getMainHandItem().getItem() instanceof legion) {
             float d = getCooldownFunctionFloat(serverPlayer, InteractionHand.MAIN_HAND);
             if (d>0.9f) {
                 createBox(serverPlayer, 1, 0);
@@ -155,13 +186,13 @@ public class box extends ModifiableItem {
         if (livingEntity instanceof ServerPlayer player) {
             int i = this.getUseDuration(stack) - duration;
             float perc = Mth.clamp((float) i / (120 / tool.getStats().get(ToolStats.ATTACK_SPEED)),0,1);
-            if (perc>=0.25f) {
-                int a = (int) Math.floor(perc * 4);
-                createBox(player, a + 1, 1);
-                Channel.sendToPlayer(new ToolsTimeCharge(0), player);
-                player.awardStat(Stats.ITEM_USED.get(this));
-                ToolDamageUtil.damageAnimated(tool, 1, player);
+            if (perc>=0.2f) {
+                int a = (int) Math.floor(perc * 5);
+                createBox(player, a, 1);
             }
+            Channel.sendToPlayer(new LegionChargingCharge(0,0), player);
+            player.awardStat(Stats.ITEM_USED.get(this));
+            ToolDamageUtil.damageAnimated(tool, 1, player);
         }
         tool.getPersistentData().remove(KEY_DRAWTIME);
     }
@@ -170,8 +201,10 @@ public class box extends ModifiableItem {
     public void onUseTick(Level level, LivingEntity living, ItemStack stack, int chargeRemaining) {
         if ( living instanceof ServerPlayer player) {
             int i = this.getUseDuration(stack) - chargeRemaining;
-            float perc = Mth.clamp((float) i / (120 / ToolStack.from(stack).getStats().get(ToolStats.ATTACK_SPEED)),0,1);
-            Channel.sendToPlayer(new ToolsTimeCharge(perc), player);
+            float phase = Mth.clamp((float) i / (120 / ToolStack.from(stack).getStats().get(ToolStats.ATTACK_SPEED)),0,1);
+            float progress = (phase%0.2F)*5F;
+            if (phase>=1F)progress=1F;
+            Channel.sendToPlayer(new LegionChargingCharge(phase,progress), player);
         }
     }
     public InteractionResultHolder<ItemStack> use(Level level, Player player, InteractionHand hand) {

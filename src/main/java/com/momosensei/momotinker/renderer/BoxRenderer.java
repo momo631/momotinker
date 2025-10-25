@@ -2,7 +2,7 @@ package com.momosensei.momotinker.renderer;
 
 import com.mojang.blaze3d.vertex.PoseStack;
 import com.mojang.math.Vector3f;
-import com.momosensei.momotinker.entity.Boxentity.BoxEntity;
+import com.momosensei.momotinker.entity.LegionEntity.LegionEntity;
 import net.minecraft.client.renderer.MultiBufferSource;
 import net.minecraft.client.renderer.block.model.ItemTransforms;
 import net.minecraft.client.renderer.entity.EntityRenderer;
@@ -15,7 +15,7 @@ import net.minecraft.util.Mth;
 import net.minecraft.world.inventory.InventoryMenu;
 import net.minecraft.world.phys.Vec3;
 
-public class BoxRenderer extends EntityRenderer<BoxEntity> {
+public class BoxRenderer extends EntityRenderer<LegionEntity> {
     public ItemRenderer itemRenderer;
     public BoxRenderer(EntityRendererProvider.Context p_174008_) {
         super(p_174008_);
@@ -49,7 +49,7 @@ public class BoxRenderer extends EntityRenderer<BoxEntity> {
 //    }
 
     @Override
-    public void render(BoxEntity pEntity, float pEntityYaw, float pPartialTick, PoseStack pPoseStack, MultiBufferSource pBuffer, int pPackedLight) {
+    public void render(LegionEntity pEntity, float pEntityYaw, float pPartialTick, PoseStack pPoseStack, MultiBufferSource pBuffer, int pPackedLight) {
         double xRot = Mth.rotLerp(pPartialTick, pEntity.xRotO, pEntity.getXRot());
         double yRot = Mth.rotLerp(pPartialTick, pEntity.yRotO, pEntity.getYRot());
         Vec3 rotation = new Vec3(xRot, yRot, 180);
@@ -76,15 +76,15 @@ public class BoxRenderer extends EntityRenderer<BoxEntity> {
     }
 
 
-    protected int getSkyLightLevel(BoxEntity p_114509_, BlockPos p_114510_) {
+    protected int getSkyLightLevel(LegionEntity p_114509_, BlockPos p_114510_) {
         return 15;
     }
-    protected int getBlockLightLevel(BoxEntity p_114496_, BlockPos p_114497_) {
+    protected int getBlockLightLevel(LegionEntity p_114496_, BlockPos p_114497_) {
         return 15;
     }
 
     @Override
-    public ResourceLocation getTextureLocation(BoxEntity meteorEntity) {
+    public ResourceLocation getTextureLocation(LegionEntity meteorEntity) {
         return InventoryMenu.BLOCK_ATLAS;
     }
 }

@@ -1,11 +1,11 @@
-package com.momosensei.momotinker.network.packet;
+package com.momosensei.momotinker.network.packet.HudCharge;
 
 import net.minecraft.network.FriendlyByteBuf;
 import net.minecraftforge.network.NetworkEvent;
 
 import java.util.function.Supplier;
 
-import static com.momosensei.momotinker.mobs.ToolsTimeDrawtime.setPercentage;
+import static com.momosensei.momotinker.gui.hudhelder.ToolsTimeDrawTime.setPercentage;
 
 
 public class ToolsTimeCharge {
