@@ -10,8 +10,8 @@
       },
       "icon": "tconstruct:broad_blade",
       "translation_key": "item.tconstruct.broad_blade",
-      "x": 51,
-      "y": 23
+      "x": 10,
+      "y": 10
     },
     {
       "filter": {
@@ -19,8 +19,17 @@
       },
       "icon": "tconstruct:large_plate",
       "translation_key": "item.tconstruct.large_plate",
-      "x": 32,
-      "y": 42
+      "x": 30,
+      "y": 10
+    },
+    {
+      "filter": {
+        "item": "tconstruct:large_plate"
+      },
+      "icon": "tconstruct:large_plate",
+      "translation_key": "item.tconstruct.large_plate",
+      "x": 50,
+      "y": 10
     },
     {
       "filter": {
@@ -28,8 +37,8 @@
       },
       "icon": "tconstruct:tough_handle",
       "translation_key": "item.tconstruct.tough_handle",
-      "x": 32,
-      "y": 62
+      "x": 10,
+      "y": 30
     },
     {
       "filter": {
@@ -37,8 +46,17 @@
       },
       "icon": "tconstruct:tough_handle",
       "translation_key": "item.tconstruct.tough_handle",
-      "x": 12,
-      "y": 62
+      "x": 30,
+      "y": 30
+    },
+    {
+      "filter": {
+        "item": "minecraft:chain"
+      },
+      "icon": "momotinker:chain",
+      "translation_key": "block.minecraft.chain",
+      "x": 50,
+      "y": 30
     }
   ],
   "sortIndex": 0,

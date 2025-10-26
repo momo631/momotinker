@@ -5,19 +5,23 @@
       "parts": [
         {
           "item": "tconstruct:broad_blade",
-          "scale": 0.75
+          "scale": 1.25
         },
         {
           "item": "tconstruct:large_plate",
-          "scale": 0.75
+          "scale": 1.25
+        },
+        {
+          "item": "tconstruct:large_plate",
+          "scale": 1.25
         },
         {
           "item": "tconstruct:tough_handle",
-          "scale": 0.75
+          "scale": 1.25
         },
         {
           "item": "tconstruct:tough_handle",
-          "scale": 0.75
+          "scale": 1.25
         }
       ]
     },
@@ -43,15 +47,19 @@
         {
           "type": "tconstruct:random",
           "tier": 1
+        },
+        {
+          "type": "tconstruct:random",
+          "tier": 1
         }
       ]
     },
     {
       "type": "tconstruct:multiply_stats",
       "multipliers": {
-        "tconstruct:attack_damage": 1.2,
-        "tconstruct:durability": 1,
-        "tconstruct:attack_speed": 1.5
+        "tconstruct:attack_damage": 0.6,
+        "tconstruct:durability": 0.6,
+        "tconstruct:attack_speed": 0.6
       }
     },
     {
@@ -60,37 +68,6 @@
         "abilities": 2,
         "upgrades": 3
       }
-    },
-    {
-      "type": "tconstruct:box_aoe",
-      "bonus": {
-        "depth": 2,
-        "height": 1,
-        "width": 2
-      },
-      "expansion_direction": "tconstruct:side_hit",
-      "expansions": [
-        {
-          "height": 1,
-          "width": 1
-        },
-        {
-          "depth": 2
-        }
-      ]
-    },
-    {
-      "type": "tconstruct:circle_melee",
-      "diameter": 2.0
-    },
-    {
-      "type": "tconstruct:traits",
-      "traits": [
-        {
-          "name": "momotinker:resonance",
-          "level": 1
-        }
-      ]
     }
   ]
 }

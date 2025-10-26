@@ -185,7 +185,7 @@ public class legion extends ModifiableItem {
         }
         if (livingEntity instanceof ServerPlayer player) {
             int i = this.getUseDuration(stack) - duration;
-            float perc = Mth.clamp((float) i / (120 / tool.getStats().get(ToolStats.ATTACK_SPEED)),0,1);
+            float perc = Mth.clamp((float) i / (240 / tool.getStats().get(ToolStats.ATTACK_SPEED)),0,1);
             if (perc>=0.2f) {
                 int a = (int) Math.floor(perc * 5);
                 createBox(player, a, 1);
@@ -201,7 +201,7 @@ public class legion extends ModifiableItem {
     public void onUseTick(Level level, LivingEntity living, ItemStack stack, int chargeRemaining) {
         if ( living instanceof ServerPlayer player) {
             int i = this.getUseDuration(stack) - chargeRemaining;
-            float phase = Mth.clamp((float) i / (120 / ToolStack.from(stack).getStats().get(ToolStats.ATTACK_SPEED)),0,1);
+            float phase = Mth.clamp((float) i / (240 / ToolStack.from(stack).getStats().get(ToolStats.ATTACK_SPEED)),0,1);
             float progress = (phase%0.2F)*5F;
             if (phase>=1F)progress=1F;
             Channel.sendToPlayer(new LegionChargingCharge(phase,progress), player);
@@ -225,7 +225,7 @@ public class legion extends ModifiableItem {
     }
     @Override
     public UseAnim getUseAnimation(ItemStack stack) {
-        return BlockingModifier.blockWhileCharging(ToolStack.from(stack), UseAnim.BLOCK);
+        return BlockingModifier.blockWhileCharging(ToolStack.from(stack), UseAnim.BOW);
     }
     public boolean canAttackBlock(BlockState blockState, Level level, BlockPos blockPos, Player player) {
         return !player.isCreative();

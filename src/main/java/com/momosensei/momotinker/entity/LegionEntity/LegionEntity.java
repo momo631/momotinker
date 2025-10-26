@@ -33,6 +33,8 @@ import slimeknights.tconstruct.library.tools.nbt.MaterialNBT;
 import slimeknights.tconstruct.library.tools.nbt.ToolStack;
 import slimeknights.tconstruct.library.tools.stat.ToolStats;
 import slimeknights.tconstruct.library.utils.Util;
+import slimeknights.tconstruct.tools.TinkerTools;
+import slimeknights.tconstruct.tools.ToolDefinitions;
 
 import java.util.*;
 import java.util.function.Function;
@@ -185,13 +187,13 @@ public class LegionEntity extends Projectile {
                 } else {
                     ToolStack originalStack = ToolStack.from(player.getMainHandItem());
                     ToolStack resultStack = null;
+                    MaterialNBT materials = originalStack.getMaterials();
 
                     int maxAttempts = 20;
                     for (int i = 0; i < maxAttempts; i++) {
                         if (originalStack.getModifierLevel(MomotinkerModifiers.laomochuji.get()) > 0) {
                             resultStack = getToolRandomMaterials();
                         } else {
-                            MaterialNBT materials = originalStack.getMaterials();
                             resultStack = getRandomTools(materials);
                         }
 
@@ -200,7 +202,7 @@ public class LegionEntity extends Projectile {
                         }
 
                         if (i == maxAttempts - 1) {
-                            resultStack = originalStack;
+                            resultStack = ToolStack.from(ToolStack.createTool(TinkerTools.sword.get(), ToolDefinitions.SWORD, materials).createStack());
                         }
                     }
 
@@ -263,21 +265,21 @@ public class LegionEntity extends Projectile {
                 double speed = 1.2;
                 float spawnYaw = this.getSpawnYaw();
                 float spawnPitch = this.getSpawnPitch();
+                Vec3 movementVector = calculateMovementVector(spawnYaw, spawnPitch);
                 if (target == null || getForm() == 0) {
-                    Vec3 movementVector = calculateMovementVector(spawnYaw, spawnPitch);
+                    speed=1.6;
                     this.setDeltaMovement(movementVector.scale(speed));
                 } else if (getForm() == 1) {
                     if (this.tickCount > 5) {
                         moveTowardsTargetWithTransfer(this, target, 1.8, 1.5);
                     } else {
-                        Vec3 movementVector = calculateMovementVector(spawnYaw, spawnPitch);
                         this.setDeltaMovement(movementVector.scale(speed));
                     }
                 }
             }else{
                 if (entity.isAlive()) {
                     //circularMotionNew(BoxEntity.class,this,entity,entity,2,2,3,0.05);
-                    circularMotion(this,entity,2.5,0.125);
+                    circularMotion(this,entity,2.5,0.15);
                     interceptProjectiles(entity,this);
                 }
             }
@@ -286,17 +288,19 @@ public class LegionEntity extends Projectile {
         }
 
         ToolStack tool =ToolStack.from(getItem());
-        float damage = tool.getStats().get(ToolStats.ATTACK_DAMAGE)*0.8f;
+        float multiplier = 0.8f;
         float a = 1.5f;
-        if (getForm()==2){
-            damage=tool.getStats().get(ToolStats.ATTACK_DAMAGE)*0.2f;
-            a=0.75f;
+        if (getForm()==2||getForm()==1){
+            multiplier=0.2f;
+            if (getForm()==2) {
+                a = 0.75f;
+            }
         }
         if (entity instanceof Player player && this.level instanceof ServerLevel serverLevel) {
             List<LivingEntity> ls0 = serverLevel.getEntitiesOfClass(LivingEntity.class, this.getBoundingBox().inflate(a));
             for (LivingEntity targets : ls0) {
                 if (targets != this.getOwner() && targets != null) {
-                    AttackUtil.attackEntity(tool, player, InteractionHand.MAIN_HAND, targets, () -> 1, true, Util.getSlotType(InteractionHand.MAIN_HAND), damage+1, 1f, false, true, true, true);
+                    AttackUtil.attackEntity(tool, player, InteractionHand.MAIN_HAND, targets, () -> 1, true, Util.getSlotType(InteractionHand.MAIN_HAND), tool.getStats().get(ToolStats.ATTACK_DAMAGE)+1, multiplier, false, true, true, true);
                 }
             }
             if (player.isDeadOrDying())this.discard();
