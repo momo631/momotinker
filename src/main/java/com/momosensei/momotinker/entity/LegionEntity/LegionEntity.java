@@ -177,6 +177,9 @@ public class LegionEntity extends Projectile {
         tool2.setUpgrades(tool1.getUpgrades());
         tool2.setDamage(tool1.getDamage());
         tool2.getPersistentData().copyFrom(tool1.getPersistentData().getCopy());
+        if (tool2.getModifierLevel(MomotinkerModifiers.key_to_ruin.getId())!=1) {
+            tool2.addModifier(MomotinkerModifiers.key_to_ruin.getId(), 1);
+        }
     }
 
     public ToolStack getToolStack() {

@@ -65,7 +65,7 @@ public class  MomotinkerItem extends MomotinkerModule{
     public static final RegistryObject<ModifiableItem> pocket_watch = ITEMS.register("pocket_watch", () -> new pocket_watch(TOOL, MomotinkerToolDefinitions.POCKET_WATCH));
     public static final RegistryObject<ModifiableItem> chain_sword = ITEMS.register("chain_sword", () -> new chain_sword(TOOL, MomotinkerToolDefinitions.CHAIN_SWORD));
     public static final RegistryObject<ModifiableItem> pneumatic_sword = ITEMS.register("pneumatic_sword", () -> new pneumatic_sword(TOOL, MomotinkerToolDefinitions.PNEUMATIC_SWORD));
-    public static final RegistryObject<ModifiableItem> legion = ITEMS.register("legion", () -> new legion(TOOL, MomotinkerToolDefinitions.BOX));
+    public static final RegistryObject<ModifiableItem> legion = ITEMS.register("legion", () -> new legion(TOOL, MomotinkerToolDefinitions.LEGION));
 
     public static final RegistryObject<Item> twilight_ego = ITEMS.register("twilight_ego", () -> new twilight_ego(new Item.Properties().tab(MomotinkerTab.TOOLS)));
     public static final RegistryObject<Item> star_seeking_pointer = ITEMS.register("star_seeking_pointer", () -> new star_seeking_pointer(new Item.Properties().tab(MomotinkerTab.TOOLS)));

@@ -91,6 +91,8 @@ public class MomotinkerModifiers {
     public static final StaticModifier<GainsAlone> gainsalone=MODIFIERS.register("gainsalone", GainsAlone::new);
     public static final StaticModifier<CompassionateEverything> compassionateeverything=MODIFIERS.register("compassionateeverything", CompassionateEverything::new);
 
+    public static final StaticModifier<KeyToRuin> key_to_ruin=MODIFIERS.register("key_to_ruin", KeyToRuin::new);
+
     public static final StaticModifier<SuppressingEvil> suppressing_evil=MODIFIERS.register("suppressing_evil", SuppressingEvil::new);
     public static final StaticModifier<SuppressingEvilA> suppressing_evil_a=MODIFIERS.register("suppressing_evil_a", SuppressingEvilA::new);
 
