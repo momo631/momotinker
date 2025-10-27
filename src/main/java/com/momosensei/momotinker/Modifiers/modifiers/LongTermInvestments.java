@@ -2,6 +2,7 @@ package com.momosensei.momotinker.Modifiers.modifiers;
 
 
 import com.momosensei.momotinker.Modifiers.momomodifier;
+import com.momosensei.momotinker.register.MomotinkerConfig;
 import com.momosensei.momotinker.register.MomotinkerModifiers;
 import net.minecraft.ChatFormatting;
 import net.minecraft.network.chat.Component;
@@ -105,8 +106,8 @@ public class LongTermInvestments extends momomodifier {
     @Override
     public void OnLivingHurt(LivingHurtEvent event) {
         Entity a = event.getEntity();
-        //int increase = MomotinkerConfig.shortterminvestments_increase_ratio.get();
-        //int reduce = MomotinkerConfig.shortterminvestments_reduce_ratio.get();
+        int increase = MomotinkerConfig.shortterminvestments_increase_ratio.get();
+        int reduce = MomotinkerConfig.shortterminvestments_reduce_ratio.get();
         int d = RANDOM.nextInt(100);
         if (a instanceof Player player){
             int c=getMainhandModifierlevel(player,MomotinkerModifiers.longterminvestments.getId());
@@ -123,8 +124,8 @@ public class LongTermInvestments extends momomodifier {
     private void onEntityDeath(LivingDeathEvent event) {
         Entity a = event.getEntity();
         Entity b = event.getSource().getEntity();
-        //int increase = MomotinkerConfig.shortterminvestments_increase_ratio.get();
-        //int reduce = MomotinkerConfig.shortterminvestments_reduce_ratio.get();
+        int increase = MomotinkerConfig.shortterminvestments_increase_ratio.get();
+        int reduce = MomotinkerConfig.shortterminvestments_reduce_ratio.get();
         int d = RANDOM.nextInt(100);
         if (a instanceof Player player){
             int c=getMainhandModifierlevel(player,MomotinkerModifiers.longterminvestments.getId());
@@ -151,8 +152,8 @@ public class LongTermInvestments extends momomodifier {
     }
     private void onItemEvent(BlockEvent.BreakEvent event) {
         Player player = event.getPlayer();
-        //int increase = MomotinkerConfig.shortterminvestments_increase_ratio.get();
-        //int reduce = MomotinkerConfig.shortterminvestments_reduce_ratio.get();
+        int increase = MomotinkerConfig.shortterminvestments_increase_ratio.get();
+        int reduce = MomotinkerConfig.shortterminvestments_reduce_ratio.get();
         int d = RANDOM.nextInt(100);
         if (player!=null&& event.getState()!=null){
             int a=getMainhandModifierlevel(player,MomotinkerModifiers.longterminvestments.getId());

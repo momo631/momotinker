@@ -2,9 +2,10 @@ package com.momosensei.momotinker.event;
 
 
 import com.momosensei.momotinker.capability.ender.EnderProvider;
-import com.momosensei.momotinker.gui.overlay.CensoredHUD;
+import com.momosensei.momotinker.gui.hud.CensoredHUD;
+import com.momosensei.momotinker.gui.hud.LegionHUD;
+import com.momosensei.momotinker.gui.hud.ToolsTimeHUD;
 import com.momosensei.momotinker.gui.overlay.MomotinkerOverlay;
-import com.momosensei.momotinker.gui.overlay.ToolsTimeHUD;
 import com.momosensei.momotinker.register.MomotinkerEntities;
 import com.momosensei.momotinker.renderer.*;
 import net.minecraft.client.renderer.entity.NoopRenderer;
@@ -32,6 +33,9 @@ public class ModEventListener {
             event.registerAbove(VanillaGuiOverlay.HOTBAR.id(), "ender", MomotinkerOverlay::render);
             event.registerAboveAll( "censored_hud", CensoredHUD.CENSORED);
             event.registerAboveAll( "tools_time_hud", ToolsTimeHUD.TOOS_TIME_HUD);
+            event.registerAboveAll( "legion_phase_hud", LegionHUD.Legion_Phase_HUD);
+            event.registerAboveAll( "legion_progress_hud", LegionHUD.Legion_Progress_HUD);
+            event.registerAboveAll( "legion_cooldown_hud", LegionHUD.Legion_Cooldown_HUD);
         }
     }
     @SubscribeEvent
@@ -44,7 +48,7 @@ public class ModEventListener {
         event.registerEntityRenderer(MomotinkerEntities.starfall_entity.get(), StarfallEntityRenderer::new);
         event.registerEntityRenderer(MomotinkerEntities.pull_a_entity.get(), PullAEntityRenderer::new);
         event.registerEntityRenderer(MomotinkerEntities.pull_b_entity.get(), PullBEntityRenderer::new);
-        event.registerEntityRenderer(MomotinkerEntities.box_entity.get(), BoxRenderer::new);
+        event.registerEntityRenderer(MomotinkerEntities.legion_entity.get(), LegionRenderer::new);
 
     }
 }

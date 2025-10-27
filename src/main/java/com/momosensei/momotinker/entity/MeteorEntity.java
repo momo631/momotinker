@@ -66,10 +66,11 @@ public class MeteorEntity extends Projectile {
 
     public void meteorExplode(){
         boolean config = MomotinkerConfig.explosion_destroys_limit.get();
+        boolean configa = MomotinkerConfig.meteor_explosion_limit.get();
         if (!this.level().isClientSide) {
             Level.ExplosionInteraction explosionInteraction;
             boolean a;
-            if (config) {
+            if (config&&configa) {
                 explosionInteraction=Level.ExplosionInteraction.BLOCK;
                 a=true;
             }else {

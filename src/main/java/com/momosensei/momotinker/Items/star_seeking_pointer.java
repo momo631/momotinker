@@ -98,6 +98,7 @@ public class star_seeking_pointer extends Item {
             tooltip.add(Component.translatable("item.momotinker.tooltip.star_seeking_pointer3").append(Component.literal(x + "," + y + "," + z + ")").withStyle(ChatFormatting.GOLD)).withStyle(ChatFormatting.LIGHT_PURPLE));
         } else {
             tooltip.add(Component.translatable("item.momotinker.tooltip.star_seeking_pointer4").withStyle(ChatFormatting.LIGHT_PURPLE));
+
         }
     }
 }

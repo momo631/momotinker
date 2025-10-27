@@ -8,16 +8,16 @@ import java.util.function.Supplier;
 
 
 public class CoolTimeChargeC {
-    private final float cooltime;
-    public CoolTimeChargeC(float cooltime) {;
+    private final int cooltime;
+    public CoolTimeChargeC(int cooltime) {;
         this.cooltime =cooltime;
     }
     public CoolTimeChargeC(FriendlyByteBuf buf){
-        this.cooltime =buf.readFloat();
+        this.cooltime =buf.readInt();
     }
 
     public void toByte(FriendlyByteBuf buf){
-        buf.writeFloat(this.cooltime);
+        buf.writeInt(this.cooltime);
     }
 
     public void handle(Supplier<NetworkEvent.Context> supplier) {

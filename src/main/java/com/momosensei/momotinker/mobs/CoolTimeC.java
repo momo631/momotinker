@@ -1,11 +1,11 @@
 package com.momosensei.momotinker.mobs;
 
 public class CoolTimeC {
-    public static float cooltime;
-    public static void setCoolTime(float f){
+    public static int cooltime;
+    public static void setCoolTime(int f){
         cooltime  =f;
     }
-    public static float getCoolTime(){
+    public static int getCoolTime(){
         return cooltime;
     }
 }

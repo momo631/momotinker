@@ -1,7 +1,7 @@
 package com.momosensei.momotinker.tool;
 
 import com.momosensei.momotinker.network.Channel;
-import com.momosensei.momotinker.network.packet.ToolsTimeCharge;
+import com.momosensei.momotinker.network.packet.HudCharge.ToolsTimeCharge;
 import com.momosensei.momotinker.register.MomotinkerConfig;
 import net.minecraft.ChatFormatting;
 import net.minecraft.core.BlockPos;

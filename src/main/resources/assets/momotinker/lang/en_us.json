@@ -97,7 +97,7 @@
   "recipe.momotinker.modifier.forbiddenfruit": "[Forbidden Fruit] needs to use [Over indulgence sin] as a prerequisite and strengthen mutual exclusion with other [Resonance of major sin]",
   "recipe.momotinker.modifier.gainsalone": "[Gains Alone] needs to use [Over weighting wealth sin] as a prerequisite and strengthen mutual exclusion with other [Resonance of major sin]",
   "recipe.momotinker.modifier.compassionateeverything": "[Compassionate Everything] needs to use [Over sad sin] as a prerequisite and strengthen mutual exclusion with other [Resonance of major sin]",
-
+  "recipe.momotinker.modifier.key_to_ruin": "The existence of the §o'Legion'§r needs to be nothingness, and its consciousness should be sufficient to withstand destruction",
 
   "momotinker": "Momotinker",
 
@@ -319,6 +319,9 @@
 
   "item.momotinker.pneumatic_sword": "Pneumatic Sword",
   "item.momotinker.pneumatic_sword.description": "Right click to briefly sprint forward and upward, pressing 'Tool Enhancement' to fire the rope (press 'shift' to cancel the rope in advance). If the target is a creature, it will enhance the next aerial sprint. If the deputy has another pneumatic sword, it will improve various performance",
+
+  "item.momotinker.legion": "§o'Legion'§r",
+  "item.momotinker.legion.description": "",
 
 
   "momotinker.tool.tooltip.offhand_hastool": "Error: The deputy has items",
@@ -824,6 +827,10 @@
 
   "modifier.momotinker.memories_of_mountains": "Memories Of Mountains",
   "modifier.momotinker.memories_of_mountains.flavor": "Traveling thousands of miles with the mountains, the journey is endless",
-  "modifier.momotinker.memories_of_mountains.description": "After hitting the creature, try to move the target to the [Mountains Memory] dimension. This dimension does not naturally generate monsters, and the creature will receive damage every once in a while while while in this dimension. After the creature dies, the loot will fall to the player's position\n(This feature involves 'ChunkPos Forced Loading', which may cause lag when applied to too many organisms that have not died)"
+  "modifier.momotinker.memories_of_mountains.description": "After hitting the creature, try to move the target to the [Mountains Memory] dimension. This dimension does not naturally generate monsters, and the creature will receive damage every once in a while while while in this dimension. After the creature dies, the loot will fall to the player's position\n(This feature involves 'ChunkPos Forced Loading', which may cause lag when applied to too many organisms that have not died)",
+
+  "modifier.momotinker.key_to_ruin": "Key To Ruin",
+  "modifier.momotinker.key_to_ruin.flavor": "Existence rushes towards the boundary, only to discover that the abyss is not on the other side",
+  "modifier.momotinker.key_to_ruin.description": "§oThe concretization of meaning and concepts ends in the cage of thought"
 
 }

@@ -4,7 +4,7 @@ import com.c2h6s.etstlib.entity.specialDamageSources.LegacyDamageSource;
 import com.momosensei.momotinker.Modifiers.momomodifier;
 import com.momosensei.momotinker.Momotinker;
 import com.momosensei.momotinker.network.Channel;
-import com.momosensei.momotinker.network.packet.ToolsTimeCharge;
+import com.momosensei.momotinker.network.packet.HudCharge.ToolsTimeCharge;
 import com.momosensei.momotinker.register.MomotinkerModifiers;
 import net.minecraft.core.particles.ParticleTypes;
 import net.minecraft.network.chat.Component;

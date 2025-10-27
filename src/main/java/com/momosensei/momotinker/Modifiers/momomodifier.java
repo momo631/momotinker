@@ -16,6 +16,7 @@ import net.minecraft.world.entity.ai.attributes.Attributes;
 import net.minecraft.world.entity.player.Player;
 import net.minecraft.world.entity.projectile.AbstractArrow;
 import net.minecraft.world.entity.projectile.Projectile;
+import net.minecraft.world.item.Item;
 import net.minecraft.world.item.ItemStack;
 import net.minecraft.world.item.TooltipFlag;
 import net.minecraft.world.level.Level;
@@ -59,6 +60,7 @@ import slimeknights.tconstruct.library.tools.context.EquipmentChangeContext;
 import slimeknights.tconstruct.library.tools.context.EquipmentContext;
 import slimeknights.tconstruct.library.tools.context.ToolAttackContext;
 import slimeknights.tconstruct.library.tools.context.ToolHarvestContext;
+import slimeknights.tconstruct.library.tools.definition.ToolDefinition;
 import slimeknights.tconstruct.library.tools.helper.ModifierUtil;
 import slimeknights.tconstruct.library.tools.nbt.*;
 import slimeknights.tconstruct.library.tools.stat.ModifierStatsBuilder;
@@ -311,4 +313,18 @@ public abstract class momomodifier extends Modifier implements MeleeDamageModifi
         return a;
     }
 
+    public static boolean getMainHandTool(LivingEntity entity, Item item) {
+        return entity.getMainHandItem().is(item);
+    }
+
+    public static ItemStack createNewTool(ItemStack stack, Item item, ToolDefinition definition) {
+        ToolStack tool = ToolStack.from(stack);
+        ItemStack itemStack = ToolStack.createTool(item, definition, tool.getMaterials()).createStack();
+        ToolStack tools = ToolStack.from(itemStack);
+        itemStack.setTag(stack.getTag());
+        tools.setUpgrades(tool.getUpgrades());
+        tools.setDamage(tool.getDamage());
+        tools.getPersistentData().copyFrom(tool.getPersistentData().getCopy());
+        return tools.createStack();
+    }
 }

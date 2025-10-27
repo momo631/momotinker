@@ -5,23 +5,28 @@ import com.momosensei.momotinker.register.MomotinkerToolDefinitions;
 import com.momosensei.momotinker.register.MomotinkerTools;
 import net.minecraft.network.FriendlyByteBuf;
 import net.minecraft.server.level.ServerPlayer;
+import net.minecraft.util.Mth;
 import net.minecraft.world.InteractionHand;
 import net.minecraft.world.item.ItemStack;
 import net.minecraftforge.network.NetworkEvent;
 import slimeknights.tconstruct.library.modifiers.ModifierEntry;
 import slimeknights.tconstruct.library.tools.item.ModifiableItem;
+import slimeknights.tconstruct.library.tools.item.armor.ModifiableArmorItem;
 import slimeknights.tconstruct.library.tools.nbt.MaterialNBT;
 import slimeknights.tconstruct.library.tools.nbt.ModDataNBT;
 import slimeknights.tconstruct.library.tools.nbt.ToolStack;
+import slimeknights.tconstruct.library.tools.stat.ToolStats;
 
 import java.util.List;
 import java.util.function.Supplier;
 
 import static com.momosensei.momotinker.Modifiers.modifiers.ProjectionOfSuffering.disaster;
+import static com.momosensei.momotinker.Modifiers.momomodifier.createNewTool;
 import static com.momosensei.momotinker.Momotinker.getResource;
 import static com.momosensei.momotinker.entity.MomotinkerEntitiesCreate.createPull;
 import static com.momosensei.momotinker.register.MomotinkerTools.*;
 import static com.momosensei.momotinker.tool.entropy_burning_cube.liverization;
+import static com.momosensei.momotinker.tool.legion.*;
 
 public class KeyAInputPKT {
     public int key;
@@ -47,49 +52,22 @@ public class KeyAInputPKT {
             ServerPlayer player = context.getSender();
             if (player!=null&&player.getOffhandItem().is(ItemStack.EMPTY.getItem())) {
                 if (player.getMainHandItem().is(MomotinkerTools.entropy_burning_cube.get())) {
-                    ItemStack stack = player.getMainHandItem();
-                    ToolStack tool = ToolStack.from(stack);
-                    ItemStack itemStack = ToolStack.createTool(MomotinkerTools.entropy_burning_sword.get(), MomotinkerToolDefinitions.ENTROPY_BURNING_SWORD, tool.getMaterials()).createStack();
-                    ToolStack tools = ToolStack.from(itemStack);
-                    itemStack.setTag(stack.getTag());
-                    tools.setUpgrades(tool.getUpgrades());
-                    tools.setDamage(tool.getDamage());
-                    tools.getPersistentData().copyFrom(tool.getPersistentData().getCopy());
-                    player.setItemInHand(InteractionHand.MAIN_HAND, tools.createStack());
+                    ItemStack stack = createNewTool(player.getMainHandItem(),MomotinkerTools.entropy_burning_sword.get(),MomotinkerToolDefinitions.ENTROPY_BURNING_SWORD);
+                    player.setItemInHand(InteractionHand.MAIN_HAND,stack);
                 } else if (player.getMainHandItem().is(MomotinkerTools.entropy_burning_sword.get())) {
-                    ItemStack stack = player.getMainHandItem();
-                    ToolStack tool = ToolStack.from(stack);
-                    ItemStack itemStack = ToolStack.createTool(MomotinkerTools.entropy_burning_riding_spear.get(), MomotinkerToolDefinitions.ENTROPY_BURNING_RIDING_SPEAR, tool.getMaterials()).createStack();
-                    ToolStack tools = ToolStack.from(itemStack);
-                    itemStack.setTag(stack.getTag());
-                    tools.setUpgrades(tool.getUpgrades());
-                    tools.setDamage(tool.getDamage());
-                    tools.getPersistentData().copyFrom(tool.getPersistentData().getCopy());
-                    player.setItemInHand(InteractionHand.MAIN_HAND, tools.createStack());
+                    ItemStack stack = createNewTool(player.getMainHandItem(),MomotinkerTools.entropy_burning_riding_spear.get(),MomotinkerToolDefinitions.ENTROPY_BURNING_RIDING_SPEAR);
+                    player.setItemInHand(InteractionHand.MAIN_HAND,stack);
                 } else if (player.getMainHandItem().is(MomotinkerTools.entropy_burning_riding_spear.get())) {
-                    ItemStack stack = player.getMainHandItem();
-                    ToolStack tool = ToolStack.from(stack);
-                    ItemStack itemStack = ToolStack.createTool(MomotinkerTools.entropy_burning_cannon.get(), MomotinkerToolDefinitions.ENTROPY_BURNING_CANNON, tool.getMaterials()).createStack();
-                    ToolStack tools = ToolStack.from(itemStack);
-                    itemStack.setTag(stack.getTag());
-                    tools.setUpgrades(tool.getUpgrades());
-                    tools.setDamage(tool.getDamage());
-                    tools.getPersistentData().copyFrom(tool.getPersistentData().getCopy());
-                    player.setItemInHand(InteractionHand.MAIN_HAND, tools.createStack());
+                    ItemStack stack = createNewTool(player.getMainHandItem(),MomotinkerTools.entropy_burning_cannon.get(),MomotinkerToolDefinitions.ENTROPY_BURNING_CANNON);
+                    player.setItemInHand(InteractionHand.MAIN_HAND,stack);
                 } else if (player.getMainHandItem().is(MomotinkerTools.entropy_burning_cannon.get())) {
-                    ItemStack stack = player.getMainHandItem();
-                    ToolStack tool = ToolStack.from(stack);
-                    ItemStack itemStack = ToolStack.createTool(MomotinkerTools.entropy_burning_cube.get(), MomotinkerToolDefinitions.ENTROPY_BURNING_CUBE, tool.getMaterials()).createStack();
-                    ToolStack tools = ToolStack.from(itemStack);
-                    itemStack.setTag(stack.getTag());
-                    tools.setUpgrades(tool.getUpgrades());
-                    tools.setDamage(tool.getDamage());
-                    tools.getPersistentData().copyFrom(tool.getPersistentData().getCopy());
-                    player.setItemInHand(InteractionHand.MAIN_HAND, tools.createStack());
+                    ItemStack stack = createNewTool(player.getMainHandItem(),MomotinkerTools.entropy_burning_cube.get(),MomotinkerToolDefinitions.ENTROPY_BURNING_CUBE);
+                    player.setItemInHand(InteractionHand.MAIN_HAND,stack);
                 }
             }
             int liverization_limit = MomotinkerConfig.liverization_limit.get();
-            if (player!=null&&player.getMainHandItem().is(MomotinkerTools.entropy_burning_cube.get())&&player.getOffhandItem().getItem() instanceof ModifiableItem) {
+            if (player!=null&&player.getMainHandItem().is(MomotinkerTools.entropy_burning_cube.get())
+                    &&(player.getOffhandItem().getItem() instanceof ModifiableItem||player.getOffhandItem().getItem() instanceof ModifiableArmorItem)) {
                 ToolStack tool = ToolStack.from(player.getMainHandItem());
                 ToolStack tool1 = ToolStack.from(player.getOffhandItem());
                 if (tool1.getMaterials().size()<=3&&tool1.getMaterials().size()>=0&&tool.getPersistentData().getInt(liverization)==liverization_limit) {
@@ -171,6 +149,19 @@ public class KeyAInputPKT {
                 if (!player.getMainHandItem().is(MomotinkerTools.pneumatic_sword.get())&&player.getOffhandItem().is(MomotinkerTools.pneumatic_sword.get())&&data2.getFloat(getResource("pullcool"))==0){
                     data2.putFloat(getResource("pullcool"),8);
                     createPull(player);
+                }
+            }
+
+            if (player!=null&&(player.getMainHandItem().is(MomotinkerTools.legion.get()))) {
+                ToolStack tool = ToolStack.from(player.getMainHandItem());
+                ModDataNBT data = tool.getPersistentData();
+                if (!data.getBoolean(legion_on)&&data.getFloat(legion_cooldown)==60) {
+                    data.putBoolean(legion_on,true);
+                    float perc = Mth.clamp(tool.getStats().get(ToolStats.ATTACK_SPEED) / 120, 0, 1);
+                    int a = (int) Math.floor(perc * 10);
+                    if (a < 1) a = 1;
+                    if (a > 10) a = 10;
+                    createLegion(player, a + 2, 2);
                 }
             }
         });

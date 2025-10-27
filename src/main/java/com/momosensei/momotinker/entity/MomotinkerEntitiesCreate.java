@@ -1,5 +1,6 @@
 package com.momosensei.momotinker.entity;
 
+import com.momosensei.momotinker.entity.LegionEntity.LegionEntity;
 import com.momosensei.momotinker.register.*;
 import com.momosensei.momotinker.tool.divine_punishment_spear;
 import com.momosensei.momotinker.tool.entropy_burning_cannon;
@@ -188,8 +189,8 @@ public class MomotinkerEntitiesCreate {
         }
     }
 
-    public static EntityType<BoxEntity> getboxType() {
-        return MomotinkerEntities.box_entity.get();
+    public static EntityType<LegionEntity> getboxType() {
+        return MomotinkerEntities.legion_entity.get();
     }
 
 }

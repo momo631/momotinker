@@ -29,7 +29,7 @@ public class Blank extends momomodifier {
 
     private void onEntityDeath(LivingDeathEvent event) {
         if (event.getEntity() instanceof ServerPlayer player&& CoolTimeB.getCoolTime() >= 579) {
-            Channel.sendToPlayer(new CoolTimeChargeB(300), player);
+            Channel.sendToPlayer(new CoolTimeChargeB(300,false), player);
         }
     }
 

@@ -97,6 +97,7 @@
   "recipe.momotinker.modifier.forbiddenfruit": "[伊甸禁言]需要[尽纵之罪]作为前置且与其他[侵蚀我心，大罪共鸣]强化互斥",
   "recipe.momotinker.modifier.gainsalone": "[只身向财]需要[尽掠之罪]作为前置且与其他[侵蚀我心，大罪共鸣]强化互斥",
   "recipe.momotinker.modifier.compassionateeverything": "[悲悼众生]需要[尽哀之罪]作为前置且与其他[侵蚀我心，大罪共鸣]强化互斥",
+  "recipe.momotinker.modifier.key_to_ruin": "揭示§o“军团”§r的存在需为虚无，其觉悟应足以承受烬灭",
 
 
   "momotinker": "墨工坊",
@@ -185,7 +186,7 @@
   "item.momotinker.meteor_nucleus": "§6流星锭",
   "block.momotinker.meteor_nucleus_block": "§6流星之核",
   "item.momotinker.tooltip.meteor_nucleus1": "从天际坠落于此的星星，蕴含着此世间不曾存在的能量",
-  "item.momotinker.tooltip.meteor_nucleus2": "自玩家第一次拾取到“天外来星”开始，每一段时间就会有几率以流星的方式坠落在以玩家为中心的300格以内区域",
+  "item.momotinker.tooltip.meteor_nucleus2": "自玩家第一次拾取到“天外来星”开始，每一段时间就会有几率以流星的方式坠落在以玩家为中心的180格以内区域",
   "item.momotinker.tooltip.meteor_nucleus3": "熔融天际流星浇筑出的金属锭，蕴含着巨大的能量",
   "item.momotinker.tooltip.meteor_nucleus4": "“流星之核在熔融之后能源源不断释放大量热能还没有任何衰减的迹象，这或许能在我们的工匠工作上提供新的帮助”",
   "item.momotinker.tooltip.meteor_nucleus5": "流星的馈赠即将到来",
@@ -327,8 +328,8 @@
   "item.momotinker.pneumatic_sword.description": "高机动性的近战武器，右键可短暂向前上方冲刺，按下工具技能可发射绳索将自己拉向被击中的方块或生物（按“shift”可提前取消绳索），若目标是生物时会强化下一次在空中的冲刺和该冲刺伤害，若副手存在另一把气动剑则提升各项性能",
 
 
-  "item.momotinker.box": "",
-  "item.momotinker.box.description": "",
+  "item.momotinker.legion": "§o“军团之心”§r",
+  "item.momotinker.legion.description": "[主手武器]\n左右键召唤随机工具进行攻击，按下工具技能可召唤工具围绕自身周围\n§o“规则于此集结，逻辑丰碑崩解之时，万业皆殉道”",
 
 
   "momotinker.tool.tooltip.offhand_hastool": "错误:副手有物品",
@@ -834,6 +835,10 @@
 
   "modifier.momotinker.memories_of_mountains": "忆江山",
   "modifier.momotinker.memories_of_mountains.flavor": "随山将万转，趣途无百里",
-  "modifier.momotinker.memories_of_mountains.description": "击中生物后尝试将目标移动到[江山忆]维度，该维度不会自然生成怪物且该生物在该维度时每隔一段时间将会受到一次伤害，该生物死亡后会将战利品掉落在玩家位置(伤害数值以触发移动效果时造成的伤害为基础)\n(该特性涉及到区块强制加载，作用于过多生物且生物未死亡时可能会造成卡顿)"
+  "modifier.momotinker.memories_of_mountains.description": "击中生物后尝试将目标移动到[江山忆]维度，该维度不会自然生成怪物且该生物在该维度时每隔一段时间将会受到一次伤害，该生物死亡后会将战利品掉落在玩家位置(伤害数值以触发移动效果时造成的伤害为基础)\n(该特性涉及到区块强制加载，作用于过多生物且生物未死亡时可能会造成卡顿)",
+
+  "modifier.momotinker.key_to_ruin": "破灭之钥",
+  "modifier.momotinker.key_to_ruin.flavor": "存在者涌向边界，却发现深渊并非彼端",
+  "modifier.momotinker.key_to_ruin.description": "§o意义与概念具象化，其终结是思维的囚笼"
 
 }

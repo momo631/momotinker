@@ -45,7 +45,6 @@ import net.minecraft.world.level.block.Blocks;
 import net.minecraft.world.level.block.SaplingBlock;
 import net.minecraft.world.level.block.state.BlockState;
 import net.minecraft.world.phys.AABB;
-import net.minecraft.world.phys.Vec2;
 import net.minecraft.world.phys.Vec3;
 import net.minecraftforge.common.MinecraftForge;
 import net.minecraftforge.event.TickEvent;
@@ -66,6 +65,7 @@ import slimeknights.tconstruct.library.tools.nbt.ModDataNBT;
 
 import java.util.List;
 import java.util.Random;
+import java.util.UUID;
 
 import static slimeknights.tconstruct.TConstruct.RANDOM;
 
@@ -332,12 +332,13 @@ public class LivingEvents {
         level.addFreshEntity(newItem);
     }
     private void OnPlayerTick(TickEvent.PlayerTickEvent event) {
+        if (event.phase != TickEvent.Phase.START) return;
         boolean configall = MomotinkerConfig.special_acquisition.get();
         if (!configall)return;
         boolean config = MomotinkerConfig.meteor_nucleus.get();
-        Player player=event.player;
+        Player player1=event.player;
         Random random = new Random();
-        if (player.level() instanceof ServerLevel level) {
+        if (player1.level() instanceof ServerLevel level&&player1 instanceof ServerPlayer player) {
             boolean configa = MomotinkerConfig.devouring_demon_gold.get();
             boolean configstage = MomotinkerConfig.stage_meteor.get();
             if (configa&&(StageMeteor.getStageFloat()==1||!configstage)) {
@@ -353,7 +354,6 @@ public class LivingEvents {
                     if ((anvil.getBlockState().getBlock() == Blocks.ANVIL||anvil.getBlockState().getBlock() ==Blocks.CHIPPED_ANVIL
                             ||anvil.getBlockState().getBlock() ==Blocks.DAMAGED_ANVIL )&& anvil.getTags().contains("falling_anvil")) {
                         AABB hitbox = anvil.getBoundingBox().inflate(0.2);
-                        // 检测碰撞的掉落物
                         for (ItemEntity itemEntity : level.getEntitiesOfClass(ItemEntity.class, hitbox)) {
                             if (!itemEntity.getItem().isEnchanted()) {
                                 return;
@@ -366,42 +366,35 @@ public class LivingEvents {
                 }
             }
 
+
+            UUID playerId = player.getUUID();
             CompoundTag tag = player.getPersistentData().getCompound(Player.PERSISTED_NBT_TAG);
             String a = "meteor_nucleus_unlock";
-            player.getPersistentData().getBoolean(a);
-            if (player instanceof ServerPlayer player1) {
-                if (tag.getBoolean(a) && StageMeteor.getStageFloat() != 1) {
-                    Channel.sendToPlayer(new StageMeteorCharge(1), player1);
-                } else if (!tag.getBoolean(a) && StageMeteor.getStageFloat() != 0) {
-                    Channel.sendToPlayer(new StageMeteorCharge(0), player1);
-                }
+            boolean meteorUnlocked = tag.getBoolean(a);
+            float currentStageFloat = StageMeteor.getStageFloat(playerId);
+            if (meteorUnlocked && currentStageFloat != 1) {
+                Channel.sendToPlayer(new StageMeteorCharge(1), player);
+                StageMeteor.setStageFloat(playerId, 1);
+            } else if (!meteorUnlocked && currentStageFloat != 0) {
+                Channel.sendToPlayer(new StageMeteorCharge(0), player);
+                StageMeteor.setStageFloat(playerId, 0);
             }
 
+
             if (config) {
-                if (random.nextInt(2) == 0 && tag.getBoolean(a)&& level.getGameTime() % 2000 == 0) {
-                    Vec2 pos1 = new Vec2((float) (player.getX() + random.nextInt(180) - random.nextInt(180)), (float) (player.getZ() + random.nextInt(180) - random.nextInt(180)));
-                    Vec2 pos2 = new Vec2((float) (player.getX() + random.nextInt(100) - random.nextInt(100)), (float) (player.getZ() + random.nextInt(100) - random.nextInt(100)));
-                    Vec2 pos = new Vec2((float) Math.pow(Math.pow(pos1.x,2)-Math.pow(pos2.x,2), (double) 1 /2), (float) Math.pow(Math.pow(pos1.y,2)-Math.pow(pos2.y,2), (double) 1 /2));
-                    if (pos.x>100&&pos.y>100) {
-                        EntitySpawnEvent event1 = new EntitySpawnEvent(new Vec3(pos.x, player.getY() + 150, pos.y));
-                        //EntitySpawnEvent event1 = new EntitySpawnEvent(new Vec3(player.getX(), player.getY() + 150, player.getZ()));
-                        MinecraftForge.EVENT_BUS.post(event1);
-                        if (!event1.isCanceled()) {
-                            MeteorEntity entity = new MeteorEntity(level, pos.x, player.getY() + 150, pos.y, new Vec3(0, 0, 0));
-                            //MeteorEntity entity = new MeteorEntity(level, player.getX(), player.getY() + 150, player.getZ(), new Vec3(0, 0, 0));
-                            for (int dx = -1; dx <= 1; dx++) {
-                                for (int dz = -1; dz <= 1; dz++) {
-                                    if (!level.hasChunk(entity.chunkPosition().x + dx, entity.chunkPosition().z + dz)) {
-                                        entity.discard();
-                                        return;
-                                    }
-                                }
-                            }
-                            entity.setExplosionPower((byte) (random.nextInt(55) + 25));
-                            level.addFreshEntity(entity);
-                            player.sendSystemMessage(Component.translatable("item.momotinker.tooltip.meteor_nucleus5").withStyle(ChatFormatting.GOLD));
-                        }
-                    }
+                int time = MomotinkerConfig.meteor_time_limit.get();
+                int probability = MomotinkerConfig.meteor_probability_limit.get();
+                if ( meteorUnlocked && level.getGameTime() % time == 0 && random.nextInt(100) <= probability) {
+                    double angle = random.nextDouble() * 2 * Math.PI;
+                    double distance = 80 + random.nextDouble() * 100;
+
+                    float meteorX = (float) (player.getX() + Math.cos(angle) * distance);
+                    float meteorZ = (float) (player.getZ() + Math.sin(angle) * distance);
+
+                    MeteorEntity entity = new MeteorEntity(level, meteorX, player.getY() + 80, meteorZ, new Vec3(0, 0, 0));
+                    entity.setExplosionPower((byte) (random.nextInt(55) + 25));
+                    level.addFreshEntity(entity);
+                    player.sendSystemMessage(Component.translatable("item.momotinker.tooltip.meteor_nucleus5").withStyle(ChatFormatting.GOLD));
                 }
             }
         }

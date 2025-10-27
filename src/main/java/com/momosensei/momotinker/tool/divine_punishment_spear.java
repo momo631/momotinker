@@ -9,7 +9,7 @@ import com.momosensei.momotinker.event.EntitySpawnEvent;
 import com.momosensei.momotinker.mobs.CoolTimeA;
 import com.momosensei.momotinker.network.Channel;
 import com.momosensei.momotinker.network.packet.CoolTimeChargeA;
-import com.momosensei.momotinker.network.packet.ToolsTimeCharge;
+import com.momosensei.momotinker.network.packet.HudCharge.ToolsTimeCharge;
 import com.momosensei.momotinker.register.MomotinkerConfig;
 import com.momosensei.momotinker.register.MomotinkerModifiers;
 import com.momosensei.momotinker.register.MomotinkerTools;

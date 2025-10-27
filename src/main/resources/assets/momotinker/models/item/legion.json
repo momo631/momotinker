@@ -1,0 +1,24 @@
+{
+  "loader": "tconstruct:tool",
+  "parent": "forge:item/default-tool",
+  "textures": {
+    "legion_part_1": "momotinker:item/tool/legion/part_1",
+    "legion_part_2": "momotinker:item/tool/legion/part_2",
+    "legion_part_3": "momotinker:item/tool/legion/part_3",
+    "legion_part_4": "momotinker:item/tool/legion/part_4",
+    "legion_part_5": "momotinker:item/tool/legion/part_5",
+    "broken_legion_part": "momotinker:item/tool/legion/broken_part",
+    "legion_heart": "momotinker:item/tool/legion/legion_heart"
+  },
+  "modifier_roots": [
+    "momotinker:item/tool/legion/modifiers/"
+  ],
+  "parts": [
+    {"name": "legion_part_1", "index": 0},
+    {"name": "legion_part_2", "index": 1},
+    {"name": "legion_part_3", "index": 2},
+    {"name": "legion_part_4", "index": 3},
+    {"name": "legion_part_5", "index": 4},
+    {"name": "legion_heart", "broken": "broken_part"}
+  ]
+}
