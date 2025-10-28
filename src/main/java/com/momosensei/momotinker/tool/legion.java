@@ -3,9 +3,9 @@ package com.momosensei.momotinker.tool;
 
 import com.momosensei.momotinker.entity.LegionEntity.LegionEntity;
 import com.momosensei.momotinker.network.Channel;
-import com.momosensei.momotinker.network.packet.BoxPacket;
 import com.momosensei.momotinker.network.packet.HudCharge.LegionChargingCharge;
 import com.momosensei.momotinker.network.packet.HudCharge.LegionCooldownCharge;
+import com.momosensei.momotinker.network.packet.LegionPacket;
 import net.minecraft.core.BlockPos;
 import net.minecraft.network.chat.Component;
 import net.minecraft.resources.ResourceLocation;
@@ -57,7 +57,7 @@ public class legion extends ModifiableItem {
         MinecraftForge.EVENT_BUS.addListener(this::LeftClickBlock);
     }
 
-    public static void createBox(ServerPlayer player,int quantity,int form) {
+    public static void createLegion(ServerPlayer player,int quantity,int form) {
         if (!(ToolStack.from(player.getMainHandItem()).getItem() instanceof legion) || player.getAttackStrengthScale(0) != 1 ) {
             return;
         }
@@ -153,7 +153,7 @@ public class legion extends ModifiableItem {
     private void LeftClick(PlayerInteractEvent.LeftClickEmpty event) {
         Player player=event.getEntity();
         if (player != null && player.getMainHandItem().getItem() instanceof legion) {
-            Channel.sendToServer(new BoxPacket(player.getId()));
+            Channel.sendToServer(new LegionPacket(player.getId()));
         }
     }
     private void LeftClickBlock(PlayerInteractEvent.LeftClickBlock event) {
@@ -161,7 +161,7 @@ public class legion extends ModifiableItem {
         if (player instanceof ServerPlayer serverPlayer&&player.getMainHandItem().getItem() instanceof legion) {
             float d = getCooldownFunctionFloat(serverPlayer, InteractionHand.MAIN_HAND);
             if (d>0.9f) {
-                createBox(serverPlayer, 1, 0);
+                createLegion(serverPlayer, 1, 0);
             }
         }
     }
@@ -170,7 +170,7 @@ public class legion extends ModifiableItem {
         if (player instanceof ServerPlayer serverPlayer){
             float d = getCooldownFunctionFloat(serverPlayer, InteractionHand.MAIN_HAND);
             if (d>0.9f) {
-                createBox(serverPlayer, 1, 0);
+                createLegion(serverPlayer, 1, 0);
             }
         }
         return super.onLeftClickEntity(stack, player, target);
@@ -188,7 +188,7 @@ public class legion extends ModifiableItem {
             float perc = Mth.clamp((float) i / (240 / tool.getStats().get(ToolStats.ATTACK_SPEED)),0,1);
             if (perc>=0.2f) {
                 int a = (int) Math.floor(perc * 5);
-                createBox(player, a, 1);
+                createLegion(player, a, 1);
             }
             Channel.sendToPlayer(new LegionChargingCharge(0,0), player);
             player.awardStat(Stats.ITEM_USED.get(this));

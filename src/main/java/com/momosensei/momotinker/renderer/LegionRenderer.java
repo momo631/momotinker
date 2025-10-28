@@ -15,9 +15,9 @@ import net.minecraft.util.Mth;
 import net.minecraft.world.inventory.InventoryMenu;
 import net.minecraft.world.phys.Vec3;
 
-public class BoxRenderer extends EntityRenderer<LegionEntity> {
+public class LegionRenderer extends EntityRenderer<LegionEntity> {
     public ItemRenderer itemRenderer;
-    public BoxRenderer(EntityRendererProvider.Context p_174008_) {
+    public LegionRenderer(EntityRendererProvider.Context p_174008_) {
         super(p_174008_);
         this.itemRenderer = p_174008_.getItemRenderer();
     }
