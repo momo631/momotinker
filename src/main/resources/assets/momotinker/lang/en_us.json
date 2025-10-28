@@ -830,7 +830,10 @@
   "modifier.momotinker.memories_of_mountains.description": "After hitting the creature, try to move the target to the [Mountains Memory] dimension. This dimension does not naturally generate monsters, and the creature will receive damage every once in a while while while in this dimension. After the creature dies, the loot will fall to the player's position\n(This feature involves 'ChunkPos Forced Loading', which may cause lag when applied to too many organisms that have not died)",
 
   "modifier.momotinker.key_to_ruin": "Key To Ruin",
-  "modifier.momotinker.key_to_ruin.flavor": "Existence rushes towards the boundary, only to discover that the abyss is not on the other side",
-  "modifier.momotinker.key_to_ruin.description": "§oThe concretization of meaning and concepts ends in the cage of thought"
+  "modifier.momotinker.key_to_ruin.flavor": "Crossing mountains and rivers, we have finally arrived; fate is inevitable",
+  "modifier.momotinker.key_to_ruin.description": "§oCalamities and tribulations descend upon the earth, darkening the souls of travelers",
+  "modifier.momotinker.tooltip.key_to_ruin1": "[From Brilliance]Certification:??????",
+  "modifier.momotinker.tooltip.key_to_ruin2": "All features of the tool are doubled, with melee attack-related traits taking effect an additional time",
+  "modifier.momotinker.tooltip.key_to_ruin3": "What is done will dissipate from the world, and what is thought and worried will return to the void"
 
 }

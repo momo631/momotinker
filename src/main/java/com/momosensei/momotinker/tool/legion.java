@@ -7,8 +7,10 @@ import com.momosensei.momotinker.network.packet.HudCharge.LegionChargingCharge;
 import com.momosensei.momotinker.network.packet.HudCharge.LegionCooldownCharge;
 import com.momosensei.momotinker.network.packet.LegionPacket;
 import net.minecraft.core.BlockPos;
+import net.minecraft.core.particles.ParticleTypes;
 import net.minecraft.network.chat.Component;
 import net.minecraft.resources.ResourceLocation;
+import net.minecraft.server.level.ServerLevel;
 import net.minecraft.server.level.ServerPlayer;
 import net.minecraft.stats.Stats;
 import net.minecraft.util.Mth;
@@ -106,6 +108,9 @@ public class legion extends ModifiableItem {
                 z = player.getZ() + Math.sin(angle) * distance;
 
                 legion.setPos(x, y, z);
+            }
+            if (level instanceof ServerLevel level1){
+                level1.sendParticles(ParticleTypes.EXPLOSION, x, y, z, 1, 0, 0, 0, 1);
             }
             level.addFreshEntity(legion);
         }

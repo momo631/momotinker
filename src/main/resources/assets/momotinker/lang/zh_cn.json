@@ -837,8 +837,11 @@
   "modifier.momotinker.memories_of_mountains.flavor": "随山将万转，趣途无百里",
   "modifier.momotinker.memories_of_mountains.description": "击中生物后尝试将目标移动到[江山忆]维度，该维度不会自然生成怪物且该生物在该维度时每隔一段时间将会受到一次伤害，该生物死亡后会将战利品掉落在玩家位置(伤害数值以触发移动效果时造成的伤害为基础)\n(该特性涉及到区块强制加载，作用于过多生物且生物未死亡时可能会造成卡顿)",
 
-  "modifier.momotinker.key_to_ruin": "破灭之钥",
-  "modifier.momotinker.key_to_ruin.flavor": "存在者涌向边界，却发现深渊并非彼端",
-  "modifier.momotinker.key_to_ruin.description": "§o意义与概念具象化，其终结是思维的囚笼"
+  "modifier.momotinker.key_to_ruin": "破败之钥",
+  "modifier.momotinker.key_to_ruin.flavor": "跨越山川终已至，定数无可避",
+  "modifier.momotinker.key_to_ruin.description": "§o灾祸磨难降生大地，行路之人灵魂浑浊",
+  "modifier.momotinker.tooltip.key_to_ruin1": "古代神兵认证:??????",
+  "modifier.momotinker.tooltip.key_to_ruin2": "该工具的所有特性均翻倍，近战攻击相关的特性格外生效一次",
+  "modifier.momotinker.tooltip.key_to_ruin3": "所为所做消散人世，所思所忧归向虚空"
 
 }

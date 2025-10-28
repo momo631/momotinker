@@ -4,6 +4,8 @@ package com.momosensei.momotinker.entity.LegionEntity;
 import com.momosensei.momotinker.register.MomotinkerModifiers;
 import com.momosensei.momotinker.register.MomotinkerTags;
 import com.momosensei.momotinker.util.AttackUtil;
+import net.minecraft.core.particles.ParticleOptions;
+import net.minecraft.core.particles.ParticleTypes;
 import net.minecraft.network.syncher.EntityDataAccessor;
 import net.minecraft.network.syncher.EntityDataSerializers;
 import net.minecraft.network.syncher.SynchedEntityData;
@@ -290,6 +292,14 @@ public class LegionEntity extends Projectile {
             super.move(MoverType.SELF, this.getDeltaMovement());
         }
 
+        if (this.tickCount > 2) {
+            if (this.level().isClientSide) {
+                spawnClientTrailParticles();
+            } else {
+                spawnTrailParticles();
+            }
+        }
+
         ToolStack tool =ToolStack.from(getItem());
         float multiplier = 0.8f;
         float a = 1.5f;
@@ -309,7 +319,72 @@ public class LegionEntity extends Projectile {
             if (player.isDeadOrDying())this.discard();
         }
     }
+    private void spawnTrailParticles() {
+        if (this.level() instanceof ServerLevel serverLevel) {
+            Vec3 pos = this.position();
+            Vec3 deltaMovement = this.getDeltaMovement();
 
+            ParticleOptions particle;
+            switch (getForm()) {
+                case 1 -> particle = ParticleTypes.CRIT;
+                case 2 -> particle = ParticleTypes.ENCHANT;
+                default -> particle = ParticleTypes.SMOKE;
+            }
+
+            Vec3 trailPos = pos.subtract(deltaMovement.normalize().scale(0.5));
+
+            int a = 4;
+            double b = 0.02;
+            if (getForm()==2){
+                b=1;
+            }
+            serverLevel.sendParticles(particle, trailPos.x, trailPos.y, trailPos.z, a, 0.1, 0.1, 0.1, b);
+
+//            if (deltaMovement.length() > 1.0) {
+//                serverLevel.sendParticles(ParticleTypes.SMOKE,
+//                        trailPos.x, trailPos.y, trailPos.z,
+//                        1, 0.05, 0.05, 0.05, 0.01);
+//            }
+        }
+    }
+
+    private void spawnClientTrailParticles() {
+        if (this.level().isClientSide) {
+            Vec3 pos = this.position();
+            Vec3 deltaMovement = this.getDeltaMovement();
+            Vec3 trailPos = pos.subtract(deltaMovement.normalize().scale(0.3));
+
+            Random random = new Random();
+
+            switch (getForm()) {
+                case 0 -> {
+                    this.level().addParticle(ParticleTypes.SMOKE,
+                            trailPos.x + (random.nextDouble() - 0.5) * 0.1,
+                            trailPos.y + (random.nextDouble() - 0.5) * 0.1,
+                            trailPos.z + (random.nextDouble() - 0.5) * 0.1,
+                            -deltaMovement.x * 0.1,
+                            -deltaMovement.y * 0.1,
+                            -deltaMovement.z * 0.1);
+                }
+                case 1 -> {
+                    this.level().addParticle(ParticleTypes.CRIT,
+                            trailPos.x, trailPos.y, trailPos.z,
+                            -deltaMovement.x * 0.05,
+                            -deltaMovement.y * 0.05,
+                            -deltaMovement.z * 0.05);
+                }
+                case 2 -> {
+                    this.level().addParticle(ParticleTypes.ENCHANT,
+                            trailPos.x + (random.nextDouble() - 0.5) * 0.2,
+                            trailPos.y + (random.nextDouble() - 0.5) * 0.2,
+                            trailPos.z + (random.nextDouble() - 0.5) * 0.2,
+                            -deltaMovement.x * 0.02,
+                            -deltaMovement.y * 0.02,
+                            -deltaMovement.z * 0.02);
+                }
+            }
+        }
+    }
     @Override
     public void remove(Entity.RemovalReason reason) {
         super.remove(reason);

@@ -92,15 +92,19 @@ public class AttackUtil {
         if (damage <= 0) {
             return !isExtraAttack;
         }
-
-        float knockback = (float)attackerLiving.getAttributeValue(Attributes.ATTACK_KNOCKBACK) / 2f;
-        if (targetLiving != null) {
-            knockback += 0.4f;
+        float knockback = 0f;
+        if (!removeknockback) {
+            knockback = (float) attackerLiving.getAttributeValue(Attributes.ATTACK_KNOCKBACK) / 2f;
+            if (targetLiving != null) {
+                knockback += 0.4f;
+            }
         }
         SoundEvent sound;
         if (attackerLiving.isSprinting() && fullyCharged) {
             sound = SoundEvents.PLAYER_ATTACK_KNOCKBACK;
-            knockback += 0.5f;
+            if (!removeknockback) {
+                knockback += 0.5f;
+            }
         } else if (fullyCharged) {
             sound = SoundEvents.PLAYER_ATTACK_STRONG;
         } else {
@@ -178,7 +182,7 @@ public class AttackUtil {
             damageDealt = oldHealth - targetLiving.getHealth();
         }
 
-        if (knockback > 0) {
+        if (!removeknockback&&knockback > 0) {
             if (targetLiving != null) {
                 targetLiving.knockback(knockback, Mth.sin(attackerLiving.getYRot() * DEGREE_TO_RADIANS), -Mth.cos(attackerLiving.getYRot() * DEGREE_TO_RADIANS));
             } else {

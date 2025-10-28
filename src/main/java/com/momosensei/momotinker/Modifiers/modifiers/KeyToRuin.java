@@ -4,17 +4,26 @@ import com.momosensei.momotinker.Modifiers.momomodifier;
 import com.momosensei.momotinker.register.MomotinkerModifiers;
 import com.momosensei.momotinker.register.MomotinkerToolDefinitions;
 import com.momosensei.momotinker.register.MomotinkerTools;
+import net.minecraft.ChatFormatting;
 import net.minecraft.network.chat.Component;
+import net.minecraft.world.damagesource.DamageSource;
+import net.minecraft.world.entity.EquipmentSlot;
 import net.minecraft.world.entity.LivingEntity;
 import net.minecraft.world.entity.player.Player;
 import net.minecraft.world.item.ItemStack;
+import net.minecraft.world.item.TooltipFlag;
 import net.minecraft.world.level.Level;
 import org.jetbrains.annotations.NotNull;
+import slimeknights.mantle.client.TooltipKey;
 import slimeknights.tconstruct.library.modifiers.ModifierEntry;
+import slimeknights.tconstruct.library.modifiers.ModifierHooks;
 import slimeknights.tconstruct.library.modifiers.hook.build.ModifierTraitHook;
+import slimeknights.tconstruct.library.tools.context.EquipmentContext;
+import slimeknights.tconstruct.library.tools.context.ToolAttackContext;
 import slimeknights.tconstruct.library.tools.nbt.IToolContext;
 import slimeknights.tconstruct.library.tools.nbt.IToolStackView;
 
+import javax.annotation.Nonnull;
 import javax.annotation.Nullable;
 import java.util.List;
 
@@ -62,32 +71,40 @@ public class KeyToRuin extends momomodifier {
             }
         }
     }
+    @Override
+    public void addTooltip(IToolStackView tool, ModifierEntry modifierEntry, @org.jetbrains.annotations.Nullable Player player, List<Component> tooltip, TooltipKey tooltipKey, TooltipFlag tooltipFlag) {
+        if (tool.getItem()==MomotinkerTools.legion.get()) {
+            tooltip.add(Component.translatable("modifier.momotinker.tooltip.key_to_ruin1").withStyle(ChatFormatting.GRAY).withStyle(ChatFormatting.DARK_GRAY).withStyle(ChatFormatting.ITALIC));
+            tooltip.add(Component.translatable("modifier.momotinker.tooltip.key_to_ruin2").withStyle(ChatFormatting.GRAY).withStyle(ChatFormatting.DARK_GRAY));
+            tooltip.add(Component.translatable("modifier.momotinker.tooltip.key_to_ruin3").withStyle(ChatFormatting.GRAY).withStyle(ChatFormatting.DARK_GRAY).withStyle(ChatFormatting.ITALIC));
+        }
+    }
 
-//    @Override
-//    public float getMeleeDamage(@Nonnull IToolStackView tool, ModifierEntry modifier, @Nonnull ToolAttackContext context, float baseDamage, float damage) {
-//        for (ModifierEntry entry1 : tool.getModifierList()) {
-//            if (entry1.getModifier() != modifier.getModifier()) {
-//                damage = entry1.getHook(ModifierHooks.MELEE_DAMAGE).getMeleeDamage(tool, modifier, context, baseDamage, damage);
-//            }
-//        }
-//        return damage;
-//    }
-//    @Override
-//    public void modifierDamageDealt(IToolStackView tool, ModifierEntry modifier, EquipmentContext context, EquipmentSlot slotType, LivingEntity entity, DamageSource damageSource, float amount, boolean isDirectDamage) {
-//        for (ModifierEntry entry : tool.getModifierList()) {
-//            if (entry.getModifier() != modifier.getModifier()) {
-//                entry.getHook(ModifierHooks.DAMAGE_DEALT).onDamageDealt(tool, modifier, context, slotType, entity, damageSource, amount * 0.25f, isDirectDamage);
-//            }
-//        }
-//    }
-//    @Override
-//    public void afterMeleeHit(IToolStackView tool, ModifierEntry modifier, ToolAttackContext context, float damageDealt) {
-//        for (ModifierEntry entry : tool.getModifierList()) {
-//            if (entry.getModifier() != modifier.getModifier()) {
-//                entry.getHook(ModifierHooks.MELEE_HIT).afterMeleeHit(tool, modifier, context, damageDealt * 0.25f);
-//            }
-//        }
-//    }
+    @Override
+    public float getMeleeDamage(@Nonnull IToolStackView tool, ModifierEntry modifier, @Nonnull ToolAttackContext context, float baseDamage, float damage) {
+        for (ModifierEntry entry1 : tool.getModifierList()) {
+            if (entry1.getModifier() != modifier.getModifier()) {
+                damage = entry1.getHook(ModifierHooks.MELEE_DAMAGE).getMeleeDamage(tool, modifier, context, baseDamage, damage);
+            }
+        }
+        return damage;
+    }
+    @Override
+    public void modifierDamageDealt(IToolStackView tool, ModifierEntry modifier, EquipmentContext context, EquipmentSlot slotType, LivingEntity entity, DamageSource damageSource, float amount, boolean isDirectDamage) {
+        for (ModifierEntry entry : tool.getModifierList()) {
+            if (entry.getModifier() != modifier.getModifier()) {
+                entry.getHook(ModifierHooks.DAMAGE_DEALT).onDamageDealt(tool, modifier, context, slotType, entity, damageSource, amount * 0.25f, isDirectDamage);
+            }
+        }
+    }
+    @Override
+    public void afterMeleeHit(IToolStackView tool, ModifierEntry modifier, ToolAttackContext context, float damageDealt) {
+        for (ModifierEntry entry : tool.getModifierList()) {
+            if (entry.getModifier() != modifier.getModifier()) {
+                entry.getHook(ModifierHooks.MELEE_HIT).afterMeleeHit(tool, modifier, context, damageDealt * 0.25f);
+            }
+        }
+    }
 //    @Override
 //    public float beforeMeleeHit(IToolStackView tool, ModifierEntry modifier, ToolAttackContext context, float damage, float baseKnockback, float knockback) {
 //        for (ModifierEntry entry : tool.getModifierList()) {
@@ -98,4 +115,12 @@ public class KeyToRuin extends momomodifier {
 //        return knockback;
 //    }
 
+    @Override
+    public void failedMeleeHit(IToolStackView tool, ModifierEntry modifier, ToolAttackContext context, float damageAttempted) {
+        for (ModifierEntry entry : tool.getModifierList()) {
+            if (entry.getModifier() != modifier.getModifier()) {
+                entry.getHook(ModifierHooks.MELEE_HIT).failedMeleeHit(tool, modifier, context, damageAttempted);
+            }
+        }
+    }
 }
