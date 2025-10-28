@@ -160,7 +160,7 @@ public class KeyAInputPKT {
                     int a = (int) Math.floor(perc * 10);
                     if (a < 1) a = 1;
                     if (a > 10) a = 10;
-                    createBox(player, a + 2, 2);
+                    createLegion(player, a + 2, 2);
                 }
             }
         });
