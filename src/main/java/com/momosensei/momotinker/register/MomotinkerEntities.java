@@ -17,7 +17,7 @@ public class MomotinkerEntities {
 
     public static final RegistryObject<EntityType<TriggerSlashEntity>> trigger_slash_a = registerTriggerSlash("trigger_slash_a",MomotinkerEntities.trigger_slash_a);
     public static final RegistryObject<EntityType<SpearEntity>> spear_entity = registerSpearEntity("spear_entity",MomotinkerEntities.spear_entity);
-    public static final RegistryObject<EntityType<LegionEntity>> box_entity = registerBoxEntity("box_entity",MomotinkerEntities.box_entity);
+    public static final RegistryObject<EntityType<LegionEntity>> legion_entity = registerBoxEntity("legion_entity",MomotinkerEntities.legion_entity);
 
     public static final RegistryObject<EntityType<CleanseEntity>> cleanse_entity = ENTITIES.register("cleanse_entity", () -> EntityType.Builder.<CleanseEntity>of(CleanseEntity::new, MobCategory.MISC).sized(30F, 60F).setTrackingRange(4).setUpdateInterval(1).setCustomClientFactory((spawnEntity, world) -> new CleanseEntity(world,spawnEntity.getPosX(),spawnEntity.getPosY(),spawnEntity.getPosZ(),spawnEntity.getEntity().getDeltaMovement())).setShouldReceiveVelocityUpdates(true));
     public static final RegistryObject<EntityType<RayEntity>> ray_entity = ENTITIES.register("ray_entity", () -> EntityType.Builder.of(RayEntity::new, MobCategory.MISC).sized(0.75F, 0.75F).setTrackingRange(4).setUpdateInterval(5).setCustomClientFactory((spawnEntity, world) -> new RayEntity(MomotinkerEntities.ray_entity.get(), world)).setShouldReceiveVelocityUpdates(true));

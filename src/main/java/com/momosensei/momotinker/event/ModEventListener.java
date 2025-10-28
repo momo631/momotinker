@@ -48,7 +48,7 @@ public class ModEventListener {
         event.registerEntityRenderer(MomotinkerEntities.starfall_entity.get(), StarfallEntityRenderer::new);
         event.registerEntityRenderer(MomotinkerEntities.pull_a_entity.get(), PullAEntityRenderer::new);
         event.registerEntityRenderer(MomotinkerEntities.pull_b_entity.get(), PullBEntityRenderer::new);
-        event.registerEntityRenderer(MomotinkerEntities.box_entity.get(), LegionRenderer::new);
+        event.registerEntityRenderer(MomotinkerEntities.legion_entity.get(), LegionRenderer::new);
 
 
         //event.registerEntityRenderer(MomotinkerEntities.mountain_painter.get(), NoopRenderer::new);

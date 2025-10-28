@@ -5,23 +5,23 @@
       "parts": [
         {
           "item": "tconstruct:tough_handle",
-          "scale": 1.25
+          "scale": 1.414
         },
         {
           "item": "tconstruct:large_plate",
-          "scale": 0.5
+          "scale": 0.23
         },
         {
           "item": "tconstruct:large_plate",
-          "scale": 0.5
+          "scale": 0.29
         },
         {
           "item": "tconstruct:large_plate",
-          "scale": 0.5
+          "scale": 0.31
         },
         {
           "item": "tconstruct:large_plate",
-          "scale": 0.5
+          "scale": 0.37
         }
       ]
     },
@@ -57,26 +57,17 @@
     {
       "type": "tconstruct:multiply_stats",
       "multipliers": {
-        "tconstruct:attack_damage": 0.6,
-        "tconstruct:durability": 0.6,
-        "tconstruct:attack_speed": 0.6
+        "tconstruct:attack_damage": 0.618,
+        "tconstruct:durability": 1.732,
+        "tconstruct:attack_speed": 3.14
       }
     },
     {
       "type": "tconstruct:modifier_slots",
       "slots": {
         "abilities": 4,
-        "upgrades": 6
+        "upgrades": 2
       }
-    },
-    {
-      "type": "tconstruct:traits",
-      "traits": [
-        {
-          "name": "momotinker:key_to_ruin",
-          "level": 1
-        }
-      ]
     }
   ]
 }
