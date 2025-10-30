@@ -157,7 +157,7 @@ public class KeyAInputPKT {
                 ModDataNBT data = tool.getPersistentData();
                 if (!data.getBoolean(legion_on)&&data.getFloat(legion_cooldown)==60) {
                     data.putBoolean(legion_on,true);
-                    float perc = Mth.clamp(tool.getStats().get(ToolStats.ATTACK_SPEED) / 120, 0, 1);
+                    float perc = Mth.clamp(tool.getStats().get(ToolStats.ATTACK_SPEED) / 60, 0, 1);
                     int a = (int) Math.floor(perc * 10);
                     if (a < 1) a = 1;
                     if (a > 10) a = 10;
