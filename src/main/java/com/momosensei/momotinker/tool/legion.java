@@ -48,7 +48,7 @@ import java.util.*;
 import java.util.concurrent.ConcurrentHashMap;
 
 import static com.momosensei.momotinker.Momotinker.getResource;
-import static com.momosensei.momotinker.entity.MomotinkerEntitiesCreate.getboxType;
+import static com.momosensei.momotinker.entity.MomotinkerEntitiesCreate.getLegionType;
 import static com.momosensei.momotinker.util.AttackUtil.getCooldownFunctionFloat;
 import static slimeknights.tconstruct.library.modifiers.hook.interaction.GeneralInteractionModifierHook.KEY_DRAWTIME;
 
@@ -68,7 +68,7 @@ public class legion extends ModifiableItem {
             return;
         }
         Level level = player.level();
-        EntityType<LegionEntity> entityType = getboxType();
+        EntityType<LegionEntity> entityType = getLegionType();
 
         Random random = new Random();
         double minDistance = 1;

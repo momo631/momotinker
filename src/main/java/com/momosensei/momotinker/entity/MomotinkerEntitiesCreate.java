@@ -189,7 +189,7 @@ public class MomotinkerEntitiesCreate {
         }
     }
 
-    public static EntityType<LegionEntity> getboxType() {
+    public static EntityType<LegionEntity> getLegionType() {
         return MomotinkerEntities.legion_entity.get();
     }
 

@@ -384,19 +384,28 @@ public class LivingEvents {
             if (config) {
                 int time = MomotinkerConfig.meteor_time_limit.get();
                 int probability = MomotinkerConfig.meteor_probability_limit.get();
-                if ( meteorUnlocked && level.getGameTime() % time == 0 && random.nextInt(100) <= probability) {
-                    double angle = random.nextDouble() * 2 * Math.PI;
-                    double distance = 80 + random.nextDouble() * 100;
-
-                    float meteorX = (float) (player.getX() + Math.cos(angle) * distance);
-                    float meteorZ = (float) (player.getZ() + Math.sin(angle) * distance);
-
-                    MeteorEntity entity = new MeteorEntity(level, meteorX, player.getY() + 80, meteorZ, new Vec3(0, 0, 0));
-                    entity.setExplosionPower((byte) (random.nextInt(55) + 25));
-                    level.addFreshEntity(entity);
-                    player.sendSystemMessage(Component.translatable("item.momotinker.tooltip.meteor_nucleus5").withStyle(ChatFormatting.GOLD));
+                if (level.getGameTime() % time == 0 && random.nextInt(100) <= probability) {
+                    MeteorSummon(level,player);
                 }
             }
+        }
+    }
+    private void MeteorSummon(ServerLevel level,ServerPlayer player) {
+        Random random = new Random();
+        CompoundTag tag = player.getPersistentData().getCompound(Player.PERSISTED_NBT_TAG);
+        String a = "meteor_nucleus_unlock";
+        boolean meteorUnlocked = tag.getBoolean(a);
+        if (meteorUnlocked) {
+            double angle = random.nextDouble() * 2 * Math.PI;
+            double distance = 80 + random.nextDouble() * 100;
+
+            float meteorX = (float) (player.getX() + Math.cos(angle) * distance);
+            float meteorZ = (float) (player.getZ() + Math.sin(angle) * distance);
+
+            MeteorEntity entity = new MeteorEntity(level, meteorX, player.getY() + 80, meteorZ, new Vec3(0, 0, 0));
+            entity.setExplosionPower((byte) (random.nextInt(55) + 25));
+            level.addFreshEntity(entity);
+            player.sendSystemMessage(Component.translatable("item.momotinker.tooltip.meteor_nucleus5").withStyle(ChatFormatting.GOLD));
         }
     }
 
@@ -413,6 +422,9 @@ public class LivingEvents {
                     player.getPersistentData().getBoolean(a);
                     tag.putBoolean(a, true);
                     player.getPersistentData().put(Player.PERSISTED_NBT_TAG, tag);
+                    if (player.level instanceof ServerLevel level){
+                        MeteorSummon(level,player);
+                    }
                 }
             }
         }

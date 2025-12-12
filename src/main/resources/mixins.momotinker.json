@@ -11,7 +11,8 @@
     "PartBuilderToolRecycleMixin"
   ],
   "client": [
-    "GameRendererMixin"
+    "GameRendererMixin",
+    "MixinLevelRenderer"
   ],
   "server": [
   ],

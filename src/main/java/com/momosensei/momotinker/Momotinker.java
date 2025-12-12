@@ -6,7 +6,10 @@ import com.momosensei.momotinker.event.tree.ModFeatures;
 import com.momosensei.momotinker.event.tree.MomotinkerStructures;
 import com.momosensei.momotinker.key.key;
 import com.momosensei.momotinker.network.Channel;
+import com.momosensei.momotinker.particle.register.MomotinkerParticles;
 import com.momosensei.momotinker.register.*;
+import com.momosensei.momotinker.test.testa.MyModels;
+import com.momosensei.momotinker.test.testa.PostPasses;
 import net.minecraft.core.RegistrySetBuilder;
 import net.minecraft.resources.ResourceLocation;
 import net.minecraft.world.item.Item;
@@ -22,6 +25,7 @@ import net.minecraftforge.fml.config.ModConfig;
 import net.minecraftforge.fml.event.lifecycle.FMLClientSetupEvent;
 import net.minecraftforge.fml.event.lifecycle.FMLCommonSetupEvent;
 import net.minecraftforge.fml.javafmlmod.FMLJavaModLoadingContext;
+import net.minecraftforge.fml.loading.FMLEnvironment;
 import net.minecraftforge.registries.ForgeRegistries;
 import org.jetbrains.annotations.NotNull;
 import slimeknights.tconstruct.library.client.model.TinkerItemProperties;
@@ -37,7 +41,7 @@ import static com.momosensei.momotinker.register.MomotinkerTools.*;
 )
 
 public class Momotinker {
-    public static final String MOD_ID = "momotinker"; //是你的模组名，需要英文
+    public static final String MOD_ID = "momotinker";
     public Momotinker() {
         FMLJavaModLoadingContext context = FMLJavaModLoadingContext.get();
         IEventBus eventBus = context.getModEventBus();
@@ -62,7 +66,12 @@ public class Momotinker {
         ModLoadingContext.get().registerConfig(ModConfig.Type.COMMON, MomotinkerConfig.Modifierspec, "MomotinkerModifier.toml");
         ModLoadingContext.get().registerConfig(ModConfig.Type.COMMON, MomotinkerConfig.Toolspec, "MomotinkerTool.toml");
 
+        MomotinkerParticles.PARTICLE_TYPES.register(eventBus);
         //GeckoLib.initialize();
+        if(FMLEnvironment.dist == Dist.CLIENT){
+            eventBus.addListener(this::setupClient);
+            eventBus.addListener(PostPasses::register);
+        }
     }
     //Resourcelocation
     public static ResourceLocation getResource(String id) {
@@ -99,6 +108,10 @@ public class Momotinker {
         ModFeatures.register(registrySetBuilder);
 
     }
+    private void setupClient(final FMLClientSetupEvent event){
+        MyModels.LoadOtherModel();
+
+    }
     @Mod.EventBusSubscriber(modid = MOD_ID, bus = Mod.EventBusSubscriber.Bus.MOD,  value = {Dist.CLIENT})
     public static class ClientModEvents {
         @SubscribeEvent
@@ -116,6 +129,7 @@ public class Momotinker {
                 TinkerItemProperties.registerBrokenProperty(pocket_watch.get());
                 TinkerItemProperties.registerBrokenProperty(chain_sword.get());
                 TinkerItemProperties.registerBrokenProperty(pneumatic_sword.get());
+                TinkerItemProperties.registerBrokenProperty(murasama.get());
 
                 TinkerItemProperties.registerToolProperties(trigger_blade.get());
                 TinkerItemProperties.registerToolProperties(divine_punishment_spear.get());
@@ -128,6 +142,7 @@ public class Momotinker {
                 TinkerItemProperties.registerToolProperties(pocket_watch.get());
                 TinkerItemProperties.registerToolProperties(chain_sword.get());
                 TinkerItemProperties.registerToolProperties(pneumatic_sword.get());
+                TinkerItemProperties.registerToolProperties(murasama.get());
              //   TinkerItemProperties.registerToolProperties(aa.get());
             });
         }

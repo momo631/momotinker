@@ -49,6 +49,7 @@ public final class MomotinkerTools extends MomotinkerTables {
     public static final ItemObject<ModifiableItem> chain_sword = ITEMS.register("chain_sword", () -> new chain_sword(UNSTACKABLE_PROPS, MomotinkerToolDefinitions.CHAIN_SWORD));
     public static final ItemObject<ModifiableItem> pneumatic_sword = ITEMS.register("pneumatic_sword", () -> new pneumatic_sword(UNSTACKABLE_PROPS, MomotinkerToolDefinitions.PNEUMATIC_SWORD));
     public static final ItemObject<ModifiableItem> legion = ITEMS.register("legion", () -> new legion(UNSTACKABLE_PROPS, MomotinkerToolDefinitions.LEGION));
+    public static final ItemObject<ModifiableItem> murasama = ITEMS.register("murasama", () -> new murasama(UNSTACKABLE_PROPS, MomotinkerToolDefinitions.MIRASAMA));
 
     private static void addTabItems(CreativeModeTab.ItemDisplayParameters itemDisplayParameters, CreativeModeTab.Output tab) {
         Consumer<ItemStack> output = tab::accept;
@@ -65,6 +66,7 @@ public final class MomotinkerTools extends MomotinkerTables {
         acceptTool(output, chain_sword);
         acceptTool(output, pneumatic_sword);
         acceptTool(output, legion);
+        acceptTool(output, murasama);
 
         tab.accept(MomotinkerItem.twilight_ego.get());
         tab.accept(MomotinkerItem.star_seeking_pointer.get());
