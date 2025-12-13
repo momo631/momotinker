@@ -332,22 +332,6 @@
   "item.momotinker.legion.description": "[主手武器]\n左右键召唤随机工具进行攻击，按下工具技能可召唤工具围绕自身周围\n§o“规则于此集结，逻辑丰碑崩解之时，万业皆殉道”",
 
 
-  "item.momotinker.murasama": "鬼妖村正",
-  "item.momotinker.murasama.description": "一把高频剑，即使是最强大的敌人也能被干净利落地切碎！\n§1击杀末影龙和凋灵以证实你的价值！§r\n§4鲜血四溅！§r\n§b§o赞助者武器 Lost In Tianyi§r",
-  "item.momotinker.tooltip.murasama_lock": "§c(未解锁)§r","item.momotinker.tooltip.murasama_unlock": "§a(已解锁)§r",
-  "item.momotinker.tooltip.murasama0": "右键瞄准并积蓄剑之能量。左键进行挥砍击中敌人时，将为剑之能量充能。",
-  "item.momotinker.tooltip.murasama1": "当剑之能量蓄满后，按下[副手交互]发射刀身。在刀身飞行过程中，按下左键执行升龙斩击。",
-  "item.momotinker.tooltip.murasama2": "升龙斩击命中敌人后为武器充1能，按下[工具技能]消耗1点武器充能值，进行一次下砸攻击。",
-  "item.momotinker.tooltip.murasama3": "当武器充能值达到最大10点后，再次使用升龙斩击命中敌人将触发终结技。",
-  "item.momotinker.tooltip.murasama4": "随着旅途的遥远而变强",
-  "item.momotinker.tooltip.murasama5": "试炼：已通过", "item.momotinker.tooltip.murasama5a": "试炼：未通过",
-  "item.momotinker.tooltip.murasama6": "好样的，新兵，这个世界上的异性邪祟已被我们一扫而空\n我们的征途已经攀登至巅峰，就连那曾经统治世界的暴君也不及我们的万一\n现在，展开你的双臂，拥抱这个由胜利带给你的世界",
-  "item.momotinker.tooltip.murasama7": "“命名为Jetstream_Sam或另一个名字以获得力量”",
-  "item.momotinker.tooltip.murasama8": "沉溺于天依，随着歌声而埋没。\n她似乎在诉说着什么\n“\n而你和我之间\n相隔 不同 银河 时空\n仿佛始终没有相遇过\n”\n倾听她的诉语，释放她。",
-  "item.momotinker.tooltip.murasama9": "[有多少不经意的喧嚣　穿越世界的浩邈\n 交织成我歌谣　在你耳畔停靠]",
-  "item.momotinker.tooltip.murasama10": "赞助者武器 Lost In Tianyi",
-
-
   "momotinker.tool.tooltip.offhand_hastool": "错误:副手有物品",
 
 

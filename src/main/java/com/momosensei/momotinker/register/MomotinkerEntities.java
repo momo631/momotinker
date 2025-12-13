@@ -2,8 +2,6 @@ package com.momosensei.momotinker.register;
 
 import com.momosensei.momotinker.entity.*;
 import com.momosensei.momotinker.entity.LegionEntity.LegionEntity;
-import com.momosensei.momotinker.entity.ScabbardEntity.ScabbardEntity;
-import com.momosensei.momotinker.entity.ScabbardEntity.UltimateSlashEntity;
 import net.minecraft.world.entity.EntityType;
 import net.minecraft.world.entity.MobCategory;
 import net.minecraftforge.registries.RegistryObject;
@@ -20,7 +18,6 @@ public class MomotinkerEntities {
     public static final RegistryObject<EntityType<TriggerSlashEntity>> trigger_slash_a = registerTriggerSlash("trigger_slash_a",MomotinkerEntities.trigger_slash_a);
     public static final RegistryObject<EntityType<SpearEntity>> spear_entity = registerSpearEntity("spear_entity",MomotinkerEntities.spear_entity);
     public static final RegistryObject<EntityType<LegionEntity>> legion_entity = registerLegionEntity("legion_entity",MomotinkerEntities.legion_entity);
-    public static final RegistryObject<EntityType<ScabbardEntity>> scabbard_entity = registerScabbardEntity("scabbard_entity",MomotinkerEntities.scabbard_entity);
 
     public static final RegistryObject<EntityType<CleanseEntity>> cleanse_entity = ENTITIES.register("cleanse_entity", () -> EntityType.Builder.<CleanseEntity>of(CleanseEntity::new, MobCategory.MISC).sized(30F, 60F).setTrackingRange(4).setUpdateInterval(1).setCustomClientFactory((spawnEntity, world) -> new CleanseEntity(world,spawnEntity.getPosX(),spawnEntity.getPosY(),spawnEntity.getPosZ(),spawnEntity.getEntity().getDeltaMovement())).setShouldReceiveVelocityUpdates(true));
     public static final RegistryObject<EntityType<RayEntity>> ray_entity = ENTITIES.register("ray_entity", () -> EntityType.Builder.of(RayEntity::new, MobCategory.MISC).sized(0.75F, 0.75F).setTrackingRange(4).setUpdateInterval(5).setCustomClientFactory((spawnEntity, world) -> new RayEntity(MomotinkerEntities.ray_entity.get(), world)).setShouldReceiveVelocityUpdates(true));
@@ -28,7 +25,6 @@ public class MomotinkerEntities {
     public static final RegistryObject<EntityType<StarfallEntity>> starfall_entity = ENTITIES.register("starfall_entity", () -> EntityType.Builder.<StarfallEntity>of(StarfallEntity::new, MobCategory.MISC).sized(1F, 1F).setTrackingRange(4).setUpdateInterval(1).setCustomClientFactory((spawnEntity, world) -> new StarfallEntity(world,spawnEntity.getPosX(),spawnEntity.getPosY(),spawnEntity.getPosZ(),spawnEntity.getEntity().getDeltaMovement())).setShouldReceiveVelocityUpdates(true));
     public static final RegistryObject<EntityType<PullAEntity>> pull_a_entity = ENTITIES.register("pull_a_entity", () -> EntityType.Builder.<PullAEntity>of(PullAEntity::new, MobCategory.MISC).sized(0.75F, 0.75F).setTrackingRange(4).setUpdateInterval(1).setCustomClientFactory((spawnEntity, world) -> new PullAEntity(world,spawnEntity.getPosX(),spawnEntity.getPosY(),spawnEntity.getPosZ(),spawnEntity.getEntity().getDeltaMovement())).setShouldReceiveVelocityUpdates(true));
     public static final RegistryObject<EntityType<PullBEntity>> pull_b_entity = ENTITIES.register("pull_b_entity", () -> EntityType.Builder.<PullBEntity>of(PullBEntity::new, MobCategory.MISC).sized(0.75F, 0.75F).setTrackingRange(4).setUpdateInterval(1).setCustomClientFactory((spawnEntity, world) -> new PullBEntity(world,spawnEntity.getPosX(),spawnEntity.getPosY(),spawnEntity.getPosZ(),spawnEntity.getEntity().getDeltaMovement())).setShouldReceiveVelocityUpdates(true));
-    public static final RegistryObject<EntityType<UltimateSlashEntity>> ultimate_slash = ENTITIES.register("ultimate_slash", () -> EntityType.Builder.<UltimateSlashEntity>of(UltimateSlashEntity::new, MobCategory.MISC).sized(1F, 1F).setTrackingRange(4).setUpdateInterval(1).setCustomClientFactory((spawnEntity, world) -> new UltimateSlashEntity(MomotinkerEntities.ultimate_slash.get(), world)).setShouldReceiveVelocityUpdates(true));
 
     //public static final RegistryObject<EntityType<MountainPainter>> mountain_painter = ENTITIES.register("mountain_painter", () ->  EntityType.Builder.<MountainPainter>of(MountainPainter::new, MobCategory.MISC).sized(0.5F, 0.5F).setTrackingRange(4).setUpdateInterval(1));
 
@@ -40,9 +36,6 @@ public class MomotinkerEntities {
     }
     public static RegistryObject<EntityType<LegionEntity>> registerLegionEntity(String name, RegistryObject<EntityType<LegionEntity>> Type){
         return ENTITIES.register(name, () -> EntityType.Builder.<LegionEntity>of(LegionEntity::new, MobCategory.MISC).sized(0.5F, 0.5F).setTrackingRange(10).setUpdateInterval(1).setCustomClientFactory((spawnEntity, world) -> new LegionEntity(Type.get(), world)).setShouldReceiveVelocityUpdates(true));
-    }
-    public static RegistryObject<EntityType<ScabbardEntity>> registerScabbardEntity(String name, RegistryObject<EntityType<ScabbardEntity>> Type){
-        return ENTITIES.register(name, () -> EntityType.Builder.<ScabbardEntity>of(ScabbardEntity::new, MobCategory.MISC).sized(1.25F, 1.25F).setTrackingRange(40).setUpdateInterval(1).setCustomClientFactory((spawnEntity, world) -> new ScabbardEntity(Type.get(), world)).setShouldReceiveVelocityUpdates(true));
     }
 
 }

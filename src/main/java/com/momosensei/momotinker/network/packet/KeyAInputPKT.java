@@ -27,7 +27,6 @@ import static com.momosensei.momotinker.entity.MomotinkerEntitiesCreate.createPu
 import static com.momosensei.momotinker.register.MomotinkerTools.*;
 import static com.momosensei.momotinker.tool.entropy_burning_cube.liverization;
 import static com.momosensei.momotinker.tool.legion.*;
-import static com.momosensei.momotinker.tool.murasama.*;
 
 public class KeyAInputPKT {
     public int key;
@@ -163,22 +162,6 @@ public class KeyAInputPKT {
                     if (a < 1) a = 1;
                     if (a > 10) a = 10;
                     createLegion(player, a + 2, 2);
-                }
-            }
-
-            if (player!=null&&(player.getMainHandItem().is(murasama.get()))) {
-                ToolStack tool = ToolStack.from(player.getMainHandItem());
-                ModDataNBT data = tool.getPersistentData();
-                String s = cannot_create_scabbard.toString();
-                String s1 = is_smash_down.toString();
-                if (!player.getPersistentData().getBoolean(s)
-                        &&data.getFloat(ascending_points)>0
-                        &&!player.getPersistentData().getBoolean(s1)
-//                        &&tool.getPersistentData().getFloat(ascending_cut)==60
-                        &&!player.onGround()
-                        &&player.getPersistentData().getFloat(murasam_slash_cooldown.toString())==0
-                        &&(tool.getPersistentData().getBoolean(tool_murasama_lock_a)||isTrueNameA(tool)||isTrueNameB(tool))){
-                    createScabbard(player,1);
                 }
             }
         });

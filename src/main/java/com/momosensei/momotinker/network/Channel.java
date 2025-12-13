@@ -1,7 +1,10 @@
 package com.momosensei.momotinker.network;
 
 import com.momosensei.momotinker.network.packet.*;
-import com.momosensei.momotinker.network.packet.HudCharge.*;
+import com.momosensei.momotinker.network.packet.HudCharge.CensoredCharge;
+import com.momosensei.momotinker.network.packet.HudCharge.LegionChargingCharge;
+import com.momosensei.momotinker.network.packet.HudCharge.LegionCooldownCharge;
+import com.momosensei.momotinker.network.packet.HudCharge.ToolsTimeCharge;
 import net.minecraft.network.FriendlyByteBuf;
 import net.minecraft.resources.ResourceLocation;
 import net.minecraft.server.level.ServerPlayer;
@@ -41,7 +44,6 @@ public class Channel {
         INSTANCE.messageBuilder(TriggerDamagePacket.class,id++, NetworkDirection.PLAY_TO_SERVER).decoder(TriggerDamagePacket::decode).encoder(TriggerDamagePacket::encode).consumerMainThread(TriggerDamagePacket::handlePacket).add();
         INSTANCE.messageBuilder(ItemStackPKT.class,id++, NetworkDirection.PLAY_TO_SERVER).decoder(ItemStackPKT::decode).encoder(ItemStackPKT::encode).consumerMainThread(ItemStackPKT::handlePacket).add();
         INSTANCE.messageBuilder(LegionPacket.class, id++, NetworkDirection.PLAY_TO_SERVER).decoder(LegionPacket::decode).encoder(LegionPacket::encode).consumerMainThread(LegionPacket::handlePacket).add();
-        INSTANCE.messageBuilder(ScabbardPacket.class, id++, NetworkDirection.PLAY_TO_SERVER).decoder(ScabbardPacket::decode).encoder(ScabbardPacket::encode).consumerMainThread(ScabbardPacket::handlePacket).add();
 
         INSTANCE.messageBuilder(ToolsTimeCharge.class,id++, NetworkDirection.PLAY_TO_CLIENT).decoder(ToolsTimeCharge::new).encoder(ToolsTimeCharge::encode).consumerMainThread(ToolsTimeCharge::handle).add();
         INSTANCE.messageBuilder(CensoredCharge.class,id++, NetworkDirection.PLAY_TO_CLIENT).decoder(CensoredCharge::new).encoder(CensoredCharge::toByte).consumerMainThread(CensoredCharge::handle).add();
@@ -49,9 +51,6 @@ public class Channel {
 
         INSTANCE.messageBuilder(LegionChargingCharge.class,id++, NetworkDirection.PLAY_TO_CLIENT).decoder(LegionChargingCharge::new).encoder(LegionChargingCharge::encode).consumerMainThread(LegionChargingCharge::handle).add();
         INSTANCE.messageBuilder(LegionCooldownCharge.class,id++, NetworkDirection.PLAY_TO_CLIENT).decoder(LegionCooldownCharge::new).encoder(LegionCooldownCharge::encode).consumerMainThread(LegionCooldownCharge::handle).add();
-
-        INSTANCE.messageBuilder(MurasamaEnergyQuantityCharge.class,id++, NetworkDirection.PLAY_TO_CLIENT).decoder(MurasamaEnergyQuantityCharge::new).encoder(MurasamaEnergyQuantityCharge::encode).consumerMainThread(MurasamaEnergyQuantityCharge::handle).add();
-        INSTANCE.messageBuilder(MurasamaEnergyPointCharge.class,id++, NetworkDirection.PLAY_TO_CLIENT).decoder(MurasamaEnergyPointCharge::new).encoder(MurasamaEnergyPointCharge::encode).consumerMainThread(MurasamaEnergyPointCharge::handle).add();
 
         INSTANCE.messageBuilder(CoolTimeChargeA.class,id++, NetworkDirection.PLAY_TO_CLIENT).decoder(CoolTimeChargeA::new).encoder(CoolTimeChargeA::toByte).consumerMainThread(CoolTimeChargeA::handle).add();
         INSTANCE.messageBuilder(CoolTimeChargeB.class,id++, NetworkDirection.PLAY_TO_CLIENT).decoder(CoolTimeChargeB::new).encoder(CoolTimeChargeB::toByte).consumerMainThread(CoolTimeChargeB::handle).add();
