@@ -524,6 +524,28 @@
         {
             "path": "momotinker:item/tool/pneumatic_sword/large/broken_part",
             "stat_type": "tconstruct:binding"
+        },
+
+
+        {
+            "path": "momotinker:item/tool/legion/part_1",
+            "stat_type": "tconstruct:binding"
+        },
+        {
+            "path": "momotinker:item/tool/legion/part_2",
+            "stat_type": "tconstruct:binding"
+        },
+        {
+            "path": "momotinker:item/tool/legion/part_3",
+            "stat_type": "tconstruct:binding"
+        },
+        {
+            "path": "momotinker:item/tool/legion/part_4",
+            "stat_type": "tconstruct:binding"
+        },
+        {
+            "path": "momotinker:item/tool/legion/part_5",
+            "stat_type": "tconstruct:binding"
         }
     ],
     "replace": false
