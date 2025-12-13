@@ -38,13 +38,14 @@ public class MomotinkerEntitiesMove {
     }
     private static final Map<Entity, Map<LivingEntity, Integer>> ignoredTargets = new HashMap<>();
 
-    public static void moveTowardsTargetWithTransfer(Entity entity, LivingEntity target, double speed, double transferDistance) {
+    public static void moveTowardsTargetWithTransfer(Entity entity, LivingEntity target, double speed,boolean transferAdd, double transferDistance) {
         Vec3 currentPos = entity.position();
         Vec3 targetPos = target.getEyePosition();
         double distance = currentPos.distanceTo(targetPos);
         if (distance <= transferDistance) {
-            // 将当前目标加入忽略列表
-            addToIgnoredTargets(entity, target, 10);
+            if (transferAdd) {
+                addToIgnoredTargets(entity, target, 10);
+            }
             entity.setDeltaMovement(Vec3.ZERO);
             return;
         }
@@ -353,5 +354,35 @@ public class MomotinkerEntitiesMove {
         );
 
         return level.isLoaded(minPos) && level.isLoaded(maxPos);
+    }
+
+    public static void maintainRelativePosition(Entity entity, Entity owner, double offsetX, double offsetY, double offsetZ) {
+        // 计算目标位置（相对于主人的固定偏移）
+        double targetX = owner.getX() + offsetX;
+        double targetY = owner.getY() + offsetY;
+        double targetZ = owner.getZ() + offsetZ;
+
+        // 计算当前位置与目标位置的差值
+        double currentX = entity.getX();
+        double currentY = entity.getY();
+        double currentZ = entity.getZ();
+
+        double diffX = targetX - currentX;
+        double diffY = targetY - currentY;
+        double diffZ = targetZ - currentZ;
+
+        // 使用平滑因子移动
+        double speedFactor = 0.6;
+        double moveX = diffX * speedFactor;
+        double moveY = diffY * speedFactor;
+        double moveZ = diffZ * speedFactor;
+
+        // 设置移动速度和位置
+        entity.setDeltaMovement(moveX, moveY, moveZ);
+        entity.setPos(
+                currentX + moveX,
+                currentY + moveY,
+                currentZ + moveZ
+        );
     }
 }

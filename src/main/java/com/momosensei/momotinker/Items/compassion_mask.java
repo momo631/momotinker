@@ -23,6 +23,7 @@ public class compassion_mask extends Item {
     public void appendHoverText(@NotNull ItemStack stack, @Nullable Level level, @NotNull List<Component> list, @NotNull TooltipFlag flag) {
         boolean config = MomotinkerConfig.special_acquisition.get();
         boolean configa = MomotinkerConfig.compassion_mask.get();
+        boolean configb = MomotinkerConfig.stage_meteor.get();
         if (Screen.hasShiftDown()&&config&&configa) {
             if (StageMeteor.getStageFloat()==1) {
                 list.add(Component.translatable("item.momotinker.tooltip.compassion_mask2").withStyle(ChatFormatting.GRAY));
@@ -35,24 +36,5 @@ public class compassion_mask extends Item {
                 list.add(Component.translatable("item.momotinker.tooltip.special_acquisition").withStyle(ChatFormatting.GRAY));
             }
         }
-//        boolean config = MomotinkerConfig.special_acquisition.get();
-//        boolean configa = MomotinkerConfig.compassion_mask.get();
-//        if (Screen.hasShiftDown()&&config&&configa) {
-//            Player player= Minecraft.getInstance().player;
-//            if (player != null&&player.level.isClientSide) {
-//                CompoundTag tag = player.getPersistentData();
-//                String a = "meteor_nucleus_unlock";
-//                if (tag.getBoolean(a)) {
-//                    list.add(Component.translatable("item.momotinker.tooltip.compassion_mask2").withStyle(ChatFormatting.GRAY));
-//                }
-//            }else {
-//                list.add(Component.translatable("item.momotinker.tooltip.stage_meteor").withStyle(ChatFormatting.GOLD));
-//            }
-//        }else {
-//            list.add(Component.translatable("item.momotinker.tooltip.compassion_mask1").withStyle(ChatFormatting.GRAY));
-//            if (config&&configa) {
-//                list.add(Component.translatable("item.momotinker.tooltip.special_acquisition").withStyle(ChatFormatting.GRAY));
-//            }
-//        }
     }
 }

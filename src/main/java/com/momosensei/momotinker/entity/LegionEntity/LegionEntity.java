@@ -276,7 +276,7 @@ public class LegionEntity extends Projectile {
                     this.setDeltaMovement(movementVector.scale(speed));
                 } else if (getForm() == 1) {
                     if (this.tickCount > 5) {
-                        moveTowardsTargetWithTransfer(this, target, 1.8, 1.5);
+                        moveTowardsTargetWithTransfer(this, target, 1.8, true,1.5);
                     } else {
                         this.setDeltaMovement(movementVector.scale(speed));
                     }
@@ -293,11 +293,7 @@ public class LegionEntity extends Projectile {
         }
 
         if (this.tickCount > 2) {
-            if (this.level.isClientSide) {
-                spawnClientTrailParticles();
-            } else {
-                spawnTrailParticles();
-            }
+            spawnTrailParticles();
         }
 
         ToolStack tool =ToolStack.from(getItem());
@@ -331,60 +327,18 @@ public class LegionEntity extends Projectile {
                 default -> particle = ParticleTypes.SMOKE;
             }
 
-            Vec3 trailPos = pos.subtract(deltaMovement.normalize().scale(0.5));
-
             int a = 4;
             double b = 0.02;
-            if (getForm()==2){
-                b=1;
+            if (getForm() == 2) {
+                b = 1;
             }
-            serverLevel.sendParticles(particle, trailPos.x, trailPos.y, trailPos.z, a, 0.1, 0.1, 0.1, b);
-
-//            if (deltaMovement.length() > 1.0) {
-//                serverLevel.sendParticles(ParticleTypes.SMOKE,
-//                        trailPos.x, trailPos.y, trailPos.z,
-//                        1, 0.05, 0.05, 0.05, 0.01);
-//            }
-        }
-    }
-
-    private void spawnClientTrailParticles() {
-        if (this.level.isClientSide) {
-            Vec3 pos = this.position();
-            Vec3 deltaMovement = this.getDeltaMovement();
-            Vec3 trailPos = pos.subtract(deltaMovement.normalize().scale(0.3));
-
-            Random random = new Random();
-
-            switch (getForm()) {
-                case 0 -> {
-                    this.level.addParticle(ParticleTypes.SMOKE,
-                            trailPos.x + (random.nextDouble() - 0.5) * 0.1,
-                            trailPos.y + (random.nextDouble() - 0.5) * 0.1,
-                            trailPos.z + (random.nextDouble() - 0.5) * 0.1,
-                            -deltaMovement.x * 0.1,
-                            -deltaMovement.y * 0.1,
-                            -deltaMovement.z * 0.1);
-                }
-                case 1 -> {
-                    this.level.addParticle(ParticleTypes.CRIT,
-                            trailPos.x, trailPos.y, trailPos.z,
-                            -deltaMovement.x * 0.05,
-                            -deltaMovement.y * 0.05,
-                            -deltaMovement.z * 0.05);
-                }
-                case 2 -> {
-                    this.level.addParticle(ParticleTypes.ENCHANT,
-                            trailPos.x + (random.nextDouble() - 0.5) * 0.2,
-                            trailPos.y + (random.nextDouble() - 0.5) * 0.2,
-                            trailPos.z + (random.nextDouble() - 0.5) * 0.2,
-                            -deltaMovement.x * 0.02,
-                            -deltaMovement.y * 0.02,
-                            -deltaMovement.z * 0.02);
-                }
+            for (int i = 0; i < 4; i++) {
+                Vec3 trailPos = pos.subtract(deltaMovement.normalize().scale(i * 0.25));
+                serverLevel.sendParticles(particle, trailPos.x, trailPos.y, trailPos.z, a, 0.1, 0.1, 0.1, b);
             }
         }
     }
+
     @Override
     public void remove(Entity.RemovalReason reason) {
         super.remove(reason);
