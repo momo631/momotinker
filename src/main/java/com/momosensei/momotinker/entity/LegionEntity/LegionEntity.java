@@ -158,19 +158,39 @@ public class LegionEntity extends Projectile {
 
     public static ToolStack getRandomTools(MaterialNBT materials) {
         ToolDefinition definition = getRandomToolDefinition();
-        Item item = DEFINITION_TO_ITEM_MAP.get(definition.getId());
-        if (item == null) {
-            throw new IllegalStateException("No item found for tool definition: " + definition.getId());
+        Item item = null;
+        int maxAttempts = 20;
+        for (int i = 0; i < maxAttempts; i++) {
+            item = DEFINITION_TO_ITEM_MAP.get(definition.getId());
+            if (item != null) {
+                break;
+            }
+            if (i == maxAttempts - 1) {
+                item = DEFINITION_TO_ITEM_MAP.get(ToolDefinitions.SWORD.getId());
+            }
         }
+//        if (item == null) {
+//            throw new IllegalStateException("No item found for tool definition: " + definition.getId());
+//        }
         return buildTools(item, definition, materials);
     }
 
     public static ToolStack getToolRandomMaterials() {
         ToolDefinition definition = getRandomToolDefinition();
-        Item item = DEFINITION_TO_ITEM_MAP.get(definition.getId());
-        if (item == null) {
-            throw new IllegalStateException("No item found for tool definition: " + definition.getId());
+        Item item = null;
+        int maxAttempts = 20;
+        for (int i = 0; i < maxAttempts; i++) {
+            item = DEFINITION_TO_ITEM_MAP.get(definition.getId());
+            if (item != null) {
+                break;
+            }
+            if (i == maxAttempts - 1) {
+                item = DEFINITION_TO_ITEM_MAP.get(ToolDefinitions.SWORD.getId());
+            }
         }
+//        if (item == null) {
+//            throw new IllegalStateException("No item found for tool definition: " + definition.getId());
+//        }
         List<MaterialStatsId> stats = ToolMaterialHook.stats(definition);
         return buildTools(item, definition, RandomMaterial.build(stats, Collections.nCopies(stats.size(), randomMaterial), RandomSource.create()));
     }

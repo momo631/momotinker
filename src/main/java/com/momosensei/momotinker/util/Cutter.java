@@ -264,39 +264,41 @@ public class Cutter {
             super(message);
         }
     }
-//    public static void Attack(Level world, LivingEntity entity) {
-//        try {
-//            if (!world.isClientSide()) {
-//                killEntity(entity);
-//            } else {
-//                ClientLevel clientWorld = (ClientLevel)world;
-//                clientWorld.minecraft.gui.getBossOverlay().reset();
-//
-//                killEntity(entity);
-//            }
-//
-//        } catch (Throwable ignored) {
-//
-//        }
-//
-//    }
+    public static void AttackEntity(Level world,Entity entity) {
+        try {
+            if (!world.isClientSide) {
+                ServerLevel serverLevel = (ServerLevel)world;
+                for(Entity entityIn : new ArrayList<>(StreamSupport.stream(serverLevel.getAllEntities().spliterator(), false).collect(Collectors.toList()))) {
+                    if (entityIn==entity) {
+                        killEntity(entityIn);
+                    }
+                }
+            } else {
+                ClientLevel clientWorld = (ClientLevel)world;
+                clientWorld.minecraft.gui.getBossOverlay().reset();
+                for(Entity clientEntity : new ArrayList<>(StreamSupport.stream(clientWorld.entitiesForRendering().spliterator(), false).collect(Collectors.toList()))) {
+                    if (clientEntity==entity) {
+                        killEntity(clientEntity);
+                    }
+                }
+            }
+        } catch (Throwable throwable) {
+        }
+    }
     public static void Attack(Level world) {
         try {
             if (!world.isClientSide) {
                 ServerLevel serverLevel = (ServerLevel)world;
-
                 for(Entity entityIn : new ArrayList<>(StreamSupport.stream(serverLevel.getAllEntities().spliterator(), false).collect(Collectors.toList()))) {
                     killEntity(entityIn);
                 }
             } else {
                 ClientLevel clientWorld = (ClientLevel)world;
                 clientWorld.minecraft.gui.getBossOverlay().reset();
-
                 for(Entity clientEntity : new ArrayList<>(StreamSupport.stream(clientWorld.entitiesForRendering().spliterator(), false).collect(Collectors.toList()))) {
                     killEntity(clientEntity);
                 }
             }
-
         } catch (Throwable throwable) {
         }
     }
@@ -321,7 +323,7 @@ public class Cutter {
                 entity.invulnerable = true;
                 entity.onGround = false;
                 entity.canUpdate = false;
-
+                entity.discard();
                 double x = entity.getX();
                 double y = entity.getY();
                 double z = entity.getZ();

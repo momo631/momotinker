@@ -30,6 +30,7 @@ import static com.momosensei.momotinker.util.PenetratingDamage.setCachedValue;
 
 public class Origin extends momomodifier {
     public Origin() {
+//        MinecraftForge.EVENT_BUS.addListener(this::OnPlayerTick);
     }
 
     @Override
@@ -90,4 +91,15 @@ public class Origin extends momomodifier {
             }
         }
     }
+//    private void OnPlayerTick(TickEvent.PlayerTickEvent event) {
+//        if (event.phase != TickEvent.Phase.START) return;
+//        Player player=event.player;
+//        if (player!=null&&getMainhandModifierlevel(player, MomotinkerModifiers.origin.getId()) > 0) {
+//            double a = player.getEntityReach();
+//            List<LivingEntity> list = player.level().getEntitiesOfClass(LivingEntity.class, player.getBoundingBox().inflate(a));
+//            for (LivingEntity e : list) {
+//                AttackEntity(event.player.level(), e);
+//            }
+//        }
+//    }
 }
