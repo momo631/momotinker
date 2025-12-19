@@ -63,7 +63,7 @@ public class AbyssalResonance extends momomodifier {
                 int d = Math.round(bonus) + 2 * c;
                 if (d < event.getAmount()) {
                     event.setAmount(event.getAmount() - d);
-                } else if (d > event.getAmount()) {
+                } else if (d >= event.getAmount()) {
                     event.setAmount(0);
                 }
             }

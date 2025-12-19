@@ -186,7 +186,7 @@
   "item.momotinker.meteor_nucleus": "§6流星锭",
   "block.momotinker.meteor_nucleus_block": "§6流星之核",
   "item.momotinker.tooltip.meteor_nucleus1": "从天际坠落于此的星星，蕴含着此世间不曾存在的能量",
-  "item.momotinker.tooltip.meteor_nucleus2": "自玩家第一次拾取到“天外来星”开始，每一段时间就会有几率以流星的方式坠落在以玩家为中心的180格以内区域",
+  "item.momotinker.tooltip.meteor_nucleus2": "自玩家第一次拾取到“天外来星”开始，每一段时间就会有几率从天上坠落在以玩家为中心的180格以内区域",
   "item.momotinker.tooltip.meteor_nucleus3": "熔融天际流星浇筑出的金属锭，蕴含着巨大的能量",
   "item.momotinker.tooltip.meteor_nucleus4": "“流星之核在熔融之后能源源不断释放大量热能还没有任何衰减的迹象，这或许能在我们的工匠工作上提供新的帮助”",
   "item.momotinker.tooltip.meteor_nucleus5": "流星的馈赠即将到来",
@@ -506,7 +506,7 @@
 
   "modifier.momotinker.grudgeothers": "妒外",
   "modifier.momotinker.grudgeothers.flavor": "§e深恶痛疾§",
-  "modifier.momotinker.grudgeothers.description": "攻击时若自己某个部位未装备护甲的同时目标存在装备，则会清除对方该部位护甲并掉落在自己所在位置（不对玩家生效）。击杀目标时会尝试掉落该目标的主副手物品。攻击血量上限比自己高的目标时会根据差值增加攻击力，数值为10%*词条等级*血量上限差值（最大为100*词条等级^2）",
+  "modifier.momotinker.grudgeothers.description": "攻击时，若自身某部位未装备护甲且目标该部位有装备，则清除目标该部位护甲并掉落至自身位置（对玩家无效）。\n击杀目标时，有概率掉落其主手/副手持物品。\n攻击生命上限高于自身的目标时，根据生命差提升攻击力：\n提升值 = 10% × 词条等级 × 生命差值（上限为100 × 词条等级^2）",
 
   "modifier.momotinker.overenvysin": "尽妒之罪",
   "modifier.momotinker.overenvysin.flavor": "§e无尽妒怨之代价:临微浅恶§",
@@ -523,7 +523,7 @@
 
   "modifier.momotinker.fallingstars": "苍穹落星",
   "modifier.momotinker.fallingstars.flavor": "§d当流星于此降临§",
-  "modifier.momotinker.fallingstars.description": "主手持有时按下技能按键后升往空中，并在之后3秒内再次按下会获得1秒的“落星”效果，且该工具获得120秒冷却（若未使用第二段技能则只有30秒）\n§d[落星]§:向视角方向快速冲刺并在碰撞方块或击中实体时停止，停止时产生爆炸对范围内生物造成词条等级*100（若击中实体则格外增加词条等级*武器近战攻击一次的伤害）的爆炸类型伤害（不破坏方块），飞行时间越长伤害越高（在飞行15刻时最高，数值为400%）",
+  "modifier.momotinker.fallingstars.description": "主手持有时按下技能键升空，3秒内再次按下获得1秒§d[落星]§效果。工具进入120秒冷却（若未触发第二段，则仅冷却30秒）。\n§d[落星]§：向视角方向高速冲刺，撞击方块或实体时停止。停止时产生爆炸，对范围内敌人造成爆炸伤害（不破坏方块）。若击中实体，额外附加武器近战伤害。冲刺时间越长伤害越高。",
   "modifier.momotinker.tooltip.fallingstars1": "[苍穹落星]的冷却还剩:",
 
   "modifier.momotinker.unknownreturnee": "未知归来者",
@@ -627,15 +627,15 @@
 
   "modifier.momotinker.starcloudchain": "星云连锁",
   "modifier.momotinker.starcloudchain.flavor": "如星座般",
-  "modifier.momotinker.starcloudchain.description": "攻击怪物或被怪物攻击会向其添加“星链”标记，以自身为中心一定范围内攻击带有该标记的怪物或被怪物攻击时，其他拥有该标记的怪物会受到此次攻击的20%+10%*全身总词条等级的伤害（范围为5+3*词条等级的方形区域）",
+  "modifier.momotinker.starcloudchain.description": "攻击或被攻击时，为目标添加“星链”标记。\n以自身为中心，攻击带标记目标时，范围内所有被标记敌人额外受到（20%+10%×全身总词条等级）的连锁伤害。\n连锁范围为（5+3×词条等级）的方形区域。",
 
   "modifier.momotinker.breakthroughstars": "贯星魔枪",
   "modifier.momotinker.breakthroughstars.flavor": "天谴之矛专属强化:魔力投矛",
-  "modifier.momotinker.breakthroughstars.description": "失去原本的冲刺能力，取而代之是在右键蓄力后松开会消耗当前5%的经验点数发射一把魔法矛，被其触碰会受到攻击伤害，每消耗1点经验会提升其1%的伤害（默认最多增伤100%）",
+  "modifier.momotinker.breakthroughstars.description": "失去原冲刺能力。右键蓄力后释放，消耗当前经验值5%发射魔法矛。\n魔法矛对触碰目标造成伤害，每消耗1点经验提升其1%伤害（默认上限+100%）。",
 
   "modifier.momotinker.cleansetheworld": "荡涤天地",
   "modifier.momotinker.cleansetheworld.flavor": "贯星魔枪增强:天谴",
-  "modifier.momotinker.cleansetheworld.description": "较长时间蓄力后会在上空会消耗当前25%的经验点数召唤巨大魔法矛（使用后该类工具进入默认冷却600秒），被其触碰每刻会受到50%的伤害，在落地后产生剧烈爆炸并对大范围生物造成2000%的伤害，每消耗1点经验会提升其1%的伤害（默认最多增伤100%）",
+  "modifier.momotinker.cleansetheworld.description": "长蓄力后消耗当前经验点数的25%，于上空召唤巨大魔法矛（使用后进入600秒冷却）。\n魔法矛每刻对触碰目标造成50%伤害，落地时产生剧烈爆炸，对大范围敌人造成2000%伤害。\n每消耗1点经验值，其总伤害提升1%（默认上限+100%）",
   "modifier.momotinker.tooltip.cleansetheworld1": "“荡涤天地”冷却还剩:",
 
   "modifier.momotinker.shadowofdamnation": "天谴之影",
@@ -644,7 +644,7 @@
 
   "modifier.momotinker.drinkingdemon": "饮魔",
   "modifier.momotinker.drinkingdemon.flavor": "饮下鸠毒，春种秋收",
-  "modifier.momotinker.drinkingdemon.description": "按下[特殊技能]按键可吸收副手带有附魔的物品，消耗已有点数总和*50点的经验并根据物品上的附魔数量获得相应种类的点数，使用后工具冷却90秒（若经验不足则无法吸收）",
+  "modifier.momotinker.drinkingdemon.description": "按下[特殊技能]键吸收副手带附魔的物品。\n消耗（总点数×50）点经验值，并根据物品附魔种类获得对应类型点数。\n冷却90秒（经验不足时无法吸收）。",
   "modifier.momotinker.tooltip.drinkingdemon1": "当前经验点数不足以使用饮魔", "modifier.momotinker.tooltip.drinkingdemon2": "当前经验点数可以使用饮魔",
   "modifier.momotinker.tooltip.drinkingdemon3": "饮魔诅咒点数:", "modifier.momotinker.tooltip.drinkingdemon4": "当前减少饮魔经验消耗:",
   "modifier.momotinker.tooltip.drinkingdemon5": "饮魔总防御点数:", "modifier.momotinker.tooltip.drinkingdemon6": "当前减少受到伤害:",
@@ -654,7 +654,7 @@
 
   "modifier.momotinker.sweetaftertaste": "回甘",
   "modifier.momotinker.sweetaftertaste.flavor": "枯果枝下",
-  "modifier.momotinker.sweetaftertaste.description": "该工具为护甲时，会根据身上总护甲的饮魔点数减少受到伤害;该工具为武器或工具时，会根据饮魔点数增加近战伤害和攻击速度，若为远程武器则格外增加箭矢伤害;诅咒点数会减少使用饮魔所需的经验点数",
+  "modifier.momotinker.sweetaftertaste.description": "作为护甲时：按全身饮魔点数总和减少所受伤害。\n作为武器/工具时：按饮魔点数提升近战伤害与攻速；若为远程武器，额外增加箭矢伤害。\n诅咒点数可降低激活饮魔效果所需的经验值消耗。",
 
   "modifier.momotinker.expandedequipment": "不存在之影",
   "modifier.momotinker.expandedequipment.flavor": "其存在的意义是...",
@@ -662,19 +662,19 @@
 
   "modifier.momotinker.projectionofsuffering": "灾难预兆",
   "modifier.momotinker.projectionofsuffering.flavor": "日与月的重叠，是...",
-  "modifier.momotinker.projectionofsuffering.description": "处于战斗状态时随时间充能，脱离战斗8秒后充能随时间减少，若主手持有工具不是“日冕之钥”或“日蚀容器”时则更快速的减少；充能存在时，武器造成的伤害提高（默认最高为60%）",
+  "modifier.momotinker.projectionofsuffering.description": "进入战斗后随时间充能；脱离战斗8秒后，充能开始衰减。\n若主手非“日冕之钥”或“日蚀容器”，充能衰减速度加快。\n充能存在时，提升武器伤害（默认最高+60%）。",
 
   "modifier.momotinker.ultimatedarkness": "至黑，至暗",
   "modifier.momotinker.ultimatedarkness.flavor": "切莫哀悼，此乃必然",
-  "modifier.momotinker.ultimatedarkness.description": "持有时充能会随时间减少，若主手持有工具不是“日冕之钥”或“日蚀容器”时则更快速的减少；存在充能时武器造成的伤害提高（默认为60%）",
+  "modifier.momotinker.ultimatedarkness.description": "持有时充能随时间衰减。\n若主手非“日冕之钥”或“日蚀容器”，则衰减速度加快。\n充能存在时，提升武器伤害（默认+60%）。",
 
   "modifier.momotinker.origin": "第一终章:起源",
   "modifier.momotinker.origin.flavor": "一切生灵的起点，都来自于虚无，正因如此，也将归于虚无",
-  "modifier.momotinker.origin.description": "对受伤的反应降低，攻击无视防御并且会削减目标20%*等级的最大生命值，攻击范围内的目标最大生命若低于自身会直接归于虚无，且掉落物有几率被清空",
+  "modifier.momotinker.origin.description": "对受伤的反应降低。\n攻击无视防御，并削减目标最大生命值（20%×等级）。\n攻击范围内，最大生命值低于自身的单位将归于虚无，并有概率清空其掉落物。",
 
   "modifier.momotinker.significance": "第二终章:意义",
   "modifier.momotinker.significance.flavor": "万物之所以存在，皆因系与意义，故此，予其剥夺",
-  "modifier.momotinker.significance.description": "按下[特殊技能]按键使大范围生物的最大生命持续衰减直到死亡并且身上所有药水效果都会被清除，最大生命低于自身最大生命的300%时会直接归于虚无，自身最大生命也会降低但是速度大幅减少",
+  "modifier.momotinker.significance.description": "按下[特殊技能]键，使大范围内生物的最大生命值持续衰减直至死亡，并清除其所有药水效果。\n若目标最大生命值低于自身最大生命值的300%，则归于虚无。\n自身最大生命值也会缓慢降低，但速度大幅减缓。",
   "modifier.momotinker.tooltip.significance1": "“第二终章:意义”冷却还剩:",
 
   "modifier.momotinker.blank": "第三终章:留白",
@@ -686,7 +686,7 @@
 
   "modifier.momotinker.flamebath": "星炎战衣",
   "modifier.momotinker.flamebath.flavor": "运用流星的能量包裹自身",
-  "modifier.momotinker.flamebath.description": "穿戴时按下[特殊技能]按键获得120s的“浴炎战衣”效果，等级为已穿戴总等级，冷却240s（持续期间再次释放会覆盖上一个效果）\n§6[浴炎战衣]:持续期间获得60%*等级的护甲和40%*等级的护甲韧性，并且每5秒击退近身的生物",
+  "modifier.momotinker.flamebath.description": "按下[特殊技能]键获得120秒“浴炎战衣”效果，等级等于已穿戴总等级。冷却240秒（重复释放会覆盖）。\n§6[浴炎战衣]：持续期间，获得护甲（60%×等级）与护甲韧性（40%×等级），且每5秒击退近身生物。",
   "modifier.momotinker.tooltip.flamebath1": "“星炎战衣”冷却还剩:",
 
   "modifier.momotinker.starfallarrow": "星落箭",
@@ -712,22 +712,22 @@
 
   "modifier.momotinker.selfcrystallization": "自结晶",
   "modifier.momotinker.selfcrystallization.flavor": "如晶体般易碎，如晶体般生长",
-  "modifier.momotinker.selfcrystallization.description": "获得25%可叠乘耐久，耐久会自动恢复且速度与身上总词条相关，受到伤害会消耗身上该词条装备总剩余耐久的5%来减少受到伤害（主手和副手只有0.2%的效能），每50点减少1点伤害，若消耗的耐久大于受到伤害会将多余耐久反伤回去",
+  "modifier.momotinker.selfcrystallization.description": "获得25%可叠乘耐久，耐久自动恢复（速度受全身该词条总数影响）。\n受到伤害时，消耗全身该词条装备总剩余耐久的5%（主/副手仅0.2%效能），每消耗50点耐久减免1点伤害。\n若消耗耐久值超过伤害值，超出部分将转化为反弹伤害。",
   "modifier.momotinker.tooltip.selfcrystallization1": "当前减伤:",
 
   "modifier.momotinker.lifeprogram": "仿生程序",
   "modifier.momotinker.lifeprogram.flavor": "模仿生命的程序，为何会...",
-  "modifier.momotinker.lifeprogram.description": "受到的治疗效率增加40%+20%*身上总词条，若生命低于50%则受到的治疗效率格外增加100%，低于25%时改为增加300%，受到的所有伤害不会超过最大生命的90%",
+  "modifier.momotinker.lifeprogram.description": "治疗效率提升（40%+20%*总词条数）。\n生命低于50%时，额外提升100%治疗效率；低于25%时，额外提升300%。\n所受单次伤害不会超过最大生命值的90%。",
 
   "modifier.momotinker.shortterminvestments": "短期投资",
   "modifier.momotinker.shortterminvestments.flavor": "投资有风险...",
-  "modifier.momotinker.shortterminvestments.description": "副手持有某物品时按下[特殊技能]按键消耗一个该物品记录并增加点数，手持该工具进行某些行为时会随机涨降点数，点数大于1时在空手时按下[特殊技能]按键会清空点数并获得等于点数数量的该物品，点数不足1时清空信息并可记录其他物品（默认只对原版物品有效）",
+  "modifier.momotinker.shortterminvestments.description": "副手持物品时，按[特殊技能]键消耗1个并累积点数。\n手持工具时，部分行为将使点数随机增减。\n点数>1时空手按[特殊技能]键，清空点数并获取等量物品。\n点数<1时清空记录，可更换绑定物品。\n（默认仅对原版物品生效。）",
   "modifier.momotinker.tooltip.terminvestments1":"当前记录物品:",
   "modifier.momotinker.tooltip.terminvestments2":"当前点数:",
 
   "modifier.momotinker.longterminvestments": "长期投资",
   "modifier.momotinker.longterminvestments.flavor": "或许可以更长远点...",
-  "modifier.momotinker.longterminvestments.description": "大致功能与“短期投资”相同，相较于“短期投资”，增长点数的概率增加，降低点数的概率减少，但相对的增长与降低的幅度大幅减小",
+  "modifier.momotinker.longterminvestments.description": "效果与“短期投资”类似。\n提升点数增加的概率，减少点数降低的概率。\n但点数变动的幅度显著降低。",
 
   "modifier.momotinker.timeechoes": "岁月共鸣",
   "modifier.momotinker.timeechoes.flavor": "扎根于此，与岁月共处",
@@ -735,7 +735,7 @@
 
   "modifier.momotinker.polarizedspacetime": "极化时空",
   "modifier.momotinker.polarizedspacetime.flavor": "跨越灾险，与时空共进",
-  "modifier.momotinker.polarizedspacetime.description": "装备或持有时会逐渐适应同种类伤害，适应速度与全身词条等级有关，可同时适应的伤害种类的数量与已装备的拥有该词条的装备数量有关",
+  "modifier.momotinker.polarizedspacetime.description": "穿戴/持有时，逐渐适应所受的同种类伤害。\n适应速度取决于全身该词条的等级总和。\n可同时适应的伤害种类数量，与已装备的具有该词条的装备件数相关。",
 
   "modifier.momotinker.resonance": "共鸣",
   "modifier.momotinker.resonance.flavor": "我们或许本就是一体",
@@ -743,35 +743,35 @@
 
   "modifier.momotinker.eternalanger": "[侵蚀我心，大罪共鸣]不灭之怒",
   "modifier.momotinker.eternalanger.flavor": "在下地狱之前，我的怒火无止无休",
-  "modifier.momotinker.eternalanger.description": "主手持有该工具濒死时可免死一次，恢复15%最大生命并小范围攻击一次，下次触发免死的几率减半（基础概率为300%），并且持有该工具造成的伤害和承受伤害都将增加，死亡后重置",
+  "modifier.momotinker.eternalanger.description": "濒死时触发免死，回复15%最大生命并释放范围攻击。\n免死基础触发率为300%，每次触发后下次几率减半。\n触发后持有时造成与承受的伤害均提升，死亡后重置效果。",
 
   "modifier.momotinker.slackatmosphere": "[侵蚀我心，大罪共鸣]懈怠气氛",
   "modifier.momotinker.slackatmosphere.flavor": "如威士忌般的微醺，不由得让人沉迷其中，无法自拔",
-  "modifier.momotinker.slackatmosphere.description": "周围所有生物获得负面药水效果的等级翻倍（包括自身），所有非自身生物获得的正面药水效果的等级减半。攻击/被攻击时给予目标/攻击者随机负面药水效果（若是已有效果则增加等级）",
+  "modifier.momotinker.slackatmosphere.description": "周围所有单位（含自身）负面效果等级翻倍，非自身单位的正面效果等级减半。\n攻击或被攻击时，向目标施加随机负面效果；若已存在则提升其等级。",
 
   "modifier.momotinker.thepinnacleofarrogance": "[侵蚀我心，大罪共鸣]傲于穹顶",
   "modifier.momotinker.thepinnacleofarrogance.flavor": "我曾立于穹顶之上，俯视渺渺众生",
-  "modifier.momotinker.thepinnacleofarrogance.description": "装备或持有时受到的最小伤害为自身最大生命的5%，受到的最大伤害为自身最大生命的15%，若伤害超过自身最大生命的2500%则不会生效",
+  "modifier.momotinker.thepinnacleofarrogance.description": "最小受伤害为自身最大生命值的5%。\n最大受伤害为自身最大生命值的15%。\n若单次伤害超过最大生命值的2500%，此效果不生效。",
 
   "modifier.momotinker.filledwithhunger": "[侵蚀我心，大罪共鸣]惶怒我身",
   "modifier.momotinker.filledwithhunger.flavor": "以天地之炉灶，我为厨，为食",
-  "modifier.momotinker.filledwithhunger.description": "饱食度和饥饿值会迅速自然减少。你的击杀会为你恢复饱食度和饥饿值，并且饱食度和饥饿值可突破上限。饱食度和饥饿值可当做格外生命值抵挡伤害，并提高造成的伤害。超过上限的饱食度和饥饿值可分别免疫一次死亡，使生命恢复至100%并清空消耗的超过上限的饱食度或饥饿值",
+  "modifier.momotinker.filledwithhunger.description": "你的饱食度与饥饿值会快速衰减。\n击杀敌人时恢复二者数值，且可突破上限。\n二者可充当额外生命值抵挡伤害，并提升你的伤害。\n每项数值突破上限时，可各免疫一次致命伤害，并完全回复生命。",
 
   "modifier.momotinker.resentmentknives": "[侵蚀我心，大罪共鸣]骇怨为刀",
   "modifier.momotinker.resentmentknives.flavor": "嫉恨世人的人啊，你可曾想过你也被世人们所憎恶",
-  "modifier.momotinker.resentmentknives.description": "持有时攻击/受到攻击会将自身与目标/攻击者标为“相嫉”状态，若对方攻击大于自身，则自身攻击提高到对方水平，且对其造成的伤害将穿透防御;若小于则会使对方的攻击提高到自身水平。\n“相嫉”:每对生物只能同时存在一种该状态，其他生物对该状态单位造成和受到的伤害将大幅缩减，直至其中一方死亡",
+  "modifier.momotinker.resentmentknives.description": "持有者攻击或受击时，与目标/攻击者建立“相嫉”状态。\n若对方攻击更高，则持有者攻击提升至其水平，并对该目标伤害穿透防御。\n若对方攻击更低，则将其攻击提升至持有者水平。\n“相嫉”效果唯一，其他单位对“相嫉”双方造成的伤害大幅降低，直至其中一方死亡。",
 
   "modifier.momotinker.forbiddenfruit": "[侵蚀我心，大罪共鸣]伊甸禁言",
   "modifier.momotinker.forbiddenfruit.flavor": "或许我们从一开始就不该食用那果子",
-  "modifier.momotinker.forbiddenfruit.description": "持有者攻击将直接削减目标护甲值，并根据削减值增加持有时的护甲。大范围内护甲低于持有者的生物将减少50%大部分属性。护甲低于持有者的单位受到来自持有者的伤害将按差值的一定百分比提高，对持有者造成的伤害将按差值的一定百分比减少（减少伤害最多95%）",
+  "modifier.momotinker.forbiddenfruit.description": "攻击时直接削减目标护甲，并等量增加自身护甲。\n大范围内，护甲低于自身的敌人属性削减50%。\n对其造成伤害按护甲差值提高，其造成的伤害按差值减少（最高减伤95%）。",
 
   "modifier.momotinker.gainsalone": "[侵蚀我心，大罪共鸣]只身向财",
   "modifier.momotinker.gainsalone.flavor": "无论代价，无关他人，只为了这个执念",
-  "modifier.momotinker.gainsalone.description": "该工具造成的击杀或挖掘行为产生的掉落物数量增加（剩余耐久过低时无法生效）。该工具将减少大部分属性并大幅增加维修消耗和耐久消耗。每生效一次都会加重一级惩罚并且使产生掉落物的数量在原基础上翻倍（去除该强化只会取消惩罚，再次打上该强化会继承之前的惩罚等级）",
+  "modifier.momotinker.gainsalone.description": "击杀/挖掘掉落物数量翻倍（耐久过低时失效）。\n属性大幅下降，维修与耐久消耗激增。\n每次生效后惩罚加深一级，掉落物数量格外翻倍一次。\n移除该强化仅取消惩罚，重新增添时继承原惩罚等级。",
 
   "modifier.momotinker.compassionateeverything": "[侵蚀我心，大罪共鸣]悲悼众生",
   "modifier.momotinker.compassionateeverything.flavor": "我们悲悯世间一切生灵，皆因其诸行不易",
-  "modifier.momotinker.compassionateeverything.description": "持有时你的攻击和受到的攻击都将无视防御。持有时会将造成的伤害转换为暂时的最大生命值并使该次伤害归零。攻击时若目标最大生命值小于持有者的暂时生命则会直接击杀并消耗25%数额的暂时生命",
+  "modifier.momotinker.compassionateeverything.description": "持有时攻击与受击都将无视防御。\n造成的伤害将转化为等额临时生命值，并使该次伤害归零。\n攻击时，若目标最大生命值低于你的临时生命值，则直接将其击杀，并消耗25%临时生命值。",
 
   "modifier.momotinker.slimeresonance": "共振",
   "modifier.momotinker.slimeresonance.flavor": "史莱姆家族的偶像?",
@@ -801,7 +801,7 @@
 
   "modifier.momotinker.material_reforging": "素材再锻",
   "modifier.momotinker.material_reforging.flavor": "合理的打造才能发挥其最大的效果",
-  "modifier.momotinker.material_reforging.description": "该强化将提升大部分属性，其数值会在一定范围内随机选取，强化次数越多该范围的最小值和最大值都将越大，最高上限5级(再次打上该强化只会重新随机属性不会增加最小和最大值)",
+  "modifier.momotinker.material_reforging.description": "每次升级随机提升多项属性，强化等级越高，随机数值范围越大（最高5级）。\n超过等级上限时仅重置当前属性数值，不改变随机范围上下限。",
   "modifier.momotinker.tooltip.material_reforging1": "[素材再锻]当前已格外提供属性:",
   "modifier.momotinker.tooltip.material_reforging2": "当前可随机到的范围为:[",
 
@@ -819,7 +819,7 @@
 
   "modifier.momotinker.ward_off_evil_a": "辟邪驱恶",
   "modifier.momotinker.ward_off_evil_a.flavor": "树木吸收了雷电之力，可以破除一切污秽之物",
-  "modifier.momotinker.ward_off_evil_a.description": "已穿戴护甲中，每级使受到来自怪物的伤害和魔法伤害减少20%(最高95%)。若该生物为亡灵生物则使该减伤达到最大，并免疫其对自身造成的小于自身最大生命25%的伤害",
+  "modifier.momotinker.ward_off_evil_a.description": "每级减少来自怪物的物理与魔法伤害20%（最高95%）。\n若该生物为亡灵生物，则直接获得最大减伤效果，并免疫其造成的低于自身最大生命值25%的伤害。",
 
   "modifier.momotinker.thunder_decree": "天雷敕令",
   "modifier.momotinker.thunder_decree.flavor": "传说当年天公乘坐火轿车巡视人间，在乘下途中不慎撞在其上",
@@ -827,15 +827,15 @@
 
   "modifier.momotinker.thunder_decree_a": "天雷敕令",
   "modifier.momotinker.thunder_decree_a.flavor": "传说当年天公乘坐火轿车巡视人间，在乘下途中不慎撞在其上",
-  "modifier.momotinker.thunder_decree_a.description": "受到攻击时对攻击者造成相当于伤害值40%的魔法伤害。若受到的伤害为魔法伤害则反击伤害将无视魔法防御且反击量翻倍，若目标为亡灵生物则使反击伤害格外增加相当于自身和目标最大生命之和的20%，两种加成相互独立可同时触发",
+  "modifier.momotinker.thunder_decree_a.description": "受到攻击时，对攻击者造成相当于所受伤害40%的魔法伤害。\n若所受伤害为魔法伤害，则反击伤害无视魔法抗性，且反击量翻倍。\n若攻击者为亡灵生物，则额外附加相当于双方最大生命值之和20%的伤害。\n两种加成独立，可同时生效。",
 
   "modifier.momotinker.years_in_weiqi": "烂柯缘",
   "modifier.momotinker.years_in_weiqi.flavor": "山中方一日，世上已千年",
-  "modifier.momotinker.years_in_weiqi.description": "手持该工具会逐渐加速周围4格内的方块活动，361秒后加速到达最大值，加速时会加快自身饱食度消耗，饱食度为0时该加速失效\n(慎重与其他加速模组如时间之瓶等同时使用)",
+  "modifier.momotinker.years_in_weiqi.description": "手持时，逐渐加速周围4格内方块活动，361秒后达最大速度，加速时加剧自身饱食度消耗，饱食度为0时效果失效。\n（注：谨慎与其他加速类模组同时使用。）",
 
   "modifier.momotinker.memories_of_mountains": "忆江山",
   "modifier.momotinker.memories_of_mountains.flavor": "随山将万转，趣途无百里",
-  "modifier.momotinker.memories_of_mountains.description": "击中生物后尝试将目标移动到[江山忆]维度，该维度不会自然生成怪物且该生物在该维度时每隔一段时间将会受到一次伤害，该生物死亡后会将战利品掉落在玩家位置(伤害数值以触发移动效果时造成的伤害为基础)\n(该特性涉及到区块强制加载，作用于过多生物且生物未死亡时可能会造成卡顿)",
+  "modifier.momotinker.memories_of_mountains.description": "击中时，尝试将目标生物强制传送至「江山忆」维度。\n该维度无自然生成的怪物，被传送生物将间歇受到基于传送时触发伤害的持续伤害.\n目标死亡后，其战利品将掉落于玩家位置。\n（注：涉及区块强制加载，传送目标过多或未死亡时可能导致性能下降。）",
 
   "modifier.momotinker.key_to_ruin": "破败之钥",
   "modifier.momotinker.key_to_ruin.flavor": "跨越山川终已至，定数无可避",
