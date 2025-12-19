@@ -45,6 +45,7 @@ import java.util.List;
 import java.util.UUID;
 import java.util.function.BiConsumer;
 
+import static com.momosensei.momotinker.Momotinker.getResource;
 import static com.momosensei.momotinker.tool.divine_punishment_spear.degenerate;
 import static com.momosensei.momotinker.tool.divine_punishment_spear.sanctification;
 import static com.momosensei.momotinker.tool.entropy_burning_cube.*;
@@ -64,6 +65,8 @@ public class SuperancientMetalsRealA extends momomodifier {
     public static final ResourceLocation liverizationpointa = Momotinker.getResource("liverizationpointa");
     public static final ResourceLocation liverizationpointb = Momotinker.getResource("liverizationpointb");
     public static final ResourceLocation tpprotection = Momotinker.getResource("tpprotection");
+
+    private static final String be_conquered = getResource("be_conquered").toString();
 
     @Override
     public boolean isNoLevels() {
@@ -174,8 +177,8 @@ public class SuperancientMetalsRealA extends momomodifier {
         int crystallized_limit = MomotinkerConfig.crystallized_limit.get();
         if (attacker instanceof Player player) {
             ModDataNBT a = tool.getPersistentData();
-            if (a.getInt(sanctification) == sanctification_limit && entity!=null && !entity.getTags().contains("beconquered")) {
-                entity.addTag("beconquered");
+            if (a.getInt(sanctification) == sanctification_limit && entity!=null && !isBeConquered(entity)) {
+                setBeConquered(entity);
             }
             if (a.getInt(crystallized)==crystallized_limit&&a.getInt(crystallizedpoints)>0) {
                 float b= (float) Math.pow(1.15,a.getInt(crystallizedpoints));
@@ -220,7 +223,7 @@ public class SuperancientMetalsRealA extends momomodifier {
                 c.putInt(tpprotection,0);
             }
         }
-        if (a instanceof LivingEntity && a.getTags().contains("beconquered")) {
+        if (a instanceof LivingEntity living && isBeConquered(living)) {
             event.setAmount(event.getAmount() * 1.8F);
         }
         if (a instanceof Player player) {
@@ -233,6 +236,14 @@ public class SuperancientMetalsRealA extends momomodifier {
                 }
             }
         }
+    }
+    private static boolean isBeConquered(LivingEntity living){
+        var data=living.getPersistentData();
+        return data.getBoolean(be_conquered);
+    }
+    private static void setBeConquered(LivingEntity living){
+        var data =living.getPersistentData();
+        data.putBoolean(be_conquered, true);
     }
     @Override
     public LegacyDamageSource modifyDamageSource(IToolStackView tool, ModifierEntry entry, LivingEntity attacker, InteractionHand hand, Entity target, EquipmentSlot sourceSlot, boolean isFullyCharged, boolean isExtraAttack, boolean isCritical, LegacyDamageSource source) {
