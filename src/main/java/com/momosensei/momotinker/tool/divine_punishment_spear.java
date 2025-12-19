@@ -68,12 +68,13 @@ import static slimeknights.tconstruct.library.modifiers.hook.interaction.General
 public class divine_punishment_spear extends ModifiableItem {
     public divine_punishment_spear(Properties properties, ToolDefinition toolDefinition) {
         super(properties, toolDefinition);
-        MinecraftForge.EVENT_BUS.addListener(this::livinghurtevent);
-        MinecraftForge.EVENT_BUS.addListener(EventPriority.LOWEST, this::onEntityDeath);
+        MinecraftForge.EVENT_BUS.addListener(this::onLivingHurt);
+        MinecraftForge.EVENT_BUS.addListener(EventPriority.LOWEST,this::onEntityDeath);
     }
 
     public static final ResourceLocation sanctification = Momotinker.getResource("sanctification");
     public static final ResourceLocation degenerate = Momotinker.getResource("degenerate");
+    private static final ThreadLocal<Boolean> sanctificationAttack = new ThreadLocal<>();
 
     private void onEntityDeath(LivingDeathEvent event) {
         int sanctification_limit = MomotinkerConfig.sanctification_limit.get();
@@ -97,25 +98,34 @@ public class divine_punishment_spear extends ModifiableItem {
             ToolStack.from(stack).setDamage(0);
         }
     }
-    private void livinghurtevent(LivingHurtEvent event) {
+    private void onLivingHurt(LivingHurtEvent event) {
         Entity a = event.getEntity();
         Entity b = event.getSource().getEntity();
         int sanctification_limit = MomotinkerConfig.sanctification_limit.get();
         int degenerate_limit = MomotinkerConfig.degenerate_limit.get();
-        if (b instanceof Player player&&a!=null&&player.getMainHandItem().is(MomotinkerItem.divine_punishment_spear.get())){
-            ToolStack tool=ToolStack.from(player.getItemBySlot(EquipmentSlot.MAINHAND));
+        if (b instanceof Player player&&a instanceof LivingEntity living&&player.getMainHandItem().getItem() instanceof divine_punishment_spear){
+            ToolStack tool=ToolStack.from(player.getMainHandItem());
             ModDataNBT c = tool.getPersistentData();
             if (!checkOffHand(player)) {
                 event.setAmount(0.5F * event.getAmount());
             }
-            if (ModifierUtil.getModifierLevel(player.getItemBySlot(EquipmentSlot.MAINHAND), MomotinkerModifiers.frombrilliance.getId())>0) {
+            if (tool.getModifierLevel(MomotinkerModifiers.frombrilliance.getId())>0) {
                 if (c.getInt(sanctification) == sanctification_limit) {
-                    a.hurt(DamageSource.MAGIC.bypassMagic(), event.getAmount() * 0.25F);
+                    if (sanctificationAttack.get() != null && sanctificationAttack.get()) {
+                        return;
+                    }
+                    sanctificationAttack.set(true);
+                    try {
+                        living.invulnerableTime = 0;
+                        living.hurt(DamageSource.playerAttack(player).setMagic().bypassMagic(), event.getAmount() * 0.25F);
+                    } finally {
+                        sanctificationAttack.set(false);
+                    }
                 }
                 if (c.getInt(degenerate) == degenerate_limit) {
-                    if (player.getItemBySlot(EquipmentSlot.MAINHAND).getDamageValue() == 0) {
+                    if (tool.getDamage() == 0) {
                         player.heal(event.getAmount() * 0.5F);
-                    }
+                    }else
                     if (tool.getDamage() > 0 && tool.getDamage() != 0) {
                         tool.setDamage((int) (tool.getDamage() - (event.getAmount() * 0.01F)));
                     }

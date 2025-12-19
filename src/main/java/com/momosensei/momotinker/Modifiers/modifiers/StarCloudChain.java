@@ -17,8 +17,13 @@ public class StarCloudChain extends momomodifier {
     public StarCloudChain() {
     }
     private static final String star_chain = getResource("star_chain").toString();
+    private static final ThreadLocal<Boolean> processingChain = new ThreadLocal<>();
+
     @Override
     public void OnLivingHurt(LivingHurtEvent event) {
+        if (processingChain.get() != null && processingChain.get()) {
+            return;
+        }
         Entity a = event.getEntity();
         Entity b = event.getSource().getEntity();
         if (b instanceof Player player&&a instanceof LivingEntity living){
@@ -27,11 +32,17 @@ public class StarCloudChain extends momomodifier {
                 if (!isStarChain(living)) {
                     setStarChain(living);
                 }
-                List<LivingEntity> list = player.level.getEntitiesOfClass(LivingEntity.class, player.getBoundingBox().inflate(5 + 3 * c));
-                for (LivingEntity entity : list) {
-                    if (entity != null&&entity!=player&&isStarChain(entity)) {
-                        entity.hurt(DamageSource.playerAttack(player),event.getAmount()*(0.2F+0.1F*c));
+                processingChain.set(true);
+                try {
+                    List<LivingEntity> list = player.level.getEntitiesOfClass(LivingEntity.class, player.getBoundingBox().inflate(5 + 3 * c));
+                    for (LivingEntity entity : list) {
+                        if (entity != null && entity != player && isStarChain(entity)) {
+                            entity.invulnerableTime=0;
+                            entity.hurt(DamageSource.playerAttack(player),event.getAmount()*(0.2F+0.1F*c));
+                        }
                     }
+                } finally {
+                    processingChain.set(false);
                 }
             }
         }
@@ -41,11 +52,17 @@ public class StarCloudChain extends momomodifier {
                 if (!isStarChain(living)) {
                     setStarChain(living);
                 }
-                List<LivingEntity> list = player.level.getEntitiesOfClass(LivingEntity.class, player.getBoundingBox().inflate(5 + 3 * c));
-                for (LivingEntity entity : list) {
-                    if (entity != null&&entity!=player&&isStarChain(entity)) {
-                        entity.hurt(DamageSource.playerAttack(player),event.getAmount()*(0.2F+0.1F*c));
+                processingChain.set(true);
+                try {
+                    List<LivingEntity> list = player.level.getEntitiesOfClass(LivingEntity.class, player.getBoundingBox().inflate(5 + 3 * c));
+                    for (LivingEntity entity : list) {
+                        if (entity != null && entity != player && isStarChain(entity)) {
+                            entity.invulnerableTime=0;
+                            entity.hurt(DamageSource.playerAttack(player),event.getAmount()*(0.2F+0.1F*c));
+                        }
                     }
+                } finally {
+                    processingChain.set(false);
                 }
             }
         }
