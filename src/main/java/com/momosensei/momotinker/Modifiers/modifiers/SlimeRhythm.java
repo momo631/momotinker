@@ -14,10 +14,10 @@ import net.minecraft.world.entity.projectile.Projectile;
 import net.minecraft.world.item.ItemStack;
 import net.minecraft.world.level.Level;
 import net.minecraft.world.phys.EntityHitResult;
-import org.jetbrains.annotations.Nullable;
 import slimeknights.tconstruct.library.modifiers.Modifier;
 import slimeknights.tconstruct.library.modifiers.ModifierEntry;
 import slimeknights.tconstruct.library.modifiers.ModifierHooks;
+import slimeknights.tconstruct.library.modifiers.modules.capacity.OverslimeModule;
 import slimeknights.tconstruct.library.tools.context.EquipmentContext;
 import slimeknights.tconstruct.library.tools.context.ToolAttackContext;
 import slimeknights.tconstruct.library.tools.nbt.IToolStackView;
@@ -25,9 +25,9 @@ import slimeknights.tconstruct.library.tools.nbt.ModDataNBT;
 import slimeknights.tconstruct.library.tools.nbt.ModifierNBT;
 import slimeknights.tconstruct.library.tools.nbt.ToolStack;
 import slimeknights.tconstruct.tools.TinkerModifiers;
-import slimeknights.tconstruct.tools.modifiers.slotless.OverslimeModifier;
 
 import javax.annotation.Nonnull;
+import javax.annotation.Nullable;
 
 import static slimeknights.tconstruct.common.TinkerTags.Modifiers.OVERSLIME_FRIEND;
 
@@ -66,14 +66,14 @@ public class SlimeRhythm extends momomodifier {
     @Override
     public float getMeleeDamage(@Nonnull IToolStackView tool, ModifierEntry modifier, @Nonnull ToolAttackContext context, float baseDamage, float damage) {
         ModDataNBT a = tool.getPersistentData();
-        OverslimeModifier overslime = TinkerModifiers.overslime.get();
+        OverslimeModule overslime = OverslimeModule.INSTANCE;
         ModifierEntry entry = tool.getModifier(TinkerModifiers.overslime.getId());
         if (a.getInt(rhythmobbsa)!=0){
             int b=Math.abs(a.getInt(rhythmobbsa)-a.getInt(rhythmobbsb));
             if (b<=6) {
                 a.putInt(rhythmpoints,a.getInt(rhythmpoints)+1);
-                if (entry.getLevel() > 0 && overslime.getShield(tool) < overslime.getShieldCapacity(tool, entry)) {
-                    overslime.addOverslime(tool, entry, (int) (1+Math.floor(modifier.getLevel()*0.5f+0.25f*a.getInt(rhythmpoints))));
+                if (entry.getLevel() > 0 && overslime.getAmount(tool) < overslime.getCapacity(tool, entry)) {
+                    overslime.addAmount(tool, entry, (int) (1+Math.floor(modifier.getLevel()*0.5f+0.25f*a.getInt(rhythmpoints))));
                 }
             }else {
                 a.putInt(rhythmpoints,0);
@@ -125,7 +125,7 @@ public class SlimeRhythm extends momomodifier {
         return knockback;
     }
     @Override
-    public boolean onProjectileHitEntity(ModifierNBT modifiers, ModDataNBT persistentData, ModifierEntry modifier, Projectile projectile, EntityHitResult hit, @javax.annotation.Nullable LivingEntity attacker, @javax.annotation.Nullable LivingEntity target) {
+    public boolean onProjectileHitEntity(ModifierNBT modifiers, ModDataNBT persistentData, ModifierEntry modifier, Projectile projectile, EntityHitResult hit, @Nullable LivingEntity attacker, @Nullable LivingEntity target, boolean notBlocked) {
         if (attacker !=null && projectile instanceof AbstractArrow arrow&&target != null){
             ToolStack tool = ToolStack.from( attacker.getMainHandItem());
             ModDataNBT a = tool.getPersistentData();
@@ -136,7 +136,7 @@ public class SlimeRhythm extends momomodifier {
                 boolean ret = false;
                 for (ModifierEntry entry1 : tool.getModifierList()) {
                     if (entry1.getModifier() != modifier.getModifier()&&entry1.matches(OVERSLIME_FRIEND)) {
-                        ret |=entry1.getHook(ModifierHooks.PROJECTILE_HIT).onProjectileHitEntity(modifiers, persistentData, modifier, projectile, hit, attacker, target);
+                        ret |=entry1.getHook(ModifierHooks.PROJECTILE_HIT).onProjectileHitEntity(modifiers, persistentData, modifier, projectile, hit, attacker, target,true);
                     }
                 }
                 return ret;
@@ -144,18 +144,20 @@ public class SlimeRhythm extends momomodifier {
         }
         return false;
     }
+
+
     @Override
-    public void onProjectileLaunch(IToolStackView tool, ModifierEntry modifier, LivingEntity shooter, Projectile projectile, @Nullable AbstractArrow arrow,  ModDataNBT persistentData, boolean primary) {
-        if ( projectile instanceof AbstractArrow) {
+    public void onProjectileLaunch(IToolStackView tool, ModifierEntry modifier, LivingEntity shooter, ItemStack ammo, Projectile projectile, @Nullable AbstractArrow arrow, ModDataNBT persistentData, boolean primary) {
+        if (projectile instanceof AbstractArrow) {
             ModDataNBT a = tool.getPersistentData();
-            OverslimeModifier overslime = TinkerModifiers.overslime.get();
+            OverslimeModule overslime = OverslimeModule.INSTANCE;
             ModifierEntry entry = tool.getModifier(TinkerModifiers.overslime.getId());
             if (a.getInt(rhythmobbsa) != 0) {
                 int b = Math.abs(a.getInt(rhythmobbsa) - a.getInt(rhythmobbsb));
                 if (b <= 6) {
                     a.putInt(rhythmpoints, a.getInt(rhythmpoints) + 1);
-                    if (entry.getLevel() > 0 && overslime.getShield(tool) < overslime.getShieldCapacity(tool, entry)) {
-                        overslime.addOverslime(tool, entry, (int) (1 + Math.floor(modifier.getLevel() * 0.5f + 0.25f * a.getInt(rhythmpoints))));
+                    if (entry.getLevel() > 0 && overslime.getAmount(tool) < overslime.getCapacity(tool, entry)) {
+                        overslime.addAmount(tool, entry, (int) (1 + Math.floor(modifier.getLevel() * 0.5f + 0.25f * a.getInt(rhythmpoints))));
                     }
                 } else {
                     a.putInt(rhythmpoints, 0);
@@ -166,7 +168,7 @@ public class SlimeRhythm extends momomodifier {
             if (a.getInt(rhythmpoints)>=24){
                 for (ModifierEntry entry1 : tool.getModifierList()) {
                     if (entry1.getModifier() != modifier.getModifier()&&entry1.matches(OVERSLIME_FRIEND)) {
-                        entry1.getHook(ModifierHooks.PROJECTILE_LAUNCH).onProjectileLaunch(tool, modifier, shooter, projectile, arrow, persistentData, primary);
+                        entry1.getHook(ModifierHooks.PROJECTILE_LAUNCH).onProjectileLaunch(tool, modifier, shooter,ammo, projectile, arrow, persistentData, primary);
                     }
                 }
             }

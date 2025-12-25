@@ -17,12 +17,12 @@ import net.minecraft.world.level.Level;
 import net.minecraftforge.event.entity.living.LivingHurtEvent;
 import slimeknights.tconstruct.library.modifiers.Modifier;
 import slimeknights.tconstruct.library.modifiers.ModifierEntry;
+import slimeknights.tconstruct.library.modifiers.modules.capacity.OverslimeModule;
 import slimeknights.tconstruct.library.tools.context.EquipmentContext;
 import slimeknights.tconstruct.library.tools.nbt.IToolStackView;
 import slimeknights.tconstruct.library.tools.nbt.ModDataNBT;
 import slimeknights.tconstruct.library.tools.nbt.ToolStack;
 import slimeknights.tconstruct.tools.TinkerModifiers;
-import slimeknights.tconstruct.tools.modifiers.slotless.OverslimeModifier;
 
 import java.util.Random;
 
@@ -63,7 +63,7 @@ public class SlimeRhythmA extends momomodifier {
     public void onAttacked(IToolStackView tool, ModifierEntry modifier, EquipmentContext context, EquipmentSlot slotType, DamageSource source, float amount, boolean isDirectDamage) {
         if (source.getEntity() != null) {
             ModDataNBT a = tool.getPersistentData();
-            OverslimeModifier overslime = TinkerModifiers.overslime.get();
+            OverslimeModule overslime = OverslimeModule.INSTANCE;
             ModifierEntry entry = tool.getModifier(TinkerModifiers.overslime.getId());
 
             if (a.getInt(rhythmaobbsa)!=0){
@@ -76,8 +76,8 @@ public class SlimeRhythmA extends momomodifier {
                     }
                     if (c==1) {
                         a.putInt(rhythmapoints, a.getInt(rhythmapoints) + 1);
-                        if (entry.getLevel() > 0 && overslime.getShield(tool) < overslime.getShieldCapacity(tool, entry)) {
-                            overslime.addOverslime(tool, entry, (int) (1 + Math.floor(getArmorModifierlevel(context.getEntity(), MomotinkerModifiers.slimerhythma.getId()) * 0.25f + 0.25f * a.getInt(rhythmapoints))));
+                        if (entry.getLevel() > 0 && overslime.getAmount(tool) < overslime.getCapacity(tool, entry)) {
+                            overslime.addAmount(tool, entry, (int) (1 + Math.floor(getArmorModifierlevel(context.getEntity(), MomotinkerModifiers.slimerhythma.getId()) * 0.25f + 0.25f * a.getInt(rhythmapoints))));
                         }
                     }
                 }else {
@@ -105,7 +105,7 @@ public class SlimeRhythmA extends momomodifier {
     @Override
     public void OnLivingHurt(LivingHurtEvent event) {
         LivingEntity a = event.getEntity();
-        OverslimeModifier overslime = TinkerModifiers.overslime.get();
+        OverslimeModule overslime = OverslimeModule.INSTANCE;
         if (a instanceof Player player) {
             ToolStack tool3 = ToolStack.from(player.getItemBySlot(EquipmentSlot.HEAD));
             ToolStack tool4 = ToolStack.from(player.getItemBySlot(EquipmentSlot.CHEST));
@@ -116,33 +116,33 @@ public class SlimeRhythmA extends momomodifier {
             if (d > 0&&getRhythmPointsTure(tool3,tool4,tool5,tool6)) {
                 int b1 = (int) Math.floor(event.getAmount());
                 int b3;int b4;int b5;int b6;
-                if (b1>0&&getOverSlime(tool3).getLevel() > 0&&overslime.getShield(tool3) >0) {
-                    b3 = overslime.getShield(tool3);
+                if (b1>0&&getOverSlime(tool3).getLevel() > 0&&overslime.getAmount(tool3) >0) {
+                    b3 = overslime.getAmount(tool3);
                     b1-=b3;
                     if (b1>0) {
-                        overslime.addOverslime(tool3, getOverSlime(tool3), -b3);
-                    }else overslime.addOverslime(tool3, getOverSlime(tool3), -b1);
+                        overslime.addAmount(tool3, getOverSlime(tool3), -b3);
+                    }else overslime.addAmount(tool3, getOverSlime(tool3), -b1);
                 }
-                if (b1>0&&getOverSlime(tool4).getLevel() > 0&&overslime.getShield(tool4) >0) {
-                    b4 = overslime.getShield(tool4);
+                if (b1>0&&getOverSlime(tool4).getLevel() > 0&&overslime.getAmount(tool4) >0) {
+                    b4 = overslime.getAmount(tool4);
                     b1-=b4;
                     if (b1>0) {
-                        overslime.addOverslime(tool4, getOverSlime(tool4), -b4);
-                    }else overslime.addOverslime(tool4, getOverSlime(tool4), -b1);
+                        overslime.addAmount(tool4, getOverSlime(tool4), -b4);
+                    }else overslime.addAmount(tool4, getOverSlime(tool4), -b1);
                 }
-                if (b1>0&&getOverSlime(tool5).getLevel() > 0&&overslime.getShield(tool5) >0) {
-                    b5 = overslime.getShield(tool5);
+                if (b1>0&&getOverSlime(tool5).getLevel() > 0&&overslime.getAmount(tool5) >0) {
+                    b5 = overslime.getAmount(tool5);
                     b1-=b5;
                     if (b1>0) {
-                        overslime.addOverslime(tool5, getOverSlime(tool5), -b5);
-                    }else overslime.addOverslime(tool5, getOverSlime(tool5), -b1);
+                        overslime.addAmount(tool5, getOverSlime(tool5), -b5);
+                    }else overslime.addAmount(tool5, getOverSlime(tool5), -b1);
                 }
-                if (b1>0&&getOverSlime(tool6).getLevel() > 0&&overslime.getShield(tool6) >0) {
-                    b6 = overslime.getShield(tool6);
+                if (b1>0&&getOverSlime(tool6).getLevel() > 0&&overslime.getAmount(tool6) >0) {
+                    b6 = overslime.getAmount(tool6);
                     b1-=b6;
                     if (b1>0) {
-                        overslime.addOverslime(tool6, getOverSlime(tool6), -b6);
-                    }else overslime.addOverslime(tool6, getOverSlime(tool6), -b1);
+                        overslime.addAmount(tool6, getOverSlime(tool6), -b6);
+                    }else overslime.addAmount(tool6, getOverSlime(tool6), -b1);
                 }
                 event.setAmount(Math.max(b1, 0));
             }

@@ -88,7 +88,7 @@ public class ShortTermInvestments extends momomodifier {
         return damage;
     }
     @Override
-    public boolean onProjectileHitEntity(ModifierNBT modifiers, ModDataNBT persistentData, ModifierEntry modifier, Projectile projectile, EntityHitResult hit, @javax.annotation.Nullable LivingEntity attacker, @javax.annotation.Nullable LivingEntity target) {
+    public boolean onProjectileHitEntity(ModifierNBT modifiers, ModDataNBT persistentData, ModifierEntry modifier, Projectile projectile, EntityHitResult hit, @Nullable LivingEntity attacker, @Nullable LivingEntity target, boolean notBlocked) {
         int d = RANDOM.nextInt(100);
         if (attacker instanceof Player player&& projectile instanceof AbstractArrow arrow) {
             int c=getMainhandModifierlevel(player,MomotinkerModifiers.shortterminvestments.getId());

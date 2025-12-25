@@ -55,6 +55,7 @@ import slimeknights.tconstruct.library.modifiers.hook.mining.BlockBreakModifierH
 import slimeknights.tconstruct.library.modifiers.hook.ranged.BowAmmoModifierHook;
 import slimeknights.tconstruct.library.modifiers.hook.ranged.ProjectileHitModifierHook;
 import slimeknights.tconstruct.library.modifiers.hook.ranged.ProjectileLaunchModifierHook;
+import slimeknights.tconstruct.library.modifiers.hook.ranged.ProjectileShootModifierHook;
 import slimeknights.tconstruct.library.module.ModuleHookMap;
 import slimeknights.tconstruct.library.tools.context.EquipmentChangeContext;
 import slimeknights.tconstruct.library.tools.context.EquipmentContext;
@@ -75,7 +76,7 @@ public abstract class momomodifier extends Modifier implements MeleeDamageModifi
         EquipmentChangeModifierHook, InventoryTickModifierHook, OnAttackedModifierHook, TooltipModifierHook, AttributesModifierHook,
         ModifyDamageModifierHook, ModifierRemovalHook, BlockBreakModifierHook, EntityInteractionModifierHook, ToolStatsModifierHook,
         ToolDamageModifierHook,ModifyDamageSourceModifierHook,  VolatileDataModifierHook, RequirementsModifierHook, ValidateModifierHook,
-        RepairFactorModifierHook, ModifierTraitHook, ProtectionModifierHook {
+        RepairFactorModifierHook, ModifierTraitHook, ProtectionModifierHook, ProjectileShootModifierHook {
 
     public momomodifier() {
         MinecraftForge.EVENT_BUS.addListener(this::OnLivingHurt);
@@ -93,7 +94,7 @@ public abstract class momomodifier extends Modifier implements MeleeDamageModifi
         builder.addHook(this, ModifierHooks.ARMOR_INTERACT, ModifierHooks.ATTRIBUTES, ModifierHooks.PROCESS_LOOT);
         builder.addHook(this, ModifierHooks.TOOL_DAMAGE, ModifierHooks.VOLATILE_DATA,EtSTLibHooks.MODIFY_DAMAGE_SOURCE);
         builder.addHook(this, ModifierHooks.VALIDATE, ModifierHooks.REPAIR_FACTOR,ModifierHooks.REQUIREMENTS);
-        builder.addHook(this, ModifierHooks.PROTECTION, ModifierHooks.MODIFIER_TRAITS);
+        builder.addHook(this, ModifierHooks.PROTECTION, ModifierHooks.MODIFIER_TRAITS,ModifierHooks.PROJECTILE_SHOT);
     }
 
     @Override
@@ -147,15 +148,20 @@ public abstract class momomodifier extends Modifier implements MeleeDamageModifi
         return this.modifierFindAmmo(tool, modifiers, livingEntity, itemStack, predicate);
     }
     @Override
-    public void onProjectileLaunch(IToolStackView tool, ModifierEntry modifiers, LivingEntity livingEntity, Projectile projectile, @Nullable AbstractArrow abstractArrow, ModDataNBT ModDataNBT, boolean primary) {
-        this.modifierOnProjectileLaunch(tool, modifiers, livingEntity, projectile, abstractArrow, ModDataNBT, primary);
+    public void onProjectileLaunch(IToolStackView tool, ModifierEntry modifier, LivingEntity shooter, Projectile projectile, @javax.annotation.Nullable AbstractArrow arrow, ModDataNBT persistentData, boolean primary) {
+        this.modifierOnProjectileLaunch(tool, modifier, shooter, projectile, arrow, persistentData, primary);
     }
+
     @Override
-    public boolean onProjectileHitEntity(ModifierNBT modifiers, ModDataNBT persistentData, ModifierEntry modifier, Projectile projectile, EntityHitResult hit, @javax.annotation.Nullable LivingEntity attacker, @javax.annotation.Nullable LivingEntity target) {
+    public boolean onProjectileHitEntity(ModifierNBT modifiers, ModDataNBT persistentData, ModifierEntry modifier, Projectile projectile, EntityHitResult hit, @Nullable LivingEntity attacker, @Nullable LivingEntity target, boolean notBlocked) {
         return this.modifierOnProjectileHitEntity(modifiers, persistentData, modifier, projectile, hit, attacker, target);
     }
     @Override
     public void onProjectileHitBlock(ModifierNBT modifiers, ModDataNBT persistentData, ModifierEntry modifier, Projectile projectile, BlockHitResult hit, @javax.annotation.Nullable LivingEntity attacker) {
+    }
+    @Override
+    public void onProjectileShoot(IToolStackView tool, ModifierEntry modifier, @javax.annotation.Nullable LivingEntity shooter, ItemStack ammo, Projectile projectile, @javax.annotation.Nullable AbstractArrow arrow, ModDataNBT persistentData, boolean primary) {
+
     }
     public ItemStack modifierFindAmmo(IToolStackView tool, ModifierEntry modifiers, LivingEntity livingEntity, ItemStack itemStack, Predicate<ItemStack> predicate) {
         return itemStack;

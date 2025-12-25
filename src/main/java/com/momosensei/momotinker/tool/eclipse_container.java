@@ -40,7 +40,6 @@ import slimeknights.tconstruct.library.tools.nbt.ToolStack;
 import slimeknights.tconstruct.library.tools.stat.ToolStats;
 import slimeknights.tconstruct.library.utils.Util;
 import slimeknights.tconstruct.tools.modifiers.ability.interaction.BlockingModifier;
-import slimeknights.tconstruct.tools.modifiers.upgrades.ranged.ScopeModifier;
 
 import java.util.Iterator;
 import java.util.List;
@@ -124,7 +123,7 @@ public class eclipse_container extends ModifiableItem {
     }
     @Override
     public void releaseUsing(ItemStack stack, Level level, LivingEntity livingEntity, int duration) {
-        ScopeModifier.stopScoping(livingEntity);
+        AttackUtil.stopScoping(livingEntity);
         ToolStack tool = ToolStack.from(stack);
         if (tool.isBroken()){
             tool.getPersistentData().remove(KEY_DRAWTIME);

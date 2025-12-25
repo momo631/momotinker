@@ -13,6 +13,7 @@ import com.momosensei.momotinker.network.packet.HudCharge.ToolsTimeCharge;
 import com.momosensei.momotinker.register.MomotinkerConfig;
 import com.momosensei.momotinker.register.MomotinkerModifiers;
 import com.momosensei.momotinker.register.MomotinkerTools;
+import com.momosensei.momotinker.util.AttackUtil;
 import net.minecraft.ChatFormatting;
 import net.minecraft.core.BlockPos;
 import net.minecraft.network.chat.Component;
@@ -57,7 +58,6 @@ import slimeknights.tconstruct.library.tools.nbt.ModDataNBT;
 import slimeknights.tconstruct.library.tools.nbt.ToolStack;
 import slimeknights.tconstruct.library.tools.stat.ToolStats;
 import slimeknights.tconstruct.tools.modifiers.ability.interaction.BlockingModifier;
-import slimeknights.tconstruct.tools.modifiers.upgrades.ranged.ScopeModifier;
 
 import java.util.Iterator;
 import java.util.List;
@@ -183,7 +183,7 @@ public class divine_punishment_spear extends ModifiableItem {
     }
     @Override
     public void releaseUsing(ItemStack stack, Level level, LivingEntity livingEntity, int duration) {
-        ScopeModifier.stopScoping(livingEntity);
+        AttackUtil.stopScoping(livingEntity);
         ToolStack tool = ToolStack.from(stack);
         int i = this.getUseDuration(stack) - duration;
         if (tool.isBroken()) {
