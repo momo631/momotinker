@@ -49,14 +49,14 @@ public class ProjectionOfSuffering extends momomodifier {
     public void OnLivingHurt(LivingHurtEvent event) {
         Entity a = event.getEntity();
         Entity b = event.getSource().getEntity();
-        if (b instanceof Player player && a != null && player.getMainHandItem().is(MomotinkerTools.coronal_key.get())) {
+        if (b instanceof Player player && a != null && getMainHandTool(player,MomotinkerTools.coronal_key.get())) {
             ModDataNBT c = ToolStack.from(player.getItemBySlot(EquipmentSlot.MAINHAND)).getPersistentData();
             c.putInt(disasterpremonition, 8);
             if (c.getInt(disaster)>0){
                 event.setAmount(event.getAmount() * (1f + c.getInt(disaster) * 0.001f));
             }
         }
-        if (a instanceof Player player && b != null && player.getMainHandItem().is(MomotinkerTools.coronal_key.get())) {
+        if (a instanceof Player player && b != null && getMainHandTool(player,MomotinkerTools.coronal_key.get())) {
             ModDataNBT c = ToolStack.from(player.getItemBySlot(EquipmentSlot.MAINHAND)).getPersistentData();
             c.putInt(disasterpremonition, 8);
         }

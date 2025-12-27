@@ -35,7 +35,7 @@ public class UltimateDarkness extends momomodifier {
     public void OnLivingHurt(LivingHurtEvent event) {
         Entity a = event.getEntity();
         Entity b = event.getSource().getEntity();
-        if (b instanceof Player player && a != null && player.getMainHandItem().is(MomotinkerTools.eclipse_container.get())) {
+        if (b instanceof Player player && a != null && getMainHandTool(player,MomotinkerTools.eclipse_container.get())) {
             ModDataNBT c = ToolStack.from(player.getItemBySlot(EquipmentSlot.MAINHAND)).getPersistentData();
             if (c.getInt(disaster)==0){
                 event.setAmount(event.getAmount()*0.1f);

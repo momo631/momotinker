@@ -29,14 +29,16 @@ public class OverSadSin extends momomodifier {
     public void onInventoryTick(IToolStackView iToolStackView, ModifierEntry modifierEntry, Level level, LivingEntity entity, int index, boolean b, boolean b1, ItemStack itemStack) {
         if (entity instanceof Player player) {
             int a = getMainhandModifierlevel(player, MomotinkerModifiers.sacrificetospirit.getId());
-            ToolStack tool=ToolStack.from(player.getMainHandItem());
-            ModDataNBT data=tool.getPersistentData();
-            if (a>0&&player.tickCount%40==0){
-                data.putFloat(oversadsinpoints,data.getFloat(oversadsinpoints)+1f+a*0.25f);
-                player.hurt(player.level().damageSources().magic(),data.getFloat(oversadsinpoints)*data.getFloat(oversadsinpoints)*0.5f);
-            }
-            if (a==0&&iToolStackView.getPersistentData().getFloat(oversadsinpoints)!=0){
-                iToolStackView.getPersistentData().putFloat(oversadsinpoints,0);
+            if (isToolStack(player.getMainHandItem())) {
+                ToolStack tool = ToolStack.from(player.getMainHandItem());
+                ModDataNBT data = tool.getPersistentData();
+                if (a > 0 && player.tickCount % 40 == 0) {
+                    data.putFloat(oversadsinpoints, data.getFloat(oversadsinpoints) + 1f + a * 0.25f);
+                    player.hurt(player.level().damageSources().magic(), data.getFloat(oversadsinpoints) * data.getFloat(oversadsinpoints) * 0.5f);
+                }
+                if (a == 0 && iToolStackView.getPersistentData().getFloat(oversadsinpoints) != 0) {
+                    iToolStackView.getPersistentData().putFloat(oversadsinpoints, 0);
+                }
             }
         }
     }

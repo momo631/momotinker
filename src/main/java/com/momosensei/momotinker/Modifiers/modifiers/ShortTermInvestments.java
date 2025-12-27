@@ -90,7 +90,7 @@ public class ShortTermInvestments extends momomodifier {
     @Override
     public boolean onProjectileHitEntity(ModifierNBT modifiers, ModDataNBT persistentData, ModifierEntry modifier, Projectile projectile, EntityHitResult hit, @Nullable LivingEntity attacker, @Nullable LivingEntity target, boolean notBlocked) {
         int d = RANDOM.nextInt(100);
-        if (attacker instanceof Player player&& projectile instanceof AbstractArrow arrow) {
+        if (attacker instanceof Player player&& projectile instanceof AbstractArrow arrow&&isToolStack(player.getMainHandItem())) {
             int c=getMainhandModifierlevel(player,MomotinkerModifiers.shortterminvestments.getId());
             ModDataNBT data= ToolStack.from(player.getMainHandItem()).getPersistentData();
             if (c>0&&!data.getString(getResourceLocation("termname")).isEmpty()){
@@ -109,7 +109,7 @@ public class ShortTermInvestments extends momomodifier {
         int increase = MomotinkerConfig.shortterminvestments_increase_ratio.get();
         int reduce = MomotinkerConfig.shortterminvestments_reduce_ratio.get();
         int d = RANDOM.nextInt(100);
-        if (a instanceof Player player){
+        if (a instanceof Player player&&isToolStack(player.getMainHandItem())){
             int c=getMainhandModifierlevel(player,MomotinkerModifiers.shortterminvestments.getId());
             ModDataNBT data= ToolStack.from(player.getMainHandItem()).getPersistentData();
             if (c>0&&!data.getString(getResourceLocation("termname")).isEmpty()){
@@ -127,7 +127,7 @@ public class ShortTermInvestments extends momomodifier {
         int increase = MomotinkerConfig.shortterminvestments_increase_ratio.get();
         int reduce = MomotinkerConfig.shortterminvestments_reduce_ratio.get();
         int d = RANDOM.nextInt(100);
-        if (a instanceof Player player){
+        if (a instanceof Player player&&isToolStack(player.getMainHandItem())){
             int c=getMainhandModifierlevel(player,MomotinkerModifiers.shortterminvestments.getId());
             ModDataNBT data= ToolStack.from(player.getMainHandItem()).getPersistentData();
             if (c>0&&!data.getString(getResourceLocation("termname")).isEmpty()){
@@ -138,7 +138,7 @@ public class ShortTermInvestments extends momomodifier {
                 }
             }
         }
-        if (b instanceof Player player&&a!=null){
+        if (b instanceof Player player&&a!=null&&isToolStack(player.getMainHandItem())){
             int c=getMainhandModifierlevel(player,MomotinkerModifiers.shortterminvestments.getId());
             ModDataNBT data= ToolStack.from(player.getMainHandItem()).getPersistentData();
             if (c>0&&!data.getString(getResourceLocation("termname")).isEmpty()){
@@ -155,7 +155,7 @@ public class ShortTermInvestments extends momomodifier {
         int increase = MomotinkerConfig.shortterminvestments_increase_ratio.get();
         int reduce = MomotinkerConfig.shortterminvestments_reduce_ratio.get();
         int d = RANDOM.nextInt(100);
-        if (player!=null&& event.getState()!=null){
+        if (player!=null&& event.getState()!=null&&isToolStack(player.getMainHandItem())){
             int a=getMainhandModifierlevel(player,MomotinkerModifiers.shortterminvestments.getId());
             ModDataNBT data= ToolStack.from(player.getMainHandItem()).getPersistentData();
             if (a>0&&!data.getString(getResourceLocation("termname")).isEmpty()){

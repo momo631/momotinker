@@ -31,7 +31,7 @@ public class ExplosiveSword extends momomodifier {
         if (player != null && entity != null){
             int a=getMainhandModifierlevel(player, MomotinkerModifiers.explosivesword.getId());
             ItemStack stack = player.getMainHandItem();
-            if (a>0&&!context.isExtraAttack()) {
+            if (a>0&&!context.isExtraAttack()&&isToolStack(player.getMainHandItem())) {
                 Explode(ToolStack.from(stack), player, entity, player.level(), damage, 0.3f+0.1f*a);
             }
         }

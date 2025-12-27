@@ -113,53 +113,55 @@ public class pocket_watch extends ModifiableItem {
         if (event.getEntity() instanceof Player player) {
             for (int j = 0; j < player.getInventory().items.size(); j++) {
                 ItemStack stack = player.getInventory().getItem(j);
-                ToolStack tool = ToolStack.from(stack);
-                ModDataNBT data =tool.getPersistentData();
-                if (stack.getItem() == MomotinkerTools.pocket_watch.get() &&data.getInt(transmit)!=transmit_limit) {
-                    double x = data.getFloat(getResource("pocketwatchx"));
-                    double y = data.getFloat(getResource("pocketwatchy"));
-                    double z = data.getFloat(getResource("pocketwatchz"));
-                    double x1 = data.getFloat(getResource("fx"));
-                    double y1 = data.getFloat(getResource("fy"));
-                    double z1 = data.getFloat(getResource("fz"));
-                    if (data.getInt(backtracking)==backtracking_limit&&data.getInt(pocketwatch)<=getcooltime(player,tool,400,120,8)*0.5f){
-                        if (tool.getModifierLevel(MomotinkerModifiers.superancientmetalsrealb.getId())==0&&data.getInt(pocketwatch)!=0){
-                            return;
-                        }
-                        event.setCanceled(true);
-                        player.setHealth(player.getMaxHealth()*0.2f);
-                        tryTeleport(stack,player,x1,y1,z1,data.getString(getResourceLocation("flevel")));
-                        if (tool.getModifierLevel(MomotinkerModifiers.superancientmetalsreala.getId())>0) {
-                            data.putInt(tpprotection,240);
-                        }
-                        if (tool.getModifierLevel(MomotinkerModifiers.superancientmetalsrealc.getId())>0) {
-                            player.heal((player.getMaxHealth() - player.getHealth()) * 0.4f);
-                            List<LivingEntity> ls0 = player.level().getEntitiesOfClass(LivingEntity.class, player.getBoundingBox().inflate(4, 4, 4));
-                            for (LivingEntity targets : ls0) {
-                                if (targets != player && targets != null) {
-                                    AttackUtil.attackEntity(tool, player, InteractionHand.MAIN_HAND, targets, () -> 1, true, Util.getSlotType(InteractionHand.MAIN_HAND), tool.getStats().get(ToolStats.ATTACK_DAMAGE)+player.getMaxHealth(), 2f, false, true, true, false);
+                if (stack.getItem() == MomotinkerTools.pocket_watch.get()) {
+                    ToolStack tool = ToolStack.from(stack);
+                    ModDataNBT data = tool.getPersistentData();
+                    if (data.getInt(transmit) != transmit_limit) {
+                        double x = data.getFloat(getResource("pocketwatchx"));
+                        double y = data.getFloat(getResource("pocketwatchy"));
+                        double z = data.getFloat(getResource("pocketwatchz"));
+                        double x1 = data.getFloat(getResource("fx"));
+                        double y1 = data.getFloat(getResource("fy"));
+                        double z1 = data.getFloat(getResource("fz"));
+                        if (data.getInt(backtracking) == backtracking_limit && data.getInt(pocketwatch) <= getcooltime(player, tool, 400, 120, 8) * 0.5f) {
+                            if (tool.getModifierLevel(MomotinkerModifiers.superancientmetalsrealb.getId()) == 0 && data.getInt(pocketwatch) != 0) {
+                                return;
+                            }
+                            event.setCanceled(true);
+                            player.setHealth(player.getMaxHealth() * 0.2f);
+                            tryTeleport(stack, player, x1, y1, z1, data.getString(getResourceLocation("flevel")));
+                            if (tool.getModifierLevel(MomotinkerModifiers.superancientmetalsreala.getId()) > 0) {
+                                data.putInt(tpprotection, 240);
+                            }
+                            if (tool.getModifierLevel(MomotinkerModifiers.superancientmetalsrealc.getId()) > 0) {
+                                player.heal((player.getMaxHealth() - player.getHealth()) * 0.4f);
+                                List<LivingEntity> ls0 = player.level().getEntitiesOfClass(LivingEntity.class, player.getBoundingBox().inflate(4, 4, 4));
+                                for (LivingEntity targets : ls0) {
+                                    if (targets != player && targets != null) {
+                                        AttackUtil.attackEntity(tool, player, InteractionHand.MAIN_HAND, targets, () -> 1, true, Util.getSlotType(InteractionHand.MAIN_HAND), tool.getStats().get(ToolStats.ATTACK_DAMAGE) + player.getMaxHealth(), 2f, false, true, true, false);
+                                    }
+                                }
+                                if (player.level() instanceof ServerLevel serverLevel) {
+                                    for (int i = 0; i <= 100; i++) {
+                                        serverLevel.sendParticles(ParticleTypes.ELECTRIC_SPARK, player.getX(), player.getY(), player.getZ(), 1, 4, 4, 4, 1);
+                                    }
                                 }
                             }
-                            if (player.level() instanceof ServerLevel serverLevel) {
-                                for (int i = 0; i <= 100; i++) {
-                                    serverLevel.sendParticles(ParticleTypes.ELECTRIC_SPARK, player.getX(), player.getY(), player.getZ(), 1, 4, 4, 4, 1);
-                                }
+                            if (data.getInt(pocketwatch) > 0) {
+                                player.getAttribute(Attributes.MAX_HEALTH).setBaseValue(player.getMaxHealth() * 0.5f);
                             }
+                            data.putInt(pocketwatch, getcooltime(player, tool, 400, 120, 8));
+                            break;
+                        } else if (data.getInt(backtracking) != backtracking_limit && data.getInt(pocketwatch) == 0) {
+                            event.setCanceled(true);
+                            player.setHealth(player.getMaxHealth() * 0.2f);
+                            tryTeleport(stack, player, x, y, z, data.getString(getResourceLocation("pocketwatchlevel")));
+                            if (tool.getPersistentData().getInt(backtracking) < backtracking_limit && data.getInt(transmit) != transmit_limit) {
+                                tool.getPersistentData().putInt(backtracking, tool.getPersistentData().getInt(backtracking) + 1);
+                            }
+                            data.putInt(pocketwatch, getcooltime(player, tool, 600, 180, 12));
+                            break;
                         }
-                        if (data.getInt(pocketwatch)>0){
-                            player.getAttribute(Attributes.MAX_HEALTH).setBaseValue(player.getMaxHealth() * 0.5f);
-                        }
-                        data.putInt(pocketwatch, getcooltime(player,tool,400,120,8));
-                        break;
-                    }else if (data.getInt(backtracking)!=backtracking_limit&& data.getInt(pocketwatch)==0){
-                        event.setCanceled(true);
-                        player.setHealth(player.getMaxHealth()*0.2f);
-                        tryTeleport(stack,player,x,y,z,data.getString(getResourceLocation("pocketwatchlevel")));
-                        if (tool.getPersistentData().getInt(backtracking)<backtracking_limit&&data.getInt(transmit)!=transmit_limit){
-                            tool.getPersistentData().putInt(backtracking,tool.getPersistentData().getInt(backtracking)+1);
-                        }
-                        data.putInt(pocketwatch, getcooltime(player,tool,600,180,12));
-                        break;
                     }
                 }
             }

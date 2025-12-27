@@ -138,8 +138,8 @@ public class GainsAlone extends momomodifier {
         Player player = event.getPlayer();
         if (player!=null&&event.getState()!=null&&!event.getState().isAir()){
             int c = getMainhandModifierlevel(player,MomotinkerModifiers.gainsalone.getId());
-            ModDataNBT d = ToolStack.from(player.getMainHandItem()).getPersistentData();
             if (c>0){
+                ModDataNBT d = ToolStack.from(player.getMainHandItem()).getPersistentData();
                 d.putInt(gainsalonepoints,d.getInt(gainsalonepoints)+1);
                 ToolStack.from(player.getMainHandItem()).rebuildStats();
             }

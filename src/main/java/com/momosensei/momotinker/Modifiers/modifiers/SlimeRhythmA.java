@@ -97,20 +97,24 @@ public class SlimeRhythmA extends momomodifier {
         return tool.getModifier(TinkerModifiers.overslime.getId());
     }
     private int getRhythmPoints(ToolStack tool){
-        return tool.getPersistentData().getInt(rhythmapoints);
+        if (tool!=null) {
+            return tool.getPersistentData().getInt(rhythmapoints);
+        }
+        return 0;
     }
     private boolean getRhythmPointsTure(ToolStack tool1,ToolStack tool2,ToolStack tool3,ToolStack tool4){
         return getRhythmPoints(tool1) > 0 || getRhythmPoints(tool2) > 0 || getRhythmPoints(tool3) > 0 || getRhythmPoints(tool4) > 0;
     }
+
     @Override
     public void OnLivingHurt(LivingHurtEvent event) {
         LivingEntity a = event.getEntity();
         OverslimeModule overslime = OverslimeModule.INSTANCE;
         if (a instanceof Player player) {
-            ToolStack tool3 = ToolStack.from(player.getItemBySlot(EquipmentSlot.HEAD));
-            ToolStack tool4 = ToolStack.from(player.getItemBySlot(EquipmentSlot.CHEST));
-            ToolStack tool5 = ToolStack.from(player.getItemBySlot(EquipmentSlot.LEGS));
-            ToolStack tool6 = ToolStack.from(player.getItemBySlot(EquipmentSlot.FEET));
+            ToolStack tool3 = getToolStack(player.getItemBySlot(EquipmentSlot.HEAD));
+            ToolStack tool4 = getToolStack(player.getItemBySlot(EquipmentSlot.CHEST));
+            ToolStack tool5 = getToolStack(player.getItemBySlot(EquipmentSlot.LEGS));
+            ToolStack tool6 = getToolStack(player.getItemBySlot(EquipmentSlot.FEET));
             
             int d = getArmorModifierlevel(player, MomotinkerModifiers.slimerhythma.getId());
             if (d > 0&&getRhythmPointsTure(tool3,tool4,tool5,tool6)) {

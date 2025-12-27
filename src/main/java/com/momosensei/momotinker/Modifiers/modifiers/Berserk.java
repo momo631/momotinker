@@ -39,10 +39,10 @@ public class Berserk extends momomodifier {
                     c += ToolStack.from(stack).getPersistentData().getFloat(berserker);
                 }
             }
-            if (ToolStack.from(player.getMainHandItem()).getModifierLevel(MomotinkerModifiers.berserk.getId())>0){
+            if (isToolStack(player.getMainHandItem()) &&getMainhandModifierlevel(player,MomotinkerModifiers.berserk.getId())>0){
                 c += ToolStack.from(player.getMainHandItem()).getPersistentData().getFloat(berserker);
             }
-            if (ToolStack.from(player.getOffhandItem()).getModifierLevel(MomotinkerModifiers.berserk.getId())>0){
+            if (isToolStack(player.getOffhandItem()) &&getOffhandModifierlevel(player,MomotinkerModifiers.berserk.getId())>0){
                 c += ToolStack.from(player.getOffhandItem()).getPersistentData().getFloat(berserker);
             }
             if (c >= 1 && d > 0) {
@@ -57,10 +57,10 @@ public class Berserk extends momomodifier {
                     c += ToolStack.from(stack).getPersistentData().getFloat(berserker);
                 }
             }
-            if (ToolStack.from(player.getMainHandItem()).getModifierLevel(MomotinkerModifiers.berserk.getId())>0){
+            if (isToolStack(player.getMainHandItem()) &&getMainhandModifierlevel(player,MomotinkerModifiers.berserk.getId())>0){
                 c += ToolStack.from(player.getMainHandItem()).getPersistentData().getFloat(berserker);
             }
-            if (ToolStack.from(player.getOffhandItem()).getModifierLevel(MomotinkerModifiers.berserk.getId())>0){
+            if (isToolStack(player.getOffhandItem()) &&getOffhandModifierlevel(player,MomotinkerModifiers.berserk.getId())>0){
                 c += ToolStack.from(player.getOffhandItem()).getPersistentData().getFloat(berserker);
             }
             if (c >= 1 && d > 0) {

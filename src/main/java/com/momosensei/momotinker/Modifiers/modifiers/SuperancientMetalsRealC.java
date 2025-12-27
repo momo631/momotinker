@@ -126,7 +126,7 @@ public class SuperancientMetalsRealC extends momomodifier {
                     a.putInt(overheat, a.getInt(overheat) + 1);
                 }
             }
-            if (ToolStack.from(player.getMainHandItem()).getPersistentData().getInt(stellarcore) == stellarcore_limit&&player.tickCount % 5 == 0&&a.getInt(overheat)==90&& player.level() instanceof ServerLevel serverLevel) {
+            if (isToolStack(player.getMainHandItem()) &&ToolStack.from(player.getMainHandItem()).getPersistentData().getInt(stellarcore) == stellarcore_limit&&player.tickCount % 5 == 0&&a.getInt(overheat)==90&& player.level() instanceof ServerLevel serverLevel) {
                 for (int i = 0; i < 8; ++i) {
                     serverLevel.sendParticles(ParticleTypes.LAVA, player.getX(), player.getY(), player.getZ(), 1 / 2, 0, 0, 0, 1);
                     serverLevel.sendParticles(ParticleTypes.FLAME, player.getX(), player.getY(), player.getZ(), 1, 0, 0, 0, 0.5);
@@ -157,10 +157,12 @@ public class SuperancientMetalsRealC extends momomodifier {
         if (event.getEntity() instanceof Player player) {
             for (int j = 0; j < player.getInventory().items.size(); j++) {
                 ItemStack stack = player.getInventory().getItem(j);
-                ToolStack tool = ToolStack.from(stack);
-                ModDataNBT data = tool.getPersistentData();
-                if (stack.getItem() == MomotinkerTools.pocket_watch.get() &&data.getInt(transmit)==transmit_limit&& data.getInt(transmitpoints) != 0 &&tool.getModifierLevel(MomotinkerModifiers.superancientmetalsrealc.getId())>0) {
-                    data.putInt(transmitpoints,0);
+                if (stack.getItem() == MomotinkerTools.pocket_watch.get()) {
+                    ToolStack tool = ToolStack.from(stack);
+                    ModDataNBT data = tool.getPersistentData();
+                    if (data.getInt(transmit) == transmit_limit && data.getInt(transmitpoints) != 0 && tool.getModifierLevel(MomotinkerModifiers.superancientmetalsrealc.getId()) > 0) {
+                        data.putInt(transmitpoints, 0);
+                    }
                 }
             }
         }
@@ -173,11 +175,13 @@ public class SuperancientMetalsRealC extends momomodifier {
         if (event.getEntity() instanceof Player player){
             for (int j = 0; j < player.getInventory().items.size(); j++) {
                 ItemStack stack = player.getInventory().getItem(j);
-                ToolStack tool = ToolStack.from(stack);
-                ModDataNBT data = tool.getPersistentData();
-                if (data.getInt(hadal) ==hadal_limit &&tool.getModifierLevel(MomotinkerModifiers.superancientmetalsrealc.getId())>0) {
-                    if (event.getSource()==player.level().damageSources().inWall()||event.getSource()==player.level().damageSources().drown()){
-                        event.setCanceled(true);
+                if (isToolStack(stack)) {
+                    ToolStack tool = ToolStack.from(stack);
+                    if (tool.getModifierLevel(MomotinkerModifiers.superancientmetalsrealc.getId()) > 0) {
+                        ModDataNBT data = tool.getPersistentData();
+                        if (data.getInt(hadal) == hadal_limit && event.getSource() == player.level().damageSources().inWall() || event.getSource() == player.level().damageSources().drown()) {
+                            event.setCanceled(true);
+                        }
                     }
                 }
             }
@@ -189,23 +193,27 @@ public class SuperancientMetalsRealC extends momomodifier {
         int crystallized_limit = MomotinkerConfig.crystallized_limit.get();
         int liverization_limit = MomotinkerConfig.liverization_limit.get();
         if (event.getEntity() instanceof Player player) {
-            ToolStack tool = ToolStack.from(player.getMainHandItem());
-            ModDataNBT data = tool.getPersistentData();
-            if (tool.getModifierLevel(MomotinkerModifiers.superancientmetalsrealc.getId()) > 0) {
-                if (data.getInt(hadal) == hadal_limit && player.level().isNight()) {
-                    event.setAmount(event.getAmount() * 0.4f);
+            if (isToolStack(player.getMainHandItem())) {
+                ToolStack tool = ToolStack.from(player.getMainHandItem());
+                ModDataNBT data = tool.getPersistentData();
+                if (tool.getModifierLevel(MomotinkerModifiers.superancientmetalsrealc.getId()) > 0) {
+                    if (data.getInt(hadal) == hadal_limit && player.level().isNight()) {
+                        event.setAmount(event.getAmount() * 0.4f);
+                    }
                 }
             }
             for (int j = 0; j < player.getInventory().items.size(); j++) {
                 ItemStack stack = player.getInventory().getItem(j);
-                ToolStack tool1 = ToolStack.from(stack);
-                ModDataNBT data1 = tool1.getPersistentData();
-                if (data1.getInt(liverization) >= liverization_limit && tool1.getModifierLevel(MomotinkerModifiers.superancientmetalsrealc.getId()) > 0) {
-                    data1.putFloat(recorddamage,data1.getFloat(recorddamage)+event.getAmount()*0.5f);
+                if (isToolStack(stack)) {
+                    ToolStack tool1 = ToolStack.from(stack);
+                    ModDataNBT data1 = tool1.getPersistentData();
+                    if (data1.getInt(liverization) >= liverization_limit && tool1.getModifierLevel(MomotinkerModifiers.superancientmetalsrealc.getId()) > 0) {
+                        data1.putFloat(recorddamage, data1.getFloat(recorddamage) + event.getAmount() * 0.5f);
+                    }
                 }
             }
         }
-        if (event.getSource().getEntity() instanceof Player player&&event.getEntity()!=null){
+        if (event.getSource().getEntity() instanceof Player player&&event.getEntity()!=null&&isToolStack(player.getMainHandItem())){
             ToolStack tool = ToolStack.from(player.getMainHandItem());
             ModDataNBT data = tool.getPersistentData();
             if (data.getInt(crystallized)==crystallized_limit&&tool.getModifierLevel(MomotinkerModifiers.superancientmetalsrealc.getId()) > 0) {

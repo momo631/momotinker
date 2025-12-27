@@ -20,6 +20,7 @@ import slimeknights.tconstruct.library.modifiers.ModifierHooks;
 import slimeknights.tconstruct.library.modifiers.modules.capacity.OverslimeModule;
 import slimeknights.tconstruct.library.tools.context.EquipmentContext;
 import slimeknights.tconstruct.library.tools.context.ToolAttackContext;
+import slimeknights.tconstruct.library.tools.item.IModifiable;
 import slimeknights.tconstruct.library.tools.nbt.IToolStackView;
 import slimeknights.tconstruct.library.tools.nbt.ModDataNBT;
 import slimeknights.tconstruct.library.tools.nbt.ModifierNBT;
@@ -126,7 +127,7 @@ public class SlimeRhythm extends momomodifier {
     }
     @Override
     public boolean onProjectileHitEntity(ModifierNBT modifiers, ModDataNBT persistentData, ModifierEntry modifier, Projectile projectile, EntityHitResult hit, @Nullable LivingEntity attacker, @Nullable LivingEntity target, boolean notBlocked) {
-        if (attacker !=null && projectile instanceof AbstractArrow arrow&&target != null){
+        if (attacker !=null && projectile instanceof AbstractArrow arrow&&target != null&&attacker.getMainHandItem().getItem() instanceof IModifiable){
             ToolStack tool = ToolStack.from( attacker.getMainHandItem());
             ModDataNBT a = tool.getPersistentData();
             if (a.getInt(rhythmpoints)>=24){

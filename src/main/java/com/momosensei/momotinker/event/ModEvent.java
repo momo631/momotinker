@@ -30,6 +30,7 @@ import java.util.Random;
 
 import static com.momosensei.momotinker.Modifiers.modifiers.GainsAlone.gainsalonepoints;
 import static com.momosensei.momotinker.Modifiers.momomodifier.getRemainingDurability;
+import static com.momosensei.momotinker.Modifiers.momomodifier.isToolStack;
 
 @Mod.EventBusSubscriber(modid = "momotinker", bus = Mod.EventBusSubscriber.Bus.FORGE)
 public class ModEvent {
@@ -50,11 +51,13 @@ public class ModEvent {
                     stack.getItem().setCount(0);
                 }
                 if (c > 0) {
-                    ToolStack tool = ToolStack.from(killer.getMainHandItem());
-                    int c1 = tool.getPersistentData().getInt(gainsalonepoints);
-                    double c2 = Math.pow(2,c1+1);
-                    if (!tool.isBroken()&&getRemainingDurability(tool)>1) {
-                        stack.getItem().setCount((int) (stack.getItem().getCount() * Math.floor(c2)));
+                    if (isToolStack(killer.getMainHandItem())) {
+                        ToolStack tool = ToolStack.from(killer.getMainHandItem());
+                        int c1 = tool.getPersistentData().getInt(gainsalonepoints);
+                        double c2 = Math.pow(2, c1 + 1);
+                        if (!tool.isBroken() && getRemainingDurability(tool) > 1) {
+                            stack.getItem().setCount((int) (stack.getItem().getCount() * Math.floor(c2)));
+                        }
                     }
                 }
             }

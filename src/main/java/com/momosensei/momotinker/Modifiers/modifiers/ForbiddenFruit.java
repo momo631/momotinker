@@ -119,7 +119,7 @@ public class ForbiddenFruit extends momomodifier {
     @Override
     public boolean onProjectileHitEntity(ModifierNBT modifiers, ModDataNBT persistentData, ModifierEntry modifier, Projectile projectile, EntityHitResult hit, @Nullable LivingEntity attacker, @Nullable LivingEntity target, boolean notBlocked) {
         if (attacker instanceof ServerPlayer player && projectile instanceof AbstractArrow arrow&&target!=null){
-            if (getAllModifierlevel(player,MomotinkerModifiers.forbiddenfruit.getId())>0){
+            if (getAllModifierlevel(player,MomotinkerModifiers.forbiddenfruit.getId())>0&&isToolStack(player.getMainHandItem())){
                 ToolStack tool = ToolStack.from(player.getMainHandItem());
                 target.getAttribute(Attributes.ARMOR).setBaseValue(target.getAttributeValue(Attributes.ARMOR) * 0.8F);
                 tool.getPersistentData().putFloat(forbiddenfruitpoints, tool.getPersistentData().getFloat(forbiddenfruitpoints) + (float) (target.getAttributeValue(Attributes.ARMOR) * 0.05F));

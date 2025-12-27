@@ -99,7 +99,7 @@ public class FromBrilliance extends momomodifier {
         int hadal_limit = MomotinkerConfig.hadal_limit.get();
         int stellarcore_limit = MomotinkerConfig.stellarcore_limit.get();
         int d = MomotinkerConfig.entropy_burning_riding_spear_limit.get();
-        if (attacker instanceof Player player && context.getLivingTarget() != null) {
+        if (attacker instanceof Player player && context.getLivingTarget() != null&&isToolStack(player.getMainHandItem())) {
             ModDataNBT c = ToolStack.from(player.getMainHandItem()).getPersistentData();
             if (player.getMainHandItem().is(MomotinkerTools.entropy_burning_riding_spear.get())) {
                 float bonus = getbonus(player,2500);
