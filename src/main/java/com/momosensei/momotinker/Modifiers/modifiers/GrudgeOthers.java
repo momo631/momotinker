@@ -11,7 +11,6 @@ import net.minecraft.world.entity.projectile.AbstractArrow;
 import net.minecraft.world.entity.projectile.Projectile;
 import net.minecraft.world.item.ItemStack;
 import net.minecraft.world.phys.EntityHitResult;
-import net.minecraftforge.common.MinecraftForge;
 import net.minecraftforge.event.entity.living.LivingDeathEvent;
 import net.minecraftforge.event.entity.living.LivingHurtEvent;
 import slimeknights.tconstruct.library.modifiers.ModifierEntry;
@@ -28,7 +27,6 @@ import javax.annotation.Nullable;
 
 public class GrudgeOthers extends momomodifier {
     public GrudgeOthers() {
-        MinecraftForge.EVENT_BUS.addListener(this::onEntityDeath);
     }
 
     @Override
@@ -57,7 +55,8 @@ public class GrudgeOthers extends momomodifier {
             }
         }
     }
-    private void onEntityDeath(LivingDeathEvent event) {
+    @Override
+    public void OnEntityDeath(LivingDeathEvent event) {
         LivingEntity a = event.getEntity();
         Entity b = event.getSource().getEntity();
         if (b instanceof Player player && a instanceof Mob mob) {

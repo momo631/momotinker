@@ -21,10 +21,8 @@ import net.minecraft.world.item.ItemStack;
 import net.minecraft.world.item.TooltipFlag;
 import net.minecraft.world.level.Level;
 import net.minecraft.world.phys.Vec3;
-import net.minecraftforge.common.MinecraftForge;
 import net.minecraftforge.event.entity.living.LivingAttackEvent;
 import net.minecraftforge.event.entity.living.LivingDeathEvent;
-import net.minecraftforge.eventbus.api.EventPriority;
 import org.jetbrains.annotations.Nullable;
 import slimeknights.mantle.client.TooltipKey;
 import slimeknights.tconstruct.library.modifiers.Modifier;
@@ -51,8 +49,6 @@ import static com.momosensei.momotinker.tool.pocket_watch.*;
 
 public class SuperancientMetalsRealB extends momomodifier {
     public SuperancientMetalsRealB() {
-
-        MinecraftForge.EVENT_BUS.addListener(EventPriority.LOWEST,this::onEntityDeath);
     }
     public static final ResourceLocation degeneratedeath = Momotinker.getResource("degeneratedeath");
 
@@ -237,7 +233,8 @@ public class SuperancientMetalsRealB extends momomodifier {
             }
         }
     }
-    private void onEntityDeath(LivingDeathEvent event) {
+    @Override
+    public void OnEntityDeath(LivingDeathEvent event) {
         int liverization_limit = MomotinkerConfig.liverization_limit.get();
         int degenerate_limit = MomotinkerConfig.degenerate_limit.get();
         Entity a = event.getEntity();

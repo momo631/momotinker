@@ -23,7 +23,6 @@ import net.minecraft.world.entity.player.Player;
 import net.minecraft.world.item.ItemStack;
 import net.minecraft.world.item.TooltipFlag;
 import net.minecraft.world.level.Level;
-import net.minecraftforge.common.MinecraftForge;
 import net.minecraftforge.event.entity.living.LivingAttackEvent;
 import net.minecraftforge.event.entity.living.LivingDeathEvent;
 import net.minecraftforge.event.entity.living.LivingHurtEvent;
@@ -54,7 +53,6 @@ import static com.momosensei.momotinker.tool.pocket_watch.transmit;
 
 public class SuperancientMetalsRealC extends momomodifier {
     public SuperancientMetalsRealC() {
-        MinecraftForge.EVENT_BUS.addListener(this::onEntityDeath);
     }
     public static final ResourceLocation transmitpoints = Momotinker.getResource("transmitpoints");
     public static final ResourceLocation overheat = Momotinker.getResource("overheat");
@@ -152,7 +150,8 @@ public class SuperancientMetalsRealC extends momomodifier {
             }
         }
     }
-    private void onEntityDeath(LivingDeathEvent event) {
+    @Override
+    public void OnEntityDeath(LivingDeathEvent event) {
         int transmit_limit = MomotinkerConfig.transmit_limit.get();
         if (event.getEntity() instanceof Player player) {
             for (int j = 0; j < player.getInventory().items.size(); j++) {

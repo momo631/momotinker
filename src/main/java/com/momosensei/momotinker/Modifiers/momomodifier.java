@@ -27,6 +27,7 @@ import net.minecraft.world.phys.BlockHitResult;
 import net.minecraft.world.phys.EntityHitResult;
 import net.minecraftforge.common.MinecraftForge;
 import net.minecraftforge.event.entity.living.LivingAttackEvent;
+import net.minecraftforge.event.entity.living.LivingDeathEvent;
 import net.minecraftforge.event.entity.living.LivingHurtEvent;
 import org.jetbrains.annotations.NotNull;
 import org.jetbrains.annotations.Nullable;
@@ -81,6 +82,7 @@ public abstract class momomodifier extends Modifier implements MeleeDamageModifi
     public momomodifier() {
         MinecraftForge.EVENT_BUS.addListener(this::OnLivingHurt);
         MinecraftForge.EVENT_BUS.addListener(this::OnLivingAttack);
+        MinecraftForge.EVENT_BUS.addListener(this::OnEntityDeath);
     }
 
     @Override
@@ -266,7 +268,8 @@ public abstract class momomodifier extends Modifier implements MeleeDamageModifi
     }
     public void OnLivingAttack(LivingAttackEvent event) {
     }
-
+    public void OnEntityDeath(LivingDeathEvent event) {
+    }
 
     public static int getAllModifierlevel(LivingEntity entity, ModifierId modifierId) {
         return ModifierUtil.getModifierLevel(entity.getItemBySlot(EquipmentSlot.MAINHAND), modifierId)

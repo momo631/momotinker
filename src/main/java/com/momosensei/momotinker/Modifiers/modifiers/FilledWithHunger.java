@@ -12,7 +12,6 @@ import net.minecraft.world.entity.projectile.Projectile;
 import net.minecraft.world.item.ItemStack;
 import net.minecraft.world.level.Level;
 import net.minecraft.world.phys.EntityHitResult;
-import net.minecraftforge.common.MinecraftForge;
 import net.minecraftforge.event.entity.living.LivingDeathEvent;
 import net.minecraftforge.event.entity.living.LivingHurtEvent;
 import org.jetbrains.annotations.NotNull;
@@ -29,7 +28,6 @@ import java.util.List;
 
 public class FilledWithHunger extends momomodifier {
     public FilledWithHunger() {
-        MinecraftForge.EVENT_BUS.addListener(this::onEntityDeath);
     }
 
     @Override
@@ -67,7 +65,8 @@ public class FilledWithHunger extends momomodifier {
         }
     }
 
-    private void onEntityDeath(LivingDeathEvent event) {
+    @Override
+    public void OnEntityDeath(LivingDeathEvent event) {
         if (event.getSource().getEntity() instanceof Player player && event.getEntity() != null && getAllModifierlevel(player, MomotinkerModifiers.filledwithhunger.getId()) > 0) {
             player.getFoodData().setFoodLevel(player.getFoodData().getFoodLevel() + 3 + RANDOM.nextInt(5));
             player.getFoodData().setSaturation(player.getFoodData().getSaturationLevel() + 2 + RANDOM.nextInt(3));

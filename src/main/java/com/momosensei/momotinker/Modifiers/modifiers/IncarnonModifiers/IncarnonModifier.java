@@ -4,12 +4,13 @@ import com.momosensei.momotinker.Modifiers.momomodifier;
 import com.momosensei.momotinker.Momotinker;
 import net.minecraft.network.chat.Component;
 import net.minecraft.resources.ResourceLocation;
-import net.minecraft.world.item.ItemStack;
 import slimeknights.tconstruct.library.modifiers.Modifier;
-import slimeknights.tconstruct.library.tools.item.IModifiable;
 import slimeknights.tconstruct.library.tools.nbt.IToolStackView;
 
 import javax.annotation.Nullable;
+import java.util.HashMap;
+import java.util.Map;
+import java.util.Objects;
 
 public class IncarnonModifier extends momomodifier {
 
@@ -31,7 +32,42 @@ public class IncarnonModifier extends momomodifier {
         iToolStackView.getPersistentData().remove(incarnon_d);
         return null;
     }
-    public static boolean isModifiable(ItemStack stack){
-        return stack.getItem() instanceof IModifiable;
+
+    private static final Map<Class<? extends IncarnonModifier>, Map<String, Component>> ALL_MODIFIER_TEXTS = new HashMap<>();
+
+    private static final Map<String, Component> DEFAULT_TEXTS = createDefaultTexts();
+
+    static {
+        registerModifierTexts(IncarnonModifier.class, DEFAULT_TEXTS);
+    }
+
+    /**
+     * @param modifierClass 修改器的Class对象
+     * @param texts 文本映射（Key: 文本标识符, Value: 显示文本）
+     */
+    protected static void registerModifierTexts(Class<? extends IncarnonModifier> modifierClass, Map<String, Component> texts) {
+        ALL_MODIFIER_TEXTS.put(modifierClass, texts);
+    }
+
+    public static Map<String, Component> getTextsForClass(Class<? extends IncarnonModifier> clazz) {
+        Map<String, Component> texts = ALL_MODIFIER_TEXTS.get(clazz);
+        return new HashMap<>(Objects.requireNonNullElse(texts, DEFAULT_TEXTS));
+    }
+
+    private static Map<String, Component> createDefaultTexts() {
+        Map<String, Component> texts = new HashMap<>();
+        texts.put("phase_1_ability_1", Component.empty());
+        texts.put("phase_1_ability_2", Component.empty());
+
+        texts.put("phase_2_ability_1", Component.empty());
+        texts.put("phase_2_ability_2", Component.empty());
+
+        texts.put("phase_3_ability_1", Component.empty());
+        texts.put("phase_3_ability_2", Component.empty());
+
+        texts.put("phase_4_ability_1", Component.empty());
+        texts.put("phase_4_ability_2", Component.empty());
+        texts.put("phase_4_ability_3", Component.empty());
+        return texts;
     }
 }
