@@ -102,6 +102,7 @@ public class IncarnonModifier extends momomodifier {
                     data.putInt(incarnon_task_phase, 0);
                     data.putInt(incarnon_task_goal, 0);
                 }
+                removeIncarnon(tool);
             }
             if (data.getFloat(incarnon_energy)>this.incarnon_energy_max){
                 data.putFloat(incarnon_energy,this.incarnon_energy_max);
@@ -135,6 +136,22 @@ public class IncarnonModifier extends momomodifier {
             default -> incarnon_task_a;
         };
     }
+    private void removeIncarnon(IToolStackView tool){
+        ModDataNBT a = tool.getPersistentData();
+        if (a.getInt(incarnon_phase)<1&&a.getInt(incarnon_a)!=0){
+            a.remove(incarnon_a);
+        }
+        if (a.getInt(incarnon_phase)<2&&a.getInt(incarnon_b)!=0){
+            a.remove(incarnon_b);
+        }
+        if (a.getInt(incarnon_phase)<3&&a.getInt(incarnon_c)!=0){
+            a.remove(incarnon_c);
+        }
+        if (a.getInt(incarnon_phase)<4&&a.getInt(incarnon_d)!=0){
+            a.remove(incarnon_d);
+        }
+    }
+
     private void isincarnon(IToolStackView tool,ItemStack stack,boolean a){
         if (tool.getPersistentData().getBoolean(is_incarnon)!=a) {
             tool.getPersistentData().putBoolean(is_incarnon, a);
