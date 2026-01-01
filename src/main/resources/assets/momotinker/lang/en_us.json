@@ -834,6 +834,29 @@
   "modifier.momotinker.key_to_ruin.description": "§oCalamities and tribulations descend upon the earth, darkening the souls of travelers",
   "modifier.momotinker.tooltip.key_to_ruin1": "[From Brilliance]Certification:??????",
   "modifier.momotinker.tooltip.key_to_ruin2": "All features of the tool are doubled, with melee attack-related traits taking effect an additional time",
-  "modifier.momotinker.tooltip.key_to_ruin3": "What is done will dissipate from the world, and what is thought and worried will return to the void"
+  "modifier.momotinker.tooltip.key_to_ruin3": "What is done will dissipate from the world, and what is thought and worried will return to the void",
+
+
+  "modifier.momotinker.incarnon_on": "",
+  "modifier.momotinker.incarnon_task": "当前灵化任务:",
+  "modifier.momotinker.incarnon_task0": "任务进度:",
+  "modifier.momotinker.sword_incarnon": "Sword Incarnon Genesis",
+  "modifier.momotinker.sword_incarnon.flavor": "",
+  "modifier.momotinker.sword_incarnon.description": "",
+  "modifier.momotinker.tooltip.sword_incarnon0": "",
+  "modifier.momotinker.tooltip.sword_incarnon1": "灵化状态下:\n+150%近战伤害\n+1.5攻击距离\n+100%横扫伤害",
+  "modifier.momotinker.tooltip.sword_incarnon2": "灵化状态下:\n+100%近战伤害\n+80%护甲穿透\n额外造成一次50%伤害",
+  "modifier.momotinker.tooltip.sword_incarnon3": "+40%暴击伤害",
+  "modifier.momotinker.tooltip.sword_incarnon4": "+15%生命汲取",
+  "modifier.momotinker.tooltip.sword_incarnon5": "+1.0攻击距离",
+  "modifier.momotinker.tooltip.sword_incarnon6": "+30%持有速度",
+  "modifier.momotinker.tooltip.sword_incarnon7": "+30%基础攻击力",
+  "modifier.momotinker.tooltip.sword_incarnon8": "+15%基础攻击力\n+15%基础攻击速度",
+  "modifier.momotinker.tooltip.sword_incarnon9": "+30%基础攻击速度",
+  "modifier.momotinker.tooltip.sword_incarnon_task1": "11",
+  "modifier.momotinker.tooltip.sword_incarnon_task2": "21",
+  "modifier.momotinker.tooltip.sword_incarnon_task3": "31",
+  "modifier.momotinker.tooltip.sword_incarnon_task4": "41",
+  "modifier.momotinker.tooltip.sword_incarnon_on": "成功攻击时积蓄能量，灵化状态持续120秒"
 
 }

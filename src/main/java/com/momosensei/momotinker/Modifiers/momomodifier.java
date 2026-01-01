@@ -2,6 +2,7 @@ package com.momosensei.momotinker.Modifiers;
 
 
 import com.c2h6s.etstlib.register.EtSTLibHooks;
+import com.c2h6s.etstlib.tool.hooks.CriticalAttackModifierHook;
 import com.c2h6s.etstlib.tool.hooks.ModifyDamageSourceModifierHook;
 import net.minecraft.network.chat.Component;
 import net.minecraft.world.InteractionHand;
@@ -21,6 +22,7 @@ import net.minecraft.world.inventory.Slot;
 import net.minecraft.world.item.Item;
 import net.minecraft.world.item.ItemStack;
 import net.minecraft.world.item.TooltipFlag;
+import net.minecraft.world.item.UseAnim;
 import net.minecraft.world.level.Level;
 import net.minecraft.world.level.storage.loot.LootContext;
 import net.minecraft.world.phys.BlockHitResult;
@@ -62,6 +64,8 @@ import slimeknights.tconstruct.library.tools.context.EquipmentContext;
 import slimeknights.tconstruct.library.tools.context.ToolAttackContext;
 import slimeknights.tconstruct.library.tools.context.ToolHarvestContext;
 import slimeknights.tconstruct.library.tools.definition.ToolDefinition;
+import slimeknights.tconstruct.library.tools.definition.module.ToolHooks;
+import slimeknights.tconstruct.library.tools.definition.module.weapon.MeleeHitToolHook;
 import slimeknights.tconstruct.library.tools.helper.ModifierUtil;
 import slimeknights.tconstruct.library.tools.item.IModifiable;
 import slimeknights.tconstruct.library.tools.nbt.*;
@@ -77,7 +81,8 @@ public abstract class momomodifier extends Modifier implements MeleeDamageModifi
         EquipmentChangeModifierHook, InventoryTickModifierHook, OnAttackedModifierHook, TooltipModifierHook, AttributesModifierHook,
         ModifyDamageModifierHook, ModifierRemovalHook, BlockBreakModifierHook, EntityInteractionModifierHook, ToolStatsModifierHook,
         ToolDamageModifierHook,ModifyDamageSourceModifierHook,  VolatileDataModifierHook, RequirementsModifierHook, ValidateModifierHook,
-        RepairFactorModifierHook, ModifierTraitHook, ProtectionModifierHook, ProjectileShootModifierHook, SlotStackModifierHook {
+        RepairFactorModifierHook, ModifierTraitHook, ProtectionModifierHook, ProjectileShootModifierHook, SlotStackModifierHook,
+        GeneralInteractionModifierHook, CriticalAttackModifierHook, MeleeHitToolHook {
 
     public momomodifier() {
         MinecraftForge.EVENT_BUS.addListener(this::OnLivingHurt);
@@ -97,7 +102,9 @@ public abstract class momomodifier extends Modifier implements MeleeDamageModifi
         builder.addHook(this, ModifierHooks.TOOL_DAMAGE, ModifierHooks.VOLATILE_DATA,EtSTLibHooks.MODIFY_DAMAGE_SOURCE);
         builder.addHook(this, ModifierHooks.VALIDATE, ModifierHooks.REPAIR_FACTOR,ModifierHooks.REQUIREMENTS);
         builder.addHook(this, ModifierHooks.PROTECTION, ModifierHooks.MODIFIER_TRAITS,ModifierHooks.PROJECTILE_SHOT);
-        builder.addHook(this, ModifierHooks.SLOT_STACK);
+        builder.addHook(this, ModifierHooks.SLOT_STACK, ModifierHooks.GENERAL_INTERACT, EtSTLibHooks.CRITICAL_ATTACK);
+        builder.addHook(this, ToolHooks.MELEE_HIT);
+
     }
 
     @Override
@@ -138,6 +145,17 @@ public abstract class momomodifier extends Modifier implements MeleeDamageModifi
         return this.onGetMeleeDamage(tool, modifier, context, baseDamage, damage);
     }
     @Override
+    public float beforeMeleeHit(IToolStackView tool, ModifierEntry modifier, ToolAttackContext context, float damage, float baseKnockback, float knockback) {
+        return knockback;
+    }
+    @Override
+    public void afterMeleeHit(IToolStackView tool, ModifierEntry modifier, ToolAttackContext context, float damageDealt) {
+        this.onAfterMeleeHit(tool, modifier, context, damageDealt);
+    }
+    @Override
+    public void failedMeleeHit(IToolStackView tool, ModifierEntry modifier, ToolAttackContext context, float damageAttempted) {
+    }
+    @Override
     public void onDamageDealt(IToolStackView tool, ModifierEntry modifier, EquipmentContext context, EquipmentSlot slotType, LivingEntity entity, DamageSource damageSource, float amount, boolean isDirectDamage) {
         this.modifierDamageDealt(tool, modifier, context, slotType, entity, damageSource, amount, isDirectDamage);
     }
@@ -145,7 +163,6 @@ public abstract class momomodifier extends Modifier implements MeleeDamageModifi
     public @NotNull Component getDisplayName(int level) {
         return this.isNoLevels() ? super.getDisplayName() : super.getDisplayName(level);
     }
-
     @Override
     public ItemStack findAmmo(IToolStackView tool, ModifierEntry modifiers, LivingEntity livingEntity, ItemStack itemStack, Predicate<ItemStack> predicate) {
         return this.modifierFindAmmo(tool, modifiers, livingEntity, itemStack, predicate);
@@ -154,7 +171,6 @@ public abstract class momomodifier extends Modifier implements MeleeDamageModifi
     public void onProjectileLaunch(IToolStackView tool, ModifierEntry modifier, LivingEntity shooter, Projectile projectile, @javax.annotation.Nullable AbstractArrow arrow, ModDataNBT persistentData, boolean primary) {
         this.modifierOnProjectileLaunch(tool, modifier, shooter, projectile, arrow, persistentData, primary);
     }
-
     @Override
     public boolean onProjectileHitEntity(ModifierNBT modifiers, ModDataNBT persistentData, ModifierEntry modifier, Projectile projectile, EntityHitResult hit, @Nullable LivingEntity attacker, @Nullable LivingEntity target, boolean notBlocked) {
         return this.modifierOnProjectileHitEntity(modifiers, persistentData, modifier, projectile, hit, attacker, target);
@@ -164,10 +180,6 @@ public abstract class momomodifier extends Modifier implements MeleeDamageModifi
     }
     @Override
     public void onProjectileShoot(IToolStackView tool, ModifierEntry modifier, @javax.annotation.Nullable LivingEntity shooter, ItemStack ammo, Projectile projectile, @javax.annotation.Nullable AbstractArrow arrow, ModDataNBT persistentData, boolean primary) {
-
-    }
-    public ItemStack modifierFindAmmo(IToolStackView tool, ModifierEntry modifiers, LivingEntity livingEntity, ItemStack itemStack, Predicate<ItemStack> predicate) {
-        return itemStack;
     }
     @Override
     public void onEquip(IToolStackView tool, ModifierEntry modifier, EquipmentChangeContext context) {
@@ -226,6 +238,41 @@ public abstract class momomodifier extends Modifier implements MeleeDamageModifi
     public boolean overrideOtherStackedOnMe(IToolStackView tool, ModifierEntry modifier, ItemStack held, Slot slot, Player player, SlotAccess access) {
         return SlotStackModifierHook.super.overrideOtherStackedOnMe(tool, modifier, held, slot, player, access);
     }
+    @Override
+    public @NotNull InteractionResult onToolUse(IToolStackView var1, ModifierEntry var2, Player var3, InteractionHand var4, InteractionSource var5) {
+        return InteractionResult.PASS;
+    }
+    @Override
+    public void onUsingTick(IToolStackView tool, ModifierEntry modifier, LivingEntity entity, int timeLeft) {
+    }
+    @Override
+    public void onStoppedUsing(IToolStackView tool, ModifierEntry modifier, LivingEntity entity, int timeLeft) {
+    }
+    @Override
+    public void onFinishUsing(IToolStackView tool, ModifierEntry modifier, LivingEntity entity) {
+    }
+    @Override
+    public int getUseDuration(IToolStackView tool, ModifierEntry modifier) {
+        return 0;
+    }
+    @Override
+    public @NotNull UseAnim getUseAction(IToolStackView tool, ModifierEntry modifier) {
+        return UseAnim.NONE;
+    }
+    @Override
+    public float getCriticalModifier(IToolStackView tool, ModifierEntry entry, ToolAttackContext context, float originalModifier, float modifier) {
+        return modifier;
+    }
+    @Override
+    public boolean setCritical(IToolStackView tool, ModifierEntry entry, LivingEntity attacker, InteractionHand hand, Entity target, EquipmentSlot sourceSlot, boolean isFullyCharged, boolean isExtraAttack, boolean isCritical) {
+        return isCritical;
+    }
+    @Override
+    public void afterMeleeHit(IToolStackView tool, ToolAttackContext context, float damage) {
+        this.onAfterToolMeleeHit(tool,context, damage);
+    }
+
+
     public float onGetMeleeDamage(IToolStackView tool, ModifierEntry modifier, ToolAttackContext context, float baseDamage, float damage) {
         return damage;
     }
@@ -263,6 +310,13 @@ public abstract class momomodifier extends Modifier implements MeleeDamageModifi
     public void modifierAddToolStats(IToolContext context, ModifierEntry modifier, ModifierStatsBuilder builder) {
     }
     public void onModifierRemoved(IToolStackView tool) {
+    }
+    public void onAfterMeleeHit(IToolStackView tool, ModifierEntry modifier, ToolAttackContext context, float damageDealt) {
+    }
+    public void onAfterToolMeleeHit(IToolStackView tool, ToolAttackContext context, float damageDealt) {
+    }
+    public ItemStack modifierFindAmmo(IToolStackView tool, ModifierEntry modifiers, LivingEntity livingEntity, ItemStack itemStack, Predicate<ItemStack> predicate) {
+        return itemStack;
     }
     public void OnLivingHurt(LivingHurtEvent event) {
     }

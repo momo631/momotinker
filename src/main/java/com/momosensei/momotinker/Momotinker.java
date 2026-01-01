@@ -4,12 +4,14 @@ package com.momosensei.momotinker;
 import com.momosensei.momotinker.event.LivingEvents;
 import com.momosensei.momotinker.event.tree.ModFeatures;
 import com.momosensei.momotinker.event.tree.MomotinkerStructures;
+import com.momosensei.momotinker.gui.screen.IncarnonScreen;
 import com.momosensei.momotinker.key.key;
 import com.momosensei.momotinker.network.Channel;
 import com.momosensei.momotinker.particle.register.MomotinkerParticles;
 import com.momosensei.momotinker.register.*;
 import com.momosensei.momotinker.test.testa.MyModels;
 import com.momosensei.momotinker.test.testa.PostPasses;
+import net.minecraft.client.gui.screens.MenuScreens;
 import net.minecraft.core.RegistrySetBuilder;
 import net.minecraft.resources.ResourceLocation;
 import net.minecraft.world.item.Item;
@@ -66,6 +68,8 @@ public class Momotinker {
         ModLoadingContext.get().registerConfig(ModConfig.Type.COMMON, MomotinkerConfig.Modifierspec, "MomotinkerModifier.toml");
         ModLoadingContext.get().registerConfig(ModConfig.Type.COMMON, MomotinkerConfig.Toolspec, "MomotinkerTool.toml");
 
+        MomotinkerMenus.MENUS.register(eventBus);
+
         MomotinkerParticles.PARTICLE_TYPES.register(eventBus);
         //GeckoLib.initialize();
         if(FMLEnvironment.dist == Dist.CLIENT){
@@ -117,6 +121,8 @@ public class Momotinker {
         @SubscribeEvent
         public static void onClientSetup(FMLClientSetupEvent event) {
             event.enqueueWork(() -> {
+                MenuScreens.register(MomotinkerMenus.Incarnon_menu.get(), IncarnonScreen::new);
+
                 TinkerItemProperties.registerBrokenProperty(trigger_blade.get());
                 TinkerItemProperties.registerBrokenProperty(divine_punishment_spear.get());
                 TinkerItemProperties.registerBrokenProperty(entropy_burning_cube.get());
