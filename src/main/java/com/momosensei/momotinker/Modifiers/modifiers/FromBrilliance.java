@@ -3,6 +3,7 @@ package com.momosensei.momotinker.Modifiers.modifiers;
 import com.momosensei.momotinker.Modifiers.momomodifier;
 import com.momosensei.momotinker.register.MomotinkerConfig;
 import com.momosensei.momotinker.register.MomotinkerItem;
+import com.momosensei.momotinker.register.MomotinkerModifiers;
 import net.minecraft.ChatFormatting;
 import net.minecraft.network.chat.Component;
 import net.minecraft.world.damagesource.DamageSource;
@@ -99,7 +100,7 @@ public class FromBrilliance extends momomodifier {
         int hadal_limit = MomotinkerConfig.hadal_limit.get();
         int stellarcore_limit = MomotinkerConfig.stellarcore_limit.get();
         int d = MomotinkerConfig.entropy_burning_riding_spear_limit.get();
-        if (attacker instanceof Player player && context.getLivingTarget() != null) {
+        if (attacker instanceof Player player && context.getLivingTarget() != null&&isToolStack(player.getMainHandItem())) {
             ModDataNBT c = ToolStack.from(player.getMainHandItem()).getPersistentData();
             if (player.getMainHandItem().is(MomotinkerItem.entropy_burning_riding_spear.get())) {
                 float bonus = getbonus(player,2500);
@@ -139,29 +140,31 @@ public class FromBrilliance extends momomodifier {
         int backtracking_limit = MomotinkerConfig.backtracking_limit.get();
         int transmit_limit = MomotinkerConfig.transmit_limit.get();
         ModDataNBT a = tool.getPersistentData();
-        if (a.getInt(degenerate) == degenerate_limit) {
-            builder.add(Component.translatable("modifier.momotinker.tooltip.degenerate1").withStyle(ChatFormatting.DARK_RED));
-        }
-        if (a.getInt(sanctification) == sanctification_limit) {
-            builder.add(Component.translatable("modifier.momotinker.tooltip.sanctification1").withStyle(ChatFormatting.YELLOW));
-        }
-        if (a.getInt(hadal) == hadal_limit) {
-            builder.add(Component.translatable("modifier.momotinker.tooltip.hadal1").withStyle(ChatFormatting.DARK_BLUE));
-        }
-        if (a.getInt(stellarcore) == stellarcore_limit) {
-            builder.add(Component.translatable("modifier.momotinker.tooltip.stellarcore1").withStyle(ChatFormatting.GOLD));
-        }
-        if (a.getInt(crystallized) == crystallized_limit) {
-            builder.add(Component.translatable("modifier.momotinker.tooltip.crystallized1").withStyle(ChatFormatting.AQUA));
-        }
-        if (a.getInt(liverization) >= liverization_limit) {
-            builder.add(Component.translatable("modifier.momotinker.tooltip.liverization1").withStyle(ChatFormatting.RED));
-        }
-        if (a.getInt(transmit) == transmit_limit) {
-            builder.add(Component.translatable("modifier.momotinker.tooltip.transmit1").withStyle(ChatFormatting.GREEN));
-        }
-        if (a.getInt(backtracking) == backtracking_limit) {
-            builder.add(Component.translatable("modifier.momotinker.tooltip.backtracking1").withStyle(ChatFormatting.DARK_PURPLE));
+        if ((tool.getModifierLevel(MomotinkerModifiers.superancientmetalsreala.getId())>0)||(tool.getModifierLevel(MomotinkerModifiers.superancientmetalsrealb.getId())>0)){
+            if (a.getInt(degenerate)==degenerate_limit) {
+                builder.add(Component.translatable("modifier.momotinker.tooltip.degenerate1").withStyle(ChatFormatting.DARK_RED));
+            }
+            if (a.getInt(sanctification)==sanctification_limit) {
+                builder.add(Component.translatable("modifier.momotinker.tooltip.sanctification1").withStyle(ChatFormatting.YELLOW));
+            }
+            if (a.getInt(hadal)==hadal_limit) {
+                builder.add(Component.translatable("modifier.momotinker.tooltip.hadal1").withStyle(ChatFormatting.DARK_BLUE));
+            }
+            if (a.getInt(stellarcore)==stellarcore_limit) {
+                builder.add(Component.translatable("modifier.momotinker.tooltip.stellarcore1").withStyle(ChatFormatting.GOLD));
+            }
+            if (a.getInt(crystallized)==crystallized_limit) {
+                builder.add(Component.translatable("modifier.momotinker.tooltip.crystallized1").withStyle(ChatFormatting.AQUA));
+            }
+            if (a.getInt(liverization)>=liverization_limit) {
+                builder.add(Component.translatable("modifier.momotinker.tooltip.liverization1").withStyle(ChatFormatting.RED));
+            }
+            if (a.getInt(transmit)==transmit_limit) {
+                builder.add(Component.translatable("modifier.momotinker.tooltip.transmit1").withStyle(ChatFormatting.GREEN));
+            }
+            if (a.getInt(backtracking)==backtracking_limit) {
+                builder.add(Component.translatable("modifier.momotinker.tooltip.backtracking1").withStyle(ChatFormatting.DARK_PURPLE));
+            }
         }
     }
 }

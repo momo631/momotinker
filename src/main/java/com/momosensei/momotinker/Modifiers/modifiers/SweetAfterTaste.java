@@ -37,6 +37,12 @@ public class SweetAfterTaste extends momomodifier {
     public boolean isNoLevels() {
         return true;
     }
+    private int getDefenseenchant(ToolStack tool){
+        if (tool!=null) {
+            return tool.getPersistentData().getInt(defenseenchant);
+        }
+        return 0;
+    }
 
     @Override
     public void OnLivingHurt(LivingHurtEvent event) {
@@ -46,10 +52,10 @@ public class SweetAfterTaste extends momomodifier {
                 if (stack.getItem() instanceof ModifiableArmorItem) {
                     ToolStack tool = ToolStack.from(stack);
                     if (tool.getModifierLevel(this) > 0 ) {
-                        int b1=  ToolStack.from(player.getItemBySlot(EquipmentSlot.HEAD)).getPersistentData().getInt(defenseenchant)
-                                +ToolStack.from(player.getItemBySlot(EquipmentSlot.CHEST)).getPersistentData().getInt(defenseenchant)
-                                +ToolStack.from(player.getItemBySlot(EquipmentSlot.LEGS)).getPersistentData().getInt(defenseenchant)
-                                +ToolStack.from(player.getItemBySlot(EquipmentSlot.FEET)).getPersistentData().getInt(defenseenchant);
+                        int b1=  getDefenseenchant(getToolStack(player.getItemBySlot(EquipmentSlot.HEAD)))
+                                +getDefenseenchant(getToolStack(player.getItemBySlot(EquipmentSlot.CHEST)))
+                                +getDefenseenchant(getToolStack(player.getItemBySlot(EquipmentSlot.LEGS)))
+                                +getDefenseenchant(getToolStack(player.getItemBySlot(EquipmentSlot.FEET)));
                         float b = (float) 80 / (b1 + 80);
                         event.setAmount(event.getAmount()*b);
                     }

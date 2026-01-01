@@ -30,7 +30,6 @@ import java.util.*;
 public class SlackAtmosphere extends momomodifier {
     public SlackAtmosphere() {
         MinecraftForge.EVENT_BUS.addListener(this::AddMobEffect);
-        
         MinecraftForge.EVENT_BUS.addListener(this::onlivingtickevent);
     }
     @Override
@@ -130,9 +129,11 @@ public class SlackAtmosphere extends momomodifier {
                     if (living instanceof Player player) {
                         for (int i = 0; i < Inventory.INVENTORY_SIZE; i++){
                             ItemStack stack = player.getInventory().getItem(i);
-                            ToolStack tool=ToolStack.from(stack);
-                            if (tool.getModifierLevel(MomotinkerModifiers.slackatmosphere.getId())>0){
-                                a+=1;
+                            if (isToolStack(stack)) {
+                                ToolStack tool = ToolStack.from(stack);
+                                if (tool.getModifierLevel(MomotinkerModifiers.slackatmosphere.getId()) > 0) {
+                                    a += 1;
+                                }
                             }
                         }
                         if (getArmorModifierlevel(player,MomotinkerModifiers.slackatmosphere.getId())>0){
@@ -172,7 +173,7 @@ public class SlackAtmosphere extends momomodifier {
             }else if (!living.hasEffect(effect)) living.addEffect(new MobEffectInstance(effect, duration,0));
         });
     }
-     @Override
+    @Override
     public void OnLivingAttack(LivingAttackEvent event) {
         if (event.getEntity() instanceof Player player&&getAllModifierlevel(player,MomotinkerModifiers.slackatmosphere.getId())>0&&event.getSource().getEntity() instanceof LivingEntity living){
             addRandomHarmfulEffects(living,1,200);

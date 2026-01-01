@@ -9,7 +9,6 @@ import net.minecraft.network.chat.Component;
 import net.minecraft.server.level.ServerPlayer;
 import net.minecraft.world.entity.player.Player;
 import net.minecraft.world.item.TooltipFlag;
-import net.minecraftforge.common.MinecraftForge;
 import net.minecraftforge.event.entity.living.LivingDeathEvent;
 import slimeknights.mantle.client.TooltipKey;
 import slimeknights.tconstruct.library.modifiers.ModifierEntry;
@@ -20,14 +19,14 @@ import java.util.List;
 
 public class Blank extends momomodifier {
     public Blank() {
-        MinecraftForge.EVENT_BUS.addListener(this::onEntityDeath);
     }
     @Override
     public boolean isNoLevels() {
         return true;
     }
 
-    private void onEntityDeath(LivingDeathEvent event) {
+    @Override
+    public void OnEntityDeath(LivingDeathEvent event) {
         if (event.getEntity() instanceof ServerPlayer player&& CoolTimeB.getCoolTime() >= 579) {
             Channel.sendToPlayer(new CoolTimeChargeB(300,false), player);
         }

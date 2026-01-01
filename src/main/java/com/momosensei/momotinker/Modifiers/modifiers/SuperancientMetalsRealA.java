@@ -25,7 +25,6 @@ import net.minecraftforge.event.entity.living.LivingDeathEvent;
 import net.minecraftforge.event.entity.living.LivingHurtEvent;
 import net.minecraftforge.event.entity.living.MobEffectEvent;
 import net.minecraftforge.event.level.BlockEvent;
-import net.minecraftforge.eventbus.api.EventPriority;
 import org.jetbrains.annotations.Nullable;
 import slimeknights.mantle.client.TooltipKey;
 import slimeknights.tconstruct.library.modifiers.Modifier;
@@ -53,8 +52,6 @@ import static com.momosensei.momotinker.tool.pocket_watch.transmit;
 
 public class SuperancientMetalsRealA extends momomodifier {
     public SuperancientMetalsRealA() {
-
-        MinecraftForge.EVENT_BUS.addListener(EventPriority.LOWEST,this::onEntityDeath);
         MinecraftForge.EVENT_BUS.addListener(this::AddMobEffect);
         MinecraftForge.EVENT_BUS.addListener(this::onBreakEvent);
     }
@@ -116,8 +113,10 @@ public class SuperancientMetalsRealA extends momomodifier {
         ModDataNBT a = tool.getPersistentData();
         if (a.getInt(degenerate)==degenerate_limit) {
             if (entity instanceof Player player&&a.getInt(degeneratepoints)>0){
-                if (ToolStack.from(player.getMainHandItem()).getPersistentData().getInt(degenerate)!=degenerate_limit&&player.tickCount%2==0){
-                    a.putInt(degeneratepoints,a.getInt(degeneratepoints)-1);
+                if (isToolStack(player.getMainHandItem())&&player.tickCount%2==0){
+                    if (ToolStack.from(player.getMainHandItem()).getPersistentData().getInt(degenerate)!=degenerate_limit){
+                        a.putInt(degeneratepoints,a.getInt(degeneratepoints)-1);
+                    }
                 }else if (player.tickCount%10==0) {
                     a.putInt(degeneratepoints, a.getInt(degeneratepoints) - 1);
                 }
@@ -173,7 +172,7 @@ public class SuperancientMetalsRealA extends momomodifier {
         int degenerate_limit = MomotinkerConfig.degenerate_limit.get();
         int hadal_limit = MomotinkerConfig.hadal_limit.get();
         int crystallized_limit = MomotinkerConfig.crystallized_limit.get();
-        if (attacker instanceof Player) {
+        if (attacker instanceof Player player) {
             ModDataNBT a = tool.getPersistentData();
             if (a.getInt(sanctification) == sanctification_limit && entity!=null && !isBeConquered(entity)) {
                 setBeConquered(entity);
@@ -195,11 +194,12 @@ public class SuperancientMetalsRealA extends momomodifier {
         }
         return damage;
     }
-    private void onEntityDeath(LivingDeathEvent event) {
+    @Override
+    public void OnEntityDeath(LivingDeathEvent event) {
         int liverization_limit = MomotinkerConfig.liverization_limit.get();
         Entity a = event.getEntity();
         Entity b = event.getSource().getEntity();
-        if (b instanceof Player player&& a != null){
+        if (b instanceof Player player&& a != null&&isToolStack(player.getMainHandItem())){
             ToolStack tool = ToolStack.from(player.getMainHandItem());
             ModDataNBT c = tool.getPersistentData();
             if (tool.getModifierLevel(MomotinkerModifiers.superancientmetalsreala.getId())>0&&c.getInt(liverization)>=liverization_limit){
@@ -216,7 +216,7 @@ public class SuperancientMetalsRealA extends momomodifier {
         int backtracking_limit = MomotinkerConfig.backtracking_limit.get();
         Entity a = event.getEntity();
         Entity b = event.getSource().getEntity();
-        if (b instanceof Player player && a != null) {
+        if (b instanceof Player player && a != null&&isToolStack(player.getMainHandItem())) {
             ModDataNBT c = ToolStack.from(player.getItemBySlot(EquipmentSlot.MAINHAND)).getPersistentData();
             if (c.getInt(degenerate) == degenerate_limit) {
                 a.invulnerableTime = 0;
@@ -233,10 +233,12 @@ public class SuperancientMetalsRealA extends momomodifier {
         if (a instanceof Player player) {
             for (int j = 0; j < player.getInventory().items.size(); j++) {
                 ItemStack stack = player.getInventory().getItem(j);
-                ToolStack tool = ToolStack.from(stack);
-                ModDataNBT data = tool.getPersistentData();
-                if (data.getInt(backtracking) == backtracking_limit && tool.getModifierLevel(MomotinkerModifiers.superancientmetalsreala.getId()) > 0&&data.getInt(tpprotection)>0) {
-                    event.setAmount(0);
+                if (isToolStack(stack)) {
+                    ToolStack tool = ToolStack.from(stack);
+                    ModDataNBT data = tool.getPersistentData();
+                    if (data.getInt(backtracking) == backtracking_limit && tool.getModifierLevel(MomotinkerModifiers.superancientmetalsreala.getId()) > 0 && data.getInt(tpprotection) > 0) {
+                        event.setAmount(0);
+                    }
                 }
             }
         }
@@ -267,13 +269,15 @@ public class SuperancientMetalsRealA extends momomodifier {
         if (event.getEntity() instanceof Player player) {
             for (int j = 0; j < player.getInventory().items.size(); j++) {
                 ItemStack stack = player.getInventory().getItem(j);
-                ToolStack tool = ToolStack.from(stack);
-                ModDataNBT data = tool.getPersistentData();
-                if (data.getInt(transmit) == transmit_limit && tool.getModifierLevel(MomotinkerModifiers.superancientmetalsreala.getId()) > 0) {
-                    var instance = event.getEffectInstance();
-                    var effect = instance.getEffect();
-                    if (instance.getDuration() != -1 && !effect.isInstantenous() && effect.isBeneficial()) {
-                        instance.duration*=2;
+                if (isToolStack(stack)) {
+                    ToolStack tool = ToolStack.from(stack);
+                    ModDataNBT data = tool.getPersistentData();
+                    if (data.getInt(transmit) == transmit_limit && tool.getModifierLevel(MomotinkerModifiers.superancientmetalsreala.getId()) > 0) {
+                        var instance = event.getEffectInstance();
+                        var effect = instance.getEffect();
+                        if (instance.getDuration() != -1 && !effect.isInstantenous() && effect.isBeneficial()) {
+                            instance.duration *= 2;
+                        }
                     }
                 }
             }
@@ -285,10 +289,12 @@ public class SuperancientMetalsRealA extends momomodifier {
         if (player!=null) {
             for (int j = 0; j < player.getInventory().items.size(); j++) {
                 ItemStack stack = player.getInventory().getItem(j);
-                ToolStack tool = ToolStack.from(stack);
-                ModDataNBT data = tool.getPersistentData();
-                if (data.getInt(backtracking) == backtracking_limit && tool.getModifierLevel(MomotinkerModifiers.superancientmetalsreala.getId()) > 0) {
-                    data.putInt(tpprotection,0);
+                if (isToolStack(stack)) {
+                    ToolStack tool = ToolStack.from(stack);
+                    ModDataNBT data = tool.getPersistentData();
+                    if (data.getInt(backtracking) == backtracking_limit && tool.getModifierLevel(MomotinkerModifiers.superancientmetalsreala.getId()) > 0) {
+                        data.putInt(tpprotection, 0);
+                    }
                 }
             }
         }
