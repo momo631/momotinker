@@ -321,7 +321,7 @@
   "item.momotinker.pneumatic_sword.description": "Right click to briefly sprint forward and upward, pressing 'Tool Enhancement' to fire the rope (press 'shift' to cancel the rope in advance). If the target is a creature, it will enhance the next aerial sprint. If the deputy has another pneumatic sword, it will improve various performance",
 
   "item.momotinker.legion": "§o'Legion'§r",
-  "item.momotinker.legion.description": "",
+  "item.momotinker.legion.description": "[Main hand weapon]\nUse the left and right keys to summon a random tool for attack, and press the tool skill to summon the tool to surround oneself\n'The rules are gathered here, and when the monument of logic collapses, all industries will be martyred'",
 
 
   "momotinker.tool.tooltip.offhand_hastool": "Error: The deputy has items",

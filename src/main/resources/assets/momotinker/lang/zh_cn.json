@@ -835,7 +835,7 @@
 
   "modifier.momotinker.memories_of_mountains": "忆江山",
   "modifier.momotinker.memories_of_mountains.flavor": "随山将万转，趣途无百里",
-  "modifier.momotinker.memories_of_mountains.description": "击中时，尝试将目标生物强制传送至「江山忆」维度。\n该维度无自然生成的怪物，被传送生物将间歇受到基于传送时触发伤害的持续伤害.\n目标死亡后，其战利品将掉落于玩家位置。\n（注：涉及区块强制加载，传送目标过多或未死亡时可能导致性能下降。）",
+  "modifier.momotinker.memories_of_mountains.description": "击中时，尝试将目标生物强制传送至「江山忆」维度。\n该维度无自然生成的怪物，被传送生物将间歇受到基于传送时触发伤害的持续伤害。\n目标死亡后，其战利品将掉落于玩家位置。\n（注：涉及区块强制加载，传送目标过多或未死亡时可能导致性能下降。）",
 
   "modifier.momotinker.key_to_ruin": "破败之钥",
   "modifier.momotinker.key_to_ruin.flavor": "跨越山川终已至，定数无可避",
