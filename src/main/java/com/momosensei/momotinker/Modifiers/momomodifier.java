@@ -4,6 +4,8 @@ package com.momosensei.momotinker.Modifiers;
 import com.c2h6s.etstlib.register.EtSTLibHooks;
 import com.c2h6s.etstlib.tool.hooks.CriticalAttackModifierHook;
 import com.c2h6s.etstlib.tool.hooks.ModifyDamageSourceModifierHook;
+import com.momosensei.momotinker.Modifiers.hook.SweepAttackModifierHook;
+import com.momosensei.momotinker.register.MomotinkerHook;
 import net.minecraft.network.chat.Component;
 import net.minecraft.world.InteractionHand;
 import net.minecraft.world.InteractionResult;
@@ -82,7 +84,7 @@ public abstract class momomodifier extends Modifier implements MeleeDamageModifi
         ModifyDamageModifierHook, ModifierRemovalHook, BlockBreakModifierHook, EntityInteractionModifierHook, ToolStatsModifierHook,
         ToolDamageModifierHook,ModifyDamageSourceModifierHook,  VolatileDataModifierHook, RequirementsModifierHook, ValidateModifierHook,
         RepairFactorModifierHook, ModifierTraitHook, ProtectionModifierHook, ProjectileShootModifierHook, SlotStackModifierHook,
-        GeneralInteractionModifierHook, CriticalAttackModifierHook, MeleeHitToolHook {
+        GeneralInteractionModifierHook, CriticalAttackModifierHook, MeleeHitToolHook, SweepAttackModifierHook {
 
     public momomodifier() {
         MinecraftForge.EVENT_BUS.addListener(this::OnLivingHurt);
@@ -103,7 +105,7 @@ public abstract class momomodifier extends Modifier implements MeleeDamageModifi
         builder.addHook(this, ModifierHooks.VALIDATE, ModifierHooks.REPAIR_FACTOR,ModifierHooks.REQUIREMENTS);
         builder.addHook(this, ModifierHooks.PROTECTION, ModifierHooks.MODIFIER_TRAITS,ModifierHooks.PROJECTILE_SHOT);
         builder.addHook(this, ModifierHooks.SLOT_STACK, ModifierHooks.GENERAL_INTERACT, EtSTLibHooks.CRITICAL_ATTACK);
-        builder.addHook(this, ToolHooks.MELEE_HIT);
+        builder.addHook(this, ToolHooks.MELEE_HIT, MomotinkerHook.SWEEP_ATTACK);
 
     }
 
@@ -271,6 +273,14 @@ public abstract class momomodifier extends Modifier implements MeleeDamageModifi
     public void afterMeleeHit(IToolStackView tool, ToolAttackContext context, float damage) {
         this.onAfterToolMeleeHit(tool,context, damage);
     }
+    @Override
+    public float modifySweepDamage(IToolStackView tool, ModifierEntry modifier, ToolAttackContext context, float baseDamage, float sweepDamage) {
+        return this.onGetSweepDamage(tool, modifier,context,baseDamage,sweepDamage);
+    }
+    @Override
+    public double modifySweepRange(IToolStackView tool, ModifierEntry modifier, ToolAttackContext context, double baseRange) {
+        return this.onGetSweepRange(tool, modifier,context, baseRange);
+    }
 
 
     public float onGetMeleeDamage(IToolStackView tool, ModifierEntry modifier, ToolAttackContext context, float baseDamage, float damage) {
@@ -324,6 +334,13 @@ public abstract class momomodifier extends Modifier implements MeleeDamageModifi
     }
     public void OnEntityDeath(LivingDeathEvent event) {
     }
+    public float onGetSweepDamage(IToolStackView tool, ModifierEntry modifier, ToolAttackContext context, float baseDamage, float sweepDamage) {
+        return sweepDamage;
+    }
+    public double onGetSweepRange(IToolStackView tool, ModifierEntry modifier, ToolAttackContext context, double baseRange) {
+        return baseRange;
+    }
+
 
     public static int getAllModifierlevel(LivingEntity entity, ModifierId modifierId) {
         return ModifierUtil.getModifierLevel(entity.getItemBySlot(EquipmentSlot.MAINHAND), modifierId)

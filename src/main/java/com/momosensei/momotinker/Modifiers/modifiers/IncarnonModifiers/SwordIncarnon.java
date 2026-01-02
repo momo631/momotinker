@@ -7,7 +7,6 @@ import com.momosensei.momotinker.network.packet.IncarnonOpenMenuPacket;
 import net.minecraft.network.chat.Component;
 import net.minecraft.server.level.ServerPlayer;
 import net.minecraft.world.InteractionHand;
-import net.minecraft.world.damagesource.DamageSource;
 import net.minecraft.world.entity.Entity;
 import net.minecraft.world.entity.EquipmentSlot;
 import net.minecraft.world.entity.LivingEntity;
@@ -17,30 +16,23 @@ import net.minecraft.world.entity.ai.attributes.AttributeModifier;
 import net.minecraft.world.entity.ai.attributes.Attributes;
 import net.minecraft.world.entity.boss.enderdragon.EnderDragon;
 import net.minecraft.world.entity.boss.wither.WitherBoss;
-import net.minecraft.world.entity.decoration.ArmorStand;
 import net.minecraft.world.entity.monster.Monster;
 import net.minecraft.world.entity.player.Player;
 import net.minecraft.world.inventory.Slot;
 import net.minecraft.world.item.ItemStack;
-import net.minecraft.world.level.Level;
 import net.minecraftforge.common.ForgeMod;
 import net.minecraftforge.event.entity.living.LivingAttackEvent;
 import net.minecraftforge.event.entity.living.LivingDeathEvent;
 import net.minecraftforge.event.entity.living.LivingHurtEvent;
 import slimeknights.tconstruct.library.modifiers.ModifierEntry;
 import slimeknights.tconstruct.library.tools.context.ToolAttackContext;
-import slimeknights.tconstruct.library.tools.definition.module.ToolHooks;
-import slimeknights.tconstruct.library.tools.definition.module.weapon.MeleeHitToolHook;
-import slimeknights.tconstruct.library.tools.definition.module.weapon.SweepWeaponAttack;
 import slimeknights.tconstruct.library.tools.nbt.IToolContext;
 import slimeknights.tconstruct.library.tools.nbt.IToolStackView;
 import slimeknights.tconstruct.library.tools.nbt.ModDataNBT;
 import slimeknights.tconstruct.library.tools.nbt.ToolStack;
 import slimeknights.tconstruct.library.tools.stat.ModifierStatsBuilder;
 import slimeknights.tconstruct.library.tools.stat.ToolStats;
-import slimeknights.tconstruct.tools.TinkerModifiers;
 
-import javax.annotation.Nonnull;
 import java.util.HashMap;
 import java.util.Map;
 import java.util.UUID;
@@ -112,7 +104,7 @@ public class SwordIncarnon extends IncarnonModifier {
                 }
             }else
             if (data.getInt(incarnon_phase)==2){
-                if (event.getEntity() instanceof WitherBoss&&data.getFloat(incarnon_energy)>0){
+                if (event.getEntity() instanceof WitherBoss&&data.getBoolean(is_incarnon)){
                     data.putInt(incarnon_task_phase,data.getInt(incarnon_task_phase)+1);
                 }
             }
@@ -137,6 +129,7 @@ public class SwordIncarnon extends IncarnonModifier {
             }
         }
     }
+
 
 
     @Override
@@ -198,7 +191,7 @@ public class SwordIncarnon extends IncarnonModifier {
                 incarnon_a_attack.set(true);
                 try {
                     event.getEntity().invulnerableTime=0;
-                    event.getEntity().hurt(player.level().damageSources().playerAttack(player), event.getAmount()*0.4f);
+                    event.getEntity().hurt(LegacyDamageSource.playerAttack(player).setPercentageBypassArmor(0.6f), event.getAmount()*0.4f);
                 } finally {
                     incarnon_a_attack.set(false);
                 }
@@ -209,34 +202,25 @@ public class SwordIncarnon extends IncarnonModifier {
     @Override
     public LegacyDamageSource modifyDamageSource(IToolStackView tool, ModifierEntry entry, LivingEntity attacker, InteractionHand hand, Entity target, EquipmentSlot sourceSlot, boolean isFullyCharged, boolean isExtraAttack, boolean isCritical, LegacyDamageSource source) {
         float a = 0;
-        if (tool.getPersistentData().getInt(incarnon_a)==2) {
+        if (tool.getPersistentData().getBoolean(is_incarnon)&&tool.getPersistentData().getInt(incarnon_a)==2) {
             a = 0.6f;
         }
         return source.addPercentageBypassArmor(a);
     }
+
     @Override
-    public float getMeleeDamage(@Nonnull IToolStackView tool, ModifierEntry modifier, @Nonnull ToolAttackContext context, float baseDamage, float damage) {
-        LivingEntity attacker = context.getAttacker();
-        if (tool.getPersistentData().getBoolean(is_incarnon)&&tool.getPersistentData().getInt(incarnon_a)==1
-                &&context.isFullyCharged() && !attacker.isSprinting() && !context.isCritical() && !context.isProjectile() && attacker.onGround() && (attacker.walkDist - attacker.walkDistO) < attacker.getSpeed()) {
-            double range = tool.getModifierLevel(TinkerModifiers.expanded.getId());
-            MeleeHitToolHook meleeHook = tool.getHook(ToolHooks.MELEE_HIT);
-            if (meleeHook instanceof SweepWeaponAttack sweepAttack) {
-                range += sweepAttack.range();
-            }
-            double rangeSq = (2 + range);
-            rangeSq *= rangeSq;
-            Entity target = context.getTarget();
-            Level level = attacker.level();
-            DamageSource source = context.makeDamageSource();
-            for (LivingEntity aoeTarget : level.getEntitiesOfClass(LivingEntity.class, target.getBoundingBox().inflate(range, 0.25D, range))) {
-                if (aoeTarget != attacker && aoeTarget != target && !attacker.isAlliedTo(aoeTarget) && !(aoeTarget instanceof ArmorStand armorStand && armorStand.isMarker()) && attacker.distanceToSqr(aoeTarget) < rangeSq) {
-                    aoeTarget.invulnerableTime=0;
-                    aoeTarget.hurt(source, damage);
-                    aoeTarget.invulnerableTime=0;
-                }
-            }
+    public float modifySweepDamage(IToolStackView tool, ModifierEntry modifier, ToolAttackContext context, float baseDamage, float sweepDamage) {
+        if (tool.getPersistentData().getBoolean(is_incarnon)&&tool.getPersistentData().getInt(incarnon_a)==1){
+            sweepDamage+=baseDamage;
         }
-        return damage;
+        return sweepDamage;
+    }
+    @Override
+    public double modifySweepRange(IToolStackView tool, ModifierEntry modifier, ToolAttackContext context, double range) {
+        LivingEntity attacker = context.getAttacker();
+        if (tool.getPersistentData().getBoolean(is_incarnon)&&tool.getPersistentData().getInt(incarnon_a)==1&&attacker instanceof Player player){
+            range *= 1.8F;
+        }
+        return range;
     }
 }

@@ -132,7 +132,7 @@ public class LongTermInvestments extends momomodifier {
             ModDataNBT data= ToolStack.from(player.getMainHandItem()).getPersistentData();
             if (c>0&&!data.getString(getResourceLocation("termname")).isEmpty()){
                 if (d<50){
-                    data.putFloat(getResource("termindex"), data.getFloat(getResource("termindex"))*1.03f);
+                    data.putFloat(getResource("termindex"), data.getFloat(getResource("termindex"))*1.025f);
                 }else if (d>=100-25){
                     data.putFloat(getResource("termindex"), data.getFloat(getResource("termindex"))*0.975f);
                 }
@@ -143,7 +143,7 @@ public class LongTermInvestments extends momomodifier {
             ModDataNBT data= ToolStack.from(player.getMainHandItem()).getPersistentData();
             if (c>0&&!data.getString(getResourceLocation("termname")).isEmpty()){
                 if (d<50){
-                    data.putFloat(getResource("termindex"), data.getFloat(getResource("termindex"))*1.025f);
+                    data.putFloat(getResource("termindex"), data.getFloat(getResource("termindex"))*1.02f);
                 }else if (d>=100-25){
                     data.putFloat(getResource("termindex"), data.getFloat(getResource("termindex"))*0.98f);
                 }
@@ -160,9 +160,9 @@ public class LongTermInvestments extends momomodifier {
             ModDataNBT data= ToolStack.from(player.getMainHandItem()).getPersistentData();
             if (a>0&&!data.getString(getResourceLocation("termname")).isEmpty()){
                 if (d<50){
-                    data.putFloat(getResource("termindex"), data.getFloat(getResource("termindex"))*1.015f);
+                    data.putFloat(getResource("termindex"), data.getFloat(getResource("termindex"))*1.006f);
                 }else if (d>=100-25){
-                    data.putFloat(getResource("termindex"), data.getFloat(getResource("termindex"))*0.99f);
+                    data.putFloat(getResource("termindex"), data.getFloat(getResource("termindex"))*0.997f);
                 }
             }
         }
