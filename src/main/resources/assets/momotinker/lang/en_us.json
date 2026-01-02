@@ -837,7 +837,7 @@
   "modifier.momotinker.tooltip.key_to_ruin3": "What is done will dissipate from the world, and what is thought and worried will return to the void",
 
 
-  "modifier.momotinker.incarnon_on": "Long press and hold the right button for 2 seconds to activate [Incarnon],\nPress and hold for 3 seconds to release [Incarnon]",
+  "modifier.momotinker.incarnon_on": "Press right button for 2 seconds \nto activate [Incarnon],\nPress for 3 seconds \nto release [Incarnon]",
   "modifier.momotinker.incarnon_task": "Current [Incarnon] task:",
   "modifier.momotinker.incarnon_task0": "Task progress:",
   "modifier.momotinker.sword_incarnon": "Incarnon Genesis - Sword",
@@ -857,6 +857,6 @@
   "modifier.momotinker.tooltip.sword_incarnon_task2": "Kill 1 EnderDragon",
   "modifier.momotinker.tooltip.sword_incarnon_task3": "Kill 2 WitherBoss in [Incarnon] state",
   "modifier.momotinker.tooltip.sword_incarnon_task4": "Open 4 times [Incarnon]",
-  "modifier.momotinker.tooltip.sword_incarnon_on": "Accumulate energy upon successful attack,\nThe maximum duration of [Incarnon] state is 120 seconds"
+  "modifier.momotinker.tooltip.sword_incarnon_on": "Accumulate energy upon successful attack,\nThe maximum duration of\n [Incarnon] state is 120seconds"
 
 }
