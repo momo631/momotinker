@@ -1,20 +1,48 @@
 package com.momosensei.momotinker.test.testc;
 
-/*
-public class CustomCapeRenderLayer extends RenderLayer<AbstractClientPlayer, PlayerModel<AbstractClientPlayer>> {
+import com.mojang.blaze3d.vertex.PoseStack;
+import com.mojang.blaze3d.vertex.VertexConsumer;
+import com.mojang.math.Axis;
+import net.minecraft.client.model.PlayerModel;
+import net.minecraft.client.model.geom.ModelPart;
+import net.minecraft.client.model.geom.PartPose;
+import net.minecraft.client.model.geom.builders.CubeDeformation;
+import net.minecraft.client.model.geom.builders.CubeListBuilder;
+import net.minecraft.client.model.geom.builders.MeshDefinition;
+import net.minecraft.client.model.geom.builders.PartDefinition;
+import net.minecraft.client.player.AbstractClientPlayer;
+import net.minecraft.client.renderer.MultiBufferSource;
+import net.minecraft.client.renderer.RenderType;
+import net.minecraft.client.renderer.entity.RenderLayerParent;
+import net.minecraft.client.renderer.entity.layers.RenderLayer;
+import net.minecraft.client.renderer.texture.OverlayTexture;
+import net.minecraft.world.entity.EquipmentSlot;
+import net.minecraft.world.entity.player.PlayerModelPart;
+import net.minecraft.world.item.ItemStack;
+import net.minecraft.world.item.Items;
+import org.joml.Matrix4f;
 
-    // 可调配常量
-    private static final int PART_COUNT = 16;           // 披风分段数量
-    private static final float CAPE_WIDTH = 10F;      // 披风宽度
+import java.util.List;
+
+import static com.momosensei.momotinker.test.testc.CapeConfig.LENGTH_MULTIPLIER;
+import static com.momosensei.momotinker.test.testc.CapeConfig.WIDTH_MULTIPLIER;
+
+public class CustomCapeRenderLayer extends RenderLayer<AbstractClientPlayer, PlayerModel<AbstractClientPlayer>> {
+    private static final int PART_COUNT = 48;           // 披风分段数量
+    private static final float DEFAULT_WIDTH = 1F;       // 默认披风宽度
+    private static final float DEFAULT_LENGTH = PART_COUNT;     // 默认披风长度
     private static final float CAPE_DEPTH = 0.2F;       // 披风厚度
-    private static final float UV_SCALE = 1F;         // UV缩放
-    private static final float WIND_SWING_MULTIPLIER = 2F; // 风摆动乘数
+    private static final float UV_SCALE = 1F;           // UV缩放
+    private static final float WIND_SWING_MULTIPLIER = 2.0F; // 风摆动乘数
     private static final boolean SMOOTH_RENDERING = true; // 平滑渲染模式
 
-    private float capeModelScaleX = WIDTH_MULTIPLIER;
-    private float capeModelScaleY = LENGTH_MULTIPLIER;
-
     private ModelPart[] customCape = new ModelPart[PART_COUNT];
+
+    private float capeWidth = DEFAULT_WIDTH;     // 披风宽度（可动态调整）
+    private float capeLength = DEFAULT_LENGTH;   // 披风长度（可动态调整）
+
+    private float widthScale = WIDTH_MULTIPLIER;
+    private float lengthScale = LENGTH_MULTIPLIER;
 
     public CustomCapeRenderLayer(
             RenderLayerParent<AbstractClientPlayer, PlayerModel<AbstractClientPlayer>> renderLayerParent) {
@@ -27,21 +55,22 @@ public class CustomCapeRenderLayer extends RenderLayer<AbstractClientPlayer, Pla
         MeshDefinition meshDefinition = new MeshDefinition();
         PartDefinition partDefinition = meshDefinition.getRoot();
 
-        float scaledWidth = CAPE_WIDTH * capeModelScaleX;
-        float originalSegmentHeight = 16f / PART_COUNT;
-        float scaledSegmentHeight = originalSegmentHeight * capeModelScaleY;
+        float scaledWidth = capeWidth * widthScale;
+        float scaledLength = capeLength * lengthScale;
+
+        float originalSegmentHeight = scaledLength / PART_COUNT;
 
         for (int i = 0; i < PART_COUNT; i++) {
-            float cumulativeHeight = 0;
-            for (int j = 0; j < i; j++) {
-                cumulativeHeight += originalSegmentHeight * capeModelScaleY;
-            }
+            float cumulativeHeight = i * originalSegmentHeight;
 
             partDefinition.addOrReplaceChild("customCape_" + i,
-                    CubeListBuilder.create().texOffs(0, (int)(i * originalSegmentHeight))
-                            .addBox(-scaledWidth/2, cumulativeHeight, -CAPE_DEPTH,
-                                    scaledWidth, scaledSegmentHeight, CAPE_DEPTH,
-                                    CubeDeformation.NONE, UV_SCALE, 0.5F),
+                    CubeListBuilder.create()
+                            .texOffs(0, (int)(i * originalSegmentHeight))
+                            .addBox(
+                                    -scaledWidth / 2, cumulativeHeight, -CAPE_DEPTH,
+                                    scaledWidth, originalSegmentHeight, CAPE_DEPTH,
+                                    CubeDeformation.NONE, UV_SCALE, 0.5F
+                            ),
                     PartPose.offset(0.0F, 0.0F, 0.0F));
         }
 
@@ -89,10 +118,17 @@ public class CustomCapeRenderLayer extends RenderLayer<AbstractClientPlayer, Pla
         VertexConsumer bufferBuilder = capeRenderer.getVertexConsumer(multiBufferSource, player);
 
         Matrix4f oldPositionMatrix = null;
-        float originalSegmentSize = 0.96F / PART_COUNT;
-        float segmentSize = originalSegmentSize * capeModelScaleY;  // 应用长度缩放
-        float halfWidth = 0.3F * capeModelScaleX;  // 应用宽度缩放
+
+        // 使用动态尺寸计算渲染参数
+        float scaledWidth = capeWidth * widthScale;
+        float scaledLength = capeLength * lengthScale;
+
+        // 计算渲染坐标（原代码使用0.3F作为半宽，需要调整为基于实际宽度）
+        float halfWidth = (scaledWidth / DEFAULT_WIDTH) * 0.3F; // 保持与原比例一致
         float depth = 0.06F;
+
+        // 计算每个分块在渲染坐标系中的高度
+        float segmentRenderHeight = (0.96F / PART_COUNT) * (scaledLength / DEFAULT_LENGTH);
 
         for (int part = 0; part < PART_COUNT; part++) {
             modifyPoseStack(poseStack, player, delta, part);
@@ -101,49 +137,34 @@ public class CustomCapeRenderLayer extends RenderLayer<AbstractClientPlayer, Pla
                 oldPositionMatrix = poseStack.last().pose();
             }
 
-            // 计算累积的高度，保持起始点不变
-            float cumulativeBottomY = 0;
-            float cumulativeTopY = 0;
-            for (int i = 0; i < part + 1; i++) {
-                cumulativeBottomY += originalSegmentSize * capeModelScaleY;
-            }
-            for (int i = 0; i < part; i++) {
-                cumulativeTopY += originalSegmentSize * capeModelScaleY;
-            }
+            // 计算累积高度（考虑缩放）
+            float bottomY = (part + 1) * segmentRenderHeight;
+            float topY = part * segmentRenderHeight;
 
-            float bottomY = cumulativeBottomY;
-            float topY = cumulativeTopY;
-
-            // 添加顶部顶点（仅第一部分）
             if (part == 0) {
                 addTopVertex(bufferBuilder, poseStack.last().pose(), oldPositionMatrix,
-                        halfWidth, 0, 0,  // Y位置保持为0
+                        halfWidth, 0, 0,
                         -halfWidth, 0, -depth, part, light);
             }
 
-            // 添加底部顶点（仅最后一部分）
             if (part == PART_COUNT - 1) {
                 addBottomVertex(bufferBuilder, poseStack.last().pose(), poseStack.last().pose(),
                         halfWidth, bottomY, 0,
                         -halfWidth, bottomY, -depth, part, light);
             }
 
-            // 添加左侧面
             addLeftVertex(bufferBuilder, poseStack.last().pose(), oldPositionMatrix,
                     -halfWidth, bottomY, 0,
                     -halfWidth, topY, -depth, part, light);
 
-            // 添加右侧面
             addRightVertex(bufferBuilder, poseStack.last().pose(), oldPositionMatrix,
                     halfWidth, bottomY, 0,
                     halfWidth, topY, -depth, part, light);
 
-            // 添加背面
             addBackVertex(bufferBuilder, poseStack.last().pose(), oldPositionMatrix,
                     halfWidth, bottomY, -depth,
                     -halfWidth, topY, -depth, part, light);
 
-            // 添加正面
             addFrontVertex(bufferBuilder, oldPositionMatrix, poseStack.last().pose(),
                     halfWidth, bottomY, 0,
                     -halfWidth, topY, 0, part, light);
@@ -165,21 +186,16 @@ public class CustomCapeRenderLayer extends RenderLayer<AbstractClientPlayer, Pla
         poseStack.pushPose();
         poseStack.translate(0.0D, 0.0D, 0.125D);
 
-        // 计算相对于基点的偏移
         float baseX = points.get(0).getLerpX(delta);
         float baseY = points.get(0).getLerpY(delta);
         float baseZ = points.get(0).getLerpZ(delta);
 
-        // 应用长度缩放
-        float yOffset = part * capeModelScaleY; // 应用Y轴缩放
         float x = points.get(part).getLerpX(delta) - baseX;
-        float y = baseY - yOffset - points.get(part).getLerpY(delta); // 考虑缩放后的Y偏移
+        float y = baseY - part - points.get(part).getLerpY(delta);
         float z = baseZ - points.get(part).getLerpZ(delta);
 
-        // 限制X轴偏移（考虑宽度缩放）
-        float widthLimit = 0.0f * capeModelScaleX; // 根据宽度缩放调整限制
-        if (x > widthLimit) {
-            x = widthLimit;
+        if (x > 0) {
+            x = 0;
         }
 
         float heightOffset = 0;
@@ -190,24 +206,23 @@ public class CustomCapeRenderLayer extends RenderLayer<AbstractClientPlayer, Pla
 
         float naturalWindSwing = getNaturalWindSwing(part, player.isUnderWater());
 
-        // 应用基础旋转
-        poseStack.mulPose(Axis.XP.rotationDegrees(6F + heightOffset + naturalWindSwing));
+        poseStack.mulPose(Axis.XP.rotationDegrees(6.0F + heightOffset + naturalWindSwing));
         poseStack.mulPose(Axis.YP.rotationDegrees(180.0F));
 
-        // 应用模拟偏移
         poseStack.translate(-z / PART_COUNT, y / PART_COUNT, x / PART_COUNT);
 
-        // 应用旋转偏移
+        // 调整旋转偏移量，考虑披风长度缩放
         float rotationOffset = 0.48f / 16;
         poseStack.translate(0, rotationOffset, -rotationOffset);
-        poseStack.translate(0, part * 1f / PART_COUNT, 0);
 
-        // 应用分段旋转
+        // 调整垂直偏移量，考虑披风长度
+        float verticalOffset = (1f / PART_COUNT) * (capeLength / DEFAULT_LENGTH);
+        poseStack.translate(0, part * verticalOffset, 0);
+
         float partRotation = getPartRotation(delta, part, simulation);
         poseStack.mulPose(Axis.XP.rotationDegrees(-partRotation));
 
-        // 应用缩放后的偏移
-        poseStack.translate(0, -part * capeModelScaleY / PART_COUNT, 0); // 使用缩放后的Y偏移
+        poseStack.translate(0, -part * verticalOffset, 0);
         poseStack.translate(0, -rotationOffset, rotationOffset);
     }
 
@@ -215,19 +230,25 @@ public class CustomCapeRenderLayer extends RenderLayer<AbstractClientPlayer, Pla
         if (part == PART_COUNT - 1) {
             return getPartRotation(delta, part - 1, simulation);
         }
-        float angle = (float) getAngle(simulation.getPoints().get(part).getLerpedPos(delta), simulation.getPoints().get(part+1).getLerpedPos(delta));
-        return angle;
+
+        List<CapePoint> points = simulation.getPoints();
+        float x1 = points.get(part).getLerpX(delta);
+        float y1 = points.get(part).getLerpY(delta);
+        float x2 = points.get(part + 1).getLerpX(delta);
+        float y2 = points.get(part + 1).getLerpY(delta);
+
+        float dx = x2 - x1;
+        float dy = y2 - y1;
+        return (float) Math.toDegrees(Math.atan2(dx, dy)) + 180;
     }
-    private double getAngle(Vector3 a, Vector3 b) {
-        Vector3 angle = b.subtract(a);
-        return Math.toDegrees(Math.atan2(angle.x, angle.y))+180;
-    }
+
     private float getNaturalWindSwing(int part, boolean underwater) {
         long time = System.currentTimeMillis() / (underwater ? 9 : 3);
         float relativePart = (float) (part + 1) / PART_COUNT;
         return (float) (Math.sin(Math.toRadians(relativePart * 360 - (time % 360))) * WIND_SWING_MULTIPLIER);
     }
 
+    // 以下顶点渲染方法保持不变（但实际渲染时会使用动态计算的参数）
     private static void addBackVertex(VertexConsumer bufferBuilder, Matrix4f matrix, Matrix4f oldMatrix, float x1, float y1, float z1, float x2, float y2, float z2, int part, int light) {
         float i;
         Matrix4f k;
@@ -437,5 +458,3 @@ public class CustomCapeRenderLayer extends RenderLayer<AbstractClientPlayer, Pla
         }
     }
 }
-
- */

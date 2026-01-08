@@ -1,6 +1,13 @@
 package com.momosensei.momotinker.test.testc;
 
-/*
+import com.mojang.blaze3d.vertex.PoseStack;
+import com.mojang.blaze3d.vertex.VertexConsumer;
+import net.minecraft.client.model.geom.ModelPart;
+import net.minecraft.client.player.AbstractClientPlayer;
+import net.minecraft.client.renderer.MultiBufferSource;
+import net.minecraft.client.renderer.RenderType;
+import net.minecraft.client.renderer.texture.OverlayTexture;
+
 public class VanillaCapeRenderer implements CapeRenderer {
 
     public VertexConsumer vertexConsumer = null;
@@ -22,5 +29,3 @@ public class VanillaCapeRenderer implements CapeRenderer {
     }
 
 }
-
- */

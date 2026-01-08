@@ -1,7 +1,15 @@
 package com.momosensei.momotinker.test.testc;
 
-/*
+import net.minecraft.util.Mth;
+
+import java.util.ArrayList;
+import java.util.List;
+
+import static com.momosensei.momotinker.test.testc.CapeConfig.*;
+
+
 public class StickSimulation3d implements BasicSimulation {
+
     public List<Point> points = new ArrayList<>();
     public List<Stick> sticks = new ArrayList<>();
     public Vector3 gravityDirection = new Vector3(0, -1, 0);
@@ -42,7 +50,8 @@ public class StickSimulation3d implements BasicSimulation {
     }
 
     private void applyGravity() {
-        Vector3 down = gravityDirection.clone().mul(gravity * FIXED_DELTA_TIME);
+        float deltaTime = 50f/1000f;
+        Vector3 down = gravityDirection.clone().mul(gravity * deltaTime);
         Vector3 tmp = new Vector3(0, 0, 0);
         for (Point p : points) {
             if (!p.locked) {
@@ -70,8 +79,7 @@ public class StickSimulation3d implements BasicSimulation {
     }
 
     private void limitLength() {
-        for (int x = 0; x < sticks.size(); x++) {
-            Stick stick = sticks.get(x);
+        for (Stick stick : sticks) {
             Vector3 stickDir = stick.pointA.position.clone().subtract(stick.pointB.position).normalize();
             if (!stick.pointB.locked) {
                 stick.pointB.position = stick.pointA.position.clone().subtract(stickDir.mul(stick.length));
@@ -80,7 +88,7 @@ public class StickSimulation3d implements BasicSimulation {
     }
 
     private void preventSelfClipping() {
-        boolean clipped = false;
+        boolean clipped;
         int runs = 0;
         do {
             clipped = false;
@@ -90,33 +98,31 @@ public class StickSimulation3d implements BasicSimulation {
                     Point pB = points.get(b);
                     Vector3 stickDir = pA.position.clone().subtract(pB.position);
 
-                    if(stickDir.sqrMagnitude() < CLIPPING_THRESHOLD) {
+                    if(stickDir.sqrMagnitude() < 0.99) {
                         clipped = true;
                         runs++;
                         stickDir.normalize();
                         Vector3 centre = pA.position.clone().add(pB.position).div(2);
                         if (!pA.locked) {
-                            pA.position = centre.clone().add(stickDir.clone().mul(0.5f));
+                            pA.position = centre.clone().add(stickDir.clone().mul(1f / 2f));
                         }
                         if (!pB.locked) {
-                            pB.position = centre.clone().subtract(stickDir.clone().mul(0.5f));
+                            pB.position = centre.clone().subtract(stickDir.clone().mul(1f / 2f));
                         }
                     }
                 }
             }
-        } while(clipped && runs < MAX_SELF_CLIP_RUNS);
+        }while(clipped && runs < 32);
     }
 
     private void preventHardBends() {
         for (int i = 1; i < points.size() - 2; i++) {
             double angle = getAngle(points.get(i).position, points.get(i - 1).position, points.get(i + 1).position);
             if (angle < -maxBend) {
-                Vector3 replacement = getReplacement(points.get(i).position, points.get(i - 1).position, -maxBend * 2);
-                points.get(i + 1).position = replacement;
+                points.get(i + 1).position = getReplacement(points.get(i).position, points.get(i - 1).position, -maxBend*2);
             }
             if (angle > maxBend) {
-                Vector3 replacement = getReplacement(points.get(i).position, points.get(i - 1).position, maxBend * 2);
-                points.get(i + 1).position = replacement;
+                points.get(i + 1).position = getReplacement(points.get(i).position, points.get(i - 1).position, maxBend*2);
             }
         }
     }
@@ -125,13 +131,7 @@ public class StickSimulation3d implements BasicSimulation {
         Point basePoint = points.get(0);
         for (int i = 1; i < points.size(); i++) {
             Point p = points.get(i);
-            // 防止披风穿入玩家身体
-            if (p.position.x - basePoint.position.x > 0) {
-                p.position.x = basePoint.position.x;
-            }
-            // Z轴限制
-            float normalizedIndex = (float)i / (float)points.size();
-            float maxZ = normalizedIndex * normalizedIndex * MAX_Z_MULTIPLIER;
+            float maxZ = ((float)i / (float)points.size()) * ((float)i / (float)points.size()) * 1;
             float z = basePoint.position.z - p.position.z;
             if(z > maxZ) {
                 p.position.z = basePoint.position.z - maxZ;
@@ -159,7 +159,7 @@ public class StickSimulation3d implements BasicSimulation {
 
         double alpha = Mth.atan2(cross, dot);
 
-        return alpha * 180 / Math.PI;
+        return alpha * 180/ Math.PI;
     }
 
     @Override
@@ -195,13 +195,13 @@ public class StickSimulation3d implements BasicSimulation {
     @Override
     public void applyMovement(Vector3 movement) {
         points.get(0).prevPosition.copy(points.get(0).position);
-        Vector3 moveVec = new Vector3(movement.x, movement.y, movement.z);
-        points.get(0).position.add(moveVec);
+        points.get(0).position.add(movement);
     }
 
+    @SuppressWarnings("unchecked")
     @Override
     public List<CapePoint> getPoints() {
-        return new ArrayList<>(points);
+        return (List<CapePoint>)(Object)points;
     }
 
     public static class Point implements CapePoint {
@@ -236,5 +236,3 @@ public class StickSimulation3d implements BasicSimulation {
         }
     }
 }
-
- */

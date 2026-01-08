@@ -1,6 +1,6 @@
 package com.momosensei.momotinker.mixins;
-/*
-import com.momosensei.momotinker.test.testc.CustomCeRenderLayer;
+
+import com.momosensei.momotinker.test.testc.CustomCapeRenderLayer;
 import net.minecraft.client.model.PlayerModel;
 import net.minecraft.client.player.AbstractClientPlayer;
 import net.minecraft.client.renderer.entity.EntityRendererProvider.Context;
@@ -24,5 +24,3 @@ public abstract class PlayerRendererMixin extends LivingEntityRenderer<AbstractC
     }
     
 }
-
- */

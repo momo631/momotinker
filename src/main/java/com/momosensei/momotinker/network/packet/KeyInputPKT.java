@@ -31,7 +31,6 @@ import static com.momosensei.momotinker.Modifiers.modifiers.Berserk.berserker;
 import static com.momosensei.momotinker.Modifiers.modifiers.DrinkingDemon.*;
 import static com.momosensei.momotinker.Modifiers.modifiers.FallingStars.falling;
 import static com.momosensei.momotinker.Modifiers.modifiers.FlameBath.flamebathcooldown;
-import static com.momosensei.momotinker.Modifiers.modifiers.IncarnonModifiers.IncarnonModifier.incarnon_phase;
 import static com.momosensei.momotinker.Modifiers.modifiers.OverCrystalline.crystallization;
 import static com.momosensei.momotinker.Modifiers.modifiers.Red.ender;
 import static com.momosensei.momotinker.Modifiers.modifiers.Significance.signifincancecool;
@@ -231,10 +230,12 @@ public class KeyInputPKT {
                 }
             }
             if (getMainhandModifierlevel(player, MomotinkerModifiers.laomochuji.getId()) > 0) {
-                ToolStack.from(player.getMainHandItem()).getPersistentData().putInt(incarnon_phase,ToolStack.from(player.getMainHandItem()).getPersistentData().getInt(incarnon_phase)+1);
-                if (ToolStack.from(player.getMainHandItem()).getPersistentData().getInt(incarnon_phase)>=5){
-                    ToolStack.from(player.getMainHandItem()).getPersistentData().putInt(incarnon_phase,0);
-                }
+//                ToolStack.from(player.getMainHandItem()).getPersistentData().putInt(incarnon_phase,ToolStack.from(player.getMainHandItem()).getPersistentData().getInt(incarnon_phase)+1);
+//                if (ToolStack.from(player.getMainHandItem()).getPersistentData().getInt(incarnon_phase)>=5){
+//                    ToolStack.from(player.getMainHandItem()).getPersistentData().putInt(incarnon_phase,0);
+//                }
+//                player.level.addParticle(MomotinkerParticles.PLAYER_RAINBOW.get(), player.xo, player.yo, player.zo, player.getId(), 0, 0);
+
             }
         });
         context.setPacketHandled(true);

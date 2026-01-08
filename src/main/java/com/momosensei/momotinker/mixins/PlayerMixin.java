@@ -1,5 +1,5 @@
 package com.momosensei.momotinker.mixins;
-/*
+
 import com.momosensei.momotinker.test.testc.BasicSimulation;
 import com.momosensei.momotinker.test.testc.CapeHolder;
 import net.minecraft.client.player.AbstractClientPlayer;
@@ -34,5 +34,3 @@ public class PlayerMixin implements CapeHolder {
     }
     
 }
-
- */
