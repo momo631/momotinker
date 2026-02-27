@@ -13,7 +13,10 @@
   ],
   "client": [
     "GameRendererMixin",
-    "MixinLevelRenderer"
+    "MixinLevelRenderer",
+    "PlayerMixin",
+    "PlayerModelMixin",
+    "PlayerRendererMixin"
   ],
   "server": [
   ],

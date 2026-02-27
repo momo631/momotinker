@@ -76,7 +76,9 @@ public class AttackUtil {
 
         float cooldown = (float)cooldownFunction.getAsDouble();
         ToolAttackContext context = ToolAttackContext.attacker(attackerLiving).target(targetEntity).cooldown(cooldown).slot(sourceSlot,hand).hand(hand).applyAttributes().build();
-
+        if (isExtraAttack){
+            context = ToolAttackContext.attacker(attackerLiving).target(targetEntity).cooldown(cooldown).slot(sourceSlot,hand).hand(hand).applyAttributes().extraAttack().build();
+        }
         float baseDamage = context.getBaseDamage();
         float damage = baseDamage + setDamage;
 
