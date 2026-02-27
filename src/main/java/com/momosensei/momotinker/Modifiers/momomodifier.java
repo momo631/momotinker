@@ -25,6 +25,7 @@ import net.minecraft.world.phys.BlockHitResult;
 import net.minecraft.world.phys.EntityHitResult;
 import net.minecraftforge.common.MinecraftForge;
 import net.minecraftforge.event.entity.living.LivingAttackEvent;
+import net.minecraftforge.event.entity.living.LivingDeathEvent;
 import net.minecraftforge.event.entity.living.LivingHurtEvent;
 import org.jetbrains.annotations.NotNull;
 import org.jetbrains.annotations.Nullable;
@@ -62,6 +63,7 @@ import slimeknights.tconstruct.library.tools.context.ToolAttackContext;
 import slimeknights.tconstruct.library.tools.context.ToolHarvestContext;
 import slimeknights.tconstruct.library.tools.definition.ToolDefinition;
 import slimeknights.tconstruct.library.tools.helper.ModifierUtil;
+import slimeknights.tconstruct.library.tools.item.IModifiable;
 import slimeknights.tconstruct.library.tools.nbt.*;
 import slimeknights.tconstruct.library.tools.stat.ModifierStatsBuilder;
 import slimeknights.tconstruct.library.tools.stat.ToolStats;
@@ -80,6 +82,7 @@ public abstract class momomodifier extends Modifier implements MeleeDamageModifi
     public momomodifier() {
         MinecraftForge.EVENT_BUS.addListener(this::OnLivingHurt);
         MinecraftForge.EVENT_BUS.addListener(this::OnLivingAttack);
+        MinecraftForge.EVENT_BUS.addListener(this::OnEntityDeath);
     }
 
     @Override
@@ -256,6 +259,8 @@ public abstract class momomodifier extends Modifier implements MeleeDamageModifi
     }
     public void OnLivingAttack(LivingAttackEvent event) {
     }
+    public void OnEntityDeath(LivingDeathEvent event) {
+    }
 
 
     public static int getAllModifierlevel(LivingEntity entity, ModifierId modifierId) {
@@ -326,5 +331,16 @@ public abstract class momomodifier extends Modifier implements MeleeDamageModifi
         tools.setDamage(tool.getDamage());
         tools.getPersistentData().copyFrom(tool.getPersistentData().getCopy());
         return tools.createStack();
+    }
+
+    public static ToolStack getToolStack(ItemStack stack){
+        if (stack.getItem() instanceof IModifiable){
+            return ToolStack.from(stack);
+        }
+        return null;
+    }
+
+    public static boolean isToolStack(ItemStack stack){
+        return stack.getItem() instanceof IModifiable;
     }
 }

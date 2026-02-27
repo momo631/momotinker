@@ -10,7 +10,6 @@ import net.minecraft.world.InteractionHand;
 import net.minecraft.world.entity.Entity;
 import net.minecraft.world.entity.LivingEntity;
 import net.minecraft.world.entity.player.Player;
-import net.minecraftforge.common.MinecraftForge;
 import net.minecraftforge.event.entity.living.LivingDeathEvent;
 import net.minecraftforge.event.entity.living.LivingHurtEvent;
 import org.jetbrains.annotations.NotNull;
@@ -28,7 +27,6 @@ import java.util.List;
 
 public class EternalAnger extends momomodifier {
     public EternalAnger() {
-        MinecraftForge.EVENT_BUS.addListener(this::onEntityDeath);
     }
 
     public static final ResourceLocation eternalangerodds = Momotinker.getResource("eternalangerodds");
@@ -67,7 +65,8 @@ public class EternalAnger extends momomodifier {
         iToolStackView.getPersistentData().remove(eternalangerpoints);
         return null;
     }
-    private void onEntityDeath(LivingDeathEvent event) {
+    @Override
+    public void OnEntityDeath(LivingDeathEvent event) {
         if (event.getEntity() instanceof Player player && getMainhandModifierlevel(player, MomotinkerModifiers.eternalanger.getId()) > 0) {
             ToolStack tool = ToolStack.from(player.getMainHandItem());
             ModDataNBT data = tool.getPersistentData();

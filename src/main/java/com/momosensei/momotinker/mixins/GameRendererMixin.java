@@ -3,7 +3,6 @@ package com.momosensei.momotinker.mixins;
 import com.mojang.blaze3d.vertex.PoseStack;
 import com.momosensei.momotinker.register.MomotinkerEffects;
 import com.momosensei.momotinker.register.MomotinkerModifiers;
-import com.momosensei.momotinker.test.testa.PostEffectPipelines;
 import net.minecraft.client.renderer.GameRenderer;
 import net.minecraft.world.entity.Entity;
 import net.minecraft.world.entity.player.Player;
@@ -30,6 +29,7 @@ public class GameRendererMixin {
             }
         }
     }
+    /*
     @Inject(method = "render",
             at = @At(
                     value = "INVOKE",
@@ -39,5 +39,7 @@ public class GameRendererMixin {
     private void PostRender(float pt, long startTime, boolean tick, CallbackInfo cbi){
         PostEffectPipelines.RenderPost();
     }
+
+     */
 
 }

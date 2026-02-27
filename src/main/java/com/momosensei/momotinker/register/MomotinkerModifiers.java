@@ -9,8 +9,8 @@ public class MomotinkerModifiers {
 
     public static ModifierDeferredRegister MODIFIERS = ModifierDeferredRegister.create(MOD_ID);
 
-    public static final StaticModifier<Test> test=MODIFIERS.register("test", Test::new);
     public static final StaticModifier<LaoMoChuJi> laomochuji=MODIFIERS.register("laomochuji", LaoMoChuJi::new);   //测试
+
     public static final StaticModifier<Lethe> lethe=MODIFIERS.register("lethe", Lethe::new);
     public static final StaticModifier<Huangquan> huangquan=MODIFIERS.register("huangquan", Huangquan::new);
     public static final StaticModifier<Red> red=MODIFIERS.register("red", Red::new);

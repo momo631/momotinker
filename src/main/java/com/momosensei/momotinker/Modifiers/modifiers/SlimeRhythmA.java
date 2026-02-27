@@ -97,7 +97,10 @@ public class SlimeRhythmA extends momomodifier {
         return tool.getModifier(TinkerModifiers.overslime.getId());
     }
     private int getRhythmPoints(ToolStack tool){
-        return tool.getPersistentData().getInt(rhythmapoints);
+        if (tool!=null) {
+            return tool.getPersistentData().getInt(rhythmapoints);
+        }
+        return 0;
     }
     private boolean getRhythmPointsTure(ToolStack tool1,ToolStack tool2,ToolStack tool3,ToolStack tool4){
         return getRhythmPoints(tool1) > 0 || getRhythmPoints(tool2) > 0 || getRhythmPoints(tool3) > 0 || getRhythmPoints(tool4) > 0;
@@ -107,42 +110,42 @@ public class SlimeRhythmA extends momomodifier {
         LivingEntity a = event.getEntity();
         OverslimeModifier overslime = TinkerModifiers.overslime.get();
         if (a instanceof Player player) {
-            ToolStack tool3 = ToolStack.from(player.getItemBySlot(EquipmentSlot.HEAD));
-            ToolStack tool4 = ToolStack.from(player.getItemBySlot(EquipmentSlot.CHEST));
-            ToolStack tool5 = ToolStack.from(player.getItemBySlot(EquipmentSlot.LEGS));
-            ToolStack tool6 = ToolStack.from(player.getItemBySlot(EquipmentSlot.FEET));
+            ToolStack tool3 = getToolStack(player.getItemBySlot(EquipmentSlot.HEAD));
+            ToolStack tool4 = getToolStack(player.getItemBySlot(EquipmentSlot.CHEST));
+            ToolStack tool5 = getToolStack(player.getItemBySlot(EquipmentSlot.LEGS));
+            ToolStack tool6 = getToolStack(player.getItemBySlot(EquipmentSlot.FEET));
             
             int d = getArmorModifierlevel(player, MomotinkerModifiers.slimerhythma.getId());
             if (d > 0&&getRhythmPointsTure(tool3,tool4,tool5,tool6)) {
                 int b1 = (int) Math.floor(event.getAmount());
                 int b3;int b4;int b5;int b6;
-                if (b1>0&&getOverSlime(tool3).getLevel() > 0&&overslime.getShield(tool3) >0) {
+                if (tool3 != null && b1 > 0 && getOverSlime(tool3).getLevel() > 0 && overslime.getShield(tool3) > 0) {
                     b3 = overslime.getShield(tool3);
-                    b1-=b3;
-                    if (b1>0) {
+                    b1 -= b3;
+                    if (b1 > 0) {
                         overslime.addOverslime(tool3, getOverSlime(tool3), -b3);
-                    }else overslime.addOverslime(tool3, getOverSlime(tool3), -b1);
+                    } else overslime.addOverslime(tool3, getOverSlime(tool3), -b1);
                 }
-                if (b1>0&&getOverSlime(tool4).getLevel() > 0&&overslime.getShield(tool4) >0) {
+                if (tool4 != null && b1 > 0 && getOverSlime(tool4).getLevel() > 0 && overslime.getShield(tool4) > 0) {
                     b4 = overslime.getShield(tool4);
-                    b1-=b4;
-                    if (b1>0) {
+                    b1 -= b4;
+                    if (b1 > 0) {
                         overslime.addOverslime(tool4, getOverSlime(tool4), -b4);
-                    }else overslime.addOverslime(tool4, getOverSlime(tool4), -b1);
+                    } else overslime.addOverslime(tool4, getOverSlime(tool4), -b1);
                 }
-                if (b1>0&&getOverSlime(tool5).getLevel() > 0&&overslime.getShield(tool5) >0) {
+                if (tool5 != null && b1 > 0 && getOverSlime(tool5).getLevel() > 0 && overslime.getShield(tool5) > 0) {
                     b5 = overslime.getShield(tool5);
-                    b1-=b5;
-                    if (b1>0) {
+                    b1 -= b5;
+                    if (b1 > 0) {
                         overslime.addOverslime(tool5, getOverSlime(tool5), -b5);
-                    }else overslime.addOverslime(tool5, getOverSlime(tool5), -b1);
+                    } else overslime.addOverslime(tool5, getOverSlime(tool5), -b1);
                 }
-                if (b1>0&&getOverSlime(tool6).getLevel() > 0&&overslime.getShield(tool6) >0) {
+                if (tool6 != null && b1 > 0 && getOverSlime(tool6).getLevel() > 0 && overslime.getShield(tool6) > 0) {
                     b6 = overslime.getShield(tool6);
-                    b1-=b6;
-                    if (b1>0) {
+                    b1 -= b6;
+                    if (b1 > 0) {
                         overslime.addOverslime(tool6, getOverSlime(tool6), -b6);
-                    }else overslime.addOverslime(tool6, getOverSlime(tool6), -b1);
+                    } else overslime.addOverslime(tool6, getOverSlime(tool6), -b1);
                 }
                 event.setAmount(Math.max(b1, 0));
             }

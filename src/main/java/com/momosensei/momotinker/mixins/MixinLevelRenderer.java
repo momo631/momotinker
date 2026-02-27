@@ -1,14 +1,7 @@
 package com.momosensei.momotinker.mixins;
 
 
-import com.momosensei.momotinker.test.testa.PostEffectPipelines;
-import net.minecraft.client.renderer.LevelRenderer;
-import org.spongepowered.asm.mixin.Mixin;
-import org.spongepowered.asm.mixin.injection.At;
-import org.spongepowered.asm.mixin.injection.Inject;
-import org.spongepowered.asm.mixin.injection.callback.CallbackInfo;
-
-
+/*
 @Mixin(value = LevelRenderer.class)
 public abstract class MixinLevelRenderer {
 
@@ -28,3 +21,5 @@ public abstract class MixinLevelRenderer {
 
 
 }
+
+ */

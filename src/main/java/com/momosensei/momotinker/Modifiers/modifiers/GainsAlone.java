@@ -30,7 +30,6 @@ import java.util.List;
 
 public class GainsAlone extends momomodifier {
     public GainsAlone() {
-        MinecraftForge.EVENT_BUS.addListener(this::onEntityDeath);
         MinecraftForge.EVENT_BUS.addListener(this::onBreakBlockEvent);
     }
     public static final ResourceLocation gainsalonepoints = Momotinker.getResource("gainsalonepoints");
@@ -121,13 +120,14 @@ public class GainsAlone extends momomodifier {
             ToolStats.BLOCK_ANGLE.multiply(builder, c);
         }
     }
-    private void onEntityDeath(LivingDeathEvent event) {
+    @Override
+    public void OnEntityDeath(LivingDeathEvent event) {
         Entity a = event.getEntity();
         Entity b = event.getSource().getEntity();
         if (b instanceof Player player&&a instanceof LivingEntity){
             int c = getMainhandModifierlevel(player,MomotinkerModifiers.gainsalone.getId());
-            ModDataNBT d = ToolStack.from(player.getMainHandItem()).getPersistentData();
-            if (c>0){
+            if (c>0&&isToolStack(player.getMainHandItem())){
+                ModDataNBT d = ToolStack.from(player.getMainHandItem()).getPersistentData();
                 d.putInt(gainsalonepoints,d.getInt(gainsalonepoints)+1);
                 ToolStack.from(player.getMainHandItem()).rebuildStats();
             }
@@ -138,8 +138,8 @@ public class GainsAlone extends momomodifier {
         Player player = event.getPlayer();
         if (player!=null&&event.getState()!=null&&!event.getState().isAir()){
             int c = getMainhandModifierlevel(player,MomotinkerModifiers.gainsalone.getId());
-            ModDataNBT d = ToolStack.from(player.getMainHandItem()).getPersistentData();
-            if (c>0){
+            if (c>0&&isToolStack(player.getMainHandItem())){
+                ModDataNBT d = ToolStack.from(player.getMainHandItem()).getPersistentData();
                 d.putInt(gainsalonepoints,d.getInt(gainsalonepoints)+1);
                 ToolStack.from(player.getMainHandItem()).rebuildStats();
             }

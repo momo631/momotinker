@@ -30,7 +30,6 @@ import java.util.*;
 public class SlackAtmosphere extends momomodifier {
     public SlackAtmosphere() {
         MinecraftForge.EVENT_BUS.addListener(this::AddMobEffect);
-
         MinecraftForge.EVENT_BUS.addListener(this::onlivingtickevent);
     }
     @Override
@@ -130,9 +129,11 @@ public class SlackAtmosphere extends momomodifier {
                     if (living instanceof Player player) {
                         for (int i = 0; i < Inventory.INVENTORY_SIZE; i++){
                             ItemStack stack = player.getInventory().getItem(i);
-                            ToolStack tool=ToolStack.from(stack);
-                            if (tool.getModifierLevel(MomotinkerModifiers.slackatmosphere.getId())>0){
-                                a+=1;
+                            if (isToolStack(stack)) {
+                                ToolStack tool = ToolStack.from(stack);
+                                if (tool.getModifierLevel(MomotinkerModifiers.slackatmosphere.getId()) > 0) {
+                                    a += 1;
+                                }
                             }
                         }
                         if (getArmorModifierlevel(player,MomotinkerModifiers.slackatmosphere.getId())>0){
