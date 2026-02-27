@@ -6,7 +6,6 @@ import com.momosensei.momotinker.network.Channel;
 import com.momosensei.momotinker.network.packet.HudCharge.LegionChargingCharge;
 import com.momosensei.momotinker.network.packet.HudCharge.LegionCooldownCharge;
 import com.momosensei.momotinker.network.packet.LegionPacket;
-import com.momosensei.momotinker.util.AttackUtil;
 import net.minecraft.core.BlockPos;
 import net.minecraft.core.particles.ParticleTypes;
 import net.minecraft.network.chat.Component;
@@ -43,6 +42,7 @@ import slimeknights.tconstruct.library.tools.nbt.ModDataNBT;
 import slimeknights.tconstruct.library.tools.nbt.ToolStack;
 import slimeknights.tconstruct.library.tools.stat.ToolStats;
 import slimeknights.tconstruct.tools.modifiers.ability.interaction.BlockingModifier;
+import slimeknights.tconstruct.tools.modifiers.upgrades.ranged.ScopeModifier;
 
 import java.util.*;
 import java.util.concurrent.ConcurrentHashMap;
@@ -182,7 +182,7 @@ public class legion extends ModifiableItem {
     }
     @Override
     public void releaseUsing(ItemStack stack, Level level, LivingEntity livingEntity, int duration) {
-        AttackUtil.stopScoping(livingEntity);
+        ScopeModifier.stopScoping(livingEntity);
         ToolStack tool = ToolStack.from(stack);
         if (tool.isBroken()){
             tool.getPersistentData().remove(KEY_DRAWTIME);

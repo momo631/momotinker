@@ -229,14 +229,6 @@ public class KeyInputPKT {
                     }
                 }
             }
-            if (getMainhandModifierlevel(player, MomotinkerModifiers.laomochuji.getId()) > 0) {
-//                ToolStack.from(player.getMainHandItem()).getPersistentData().putInt(incarnon_phase,ToolStack.from(player.getMainHandItem()).getPersistentData().getInt(incarnon_phase)+1);
-//                if (ToolStack.from(player.getMainHandItem()).getPersistentData().getInt(incarnon_phase)>=5){
-//                    ToolStack.from(player.getMainHandItem()).getPersistentData().putInt(incarnon_phase,0);
-//                }
-//                player.level.addParticle(MomotinkerParticles.PLAYER_RAINBOW.get(), player.xo, player.yo, player.zo, player.getId(), 0, 0);
-
-            }
         });
         context.setPacketHandled(true);
     }

@@ -1,7 +1,6 @@
 package com.momosensei.momotinker.register;
 
 import com.momosensei.momotinker.Modifiers.modifiers.*;
-import com.momosensei.momotinker.Modifiers.modifiers.IncarnonModifiers.SwordIncarnon;
 import slimeknights.tconstruct.library.modifiers.util.ModifierDeferredRegister;
 import slimeknights.tconstruct.library.modifiers.util.StaticModifier;
 
@@ -105,8 +104,5 @@ public class MomotinkerModifiers {
     public static final StaticModifier<YearsInWeiqi> years_in_weiqi=MODIFIERS.register("years_in_weiqi", YearsInWeiqi::new);
 
     public static final StaticModifier<MemoriesOfMountains> memories_of_mountains=MODIFIERS.register("memories_of_mountains", MemoriesOfMountains::new);
-
-    public static final StaticModifier<SwordIncarnon> sword_incarnon=MODIFIERS.register("sword_incarnon", SwordIncarnon::new);
-
 
 }

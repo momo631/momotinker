@@ -117,7 +117,7 @@ public class ForbiddenFruit extends momomodifier {
         return damage;
     }
     @Override
-    public boolean onProjectileHitEntity(ModifierNBT modifiers, ModDataNBT persistentData, ModifierEntry modifier, Projectile projectile, EntityHitResult hit, @Nullable LivingEntity attacker, @Nullable LivingEntity target, boolean notBlocked) {
+    public boolean onProjectileHitEntity(ModifierNBT modifiers, ModDataNBT persistentData, ModifierEntry modifier, Projectile projectile, EntityHitResult hit, @javax.annotation.Nullable LivingEntity attacker, @javax.annotation.Nullable LivingEntity target) {
         if (attacker instanceof ServerPlayer player && projectile instanceof AbstractArrow arrow&&target!=null){
             if (getAllModifierlevel(player,MomotinkerModifiers.forbiddenfruit.getId())>0&&isToolStack(player.getMainHandItem())){
                 ToolStack tool = ToolStack.from(player.getMainHandItem());

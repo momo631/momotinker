@@ -13,7 +13,6 @@ import slimeknights.tconstruct.library.tools.nbt.ModDataNBT;
 import slimeknights.tconstruct.library.tools.nbt.ModifierNBT;
 
 import javax.annotation.Nonnull;
-import javax.annotation.Nullable;
 
 
 public class SuppressingEvil extends momomodifier {
@@ -29,7 +28,7 @@ public class SuppressingEvil extends momomodifier {
     }
 
     @Override
-    public boolean onProjectileHitEntity(ModifierNBT modifiers, ModDataNBT persistentData, ModifierEntry modifier, Projectile projectile, EntityHitResult hit, @Nullable LivingEntity attacker, @Nullable LivingEntity target, boolean notBlocked) {
+    public boolean onProjectileHitEntity(ModifierNBT modifiers, ModDataNBT persistentData, ModifierEntry modifier, Projectile projectile, EntityHitResult hit, @javax.annotation.Nullable LivingEntity attacker, @javax.annotation.Nullable LivingEntity target) {
         if (attacker !=null && projectile instanceof AbstractArrow arrow){
             if (target != null&& target.getMobType() == MobType.UNDEAD) {
                 arrow.setBaseDamage(arrow.getBaseDamage()*(1f+0.25f*modifier.getLevel()));

@@ -3,7 +3,6 @@ package com.momosensei.momotinker.event;
 
 import com.momosensei.momotinker.capability.ender.EnderProvider;
 import com.momosensei.momotinker.gui.hud.CensoredHUD;
-import com.momosensei.momotinker.gui.hud.IncarnonHUD;
 import com.momosensei.momotinker.gui.hud.LegionHUD;
 import com.momosensei.momotinker.gui.hud.ToolsTimeHUD;
 import com.momosensei.momotinker.gui.overlay.MomotinkerOverlay;
@@ -34,11 +33,10 @@ public class ModEventListener {
             event.registerAbove(VanillaGuiOverlay.HOTBAR.id(), "ender", MomotinkerOverlay::render);
             event.registerAboveAll( "censored_hud", CensoredHUD.CENSORED);
             event.registerAboveAll( "tools_time_hud", ToolsTimeHUD.TOOS_TIME_HUD);
+
             event.registerAboveAll( "legion_phase_hud", LegionHUD.Legion_Phase_HUD);
             event.registerAboveAll( "legion_progress_hud", LegionHUD.Legion_Progress_HUD);
             event.registerAboveAll( "legion_cooldown_hud", LegionHUD.Legion_Cooldown_HUD);
-            event.registerAboveAll( "incarnon_off_hud", IncarnonHUD.INCARNON_OFF_HUD);
-            event.registerAboveAll( "incarnon_on_hud", IncarnonHUD.INCARNON_ON_HUD);
 
         }
     }

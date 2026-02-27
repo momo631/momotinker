@@ -14,7 +14,6 @@ import slimeknights.tconstruct.library.tools.nbt.ModDataNBT;
 import slimeknights.tconstruct.library.tools.nbt.ModifierNBT;
 
 import javax.annotation.Nonnull;
-import javax.annotation.Nullable;
 
 
 public class ThunderDecree extends momomodifier {
@@ -37,7 +36,7 @@ public class ThunderDecree extends momomodifier {
     }
 
     @Override
-    public boolean onProjectileHitEntity(ModifierNBT modifiers, ModDataNBT persistentData, ModifierEntry modifier, Projectile projectile, EntityHitResult hit, @Nullable LivingEntity attacker, @Nullable LivingEntity target, boolean notBlocked) {
+    public boolean onProjectileHitEntity(ModifierNBT modifiers, ModDataNBT persistentData, ModifierEntry modifier, Projectile projectile, EntityHitResult hit, @javax.annotation.Nullable LivingEntity attacker, @javax.annotation.Nullable LivingEntity target) {
         if (attacker !=null && projectile instanceof AbstractArrow arrow){
             if (target != null) {
                 arrow.setBaseDamage(arrow.getBaseDamage()*0.6f);

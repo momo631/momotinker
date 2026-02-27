@@ -1,7 +1,10 @@
 package com.momosensei.momotinker.network;
 
 import com.momosensei.momotinker.network.packet.*;
-import com.momosensei.momotinker.network.packet.HudCharge.*;
+import com.momosensei.momotinker.network.packet.HudCharge.CensoredCharge;
+import com.momosensei.momotinker.network.packet.HudCharge.LegionChargingCharge;
+import com.momosensei.momotinker.network.packet.HudCharge.LegionCooldownCharge;
+import com.momosensei.momotinker.network.packet.HudCharge.ToolsTimeCharge;
 import net.minecraft.network.FriendlyByteBuf;
 import net.minecraft.resources.ResourceLocation;
 import net.minecraft.server.level.ServerPlayer;
@@ -45,17 +48,14 @@ public class Channel {
         INSTANCE.messageBuilder(ToolsTimeCharge.class,id++, NetworkDirection.PLAY_TO_CLIENT).decoder(ToolsTimeCharge::new).encoder(ToolsTimeCharge::encode).consumerMainThread(ToolsTimeCharge::handle).add();
         INSTANCE.messageBuilder(CensoredCharge.class,id++, NetworkDirection.PLAY_TO_CLIENT).decoder(CensoredCharge::new).encoder(CensoredCharge::toByte).consumerMainThread(CensoredCharge::handle).add();
         INSTANCE.messageBuilder(SignifiCharge.class,id++, NetworkDirection.PLAY_TO_CLIENT).decoder(SignifiCharge::new).encoder(SignifiCharge::toByte).consumerMainThread(SignifiCharge::handle).add();
+
         INSTANCE.messageBuilder(LegionChargingCharge.class,id++, NetworkDirection.PLAY_TO_CLIENT).decoder(LegionChargingCharge::new).encoder(LegionChargingCharge::encode).consumerMainThread(LegionChargingCharge::handle).add();
         INSTANCE.messageBuilder(LegionCooldownCharge.class,id++, NetworkDirection.PLAY_TO_CLIENT).decoder(LegionCooldownCharge::new).encoder(LegionCooldownCharge::encode).consumerMainThread(LegionCooldownCharge::handle).add();
-        INSTANCE.messageBuilder(IncarnonTimeCharge.class,id++, NetworkDirection.PLAY_TO_CLIENT).decoder(IncarnonTimeCharge::new).encoder(IncarnonTimeCharge::encode).consumerMainThread(IncarnonTimeCharge::handle).add();
 
         INSTANCE.messageBuilder(CoolTimeChargeA.class,id++, NetworkDirection.PLAY_TO_CLIENT).decoder(CoolTimeChargeA::new).encoder(CoolTimeChargeA::toByte).consumerMainThread(CoolTimeChargeA::handle).add();
         INSTANCE.messageBuilder(CoolTimeChargeB.class,id++, NetworkDirection.PLAY_TO_CLIENT).decoder(CoolTimeChargeB::new).encoder(CoolTimeChargeB::toByte).consumerMainThread(CoolTimeChargeB::handle).add();
         INSTANCE.messageBuilder(CoolTimeChargeC.class,id++, NetworkDirection.PLAY_TO_CLIENT).decoder(CoolTimeChargeC::new).encoder(CoolTimeChargeC::toByte).consumerMainThread(CoolTimeChargeC::handle).add();
         INSTANCE.messageBuilder(StageMeteorCharge.class,id++, NetworkDirection.PLAY_TO_CLIENT).decoder(StageMeteorCharge::new).encoder(StageMeteorCharge::toByte).consumerMainThread(StageMeteorCharge::handle).add();
-
-        INSTANCE.messageBuilder(IncarnonAdjustPacket.class, id++, NetworkDirection.PLAY_TO_SERVER).decoder(IncarnonAdjustPacket::new).encoder(IncarnonAdjustPacket::toByte).consumerMainThread(IncarnonAdjustPacket::handle).add();
-        INSTANCE.messageBuilder(IncarnonOpenMenuPacket.class, id++, NetworkDirection.PLAY_TO_SERVER).decoder(IncarnonOpenMenuPacket::new).encoder(IncarnonOpenMenuPacket::toByte).consumerMainThread(IncarnonOpenMenuPacket::handle).add();
 
     }
 

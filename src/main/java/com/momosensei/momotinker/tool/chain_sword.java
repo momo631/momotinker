@@ -33,6 +33,7 @@ import slimeknights.tconstruct.library.tools.nbt.ToolStack;
 import slimeknights.tconstruct.library.tools.stat.ToolStats;
 import slimeknights.tconstruct.library.utils.Util;
 import slimeknights.tconstruct.tools.modifiers.ability.interaction.BlockingModifier;
+import slimeknights.tconstruct.tools.modifiers.upgrades.ranged.ScopeModifier;
 
 import java.util.Iterator;
 import java.util.List;
@@ -83,7 +84,7 @@ public class chain_sword extends ModifiableItem {
     }
     @Override
     public void releaseUsing(ItemStack stack, Level level, LivingEntity livingEntity, int duration) {
-        AttackUtil.stopScoping(livingEntity);
+        ScopeModifier.stopScoping(livingEntity);
         ToolStack tool = ToolStack.from(stack);
         float perc = Mth.clamp((float) (this.getUseDuration(stack) - duration) / (200),0,1);
         if (tool.isBroken()){

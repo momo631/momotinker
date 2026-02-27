@@ -834,29 +834,6 @@
   "modifier.momotinker.key_to_ruin.description": "§oCalamities and tribulations descend upon the earth, darkening the souls of travelers",
   "modifier.momotinker.tooltip.key_to_ruin1": "[From Brilliance]Certification:??????",
   "modifier.momotinker.tooltip.key_to_ruin2": "All features of the tool are doubled, with melee attack-related traits taking effect an additional time",
-  "modifier.momotinker.tooltip.key_to_ruin3": "What is done will dissipate from the world, and what is thought and worried will return to the void",
-
-
-  "modifier.momotinker.incarnon_on": "Press right button for 2 seconds \nto activate [Incarnon],\nPress for 3 seconds \nto release [Incarnon]",
-  "modifier.momotinker.incarnon_task": "Current [Incarnon] task:",
-  "modifier.momotinker.incarnon_task0": "Task progress:",
-  "modifier.momotinker.sword_incarnon": "Incarnon Genesis - Sword",
-  "modifier.momotinker.sword_incarnon.flavor": "An upgraded equipment capable of 'Incarnon' swords",
-  "modifier.momotinker.sword_incarnon.description": "After being immersed in the void, it became a deadly weapon and equipment.\nBy completing some weapon based challenges, 'Incarnon' weapons can obtain evolutionary upgrades",
-  "modifier.momotinker.tooltip.sword_incarnon0": "Incarnon Genesis - Sword",
-  "modifier.momotinker.tooltip.sword_incarnon1": "In [Incarnon] state:\n+180% melee damage\n+80% sweeping range\n+100% sweeping damage",
-  "modifier.momotinker.tooltip.sword_incarnon2": "In [Incarnon] state:\n+100% melee damage\n+60% armor penetration\n+40% multiple attacks",
-  "modifier.momotinker.tooltip.sword_incarnon3": "+60% critical strike damage",
-  "modifier.momotinker.tooltip.sword_incarnon4": "+15% Life Absorption",
-  "modifier.momotinker.tooltip.sword_incarnon5": "+1.0 Attack Distance",
-  "modifier.momotinker.tooltip.sword_incarnon6": "+30% movement speed",
-  "modifier.momotinker.tooltip.sword_incarnon7": "+50% basic attack power",
-  "modifier.momotinker.tooltip.sword_incarnon8": "+25% basic attack power\n+25% basic attack speed",
-  "modifier.momotinker.tooltip.sword_incarnon9": "+50% basic attack speed",
-  "modifier.momotinker.tooltip.sword_incarnon_task1": "Kill 100 arbitrary monsters",
-  "modifier.momotinker.tooltip.sword_incarnon_task2": "Kill 1 EnderDragon",
-  "modifier.momotinker.tooltip.sword_incarnon_task3": "Kill 2 WitherBoss in [Incarnon] state",
-  "modifier.momotinker.tooltip.sword_incarnon_task4": "Open 4 times [Incarnon]",
-  "modifier.momotinker.tooltip.sword_incarnon_on": "Accumulate energy upon successful attack,\nThe maximum duration of\n [Incarnon] state is 120seconds"
+  "modifier.momotinker.tooltip.key_to_ruin3": "What is done will dissipate from the world, and what is thought and worried will return to the void"
 
 }
