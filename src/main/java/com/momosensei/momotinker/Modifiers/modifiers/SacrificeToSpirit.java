@@ -27,8 +27,8 @@ public class SacrificeToSpirit extends momomodifier  {
         MinecraftForge.EVENT_BUS.addListener(this::onPlayerInteract);
         MinecraftForge.EVENT_BUS.addListener(this::onPlayerAttack);
         MinecraftForge.EVENT_BUS.addListener(this::onPlayerLeftClick);
-        MinecraftForge.EVENT_BUS.addListener(this::onLeftClickEmpty);
-        MinecraftForge.EVENT_BUS.addListener(this::onLeftClickBlock);
+        MinecraftForge.EVENT_BUS.addListener(this::onLeftClickEmptyA);
+        MinecraftForge.EVENT_BUS.addListener(this::onLeftClickBlockA);
     }
     public void onPlayerInteract(PlayerInteractEvent.EntityInteract event) {
         if (event.isCancelable() && getMainhandModifierlevel(event.getEntity(), MomotinkerModifiers.sacrificetospirit.getId())>0) {
@@ -46,12 +46,12 @@ public class SacrificeToSpirit extends momomodifier  {
             event.setCanceled(true);
         }
     }
-    public void onLeftClickEmpty(PlayerInteractEvent.LeftClickEmpty event) {
+    public void onLeftClickEmptyA(PlayerInteractEvent.LeftClickEmpty event) {
         if (event.isCancelable() && getMainhandModifierlevel(event.getEntity(), MomotinkerModifiers.sacrificetospirit.getId())>0) {
             event.setCanceled(true);
         }
     }
-    public void onLeftClickBlock(PlayerInteractEvent.LeftClickBlock event) {
+    public void onLeftClickBlockA(PlayerInteractEvent.LeftClickBlock event) {
         if (event.isCancelable() && getMainhandModifierlevel(event.getEntity(), MomotinkerModifiers.sacrificetospirit.getId())>0) {
             event.setCanceled(true);
         }

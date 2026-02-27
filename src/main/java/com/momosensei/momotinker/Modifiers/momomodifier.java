@@ -3,9 +3,11 @@ package com.momosensei.momotinker.Modifiers;
 
 import com.c2h6s.etstlib.register.EtSTLibHooks;
 import com.c2h6s.etstlib.tool.hooks.CriticalAttackModifierHook;
+import com.c2h6s.etstlib.tool.hooks.LeftClickModifierHook;
 import com.c2h6s.etstlib.tool.hooks.ModifyDamageSourceModifierHook;
 import com.momosensei.momotinker.Modifiers.hook.SweepAttackModifierHook;
 import com.momosensei.momotinker.register.MomotinkerHook;
+import net.minecraft.core.BlockPos;
 import net.minecraft.network.chat.Component;
 import net.minecraft.world.InteractionHand;
 import net.minecraft.world.InteractionResult;
@@ -26,6 +28,7 @@ import net.minecraft.world.item.ItemStack;
 import net.minecraft.world.item.TooltipFlag;
 import net.minecraft.world.item.UseAnim;
 import net.minecraft.world.level.Level;
+import net.minecraft.world.level.block.state.BlockState;
 import net.minecraft.world.level.storage.loot.LootContext;
 import net.minecraft.world.phys.BlockHitResult;
 import net.minecraft.world.phys.EntityHitResult;
@@ -84,7 +87,7 @@ public abstract class momomodifier extends Modifier implements MeleeDamageModifi
         ModifyDamageModifierHook, ModifierRemovalHook, BlockBreakModifierHook, EntityInteractionModifierHook, ToolStatsModifierHook,
         ToolDamageModifierHook,ModifyDamageSourceModifierHook,  VolatileDataModifierHook, RequirementsModifierHook, ValidateModifierHook,
         RepairFactorModifierHook, ModifierTraitHook, ProtectionModifierHook, ProjectileShootModifierHook, SlotStackModifierHook,
-        GeneralInteractionModifierHook, CriticalAttackModifierHook, MeleeHitToolHook, SweepAttackModifierHook {
+        GeneralInteractionModifierHook, CriticalAttackModifierHook, MeleeHitToolHook, SweepAttackModifierHook, LeftClickModifierHook {
 
     public momomodifier() {
         MinecraftForge.EVENT_BUS.addListener(this::OnLivingHurt);
@@ -105,13 +108,22 @@ public abstract class momomodifier extends Modifier implements MeleeDamageModifi
         builder.addHook(this, ModifierHooks.VALIDATE, ModifierHooks.REPAIR_FACTOR,ModifierHooks.REQUIREMENTS);
         builder.addHook(this, ModifierHooks.PROTECTION, ModifierHooks.MODIFIER_TRAITS,ModifierHooks.PROJECTILE_SHOT);
         builder.addHook(this, ModifierHooks.SLOT_STACK, ModifierHooks.GENERAL_INTERACT, EtSTLibHooks.CRITICAL_ATTACK);
-        builder.addHook(this, ToolHooks.MELEE_HIT, MomotinkerHook.SWEEP_ATTACK);
+        builder.addHook(this, ToolHooks.MELEE_HIT, MomotinkerHook.SWEEP_ATTACK, EtSTLibHooks.LEFT_CLICK);
 
     }
 
     @Override
     public float getProtectionModifier(IToolStackView tool, ModifierEntry modifier, EquipmentContext context, EquipmentSlot slotType, DamageSource source, float modifierValue) {
         return modifierValue;
+    }
+    @Override
+    public void onLeftClickEmpty(IToolStackView tool, ModifierEntry entry, Player player, Level level, EquipmentSlot equipmentSlot) {
+    }
+    @Override
+    public void onLeftClickBlock(IToolStackView tool, ModifierEntry entry, Player player, Level level, EquipmentSlot equipmentSlot, BlockState state, BlockPos pos) {
+    }
+    @Override
+    public void onLeftClickEntity(IToolStackView tool, ModifierEntry entry, Player player, Level level, EquipmentSlot equipmentSlot, Entity entity) {
     }
     @Override
     public void addTraits(IToolContext context, ModifierEntry modifier, ModifierTraitHook.TraitBuilder builder, boolean firstEncounter) {
@@ -241,7 +253,7 @@ public abstract class momomodifier extends Modifier implements MeleeDamageModifi
         return SlotStackModifierHook.super.overrideOtherStackedOnMe(tool, modifier, held, slot, player, access);
     }
     @Override
-    public @NotNull InteractionResult onToolUse(IToolStackView var1, ModifierEntry var2, Player var3, InteractionHand var4, InteractionSource var5) {
+    public @NotNull InteractionResult onToolUse(IToolStackView tool, ModifierEntry modifier, Player player, InteractionHand interactionHand, InteractionSource interactionSource) {
         return InteractionResult.PASS;
     }
     @Override

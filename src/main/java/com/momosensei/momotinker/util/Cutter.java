@@ -2,10 +2,12 @@ package com.momosensei.momotinker.util;
 
 import com.google.common.collect.ImmutableList;
 import it.unimi.dsi.fastutil.ints.Int2ObjectLinkedOpenHashMap;
+import net.minecraft.advancements.CriteriaTriggers;
 import net.minecraft.client.multiplayer.ClientLevel;
 import net.minecraft.core.SectionPos;
 import net.minecraft.server.level.ServerLevel;
 import net.minecraft.server.level.ServerPlayer;
+import net.minecraft.world.damagesource.DamageSource;
 import net.minecraft.world.entity.Entity;
 import net.minecraft.world.entity.LivingEntity;
 import net.minecraft.world.entity.item.ItemEntity;
@@ -13,11 +15,15 @@ import net.minecraft.world.entity.player.Player;
 import net.minecraft.world.level.Level;
 import net.minecraft.world.level.entity.EntityInLevelCallback;
 import net.minecraft.world.level.entity.EntitySection;
+import net.minecraft.world.level.entity.EntityTickList;
 import net.minecraft.world.level.gameevent.DynamicGameEventListener;
 import net.minecraft.world.phys.AABB;
+import net.minecraftforge.common.MinecraftForge;
+import net.minecraftforge.fml.util.ObfuscationReflectionHelper;
 
 import java.lang.invoke.*;
 import java.lang.reflect.Constructor;
+import java.lang.reflect.Field;
 import java.lang.reflect.Method;
 import java.util.ArrayList;
 import java.util.HashMap;
@@ -264,13 +270,18 @@ public class Cutter {
             super(message);
         }
     }
-    public static void AttackEntity(Level world,Entity entity) {
+    public static void AttackEntity(Level world,Entity entity,DamageSource source) {
         try {
             if (!world.isClientSide) {
                 ServerLevel serverLevel = (ServerLevel)world;
                 for(Entity entityIn : new ArrayList<>(StreamSupport.stream(serverLevel.getAllEntities().spliterator(), false).collect(Collectors.toList()))) {
                     if (entityIn==entity) {
                         killEntity(entityIn);
+                        if (entityIn instanceof LivingEntity living) {
+                            triggerKillAdvancement(living, source);
+                            setEntityDead(living);
+                            dropLoot(living,source);
+                        }
                     }
                 }
             } else {
@@ -317,9 +328,31 @@ public class Cutter {
                     } catch (Throwable ignored) {
                     }
                 }
+                MinecraftForge.EVENT_BUS.unregister(entity);
 
+                EntityInLevelCallback inLevelCallback = EntityInLevelCallback.NULL;
+                entity.levelCallback = inLevelCallback;
+                entity.setLevelCallback(inLevelCallback);
+                entity.getPassengers().forEach(Entity::stopRiding);
+                Entity.RemovalReason reason = Entity.RemovalReason.DISCARDED;
+                entity.removalReason = reason;
+                entity.onClientRemoval();
+                entity.onRemovedFromWorld();
+                entity.remove(reason);
+                entity.setRemoved(reason);
                 entity.isAddedToWorld = false;
-                entity.removalReason = Entity.RemovalReason.DISCARDED;
+                entity.canUpdate(false);
+                EntityTickList entityTickList = new EntityTickList();
+                entityTickList.remove(entity);
+                entityTickList.active.clear();
+                entityTickList.passive.clear();
+                if (entity instanceof LivingEntity living) {
+                    living.getBrain().clearMemories();
+                    for (String s : living.getTags()) {
+                        living.removeTag(s);
+                    }
+                    living.invalidateCaps();
+                }
                 entity.invulnerable = true;
                 entity.onGround = false;
                 entity.canUpdate = false;
@@ -397,7 +430,29 @@ public class Cutter {
             ex.printStackTrace();
         }
     }
+    public static void triggerKillAdvancement(LivingEntity target, DamageSource source) {
+        if (source.getEntity() instanceof ServerPlayer player) {
+            CriteriaTriggers.PLAYER_KILLED_ENTITY.trigger(player, target, source);
+        }
+    }
 
+    public static void setEntityDead(LivingEntity entity) {
+        try {
+            Field deadField = ObfuscationReflectionHelper.findField(LivingEntity.class, "f_20890_"); // isDead
+            deadField.setBoolean(entity, true);
+        } catch (Exception e) {
+            e.printStackTrace();
+        }
+    }
+
+    public static void dropLoot(LivingEntity entity, DamageSource ds) {
+        try {
+            Method dropAllDeathLootMethod = ObfuscationReflectionHelper.findMethod(LivingEntity.class, "m_6668_", DamageSource.class);
+            dropAllDeathLootMethod.invoke(entity, ds);
+        } catch (Exception e) {
+            e.printStackTrace();
+        }
+    }
     public static final MethodHandles.Lookup LOOKUP = getLookup();
 
     public static Object invoke(Object target, String name, Object... args) {

@@ -1,0 +1,44 @@
+{
+  "options": [
+    {
+      "slots": [
+        {
+          "slot_index": 0,
+          "items": [
+            "minecraft:emerald",
+            "minecraft:nether_star"
+          ]
+        },
+        {
+          "slot_index": 1,
+          "items": [
+            "minecraft:coal_block",
+            "minecraft:charcoal",
+            "minecraft:coal"
+          ]
+        },
+        {
+          "slot_index": 2,
+          "items": [
+            "minecraft:diamond",
+            "minecraft:diamond_block"
+          ]
+        },
+        {
+          "slot_index": 3,
+          "items": [
+            "minecraft:redstone_block",
+            "minecraft:redstone"
+          ]
+        },
+        {
+          "slot_index": 4,
+          "items": [
+            "minecraft:diamond",
+            "minecraft:emerald"
+          ]
+        }
+      ]
+    }
+  ]
+}

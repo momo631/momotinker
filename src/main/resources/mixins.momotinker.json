@@ -8,15 +8,13 @@
   "mixins": [
     "AttributeInstanceAccessor",
     "LivingEntityMixin",
+    "MixinModifierRecipe",
     "PartBuilderToolRecycleMixin",
     "SweepWeaponAttackMixin"
   ],
   "client": [
     "GameRendererMixin",
-    "MixinLevelRenderer",
-    "PlayerMixin",
-    "PlayerModelMixin",
-    "PlayerRendererMixin"
+    "MixinLevelRenderer"
   ],
   "server": [
   ],
