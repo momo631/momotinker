@@ -80,7 +80,7 @@ public class Huangquan extends momomodifier implements ModifyDamageSourceModifie
     }
 
     @Override
-    public boolean onProjectileHitEntity(ModifierNBT modifiers, ModDataNBT persistentData, ModifierEntry modifier, Projectile projectile, EntityHitResult hit, @javax.annotation.Nullable LivingEntity attacker, @javax.annotation.Nullable LivingEntity target) {
+    public boolean onProjectileHitEntity(ModifierNBT modifiers, ModDataNBT persistentData, ModifierEntry modifier, Projectile projectile, EntityHitResult hit, @Nullable LivingEntity attacker, @Nullable LivingEntity target, boolean notBlocked) {
         if (attacker instanceof ServerPlayer player && projectile instanceof AbstractArrow arrow){
             float var = (player.getMaxHealth() - player.getHealth())*6;
             if (target != null&&player.getHealth()<player.getMaxHealth()*0.6F) {

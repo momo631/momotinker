@@ -22,6 +22,7 @@ import slimeknights.tconstruct.library.tools.nbt.ModifierNBT;
 import slimeknights.tconstruct.library.tools.nbt.ToolStack;
 
 import javax.annotation.Nonnull;
+import javax.annotation.Nullable;
 
 
 public class GrudgeOthers extends momomodifier {
@@ -94,7 +95,7 @@ public class GrudgeOthers extends momomodifier {
     }
 
     @Override
-    public boolean onProjectileHitEntity(ModifierNBT modifiers, ModDataNBT persistentData, ModifierEntry modifier, Projectile projectile, EntityHitResult hit, @javax.annotation.Nullable LivingEntity attacker, @javax.annotation.Nullable LivingEntity target) {
+    public boolean onProjectileHitEntity(ModifierNBT modifiers, ModDataNBT persistentData, ModifierEntry modifier, Projectile projectile, EntityHitResult hit, @Nullable LivingEntity attacker, @Nullable LivingEntity target, boolean notBlocked) {
         if (target != null && modifier.getLevel() > 0) {
             if (attacker instanceof Player player && projectile instanceof AbstractArrow arrow ) {
                 float a = modifier.getLevel();

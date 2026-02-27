@@ -842,6 +842,28 @@
   "modifier.momotinker.key_to_ruin.description": "§o灾祸磨难降生大地，行路之人灵魂浑浊",
   "modifier.momotinker.tooltip.key_to_ruin1": "古代神兵认证:??????",
   "modifier.momotinker.tooltip.key_to_ruin2": "该工具的所有特性均翻倍，近战攻击相关的特性格外生效一次",
-  "modifier.momotinker.tooltip.key_to_ruin3": "所为所做消散人世，所思所忧归向虚空"
+  "modifier.momotinker.tooltip.key_to_ruin3": "所为所做消散人世，所思所忧归向虚空",
 
+
+  "modifier.momotinker.incarnon_on": "长按右键2秒开启灵化，\n灵化状态下长按3秒解除",
+  "modifier.momotinker.incarnon_task": "当前灵化任务:",
+  "modifier.momotinker.incarnon_task0": "任务进度:",
+  "modifier.momotinker.sword_incarnon": "灵化之源-剑",
+  "modifier.momotinker.sword_incarnon.flavor": "能灵化剑的一种升级配备",
+  "modifier.momotinker.sword_incarnon.description": "经过虚空对其的浸染，成为了致命的武器装备。\n通过完成一些基于武器的挑战，灵化武器可以获得进化升级。\n物品栏内右键打开界面",
+  "modifier.momotinker.tooltip.sword_incarnon0": "灵化之源-剑",
+  "modifier.momotinker.tooltip.sword_incarnon1": "灵化状态下:\n+180%近战伤害\n+80%横扫范围\n+100%横扫伤害",
+  "modifier.momotinker.tooltip.sword_incarnon2": "灵化状态下:\n+100%近战伤害\n+60%护甲穿透\n+40%多重攻击",
+  "modifier.momotinker.tooltip.sword_incarnon3": "+60%暴击伤害",
+  "modifier.momotinker.tooltip.sword_incarnon4": "+15%生命汲取",
+  "modifier.momotinker.tooltip.sword_incarnon5": "+1.0攻击距离",
+  "modifier.momotinker.tooltip.sword_incarnon6": "+30%移动速度",
+  "modifier.momotinker.tooltip.sword_incarnon7": "+50%基础攻击力",
+  "modifier.momotinker.tooltip.sword_incarnon8": "+25%基础攻击力\n+25%基础攻击速度",
+  "modifier.momotinker.tooltip.sword_incarnon9": "+50%基础攻击速度",
+  "modifier.momotinker.tooltip.sword_incarnon_task1": "击杀任意怪物100只",
+  "modifier.momotinker.tooltip.sword_incarnon_task2": "击杀1只末影龙",
+  "modifier.momotinker.tooltip.sword_incarnon_task3": "灵化状态下击杀2只凋灵",
+  "modifier.momotinker.tooltip.sword_incarnon_task4": "开启4次灵化",
+  "modifier.momotinker.tooltip.sword_incarnon_on": "成功攻击时积蓄能量，\n灵化状态最多持续120秒"
 }

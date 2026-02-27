@@ -19,6 +19,8 @@ import slimeknights.tconstruct.library.tools.nbt.ModifierNBT;
 import slimeknights.tconstruct.library.tools.nbt.ToolStack;
 import slimeknights.tconstruct.library.tools.stat.ToolStats;
 
+import javax.annotation.Nullable;
+
 
 public class StarfallArrow extends momomodifier {
     public StarfallArrow() {
@@ -33,7 +35,7 @@ public class StarfallArrow extends momomodifier {
         return (0.5F*velocity);
     }
     @Override
-    public boolean onProjectileHitEntity(ModifierNBT modifiers, ModDataNBT persistentData, ModifierEntry modifier, Projectile projectile, EntityHitResult hit, @javax.annotation.Nullable LivingEntity attacker, @javax.annotation.Nullable LivingEntity target) {
+    public boolean onProjectileHitEntity(ModifierNBT modifiers, ModDataNBT persistentData, ModifierEntry modifier, Projectile projectile, EntityHitResult hit, @Nullable LivingEntity attacker, @Nullable LivingEntity target, boolean notBlocked) {
         if (attacker instanceof ServerPlayer player && projectile instanceof AbstractArrow arrow&&target!=null){
             Level level=player.level();
             ToolStack tool= ToolStack.from(player.getItemBySlot(EquipmentSlot.MAINHAND));
