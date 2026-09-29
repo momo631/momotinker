@@ -1,7 +1,7 @@
 package com.momosensei.momotinker.register;
 
 
-import com.momosensei.momotinker.tool.*;
+import com.momosensei.momotinker.Items.tool.*;
 import net.minecraft.network.chat.Component;
 import net.minecraft.world.item.CreativeModeTab;
 import net.minecraft.world.item.ItemStack;

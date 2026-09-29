@@ -20,13 +20,13 @@ import slimeknights.tconstruct.library.tools.stat.ToolStats;
 import java.util.List;
 import java.util.function.Supplier;
 
+import static com.momosensei.momotinker.Items.tool.entropy_burning_cube.liverization;
+import static com.momosensei.momotinker.Items.tool.legion.*;
 import static com.momosensei.momotinker.Modifiers.modifiers.ProjectionOfSuffering.disaster;
 import static com.momosensei.momotinker.Modifiers.momomodifier.createNewTool;
 import static com.momosensei.momotinker.Momotinker.getResource;
 import static com.momosensei.momotinker.entity.MomotinkerEntitiesCreate.createPull;
 import static com.momosensei.momotinker.register.MomotinkerTools.*;
-import static com.momosensei.momotinker.tool.entropy_burning_cube.liverization;
-import static com.momosensei.momotinker.tool.legion.*;
 
 public class KeyAInputPKT {
     public int key;

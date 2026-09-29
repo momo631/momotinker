@@ -1,7 +1,7 @@
 {
   "type": "tconstruct:modifier_salvage",
   "slots": {
-    "abilities": 3
+    "abilities": 1
   },
   "tools": {
     "tag": "tconstruct:modifiable/durability"

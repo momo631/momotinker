@@ -7,7 +7,7 @@ import net.minecraftforge.network.NetworkEvent;
 
 import java.util.function.Supplier;
 
-import static com.momosensei.momotinker.tool.legion.createLegion;
+import static com.momosensei.momotinker.Items.tool.legion.createLegion;
 import static com.momosensei.momotinker.util.AttackUtil.getCooldownFunctionFloat;
 
 

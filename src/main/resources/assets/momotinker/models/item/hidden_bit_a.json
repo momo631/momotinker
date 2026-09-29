@@ -1,0 +1,6 @@
+{
+  "parent": "item/generated",
+  "textures": {
+    "layer0": "momotinker:item/hidden_bit/hidden_bit_a"
+  }
+}

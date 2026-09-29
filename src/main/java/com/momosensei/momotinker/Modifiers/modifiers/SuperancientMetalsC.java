@@ -16,8 +16,8 @@ import slimeknights.tconstruct.library.tools.nbt.*;
 import slimeknights.tconstruct.library.tools.stat.ModifierStatsBuilder;
 import slimeknights.tconstruct.library.tools.stat.ToolStats;
 
-import static com.momosensei.momotinker.tool.pocket_watch.backtracking;
-import static com.momosensei.momotinker.tool.pocket_watch.transmit;
+import static com.momosensei.momotinker.Items.tool.pocket_watch.backtracking;
+import static com.momosensei.momotinker.Items.tool.pocket_watch.transmit;
 
 public class SuperancientMetalsC extends momomodifier {
     public SuperancientMetalsC() {

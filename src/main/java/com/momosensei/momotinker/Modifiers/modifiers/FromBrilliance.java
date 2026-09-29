@@ -26,11 +26,11 @@ import javax.annotation.Nonnull;
 import javax.annotation.Nullable;
 import java.util.List;
 
-import static com.momosensei.momotinker.tool.divine_punishment_spear.degenerate;
-import static com.momosensei.momotinker.tool.divine_punishment_spear.sanctification;
-import static com.momosensei.momotinker.tool.entropy_burning_cube.*;
-import static com.momosensei.momotinker.tool.pocket_watch.backtracking;
-import static com.momosensei.momotinker.tool.pocket_watch.transmit;
+import static com.momosensei.momotinker.Items.tool.divine_punishment_spear.degenerate;
+import static com.momosensei.momotinker.Items.tool.divine_punishment_spear.sanctification;
+import static com.momosensei.momotinker.Items.tool.entropy_burning_cube.*;
+import static com.momosensei.momotinker.Items.tool.pocket_watch.backtracking;
+import static com.momosensei.momotinker.Items.tool.pocket_watch.transmit;
 
 public class FromBrilliance extends momomodifier {
     public FromBrilliance() {
@@ -44,7 +44,7 @@ public class FromBrilliance extends momomodifier {
     public void addTraits(IToolContext context, ModifierEntry modifier, ModifierTraitHook.TraitBuilder builder, boolean firstEncounter) {
         for (ModifierEntry entry : context.getModifierList()) {
             if (entry.getModifier() != modifier.getModifier()&&firstEncounter) {
-                builder.add(entry.getId(),entry.getLevel());
+                builder.add(entry.getId(),1);
             }
         }
     }

@@ -99,6 +99,9 @@
   "recipe.momotinker.modifier.compassionateeverything": "[Compassionate Everything] needs to use [Over sad sin] as a prerequisite and strengthen mutual exclusion with other [Resonance of major sin]",
   "recipe.momotinker.modifier.key_to_ruin": "The existence of the §o'Legion'§r needs to be nothingness, and its consciousness should be sufficient to withstand destruction",
 
+  "stat.tconstruct.slot.prefix.mystery": "Mystery:",
+  "stat.tconstruct.slot.display.mystery": "Mystery",
+
   "momotinker": "Momotinker",
 
   "key.momotinker.key": "Category Example",
@@ -118,7 +121,8 @@
   "item.momotinker.interdimensional_crystal": "§dInterdimensional Crystal§",
   "item.momotinker.tooltip.interdimensional_crystal1": "§dReturning from heaven§",
   "item.momotinker.tooltip.interdimensional_crystal2": "§dWhen the witherBoss dies at a height greater than or equal to 300 in the world and falls to its location§",
-  "item.momotinker.tooltip.interdimensional_crystal3": "The stars twinkled, and shooting stars noticed you as they crossed the horizon, trying to give you a gift",
+  "item.momotinker.tooltip.interdimensional_crystal3": "The stars twinkled, and meteor noticed you as they crossed the horizon, trying to give you a gift",
+  "item.momotinker.tooltip.interdimensional_crystal4": "After use, it can cause the meteor to fall again",
 
   "item.momotinker.arriving_at_the_other_shore": "\u00A74Other Shore\u00A7",
   "item.momotinker.tooltip.arriving_at_the_other_shore1": "§7Thousands of passing things, all crossing the other shore§",
@@ -188,7 +192,9 @@
   "item.momotinker.tooltip.meteor_nucleus2": "Since the player first picks up the 'Interdimensional Crystal', there is a chance for it to fall in the form of a meteor within a 300 grid area centered around the player every period of time",
   "item.momotinker.tooltip.meteor_nucleus3": "The metal ingot poured by the melting meteor in the sky contains enormous energy",
   "item.momotinker.tooltip.meteor_nucleus4": "'The core of the meteor can continuously release a large amount of heat energy without any signs of decay after melting, which may provide new assistance in our craftsmanship work'",
-  "item.momotinker.tooltip.meteor_nucleus5": "The gift of shooting stars is coming soon",
+  "item.momotinker.tooltip.meteor_nucleus5": "The gift of meteors is coming soon",
+  "item.momotinker.tooltip.meteor_nucleus6": "The meteor has passed, and they are looking forward to your next performance",
+  "item.momotinker.tooltip.meteor_nucleus7": "The stars have received your wish, and the meteor have returned from afar, attempting to give you gifts",
 
   "item.momotinker.ashen_platinum": "Ashen Platinum",
   "item.momotinker.tooltip.ashen_platinum1": "Mysterious metal from ancient times, its glory and splendor have been buried by time",
@@ -257,6 +263,12 @@
   "item.momotinker.mountain_river_paintings": "Mountain River Paintings",
   "item.momotinker.tooltip.mountain_river_paintings1": "The freedom in my heart allows me to see the mountains and rivers of the past",
   "item.momotinker.tooltip.mountain_river_paintings2": "When a map is soaked in water, there is a 5% chance that it will change to that item every second (requiring a player to be present within 200 squares)",
+
+  "item.momotinker.revelation_fruit": "Revelation Fruit",
+  "item.momotinker.tooltip.revelation_fruit1": "",
+  "item.momotinker.tooltip.revelation_fruit2": "",
+  "item.momotinker.tooltip.revelation_fruit3": "",
+
 
   "itemGroup.momotinker.tools": "Momotinker Tools",
 
@@ -540,7 +552,7 @@
 
   "modifier.momotinker.frombrilliance": "From Brilliance",
   "modifier.momotinker.frombrilliance.flavor": "§eFrom the glorious era§",
-  "modifier.momotinker.frombrilliance.description": "Players are unable to forge independently and can obtain tools with fixed material components at certain locations. Achieving certain conditions can lead to weapon evolution!",
+  "modifier.momotinker.frombrilliance.description": "All features of this tool increase by 1 level, and all parts are returned when disassembled. \nPlayers are unable to forge independently and can obtain tools with fixed material components at certain locations. \nAchieving certain conditions can lead to weapon evolution!",
 
   "modifier.momotinker.superancientmetalsa": "Super Ancient Metals-Alpha",
   "modifier.momotinker.superancientmetalsa.flavor": "A peculiar metal from ancient times that appears ordinary on the surface",
@@ -857,6 +869,10 @@
   "modifier.momotinker.tooltip.sword_incarnon_task2": "Kill 1 EnderDragon",
   "modifier.momotinker.tooltip.sword_incarnon_task3": "Kill 2 WitherBoss in [Incarnon] state",
   "modifier.momotinker.tooltip.sword_incarnon_task4": "Open 4 times [Incarnon]",
-  "modifier.momotinker.tooltip.sword_incarnon_on": "Accumulate energy upon successful attack,\nThe maximum duration of\n [Incarnon] state is 120seconds"
+  "modifier.momotinker.tooltip.sword_incarnon_on": "Accumulate energy upon successful attack,\nThe maximum duration of\n [Incarnon] state is 120seconds",
+
+  "modifier.momotinker.doomsday": "Dooms Day",
+  "modifier.momotinker.doomsday.flavor": "",
+  "modifier.momotinker.doomsday.description": "Ashes to ashes"
 
 }

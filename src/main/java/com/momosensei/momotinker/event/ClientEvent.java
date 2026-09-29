@@ -7,12 +7,16 @@ import com.momosensei.momotinker.network.Channel;
 import com.momosensei.momotinker.network.packet.KeyAInputPKT;
 import com.momosensei.momotinker.network.packet.KeyInputPKT;
 import net.minecraft.client.model.geom.ModelLayerLocation;
+import net.minecraft.client.renderer.blockentity.BlockEntityRendererProvider;
 import net.minecraft.resources.ResourceLocation;
 import net.minecraftforge.api.distmarker.Dist;
+import net.minecraftforge.client.event.EntityRenderersEvent;
 import net.minecraftforge.client.event.InputEvent;
 import net.minecraftforge.common.capabilities.RegisterCapabilitiesEvent;
 import net.minecraftforge.eventbus.api.SubscribeEvent;
 import net.minecraftforge.fml.common.Mod;
+import slimeknights.mantle.client.render.InventoryBlockEntityRenderer;
+import slimeknights.tconstruct.shared.block.entity.TableBlockEntity;
 
 
 @Mod.EventBusSubscriber(modid = Momotinker.MOD_ID, value = {Dist.CLIENT})
@@ -34,4 +38,11 @@ public class ClientEvent {
     public static void registerCapability(RegisterCapabilitiesEvent event) {
         event.register(EnderProvider.class);
     }
+
+    @SubscribeEvent
+    static void registerRenderers(EntityRenderersEvent.RegisterRenderers event) {
+        BlockEntityRendererProvider<TableBlockEntity> tableRenderer = InventoryBlockEntityRenderer::new;
+//        event.registerBlockEntityRenderer(MomotinkerBlock.StinkerStationTile.get(), tableRenderer);
+    }
+
 }

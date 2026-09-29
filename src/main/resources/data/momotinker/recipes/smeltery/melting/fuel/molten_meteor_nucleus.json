@@ -1,0 +1,10 @@
+{
+  "type": "tconstruct:melting_fuel",
+  "fluid": {
+    "fluid": "momotinker:molten_meteor_nucleus",
+    "amount": 90
+  },
+  "rate": 100,
+  "duration": 90,
+  "temperature": 12000
+}

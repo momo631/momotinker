@@ -20,8 +20,8 @@ import slimeknights.tconstruct.library.tools.nbt.ToolStack;
 import slimeknights.tconstruct.library.tools.stat.ModifierStatsBuilder;
 import slimeknights.tconstruct.library.tools.stat.ToolStats;
 
-import static com.momosensei.momotinker.tool.divine_punishment_spear.degenerate;
-import static com.momosensei.momotinker.tool.divine_punishment_spear.sanctification;
+import static com.momosensei.momotinker.Items.tool.divine_punishment_spear.degenerate;
+import static com.momosensei.momotinker.Items.tool.divine_punishment_spear.sanctification;
 
 public class SuperancientMetalsA extends momomodifier {
     public SuperancientMetalsA() {

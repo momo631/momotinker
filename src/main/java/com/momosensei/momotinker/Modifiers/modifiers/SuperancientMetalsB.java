@@ -17,7 +17,7 @@ import slimeknights.tconstruct.library.tools.nbt.*;
 import slimeknights.tconstruct.library.tools.stat.ModifierStatsBuilder;
 import slimeknights.tconstruct.library.tools.stat.ToolStats;
 
-import static com.momosensei.momotinker.tool.entropy_burning_cube.*;
+import static com.momosensei.momotinker.Items.tool.entropy_burning_cube.*;
 
 public class SuperancientMetalsB extends momomodifier {
     public SuperancientMetalsB() {

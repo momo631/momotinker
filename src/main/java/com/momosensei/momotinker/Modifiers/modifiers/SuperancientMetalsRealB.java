@@ -42,10 +42,10 @@ import java.util.Random;
 import java.util.UUID;
 import java.util.function.BiConsumer;
 
-import static com.momosensei.momotinker.tool.divine_punishment_spear.degenerate;
-import static com.momosensei.momotinker.tool.divine_punishment_spear.sanctification;
-import static com.momosensei.momotinker.tool.entropy_burning_cube.*;
-import static com.momosensei.momotinker.tool.pocket_watch.*;
+import static com.momosensei.momotinker.Items.tool.divine_punishment_spear.degenerate;
+import static com.momosensei.momotinker.Items.tool.divine_punishment_spear.sanctification;
+import static com.momosensei.momotinker.Items.tool.entropy_burning_cube.*;
+import static com.momosensei.momotinker.Items.tool.pocket_watch.*;
 
 public class SuperancientMetalsRealB extends momomodifier {
     public SuperancientMetalsRealB() {

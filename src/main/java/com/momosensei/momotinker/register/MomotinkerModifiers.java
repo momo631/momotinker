@@ -2,6 +2,7 @@ package com.momosensei.momotinker.register;
 
 import com.momosensei.momotinker.Modifiers.modifiers.*;
 import com.momosensei.momotinker.Modifiers.modifiers.IncarnonModifiers.SwordIncarnon;
+import com.momosensei.momotinker.Modifiers.modifiers.UniverseModifiers.Doomsday;
 import slimeknights.tconstruct.library.modifiers.util.ModifierDeferredRegister;
 import slimeknights.tconstruct.library.modifiers.util.StaticModifier;
 
@@ -108,5 +109,6 @@ public class MomotinkerModifiers {
 
     public static final StaticModifier<SwordIncarnon> sword_incarnon=MODIFIERS.register("sword_incarnon", SwordIncarnon::new);
 
+    public static final StaticModifier<Doomsday> doomsday=MODIFIERS.register("doomsday", Doomsday::new);
 
 }

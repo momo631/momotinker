@@ -6,12 +6,15 @@ import net.minecraftforge.common.extensions.IForgeMenuType;
 import net.minecraftforge.registries.DeferredRegister;
 import net.minecraftforge.registries.ForgeRegistries;
 import net.minecraftforge.registries.RegistryObject;
+import slimeknights.mantle.registration.deferred.MenuTypeDeferredRegister;
 
 import static com.momosensei.momotinker.Momotinker.MOD_ID;
 
 public class MomotinkerMenus {
     public static final DeferredRegister<MenuType<?>> MENUS = DeferredRegister.create(ForgeRegistries.MENU_TYPES,MOD_ID);
+    public static final MenuTypeDeferredRegister MENU = new MenuTypeDeferredRegister(MOD_ID);
 
     public static final RegistryObject<MenuType<IncarnonMenu>> Incarnon_menu = MENUS.register("incarnon_menu",()-> IForgeMenuType.create(IncarnonMenu::new));
+//    public static final RegistryObject<MenuType<STinkerStationContainerMenu>> special_tinker_station = MENU.register("s_tinker_station", STinkerStationContainerMenu::new);
 
 }

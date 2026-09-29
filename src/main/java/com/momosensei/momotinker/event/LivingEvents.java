@@ -90,10 +90,13 @@ public class LivingEvents {
     private static final ResourceLocation lusttest = Momotinker.getResource("lusttest");
     private static final ResourceLocation ragetest = Momotinker.getResource("ragetest");
 
+    public static final String meteor_nucleus_unlock = Momotinker.getResource("meteor_nucleus_unlock").toString();
+    public static final String meteor_nucleus_amount = Momotinker.getResource("meteor_nucleus_amount").toString();
+
     private void OnLivingHurt(LivingHurtEvent event) {
-        boolean configall = MomotinkerConfig.special_acquisition.get();
+        boolean config_all = MomotinkerConfig.special_acquisition.get();
         boolean configstage = MomotinkerConfig.stage_meteor.get();
-        if (!configall)return;
+        if (!config_all)return;
         Entity a = event.getEntity();
         Entity b = event.getSource().getEntity();
         boolean configa = MomotinkerConfig.arriving_at_the_other_shore.get();
@@ -120,9 +123,9 @@ public class LivingEvents {
     }
 
     private void OnEntityDeath(LivingDeathEvent event) {
-        boolean configall = MomotinkerConfig.special_acquisition.get();
+        boolean config_all = MomotinkerConfig.special_acquisition.get();
         boolean configstage = MomotinkerConfig.stage_meteor.get();
-        if (!configall)return;
+        if (!config_all)return;
         if (event.getEntity() instanceof Warden warden) {
             boolean configa = MomotinkerConfig.heartsteel.get();
             if (configa&&(StageMeteor.getStageFloat()==1||!configstage)) {
@@ -204,9 +207,9 @@ public class LivingEvents {
     }
 
     private void OnBabyEntitySpawn(BabyEntitySpawnEvent event) {
-        boolean configall = MomotinkerConfig.special_acquisition.get();
+        boolean config_all = MomotinkerConfig.special_acquisition.get();
         boolean configstage = MomotinkerConfig.stage_meteor.get();
-        if (!configall)return;
+        if (!config_all)return;
         boolean config = MomotinkerConfig.lust_mirror.get();
         if (config&&(StageMeteor.getStageFloat()==1||!configstage)) {
             if (event.getParentA() != null && event.getParentB() != null && event.getChild() != null) {
@@ -228,9 +231,9 @@ public class LivingEvents {
     }
 
     private void OnBonemeal(BonemealEvent event) {
-        boolean configall = MomotinkerConfig.special_acquisition.get();
+        boolean config_all = MomotinkerConfig.special_acquisition.get();
         boolean configstage = MomotinkerConfig.stage_meteor.get();
-        if (!configall)return;
+        if (!config_all)return;
         boolean config = MomotinkerConfig.spirit_visage.get();
         if (config&&(StageMeteor.getStageFloat()==1||!configstage)) {
             if (event.getBlock().getBlock() instanceof SaplingBlock) {
@@ -250,8 +253,8 @@ public class LivingEvents {
                 TeleportEntityManager.teleportEntityToDimension(player, s, player.getX(), player.getY(), player.getZ());
             }
         }
-        boolean configall = MomotinkerConfig.special_acquisition.get();
-        if (!configall) return;
+        boolean config_all = MomotinkerConfig.special_acquisition.get();
+        if (!config_all) return;
         boolean configstage = MomotinkerConfig.stage_meteor.get();
         boolean config = MomotinkerConfig.lazy_grail.get();
         if (config && (StageMeteor.getStageFloat() == 1 || !configstage)) {
@@ -267,9 +270,9 @@ public class LivingEvents {
     }
 
     private void OnAddCustomTrades(VillagerTradesEvent event) {
-        boolean configall = MomotinkerConfig.special_acquisition.get();
+        boolean config_all = MomotinkerConfig.special_acquisition.get();
         boolean configstage = MomotinkerConfig.stage_meteor.get();
-        if (!configall)return;
+        if (!config_all)return;
         boolean config = MomotinkerConfig.greedy_contract.get();
         if (config&&(StageMeteor.getStageFloat()==1||!configstage)) {
             if (event.getType() != null) {
@@ -283,9 +286,9 @@ public class LivingEvents {
     }
 
     private void OnBreakEvent(BlockEvent.BreakEvent event) {
-        boolean configall = MomotinkerConfig.special_acquisition.get();
+        boolean config_all = MomotinkerConfig.special_acquisition.get();
         boolean configstage = MomotinkerConfig.stage_meteor.get();
-        if (!configall)return;
+        if (!config_all)return;
         Player player = event.getPlayer();
         boolean config = MomotinkerConfig.dimensional_prism.get();
         if (config&&(StageMeteor.getStageFloat()==1||!configstage)) {
@@ -307,7 +310,6 @@ public class LivingEvents {
             if (fallingBlock.getBlockState().getBlock() == Blocks.ANVIL
                     ||fallingBlock.getBlockState().getBlock() ==Blocks.CHIPPED_ANVIL
                     ||fallingBlock.getBlockState().getBlock() ==Blocks.DAMAGED_ANVIL) {
-                // 检测铁砧下落
                 fallingBlock.addTag("falling_anvil");
             }
         }
@@ -333,8 +335,8 @@ public class LivingEvents {
     }
     private void OnPlayerTick(TickEvent.PlayerTickEvent event) {
         if (event.phase != TickEvent.Phase.START) return;
-        boolean configall = MomotinkerConfig.special_acquisition.get();
-        if (!configall)return;
+        boolean config_all = MomotinkerConfig.special_acquisition.get();
+        if (!config_all)return;
         boolean config = MomotinkerConfig.meteor_nucleus.get();
         Player player1=event.player;
         Random random = new Random();
@@ -369,8 +371,7 @@ public class LivingEvents {
 
             UUID playerId = player.getUUID();
             CompoundTag tag = player.getPersistentData().getCompound(Player.PERSISTED_NBT_TAG);
-            String a = "meteor_nucleus_unlock";
-            boolean meteorUnlocked = tag.getBoolean(a);
+            boolean meteorUnlocked = tag.getBoolean(meteor_nucleus_unlock);
             float currentStageFloat = StageMeteor.getStageFloat(playerId);
             if (meteorUnlocked && currentStageFloat != 1) {
                 Channel.sendToPlayer(new StageMeteorCharge(1), player);
@@ -393,9 +394,9 @@ public class LivingEvents {
     private void MeteorSummon(ServerLevel level,ServerPlayer player) {
         Random random = new Random();
         CompoundTag tag = player.getPersistentData().getCompound(Player.PERSISTED_NBT_TAG);
-        String a = "meteor_nucleus_unlock";
-        boolean meteorUnlocked = tag.getBoolean(a);
-        if (meteorUnlocked) {
+        boolean meteor_unlocked = tag.getBoolean(meteor_nucleus_unlock);
+        int meteor_amount = tag.getInt(meteor_nucleus_amount);
+        if (meteor_unlocked&&meteor_amount!=0) {
             double angle = random.nextDouble() * 2 * Math.PI;
             double distance = 80 + random.nextDouble() * 100;
 
@@ -405,22 +406,29 @@ public class LivingEvents {
             MeteorEntity entity = new MeteorEntity(level, meteorX, player.getY() + 80, meteorZ, new Vec3(0, 0, 0));
             entity.setExplosionPower((byte) (random.nextInt(55) + 25));
             level.addFreshEntity(entity);
-            player.sendSystemMessage(Component.translatable("item.momotinker.tooltip.meteor_nucleus5").withStyle(ChatFormatting.GOLD));
+
+            tag.putInt(meteor_nucleus_amount, meteor_amount - 1);
+            player.getPersistentData().put(Player.PERSISTED_NBT_TAG, tag);
+            meteor_amount -= 1;
+            if (meteor_amount == 0) {
+                player.sendSystemMessage(Component.translatable("item.momotinker.tooltip.meteor_nucleus6").withStyle(ChatFormatting.GRAY));
+            } else {
+                player.sendSystemMessage(Component.translatable("item.momotinker.tooltip.meteor_nucleus5").withStyle(ChatFormatting.GOLD));
+            }
         }
     }
 
     private void OnPlayerPickUp(EntityItemPickupEvent event) {
-        boolean configall = MomotinkerConfig.special_acquisition.get();
-        if (!configall)return;
+        boolean config_all = MomotinkerConfig.special_acquisition.get();
+        if (!config_all)return;
         boolean config = MomotinkerConfig.meteor_nucleus.get();
         if (config) {
             if (event.getEntity() instanceof ServerPlayer player) {
                 CompoundTag tag = player.getPersistentData().getCompound(Player.PERSISTED_NBT_TAG);
-                String a = "meteor_nucleus_unlock";
-                if (event.getItem().getItem().is(MomotinkerItem.interdimensional_crystal.get()) && !tag.getBoolean(a)) {
+                if (event.getItem().getItem().is(MomotinkerItem.interdimensional_crystal.get()) && !tag.getBoolean(meteor_nucleus_unlock)) {
                     player.sendSystemMessage(Component.translatable("item.momotinker.tooltip.interdimensional_crystal3").withStyle(ChatFormatting.GOLD));
-                    player.getPersistentData().getBoolean(a);
-                    tag.putBoolean(a, true);
+                    tag.putBoolean(meteor_nucleus_unlock, true);
+                    tag.putInt(meteor_nucleus_amount, 3);
                     player.getPersistentData().put(Player.PERSISTED_NBT_TAG, tag);
                     if (player.level instanceof ServerLevel level){
                         MeteorSummon(level,player);
@@ -431,8 +439,8 @@ public class LivingEvents {
     }
     private void OnLivingTick(TickEvent.LevelTickEvent event) {
         if (event.phase != TickEvent.Phase.END || event.level.isClientSide) return;
-        boolean configall = MomotinkerConfig.special_acquisition.get();
-        if (!configall)return;
+        boolean config_all = MomotinkerConfig.special_acquisition.get();
+        if (!config_all)return;
         boolean config = MomotinkerConfig.lightning_strike_wood.get();
         if (config) {
             for (Player player : event.level.players()) {
@@ -484,8 +492,8 @@ public class LivingEvents {
         }
     }
     private void OnPlayerDestroyItem(PlayerDestroyItemEvent event) {
-        boolean configall = MomotinkerConfig.special_acquisition.get();
-        if (!configall)return;
+        boolean config_all = MomotinkerConfig.special_acquisition.get();
+        if (!config_all)return;
         boolean config = MomotinkerConfig.immortal_weiqi.get();
         if (config&&StageMeteor.getStageFloat()==1) {
             if (!isMidnightToNoonStrict(event.getEntity().level().getDayTime()))return;

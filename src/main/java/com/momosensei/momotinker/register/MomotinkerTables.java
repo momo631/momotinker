@@ -65,5 +65,7 @@ public class MomotinkerTables extends MomotinkerMod {
 
         output.accept(MomotinkerItem.immortal_weiqi.get());
         output.accept(MomotinkerItem.mountain_river_paintings.get());
+
+//        output.accept(MomotinkerBlock.tinkerStation.get());
     }
 }

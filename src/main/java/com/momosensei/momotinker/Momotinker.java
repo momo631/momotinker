@@ -4,38 +4,35 @@ package com.momosensei.momotinker;
 import com.momosensei.momotinker.event.LivingEvents;
 import com.momosensei.momotinker.event.tree.ModFeatures;
 import com.momosensei.momotinker.event.tree.MomotinkerStructures;
-import com.momosensei.momotinker.gui.screen.IncarnonScreen;
-import com.momosensei.momotinker.key.key;
 import com.momosensei.momotinker.network.Channel;
 import com.momosensei.momotinker.particle.register.MomotinkerParticles;
 import com.momosensei.momotinker.register.*;
-import com.momosensei.momotinker.test.testa.MyModels;
 import com.momosensei.momotinker.test.testa.PostPasses;
-import net.minecraft.client.gui.screens.MenuScreens;
 import net.minecraft.core.RegistrySetBuilder;
 import net.minecraft.resources.ResourceLocation;
 import net.minecraft.world.item.Item;
 import net.minecraftforge.api.distmarker.Dist;
-import net.minecraftforge.client.event.RegisterKeyMappingsEvent;
 import net.minecraftforge.common.MinecraftForge;
 import net.minecraftforge.data.event.GatherDataEvent;
 import net.minecraftforge.eventbus.api.IEventBus;
 import net.minecraftforge.eventbus.api.SubscribeEvent;
+import net.minecraftforge.fml.DistExecutor;
 import net.minecraftforge.fml.ModLoadingContext;
 import net.minecraftforge.fml.common.Mod;
 import net.minecraftforge.fml.config.ModConfig;
-import net.minecraftforge.fml.event.lifecycle.FMLClientSetupEvent;
 import net.minecraftforge.fml.event.lifecycle.FMLCommonSetupEvent;
 import net.minecraftforge.fml.javafmlmod.FMLJavaModLoadingContext;
 import net.minecraftforge.fml.loading.FMLEnvironment;
 import net.minecraftforge.registries.ForgeRegistries;
+import org.apache.logging.log4j.LogManager;
+import org.apache.logging.log4j.Logger;
 import org.jetbrains.annotations.NotNull;
-import slimeknights.tconstruct.library.client.model.TinkerItemProperties;
 import slimeknights.tconstruct.library.tools.capability.TinkerDataCapability;
+import slimeknights.tconstruct.library.tools.layout.StationSlotLayoutLoader;
 
 import java.util.Objects;
 
-import static com.momosensei.momotinker.register.MomotinkerTools.*;
+//import static com.momosensei.momotinker.register.MomotinkerBlock.tinkerStation;
 
 @Mod(Momotinker.MOD_ID)
 @Mod.EventBusSubscriber(
@@ -44,10 +41,10 @@ import static com.momosensei.momotinker.register.MomotinkerTools.*;
 
 public class Momotinker {
     public static final String MOD_ID = "momotinker";
+    public static final Logger LOG = LogManager.getLogger(MOD_ID);
     public Momotinker() {
         FMLJavaModLoadingContext context = FMLJavaModLoadingContext.get();
         IEventBus eventBus = context.getModEventBus();
-        eventBus.addListener(this::commonSetup);
         MinecraftForge.EVENT_BUS.register(this);
         MomotinkerItem.ITEMS.register(eventBus);
         MomotinkerModifiers.MODIFIERS.register(eventBus);
@@ -69,13 +66,16 @@ public class Momotinker {
         ModLoadingContext.get().registerConfig(ModConfig.Type.COMMON, MomotinkerConfig.Toolspec, "MomotinkerTool.toml");
 
         MomotinkerMenus.MENUS.register(eventBus);
+        MomotinkerMenus.MENU.register(eventBus);
 
         MomotinkerParticles.PARTICLE_TYPES.register(eventBus);
         //GeckoLib.initialize();
         if(FMLEnvironment.dist == Dist.CLIENT){
-            eventBus.addListener(this::setupClient);
             eventBus.addListener(PostPasses::register);
         }
+
+        MomotinkerBlock.BLOCK_ENTITIES.register(eventBus);
+        MomotinkerBlock.BLOCKS.register(eventBus);
     }
     //Resourcelocation
     public static ResourceLocation getResource(String id) {
@@ -93,12 +93,20 @@ public class Momotinker {
     public static <T> TinkerDataCapability.TinkerDataKey<T> createKey(String name) {
         return TinkerDataCapability.TinkerDataKey.of(getResource(name));
     }
-
-    private void commonSetup(FMLCommonSetupEvent event) {
-        Channel.init();
+    @SubscribeEvent
+    void commonSetup(final FMLCommonSetupEvent event) {
+        event.enqueueWork(() -> {
+            StationSlotLayoutLoader loader = StationSlotLayoutLoader.getInstance();
+//            loader.registerRequiredLayout(tinkerStation.getId());
+//            loader.registerRequiredLayout(tinkersAnvil.getId());
+//            loader.registerRequiredLayout(scorchedAnvil.getId());
+        });
     }
-
-    //生成键名用的
+    @SubscribeEvent
+    public static void onFMLCommonSetup(FMLCommonSetupEvent event) {
+        Channel.init();
+        DistExecutor.unsafeRunWhenOn(Dist.CLIENT, () -> MomotinkerSlots::init);
+    }
     public static String makeDescriptionId(String type, String name) {
         return type + ".momotinker." + name;
     }
@@ -112,48 +120,5 @@ public class Momotinker {
         ModFeatures.register(registrySetBuilder);
 
     }
-    private void setupClient(final FMLClientSetupEvent event){
-        MyModels.LoadOtherModel();
 
-    }
-    @Mod.EventBusSubscriber(modid = MOD_ID, bus = Mod.EventBusSubscriber.Bus.MOD,  value = {Dist.CLIENT})
-    public static class ClientModEvents {
-        @SubscribeEvent
-        public static void onClientSetup(FMLClientSetupEvent event) {
-            event.enqueueWork(() -> {
-                MenuScreens.register(MomotinkerMenus.Incarnon_menu.get(), IncarnonScreen::new);
-
-                TinkerItemProperties.registerBrokenProperty(trigger_blade.get());
-                TinkerItemProperties.registerBrokenProperty(divine_punishment_spear.get());
-                TinkerItemProperties.registerBrokenProperty(entropy_burning_cube.get());
-                TinkerItemProperties.registerBrokenProperty(entropy_burning_cannon.get());
-                TinkerItemProperties.registerBrokenProperty(entropy_burning_riding_spear.get());
-                TinkerItemProperties.registerBrokenProperty(entropy_burning_sword.get());
-                TinkerItemProperties.registerBrokenProperty(eclipse_container.get());
-                TinkerItemProperties.registerBrokenProperty(moon_lock.get());
-                TinkerItemProperties.registerBrokenProperty(coronal_key.get());
-                TinkerItemProperties.registerBrokenProperty(pocket_watch.get());
-                TinkerItemProperties.registerBrokenProperty(chain_sword.get());
-                TinkerItemProperties.registerBrokenProperty(pneumatic_sword.get());
-
-                TinkerItemProperties.registerToolProperties(trigger_blade.get());
-                TinkerItemProperties.registerToolProperties(divine_punishment_spear.get());
-                TinkerItemProperties.registerToolProperties(entropy_burning_cube.get());
-                TinkerItemProperties.registerToolProperties(entropy_burning_riding_spear.get());
-                TinkerItemProperties.registerToolProperties(entropy_burning_cannon.get());
-                TinkerItemProperties.registerToolProperties(moon_lock.get());
-                TinkerItemProperties.registerToolProperties(coronal_key.get());
-                TinkerItemProperties.registerToolProperties(eclipse_container.get());
-                TinkerItemProperties.registerToolProperties(pocket_watch.get());
-                TinkerItemProperties.registerToolProperties(chain_sword.get());
-                TinkerItemProperties.registerToolProperties(pneumatic_sword.get());
-             //   TinkerItemProperties.registerToolProperties(aa.get());
-            });
-        }
-        @SubscribeEvent
-        public static void onKeyRegister(RegisterKeyMappingsEvent event) {
-            event.register(key.KeyBinding.KEY);
-            event.register(key.KeyBinding.KEYA);
-        }
-    }
 }

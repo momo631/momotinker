@@ -1,0 +1,19 @@
+{
+  "variants": {
+    "facing=north": {
+      "model": "momotinker:block/s_tinker_station"
+    },
+    "facing=south": {
+      "model": "momotinker:block/s_tinker_station",
+      "y": 180
+    },
+    "facing=west": {
+      "model": "momotinker:block/s_tinker_station",
+      "y": 270
+    },
+    "facing=east": {
+      "model": "momotinker:block/s_tinker_station",
+      "y": 90
+    }
+  }
+}

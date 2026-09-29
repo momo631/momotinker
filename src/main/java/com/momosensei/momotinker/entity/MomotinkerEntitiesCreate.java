@@ -1,10 +1,10 @@
 package com.momosensei.momotinker.entity;
 
+import com.momosensei.momotinker.Items.tool.divine_punishment_spear;
+import com.momosensei.momotinker.Items.tool.entropy_burning_cannon;
+import com.momosensei.momotinker.Items.tool.trigger_blade;
 import com.momosensei.momotinker.entity.LegionEntity.LegionEntity;
 import com.momosensei.momotinker.register.*;
-import com.momosensei.momotinker.tool.divine_punishment_spear;
-import com.momosensei.momotinker.tool.entropy_burning_cannon;
-import com.momosensei.momotinker.tool.trigger_blade;
 import net.minecraft.server.level.ServerPlayer;
 import net.minecraft.world.InteractionHand;
 import net.minecraft.world.entity.EntityType;
@@ -15,8 +15,8 @@ import slimeknights.tconstruct.library.tools.helper.ToolDamageUtil;
 import slimeknights.tconstruct.library.tools.nbt.ToolStack;
 import slimeknights.tconstruct.library.tools.stat.ToolStats;
 
+import static com.momosensei.momotinker.Items.tool.entropy_burning_cube.crystallized;
 import static com.momosensei.momotinker.Modifiers.modifiers.BreakthroughStars.breakthroughstar;
-import static com.momosensei.momotinker.tool.entropy_burning_cube.crystallized;
 import static slimeknights.tconstruct.library.modifiers.Modifier.RANDOM;
 import static slimeknights.tconstruct.library.tools.stat.ToolStats.ACCURACY;
 

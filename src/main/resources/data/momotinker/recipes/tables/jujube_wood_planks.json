@@ -3,7 +3,7 @@
   "group": "planks",
   "ingredients": [
     {
-      "tag": "momotinker:jujube_wood_log"
+      "item": "momotinker:jujube_wood_log"
     }
   ],
   "result": {

@@ -1,6 +1,14 @@
 package com.momosensei.momotinker.register;
 
-import com.momosensei.momotinker.Items.*;
+import com.momosensei.momotinker.Items.block.dimensional_prism;
+import com.momosensei.momotinker.Items.block.lightning_strike_wood;
+import com.momosensei.momotinker.Items.block.meteor_nucleus_block;
+import com.momosensei.momotinker.Items.ingot.*;
+import com.momosensei.momotinker.Items.other.*;
+import com.momosensei.momotinker.Items.pull_entity;
+import com.momosensei.momotinker.Items.tool.revelation_fruit;
+import com.momosensei.momotinker.Items.tool.star_seeking_pointer;
+import com.momosensei.momotinker.Items.tool.twilight_ego;
 import net.minecraft.world.item.BlockItem;
 import net.minecraft.world.item.Item;
 import net.minecraftforge.eventbus.api.IEventBus;
@@ -19,7 +27,6 @@ public class MomotinkerItem {
         ITEMS.register(eventBus);
     }
 
-    //物品锭什么的注册照着复制就行，如果有单独类改new Item的Item字段为你的类名，tab为创造模式显示栏，在哪个栏位显示
     public static final RegistryObject<Item> laomo = ITEMS.register("laomo", () -> new Item(MomotinkerTables.material()));
     public static final RegistryObject<Item> interdimensional_crystal = ITEMS.register("interdimensional_crystal", () -> new interdimensional_crystal(MomotinkerTables.material()));
     public static final RegistryObject<Item> arriving_at_the_other_shore = ITEMS.register("arriving_at_the_other_shore", () -> new arriving_at_the_other_shore(MomotinkerTables.material()));
@@ -63,8 +70,14 @@ public class MomotinkerItem {
     public static final RegistryObject<Item> pull_entity = ITEMS.register("pull_entity", () -> new pull_entity(new Item.Properties()));
 
     public static final RegistryObject<Item> star_seeking_pointer = ITEMS.register("star_seeking_pointer", () -> new star_seeking_pointer(MomotinkerTables.material()));
+    public static final RegistryObject<Item> revelation_fruit = ITEMS.register("revelation_fruit", () -> new revelation_fruit(MomotinkerTables.material()));
 
-    //方块类要这样,略有变动
+    public static final RegistryObject<Item> hidden_bit_a = ITEMS.register("hidden_bit_a", ()->new Item(new Item.Properties()));
+    public static final RegistryObject<Item> hidden_bit_b = ITEMS.register("hidden_bit_b", ()->new Item(new Item.Properties()));
+    public static final RegistryObject<Item> hidden_bit_c = ITEMS.register("hidden_bit_c", ()->new Item(new Item.Properties()));
+    public static final RegistryObject<Item> hidden_bit_d = ITEMS.register("hidden_bit_d", ()->new Item(new Item.Properties()));
+    public static final RegistryObject<Item> hidden_bit_e = ITEMS.register("hidden_bit_e", ()->new Item(new Item.Properties()));
+
 
     public static final RegistryObject<BlockItem> Laomo_block = ITEMS.register("laomo_block", () -> new BlockItem(MomotinkerBlock.Laomo_block.get(), new Item.Properties()));
     public static final RegistryObject<BlockItem> dimensional_prism = ITEMS.register("dimensional_prism", () -> new dimensional_prism(MomotinkerBlock.dimensional_prism.get(), new Item.Properties()));
@@ -76,5 +89,8 @@ public class MomotinkerItem {
     public static final RegistryObject<BlockItem> jujube_wood_planks = ITEMS.register("jujube_wood_planks", () -> new BlockItem(MomotinkerBlock.jujube_wood_planks.get(), new Item.Properties()));
 
     public static final RegistryObject<BlockItem> lightning_strike_wood = ITEMS.register("lightning_strike_wood", () -> new lightning_strike_wood(MomotinkerBlock.lightning_strike_wood.get(), new Item.Properties()));
+
+//    public static final RegistryObject<BlockItem> special_tinker = ITEMS.register("special_tinker_station", () ->  new BlockItem(MomotinkerBlock.special_tinker.get(),new Item.Properties()));
+
 
 }

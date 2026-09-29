@@ -41,6 +41,10 @@ public class Channel {
         INSTANCE.messageBuilder(TriggerDamagePacket.class,id++, NetworkDirection.PLAY_TO_SERVER).decoder(TriggerDamagePacket::decode).encoder(TriggerDamagePacket::encode).consumerMainThread(TriggerDamagePacket::handlePacket).add();
         INSTANCE.messageBuilder(ItemStackPKT.class,id++, NetworkDirection.PLAY_TO_SERVER).decoder(ItemStackPKT::decode).encoder(ItemStackPKT::encode).consumerMainThread(ItemStackPKT::handlePacket).add();
         INSTANCE.messageBuilder(LegionPacket.class, id++, NetworkDirection.PLAY_TO_SERVER).decoder(LegionPacket::decode).encoder(LegionPacket::encode).consumerMainThread(LegionPacket::handlePacket).add();
+        INSTANCE.messageBuilder(RequestDataPacket.class, id++, NetworkDirection.PLAY_TO_SERVER).decoder(RequestDataPacket::decode).encoder(RequestDataPacket::encode).consumerMainThread(RequestDataPacket::handlePacket).add();
+
+        INSTANCE.messageBuilder(SyncDataPacket.class, id++, NetworkDirection.PLAY_TO_CLIENT).decoder(SyncDataPacket::decode).encoder(SyncDataPacket::encode).consumerMainThread(SyncDataPacket::handlePacket).add();
+        INSTANCE.messageBuilder(RecipeRefreshPacket.class, id++, NetworkDirection.PLAY_TO_CLIENT).decoder(RecipeRefreshPacket::decode).encoder(RecipeRefreshPacket::encode).consumerMainThread(RecipeRefreshPacket::handlePacket).add();
 
         INSTANCE.messageBuilder(ToolsTimeCharge.class,id++, NetworkDirection.PLAY_TO_CLIENT).decoder(ToolsTimeCharge::new).encoder(ToolsTimeCharge::encode).consumerMainThread(ToolsTimeCharge::handle).add();
         INSTANCE.messageBuilder(CensoredCharge.class,id++, NetworkDirection.PLAY_TO_CLIENT).decoder(CensoredCharge::new).encoder(CensoredCharge::toByte).consumerMainThread(CensoredCharge::handle).add();
@@ -53,9 +57,12 @@ public class Channel {
         INSTANCE.messageBuilder(CoolTimeChargeB.class,id++, NetworkDirection.PLAY_TO_CLIENT).decoder(CoolTimeChargeB::new).encoder(CoolTimeChargeB::toByte).consumerMainThread(CoolTimeChargeB::handle).add();
         INSTANCE.messageBuilder(CoolTimeChargeC.class,id++, NetworkDirection.PLAY_TO_CLIENT).decoder(CoolTimeChargeC::new).encoder(CoolTimeChargeC::toByte).consumerMainThread(CoolTimeChargeC::handle).add();
         INSTANCE.messageBuilder(StageMeteorCharge.class,id++, NetworkDirection.PLAY_TO_CLIENT).decoder(StageMeteorCharge::new).encoder(StageMeteorCharge::toByte).consumerMainThread(StageMeteorCharge::handle).add();
+//        INSTANCE.messageBuilder(SUpdateTinkerStationRecipePacket.class,id++, NetworkDirection.PLAY_TO_CLIENT).decoder(SUpdateTinkerStationRecipePacket::new).encoder(SUpdateTinkerStationRecipePacket::encode).consumerMainThread(SUpdateTinkerStationRecipePacket::handle).add();
 
         INSTANCE.messageBuilder(IncarnonAdjustPacket.class, id++, NetworkDirection.PLAY_TO_SERVER).decoder(IncarnonAdjustPacket::new).encoder(IncarnonAdjustPacket::toByte).consumerMainThread(IncarnonAdjustPacket::handle).add();
         INSTANCE.messageBuilder(IncarnonOpenMenuPacket.class, id++, NetworkDirection.PLAY_TO_SERVER).decoder(IncarnonOpenMenuPacket::new).encoder(IncarnonOpenMenuPacket::toByte).consumerMainThread(IncarnonOpenMenuPacket::handle).add();
+//        INSTANCE.messageBuilder(STinkerStationRenamePacket.class,id++, NetworkDirection.PLAY_TO_SERVER).decoder(STinkerStationRenamePacket::new).encoder(STinkerStationRenamePacket::encode).consumerMainThread(STinkerStationRenamePacket::handle).add();
+//        INSTANCE.messageBuilder(STinkerStationSelectionPacket.class,id++, NetworkDirection.PLAY_TO_SERVER).decoder(STinkerStationSelectionPacket::new).encoder(STinkerStationSelectionPacket::encode).consumerMainThread(STinkerStationSelectionPacket::handle).add();
 
     }
 

@@ -97,8 +97,10 @@
   "recipe.momotinker.modifier.forbiddenfruit": "[伊甸禁言]需要[尽纵之罪]作为前置且与其他[侵蚀我心，大罪共鸣]强化互斥",
   "recipe.momotinker.modifier.gainsalone": "[只身向财]需要[尽掠之罪]作为前置且与其他[侵蚀我心，大罪共鸣]强化互斥",
   "recipe.momotinker.modifier.compassionateeverything": "[悲悼众生]需要[尽哀之罪]作为前置且与其他[侵蚀我心，大罪共鸣]强化互斥",
-  "recipe.momotinker.modifier.key_to_ruin": "揭示§o“军团”§r的存在需为虚无，其觉悟应足以承受烬灭",
+  "recipe.momotinker.modifier.key_to_ruin": "揭示§o“征服”§r的存在需为虚无，其觉悟应足以化为灰烬",
 
+  "stat.tconstruct.slot.prefix.mystery": "奥秘槽:",
+  "stat.tconstruct.slot.display.mystery": "奥秘",
 
   "momotinker": "墨工坊",
 
@@ -120,6 +122,7 @@
   "item.momotinker.tooltip.interdimensional_crystal1": "§d自天堂归来§",
   "item.momotinker.tooltip.interdimensional_crystal2": "§d当凋零在大于等于世界高度300的位置死亡后掉落在其所在位置§",
   "item.momotinker.tooltip.interdimensional_crystal3": "群星闪烁，流星划过天边时注意到了你，并尝试给予你馈赠",
+  "item.momotinker.tooltip.interdimensional_crystal4": "长按使用后，可令流星再次坠落",
 
   "item.momotinker.arriving_at_the_other_shore": "\u00A74现彼岸\u00A7",
   "item.momotinker.tooltip.arriving_at_the_other_shore1": "§7万千逝物，皆渡彼岸§",
@@ -190,6 +193,8 @@
   "item.momotinker.tooltip.meteor_nucleus3": "熔融天际流星浇筑出的金属锭，蕴含着巨大的能量",
   "item.momotinker.tooltip.meteor_nucleus4": "“流星之核在熔融之后能源源不断释放大量热能还没有任何衰减的迹象，这或许能在我们的工匠工作上提供新的帮助”",
   "item.momotinker.tooltip.meteor_nucleus5": "流星的馈赠即将到来",
+  "item.momotinker.tooltip.meteor_nucleus6": "流星已经远去，并期待着你的下次表现",
+  "item.momotinker.tooltip.meteor_nucleus7": "群星因你而再次闪耀，流星自远方归来，并尝试给予你馈赠",
 
   "item.momotinker.ashen_platinum": "灰烬铂金锭",
   "item.momotinker.tooltip.ashen_platinum1": "来自远古的神秘金属，其身上的荣光与辉煌已被时间掩埋",
@@ -258,6 +263,11 @@
   "item.momotinker.mountain_river_paintings": "山河图",
   "item.momotinker.tooltip.mountain_river_paintings1": "自在吾心，山河依在",
   "item.momotinker.tooltip.mountain_river_paintings2": "空白地图在水中浸泡时每秒都有5%的概率变化为该物品(需要周围200格内存在玩家)",
+
+  "item.momotinker.revelation_fruit": "§d启示之果§",
+  "item.momotinker.tooltip.revelation_fruit1": "某个知识的聚合体，无法用于果腹，却能使人顿悟",
+  "item.momotinker.tooltip.revelation_fruit2": "使用后对强化",
+  "item.momotinker.tooltip.revelation_fruit3": "的揭示到达下一阶段",
 
 
   "itemGroup.momotinker.tools": "墨工坊模组-工具",
@@ -548,7 +558,7 @@
 
   "modifier.momotinker.frombrilliance": "古代神兵",
   "modifier.momotinker.frombrilliance.flavor": "§e来自辉煌的时代§",
-  "modifier.momotinker.frombrilliance.description": "该工具的所有特性均翻倍且拆卸会返还所有部件，但是玩家无法自主锻造，可以在某些地点获得固定材料部件的工具，达成某种条件可使武器进化！",
+  "modifier.momotinker.frombrilliance.description": "\n该工具的所有特性均增加1级且拆卸会返还所有部件。\n玩家无法自主锻造，可以在某些地点获得固定材料部件的工具。\n达成某种条件可使武器进化！",
 
   "modifier.momotinker.superancientmetalsa": "超古代金属-阿尔法",
   "modifier.momotinker.superancientmetalsa.flavor": "来自古代的奇特金属，表面看起来平平无奇",
@@ -865,5 +875,10 @@
   "modifier.momotinker.tooltip.sword_incarnon_task2": "击杀1只末影龙",
   "modifier.momotinker.tooltip.sword_incarnon_task3": "灵化状态下击杀2只凋灵",
   "modifier.momotinker.tooltip.sword_incarnon_task4": "开启4次灵化",
-  "modifier.momotinker.tooltip.sword_incarnon_on": "成功攻击时积蓄能量，\n灵化状态最多持续120秒"
+  "modifier.momotinker.tooltip.sword_incarnon_on": "成功攻击时积蓄能量，\n灵化状态最多持续120秒",
+
+  "modifier.momotinker.doomsday": "毁灭日",
+  "modifier.momotinker.doomsday.flavor": "",
+  "modifier.momotinker.doomsday.description": "尘归尘，土归土"
+
 }
