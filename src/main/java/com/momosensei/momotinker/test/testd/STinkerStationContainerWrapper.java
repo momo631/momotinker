@@ -84,8 +84,6 @@ public class STinkerStationContainerWrapper implements IMutableTinkerStationCont
     return this.station.getItem(TINKER_SLOT);
   }
 
-  // TODO: consider replacing getTinkerable and getTinkerableStack with this
-
   public LazyToolStack getTool() {
     if (tool == null) {
       tool = LazyToolStack.from(getTinkerableStack());

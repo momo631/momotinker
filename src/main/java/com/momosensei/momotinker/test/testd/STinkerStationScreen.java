@@ -116,11 +116,10 @@ public class STinkerStationScreen extends ToolTableScreen<STinkerStationBlockEnt
     int max = 5;
     STinkerStationBlockEntity te = container.getTile();
     if (te != null) {
-      max = te.getInputCount(); // TODO: not station sensitive
+      max = te.getInputCount();
     }
     this.maxInputs = max;
 
-    // large if at least 4, todo can configure?
     if (max > 3) {
       this.metal();
     } else {

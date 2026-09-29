@@ -301,7 +301,6 @@ public class STinkerStationBlockEntity extends RetexturedTableBlockEntity implem
 
   public void setMaterial(MaterialVariantId material) {
     MaterialVariantId oldMaterial = this.material;
-    // TODO: resolve redirects?
     this.material = material;
     // reset other texture
     this.texture = Blocks.AIR;
