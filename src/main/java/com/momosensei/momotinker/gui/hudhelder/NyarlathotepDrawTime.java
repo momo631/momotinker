@@ -1,6 +1,6 @@
 package com.momosensei.momotinker.gui.hudhelder;
 
-public class LegionDrawTime {
+public class NyarlathotepDrawTime {
     public static float charging_phase;
     public static float charging_progress;
     public static float cooldown;

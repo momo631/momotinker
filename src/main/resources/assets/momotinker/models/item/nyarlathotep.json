@@ -1,0 +1,24 @@
+{
+  "loader": "tconstruct:tool",
+  "parent": "forge:item/default-tool",
+  "textures": {
+    "nyarlathotep_part_1": "momotinker:item/tool/nyarlathotep/part_1",
+    "nyarlathotep_part_2": "momotinker:item/tool/nyarlathotep/part_2",
+    "nyarlathotep_part_3": "momotinker:item/tool/nyarlathotep/part_3",
+    "nyarlathotep_part_4": "momotinker:item/tool/nyarlathotep/part_4",
+    "nyarlathotep_part_5": "momotinker:item/tool/nyarlathotep/part_5",
+    "broken_nyarlathotep_part": "momotinker:item/tool/nyarlathotep/broken_part",
+    "nyarlathotep_heart": "momotinker:item/tool/nyarlathotep/nyarlathotep_heart"
+  },
+  "modifier_roots": [
+    "momotinker:item/tool/nyarlathotep/modifiers/"
+  ],
+  "parts": [
+    {"name": "nyarlathotep_part_1", "index": 0},
+    {"name": "nyarlathotep_part_2", "index": 1},
+    {"name": "nyarlathotep_part_3", "index": 2},
+    {"name": "nyarlathotep_part_4", "index": 3},
+    {"name": "nyarlathotep_part_5", "index": 4},
+    {"name": "nyarlathotep_heart", "broken": "broken_part"}
+  ]
+}

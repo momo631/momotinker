@@ -1,4 +1,4 @@
-package com.momosensei.momotinker.test.testd;
+package com.momosensei.momotinker.test.testc;
 /*
 import net.minecraft.world.inventory.Slot;
 import net.minecraft.world.item.ItemStack;

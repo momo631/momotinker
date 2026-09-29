@@ -1,6 +1,7 @@
 package com.momosensei.momotinker.Modifiers.modifiers.UniverseModifiers;
 
 import com.momosensei.momotinker.Modifiers.momomodifier;
+import com.momosensei.momotinker.Momotinker;
 import com.momosensei.momotinker.util.Cutter;
 import net.minecraft.world.entity.Entity;
 import net.minecraft.world.entity.EquipmentSlot;
@@ -13,6 +14,8 @@ import slimeknights.tconstruct.library.tools.nbt.IToolStackView;
 public class Doomsday extends momomodifier {
     public Doomsday() {
     }
+    public static final String doomsday = Momotinker.getResource("doomsday").toString();
+
     @Override
     public boolean isNoLevels() {
         return true;

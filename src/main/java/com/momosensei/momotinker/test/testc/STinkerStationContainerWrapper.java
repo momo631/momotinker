@@ -1,4 +1,4 @@
-package com.momosensei.momotinker.test.testd;
+package com.momosensei.momotinker.test.testc;
 /*
 import net.minecraft.world.entity.player.Player;
 import net.minecraft.world.item.ItemStack;

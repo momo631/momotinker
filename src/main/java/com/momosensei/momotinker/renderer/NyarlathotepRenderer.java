@@ -2,7 +2,7 @@ package com.momosensei.momotinker.renderer;
 
 import com.mojang.blaze3d.vertex.PoseStack;
 import com.mojang.math.Axis;
-import com.momosensei.momotinker.entity.LegionEntity.LegionEntity;
+import com.momosensei.momotinker.entity.NyarlathotepEntity.NyarlathotepEntity;
 import net.minecraft.client.renderer.MultiBufferSource;
 import net.minecraft.client.renderer.entity.EntityRenderer;
 import net.minecraft.client.renderer.entity.EntityRendererProvider;
@@ -15,9 +15,9 @@ import net.minecraft.world.inventory.InventoryMenu;
 import net.minecraft.world.item.ItemDisplayContext;
 import net.minecraft.world.phys.Vec3;
 
-public class LegionRenderer extends EntityRenderer<LegionEntity> {
+public class NyarlathotepRenderer extends EntityRenderer<NyarlathotepEntity> {
     public ItemRenderer itemRenderer;
-    public LegionRenderer(EntityRendererProvider.Context p_174008_) {
+    public NyarlathotepRenderer(EntityRendererProvider.Context p_174008_) {
         super(p_174008_);
         this.itemRenderer = p_174008_.getItemRenderer();
     }
@@ -49,7 +49,7 @@ public class LegionRenderer extends EntityRenderer<LegionEntity> {
 //    }
 
     @Override
-    public void render(LegionEntity pEntity, float pEntityYaw, float pPartialTick, PoseStack pPoseStack, MultiBufferSource pBuffer, int pPackedLight) {
+    public void render(NyarlathotepEntity pEntity, float pEntityYaw, float pPartialTick, PoseStack pPoseStack, MultiBufferSource pBuffer, int pPackedLight) {
         double xRot = Mth.rotLerp(pPartialTick, pEntity.xRotO, pEntity.getXRot());
         double yRot = Mth.rotLerp(pPartialTick, pEntity.yRotO, pEntity.getYRot());
         Vec3 rotation = new Vec3(xRot, yRot, 180);
@@ -76,15 +76,15 @@ public class LegionRenderer extends EntityRenderer<LegionEntity> {
     }
 
 
-    protected int getSkyLightLevel(LegionEntity p_114509_, BlockPos p_114510_) {
+    protected int getSkyLightLevel(NyarlathotepEntity p_114509_, BlockPos p_114510_) {
         return 15;
     }
-    protected int getBlockLightLevel(LegionEntity p_114496_, BlockPos p_114497_) {
+    protected int getBlockLightLevel(NyarlathotepEntity p_114496_, BlockPos p_114497_) {
         return 15;
     }
 
     @Override
-    public ResourceLocation getTextureLocation(LegionEntity meteorEntity) {
+    public ResourceLocation getTextureLocation(NyarlathotepEntity meteorEntity) {
         return InventoryMenu.BLOCK_ATLAS;
     }
 }

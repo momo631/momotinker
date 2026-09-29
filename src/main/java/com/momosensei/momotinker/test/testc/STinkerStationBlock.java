@@ -1,4 +1,4 @@
-package com.momosensei.momotinker.test.testd;
+package com.momosensei.momotinker.test.testc;
 /*
 import net.minecraft.core.BlockPos;
 import net.minecraft.world.entity.LivingEntity;

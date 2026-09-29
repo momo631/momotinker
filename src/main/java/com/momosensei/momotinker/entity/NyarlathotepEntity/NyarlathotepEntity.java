@@ -1,4 +1,4 @@
-package com.momosensei.momotinker.entity.LegionEntity;
+package com.momosensei.momotinker.entity.NyarlathotepEntity;
 
 
 import com.momosensei.momotinker.register.MomotinkerModifiers;
@@ -42,21 +42,21 @@ import java.util.*;
 import java.util.function.Function;
 import java.util.stream.Collectors;
 
-import static com.momosensei.momotinker.entity.LegionEntity.OrbitDefenseSystem.interceptProjectiles;
 import static com.momosensei.momotinker.entity.MomotinkerEntitiesMove.*;
+import static com.momosensei.momotinker.entity.NyarlathotepEntity.OrbitDefenseSystem.interceptProjectiles;
 
 
-public class LegionEntity extends Projectile {
+public class NyarlathotepEntity extends Projectile {
     public ToolStack tool;
     public float damage = 0;
-    public LegionEntity(EntityType<? extends Projectile> p_37248_, Level p_37249_) {
+    public NyarlathotepEntity(EntityType<? extends Projectile> p_37248_, Level p_37249_) {
         super(p_37248_, p_37249_);
     }
 
-    private static final EntityDataAccessor<ItemStack> DATA_TOOL = SynchedEntityData.defineId(LegionEntity.class, EntityDataSerializers.ITEM_STACK);
-    private static final EntityDataAccessor<Float> DATA_SPAWN_YAW = SynchedEntityData.defineId(LegionEntity.class, EntityDataSerializers.FLOAT);
-    private static final EntityDataAccessor<Float> DATA_SPAWN_PITCH = SynchedEntityData.defineId(LegionEntity.class, EntityDataSerializers.FLOAT);
-    private static final EntityDataAccessor<Integer> DATA_FORM = SynchedEntityData.defineId(LegionEntity.class, EntityDataSerializers.INT);
+    private static final EntityDataAccessor<ItemStack> DATA_TOOL = SynchedEntityData.defineId(NyarlathotepEntity.class, EntityDataSerializers.ITEM_STACK);
+    private static final EntityDataAccessor<Float> DATA_SPAWN_YAW = SynchedEntityData.defineId(NyarlathotepEntity.class, EntityDataSerializers.FLOAT);
+    private static final EntityDataAccessor<Float> DATA_SPAWN_PITCH = SynchedEntityData.defineId(NyarlathotepEntity.class, EntityDataSerializers.FLOAT);
+    private static final EntityDataAccessor<Integer> DATA_FORM = SynchedEntityData.defineId(NyarlathotepEntity.class, EntityDataSerializers.INT);
 
     @Override
     protected void defineSynchedData() {

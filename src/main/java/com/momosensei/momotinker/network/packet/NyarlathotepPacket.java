@@ -7,32 +7,32 @@ import net.minecraftforge.network.NetworkEvent;
 
 import java.util.function.Supplier;
 
-import static com.momosensei.momotinker.Items.tool.legion.createLegion;
+import static com.momosensei.momotinker.Items.tool.nyarlathotep.createNyarlathotep;
 import static com.momosensei.momotinker.util.AttackUtil.getCooldownFunctionFloat;
 
 
-public class LegionPacket {
+public class NyarlathotepPacket {
     public final int playerID;
-    public LegionPacket(int id) {
+    public NyarlathotepPacket(int id) {
         this.playerID =id;
     }
 
-    public static void encode(LegionPacket packet, FriendlyByteBuf buf) {
+    public static void encode(NyarlathotepPacket packet, FriendlyByteBuf buf) {
         buf.writeInt(packet.playerID);
     }
 
-    public static LegionPacket decode(FriendlyByteBuf buf) {
-        return new LegionPacket(buf.readInt());
+    public static NyarlathotepPacket decode(FriendlyByteBuf buf) {
+        return new NyarlathotepPacket(buf.readInt());
     }
 
-    public static void handlePacket(LegionPacket packet, Supplier<NetworkEvent.Context> supplier) {
+    public static void handlePacket(NyarlathotepPacket packet, Supplier<NetworkEvent.Context> supplier) {
         if (supplier.get().getDirection().getReceptionSide().isServer()) {
             supplier.get().enqueueWork(() -> {
                 ServerPlayer player =supplier.get().getSender();
                 if (player !=null&&player.getId()==packet.playerID) {
                     float d = getCooldownFunctionFloat(player, InteractionHand.MAIN_HAND);
                     if (d >= 0.9f) {
-                        createLegion(player, 1, 0);
+                        createNyarlathotep(player, 1, 0);
                     }
                 }
             });

@@ -97,7 +97,7 @@
   "recipe.momotinker.modifier.forbiddenfruit": "[伊甸禁言]需要[尽纵之罪]作为前置且与其他[侵蚀我心，大罪共鸣]强化互斥",
   "recipe.momotinker.modifier.gainsalone": "[只身向财]需要[尽掠之罪]作为前置且与其他[侵蚀我心，大罪共鸣]强化互斥",
   "recipe.momotinker.modifier.compassionateeverything": "[悲悼众生]需要[尽哀之罪]作为前置且与其他[侵蚀我心，大罪共鸣]强化互斥",
-  "recipe.momotinker.modifier.key_to_ruin": "揭示§o“征服”§r的存在需为虚无，其觉悟应足以化为灰烬",
+  "recipe.momotinker.modifier.key_to_ruin": "揭示§o奈亚拉托提普§r的存在需为虚无，其觉悟应足以化为灰烬",
 
   "stat.tconstruct.slot.prefix.mystery": "奥秘槽:",
   "stat.tconstruct.slot.display.mystery": "奥秘",
@@ -335,11 +335,11 @@
 
 
   "item.momotinker.pneumatic_sword": "气动剑",
-  "item.momotinker.pneumatic_sword.description": "高机动性的近战武器，右键可短暂向前上方冲刺，按下工具技能可发射绳索将自己拉向被击中的方块或生物（按“shift”可提前取消绳索），若目标是生物时会强化下一次在空中的冲刺和该冲刺伤害，若副手存在另一把气动剑则提升各项性能",
+  "item.momotinker.pneumatic_sword.description": "高机动性的近战武器，右键可短暂向前上方冲刺，按下[工具技能]可发射绳索将自己拉向被击中的方块或生物（按“shift”可提前取消绳索），若目标是生物时会强化下一次在空中的冲刺和该冲刺伤害，若副手存在另一把气动剑则提升各项性能",
 
 
-  "item.momotinker.legion": "§o“征服”§r",
-  "item.momotinker.legion.description": "[主手武器]\n左右键召唤随机工具进行攻击，按下工具技能可召唤工具围绕自身周围\n§o“规则于此集结，逻辑丰碑崩解之时，万业皆殉道”",
+  "item.momotinker.nyarlathotep": "§o奈亚拉托提普§r",
+  "item.momotinker.nyarlathotep.description": "[主手武器]\n左右键召唤随机工具进行攻击，按下[工具技能]可召唤工具围绕自身周围\n可能会伪装成其他工具\n§o“规则于此集结，逻辑丰碑崩解之时，万业皆殉道”",
 
 
   "momotinker.tool.tooltip.offhand_hastool": "错误:副手有物品",

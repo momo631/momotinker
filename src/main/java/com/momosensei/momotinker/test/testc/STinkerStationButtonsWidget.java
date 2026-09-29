@@ -1,4 +1,4 @@
-package com.momosensei.momotinker.test.testd;
+package com.momosensei.momotinker.test.testc;
 /*
 import net.minecraft.client.gui.components.Button;
 import slimeknights.tconstruct.library.client.Icons;

@@ -28,6 +28,11 @@ public class revelation_fruit extends Item {
     public static final String revelation = Momotinker.getResource("revelation").toString();
     public static final String revelation_limit = Momotinker.getResource("revelation_limit").toString();
 
+//    @Override
+//    public void onLeftClickEntity(IToolStackView tool, ModifierEntry entry, Player player, Level level, EquipmentSlot equipmentSlot, Entity entity) {
+//        player.getInventory().add(getRevelationFruit(doomsday,5));
+//    }
+
     @Override
     public int getUseDuration(ItemStack stack) {
         return 30;

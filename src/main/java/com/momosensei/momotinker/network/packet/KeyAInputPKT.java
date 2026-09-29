@@ -21,7 +21,7 @@ import java.util.List;
 import java.util.function.Supplier;
 
 import static com.momosensei.momotinker.Items.tool.entropy_burning_cube.liverization;
-import static com.momosensei.momotinker.Items.tool.legion.*;
+import static com.momosensei.momotinker.Items.tool.nyarlathotep.*;
 import static com.momosensei.momotinker.Modifiers.modifiers.ProjectionOfSuffering.disaster;
 import static com.momosensei.momotinker.Modifiers.momomodifier.createNewTool;
 import static com.momosensei.momotinker.Momotinker.getResource;
@@ -152,16 +152,16 @@ public class KeyAInputPKT {
                 }
             }
 
-            if (player!=null&&(player.getMainHandItem().is(MomotinkerTools.legion.get()))) {
+            if (player!=null&&(player.getMainHandItem().is(MomotinkerTools.nyarlathotep.get()))) {
                 ToolStack tool = ToolStack.from(player.getMainHandItem());
                 ModDataNBT data = tool.getPersistentData();
-                if (!data.getBoolean(legion_on)&&data.getFloat(legion_cooldown)==60) {
-                    data.putBoolean(legion_on,true);
+                if (!data.getBoolean(nyarlathotep_on)&&data.getFloat(nyarlathotep_cooldown)==60) {
+                    data.putBoolean(nyarlathotep_on,true);
                     float perc = Mth.clamp(tool.getStats().get(ToolStats.ATTACK_SPEED) / 60, 0, 1);
                     int a = (int) Math.floor(perc * 10);
                     if (a < 1) a = 1;
                     if (a > 10) a = 10;
-                    createLegion(player, a + 2, 2);
+                    createNyarlathotep(player, a + 2, 2);
                 }
             }
         });

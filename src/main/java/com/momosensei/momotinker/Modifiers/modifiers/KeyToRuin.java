@@ -46,7 +46,7 @@ public class KeyToRuin extends momomodifier {
     }
     @Override
     public Component validate(IToolStackView tool, ModifierEntry modifier) {
-        if (tool.getItem()==MomotinkerTools.entropy_burning_cube.get()||tool.getItem()==MomotinkerTools.legion.get()){
+        if (tool.getItem()==MomotinkerTools.entropy_burning_cube.get()||tool.getItem()==MomotinkerTools.nyarlathotep.get()){
             return null;
         }
         return requirementsError(modifier);
@@ -62,7 +62,7 @@ public class KeyToRuin extends momomodifier {
     @Override
     public void onInventoryTick(IToolStackView tool, ModifierEntry modifier, Level world, LivingEntity entity, int index, boolean isSelected, boolean isCorrectSlot, ItemStack stack) {
         if (stack.getItem() == MomotinkerTools.entropy_burning_cube.get()&&entity instanceof Player player){
-            ItemStack item = createNewTool(stack,MomotinkerTools.legion.get(), MomotinkerToolDefinitions.LEGION);
+            ItemStack item = createNewTool(stack,MomotinkerTools.nyarlathotep.get(), MomotinkerToolDefinitions.LEGION);
             for (int i = 0; i < player.getInventory().getContainerSize(); i++) {
                 if (player.getInventory().getItem(i) == stack) {
                     player.getInventory().setItem(i, item);
@@ -73,7 +73,7 @@ public class KeyToRuin extends momomodifier {
     }
     @Override
     public void addTooltip(IToolStackView tool, ModifierEntry modifierEntry, @org.jetbrains.annotations.Nullable Player player, List<Component> tooltip, TooltipKey tooltipKey, TooltipFlag tooltipFlag) {
-        if (tool.getItem()==MomotinkerTools.legion.get()) {
+        if (tool.getItem()==MomotinkerTools.nyarlathotep.get()) {
             tooltip.add(Component.translatable("modifier.momotinker.tooltip.key_to_ruin1").withStyle(ChatFormatting.GRAY).withStyle(ChatFormatting.DARK_GRAY).withStyle(ChatFormatting.ITALIC));
             tooltip.add(Component.translatable("modifier.momotinker.tooltip.key_to_ruin2").withStyle(ChatFormatting.GRAY).withStyle(ChatFormatting.DARK_GRAY));
             tooltip.add(Component.translatable("modifier.momotinker.tooltip.key_to_ruin3").withStyle(ChatFormatting.GRAY).withStyle(ChatFormatting.DARK_GRAY).withStyle(ChatFormatting.ITALIC));

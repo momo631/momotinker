@@ -1,14 +1,17 @@
 package com.momosensei.momotinker.Items.tool;
 
 
-import com.momosensei.momotinker.entity.LegionEntity.LegionEntity;
+import com.momosensei.momotinker.Momotinker;
+import com.momosensei.momotinker.entity.NyarlathotepEntity.NyarlathotepEntity;
 import com.momosensei.momotinker.network.Channel;
-import com.momosensei.momotinker.network.packet.HudCharge.LegionChargingCharge;
-import com.momosensei.momotinker.network.packet.HudCharge.LegionCooldownCharge;
-import com.momosensei.momotinker.network.packet.LegionPacket;
+import com.momosensei.momotinker.network.packet.HudCharge.NyarlathotepChargingCharge;
+import com.momosensei.momotinker.network.packet.HudCharge.NyarlathotepCooldownCharge;
+import com.momosensei.momotinker.network.packet.NyarlathotepPacket;
+import com.momosensei.momotinker.register.MomotinkerTags;
 import com.momosensei.momotinker.util.AttackUtil;
 import net.minecraft.core.BlockPos;
 import net.minecraft.core.particles.ParticleTypes;
+import net.minecraft.nbt.CompoundTag;
 import net.minecraft.network.chat.Component;
 import net.minecraft.resources.ResourceLocation;
 import net.minecraft.server.level.ServerLevel;
@@ -23,6 +26,7 @@ import net.minecraft.world.entity.EquipmentSlot;
 import net.minecraft.world.entity.LivingEntity;
 import net.minecraft.world.entity.player.Player;
 import net.minecraft.world.item.ItemStack;
+import net.minecraft.world.item.Items;
 import net.minecraft.world.item.TooltipFlag;
 import net.minecraft.world.item.UseAnim;
 import net.minecraft.world.level.Level;
@@ -31,6 +35,7 @@ import net.minecraftforge.common.MinecraftForge;
 import net.minecraftforge.event.entity.player.PlayerInteractEvent;
 import org.jetbrains.annotations.Nullable;
 import slimeknights.mantle.client.TooltipKey;
+import slimeknights.tconstruct.common.TinkerTags;
 import slimeknights.tconstruct.library.modifiers.ModifierEntry;
 import slimeknights.tconstruct.library.modifiers.ModifierHooks;
 import slimeknights.tconstruct.library.modifiers.hook.interaction.InventoryTickModifierHook;
@@ -39,28 +44,31 @@ import slimeknights.tconstruct.library.tools.helper.ToolDamageUtil;
 import slimeknights.tconstruct.library.tools.helper.TooltipBuilder;
 import slimeknights.tconstruct.library.tools.item.ModifiableItem;
 import slimeknights.tconstruct.library.tools.nbt.IToolStackView;
+import slimeknights.tconstruct.library.tools.nbt.MaterialNBT;
 import slimeknights.tconstruct.library.tools.nbt.ModDataNBT;
 import slimeknights.tconstruct.library.tools.nbt.ToolStack;
 import slimeknights.tconstruct.library.tools.stat.ToolStats;
+import slimeknights.tconstruct.tools.TinkerTools;
+import slimeknights.tconstruct.tools.ToolDefinitions;
 import slimeknights.tconstruct.tools.modifiers.ability.interaction.BlockingModifier;
 
 import java.util.*;
 import java.util.concurrent.ConcurrentHashMap;
 
 import static com.momosensei.momotinker.Momotinker.getResource;
-import static com.momosensei.momotinker.entity.MomotinkerEntitiesCreate.getLegionType;
+import static com.momosensei.momotinker.entity.MomotinkerEntitiesCreate.getNyarlathotepType;
 import static com.momosensei.momotinker.util.AttackUtil.getCooldownFunctionFloat;
 import static slimeknights.tconstruct.library.modifiers.hook.interaction.GeneralInteractionModifierHook.KEY_DRAWTIME;
 
-public class legion extends ModifiableItem {
-    public legion(Properties properties, ToolDefinition toolDefinition) {
+public class nyarlathotep extends ModifiableItem {
+    public nyarlathotep(Properties properties, ToolDefinition toolDefinition) {
         super(properties, toolDefinition);
         MinecraftForge.EVENT_BUS.addListener(this::LeftClick);
         MinecraftForge.EVENT_BUS.addListener(this::LeftClickBlock);
     }
 
-    public static void createLegion(ServerPlayer player,int quantity,int form) {
-        if (!(ToolStack.from(player.getMainHandItem()).getItem() instanceof legion) || player.getAttackStrengthScale(0) != 1 ) {
+    public static void createNyarlathotep(ServerPlayer player,int quantity,int form) {
+        if (!(ToolStack.from(player.getMainHandItem()).getItem() instanceof nyarlathotep) || player.getAttackStrengthScale(0) != 1 ) {
             return;
         }
         ToolStack tool=ToolStack.from(player.getMainHandItem());
@@ -68,7 +76,7 @@ public class legion extends ModifiableItem {
             return;
         }
         Level level = player.level();
-        EntityType<LegionEntity> entityType = getLegionType();
+        EntityType<NyarlathotepEntity> entityType = getNyarlathotepType();
 
         Random random = new Random();
         double minDistance = 1;
@@ -78,11 +86,11 @@ public class legion extends ModifiableItem {
             maxDistance=2;
         }
         for (int i = 0; i < quantity; i++) {
-            LegionEntity legion = new LegionEntity(entityType, level);
-            legion.setOwner(player);
-            legion.noPhysics = true;
-            legion.setForm(form);
-            legion.setSpawnRotation(player.getYRot(), player.getXRot());
+            NyarlathotepEntity nyarlathotep = new NyarlathotepEntity(entityType, level);
+            nyarlathotep.setOwner(player);
+            nyarlathotep.noPhysics = true;
+            nyarlathotep.setForm(form);
+            nyarlathotep.setSpawnRotation(player.getYRot(), player.getXRot());
 
             double x, y, z;
 
@@ -95,10 +103,10 @@ public class legion extends ModifiableItem {
                 y = player.getY() + 0.7 * player.getBbHeight();
                 z = player.getZ() + Math.sin(currentAngle) * radius;
 
-                legion.setPos(x, y, z);
-                legion.getPersistentData().putInt("OrbitIndex", i);
-                legion.getPersistentData().putInt("TotalOrbiters", quantity);
-                legion.getPersistentData().putDouble("BaseOrbitAngle", 0);
+                nyarlathotep.setPos(x, y, z);
+                nyarlathotep.getPersistentData().putInt("OrbitIndex", i);
+                nyarlathotep.getPersistentData().putInt("TotalOrbiters", quantity);
+                nyarlathotep.getPersistentData().putDouble("BaseOrbitAngle", 0);
             } else {
                 double distance = minDistance + random.nextDouble() * (maxDistance - minDistance);
                 double angle = random.nextDouble() * 2 * Math.PI;
@@ -107,49 +115,62 @@ public class legion extends ModifiableItem {
                 y = player.getY() + 0.7 * player.getBbHeight() + random.nextDouble() * 2;
                 z = player.getZ() + Math.sin(angle) * distance;
 
-                legion.setPos(x, y, z);
+                nyarlathotep.setPos(x, y, z);
             }
             if (level instanceof ServerLevel level1){
                 level1.sendParticles(ParticleTypes.EXPLOSION, x, y, z, 1, 0, 0, 0, 1);
             }
-            level.addFreshEntity(legion);
+            level.addFreshEntity(nyarlathotep);
         }
         ToolDamageUtil.damageAnimated(tool, 1, player, InteractionHand.MAIN_HAND);
     }
-    public static final ResourceLocation legion_cooldown = getResource("legion_cooldown");
-    public static final ResourceLocation legion_on = getResource("legion_on");
+    public static final ResourceLocation nyarlathotep_cooldown = getResource("nyarlathotep_cooldown");
+    public static final ResourceLocation nyarlathotep_on = getResource("nyarlathotep_on");
     private final Map<UUID, Integer> stageCache = new ConcurrentHashMap<>();
+    public static final ResourceLocation nyarlathotep_disguise = Momotinker.getResource("nyarlathotep_disguise");
+    public static final ResourceLocation nyarlathotep_disguise_tool = Momotinker.getResource("nyarlathotep_disguise_tool");
 
     @Override
     public void inventoryTick(ItemStack stack, Level worldIn, Entity entityIn, int itemSlot, boolean isSelected) {
         InventoryTickModifierHook.heldInventoryTick(stack, worldIn, entityIn, itemSlot, isSelected);
         ModDataNBT data = ToolStack.from(stack).getPersistentData();
+        Random random = new Random();
         if (entityIn instanceof Player player && player.tickCount % 20 == 0) {
-            if (data.getBoolean(legion_on)) {
-                if (data.getFloat(legion_cooldown) > 0) {
-                    data.putFloat(legion_cooldown, data.getFloat(legion_cooldown) - 5);
-                } else if (data.getFloat(legion_cooldown) == 0) {
-                    data.putBoolean(legion_on, false);
+            if (data.getBoolean(nyarlathotep_on)) {
+                if (data.getFloat(nyarlathotep_cooldown) > 0) {
+                    data.putFloat(nyarlathotep_cooldown, data.getFloat(nyarlathotep_cooldown) - 5);
+                } else if (data.getFloat(nyarlathotep_cooldown) == 0) {
+                    data.putBoolean(nyarlathotep_on, false);
                 }
             } else {
-                if (data.getFloat(legion_cooldown) < 60) {
-                    data.putFloat(legion_cooldown, data.getFloat(legion_cooldown) + 1);
+                if (data.getFloat(nyarlathotep_cooldown) < 60) {
+                    data.putFloat(nyarlathotep_cooldown, data.getFloat(nyarlathotep_cooldown) + 1);
                 }
             }
-            if (data.getFloat(legion_cooldown) < 0) {
-                data.putFloat(legion_cooldown, 0);
+            if (data.getFloat(nyarlathotep_cooldown) < 0) {
+                data.putFloat(nyarlathotep_cooldown, 0);
             }
-            if (data.getFloat(legion_cooldown) > 60) {
-                data.putFloat(legion_cooldown, 60);
+            if (data.getFloat(nyarlathotep_cooldown) > 60) {
+                data.putFloat(nyarlathotep_cooldown, 60);
+            }
+
+            if (data.getFloat(nyarlathotep_disguise)==0 && random.nextInt(100) <= 1) {
+                startDisguise(ToolStack.from(stack), 60);
+            }
+            if (data.getFloat(nyarlathotep_disguise)>0){
+                data.putFloat(nyarlathotep_disguise,data.getFloat(nyarlathotep_disguise)-1);
+            }
+            if (data.getFloat(nyarlathotep_disguise) < 0) {
+                data.putFloat(nyarlathotep_disguise, 0);
             }
         }
 
-        float perc = Mth.clamp(data.getFloat(legion_cooldown) / 60, 0, 1);
+        float perc = Mth.clamp(data.getFloat(nyarlathotep_cooldown) / 60, 0, 1);
         int currentStage = (int)Math.floor(perc * 8);
         if (entityIn instanceof ServerPlayer player1&&stack == player1.getMainHandItem()) {
             UUID playerId = player1.getUUID();
             if (stageCache.getOrDefault(playerId, -1) != currentStage) {
-                Channel.sendToPlayer(new LegionCooldownCharge(perc), player1);
+                Channel.sendToPlayer(new NyarlathotepCooldownCharge(perc), player1);
                 stageCache.put(playerId, currentStage);
             }
         }
@@ -157,16 +178,16 @@ public class legion extends ModifiableItem {
 
     private void LeftClick(PlayerInteractEvent.LeftClickEmpty event) {
         Player player=event.getEntity();
-        if (player != null && player.getMainHandItem().getItem() instanceof legion) {
-            Channel.sendToServer(new LegionPacket(player.getId()));
+        if (player != null && player.getMainHandItem().getItem() instanceof nyarlathotep) {
+            Channel.sendToServer(new NyarlathotepPacket(player.getId()));
         }
     }
     private void LeftClickBlock(PlayerInteractEvent.LeftClickBlock event) {
         Player player=event.getEntity();
-        if (player instanceof ServerPlayer serverPlayer&&player.getMainHandItem().getItem() instanceof legion) {
+        if (player instanceof ServerPlayer serverPlayer&&player.getMainHandItem().getItem() instanceof nyarlathotep) {
             float d = getCooldownFunctionFloat(serverPlayer, InteractionHand.MAIN_HAND);
             if (d>0.9f) {
-                createLegion(serverPlayer, 1, 0);
+                createNyarlathotep(serverPlayer, 1, 0);
             }
         }
     }
@@ -175,7 +196,7 @@ public class legion extends ModifiableItem {
         if (player instanceof ServerPlayer serverPlayer){
             float d = getCooldownFunctionFloat(serverPlayer, InteractionHand.MAIN_HAND);
             if (d>0.9f) {
-                createLegion(serverPlayer, 1, 0);
+                createNyarlathotep(serverPlayer, 1, 0);
             }
         }
         return super.onLeftClickEntity(stack, player, target);
@@ -193,9 +214,9 @@ public class legion extends ModifiableItem {
             float perc = Mth.clamp((float) i / (240 / tool.getStats().get(ToolStats.ATTACK_SPEED)),0,1);
             if (perc>=0.2f) {
                 int a = (int) Math.floor(perc * 5);
-                createLegion(player, a, 1);
+                createNyarlathotep(player, a, 1);
             }
-            Channel.sendToPlayer(new LegionChargingCharge(0,0), player);
+            Channel.sendToPlayer(new NyarlathotepChargingCharge(0,0), player);
             player.awardStat(Stats.ITEM_USED.get(this));
             ToolDamageUtil.damageAnimated(tool, 1, player);
         }
@@ -209,7 +230,7 @@ public class legion extends ModifiableItem {
             float phase = Mth.clamp((float) i / (240 / ToolStack.from(stack).getStats().get(ToolStats.ATTACK_SPEED)),0,1);
             float progress = (phase%0.2F)*5F;
             if (phase>=1F)progress=1F;
-            Channel.sendToPlayer(new LegionChargingCharge(phase,progress), player);
+            Channel.sendToPlayer(new NyarlathotepChargingCharge(phase,progress), player);
         }
     }
     public InteractionResultHolder<ItemStack> use(Level level, Player player, InteractionHand hand) {
@@ -266,5 +287,34 @@ public class legion extends ModifiableItem {
             entry.getHook(ModifierHooks.TOOLTIP).addTooltip(tool, entry, player, tooltips, key, tooltipFlag);
         }
         return tooltips;
+    }
+
+    public static void startDisguise(ToolStack originalStack, float duration) {
+        ModDataNBT data = originalStack.getPersistentData();
+        MaterialNBT materials = originalStack.getMaterials();
+
+        ItemStack chosen = null;
+        int maxAttempts = 20;
+        for (int i = 0; i < maxAttempts; i++) {
+            ToolStack result = NyarlathotepEntity.getRandomTools(materials);
+            chosen = result.createStack();
+            if (isValidToolStack(result)) {
+                break;
+            }
+            if (i == maxAttempts - 1) {
+                chosen = ToolStack.from(ToolStack.createTool(TinkerTools.sword.get(), ToolDefinitions.SWORD, materials).createStack()).createStack();
+            }
+        }
+
+        data.put(nyarlathotep_disguise_tool, chosen.save(new CompoundTag()));
+        data.putFloat(nyarlathotep_disguise, duration);
+    }
+    private static boolean isValidToolStack(ToolStack toolStack) {
+        if (toolStack == null
+                ||toolStack.getStats().get(ToolStats.ATTACK_DAMAGE)==0
+                ||(!toolStack.hasTag(TinkerTags.Items.INTERACTABLE_RIGHT))
+                ||toolStack.hasTag(MomotinkerTags.Items.LEGION)) return false;
+        ItemStack itemStack = toolStack.createStack();
+        return !itemStack.isEmpty() && itemStack.getItem() != Items.AIR;
     }
 }

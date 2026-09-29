@@ -528,23 +528,23 @@
 
 
         {
-            "path": "momotinker:item/tool/legion/part_1",
+            "path": "momotinker:item/tool/nyarlathotep/part_1",
             "stat_type": "tconstruct:binding"
         },
         {
-            "path": "momotinker:item/tool/legion/part_2",
+            "path": "momotinker:item/tool/nyarlathotep/part_2",
             "stat_type": "tconstruct:binding"
         },
         {
-            "path": "momotinker:item/tool/legion/part_3",
+            "path": "momotinker:item/tool/nyarlathotep/part_3",
             "stat_type": "tconstruct:binding"
         },
         {
-            "path": "momotinker:item/tool/legion/part_4",
+            "path": "momotinker:item/tool/nyarlathotep/part_4",
             "stat_type": "tconstruct:binding"
         },
         {
-            "path": "momotinker:item/tool/legion/part_5",
+            "path": "momotinker:item/tool/nyarlathotep/part_5",
             "stat_type": "tconstruct:binding"
         }
     ],

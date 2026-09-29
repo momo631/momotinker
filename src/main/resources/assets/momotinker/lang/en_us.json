@@ -97,7 +97,7 @@
   "recipe.momotinker.modifier.forbiddenfruit": "[Forbidden Fruit] needs to use [Over indulgence sin] as a prerequisite and strengthen mutual exclusion with other [Resonance of major sin]",
   "recipe.momotinker.modifier.gainsalone": "[Gains Alone] needs to use [Over weighting wealth sin] as a prerequisite and strengthen mutual exclusion with other [Resonance of major sin]",
   "recipe.momotinker.modifier.compassionateeverything": "[Compassionate Everything] needs to use [Over sad sin] as a prerequisite and strengthen mutual exclusion with other [Resonance of major sin]",
-  "recipe.momotinker.modifier.key_to_ruin": "The existence of the §o'Legion'§r needs to be nothingness, and its consciousness should be sufficient to withstand destruction",
+  "recipe.momotinker.modifier.key_to_ruin": "The existence of the §oNyarlathotep§r needs to be nothingness, and its consciousness should be sufficient to withstand destruction",
 
   "stat.tconstruct.slot.prefix.mystery": "Mystery:",
   "stat.tconstruct.slot.display.mystery": "Mystery",
@@ -332,8 +332,8 @@
   "item.momotinker.pneumatic_sword": "Pneumatic Sword",
   "item.momotinker.pneumatic_sword.description": "Right click to briefly sprint forward and upward, pressing 'Tool Enhancement' to fire the rope (press 'shift' to cancel the rope in advance). If the target is a creature, it will enhance the next aerial sprint. If the deputy has another pneumatic sword, it will improve various performance",
 
-  "item.momotinker.legion": "§o'Legion'§r",
-  "item.momotinker.legion.description": "[Main hand weapon]\nUse the left and right keys to summon a random tool for attack, and press the tool skill to summon the tool to surround oneself\n'The rules are gathered here, and when the monument of logic collapses, all industries will be martyred'",
+  "item.momotinker.nyarlathotep": "§oNyarlathotep§r",
+  "item.momotinker.nyarlathotep.description": "[Main hand weapon]\nUse the left and right keys to summon a random tool for attack, and press the tool skill to summon the tool to surround oneself\nIt may disguise itself as other tools\n'The rules are gathered here, and when the monument of logic collapses, all industries will be martyred'",
 
 
   "momotinker.tool.tooltip.offhand_hastool": "Error: The deputy has items",

@@ -40,7 +40,7 @@ public class Channel {
         INSTANCE.messageBuilder(KeyAInputPKT.class,id++, NetworkDirection.PLAY_TO_SERVER).decoder(KeyAInputPKT::decode).encoder(KeyAInputPKT::encode).consumerMainThread(KeyAInputPKT::handlePacket).add();
         INSTANCE.messageBuilder(TriggerDamagePacket.class,id++, NetworkDirection.PLAY_TO_SERVER).decoder(TriggerDamagePacket::decode).encoder(TriggerDamagePacket::encode).consumerMainThread(TriggerDamagePacket::handlePacket).add();
         INSTANCE.messageBuilder(ItemStackPKT.class,id++, NetworkDirection.PLAY_TO_SERVER).decoder(ItemStackPKT::decode).encoder(ItemStackPKT::encode).consumerMainThread(ItemStackPKT::handlePacket).add();
-        INSTANCE.messageBuilder(LegionPacket.class, id++, NetworkDirection.PLAY_TO_SERVER).decoder(LegionPacket::decode).encoder(LegionPacket::encode).consumerMainThread(LegionPacket::handlePacket).add();
+        INSTANCE.messageBuilder(NyarlathotepPacket.class, id++, NetworkDirection.PLAY_TO_SERVER).decoder(NyarlathotepPacket::decode).encoder(NyarlathotepPacket::encode).consumerMainThread(NyarlathotepPacket::handlePacket).add();
         INSTANCE.messageBuilder(RequestDataPacket.class, id++, NetworkDirection.PLAY_TO_SERVER).decoder(RequestDataPacket::decode).encoder(RequestDataPacket::encode).consumerMainThread(RequestDataPacket::handlePacket).add();
 
         INSTANCE.messageBuilder(SyncDataPacket.class, id++, NetworkDirection.PLAY_TO_CLIENT).decoder(SyncDataPacket::decode).encoder(SyncDataPacket::encode).consumerMainThread(SyncDataPacket::handlePacket).add();
@@ -49,8 +49,8 @@ public class Channel {
         INSTANCE.messageBuilder(ToolsTimeCharge.class,id++, NetworkDirection.PLAY_TO_CLIENT).decoder(ToolsTimeCharge::new).encoder(ToolsTimeCharge::encode).consumerMainThread(ToolsTimeCharge::handle).add();
         INSTANCE.messageBuilder(CensoredCharge.class,id++, NetworkDirection.PLAY_TO_CLIENT).decoder(CensoredCharge::new).encoder(CensoredCharge::toByte).consumerMainThread(CensoredCharge::handle).add();
         INSTANCE.messageBuilder(SignifiCharge.class,id++, NetworkDirection.PLAY_TO_CLIENT).decoder(SignifiCharge::new).encoder(SignifiCharge::toByte).consumerMainThread(SignifiCharge::handle).add();
-        INSTANCE.messageBuilder(LegionChargingCharge.class,id++, NetworkDirection.PLAY_TO_CLIENT).decoder(LegionChargingCharge::new).encoder(LegionChargingCharge::encode).consumerMainThread(LegionChargingCharge::handle).add();
-        INSTANCE.messageBuilder(LegionCooldownCharge.class,id++, NetworkDirection.PLAY_TO_CLIENT).decoder(LegionCooldownCharge::new).encoder(LegionCooldownCharge::encode).consumerMainThread(LegionCooldownCharge::handle).add();
+        INSTANCE.messageBuilder(NyarlathotepChargingCharge.class,id++, NetworkDirection.PLAY_TO_CLIENT).decoder(NyarlathotepChargingCharge::new).encoder(NyarlathotepChargingCharge::encode).consumerMainThread(NyarlathotepChargingCharge::handle).add();
+        INSTANCE.messageBuilder(NyarlathotepCooldownCharge.class,id++, NetworkDirection.PLAY_TO_CLIENT).decoder(NyarlathotepCooldownCharge::new).encoder(NyarlathotepCooldownCharge::encode).consumerMainThread(NyarlathotepCooldownCharge::handle).add();
         INSTANCE.messageBuilder(IncarnonTimeCharge.class,id++, NetworkDirection.PLAY_TO_CLIENT).decoder(IncarnonTimeCharge::new).encoder(IncarnonTimeCharge::encode).consumerMainThread(IncarnonTimeCharge::handle).add();
 
         INSTANCE.messageBuilder(CoolTimeChargeA.class,id++, NetworkDirection.PLAY_TO_CLIENT).decoder(CoolTimeChargeA::new).encoder(CoolTimeChargeA::toByte).consumerMainThread(CoolTimeChargeA::handle).add();

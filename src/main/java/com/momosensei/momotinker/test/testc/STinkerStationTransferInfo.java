@@ -1,4 +1,4 @@
-package com.momosensei.momotinker.test.testd;
+package com.momosensei.momotinker.test.testc;
 /*
 import com.momosensei.momotinker.register.MomotinkerMenus;
 import mezz.jei.api.constants.VanillaTypes;

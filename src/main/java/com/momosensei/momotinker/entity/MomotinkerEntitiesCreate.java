@@ -3,7 +3,7 @@ package com.momosensei.momotinker.entity;
 import com.momosensei.momotinker.Items.tool.divine_punishment_spear;
 import com.momosensei.momotinker.Items.tool.entropy_burning_cannon;
 import com.momosensei.momotinker.Items.tool.trigger_blade;
-import com.momosensei.momotinker.entity.LegionEntity.LegionEntity;
+import com.momosensei.momotinker.entity.NyarlathotepEntity.NyarlathotepEntity;
 import com.momosensei.momotinker.register.*;
 import net.minecraft.server.level.ServerPlayer;
 import net.minecraft.world.InteractionHand;
@@ -189,8 +189,8 @@ public class MomotinkerEntitiesCreate {
         }
     }
 
-    public static EntityType<LegionEntity> getLegionType() {
-        return MomotinkerEntities.legion_entity.get();
+    public static EntityType<NyarlathotepEntity> getNyarlathotepType() {
+        return MomotinkerEntities.nyarlathotep_entity.get();
     }
 
 }
