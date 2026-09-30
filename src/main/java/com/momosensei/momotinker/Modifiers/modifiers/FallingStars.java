@@ -65,8 +65,11 @@ public class FallingStars extends momomodifier {
                 }
             }
             ModDataNBT tooldata = iToolStackView.getPersistentData();
-            if (entity.tickCount % 20 == 0&&tooldata.getFloat(falling)>0.1){
+            if (entity.tickCount % 20 == 0&&tooldata.getFloat(falling)>0){
                 tooldata.putFloat(falling,tooldata.getFloat(falling)-1);
+            }
+            if (tooldata.getFloat(falling)<0){
+                tooldata.putFloat(falling,0);
             }
         }
     }

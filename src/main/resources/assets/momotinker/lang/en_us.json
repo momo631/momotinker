@@ -97,7 +97,7 @@
   "recipe.momotinker.modifier.forbiddenfruit": "[Forbidden Fruit] needs to use [Over indulgence sin] as a prerequisite and strengthen mutual exclusion with other [Resonance of major sin]",
   "recipe.momotinker.modifier.gainsalone": "[Gains Alone] needs to use [Over weighting wealth sin] as a prerequisite and strengthen mutual exclusion with other [Resonance of major sin]",
   "recipe.momotinker.modifier.compassionateeverything": "[Compassionate Everything] needs to use [Over sad sin] as a prerequisite and strengthen mutual exclusion with other [Resonance of major sin]",
-  "recipe.momotinker.modifier.key_to_ruin": "The existence of the §oNyarlathotep§r needs to be nothingness, and its consciousness should be sufficient to withstand destruction",
+  "recipe.momotinker.modifier.key_to_ruin": "The existence of the §k??????§r needs to be nothingness",
 
   "stat.tconstruct.slot.prefix.mystery": "Mystery:",
   "stat.tconstruct.slot.display.mystery": "Mystery",
@@ -332,9 +332,11 @@
   "item.momotinker.pneumatic_sword": "Pneumatic Sword",
   "item.momotinker.pneumatic_sword.description": "Right click to briefly sprint forward and upward, pressing 'Tool Enhancement' to fire the rope (press 'shift' to cancel the rope in advance). If the target is a creature, it will enhance the next aerial sprint. If the deputy has another pneumatic sword, it will improve various performance",
 
-  "item.momotinker.nyarlathotep": "§oNyarlathotep§r",
-  "item.momotinker.nyarlathotep.description": "[Main hand weapon]\nUse the left and right keys to summon a random tool for attack, and press the tool skill to summon the tool to surround oneself\nIt may disguise itself as other tools\n'The rules are gathered here, and when the monument of logic collapses, all industries will be martyred'",
+  "item.momotinker.nyarlathotep": "§o[Nyarlathotep]§r",
+  "item.momotinker.nyarlathotep.description": "[Main hand weapon]\nUse the left and right keys to summon a random tool for attack, and press the tool skill to summon the tool to surround oneself\nIt may disguise itself as other tools\n§o'The rules are gathered here, and when the monument of logic collapses, all industries will be martyred'",
 
+  "item.momotinker.nodens": "§o[Nodens]§r",
+  "item.momotinker.nodens.description": "Right click to consume durability and immediately restore the cooldown and next attack cooldown of all items in the backpack. Reduce the regular cooldown of all [Category Example] by half\n§o'The rules are gathered here, and when the monument of logic collapses, all industries will be martyred'",
 
   "momotinker.tool.tooltip.offhand_hastool": "Error: The deputy has items",
 
@@ -427,7 +429,7 @@
 
   "modifier.momotinker.red": "Reincarnation color",
   "modifier.momotinker.red.flavor": "§4The scenery to which it belongs is nothing§",
-  "modifier.momotinker.red.description": "Perceive hostile creatures around, press 'Category Example' while holding the main hand to obtain a 15 second 'end' effect, and the tool enters a 90 second cooldown\n§7[end]§:All observed scenes will fade,reduced reaction to injury,and a 12 layer 'none' effect will be added to a large range of organisms for a prolonged period of time. The body's health cannot exceed 1 point",
+  "modifier.momotinker.red.description": "Perceive hostile creatures around, press [Category Example] while holding the main hand to obtain a 15 second 'end' effect, and the tool enters a 90 second cooldown\n§7[end]§:All observed scenes will fade,reduced reaction to injury,and a 12 layer 'none' effect will be added to a large range of organisms for a prolonged period of time. The body's health cannot exceed 1 point",
   "modifier.momotinker.tooltip.red1": "Cooling residue of [Reincarnation color]:",
   "msg.ender1": "Stain everything","msg.ender2": "I guide the wandering souls","msg.ender3": "Eventually turning into dust","msg.ender4": "Turn into nothingness","msg.ender5": "Forever sleeping here","msg.ender6": "All is quiet","msg.ender7": "End like rain",
 
@@ -527,7 +529,7 @@
 
   "modifier.momotinker.fallingstars": "Falling stars",
   "modifier.momotinker.fallingstars.flavor": "§dWhen a meteor falls here§",
-  "modifier.momotinker.fallingstars.description": "Press 'Category Example' and lift it into the air. Pressing it again within the next 3 seconds will result in a 1-second 'Falling Star' effect, and the tool will receive 120 seconds of cooldown (if the second skill is not used, it will only have 30 seconds)\n§d[Falling Star]§:Quickly sprint and stop when colliding with blocks or hitting entities, producing an explosion that causes explosive type damage to nearby creatures (without damaging the blocks),",
+  "modifier.momotinker.fallingstars.description": "Press [Category Example] and lift it into the air. Pressing it again within the next 3 seconds will result in a 1-second 'Falling Star' effect, and the tool will receive 120 seconds of cooldown (if the second skill is not used, it will only have 30 seconds)\n§d[Falling Star]§:Quickly sprint and stop when colliding with blocks or hitting entities, producing an explosion that causes explosive type damage to nearby creatures (without damaging the blocks),",
   "modifier.momotinker.tooltip.fallingstars1": "Cooling residue of [Falling Star]:",
 
   "modifier.momotinker.unknownreturnee": "Unknown Returnee",
@@ -540,7 +542,7 @@
 
   "modifier.momotinker.crystallization": "Crystal Evolution",
   "modifier.momotinker.crystallization.flavor": "Approaching perfection",
-  "modifier.momotinker.crystallization.description": "When the deputy holds 'Dimensional Prism', pressing 'Category Example' can consume 1 for reinforcement. The higher the current reinforcement level, the lower the probability of success. Failure will be punished when the reinforcement level reaches a certain level, and there is a risk of crushing when the reinforcement level is greater than or equal to 14!",
+  "modifier.momotinker.crystallization.description": "When the deputy holds 'Dimensional Prism', pressing [Category Example] can consume 1 for reinforcement. The higher the current reinforcement level, the lower the probability of success. Failure will be punished when the reinforcement level reaches a certain level, and there is a risk of crushing when the reinforcement level is greater than or equal to 14!",
   "modifier.momotinker.tooltip.crystallization1": "The current number of reinforcement points is:",
   "modifier.momotinker.tooltip.crystallization2": "The current success rate of reinforcement is:",
   "modifier.momotinker.tooltip.crystallization3": "The current damage increase is:",
@@ -621,7 +623,7 @@
 
   "modifier.momotinker.berserk": "Berserk",
   "modifier.momotinker.berserk.flavor": "Completely insane",
-  "modifier.momotinker.berserk.description": "Press 'Category Example' to switch between normal and berserk states. When worn in a berserk state or held by the primary and secondary players, the damage caused and taken is corrected to 140%+30% * total body entry level",
+  "modifier.momotinker.berserk.description": "Press [Category Example] to switch between normal and berserk states. When worn in a berserk state or held by the primary and secondary players, the damage caused and taken is corrected to 140%+30% * total body entry level",
   "modifier.momotinker.tooltip.berserk1": "[Berserk] not activated",
   "modifier.momotinker.tooltip.berserk2": "[Berserk] is activated! The current correction for causing and sustaining damage is:",
 
@@ -648,7 +650,7 @@
 
   "modifier.momotinker.drinkingdemon": "Drinking Demon",
   "modifier.momotinker.drinkingdemon.flavor": "Drink the poison of the dove, plant in spring and harvest in autumn",
-  "modifier.momotinker.drinkingdemon.description": "Press 'Category Example' to absorb items with enchantments in the assistant, consume the total existing points * 50 points of experience, and obtain corresponding types of points based on the number of enchantments on the item. After use, the tool will cool down for 90 seconds (if experience is insufficient, it cannot be absorbed)",
+  "modifier.momotinker.drinkingdemon.description": "Press [Category Example] to absorb items with enchantments in the assistant, consume the total existing points * 50 points of experience, and obtain corresponding types of points based on the number of enchantments on the item. After use, the tool will cool down for 90 seconds (if experience is insufficient, it cannot be absorbed)",
   "modifier.momotinker.tooltip.drinkingdemon1": "The current experience points are insufficient to use [Drinking Demon]", "modifier.momotinker.tooltip.drinkingdemon2": "The current experience points can be used for [Drinking Demon]",
   "modifier.momotinker.tooltip.drinkingdemon3": "[Drinking Demon] Curse Points:", "modifier.momotinker.tooltip.drinkingdemon4": "Currently reducing the experience consumption of [Drinking Demon]:",
   "modifier.momotinker.tooltip.drinkingdemon5": "[Drinking Demon] Total defense points:", "modifier.momotinker.tooltip.drinkingdemon6": "Currently reducing damage:",
@@ -678,19 +680,19 @@
 
   "modifier.momotinker.significance": "Chapter 2: Meaning",
   "modifier.momotinker.significance.flavor": "All things exist because of their relationship and meaning, therefore, they should be deprived",
-  "modifier.momotinker.significance.description": "Press 'Category Example' to continuously decay the maximum life of a large range of organisms until death, and all potions on their bodies will be cleared.When the maximum life is less than 300% of the maximum life of the releaser, it will be cleared. The maximum life of the releaser will also decrease, But the speed has significantly decreased",
+  "modifier.momotinker.significance.description": "Press [Category Example] to continuously decay the maximum life of a large range of organisms until death, and all potions on their bodies will be cleared.When the maximum life is less than 300% of the maximum life of the releaser, it will be cleared. The maximum life of the releaser will also decrease, But the speed has significantly decreased",
   "modifier.momotinker.tooltip.significance1": "Cooling residue of [Chapter 2: Meaning]:",
 
   "modifier.momotinker.blank": "Chapter 3: Blank",
   "modifier.momotinker.blank.flavor": "Like an article, at the end of everything, when the end is terminated, only an unfinished blank remains",
-  "modifier.momotinker.blank.description": "When the deputy holds the 'Conceptual Endpoint · Nihilism', Press 'Category Example' can consume one item to release the '§k Final Poem §r'(Global cooling for 600s), enter the reading bar, and draw a period on the World Living Chapter at the end of the time (death in the reading bar will be interrupted and enter a cooling period of 300s)",
+  "modifier.momotinker.blank.description": "When the deputy holds the 'Conceptual Endpoint · Nihilism', Press [Category Example] can consume one item to release the '§k Final Poem §r'(Global cooling for 600s), enter the reading bar, and draw a period on the World Living Chapter at the end of the time (death in the reading bar will be interrupted and enter a cooling period of 300s)",
   "modifier.momotinker.tooltip.blank1": "Cooling residue of [Chapter 3: Blank]:",
   "msg.blank1": "§oRiver will flow upstream and return to the clouds","msg.blank2": "§oThe flying bird will return to its eggshell and form an egg again","msg.blank3": "§oTake a breath, one last time——","msg.blank4": "§oYour laughter, tears, love and hate will all sink into eternal 'nothingness'",
   "msg.blank5": "§oNo pain, no sorrow, only non-existent peace","msg.blank6": "§oI am the writer of 'nothingness', silently composing poems about all things","msg.blank7": "§oSleep, creatures, you will no longer exist",
 
   "modifier.momotinker.flamebath": "Flame Bath",
   "modifier.momotinker.flamebath.flavor": "Using the energy of shooting stars to envelop oneself",
-  "modifier.momotinker.flamebath.description": "Press 'Category Example' while wearing to obtain a 120s 'Flame Bath Armor' effect, with a level of the total worn level and a cooling time of 240s\n§6[Flame Bath Armor]:§rObtain 60% * level armor and 40% * level armor toughness during the duration, and repel nearby creatures every 5s",
+  "modifier.momotinker.flamebath.description": "Press [Category Example] while wearing to obtain a 120s 'Flame Bath Armor' effect, with a level of the total worn level and a cooling time of 240s\n§6[Flame Bath Armor]:§rObtain 60% * level armor and 40% * level armor toughness during the duration, and repel nearby creatures every 5s",
   "modifier.momotinker.tooltip.flamebath1": "Cooling residue of [Flame Bath]:",
 
   "modifier.momotinker.starfallarrow": "Star Fall Arrow",
@@ -725,7 +727,7 @@
 
   "modifier.momotinker.shortterminvestments": "Short Term Investments",
   "modifier.momotinker.shortterminvestments.flavor": "Investment carries risks...",
-  "modifier.momotinker.shortterminvestments.description": "When the deputy holds an item, press 'Category Example' will consume a record of the item and increase points. When holding this tool for certain actions, the points will randomly increase or decrease. When the point is greater than 1, pressing the special skill button while empty handed will clear the point and obtain an item equal to the number of points(Default only valid for minecraft' items)",
+  "modifier.momotinker.shortterminvestments.description": "When the deputy holds an item, press [Category Example] will consume a record of the item and increase points. When holding this tool for certain actions, the points will randomly increase or decrease. When the point is greater than 1, pressing the special skill button while empty handed will clear the point and obtain an item equal to the number of points(Default only valid for minecraft' items)",
   "modifier.momotinker.tooltip.terminvestments1":"Current recorded item:",
   "modifier.momotinker.tooltip.terminvestments2":"Current points:",
 
@@ -844,9 +846,10 @@
   "modifier.momotinker.key_to_ruin": "Key To Ruin",
   "modifier.momotinker.key_to_ruin.flavor": "Crossing mountains and rivers, we have finally arrived; fate is inevitable",
   "modifier.momotinker.key_to_ruin.description": "§oCalamities and tribulations descend upon the earth, darkening the souls of travelers",
-  "modifier.momotinker.tooltip.key_to_ruin1": "[From Brilliance]Certification:??????",
-  "modifier.momotinker.tooltip.key_to_ruin2": "All features of the tool are doubled, with melee attack-related traits taking effect an additional time",
-  "modifier.momotinker.tooltip.key_to_ruin3": "What is done will dissipate from the world, and what is thought and worried will return to the void",
+  "modifier.momotinker.tooltip.key_to_ruin_1": "[From Brilliance]Certification:??????",
+  "modifier.momotinker.tooltip.key_to_ruin_2": "What is done will dissipate from the world, and what is thought and worried will return to the void",
+  "modifier.momotinker.tooltip.key_to_ruin_nyarlathotep": "All features of the tool are doubled,with melee attack-related traits taking effect an additional time",
+  "modifier.momotinker.tooltip.key_to_ruin_nodens": "All features of the tool are doubled,assist in attacks with 25% efficiency",
 
 
   "modifier.momotinker.incarnon_on": "Press right button for 2 seconds \nto activate [Incarnon],\nPress for 3 seconds \nto release [Incarnon]",

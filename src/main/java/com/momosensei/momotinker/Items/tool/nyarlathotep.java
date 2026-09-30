@@ -55,7 +55,6 @@ import slimeknights.tconstruct.tools.modifiers.ability.interaction.BlockingModif
 import java.util.*;
 import java.util.concurrent.ConcurrentHashMap;
 
-import static com.momosensei.momotinker.Momotinker.getResource;
 import static com.momosensei.momotinker.entity.MomotinkerEntitiesCreate.getNyarlathotepType;
 import static com.momosensei.momotinker.util.AttackUtil.getCooldownFunctionFloat;
 import static slimeknights.tconstruct.library.modifiers.hook.interaction.GeneralInteractionModifierHook.KEY_DRAWTIME;
@@ -124,8 +123,8 @@ public class nyarlathotep extends ModifiableItem {
         }
         ToolDamageUtil.damageAnimated(tool, 1, player, InteractionHand.MAIN_HAND);
     }
-    public static final ResourceLocation nyarlathotep_cooldown = getResource("nyarlathotep_cooldown");
-    public static final ResourceLocation nyarlathotep_on = getResource("nyarlathotep_on");
+    public static final ResourceLocation nyarlathotep_cooldown = Momotinker.getResource("nyarlathotep_cooldown");
+    public static final ResourceLocation nyarlathotep_on = Momotinker.getResource("nyarlathotep_on");
     private final Map<UUID, Integer> stageCache = new ConcurrentHashMap<>();
     public static final ResourceLocation nyarlathotep_disguise = Momotinker.getResource("nyarlathotep_disguise");
     public static final ResourceLocation nyarlathotep_disguise_tool = Momotinker.getResource("nyarlathotep_disguise_tool");
@@ -313,7 +312,7 @@ public class nyarlathotep extends ModifiableItem {
         if (toolStack == null
                 ||toolStack.getStats().get(ToolStats.ATTACK_DAMAGE)==0
                 ||(!toolStack.hasTag(TinkerTags.Items.INTERACTABLE_RIGHT))
-                ||toolStack.hasTag(MomotinkerTags.Items.LEGION)) return false;
+                ||toolStack.hasTag(MomotinkerTags.Items.NYARLATHOTEP)) return false;
         ItemStack itemStack = toolStack.createStack();
         return !itemStack.isEmpty() && itemStack.getItem() != Items.AIR;
     }

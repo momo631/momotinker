@@ -31,6 +31,6 @@
     "abilities": 1
   },
   "tools": {
-    "item": "momotinker:entropy_burning_cube"
+    "tag": "momotinker:need_key_to_ruin"
   }
 }

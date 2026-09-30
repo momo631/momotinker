@@ -43,7 +43,7 @@ public class twilight_ego extends Item /*implements IAnimatable*/ {
         builder.put(Attributes.ATTACK_SPEED, new AttributeModifier(BASE_ATTACK_SPEED_UUID, "Tool modifier", -3.5F, AttributeModifier.Operation.ADDITION));
         builder.put(ForgeMod.ENTITY_REACH.get(), new AttributeModifier( "Tool modifier", 3F, AttributeModifier.Operation.ADDITION));
         this.attributes = builder.build();
-        MinecraftForge.EVENT_BUS.addListener(this::livinghurtevent);
+        MinecraftForge.EVENT_BUS.addListener(this::OnLivingHurt);
         MinecraftForge.EVENT_BUS.addListener(this::livingcriticalhitevent);
     }
 
@@ -83,7 +83,7 @@ public class twilight_ego extends Item /*implements IAnimatable*/ {
     public float getDamageModifier() {
         return damageModifier;
     }
-    private void livinghurtevent(LivingHurtEvent event) {
+    private void OnLivingHurt(LivingHurtEvent event) {
         Entity a = event.getEntity();
         Entity b = event.getSource().getEntity();
         if (b instanceof Player player&&!player.level().isClientSide()&&a instanceof LivingEntity living) {

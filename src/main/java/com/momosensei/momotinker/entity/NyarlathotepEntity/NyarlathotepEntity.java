@@ -251,7 +251,7 @@ public class NyarlathotepEntity extends Projectile {
         if (toolStack == null
                 ||toolStack.getStats().get(ToolStats.ATTACK_DAMAGE)==0
                 ||(!toolStack.hasTag(TinkerTags.Items.INTERACTABLE_RIGHT))
-                ||toolStack.hasTag(MomotinkerTags.Items.LEGION)) return false;
+                ||toolStack.hasTag(MomotinkerTags.Items.NYARLATHOTEP)) return false;
         ItemStack itemStack = toolStack.createStack();
         return !itemStack.isEmpty() && itemStack.getItem() != Items.AIR;
     }

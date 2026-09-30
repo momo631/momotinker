@@ -41,9 +41,15 @@ public class MomotinkerModifiers {
     public static final StaticModifier<UnknownReturnee> unknownreturnee=MODIFIERS.register("unknownreturnee", UnknownReturnee::new);
     public static final StaticModifier<OverCrystalline> overcrystalline=MODIFIERS.register("overcrystalline", OverCrystalline::new);
     public static final StaticModifier<Crystallization> crystallization=MODIFIERS.register("crystallization", Crystallization::new);
+
     public static final StaticModifier<FromBrilliance> frombrilliance=MODIFIERS.register("frombrilliance", FromBrilliance::new);
     public static final StaticModifier<SuperancientMetalsA> superancientmetalsa=MODIFIERS.register("superancientmetalsa", SuperancientMetalsA::new);
     public static final StaticModifier<SuperancientMetalsRealA> superancientmetalsreala=MODIFIERS.register("superancientmetalsreala", SuperancientMetalsRealA::new);
+    public static final StaticModifier<SuperancientMetalsB> superancientmetalsb=MODIFIERS.register("superancientmetalsb", SuperancientMetalsB::new);
+    public static final StaticModifier<SuperancientMetalsRealB> superancientmetalsrealb=MODIFIERS.register("superancientmetalsrealb", SuperancientMetalsRealB::new);
+    public static final StaticModifier<SuperancientMetalsC> superancientmetalsc=MODIFIERS.register("superancientmetalsc", SuperancientMetalsC::new);
+    public static final StaticModifier<SuperancientMetalsRealC> superancientmetalsrealc=MODIFIERS.register("superancientmetalsrealc", SuperancientMetalsRealC::new);
+
     public static final StaticModifier<CrimsonQueen> crimsonqueen=MODIFIERS.register("crimsonqueen", CrimsonQueen::new);
     public static final StaticModifier<Berserk> berserk=MODIFIERS.register("berserk", Berserk::new);
     public static final StaticModifier<Yamato> yamato=MODIFIERS.register("yamato", Yamato::new);
@@ -63,16 +69,12 @@ public class MomotinkerModifiers {
     public static final StaticModifier<StarfallArrow> starfallarrow=MODIFIERS.register("starfallarrow", StarfallArrow::new);
     public static final StaticModifier<ExplosiveSword> explosivesword=MODIFIERS.register("explosivesword", ExplosiveSword::new);
     public static final StaticModifier<BlessingOfMeteor> blessingofmeteor=MODIFIERS.register("blessingofmeteor", BlessingOfMeteor::new);
-    public static final StaticModifier<SuperancientMetalsB> superancientmetalsb=MODIFIERS.register("superancientmetalsb", SuperancientMetalsB::new);
-    public static final StaticModifier<SuperancientMetalsRealB> superancientmetalsrealb=MODIFIERS.register("superancientmetalsrealb", SuperancientMetalsRealB::new);
     public static final StaticModifier<AbyssalResonance> abyssalresonance=MODIFIERS.register("abyssalresonance", AbyssalResonance::new);
     public static final StaticModifier<ThermonuclearZone> thermonuclearzone=MODIFIERS.register("thermonuclearzone", ThermonuclearZone::new);
     public static final StaticModifier<SelfCrystallization> selfcrystallization=MODIFIERS.register("selfcrystallization", SelfCrystallization::new);
     public static final StaticModifier<LifeProgram> lifeprogram=MODIFIERS.register("lifeprogram", LifeProgram::new);
     public static final StaticModifier<ShortTermInvestments> shortterminvestments=MODIFIERS.register("shortterminvestments", ShortTermInvestments::new);
     public static final StaticModifier<LongTermInvestments> longterminvestments=MODIFIERS.register("longterminvestments", LongTermInvestments::new);
-    public static final StaticModifier<SuperancientMetalsC> superancientmetalsc=MODIFIERS.register("superancientmetalsc", SuperancientMetalsC::new);
-    public static final StaticModifier<SuperancientMetalsRealC> superancientmetalsrealc=MODIFIERS.register("superancientmetalsrealc", SuperancientMetalsRealC::new);
     public static final StaticModifier<PolarizedSpacetime> polarizedspacetime=MODIFIERS.register("polarizedspacetime", PolarizedSpacetime::new);
     public static final StaticModifier<TimeEchoes> timeechoes=MODIFIERS.register("timeechoes", TimeEchoes::new);
     public static final StaticModifier<Resonance> resonance=MODIFIERS.register("resonance", Resonance::new);

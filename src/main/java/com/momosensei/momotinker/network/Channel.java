@@ -63,7 +63,6 @@ public class Channel {
         INSTANCE.messageBuilder(IncarnonOpenMenuPacket.class, id++, NetworkDirection.PLAY_TO_SERVER).decoder(IncarnonOpenMenuPacket::new).encoder(IncarnonOpenMenuPacket::toByte).consumerMainThread(IncarnonOpenMenuPacket::handle).add();
 //        INSTANCE.messageBuilder(STinkerStationRenamePacket.class,id++, NetworkDirection.PLAY_TO_SERVER).decoder(STinkerStationRenamePacket::new).encoder(STinkerStationRenamePacket::encode).consumerMainThread(STinkerStationRenamePacket::handle).add();
 //        INSTANCE.messageBuilder(STinkerStationSelectionPacket.class,id++, NetworkDirection.PLAY_TO_SERVER).decoder(STinkerStationSelectionPacket::new).encoder(STinkerStationSelectionPacket::encode).consumerMainThread(STinkerStationSelectionPacket::handle).add();
-
     }
 
     public static <MSG> void sendToServer(MSG msg){

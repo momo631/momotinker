@@ -13,6 +13,7 @@ import net.minecraft.world.item.ItemStack;
 import net.minecraft.world.item.TooltipFlag;
 import net.minecraftforge.event.entity.living.LivingHurtEvent;
 import slimeknights.mantle.client.TooltipKey;
+import slimeknights.tconstruct.library.modifiers.Modifier;
 import slimeknights.tconstruct.library.modifiers.ModifierEntry;
 import slimeknights.tconstruct.library.tools.item.armor.ModifiableArmorItem;
 import slimeknights.tconstruct.library.tools.nbt.IToolStackView;
@@ -26,7 +27,11 @@ public class Berserk extends momomodifier {
     public Berserk() {
     }
     public static final ResourceLocation berserker = Momotinker.getResource("berserker");
-
+    @Override
+    public Component onRemoved(IToolStackView iToolStackView, Modifier modifier) {
+        iToolStackView.getPersistentData().remove(berserker);
+        return null;
+    }
     @Override
     public void OnLivingHurt(LivingHurtEvent event) {
         LivingEntity a = event.getEntity();

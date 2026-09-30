@@ -142,8 +142,8 @@ public class pocket_watch extends ModifiableItem {
                                     }
                                 }
                                 if (player.level() instanceof ServerLevel serverLevel) {
-                                    for (int i = 0; i <= 100; i++) {
-                                        serverLevel.sendParticles(ParticleTypes.ELECTRIC_SPARK, player.getX(), player.getY(), player.getZ(), 1, 4, 4, 4, 1);
+                                    for (int i = 0; i <= 4; i++) {
+                                        serverLevel.sendParticles(ParticleTypes.EXPLOSION, player.getX(), player.getY(), player.getZ(), 1, 4, 4, 4, 1);
                                     }
                                 }
                             }

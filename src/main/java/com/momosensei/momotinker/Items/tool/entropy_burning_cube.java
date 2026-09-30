@@ -42,7 +42,7 @@ import java.util.List;
 public class entropy_burning_cube extends ModifiableItem {
     public entropy_burning_cube(Properties properties, ToolDefinition toolDefinition) {
         super(properties, toolDefinition);
-        MinecraftForge.EVENT_BUS.addListener(this::livinghurtevent);
+        MinecraftForge.EVENT_BUS.addListener(this::OnLivingHurt);
         MinecraftForge.EVENT_BUS.addListener(EventPriority.LOWEST, this::onEntityDeath);
     }
     public static final ResourceLocation hadal = Momotinker.getResource("hadal");
@@ -79,7 +79,7 @@ public class entropy_burning_cube extends ModifiableItem {
             }
         }
     }
-    private void livinghurtevent(LivingHurtEvent event) {
+    private void OnLivingHurt(LivingHurtEvent event) {
         Entity a = event.getEntity();
         Entity b = event.getSource().getEntity();
         if (b instanceof Player player&&a!=null&&player.getMainHandItem().is(MomotinkerTools.entropy_burning_cube.get())){

@@ -36,16 +36,19 @@ public class FlameBath extends momomodifier {
     public void onInventoryTick(IToolStackView tool, ModifierEntry modifierEntry, Level level, LivingEntity entity, int index, boolean b, boolean b1, ItemStack itemStack) {
         if (entity instanceof ServerPlayer player) {
             ModDataNBT a = tool.getPersistentData();
-            if (entity.tickCount % 20 == 0 && a.getInt(flamebathcooldown) > 0) {
-                a.putInt(flamebathcooldown, a.getInt(flamebathcooldown) - 1);
+            if (entity.tickCount % 20 == 0 && a.getFloat(flamebathcooldown) > 0) {
+                a.putFloat(flamebathcooldown, a.getFloat(flamebathcooldown) - 1);
             }
-            if (player.level() instanceof ServerLevel serverLevel&&a.getInt(flamebathcooldown)>234.9) {
+            if (a.getFloat(flamebathcooldown) < 0) {
+                a.putFloat(flamebathcooldown, 0);
+            }
+            if (player.level() instanceof ServerLevel serverLevel&&a.getFloat(flamebathcooldown)>234.9) {
                 for (int i = 0; i <= 120; i++) {
                     double rad = i * 0.017453292519943295;
                     double r = 4D;
                     double x = r * Math.cos(rad);
                     double z = r * Math.sin(rad);
-                    int c = (int) (5 / (a.getInt(flamebathcooldown) - 234.9));
+                    int c = (int) (5 / (a.getFloat(flamebathcooldown) - 234.9));
                     if (c <= 4) {
                         serverLevel.sendParticles(ParticleTypes.FLAME, player.getX(), player.getY(), player.getZ(), c+1, x / 2, r / 2, z / 2, 2);
                     }else {
@@ -58,8 +61,8 @@ public class FlameBath extends momomodifier {
     }
     public void addTooltip(IToolStackView tool, ModifierEntry modifierEntry, @org.jetbrains.annotations.Nullable Player player, List<Component> tooltip, TooltipKey tooltipKey, TooltipFlag tooltipFlag) {
         ModDataNBT tooldata = tool.getPersistentData();
-        if (player != null&&tooldata.getInt(flamebathcooldown)!=0) {
-            tooltip.add(net.minecraft.network.chat.Component.translatable("modifier.momotinker.tooltip.flamebath1").append(tooldata.getInt(flamebathcooldown)+"s").withStyle(ChatFormatting.GOLD));
+        if (player != null&&tooldata.getFloat(flamebathcooldown)!=0) {
+            tooltip.add(net.minecraft.network.chat.Component.translatable("modifier.momotinker.tooltip.flamebath1").append(tooldata.getFloat(flamebathcooldown)+"s").withStyle(ChatFormatting.GOLD));
         }
     }
 }

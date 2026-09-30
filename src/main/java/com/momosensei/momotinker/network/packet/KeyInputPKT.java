@@ -7,6 +7,7 @@ import com.momosensei.momotinker.register.MomotinkerModifiers;
 import net.minecraft.ChatFormatting;
 import net.minecraft.network.FriendlyByteBuf;
 import net.minecraft.network.chat.Component;
+import net.minecraft.resources.ResourceLocation;
 import net.minecraft.server.level.ServerPlayer;
 import net.minecraft.world.effect.MobEffectInstance;
 import net.minecraft.world.entity.EquipmentSlot;
@@ -22,9 +23,7 @@ import slimeknights.tconstruct.library.tools.item.armor.ModifiableArmorItem;
 import slimeknights.tconstruct.library.tools.nbt.ModDataNBT;
 import slimeknights.tconstruct.library.tools.nbt.ToolStack;
 
-import java.util.Map;
-import java.util.Objects;
-import java.util.Random;
+import java.util.*;
 import java.util.function.Supplier;
 
 import static com.momosensei.momotinker.Modifiers.modifiers.Berserk.berserker;
@@ -57,6 +56,8 @@ public class KeyInputPKT {
     public static KeyInputPKT decode(FriendlyByteBuf buf){
         return new KeyInputPKT(buf.readInt());
     }
+
+    public static final List<ResourceLocation> key_input_cooldown = new ArrayList<>(List.of(ender,falling,signifincancecool,flamebathcooldown));
 
     public static void handlePacket(KeyInputPKT pkt, Supplier<NetworkEvent.Context> context$) {
         NetworkEvent.Context context = context$.get();
@@ -178,9 +179,9 @@ public class KeyInputPKT {
             }
             if (getMainhandModifierlevel(player, MomotinkerModifiers.significance.getId()) > 0 && !player.getItemBySlot(EquipmentSlot.OFFHAND).is(MomotinkerItem.nihilism.get())) {
                 ModDataNBT significancedata = ToolStack.from(player.getItemBySlot(EquipmentSlot.MAINHAND)).getPersistentData();
-                if (significancedata.getInt(signifincancecool)==0){
+                if (significancedata.getFloat(signifincancecool)==0){
                     significancedata.putInt(signifincances,13);
-                    significancedata.putInt(signifincancecool,90);
+                    significancedata.putFloat(signifincancecool,90);
                 }
             }
             if (getMainhandModifierlevel(player, MomotinkerModifiers.blank.getId()) > 0) {
@@ -190,13 +191,13 @@ public class KeyInputPKT {
                 for (ItemStack stack : player.getInventory().armor) {
                     if (stack.getItem() instanceof ModifiableArmorItem) {
                         ModDataNBT flamebathdata = ToolStack.from(stack).getPersistentData();
-                        if (flamebathdata.getInt(flamebathcooldown) == 0) {
+                        if (flamebathdata.getFloat(flamebathcooldown) == 0) {
                             player.addEffect(new MobEffectInstance(MomotinkerEffects.FlameBathArmor.get(),2400,getArmorModifierlevel(player,MomotinkerModifiers.flamebath.getId())-1));
                             if (player.getEffect(MomotinkerEffects.FlameBathArmor.get())!=null&&player.hasEffect(MomotinkerEffects.FlameBathArmor.get())){
                                 player.removeEffect(MomotinkerEffects.FlameBathArmor.get());
                                 player.addEffect(new MobEffectInstance(MomotinkerEffects.FlameBathArmor.get(),2400,getArmorModifierlevel(player,MomotinkerModifiers.flamebath.getId())-1));
                             }
-                            flamebathdata.putInt(flamebathcooldown, 240);
+                            flamebathdata.putFloat(flamebathcooldown, 240);
                         }
                     }
                 }

@@ -49,8 +49,11 @@ public class Red extends momomodifier {
         }
         if (entity instanceof ServerPlayer) {
             ModDataNBT tooldata = iToolStackView.getPersistentData();
-            if (entity.tickCount % 20 == 0&&tooldata.getFloat(ender)>0.1){
+            if (entity.tickCount % 20 == 0&&tooldata.getFloat(ender)>0){
                 tooldata.putFloat(ender,tooldata.getFloat(ender)-1);
+            }
+            if (tooldata.getFloat(ender)<0){
+                tooldata.putFloat(ender,0);
             }
         }
     }

@@ -546,6 +546,24 @@
         {
             "path": "momotinker:item/tool/nyarlathotep/part_5",
             "stat_type": "tconstruct:binding"
+        },
+
+
+        {
+            "path": "momotinker:item/tool/nodens/part_1",
+            "stat_type": "tconstruct:binding"
+        },
+        {
+            "path": "momotinker:item/tool/nodens/part_2",
+            "stat_type": "tconstruct:binding"
+        },
+        {
+            "path": "momotinker:item/tool/nodens/part_3",
+            "stat_type": "tconstruct:binding"
+        },
+        {
+            "path": "momotinker:item/tool/nodens/broken_part",
+            "stat_type": "tconstruct:binding"
         }
     ],
     "replace": false

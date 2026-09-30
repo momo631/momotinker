@@ -97,7 +97,7 @@
   "recipe.momotinker.modifier.forbiddenfruit": "[伊甸禁言]需要[尽纵之罪]作为前置且与其他[侵蚀我心，大罪共鸣]强化互斥",
   "recipe.momotinker.modifier.gainsalone": "[只身向财]需要[尽掠之罪]作为前置且与其他[侵蚀我心，大罪共鸣]强化互斥",
   "recipe.momotinker.modifier.compassionateeverything": "[悲悼众生]需要[尽哀之罪]作为前置且与其他[侵蚀我心，大罪共鸣]强化互斥",
-  "recipe.momotinker.modifier.key_to_ruin": "揭示§o奈亚拉托提普§r的存在需为虚无，其觉悟应足以化为灰烬",
+  "recipe.momotinker.modifier.key_to_ruin": "揭示§k??????§r的存在需为虚无",
 
   "stat.tconstruct.slot.prefix.mystery": "奥秘槽:",
   "stat.tconstruct.slot.display.mystery": "奥秘",
@@ -284,9 +284,9 @@
 
 
   "item.momotinker.entropy_burning_cube": "焓变遗骸·熵烬之心",
-  "item.momotinker.entropy_burning_cube.description": "[古代神兵]:遗落于亚特兰蒂斯与沉睡的宝藏\n本身无使用功能，按下工具技能可以变化多种形态，变形后无法更换和拆卸部件\n§o“沉睡于深渊中的国度，无法理解的繁华，\n§o尽数崩解为烬”——虚空铁匠议会第三席§",
+  "item.momotinker.entropy_burning_cube.description": "[古代神兵]:遗落于亚特兰蒂斯与沉睡的宝藏\n本身无使用功能，按下[工具技能]可以变化多种形态，变形后无法更换和拆卸部件\n§o“沉睡于深渊中的国度，无法理解的繁华，\n§o尽数崩解为烬”——虚空铁匠议会第三席§",
   "item.momotinker.tooltip.liverization": "古代神兵隐藏任务已完成！获得了一次“重构”机会！",
-  "item.momotinker.tooltip.liverization1": "在副手放置任意三部件及以下的工具或防具时按下工具技能可吞噬副手装备永久获取其所有强化和材料特性，谨慎使用！",
+  "item.momotinker.tooltip.liverization1": "在副手放置任意三部件及以下的工具或防具时按下[工具技能]可吞噬副手装备永久获取其所有强化和材料特性，谨慎使用！",
   "item.momotinker.tooltip.liverization2": "已使用过“重构”",
   "item.momotinker.tooltip.other": "该古代神兵以完成其他形态的进化",
 
@@ -314,9 +314,9 @@
   "item.momotinker.eclipse_container.description": "[双手武器]\n超低攻速超高攻击的大范围近战武器，只会继承“日冕之钥”的强化（包括材料的强化点数等特征），期间消耗充能，右键蓄力一段时间后按住释放“日蚀刻”，持续吸引周围实体造成伤害",
   "item.momotinker.tooltip.eclipse_container1": "目前“日蚀刻”的吸引范围为:",
   "item.momotinker.coronal_key": "日冕之钥",
-  "item.momotinker.coronal_key.description": "属性较弱的近战武器，持续战斗可增加充能条，充能增加可提高伤害，充能为满且副手为“新月之锁”时按下工具技能按键可与其合体为“日蚀容器”",
+  "item.momotinker.coronal_key.description": "属性较弱的近战武器，持续战斗可增加充能条，充能增加可提高伤害，充能为满且副手为“新月之锁”时按下[工具技能]按键可与其合体为“日蚀容器”",
   "item.momotinker.moon_lock": "新月之锁",
-  "item.momotinker.moon_lock.description": "[不存在之影]\n右键使用期间可获得50%的减伤并有50%的概率无视弹射物攻击，满足一定条件下时按下工具技能可合体为“日蚀容器”",
+  "item.momotinker.moon_lock.description": "[不存在之影]\n右键使用期间可获得50%的减伤并有50%的概率无视弹射物攻击，满足一定条件下时按下[工具技能]可合体为“日蚀容器”",
 
 
   "item.momotinker.pocket_watch": "遗落怀表",
@@ -338,9 +338,11 @@
   "item.momotinker.pneumatic_sword.description": "高机动性的近战武器，右键可短暂向前上方冲刺，按下[工具技能]可发射绳索将自己拉向被击中的方块或生物（按“shift”可提前取消绳索），若目标是生物时会强化下一次在空中的冲刺和该冲刺伤害，若副手存在另一把气动剑则提升各项性能",
 
 
-  "item.momotinker.nyarlathotep": "§o奈亚拉托提普§r",
+  "item.momotinker.nyarlathotep": "§o[奈亚拉托提普]§r",
   "item.momotinker.nyarlathotep.description": "[主手武器]\n左右键召唤随机工具进行攻击，按下[工具技能]可召唤工具围绕自身周围\n可能会伪装成其他工具\n§o“规则于此集结，逻辑丰碑崩解之时，万业皆殉道”",
 
+  "item.momotinker.nodens": "§o[诺登斯]§r",
+  "item.momotinker.nodens.description": "右键使用后消耗耐久立即恢复背包中所有物品的使用冷却和下一次攻击冷却，所有[特殊技能]的常规冷却缩减一半\n§o“规则于此集结，逻辑丰碑崩解之时，万业皆殉道”",
 
   "momotinker.tool.tooltip.offhand_hastool": "错误:副手有物品",
 
@@ -433,7 +435,7 @@
 
   "modifier.momotinker.red": "轮回色",
   "modifier.momotinker.red.flavor": "§4所归之景，为无§",
-  "modifier.momotinker.red.description": "常态下感知周围敌对生物，主手持有时按下技能按键后自身获得15秒的“引渡人”效果，且该工具进入90秒冷却\n§7[引渡人]§:观察的一切景象都将褪色，对受伤的反应降低，在持续时间内对大范围内生物附加12层“忘阙人”效果，自身血量无法超过1点",
+  "modifier.momotinker.red.description": "常态下感知周围敌对生物，主手持有时按下[特殊技能]键后自身获得15秒的“引渡人”效果，且该工具进入90秒冷却\n§7[引渡人]§:观察的一切景象都将褪色，对受伤的反应降低，在持续时间内对大范围内生物附加12层“忘阙人”效果，自身血量无法超过1点",
   "modifier.momotinker.tooltip.red1": "[轮回色]的冷却剩余:",
   "msg.ender1": "层林尽染","msg.ender2": "引渡徘徊","msg.ender3": "终归尘土","msg.ender4": "化为虚无","msg.ender5": "在此永眠","msg.ender6": "万籁俱寂","msg.ender7": "如雨而逝",
 
@@ -533,7 +535,7 @@
 
   "modifier.momotinker.fallingstars": "苍穹落星",
   "modifier.momotinker.fallingstars.flavor": "§d当流星于此降临§",
-  "modifier.momotinker.fallingstars.description": "主手持有时按下技能键升空，3秒内再次按下获得1秒§d[落星]§效果。工具进入120秒冷却（若未触发第二段，则仅冷却30秒）。\n§d[落星]§：向视角方向高速冲刺，撞击方块或实体时停止。停止时产生爆炸，对范围内敌人造成爆炸伤害（不破坏方块）。若击中实体，额外附加武器近战伤害。冲刺时间越长伤害越高。",
+  "modifier.momotinker.fallingstars.description": "主手持有时按下[特殊技能]键升空，3秒内再次按下获得1秒§d[落星]§效果。工具进入120秒冷却（若未触发第二段，则仅冷却30秒）。\n§d[落星]§：向视角方向高速冲刺，撞击方块或实体时停止。停止时产生爆炸，对范围内敌人造成爆炸伤害（不破坏方块）。若击中实体，额外附加武器近战伤害。冲刺时间越长伤害越高。",
   "modifier.momotinker.tooltip.fallingstars1": "[苍穹落星]的冷却还剩:",
 
   "modifier.momotinker.unknownreturnee": "未知归来者",
@@ -546,7 +548,7 @@
 
   "modifier.momotinker.crystallization": "晶体进化",
   "modifier.momotinker.crystallization.flavor": "趋近完美",
-  "modifier.momotinker.crystallization.description": "主手持有且副手持有“次元棱镜”时按下技能按键可消耗1个副手物品进行强化，当前强化等级越高成功概率越低，强化等级高到一定程度时失败会受到惩罚，强化等级大于等于14时会有粉碎的风险！",
+  "modifier.momotinker.crystallization.description": "主手持有且副手持有“次元棱镜”时按下[特殊技能]键可消耗1个副手物品进行强化，当前强化等级越高成功概率越低，强化等级高到一定程度时失败会受到惩罚，强化等级大于等于14时会有粉碎的风险！",
   "modifier.momotinker.tooltip.crystallization1": "当前强化点数为:",
   "modifier.momotinker.tooltip.crystallization2": "当前强化成功率为:",
   "modifier.momotinker.tooltip.crystallization3": "当前增伤量为:",
@@ -623,7 +625,7 @@
 
   "modifier.momotinker.crimsonqueen": "绯红女皇",
   "modifier.momotinker.crimsonqueen.flavor": "扳机横刀专属强化:机动剑",
-  "modifier.momotinker.crimsonqueen.description": "失去原本的斩击，取而代之的是在右键后一定时机松开会给武器充能20秒，存在充能时攻击会消耗层数使本次攻击修正为240%并无视护甲，最多可存在3层（若触发完美判定则直接获得3层），时间耗尽层数减一，切换武器时层数清零",
+  "modifier.momotinker.crimsonqueen.description": "失去原本的斩击，取而代之的是在右键后一定时机松开会给武器充能20秒，存在充能时攻击会消耗层数使本次攻击修正为240%并无视护甲，最多可存在3层（完美判定直接获得3层）",
 
   "modifier.momotinker.berserk": "狂暴化",
   "modifier.momotinker.berserk.flavor": "彻底疯狂",
@@ -645,7 +647,7 @@
 
   "modifier.momotinker.cleansetheworld": "荡涤天地",
   "modifier.momotinker.cleansetheworld.flavor": "贯星魔枪增强:天谴",
-  "modifier.momotinker.cleansetheworld.description": "长蓄力后消耗当前经验点数的25%，于上空召唤巨大魔法矛（使用后进入600秒冷却）。\n魔法矛每刻对触碰目标造成50%伤害，落地时产生剧烈爆炸，对大范围敌人造成2000%伤害。\n每消耗1点经验值，其总伤害提升1%（默认上限+100%）",
+  "modifier.momotinker.cleansetheworld.description": "长蓄力后消耗当前经验点数的25%，于上空召唤巨大魔法矛（[全局冷却]600s）。\n魔法矛每刻对触碰目标造成50%伤害，落地时产生剧烈爆炸，对大范围敌人造成2000%伤害。\n每消耗1点经验值，其总伤害提升1%（默认上限+100%）",
   "modifier.momotinker.tooltip.cleansetheworld1": "“荡涤天地”冷却还剩:",
 
   "modifier.momotinker.shadowofdamnation": "天谴之影",
@@ -689,7 +691,7 @@
 
   "modifier.momotinker.blank": "第三终章:留白",
   "modifier.momotinker.blank.flavor": "如文章一般，在一切的最后，当终结被终结时，只留下未完成的空白",
-  "modifier.momotinker.blank.description": "副手持有“概念终点·虚无主义”时按下[特殊技能]按键可消耗一个该物品吟唱“§k最终之诗§r”（全局冷却600s），进入读条并在时间结束后在世界活物之章上画上句点（读条中途死亡会中断并进入冷却300s）",
+  "modifier.momotinker.blank.description": "副手持有“概念终点·虚无主义”时按下[特殊技能]按键可消耗一个该物品吟唱“§k最终之诗§r”（[全局冷却]600s），进入读条并在时间结束后在世界活物之章上画上句点（读条中途死亡会中断并进入冷却300s）",
   "modifier.momotinker.tooltip.blank1": "“第三终章:留白”冷却还剩:",
   "msg.blank1": "§o河流将逆流而上，归还于云","msg.blank2": "§o飞鸟将折返蛋壳，重归为卵","msg.blank3": "§o呼吸吧，最后一次——","msg.blank4": "§o尔等的欢笑、泪水、爱恨，都将沉入永恒的‘无’",
   "msg.blank5": "§o没有痛苦，没有哀伤，只有未曾存在的安宁","msg.blank6": "§o吾乃‘无’之书写者，以沉默著就万物的诗篇","msg.blank7": "§o睡吧，睡吧，你们将回归",
@@ -850,10 +852,10 @@
   "modifier.momotinker.key_to_ruin": "破败之钥",
   "modifier.momotinker.key_to_ruin.flavor": "跨越山川终已至，定数无可避",
   "modifier.momotinker.key_to_ruin.description": "§o灾祸磨难降生大地，行路之人灵魂浑浊",
-  "modifier.momotinker.tooltip.key_to_ruin1": "古代神兵认证:??????",
-  "modifier.momotinker.tooltip.key_to_ruin2": "该工具的所有特性均翻倍，近战攻击相关的特性格外生效一次",
-  "modifier.momotinker.tooltip.key_to_ruin3": "所为所做消散人世，所思所忧归向虚空",
-
+  "modifier.momotinker.tooltip.key_to_ruin_1": "古代神兵认证:??????",
+  "modifier.momotinker.tooltip.key_to_ruin_2": "所为所做消散人世，所思所忧归向虚空",
+  "modifier.momotinker.tooltip.key_to_ruin_nyarlathotep": "该工具的所有特性均翻倍，近战攻击相关的特性格外生效一次",
+  "modifier.momotinker.tooltip.key_to_ruin_nodens": "该工具的所有特性均翻倍，以25%的效能协助攻击",
 
   "modifier.momotinker.incarnon_on": "长按右键2秒开启灵化，\n灵化状态下长按3秒解除",
   "modifier.momotinker.incarnon_task": "当前灵化任务:",

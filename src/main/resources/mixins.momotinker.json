@@ -10,6 +10,7 @@
     "LivingEntityMixin",
     "MixinModifierRecipe",
     "PartBuilderToolRecycleMixin",
+    "PlayerAttackMixin",
     "SweepWeaponAttackMixin"
   ],
   "client": [

@@ -48,9 +48,9 @@ import static com.momosensei.momotinker.Momotinker.getResource;
 public class pneumatic_sword extends ModifiableItem {
     public pneumatic_sword(Properties properties, ToolDefinition toolDefinition) {
         super(properties, toolDefinition);
-        MinecraftForge.EVENT_BUS.addListener(this::livinghurtevent);
+        MinecraftForge.EVENT_BUS.addListener(this::OnLivingHurt);
     }
-    private void livinghurtevent(LivingHurtEvent event) {
+    private void OnLivingHurt(LivingHurtEvent event) {
         Entity a = event.getEntity();
         Entity b = event.getSource().getEntity();
         if (b instanceof Player player&&a instanceof LivingEntity living&&(player.getMainHandItem().is(MomotinkerTools.pneumatic_sword.get())||player.getOffhandItem().is(MomotinkerTools.pneumatic_sword.get()))){

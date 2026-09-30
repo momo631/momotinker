@@ -51,10 +51,10 @@ import static slimeknights.tconstruct.library.modifiers.hook.interaction.General
 public class entropy_burning_riding_spear extends ModifiableItem {
     public entropy_burning_riding_spear(Properties properties, ToolDefinition toolDefinition) {
         super(properties, toolDefinition);
-        MinecraftForge.EVENT_BUS.addListener(this::livinghurtevent);
+        MinecraftForge.EVENT_BUS.addListener(this::OnLivingHurt);
     }
 
-    private void livinghurtevent(LivingHurtEvent event) {
+    private void OnLivingHurt(LivingHurtEvent event) {
         Entity a = event.getEntity();
         Entity b = event.getSource().getEntity();
         if (b instanceof Player player&&a!=null&&player.getMainHandItem().is(MomotinkerTools.entropy_burning_riding_spear.get())){

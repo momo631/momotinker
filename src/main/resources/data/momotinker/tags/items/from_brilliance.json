@@ -1,18 +1,11 @@
 {
   "replace": false,
   "values": [
-    "momotinker:trigger_blade",
     "momotinker:divine_punishment_spear",
     "momotinker:entropy_burning_cube",
     "momotinker:entropy_burning_sword",
     "momotinker:entropy_burning_riding_spear",
     "momotinker:entropy_burning_cannon",
-    "momotinker:coronal_key",
-    "momotinker:eclipse_container",
-    "momotinker:pocket_watch",
-    "momotinker:chain_sword",
-    "momotinker:pneumatic_sword",
-    "momotinker:nyarlathotep",
-    "momotinker:nodens"
+    "momotinker:pocket_watch"
   ]
 }

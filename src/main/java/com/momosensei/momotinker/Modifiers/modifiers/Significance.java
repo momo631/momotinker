@@ -61,11 +61,11 @@ public class Significance extends momomodifier {
                 setCachedValue(player.getAttribute(Attributes.MAX_HEALTH),player.getAttributeValue(Attributes.MAX_HEALTH)+player.getPersistentData().getDouble(losthealth.toString()));
                 player.getPersistentData().remove(losthealth.toString());
             }
-            if (a.getInt(signifincancecool)<0){
-                a.putInt(signifincancecool,0);
+            if (a.getFloat(signifincancecool)<0){
+                a.putFloat(signifincancecool,0);
             }
-            if (a.getInt(signifincancecool)>0&&player.tickCount%20==0){
-                a.putInt(signifincancecool,a.getInt(signifincancecool)-1);
+            if (a.getFloat(signifincancecool)>0&&player.tickCount%20==0){
+                a.putFloat(signifincancecool,a.getFloat(signifincancecool)-1);
             }
             if (a.getInt(signifincances)>1){
                 if (player.tickCount%20==0) {
@@ -109,7 +109,7 @@ public class Significance extends momomodifier {
     }
 
     public void addTooltip(IToolStackView tool, ModifierEntry modifierEntry, @org.jetbrains.annotations.Nullable Player player, List<Component> tooltip, TooltipKey tooltipKey, TooltipFlag tooltipFlag) {
-        int a = tool.getPersistentData().getInt(signifincancecool);
+        float a = tool.getPersistentData().getFloat(signifincancecool);
         if (player != null&&a!=0) {
             tooltip.add(Component.translatable("modifier.momotinker.tooltip.significance1").append(a+"s"));
         }

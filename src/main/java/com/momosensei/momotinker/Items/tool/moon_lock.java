@@ -43,7 +43,7 @@ import static slimeknights.tconstruct.TConstruct.RANDOM;
 public class moon_lock extends ModifiableItem {
     public moon_lock(Properties properties, ToolDefinition toolDefinition) {
         super(properties, toolDefinition);
-        MinecraftForge.EVENT_BUS.addListener(this::livinghurtevent);
+        MinecraftForge.EVENT_BUS.addListener(this::OnLivingHurt);
         MinecraftForge.EVENT_BUS.addListener(this::onProjectileImpact);
     }
 
@@ -64,7 +64,7 @@ public class moon_lock extends ModifiableItem {
         return InteractionResultHolder.consume(stack);
     }
 
-    private void livinghurtevent(LivingHurtEvent event) {
+    private void OnLivingHurt(LivingHurtEvent event) {
         Entity b = event.getEntity();
         if (b instanceof Player player&& player.getUseItem().is(MomotinkerTools.moon_lock.get())){
             event.setAmount(event.getAmount()*0.5F);

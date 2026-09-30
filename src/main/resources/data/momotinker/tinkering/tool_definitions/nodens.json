@@ -4,24 +4,16 @@
       "type": "tconstruct:part_stats",
       "parts": [
         {
-          "item": "tconstruct:tough_handle",
-          "scale": 1.414
+          "item": "tconstruct:large_plate",
+          "scale": 1.25
         },
         {
-          "item": "tconstruct:large_plate",
-          "scale": 0.23
+          "item": "tconstruct:tool_handle",
+          "scale": 0.75
         },
         {
-          "item": "tconstruct:large_plate",
-          "scale": 0.29
-        },
-        {
-          "item": "tconstruct:large_plate",
-          "scale": 0.31
-        },
-        {
-          "item": "tconstruct:large_plate",
-          "scale": 0.37
+          "item": "tconstruct:tool_handle",
+          "scale": 0.75
         }
       ]
     },
@@ -43,23 +35,15 @@
         {
           "type": "tconstruct:random",
           "tier": 1
-        },
-        {
-          "type": "tconstruct:random",
-          "tier": 1
-        },
-        {
-          "type": "tconstruct:random",
-          "tier": 1
         }
       ]
     },
     {
       "type": "tconstruct:multiply_stats",
       "multipliers": {
-        "tconstruct:attack_damage": 3.141,
-        "tconstruct:durability": 0.618,
-        "tconstruct:attack_speed": 1.732
+        "tconstruct:attack_damage": 0.75,
+        "tconstruct:durability": 0.5,
+        "tconstruct:attack_speed": 0.75
       }
     },
     {
