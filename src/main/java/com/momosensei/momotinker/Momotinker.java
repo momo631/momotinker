@@ -52,6 +52,7 @@ public class Momotinker {
         MomotinkerBlock.BLOCK.register(eventBus);
         MomotinkerEffects.EFFECT.register(eventBus);
         MomotinkerEntities.ENTITIES.register(eventBus);
+        MomotinkerSounds.SOUNDS.register(eventBus);
         MomotinkerLootModifiers.register(eventBus);
         eventBus.register(new MomotinkerTools());
         MomotinkerTables.initRegisters();

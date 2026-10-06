@@ -1,0 +1,11 @@
+{
+  "nodens_ready_sounds": {
+    "sounds": [
+      {
+        "name": "momotinker:nodens_ready_sounds",
+        "stream": false,
+        "volume": 0.2
+      }
+    ]
+  }
+}

@@ -1,10 +1,12 @@
 package com.momosensei.momotinker.Items.tool;
 
 import com.momosensei.momotinker.Momotinker;
+import com.momosensei.momotinker.register.MomotinkerSounds;
 import net.minecraft.core.BlockPos;
 import net.minecraft.nbt.Tag;
 import net.minecraft.network.chat.Component;
 import net.minecraft.resources.ResourceLocation;
+import net.minecraft.sounds.SoundSource;
 import net.minecraft.util.Mth;
 import net.minecraft.world.InteractionHand;
 import net.minecraft.world.InteractionResultHolder;
@@ -84,8 +86,9 @@ public class nodens extends ModifiableItem {
                     }
                 }
             }
+            player.playNotifySound(MomotinkerSounds.NodensReadySounds.get(), SoundSource.PLAYERS,  1, 1);
         }
-        int a = (int) (tool.getStats().getInt(ToolStats.DURABILITY) * 0.1f) + 1000;
+        int a = (int) (tool.getStats().getInt(ToolStats.DURABILITY) * 0.1f) + 500;
         if (tool.getStats().getInt(ToolStats.DURABILITY) - tool.getDamage() < a) {
             tool.setDamage(tool.getStats().getInt(ToolStats.DURABILITY));
         } else if (tool.getStats().getInt(ToolStats.DURABILITY) - tool.getDamage() > a) {
