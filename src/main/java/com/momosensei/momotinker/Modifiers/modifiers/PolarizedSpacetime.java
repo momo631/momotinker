@@ -2,8 +2,8 @@ package com.momosensei.momotinker.Modifiers.modifiers;
 
 import com.momosensei.momotinker.Modifiers.momomodifier;
 import com.momosensei.momotinker.Momotinker;
-import com.momosensei.momotinker.mobs.CapStorageData;
-import com.momosensei.momotinker.mobs.SerialClass;
+import com.momosensei.momotinker.data.CapStorageData;
+import com.momosensei.momotinker.data.SerialClass;
 import com.momosensei.momotinker.register.MomotinkerModifiers;
 import net.minecraft.network.chat.Component;
 import net.minecraft.resources.ResourceLocation;
@@ -17,7 +17,7 @@ import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.function.Supplier;
 
-import static com.momosensei.momotinker.mobs.CapStorageData.cast;
+import static com.momosensei.momotinker.data.CapStorageData.cast;
 
 
 public class PolarizedSpacetime extends momomodifier {

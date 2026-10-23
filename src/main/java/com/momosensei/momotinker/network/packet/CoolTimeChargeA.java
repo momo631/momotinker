@@ -1,6 +1,6 @@
 package com.momosensei.momotinker.network.packet;
 
-import com.momosensei.momotinker.mobs.CoolTimeA;
+import com.momosensei.momotinker.data.SkillState;
 import net.minecraft.network.FriendlyByteBuf;
 import net.minecraftforge.network.NetworkEvent;
 
@@ -22,7 +22,7 @@ public class CoolTimeChargeA {
 
     public void handle(Supplier<NetworkEvent.Context> supplier) {
         supplier.get().enqueueWork(() -> {
-            CoolTimeA.setCoolTime(cooltime);
+            SkillState.A.setCoolTime(cooltime);
         });
         supplier.get().setPacketHandled(true);
     }

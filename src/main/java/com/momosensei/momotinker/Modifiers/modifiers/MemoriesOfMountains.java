@@ -59,10 +59,11 @@ public class MemoriesOfMountains extends momomodifier {
             }
             String s = "momotinker:mountains_memory";
             teleportEntityToDimension(living,s,living.getX(),living.getY(),living.getZ());
-            ChunkLoadManager.startForceLoadingForEntity(living);
+            ChunkLoadManager.startForceLoadingForEntity(living,dimensionKey());
         }
         return damage;
     }
+
     @Override
     public boolean onProjectileHitEntity(ModifierNBT modifiers, ModDataNBT persistentData, ModifierEntry modifier, Projectile projectile, EntityHitResult hit, @Nullable LivingEntity attacker, @Nullable LivingEntity target) {
         if (attacker !=null && projectile instanceof AbstractArrow arrow&&target != null) {
@@ -77,11 +78,11 @@ public class MemoriesOfMountains extends momomodifier {
             }
             String s = "momotinker:mountains_memory";
             teleportEntityToDimension(target, s, target.getX(), target.getY(), target.getZ());
-            ChunkLoadManager.startForceLoadingForEntity(target);
+            ChunkLoadManager.startForceLoadingForEntity(target,dimensionKey());
         }
         return false;
     }
-    public static final Map<UUID, LivingEntity> Livings = new HashMap<>();
+    private final Map<UUID, LivingEntity> Livings = new HashMap<>();
 
     public void OnLivingDrop(LivingDropsEvent event) {
         LivingEntity entity = event.getEntity();
@@ -94,7 +95,7 @@ public class MemoriesOfMountains extends momomodifier {
                     teleportEntityToDimension(stack, player.level().dimension().location().toString(), player.getX(), player.getY() + player.getBbHeight() * 0.5f, player.getZ());
                 }
             }
-            ChunkLoadManager.stopForceLoadingForEntity(entity);
+            ChunkLoadManager.stopForceLoadingForEntity(entity,dimensionKey());
             Livings.remove(entity.getUUID());
             entity.getPersistentData().remove(e);
         }
@@ -109,7 +110,7 @@ public class MemoriesOfMountains extends momomodifier {
                     if (entity instanceof LivingEntity living) {
                         float a = getMemoriesTag(living) + 1;
                         if (a > 1 && entity.isAlive()) {
-                            ChunkLoadManager.startForceLoadingForEntity(living);
+                            ChunkLoadManager.startForceLoadingForEntity(living,dimensionKey());
                             if (living.tickCount % 20 != 0) return;
                             if (Livings.get(living.getUUID()) instanceof Player player) {
                                 living.invulnerableTime = 0;
@@ -128,6 +129,11 @@ public class MemoriesOfMountains extends momomodifier {
         }
     }
 
+    public ResourceKey<Level> dimensionKey(){
+        final String DIMENSION_ID = "momotinker:mountains_memory";
+        ResourceLocation dimensionLocation = new ResourceLocation(DIMENSION_ID);
+        return ResourceKey.create(DIMENSION, dimensionLocation);
+    }
 
     private static void setMemoriesTag(LivingEntity target,float a){
         String s = "memories_mountains";

@@ -1,5 +1,6 @@
 package com.momosensei.momotinker.Modifiers.modifiers;
 
+import com.c2h6s.etstlib.entity.specialDamageSources.LegacyDamageSource;
 import com.momosensei.momotinker.Modifiers.momomodifier;
 import com.momosensei.momotinker.Momotinker;
 import com.momosensei.momotinker.register.MomotinkerModifiers;
@@ -60,9 +61,9 @@ public class KeyToRuin extends momomodifier {
     @Override
     public Component validate(IToolStackView tool, ModifierEntry modifier) {
         if (tool.getItem()==MomotinkerTools.entropy_burning_cube.get()
-                ||tool.getItem()==MomotinkerTools.nyarlathotep.get()
                 ||tool.getItem()==MomotinkerTools.pocket_watch.get()
-                ||tool.getItem()==MomotinkerTools.nodens.get()){
+                ||tool.getItem()==MomotinkerTools.divine_punishment_spear.get()
+        ){
             return null;
         }
         return requirementsError(modifier);
@@ -92,6 +93,9 @@ public class KeyToRuin extends momomodifier {
             if (stack.getItem() == MomotinkerTools.pocket_watch.get()) {
                 Evolution(player, stack, MomotinkerTools.nodens.get(), MomotinkerToolDefinitions.NODENS);
             }
+            if (stack.getItem() == MomotinkerTools.divine_punishment_spear.get()) {
+                Evolution(player, stack, MomotinkerTools.gungnir.get(), MomotinkerToolDefinitions.GUNGNIR);
+            }
             if (stack.getItem() == MomotinkerTools.nodens.get()) {
                 ModDataNBT data = tool.getPersistentData();
                 if (data.getFloat(collaborative_cooldown)>0){
@@ -120,6 +124,9 @@ public class KeyToRuin extends momomodifier {
         }
         if (tool.getItem()==MomotinkerTools.nodens.get()) {
             tooltip.add(Component.translatable("modifier.momotinker.tooltip.key_to_ruin_nodens").withStyle(ChatFormatting.GRAY).withStyle(ChatFormatting.DARK_GRAY).withStyle(ChatFormatting.ITALIC));
+        }
+        if (tool.getItem()==MomotinkerTools.gungnir.get()) {
+            tooltip.add(Component.translatable("modifier.momotinker.tooltip.key_to_ruin_gungnir").withStyle(ChatFormatting.GRAY).withStyle(ChatFormatting.DARK_GRAY).withStyle(ChatFormatting.ITALIC));
         }
         tooltip.add(Component.translatable("modifier.momotinker.tooltip.key_to_ruin_2").withStyle(ChatFormatting.GRAY).withStyle(ChatFormatting.DARK_GRAY).withStyle(ChatFormatting.ITALIC));
 
@@ -199,7 +206,7 @@ public class KeyToRuin extends momomodifier {
                         AttackUtil.attackEntity(tool, player, InteractionHand.MAIN_HAND, a,
                                 () -> 1, true, Util.getSlotType(InteractionHand.MAIN_HAND),
                                 tool.getStats().get(ToolStats.ATTACK_DAMAGE),
-                                0.25f, false, true, true, false);
+                                0.2f, false, true, true, false);
                         a.invulnerableTime = 0;
                     }
                 }
@@ -207,5 +214,14 @@ public class KeyToRuin extends momomodifier {
         } finally {
             IN_HANDLER.set(false);
         }
+    }
+
+    @Override
+    public LegacyDamageSource modifyDamageSource(IToolStackView tool, ModifierEntry entry, LivingEntity attacker, InteractionHand hand, Entity target, EquipmentSlot sourceSlot, boolean isFullyCharged, boolean isExtraAttack, boolean isCritical, LegacyDamageSource source) {
+        if (target != null&&tool==MomotinkerTools.gungnir.get()) {
+            target.invulnerableTime = 0;
+            return source.setBypassArmor().setBypassInvul().setBypassInvulnerableTime().setBypassMagic().setBypassEnchantment().setBypassShield();
+        }
+        return source;
     }
 }

@@ -2,8 +2,8 @@ package com.momosensei.momotinker.event;
 
 
 import com.momosensei.momotinker.Momotinker;
+import com.momosensei.momotinker.data.StageMeteor;
 import com.momosensei.momotinker.entity.MeteorEntity;
-import com.momosensei.momotinker.mobs.StageMeteor;
 import com.momosensei.momotinker.network.Channel;
 import com.momosensei.momotinker.network.packet.StageMeteorCharge;
 import com.momosensei.momotinker.register.MomotinkerBlock;

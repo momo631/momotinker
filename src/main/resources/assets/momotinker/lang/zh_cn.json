@@ -344,6 +344,12 @@
   "item.momotinker.nodens": "§o[诺登斯]§r",
   "item.momotinker.nodens.description": "右键使用后消耗耐久立即恢复背包中所有物品的使用冷却和下一次攻击冷却，所有[特殊技能]的常规冷却缩减一半\n§o“规则于此集结，逻辑丰碑崩解之时，万业皆殉道”",
 
+  "item.momotinker.gungnir": "§o[冈格尼尔]§r",
+  "item.momotinker.gungnir.description": "右键发射后将直接命中指针指向的单个生物并转为待命状态，该状态记录已造成伤害并在返回时格外结算\n§o“规则于此集结，逻辑丰碑崩解之时，万业皆殉道”",
+  "item.momotinker.gungnir_disabled_item": "§o§e召回[冈格尼尔]§r",
+  "item.momotinker.gungnir_disabled_item.description": "§o§e持续6秒后将强制召回§r",
+
+
   "momotinker.tool.tooltip.offhand_hastool": "错误:副手有物品",
 
 
@@ -855,7 +861,8 @@
   "modifier.momotinker.tooltip.key_to_ruin_1": "古代神兵认证:??????",
   "modifier.momotinker.tooltip.key_to_ruin_2": "所为所做消散人世，所思所忧归向虚空",
   "modifier.momotinker.tooltip.key_to_ruin_nyarlathotep": "该工具的所有特性均翻倍，近战攻击相关的特性格外生效一次",
-  "modifier.momotinker.tooltip.key_to_ruin_nodens": "该工具的所有特性均翻倍，以25%的效能协助攻击",
+  "modifier.momotinker.tooltip.key_to_ruin_nodens": "该工具的所有特性均翻倍，以20%的效能协助攻击",
+  "modifier.momotinker.tooltip.key_to_ruin_gungnir": "该工具的所有特性均翻倍，其造成的伤害将无视防御",
 
   "modifier.momotinker.incarnon_on": "长按右键2秒开启灵化，\n灵化状态下长按3秒解除",
   "modifier.momotinker.incarnon_task": "当前灵化任务:",

@@ -1,6 +1,6 @@
 package com.momosensei.momotinker.Items.block;
 
-import com.momosensei.momotinker.mobs.StageMeteor;
+import com.momosensei.momotinker.data.StageMeteor;
 import com.momosensei.momotinker.register.MomotinkerConfig;
 import net.minecraft.ChatFormatting;
 import net.minecraft.client.gui.screens.Screen;

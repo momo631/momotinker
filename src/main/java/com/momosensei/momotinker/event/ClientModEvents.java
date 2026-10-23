@@ -35,6 +35,7 @@ public class ClientModEvents {
             TinkerItemProperties.registerBrokenProperty(pocket_watch.get());
             TinkerItemProperties.registerBrokenProperty(chain_sword.get());
             TinkerItemProperties.registerBrokenProperty(pneumatic_sword.get());
+            TinkerItemProperties.registerBrokenProperty(gungnir.get());
 
             TinkerItemProperties.registerToolProperties(trigger_blade.get());
             TinkerItemProperties.registerToolProperties(divine_punishment_spear.get());
@@ -47,6 +48,7 @@ public class ClientModEvents {
             TinkerItemProperties.registerToolProperties(pocket_watch.get());
             TinkerItemProperties.registerToolProperties(chain_sword.get());
             TinkerItemProperties.registerToolProperties(pneumatic_sword.get());
+            TinkerItemProperties.registerToolProperties(gungnir.get());
             //   TinkerItemProperties.registerToolProperties(aa.get());
         });
     }

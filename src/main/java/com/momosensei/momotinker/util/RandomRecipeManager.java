@@ -5,7 +5,7 @@ import com.google.gson.JsonElement;
 import com.google.gson.JsonObject;
 import com.google.gson.JsonParser;
 import com.momosensei.momotinker.network.Channel;
-import com.momosensei.momotinker.network.packet.SyncDataPacket;
+import com.momosensei.momotinker.network.packet.RandomRecipeStagePacket;
 import com.momosensei.momotinker.register.MomotinkerItem;
 import net.minecraft.nbt.CompoundTag;
 import net.minecraft.nbt.NbtIo;
@@ -398,7 +398,7 @@ public class RandomRecipeManager {
                 Map<Integer, ItemStack> displays = FIXED_DISPLAYS.get(recipeId);
                 if (displays != null) {
                     int stage = getPlayerStage(player,recipeId);
-                    SyncDataPacket packet = new SyncDataPacket(recipeId, stage, displays);
+                    RandomRecipeStagePacket packet = new RandomRecipeStagePacket(recipeId, stage, displays);
                     Channel.sendToPlayer(packet, player);
                 }
             }
@@ -410,7 +410,7 @@ public class RandomRecipeManager {
             Map<Integer, ItemStack> displays = FIXED_DISPLAYS.get(recipeId);
             if (displays != null) {
                 int stage = getPlayerStage(player,recipeId);
-                SyncDataPacket packet = new SyncDataPacket(recipeId, stage, displays);
+                RandomRecipeStagePacket packet = new RandomRecipeStagePacket(recipeId, stage, displays);
                 Channel.sendToPlayer(packet, player);
             }
         }

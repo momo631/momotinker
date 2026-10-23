@@ -16,7 +16,7 @@ public class IncarnonTimeCharge {
         this.percentage =buf.readFloat();
     }
 
-    public static void encode(IncarnonTimeCharge packet, FriendlyByteBuf buf) {
+    public static void toByte(IncarnonTimeCharge packet, FriendlyByteBuf buf) {
         buf.writeFloat(packet.percentage);
     }
 

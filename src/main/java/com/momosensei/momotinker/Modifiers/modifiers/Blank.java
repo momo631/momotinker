@@ -1,7 +1,7 @@
 package com.momosensei.momotinker.Modifiers.modifiers;
 
 import com.momosensei.momotinker.Modifiers.momomodifier;
-import com.momosensei.momotinker.mobs.CoolTimeB;
+import com.momosensei.momotinker.data.SkillState;
 import com.momosensei.momotinker.network.Channel;
 import com.momosensei.momotinker.network.packet.CoolTimeChargeB;
 import net.minecraft.ChatFormatting;
@@ -27,14 +27,14 @@ public class Blank extends momomodifier {
 
     @Override
     public void OnEntityDeath(LivingDeathEvent event) {
-        if (event.getEntity() instanceof ServerPlayer player&& CoolTimeB.getCoolTime() >= 579) {
+        if (event.getEntity() instanceof ServerPlayer player&& SkillState.B.getCoolTime() >= 579) {
             Channel.sendToPlayer(new CoolTimeChargeB(300,false), player);
         }
     }
 
     public void addTooltip(IToolStackView tool, ModifierEntry modifierEntry, @org.jetbrains.annotations.Nullable Player player, List<Component> tooltip, TooltipKey tooltipKey, TooltipFlag tooltipFlag) {
-        if (player != null&&CoolTimeB.getCoolTime()!=0) {
-            tooltip.add(Component.translatable("modifier.momotinker.tooltip.blank1").append(CoolTimeB.getCoolTime()+"s").withStyle(ChatFormatting.GRAY));
+        if (player != null&&SkillState.B.getCoolTime()!=0) {
+            tooltip.add(Component.translatable("modifier.momotinker.tooltip.blank1").append(SkillState.B.getCoolTime()+"s").withStyle(ChatFormatting.GRAY));
         }
     }
 }

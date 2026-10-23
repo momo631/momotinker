@@ -54,6 +54,10 @@ public class nodens extends ModifiableItem {
         if (tool.isBroken()){
             return InteractionResultHolder.fail(stack);
         }
+        int a = (int) (tool.getStats().getInt(ToolStats.DURABILITY) * 0.1f) + 500;
+        if (tool.getStats().getInt(ToolStats.DURABILITY) - tool.getDamage() < a*0.5F) {
+            return InteractionResultHolder.fail(stack);
+        }
         if (!tool.isBroken()) {
             return InteractionResultHolder.pass(stack);
         }
@@ -67,6 +71,16 @@ public class nodens extends ModifiableItem {
         if (tool.isBroken()) {
             return retval;
         }
+        int a = (int) (tool.getStats().getInt(ToolStats.DURABILITY) * 0.1f) + 500;
+        if (tool.getStats().getInt(ToolStats.DURABILITY) - tool.getDamage() < a*0.5F) {
+            return retval;
+        }
+        if (tool.getStats().getInt(ToolStats.DURABILITY) - tool.getDamage() < a) {
+            tool.setDamage(tool.getStats().getInt(ToolStats.DURABILITY));
+        } else if (tool.getStats().getInt(ToolStats.DURABILITY) - tool.getDamage() > a) {
+            tool.setDamage(tool.getDamage() + a);
+        }
+
         if (living instanceof Player player) {
             player.getPersistentData().putBoolean(nodens_ready.toString(), true);
             for (int j = 0; j < player.getInventory().items.size(); j++) {
@@ -88,12 +102,6 @@ public class nodens extends ModifiableItem {
             }
             player.playNotifySound(MomotinkerSounds.NodensReadySounds.get(), SoundSource.PLAYERS,  1, 1);
         }
-        int a = (int) (tool.getStats().getInt(ToolStats.DURABILITY) * 0.1f) + 500;
-        if (tool.getStats().getInt(ToolStats.DURABILITY) - tool.getDamage() < a) {
-            tool.setDamage(tool.getStats().getInt(ToolStats.DURABILITY));
-        } else if (tool.getStats().getInt(ToolStats.DURABILITY) - tool.getDamage() > a) {
-            tool.setDamage(tool.getDamage() + a);
-        }
         return retval;
     }
 
@@ -109,7 +117,7 @@ public class nodens extends ModifiableItem {
     }
     @Override
     public UseAnim getUseAnimation(ItemStack stack) {
-        return BlockingModifier.blockWhileCharging(ToolStack.from(stack), UseAnim.BLOCK);
+        return BlockingModifier.blockWhileCharging(ToolStack.from(stack), UseAnim.TOOT_HORN);
     }
 
     public boolean canAttackBlock(BlockState blockState, Level level, BlockPos blockPos, Player player) {

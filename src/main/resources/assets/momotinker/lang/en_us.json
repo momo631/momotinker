@@ -338,6 +338,11 @@
   "item.momotinker.nodens": "§o[Nodens]§r",
   "item.momotinker.nodens.description": "Right click to consume durability and immediately restore the cooldown and next attack cooldown of all items in the backpack. Reduce the regular cooldown of all [Category Example] by half\n§o'The rules are gathered here, and when the monument of logic collapses, all industries will be martyred'",
 
+  "item.momotinker.gungnir": "§o[Gungnir]§r",
+  "item.momotinker.gungnir.description": "Right click to directly hit a single creature pointed to by the pointer and switch it to standby mode, which records damage and pays extra when returning\n§o'The rules are gathered here, and when the monument of logic collapses, all industries will be martyred'",
+  "item.momotinker.gungnir_disabled_item": "§o§eRecall[Gungnir]§r",
+  "item.momotinker.gungnir_disabled_item.description": "§o§eMandatory recall after 6 seconds§r",
+
   "momotinker.tool.tooltip.offhand_hastool": "Error: The deputy has items",
 
 
@@ -849,8 +854,8 @@
   "modifier.momotinker.tooltip.key_to_ruin_1": "[From Brilliance]Certification:??????",
   "modifier.momotinker.tooltip.key_to_ruin_2": "What is done will dissipate from the world, and what is thought and worried will return to the void",
   "modifier.momotinker.tooltip.key_to_ruin_nyarlathotep": "All features of the tool are doubled,with melee attack-related traits taking effect an additional time",
-  "modifier.momotinker.tooltip.key_to_ruin_nodens": "All features of the tool are doubled,assist in attacks with 25% efficiency",
-
+  "modifier.momotinker.tooltip.key_to_ruin_nodens": "All features of the tool are doubled,assist in attacks with 20% efficiency",
+  "modifier.momotinker.tooltip.key_to_ruin_gungnir": "All features of the tool are doubled,The damage it inflicts will ignore defense",
 
   "modifier.momotinker.incarnon_on": "Press right button for 2 seconds \nto activate [Incarnon],\nPress for 3 seconds \nto release [Incarnon]",
   "modifier.momotinker.incarnon_task": "Current [Incarnon] task:",

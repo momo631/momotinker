@@ -1,8 +1,8 @@
 package com.momosensei.momotinker.event;
 
-import com.momosensei.momotinker.mobs.CoolTimeA;
-import com.momosensei.momotinker.mobs.CoolTimeB;
-import com.momosensei.momotinker.mobs.CoolTimeC;
+import com.momosensei.momotinker.Momotinker;
+import com.momosensei.momotinker.data.SkillState;
+import com.momosensei.momotinker.data.gungnir.GungnirMarkedData;
 import com.momosensei.momotinker.network.Channel;
 import com.momosensei.momotinker.network.packet.CoolTimeChargeA;
 import com.momosensei.momotinker.network.packet.CoolTimeChargeB;
@@ -12,29 +12,54 @@ import com.momosensei.momotinker.util.AttackUtil;
 import net.minecraft.ChatFormatting;
 import net.minecraft.core.particles.ParticleTypes;
 import net.minecraft.network.chat.Component;
+import net.minecraft.server.MinecraftServer;
 import net.minecraft.server.level.ServerLevel;
 import net.minecraft.server.level.ServerPlayer;
 import net.minecraft.world.entity.LivingEntity;
 import net.minecraft.world.entity.player.Player;
 import net.minecraft.world.level.Level;
+import net.minecraft.world.level.storage.LevelResource;
 import net.minecraftforge.event.entity.living.LivingDropsEvent;
 import net.minecraftforge.event.entity.living.LivingEvent;
 import net.minecraftforge.event.entity.player.PlayerEvent;
+import net.minecraftforge.event.server.ServerStartedEvent;
 import net.minecraftforge.eventbus.api.EventPriority;
 import net.minecraftforge.eventbus.api.SubscribeEvent;
 import net.minecraftforge.fml.common.Mod;
 import slimeknights.tconstruct.library.tools.helper.ModifierUtil;
 import slimeknights.tconstruct.library.tools.nbt.ToolStack;
 
+import java.io.IOException;
+import java.nio.file.Files;
+import java.nio.file.Path;
 import java.util.Random;
 
 import static com.momosensei.momotinker.Modifiers.modifiers.GainsAlone.gainsalonepoints;
 import static com.momosensei.momotinker.Modifiers.momomodifier.getRemainingDurability;
 import static com.momosensei.momotinker.Modifiers.momomodifier.isToolStack;
 
-@Mod.EventBusSubscriber(modid = "momotinker", bus = Mod.EventBusSubscriber.Bus.FORGE)
+@Mod.EventBusSubscriber(modid = Momotinker.MOD_ID, bus = Mod.EventBusSubscriber.Bus.FORGE)
 public class ModEvent {
 
+//    @SubscribeEvent
+//    public static void onRegisterCommands(RegisterCommandsEvent event) {
+//        GungnirCommand.register(event.getDispatcher());
+//    }
+
+    @SubscribeEvent
+    public static void onServerStarted(ServerStartedEvent event) {
+        MinecraftServer server = event.getServer();
+        Path marker = server.getWorldPath(LevelResource.ROOT).resolve("gungnir_cleanup_v1.done");
+        if (Files.exists(marker)) return;
+
+        GungnirMarkedData data = GungnirMarkedData.get(server);
+        data.purgeOrphanMarks();
+        try {
+            Files.createFile(marker);
+        } catch (IOException e) {
+            Momotinker.LOG.error("Failed to create gungnir cleanup marker", e);
+        }
+    }
     @SubscribeEvent(priority = EventPriority.LOWEST)
     public static void onMobDrop(LivingDropsEvent event) {
         LivingEntity killer = event.getEntity().getKillCredit();
@@ -67,18 +92,18 @@ public class ModEvent {
     @SubscribeEvent
     public static void onPlayerLogin(PlayerEvent.PlayerLoggedInEvent event) {
         if (event.getEntity() instanceof ServerPlayer serverPlayer) {
-            Channel.sendToPlayer(new CoolTimeChargeB(CoolTimeB.getCoolTime(),false), serverPlayer);
+            Channel.sendToPlayer(new CoolTimeChargeB(SkillState.B.getCoolTime(),false), serverPlayer);
         }
     }
 
     @SubscribeEvent
     public static void onLivingTick(LivingEvent.LivingTickEvent event) {
         if (event.getEntity() instanceof Player player) {
-            int coolTimeB = CoolTimeB.getCoolTime();
+            int coolTimeB = SkillState.B.getCoolTime();
             Level level = player.level();
             int tickCount = player.tickCount;
             handleNegativeCoolTimes(player);
-            if (CoolTimeB.getOwner()) {
+            if (SkillState.B.getOwner()) {
                 if (level instanceof ServerLevel serverLevel) {
                     if (coolTimeB >= 579 && coolTimeB <= 599) {
                         if (tickCount % 10 == 0) {
@@ -92,7 +117,7 @@ public class ModEvent {
 
             if (tickCount % 20 == 0 && player instanceof ServerPlayer serverPlayer) {
                 handleCoolTimeDecrement(serverPlayer);
-                if (coolTimeB == 578 && player.isAlive()&&CoolTimeB.getOwner()) {
+                if (coolTimeB == 578 && player.isAlive()&&SkillState.B.getOwner()) {
                     AttackUtil.executeall(player.level(), player.getX(), player.getY(), player.getZ(), player);
                 }
             }
@@ -133,16 +158,16 @@ public class ModEvent {
 
     private static void handleNegativeCoolTimes(Player player) {
         if (player instanceof ServerPlayer serverPlayer) {
-            checkAndSyncNegativeCoolTime(serverPlayer, CoolTimeA.getCoolTime(), CoolTimeChargeA.class);
-            checkAndSyncNegativeCoolTime(serverPlayer, CoolTimeB.getCoolTime(), CoolTimeChargeB.class);
-            checkAndSyncNegativeCoolTime(serverPlayer, CoolTimeC.getCoolTime(), CoolTimeChargeC.class);
+            checkAndSyncNegativeCoolTime(serverPlayer, SkillState.A.getCoolTime(), CoolTimeChargeA.class);
+            checkAndSyncNegativeCoolTime(serverPlayer, SkillState.B.getCoolTime(), CoolTimeChargeB.class);
+            checkAndSyncNegativeCoolTime(serverPlayer, SkillState.C.getCoolTime(), CoolTimeChargeC.class);
         }
     }
 
     private static void handleCoolTimeDecrement(ServerPlayer player) {
-        checkAndSyncPositiveCoolTime(player, CoolTimeA.getCoolTime(), CoolTimeChargeA.class);
-        checkAndSyncPositiveCoolTime(player, CoolTimeB.getCoolTime(), CoolTimeChargeB.class);
-        checkAndSyncPositiveCoolTime(player, CoolTimeC.getCoolTime(), CoolTimeChargeC.class);
+        checkAndSyncPositiveCoolTime(player, SkillState.A.getCoolTime(), CoolTimeChargeA.class);
+        checkAndSyncPositiveCoolTime(player, SkillState.B.getCoolTime(), CoolTimeChargeB.class);
+        checkAndSyncPositiveCoolTime(player, SkillState.C.getCoolTime(), CoolTimeChargeC.class);
     }
 
     private static <T> void checkAndSyncNegativeCoolTime(ServerPlayer player, int coolTime, Class<T> packetClass) {
@@ -161,7 +186,7 @@ public class ModEvent {
         if (packetClass == CoolTimeChargeA.class) {
             Channel.sendToPlayer(new CoolTimeChargeA(coolTime), player);
         } else if (packetClass == CoolTimeChargeB.class) {
-            Channel.sendToPlayer(new CoolTimeChargeB(coolTime,CoolTimeB.getOwner()), player);
+            Channel.sendToPlayer(new CoolTimeChargeB(coolTime,SkillState.B.getOwner()), player);
         } else if (packetClass == CoolTimeChargeC.class) {
             Channel.sendToPlayer(new CoolTimeChargeC(coolTime), player);
         }

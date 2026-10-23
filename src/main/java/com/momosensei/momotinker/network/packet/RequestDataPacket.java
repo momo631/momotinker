@@ -40,7 +40,7 @@ public class RequestDataPacket {
                 CompoundTag tag = player.getPersistentData().getCompound(Player.PERSISTED_NBT_TAG);
                 Map<Integer, ItemStack> displays = RandomRecipeManager.getFixedDisplay(packet.recipeId);
                 int value = tag.getInt(getResource(getShortId(packet.recipeId)).toString());
-                Channel.sendToPlayer(new SyncDataPacket(packet.recipeId, value, displays), player);
+                Channel.sendToPlayer(new RandomRecipeStagePacket(packet.recipeId, value, displays), player);
             }
         });
         context.setPacketHandled(true);

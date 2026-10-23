@@ -48,6 +48,7 @@ import static com.momosensei.momotinker.entity.NyarlathotepEntity.OrbitDefenseSy
 
 public class NyarlathotepEntity extends Projectile {
     public ToolStack tool;
+    public ToolStack tool_nyarlathotep;
     public float damage = 0;
     public NyarlathotepEntity(EntityType<? extends Projectile> p_37248_, Level p_37249_) {
         super(p_37248_, p_37249_);
@@ -275,6 +276,10 @@ public class NyarlathotepEntity extends Projectile {
             this.discard();
             return;
         }
+        float nyarlathotep_attack = 1;
+        if (this.tool_nyarlathotep != null) {
+            nyarlathotep_attack+=tool_nyarlathotep.getStats().get(ToolStats.ATTACK_DAMAGE);
+        }
         if (!isInLoadedChunk(this)) {
             this.discard();
             return;
@@ -295,7 +300,7 @@ public class NyarlathotepEntity extends Projectile {
                     speed=1.6;
                     this.setDeltaMovement(movementVector.scale(speed));
                 } else if (getForm() == 1) {
-                    if (this.tickCount > 5) {
+                    if (this.tickCount > 4) {
                         moveTowardsTargetWithTransfer(this, target, 1.8, true,1.5);
                     } else {
                         this.setDeltaMovement(movementVector.scale(speed));
@@ -329,7 +334,10 @@ public class NyarlathotepEntity extends Projectile {
             List<LivingEntity> ls0 = serverLevel.getEntitiesOfClass(LivingEntity.class, this.getBoundingBox().inflate(a));
             for (LivingEntity targets : ls0) {
                 if (targets != this.getOwner() && targets != null) {
-                    AttackUtil.attackEntity(tool, player, InteractionHand.MAIN_HAND, targets, () -> 1, true, Util.getSlotType(InteractionHand.MAIN_HAND), tool.getStats().get(ToolStats.ATTACK_DAMAGE)+1, multiplier, false, true, true, true);
+                    AttackUtil.attackEntity(tool, player, InteractionHand.MAIN_HAND, targets,
+                            () -> 1, true, Util.getSlotType(InteractionHand.MAIN_HAND),
+                            tool.getStats().get(ToolStats.ATTACK_DAMAGE)+nyarlathotep_attack, multiplier,
+                            false, true, true, true);
                 }
             }
             if (player.isDeadOrDying())this.discard();

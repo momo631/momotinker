@@ -6,6 +6,7 @@ import com.momosensei.momotinker.Items.block.meteor_nucleus_block;
 import com.momosensei.momotinker.Items.ingot.*;
 import com.momosensei.momotinker.Items.other.*;
 import com.momosensei.momotinker.Items.pull_entity;
+import com.momosensei.momotinker.Items.tool.gungnir.gungnir_disabled_item;
 import com.momosensei.momotinker.Items.tool.revelation_fruit;
 import com.momosensei.momotinker.Items.tool.star_seeking_pointer;
 import com.momosensei.momotinker.Items.tool.twilight_ego;
@@ -71,6 +72,7 @@ public class MomotinkerItem {
 
     public static final RegistryObject<Item> star_seeking_pointer = ITEMS.register("star_seeking_pointer", () -> new star_seeking_pointer(MomotinkerTables.material()));
     public static final RegistryObject<Item> revelation_fruit = ITEMS.register("revelation_fruit", () -> new revelation_fruit(MomotinkerTables.material()));
+    public static final RegistryObject<Item> gungnir_disabled_item = ITEMS.register("gungnir_disabled_item", () -> new gungnir_disabled_item(new Item.Properties()));
 
     public static final RegistryObject<Item> hidden_bit_a = ITEMS.register("hidden_bit_a", ()->new Item(new Item.Properties()));
     public static final RegistryObject<Item> hidden_bit_b = ITEMS.register("hidden_bit_b", ()->new Item(new Item.Properties()));

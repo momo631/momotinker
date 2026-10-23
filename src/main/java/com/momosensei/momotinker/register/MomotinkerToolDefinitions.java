@@ -28,5 +28,6 @@ public class MomotinkerToolDefinitions {
 
     public static final ToolDefinition NYARLATHOTEP = ToolDefinition.create(MomotinkerTools.nyarlathotep);
     public static final ToolDefinition NODENS = ToolDefinition.create(MomotinkerTools.nodens);
+    public static final ToolDefinition GUNGNIR = ToolDefinition.create(MomotinkerTools.gungnir);
 
 }

@@ -17,7 +17,7 @@ public class ToolsTimeCharge {
         this.percentage =buf.readFloat();
     }
 
-    public static void encode(ToolsTimeCharge packet, FriendlyByteBuf buf) {
+    public static void toByte(ToolsTimeCharge packet, FriendlyByteBuf buf) {
         buf.writeFloat(packet.percentage);
     }
 

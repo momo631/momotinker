@@ -90,7 +90,7 @@ public class nyarlathotep extends ModifiableItem {
             nyarlathotep.noPhysics = true;
             nyarlathotep.setForm(form);
             nyarlathotep.setSpawnRotation(player.getYRot(), player.getXRot());
-
+            nyarlathotep.tool_nyarlathotep=tool;
             double x, y, z;
 
             if (form == 2) {

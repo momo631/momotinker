@@ -564,6 +564,56 @@
         {
             "path": "momotinker:item/tool/nodens/broken_part",
             "stat_type": "tconstruct:binding"
+        },
+
+
+        {
+            "path": "momotinker:item/tool/gungnir/spear_head",
+            "stat_type": "tconstruct:binding"
+        },
+        {
+            "path": "momotinker:item/tool/gungnir/large/spear_head",
+            "stat_type": "tconstruct:binding"
+        },
+        {
+            "path": "momotinker:item/tool/gungnir/broken_spear_head",
+            "stat_type": "tconstruct:binding"
+        },
+        {
+            "path": "momotinker:item/tool/gungnir/large/broken_spear_head",
+            "stat_type": "tconstruct:binding"
+        },
+        {
+            "path": "momotinker:item/tool/gungnir/spear_body",
+            "stat_type": "tconstruct:binding"
+        },
+        {
+            "path": "momotinker:item/tool/gungnir/large/spear_body",
+            "stat_type": "tconstruct:binding"
+        },
+        {
+            "path": "momotinker:item/tool/gungnir/tough_handle_1",
+            "stat_type": "tconstruct:binding"
+        },
+        {
+            "path": "momotinker:item/tool/gungnir/tough_handle_2",
+            "stat_type": "tconstruct:binding"
+        },
+        {
+            "path": "momotinker:item/tool/gungnir/tough_handle_3",
+            "stat_type": "tconstruct:binding"
+        },
+        {
+            "path": "momotinker:item/tool/gungnir/large/tough_handle_1",
+            "stat_type": "tconstruct:binding"
+        },
+        {
+            "path": "momotinker:item/tool/gungnir/large/tough_handle_2",
+            "stat_type": "tconstruct:binding"
+        },
+        {
+            "path": "momotinker:item/tool/gungnir/large/tough_handle_3",
+            "stat_type": "tconstruct:binding"
         }
     ],
     "replace": false

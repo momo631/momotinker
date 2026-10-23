@@ -5,7 +5,7 @@ import com.mojang.blaze3d.platform.GlStateManager;
 import com.mojang.blaze3d.platform.Window;
 import com.mojang.blaze3d.systems.RenderSystem;
 import com.mojang.blaze3d.vertex.*;
-import com.momosensei.momotinker.mobs.Signifidatatime;
+import com.momosensei.momotinker.data.SkillState;
 import com.momosensei.momotinker.register.MomotinkerEffects;
 import net.minecraft.client.Minecraft;
 import net.minecraft.client.gui.GuiGraphics;
@@ -28,7 +28,7 @@ public class MomotinkerOverlay {
 
     public static void render(ForgeGui gui, GuiGraphics guiGraphics, float partialTick, int screenWidth, int screenHeight) {
         Player player = Minecraft.getInstance().player;
-        float b = Signifidatatime.getSignifidata();
+        float b = SkillState.Signifidata.getSignifidata();
         if (player == null){
             Minecraft.getInstance().tell(() -> Minecraft.getInstance().gameRenderer.shutdownEffect());
         }else
@@ -42,14 +42,14 @@ public class MomotinkerOverlay {
             Minecraft.getInstance().tell(() -> Minecraft.getInstance().gameRenderer.shutdownEffect());
         }else
         if (b>0){
-            Signifidatatime.setSignifidata(b-1);
+            SkillState.Signifidata.setSignifidata(b-1);
             Minecraft.getInstance().tell(() -> Minecraft.getInstance().gameRenderer.loadEffect(SIGNIFI_SHADER));
             gui.setupOverlayRenderState(true, false);
             RenderSystem.setShaderTexture(0,ENDER_TEXTURE);
             renderOverlay(guiGraphics.pose());
         }
         if (b<0){
-            Signifidatatime.setSignifidata(0);
+            SkillState.Signifidata.setSignifidata(0);
         }
     }
 

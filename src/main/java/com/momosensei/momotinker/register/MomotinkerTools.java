@@ -2,6 +2,7 @@ package com.momosensei.momotinker.register;
 
 
 import com.momosensei.momotinker.Items.tool.*;
+import com.momosensei.momotinker.Items.tool.gungnir.gungnir;
 import net.minecraft.network.chat.Component;
 import net.minecraft.world.item.CreativeModeTab;
 import net.minecraft.world.item.ItemStack;
@@ -53,6 +54,7 @@ public final class MomotinkerTools extends MomotinkerTables {
 
     public static final ItemObject<ModifiableItem> nyarlathotep = ITEMS.register("nyarlathotep", () -> new nyarlathotep(UNSTACKABLE_PROPS, MomotinkerToolDefinitions.NYARLATHOTEP));
     public static final ItemObject<ModifiableItem> nodens = ITEMS.register("nodens", () -> new nodens(UNSTACKABLE_PROPS, MomotinkerToolDefinitions.NODENS));
+    public static final ItemObject<ModifiableItem> gungnir = ITEMS.register("gungnir", () -> new gungnir(UNSTACKABLE_PROPS, MomotinkerToolDefinitions.GUNGNIR));
 
     private static void addTabItems(CreativeModeTab.ItemDisplayParameters itemDisplayParameters, CreativeModeTab.Output tab) {
         Consumer<ItemStack> output = tab::accept;
@@ -70,8 +72,8 @@ public final class MomotinkerTools extends MomotinkerTables {
         acceptTool(output, entropy_burning_cannon);
         acceptTool(output, pocket_watch);
 
-        acceptTool(output, nyarlathotep);
-        acceptTool(output, nodens);
+//        acceptTool(output, nyarlathotep);
+//        acceptTool(output, nodens);
 
         tab.accept(MomotinkerItem.twilight_ego.get());
         tab.accept(MomotinkerItem.star_seeking_pointer.get());

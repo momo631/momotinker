@@ -1,6 +1,6 @@
 package com.momosensei.momotinker.network.packet;
 
-import com.momosensei.momotinker.mobs.Signifidatatime;
+import com.momosensei.momotinker.data.SkillState;
 import net.minecraft.network.FriendlyByteBuf;
 import net.minecraftforge.network.NetworkEvent;
 
@@ -23,7 +23,7 @@ public class SignifiCharge {
     public boolean handle( Supplier<NetworkEvent.Context> supplier) {
         NetworkEvent.Context context =supplier.get();
         context.enqueueWork(()->{
-            Signifidatatime.setSignifidata(signifidata);
+            SkillState.Signifidata.setSignifidata(signifidata);
         });
         return true;
     }

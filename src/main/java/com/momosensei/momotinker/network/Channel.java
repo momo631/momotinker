@@ -43,15 +43,17 @@ public class Channel {
         INSTANCE.messageBuilder(NyarlathotepPacket.class, id++, NetworkDirection.PLAY_TO_SERVER).decoder(NyarlathotepPacket::decode).encoder(NyarlathotepPacket::encode).consumerMainThread(NyarlathotepPacket::handlePacket).add();
         INSTANCE.messageBuilder(RequestDataPacket.class, id++, NetworkDirection.PLAY_TO_SERVER).decoder(RequestDataPacket::decode).encoder(RequestDataPacket::encode).consumerMainThread(RequestDataPacket::handlePacket).add();
 
-        INSTANCE.messageBuilder(SyncDataPacket.class, id++, NetworkDirection.PLAY_TO_CLIENT).decoder(SyncDataPacket::decode).encoder(SyncDataPacket::encode).consumerMainThread(SyncDataPacket::handlePacket).add();
+        INSTANCE.messageBuilder(RandomRecipeStagePacket.class, id++, NetworkDirection.PLAY_TO_CLIENT).decoder(RandomRecipeStagePacket::decode).encoder(RandomRecipeStagePacket::encode).consumerMainThread(RandomRecipeStagePacket::handlePacket).add();
         INSTANCE.messageBuilder(RecipeRefreshPacket.class, id++, NetworkDirection.PLAY_TO_CLIENT).decoder(RecipeRefreshPacket::decode).encoder(RecipeRefreshPacket::encode).consumerMainThread(RecipeRefreshPacket::handlePacket).add();
+        INSTANCE.messageBuilder(GungnirItemPacket.class, id++, NetworkDirection.PLAY_TO_CLIENT).decoder(GungnirItemPacket::decode).encoder(GungnirItemPacket::encode).consumerMainThread(GungnirItemPacket::handlePacket).add();
+        INSTANCE.messageBuilder(GungnirTrajectoryPacket.class, id++, NetworkDirection.PLAY_TO_CLIENT).decoder(GungnirTrajectoryPacket::decode).encoder(GungnirTrajectoryPacket::encode).consumerMainThread(GungnirTrajectoryPacket::handlePacket).add();
 
-        INSTANCE.messageBuilder(ToolsTimeCharge.class,id++, NetworkDirection.PLAY_TO_CLIENT).decoder(ToolsTimeCharge::new).encoder(ToolsTimeCharge::encode).consumerMainThread(ToolsTimeCharge::handle).add();
+        INSTANCE.messageBuilder(ToolsTimeCharge.class,id++, NetworkDirection.PLAY_TO_CLIENT).decoder(ToolsTimeCharge::new).encoder(ToolsTimeCharge::toByte).consumerMainThread(ToolsTimeCharge::handle).add();
         INSTANCE.messageBuilder(CensoredCharge.class,id++, NetworkDirection.PLAY_TO_CLIENT).decoder(CensoredCharge::new).encoder(CensoredCharge::toByte).consumerMainThread(CensoredCharge::handle).add();
         INSTANCE.messageBuilder(SignifiCharge.class,id++, NetworkDirection.PLAY_TO_CLIENT).decoder(SignifiCharge::new).encoder(SignifiCharge::toByte).consumerMainThread(SignifiCharge::handle).add();
-        INSTANCE.messageBuilder(NyarlathotepChargingCharge.class,id++, NetworkDirection.PLAY_TO_CLIENT).decoder(NyarlathotepChargingCharge::new).encoder(NyarlathotepChargingCharge::encode).consumerMainThread(NyarlathotepChargingCharge::handle).add();
-        INSTANCE.messageBuilder(NyarlathotepCooldownCharge.class,id++, NetworkDirection.PLAY_TO_CLIENT).decoder(NyarlathotepCooldownCharge::new).encoder(NyarlathotepCooldownCharge::encode).consumerMainThread(NyarlathotepCooldownCharge::handle).add();
-        INSTANCE.messageBuilder(IncarnonTimeCharge.class,id++, NetworkDirection.PLAY_TO_CLIENT).decoder(IncarnonTimeCharge::new).encoder(IncarnonTimeCharge::encode).consumerMainThread(IncarnonTimeCharge::handle).add();
+        INSTANCE.messageBuilder(NyarlathotepChargingCharge.class,id++, NetworkDirection.PLAY_TO_CLIENT).decoder(NyarlathotepChargingCharge::new).encoder(NyarlathotepChargingCharge::toByte).consumerMainThread(NyarlathotepChargingCharge::handle).add();
+        INSTANCE.messageBuilder(NyarlathotepCooldownCharge.class,id++, NetworkDirection.PLAY_TO_CLIENT).decoder(NyarlathotepCooldownCharge::new).encoder(NyarlathotepCooldownCharge::toByte).consumerMainThread(NyarlathotepCooldownCharge::handle).add();
+        INSTANCE.messageBuilder(IncarnonTimeCharge.class,id++, NetworkDirection.PLAY_TO_CLIENT).decoder(IncarnonTimeCharge::new).encoder(IncarnonTimeCharge::toByte).consumerMainThread(IncarnonTimeCharge::handle).add();
 
         INSTANCE.messageBuilder(CoolTimeChargeA.class,id++, NetworkDirection.PLAY_TO_CLIENT).decoder(CoolTimeChargeA::new).encoder(CoolTimeChargeA::toByte).consumerMainThread(CoolTimeChargeA::handle).add();
         INSTANCE.messageBuilder(CoolTimeChargeB.class,id++, NetworkDirection.PLAY_TO_CLIENT).decoder(CoolTimeChargeB::new).encoder(CoolTimeChargeB::toByte).consumerMainThread(CoolTimeChargeB::handle).add();

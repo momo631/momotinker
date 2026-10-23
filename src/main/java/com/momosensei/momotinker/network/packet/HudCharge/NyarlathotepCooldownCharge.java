@@ -16,7 +16,7 @@ public class NyarlathotepCooldownCharge {
         this.percentage =buf.readFloat();
     }
 
-    public static void encode(NyarlathotepCooldownCharge packet, FriendlyByteBuf buf) {
+    public static void toByte(NyarlathotepCooldownCharge packet, FriendlyByteBuf buf) {
         buf.writeFloat(packet.percentage);
     }
 

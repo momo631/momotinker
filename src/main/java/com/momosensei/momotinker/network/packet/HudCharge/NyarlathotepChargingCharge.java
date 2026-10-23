@@ -20,7 +20,7 @@ public class NyarlathotepChargingCharge {
         this.progressPercentage = buf.readFloat();
     }
 
-    public static void encode(NyarlathotepChargingCharge packet, FriendlyByteBuf buf) {
+    public static void toByte(NyarlathotepChargingCharge packet, FriendlyByteBuf buf) {
         buf.writeFloat(packet.phasePercentage);
         buf.writeFloat(packet.progressPercentage);
     }

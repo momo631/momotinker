@@ -1,6 +1,6 @@
 package com.momosensei.momotinker.mixins;
 
-import com.momosensei.momotinker.mobs.ClientCache;
+import com.momosensei.momotinker.data.ClientCache;
 import com.momosensei.momotinker.network.Channel;
 import com.momosensei.momotinker.network.packet.RequestDataPacket;
 import com.momosensei.momotinker.register.MomotinkerItem;

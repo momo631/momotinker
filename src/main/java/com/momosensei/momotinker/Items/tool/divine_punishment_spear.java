@@ -3,10 +3,10 @@ package com.momosensei.momotinker.Items.tool;
 
 import com.c2h6s.etstlib.entity.specialDamageSources.LegacyDamageSource;
 import com.momosensei.momotinker.Momotinker;
+import com.momosensei.momotinker.data.SkillState;
 import com.momosensei.momotinker.entity.CleanseEntity;
 import com.momosensei.momotinker.entity.MomotinkerEntitiesCreate;
 import com.momosensei.momotinker.event.EntitySpawnEvent;
-import com.momosensei.momotinker.mobs.CoolTimeA;
 import com.momosensei.momotinker.network.Channel;
 import com.momosensei.momotinker.network.packet.CoolTimeChargeA;
 import com.momosensei.momotinker.network.packet.HudCharge.ToolsTimeCharge;
@@ -193,7 +193,7 @@ public class divine_punishment_spear extends ModifiableItem {
             }
             return;
         }
-        if (CoolTimeA.getCoolTime() != 0) {
+        if (SkillState.A.getCoolTime() != 0) {
             tool.getPersistentData().remove(KEY_DRAWTIME);
             if (livingEntity instanceof ServerPlayer player){
                 Channel.sendToPlayer(new ToolsTimeCharge(0), player);
@@ -302,8 +302,8 @@ public class divine_punishment_spear extends ModifiableItem {
         if (a.getInt(degenerate)==degenerate_limit) {
             builder.add(Component.translatable("item.momotinker.tooltip.divine_punishment_spear4").withStyle(ChatFormatting.DARK_RED));
         }
-        if (CoolTimeA.getCoolTime()!=0){
-            builder.add(Component.translatable("modifier.momotinker.tooltip.cleansetheworld1").append(CoolTimeA.getCoolTime()+"s").withStyle(ChatFormatting.YELLOW));
+        if (SkillState.A.getCoolTime()!=0){
+            builder.add(Component.translatable("modifier.momotinker.tooltip.cleansetheworld1").append(SkillState.A.getCoolTime()+"s").withStyle(ChatFormatting.YELLOW));
         }
         if (!checkOffHand(player)){
             builder.add(Component.translatable("momotinker.tool.tooltip.offhand_hastool").withStyle(ChatFormatting.RED));
