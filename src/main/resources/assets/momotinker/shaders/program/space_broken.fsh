@@ -1,7 +1,5 @@
 #version 150
 
-#define _PI_ 3.14159265359
-
 uniform sampler2D DiffuseSampler;
 uniform sampler2D Mask;
 uniform float InterScale;
@@ -12,16 +10,14 @@ out vec4 fragColor;
 void main(){
     vec4 mask = texture(Mask, texCoord);
 
-    float scaled = InterScale * mask.a;
-    vec2 patchedCoord = texCoord / scaled;
+    if (mask.a > 0.001) {
+        float scaled = max(InterScale * mask.a, 0.001);
+        vec2 patchedCoord = texCoord / scaled;
+        patchedCoord += (scaled - 1.0) * mask.gb;
+        patchedCoord = clamp(patchedCoord, vec2(0.0), vec2(1.0));
 
-    if(mask.a > 0.001){
-        patchedCoord += (scaled - 1) * mask.gb;
-
-        fragColor = vec4(texture(DiffuseSampler, patchedCoord).rgb * (1.05 + mask.r * 0.1), 1);
+        fragColor = vec4(texture(DiffuseSampler, patchedCoord).rgb * (1.05 + mask.r * 0.1), 1.0);
+    } else {
+        fragColor = vec4(texture(DiffuseSampler, texCoord).rgb, 1.0);
     }
-    else{
-        fragColor = vec4(texture(DiffuseSampler, texCoord).rgb, 1);
-    }
-
 }

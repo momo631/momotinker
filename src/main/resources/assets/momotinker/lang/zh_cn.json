@@ -641,7 +641,7 @@
 
   "modifier.momotinker.yamato": "次元斩",
   "modifier.momotinker.yamato.flavor": "扳机横刀专属强化:阎魔刀",
-  "modifier.momotinker.yamato.description": "斩击蓄力时间略微缩短且斩击变为80%伤害的4连击，使用后武器会陷入1秒的冷却，若在恰好蓄力完成以及其一定时机内释放则不会冷却",
+  "modifier.momotinker.yamato.description": "斩击蓄力时间略微缩短且斩击变为60%伤害的6连击，使用后武器会陷入1秒的冷却，若在恰好蓄力完成以及其一定时机内释放则不会冷却",
 
   "modifier.momotinker.starcloudchain": "星云连锁",
   "modifier.momotinker.starcloudchain.flavor": "如星座般",

@@ -1,6 +1,6 @@
 package com.momosensei.momotinker.network.packet;
 
-import com.momosensei.momotinker.data.ClientCache;
+import com.momosensei.momotinker.data.RandomRecipeClientCache;
 import net.minecraft.network.FriendlyByteBuf;
 import net.minecraft.resources.ResourceLocation;
 import net.minecraft.world.item.ItemStack;
@@ -47,7 +47,7 @@ public class RecipeRefreshPacket {
     public static void handlePacket(RecipeRefreshPacket packet, Supplier<NetworkEvent.Context> supplier) {
         NetworkEvent.Context context = supplier.get();
         context.enqueueWork(() -> {
-            ClientCache.update(packet.recipeId, packet.stage, packet.displays);
+            RandomRecipeClientCache.update(packet.recipeId, packet.stage, packet.displays);
         });
         context.setPacketHandled(true);
     }

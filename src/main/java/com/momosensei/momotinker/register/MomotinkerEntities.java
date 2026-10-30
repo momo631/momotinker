@@ -8,14 +8,13 @@ import net.minecraftforge.registries.RegistryObject;
 import slimeknights.mantle.registration.deferred.EntityTypeDeferredRegister;
 
 import static com.momosensei.momotinker.Momotinker.MOD_ID;
-import static com.momosensei.momotinker.entity.MomotinkerEntitiesCreate.getSlash;
 import static com.momosensei.momotinker.entity.MomotinkerEntitiesCreate.getSpear;
 
 public class MomotinkerEntities {
 
     public static final EntityTypeDeferredRegister ENTITIES = new EntityTypeDeferredRegister(MOD_ID);
 
-    public static final RegistryObject<EntityType<TriggerSlashEntity>> trigger_slash_a = registerTriggerSlash("trigger_slash_a",MomotinkerEntities.trigger_slash_a);
+    public static final RegistryObject<EntityType<TriggerSlashEntity>> trigger_slash = registerTriggerSlash("trigger_slash",MomotinkerEntities.trigger_slash);
     public static final RegistryObject<EntityType<SpearEntity>> spear_entity = registerSpearEntity("spear_entity",MomotinkerEntities.spear_entity);
     public static final RegistryObject<EntityType<NyarlathotepEntity>> nyarlathotep_entity = registerNyarlathotepEntity("nyarlathotep_entity",MomotinkerEntities.nyarlathotep_entity);
 
@@ -29,7 +28,7 @@ public class MomotinkerEntities {
     //public static final RegistryObject<EntityType<MountainPainter>> mountain_painter = ENTITIES.register("mountain_painter", () ->  EntityType.Builder.<MountainPainter>of(MountainPainter::new, MobCategory.MISC).sized(0.5F, 0.5F).setTrackingRange(4).setUpdateInterval(1));
 
     public static RegistryObject<EntityType<TriggerSlashEntity>> registerTriggerSlash(String name, RegistryObject<EntityType<TriggerSlashEntity>> Type){
-        return ENTITIES.register(name, () -> EntityType.Builder.<TriggerSlashEntity>of((entityType, level)-> new TriggerSlashEntity(entityType, level,getSlash()), MobCategory.MISC).sized(3F, 0.1F).setTrackingRange(4).setUpdateInterval(10).setCustomClientFactory((spawnEntity, world) -> new TriggerSlashEntity(Type.get(), world,getSlash())).setShouldReceiveVelocityUpdates(true));
+        return ENTITIES.register(name, () -> EntityType.Builder.of(TriggerSlashEntity::new, MobCategory.MISC).sized(0.5F, 0.5F).setTrackingRange(4).setUpdateInterval(10).setCustomClientFactory((spawnEntity, world) -> new TriggerSlashEntity(Type.get(), world)).setShouldReceiveVelocityUpdates(true));
     }
     public static RegistryObject<EntityType<SpearEntity>> registerSpearEntity(String name, RegistryObject<EntityType<SpearEntity>> Type){
         return ENTITIES.register(name, () -> EntityType.Builder.<SpearEntity>of((entityType, level)-> new SpearEntity(entityType, level,getSpear()), MobCategory.MISC).sized(1F, 1F).setTrackingRange(4).setUpdateInterval(1).setCustomClientFactory((spawnEntity, world) -> new SpearEntity(Type.get(), world,getSpear())).setShouldReceiveVelocityUpdates(true));

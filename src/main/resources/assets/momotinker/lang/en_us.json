@@ -634,7 +634,7 @@
 
   "modifier.momotinker.yamato": "Dimensional Slash",
   "modifier.momotinker.yamato.flavor": "'Trigger Blade' Exclusive enhancement: Yamato",
-  "modifier.momotinker.yamato.description": "A 4-strike combo with a slightly shortened cooldown time and 80% damage from a slash. After use, the weapon will experience a 1-second cooldown, but if released within a certain period of time after completing the charge, it will not cool down",
+  "modifier.momotinker.yamato.description": "A 6-strike combo with a slightly shortened cooldown time and 60% damage from a slash. After use, the weapon will experience a 1-second cooldown, but if released within a certain period of time after completing the charge, it will not cool down",
 
   "modifier.momotinker.starcloudchain": "Star Cloud Chain",
   "modifier.momotinker.starcloudchain.flavor": "Like a constellation",

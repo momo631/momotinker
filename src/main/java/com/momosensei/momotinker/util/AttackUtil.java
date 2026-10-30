@@ -1,5 +1,7 @@
 package com.momosensei.momotinker.util;
 
+import com.c2h6s.etstlib.entity.specialDamageSources.LegacyDamageSource;
+import com.c2h6s.etstlib.register.EtSTLibHooks;
 import net.minecraft.core.particles.ParticleTypes;
 import net.minecraft.network.protocol.game.ClientboundSetEntityMotionPacket;
 import net.minecraft.server.level.ServerLevel;
@@ -34,7 +36,7 @@ import slimeknights.tconstruct.library.modifiers.data.FloatMultiplier;
 import slimeknights.tconstruct.library.tools.capability.TinkerDataCapability;
 import slimeknights.tconstruct.library.tools.capability.TinkerDataKeys;
 import slimeknights.tconstruct.library.tools.context.ToolAttackContext;
-import slimeknights.tconstruct.library.tools.definition.module.weapon.MeleeHitToolHook;
+import slimeknights.tconstruct.library.tools.definition.module.ToolHooks;
 import slimeknights.tconstruct.library.tools.helper.ModifierLootingHandler;
 import slimeknights.tconstruct.library.tools.helper.ToolDamageUtil;
 import slimeknights.tconstruct.library.tools.nbt.IToolStackView;
@@ -74,10 +76,10 @@ public class AttackUtil {
             return true;
         }
 
-        float cooldown = (float)cooldownFunction.getAsDouble();
-        ToolAttackContext context = ToolAttackContext.attacker(attackerLiving).target(targetEntity).cooldown(cooldown).slot(sourceSlot,hand).hand(hand).applyAttributes().build();
-        if (isExtraAttack){
-            context = ToolAttackContext.attacker(attackerLiving).target(targetEntity).cooldown(cooldown).slot(sourceSlot,hand).hand(hand).applyAttributes().extraAttack().build();
+        float cooldown = (float) cooldownFunction.getAsDouble();
+        ToolAttackContext context = ToolAttackContext.attacker(attackerLiving).target(targetEntity).cooldown(cooldown).slot(sourceSlot, hand).hand(hand).applyAttributes().build();
+        if (isExtraAttack) {
+            context = ToolAttackContext.attacker(attackerLiving).target(targetEntity).cooldown(cooldown).slot(sourceSlot, hand).hand(hand).applyAttributes().extraAttack().build();
         }
         float baseDamage = context.getBaseDamage();
         float damage = baseDamage + setDamage;
@@ -103,7 +105,7 @@ public class AttackUtil {
             boolean checkCritical = !isExtraAttack && fullyCharged && attackerLiving.fallDistance > 0.0F && !attackerLiving.onGround() && !attackerLiving.onClimbable() && !attackerLiving.isInWater()
                     && !attackerLiving.hasEffect(MobEffects.BLINDNESS) && !attackerLiving.isPassenger() && targetLiving != null && !attackerLiving.isSprinting();
 
-            Player attackerPlayer = attackerLiving instanceof Player ? (Player)attackerLiving : null;
+            Player attackerPlayer = attackerLiving instanceof Player ? (Player) attackerLiving : null;
             criticalModifier = checkCritical ? 1.5f : 1.0f;
             isCritical = checkCritical;
 
@@ -166,13 +168,15 @@ public class AttackUtil {
         } else if (targetLiving != null) {
             knockback -= 0.4F;
         }
-
-        boolean didHit;
-        if (isExtraAttack) {
-            didHit = dealDefaultDamage(attackerLiving, targetEntity, damage);
-        } else {
-            didHit = MeleeHitToolHook.dealDamage(tool, context, damage);
+        LegacyDamageSource modifiedSource = attackerLiving instanceof Player p ? LegacyDamageSource.playerAttack(p) : LegacyDamageSource.mobAttack(attackerLiving);
+        for (ModifierEntry entry : modifiers) {
+            modifiedSource = entry.getHook(EtSTLibHooks.MODIFY_DAMAGE_SOURCE).modifyDamageSource(tool, entry, attackerLiving, hand, targetEntity, sourceSlot, fullyCharged, isExtraAttack, isCritical, modifiedSource);
         }
+        boolean didHit;
+        if (!isExtraAttack) {
+            tool.getHook(ToolHooks.MELEE_HIT).afterMeleeHit(tool, context, damage);
+        }
+        didHit = targetEntity.hurt(modifiedSource, damage);
 
         ModifierLootingHandler.setLootingSlot(attackerLiving, EquipmentSlot.MAINHAND);
 
@@ -216,7 +220,7 @@ public class AttackUtil {
             targetEntity.hurtMarked = false;
         }
 
-        Player attackerPlayer = attackerLiving instanceof Player ? (Player)attackerLiving : null;
+        Player attackerPlayer = attackerLiving instanceof Player ? (Player) attackerLiving : null;
         if (attackerPlayer != null) {
             SoundEvent sound;
             if (isCritical) {
@@ -241,7 +245,7 @@ public class AttackUtil {
         }
 
         if (damageDealt > 2.0F && level instanceof ServerLevel server) {
-            int particleCount = (int)(damageDealt * 0.5f);
+            int particleCount = (int) (damageDealt * 0.5f);
             server.sendParticles(ParticleTypes.DAMAGE_INDICATOR,
                     targetEntity.getX(), targetEntity.getY(0.5), targetEntity.getZ(),
                     particleCount, 0.1, 0, 0.1, 0.2);
@@ -311,7 +315,7 @@ public class AttackUtil {
             return target.hurt(attacker.damageSources().mobAttack(attacker), damage);
         }
     }
-    public static float attackdamage(IToolStackView tool, LivingEntity attackerLiving, InteractionHand hand, Entity targetEntity, DoubleSupplier cooldownFunction, boolean isExtraAttack, EquipmentSlot sourceSlot,float DamageMultiplier) {
+    public static float attackDamage(IToolStackView tool, LivingEntity attackerLiving, InteractionHand hand, Entity targetEntity, DoubleSupplier cooldownFunction, boolean isExtraAttack, EquipmentSlot sourceSlot, float DamageMultiplier) {
         float damage = 0;
         if (tool.isBroken() || !tool.hasTag(TinkerTags.Items.MELEE)) {
             return damage;

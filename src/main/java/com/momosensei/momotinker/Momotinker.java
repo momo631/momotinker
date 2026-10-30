@@ -5,9 +5,8 @@ import com.momosensei.momotinker.event.LivingEvents;
 import com.momosensei.momotinker.event.tree.ModFeatures;
 import com.momosensei.momotinker.event.tree.MomotinkerStructures;
 import com.momosensei.momotinker.network.Channel;
-import com.momosensei.momotinker.particle.register.MomotinkerParticles;
 import com.momosensei.momotinker.register.*;
-import com.momosensei.momotinker.test.testa.PostPasses;
+import com.momosensei.momotinker.test.testa.post.PostPassRegistry;
 import net.minecraft.core.RegistrySetBuilder;
 import net.minecraft.resources.ResourceLocation;
 import net.minecraft.world.item.Item;
@@ -72,7 +71,7 @@ public class Momotinker {
         MomotinkerParticles.PARTICLE_TYPES.register(eventBus);
         //GeckoLib.initialize();
         if(FMLEnvironment.dist == Dist.CLIENT){
-            eventBus.addListener(PostPasses::register);
+            eventBus.addListener(PostPassRegistry::register);
         }
 
         MomotinkerBlock.BLOCK_ENTITIES.register(eventBus);

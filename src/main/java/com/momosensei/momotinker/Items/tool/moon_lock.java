@@ -27,12 +27,12 @@ import slimeknights.tconstruct.library.modifiers.ModifierEntry;
 import slimeknights.tconstruct.library.modifiers.ModifierHooks;
 import slimeknights.tconstruct.library.modifiers.hook.display.TooltipModifierHook;
 import slimeknights.tconstruct.library.tools.definition.ToolDefinition;
+import slimeknights.tconstruct.library.tools.helper.ModifierUtil;
 import slimeknights.tconstruct.library.tools.helper.TooltipBuilder;
 import slimeknights.tconstruct.library.tools.item.ModifiableItem;
 import slimeknights.tconstruct.library.tools.nbt.IToolStackView;
 import slimeknights.tconstruct.library.tools.nbt.ToolStack;
 import slimeknights.tconstruct.library.tools.stat.ToolStats;
-import slimeknights.tconstruct.tools.modifiers.ability.interaction.BlockingModifier;
 
 import java.util.Iterator;
 import java.util.List;
@@ -101,7 +101,7 @@ public class moon_lock extends ModifiableItem {
     }
     @Override
     public UseAnim getUseAnimation(ItemStack stack) {
-        return BlockingModifier.blockWhileCharging(ToolStack.from(stack), UseAnim.BLOCK);
+        return ModifierUtil.blockWhileCharging(ToolStack.from(stack), UseAnim.BLOCK);
     }
     public List<Component> getStatInformation(IToolStackView tool, @Nullable Player player, List<Component> tooltips, TooltipKey key, TooltipFlag tooltipFlag) {
         tooltips = this.getStats(tool, player, tooltips, key, tooltipFlag);

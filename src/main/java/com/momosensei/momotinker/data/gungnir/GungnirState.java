@@ -28,7 +28,7 @@ import java.util.Set;
 import java.util.UUID;
 import java.util.concurrent.ConcurrentHashMap;
 
-import static com.momosensei.momotinker.util.AttackUtil.attackdamage;
+import static com.momosensei.momotinker.util.AttackUtil.attackDamage;
 
 public final class GungnirState {
 
@@ -63,7 +63,7 @@ public final class GungnirState {
             Player player = sl.getServer().getPlayerList().getPlayer(ownerId);
             if (momomodifier.isToolStack(stack) && player != null) {
                 ToolStack tool = ToolStack.from(stack);
-                float a = attackdamage(tool, player, InteractionHand.MAIN_HAND, entity, () -> 1, true, EquipmentSlot.MAINHAND, 1f);
+                float a = attackDamage(tool, player, InteractionHand.MAIN_HAND, entity, () -> 1, true, EquipmentSlot.MAINHAND, 1f);
                 setGungnirDamageNbt(entity, a+1);
             }
             if (!entity.level().isClientSide) {

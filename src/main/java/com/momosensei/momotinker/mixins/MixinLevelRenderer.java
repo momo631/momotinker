@@ -1,7 +1,7 @@
 package com.momosensei.momotinker.mixins;
 
 
-import com.momosensei.momotinker.test.testa.PostEffectPipelines;
+import com.momosensei.momotinker.test.testa.post.PostEffectPipelines;
 import net.minecraft.client.renderer.LevelRenderer;
 import org.spongepowered.asm.mixin.Mixin;
 import org.spongepowered.asm.mixin.injection.At;

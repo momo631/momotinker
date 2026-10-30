@@ -35,7 +35,7 @@ public abstract class LivingEntityRendererMixin<T extends LivingEntity, M extend
 
         poseStack.pushPose();
 
-        float xOffset = entity.getBbWidth() * 0.8f;
+        float xOffset = entity.getBbWidth() * 0.95f;
         float yOffset = -entity.getBbHeight() * 0.85f;
         poseStack.translate(xOffset, yOffset, 0);
 

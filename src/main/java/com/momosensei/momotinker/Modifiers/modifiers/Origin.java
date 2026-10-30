@@ -24,7 +24,7 @@ import slimeknights.tconstruct.library.tools.nbt.ToolStack;
 
 import java.util.List;
 
-import static com.momosensei.momotinker.util.AttackUtil.attackdamage;
+import static com.momosensei.momotinker.util.AttackUtil.attackDamage;
 import static com.momosensei.momotinker.util.PenetratingDamage.reflectionPenetratingDamage;
 import static com.momosensei.momotinker.util.PenetratingDamage.setCachedValue;
 
@@ -44,7 +44,7 @@ public class Origin extends momomodifier {
                     a.setHealth(a.getMaxHealth());
                 }
                 setCachedValue(a.getAttribute(Attributes.MAX_HEALTH),a.getAttributeValue(Attributes.MAX_HEALTH)*(1f-0.2f*c));
-                reflectionPenetratingDamage(a,player, attackdamage(ToolStack.from(player.getMainHandItem()), player, InteractionHand.MAIN_HAND, a, ()->1, true, EquipmentSlot.MAINHAND, 1f));
+                reflectionPenetratingDamage(a,player, attackDamage(ToolStack.from(player.getMainHandItem()), player, InteractionHand.MAIN_HAND, a, ()->1, true, EquipmentSlot.MAINHAND, 1f));
                 if (a.getHealth()<0){
                     a.onRemovedFromWorld();
                     a.remove(Entity.RemovalReason.KILLED);

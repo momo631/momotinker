@@ -40,6 +40,7 @@ import slimeknights.tconstruct.library.modifiers.ModifierEntry;
 import slimeknights.tconstruct.library.modifiers.ModifierHooks;
 import slimeknights.tconstruct.library.modifiers.hook.interaction.InventoryTickModifierHook;
 import slimeknights.tconstruct.library.tools.definition.ToolDefinition;
+import slimeknights.tconstruct.library.tools.helper.ModifierUtil;
 import slimeknights.tconstruct.library.tools.helper.ToolDamageUtil;
 import slimeknights.tconstruct.library.tools.helper.TooltipBuilder;
 import slimeknights.tconstruct.library.tools.item.ModifiableItem;
@@ -50,7 +51,6 @@ import slimeknights.tconstruct.library.tools.nbt.ToolStack;
 import slimeknights.tconstruct.library.tools.stat.ToolStats;
 import slimeknights.tconstruct.tools.TinkerTools;
 import slimeknights.tconstruct.tools.ToolDefinitions;
-import slimeknights.tconstruct.tools.modifiers.ability.interaction.BlockingModifier;
 
 import java.util.*;
 import java.util.concurrent.ConcurrentHashMap;
@@ -250,7 +250,7 @@ public class nyarlathotep extends ModifiableItem {
     }
     @Override
     public UseAnim getUseAnimation(ItemStack stack) {
-        return BlockingModifier.blockWhileCharging(ToolStack.from(stack), UseAnim.BOW);
+        return ModifierUtil.blockWhileCharging(ToolStack.from(stack), UseAnim.BOW);
     }
     public boolean canAttackBlock(BlockState blockState, Level level, BlockPos blockPos, Player player) {
         return !player.isCreative();

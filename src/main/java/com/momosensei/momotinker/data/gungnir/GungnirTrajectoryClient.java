@@ -126,7 +126,7 @@ public final class GungnirTrajectoryClient {
             right = right.normalize();
         }
 
-        final double sideOffset = 0.4;
+        final double sideOffset = 0.6;
 
         double side = (hand == InteractionHand.MAIN_HAND) ? 1.0 : -1.0;
 

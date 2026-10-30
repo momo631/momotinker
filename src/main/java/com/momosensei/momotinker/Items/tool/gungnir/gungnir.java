@@ -34,6 +34,7 @@ import slimeknights.tconstruct.common.TinkerTags;
 import slimeknights.tconstruct.library.modifiers.ModifierEntry;
 import slimeknights.tconstruct.library.modifiers.ModifierHooks;
 import slimeknights.tconstruct.library.tools.definition.ToolDefinition;
+import slimeknights.tconstruct.library.tools.helper.ModifierUtil;
 import slimeknights.tconstruct.library.tools.helper.ToolDamageUtil;
 import slimeknights.tconstruct.library.tools.helper.TooltipBuilder;
 import slimeknights.tconstruct.library.tools.item.ModifiableItem;
@@ -41,7 +42,6 @@ import slimeknights.tconstruct.library.tools.nbt.IToolStackView;
 import slimeknights.tconstruct.library.tools.nbt.ToolStack;
 import slimeknights.tconstruct.library.tools.stat.ToolStats;
 import slimeknights.tconstruct.library.utils.Util;
-import slimeknights.tconstruct.tools.modifiers.ability.interaction.BlockingModifier;
 
 import java.util.Iterator;
 import java.util.List;
@@ -176,7 +176,7 @@ public class gungnir extends ModifiableItem {
 
     @Override
     public @NotNull UseAnim getUseAnimation(ItemStack stack) {
-        return BlockingModifier.blockWhileCharging(ToolStack.from(stack), UseAnim.SPEAR);
+        return ModifierUtil.blockWhileCharging(ToolStack.from(stack), UseAnim.SPEAR);
     }
 
     public boolean canAttackBlock(BlockState blockState, Level level, BlockPos blockPos, Player player) {

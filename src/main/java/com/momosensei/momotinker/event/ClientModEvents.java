@@ -3,11 +3,15 @@ package com.momosensei.momotinker.event;
 import com.momosensei.momotinker.Momotinker;
 import com.momosensei.momotinker.gui.screen.IncarnonScreen;
 import com.momosensei.momotinker.key.key;
+import com.momosensei.momotinker.particle.SlashStrikeParticle;
+import com.momosensei.momotinker.particle.SlashTrailParticle;
 import com.momosensei.momotinker.register.MomotinkerMenus;
-import com.momosensei.momotinker.test.testa.MyModels;
+import com.momosensei.momotinker.register.MomotinkerParticles;
+import com.momosensei.momotinker.test.testa.model.JsonMeshLoader;
 import net.minecraft.client.gui.screens.MenuScreens;
 import net.minecraftforge.api.distmarker.Dist;
 import net.minecraftforge.client.event.RegisterKeyMappingsEvent;
+import net.minecraftforge.client.event.RegisterParticleProvidersEvent;
 import net.minecraftforge.eventbus.api.SubscribeEvent;
 import net.minecraftforge.fml.common.Mod;
 import net.minecraftforge.fml.event.lifecycle.FMLClientSetupEvent;
@@ -59,9 +63,14 @@ public class ClientModEvents {
     }
     @SubscribeEvent
     static void setupClient(final FMLClientSetupEvent event) {
-        MyModels.LoadOtherModel();
+        JsonMeshLoader.LoadOtherModel();
     }
 
+    @SubscribeEvent
+    public static void onRegisterProviders(RegisterParticleProvidersEvent event) {
+        event.registerSpecial(MomotinkerParticles.SLASH_STRIKE_TYPE.get(), new SlashStrikeParticle.Provider());
+        event.registerSpecial(MomotinkerParticles.SLASH_TRAIL_TYPE.get(), new SlashTrailParticle.Provider());
+    }
 //    @SubscribeEvent
 //    static void registerRenderers(EntityRenderersEvent.RegisterRenderers event) {
 //        BlockEntityRendererProvider<TableBlockEntity> tableRenderer = InventoryBlockEntityRenderer::new;

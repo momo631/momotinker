@@ -1,6 +1,6 @@
 package com.momosensei.momotinker.mixins;
 
-import com.momosensei.momotinker.data.ClientCache;
+import com.momosensei.momotinker.data.RandomRecipeClientCache;
 import com.momosensei.momotinker.network.Channel;
 import com.momosensei.momotinker.network.packet.RequestDataPacket;
 import com.momosensei.momotinker.register.MomotinkerItem;
@@ -186,12 +186,12 @@ public abstract class MixinModifierRecipe extends AbstractModifierRecipe {
         if (fixedDisplays != null ) {
             if (fixedDisplays.containsKey(slot)) {
                 List<ItemStack> displayStacks = new ArrayList<>();
-                if (!ClientCache.hasStage(recipeId)) {
-                    if (ClientCache.trySetPending(recipeId)) {
+                if (!RandomRecipeClientCache.hasStage(recipeId)) {
+                    if (RandomRecipeClientCache.trySetPending(recipeId)) {
                         Channel.sendToServer(new RequestDataPacket(recipeId));
                     }
                 } else {
-                    int stage = ClientCache.getStage(recipeId);
+                    int stage = RandomRecipeClientCache.getStage(recipeId);
                     if (slot < stage) {
                         displayStacks.add(fixedDisplays.get(slot).copy());
                     } else {

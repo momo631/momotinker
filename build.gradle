@@ -135,7 +135,6 @@ repositories {
             includeGroup "curse.maven"
         }
     }
-    maven { url = "https://maven.kosmx.dev/" }
     flatDir {
         dir 'libs'
     }
@@ -144,8 +143,7 @@ repositories {
 dependencies {
     minecraft "net.minecraftforge:forge:${minecraft_version}-${forge_version}"
     annotationProcessor "org.spongepowered:mixin:${mixin_version}:processor"
-    implementation fg.deobf("dev.kosmx.player-anim:player-animation-lib-forge:${player_animator_version}")
-    implementation fg.deobf("curse.maven:etst-lib-1206379:7371851")
+    implementation fg.deobf("curse.maven:etst-lib-1206379:7904844")
     implementation fg.deobf("slimeknights.tconstruct:TConstruct:1.20.1-${tcon_version}")
     implementation fg.deobf("slimeknights.mantle:Mantle:1.20.1-${mantle_version}")
     compileOnly fg.deobf("mezz.jei:jei-${minecraft_version}-common-api:${jei_version}")
@@ -164,8 +162,7 @@ tasks.named('processResources', ProcessResources).configure {
             forge_version: forge_version, forge_version_range: forge_version_range,
             loader_version_range: loader_version_range,
             mod_id: mod_id, mod_name: mod_name, mod_license: mod_license, mod_version: mod_version,
-            mod_authors: mod_authors, mod_description: mod_description,
-            player_animator_version: player_animator_version,
+            mod_authors: mod_authors, mod_description: mod_description
     ]
     inputs.properties replaceProperties
 

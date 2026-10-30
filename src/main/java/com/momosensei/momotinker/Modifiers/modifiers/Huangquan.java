@@ -2,7 +2,6 @@ package com.momosensei.momotinker.Modifiers.modifiers;
 
 
 import com.c2h6s.etstlib.entity.specialDamageSources.LegacyDamageSource;
-import com.c2h6s.etstlib.tool.hooks.ModifyDamageSourceModifierHook;
 import com.momosensei.momotinker.Modifiers.momomodifier;
 import com.momosensei.momotinker.register.MomotinkerEffects;
 import com.momosensei.momotinker.register.MomotinkerModifiers;
@@ -31,7 +30,7 @@ import javax.annotation.Nonnull;
 import java.util.List;
 
 
-public class Huangquan extends momomodifier implements ModifyDamageSourceModifierHook {
+public class Huangquan extends momomodifier {
     public Huangquan() {
     }
 

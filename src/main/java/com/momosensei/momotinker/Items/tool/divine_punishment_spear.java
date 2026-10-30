@@ -57,7 +57,6 @@ import slimeknights.tconstruct.library.tools.nbt.IToolStackView;
 import slimeknights.tconstruct.library.tools.nbt.ModDataNBT;
 import slimeknights.tconstruct.library.tools.nbt.ToolStack;
 import slimeknights.tconstruct.library.tools.stat.ToolStats;
-import slimeknights.tconstruct.tools.modifiers.ability.interaction.BlockingModifier;
 
 import java.util.Iterator;
 import java.util.List;
@@ -271,7 +270,7 @@ public class divine_punishment_spear extends ModifiableItem {
     }
     @Override
     public UseAnim getUseAnimation(ItemStack stack) {
-        return BlockingModifier.blockWhileCharging(ToolStack.from(stack), UseAnim.SPEAR);
+        return ModifierUtil.blockWhileCharging(ToolStack.from(stack), UseAnim.SPEAR);
     }
     public static boolean checkOffHand(Player player){
         return player!=null&& !player.hasItemInSlot(EquipmentSlot.OFFHAND);

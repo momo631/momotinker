@@ -64,7 +64,6 @@ public class MomotinkerItem {
     public static final RegistryObject<Item> immortal_weiqi = ITEMS.register("immortal_weiqi", () -> new immortal_weiqi(MomotinkerTables.material()));
     public static final RegistryObject<Item> mountain_river_paintings = ITEMS.register("mountain_river_paintings", () -> new mountain_river_paintings(MomotinkerTables.material()));
 
-    public static final RegistryObject<Item> trigger_slash_a = ITEMS.register("trigger_slash_a", ()->new Item(new Item.Properties()));
     public static final RegistryObject<Item> spear_entity = ITEMS.register("spear_entity", ()->new Item(new Item.Properties()));
     public static final RegistryObject<Item> cleanse_item = ITEMS.register("cleanse_item",()-> new Item(new Item.Properties()));
     public static final RegistryObject<Item> twilight_ego = ITEMS.register("twilight_ego", () -> new twilight_ego(MomotinkerTables.material()));

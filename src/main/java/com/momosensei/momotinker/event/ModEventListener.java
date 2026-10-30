@@ -44,7 +44,7 @@ public class ModEventListener {
     }
     @SubscribeEvent
     static void registerRenderers(EntityRenderersEvent.RegisterRenderers event) {
-        event.registerEntityRenderer(MomotinkerEntities.trigger_slash_a.get(), triggerSlashRenderer::new);
+        event.registerEntityRenderer(MomotinkerEntities.trigger_slash.get(), NoopRenderer::new);
         event.registerEntityRenderer(MomotinkerEntities.spear_entity.get(), SpearEntityRenderer::new);
         event.registerEntityRenderer(MomotinkerEntities.cleanse_entity.get(), CleanseEntityRenderer::new);
         event.registerEntityRenderer(MomotinkerEntities.ray_entity.get(), NoopRenderer::new);

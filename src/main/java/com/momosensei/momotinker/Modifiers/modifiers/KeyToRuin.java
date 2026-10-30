@@ -218,7 +218,7 @@ public class KeyToRuin extends momomodifier {
 
     @Override
     public LegacyDamageSource modifyDamageSource(IToolStackView tool, ModifierEntry entry, LivingEntity attacker, InteractionHand hand, Entity target, EquipmentSlot sourceSlot, boolean isFullyCharged, boolean isExtraAttack, boolean isCritical, LegacyDamageSource source) {
-        if (target != null&&tool==MomotinkerTools.gungnir.get()) {
+        if (attacker !=null&& target !=null && tool.getItem() == MomotinkerTools.gungnir.get()) {
             target.invulnerableTime = 0;
             return source.setBypassArmor().setBypassInvul().setBypassInvulnerableTime().setBypassMagic().setBypassEnchantment().setBypassShield();
         }

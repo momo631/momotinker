@@ -4,13 +4,16 @@ import com.momosensei.momotinker.Items.tool.divine_punishment_spear;
 import com.momosensei.momotinker.Items.tool.entropy_burning_cannon;
 import com.momosensei.momotinker.Items.tool.trigger_blade;
 import com.momosensei.momotinker.entity.NyarlathotepEntity.NyarlathotepEntity;
+import com.momosensei.momotinker.particle.SlashStrikeOptions;
 import com.momosensei.momotinker.register.*;
+import net.minecraft.server.level.ServerLevel;
 import net.minecraft.server.level.ServerPlayer;
 import net.minecraft.world.InteractionHand;
 import net.minecraft.world.entity.EntityType;
 import net.minecraft.world.entity.EquipmentSlot;
 import net.minecraft.world.item.ItemStack;
 import net.minecraft.world.level.Level;
+import net.minecraft.world.phys.Vec3;
 import slimeknights.tconstruct.library.tools.helper.ToolDamageUtil;
 import slimeknights.tconstruct.library.tools.nbt.ToolStack;
 import slimeknights.tconstruct.library.tools.stat.ToolStats;
@@ -29,34 +32,111 @@ public class MomotinkerEntitiesCreate {
         if (tool.isBroken()) {
             return;
         }
-        ItemStack color = getSlash();
         Level level = player.level();
         EntityType<TriggerSlashEntity> entityType = getSlashType();
-        TriggerSlashEntity slash = new TriggerSlashEntity(entityType, level, color);
+        TriggerSlashEntity slash = new TriggerSlashEntity(entityType, level);
         double x = player.getLookAngle().x;
         double y = player.getLookAngle().y;
         double z = player.getLookAngle().z;
-        int a = tool.getModifierLevel(MomotinkerModifiers.yamato.getId());
+        int yamatoLevel = tool.getModifierLevel(MomotinkerModifiers.yamato.getId());
         slash.damage = tool.getStats().get(ToolStats.ATTACK_DAMAGE);
-        if (a>0){
-            slash.damagemultiplier = getSlashDamageMultiplier(tool)*0.8f;
-        }else {
+        if (yamatoLevel>0){
+            slash.damagemultiplier = getSlashDamageMultiplier(tool)*0.6f;
+        } else {
             slash.damagemultiplier = getSlashDamageMultiplier(tool);
         }
+        slash.range = (float) player.getEntityReach();
         slash.setOwner(player);
         slash.setToolstack(tool);
         slash.noPhysics = false;
-        slash.setint(a);
+        slash.setYamatoLevel(yamatoLevel);
         slash.setDeltaMovement(player.getLookAngle());
-        slash.setPos(player.getX()+x*2,player.getY()+0.7*player.getBbHeight()+y*1.5,player.getZ()+z*2);
+        slash.setPos(player.getX()+x,player.getY()+0.7*player.getBbHeight()+y*0.75,player.getZ()+z);
         level.addFreshEntity(slash);
+
+        spawnSlashParticles(player, slash, yamatoLevel);
         ToolDamageUtil.damageAnimated(tool,1,player, InteractionHand.MAIN_HAND);
     }
-    public static ItemStack getSlash(){
-        return new ItemStack(MomotinkerItem.trigger_slash_a.get());
+    private static void spawnSlashParticles(ServerPlayer player, TriggerSlashEntity slash, int yamatoLevel) {
+        Level level = player.level();
+        if (!(level instanceof ServerLevel serverLevel)) {
+            return;
+        }
+        float yaw = player.getYRot();
+        float pitch = player.getXRot();
+        Vec3 look = player.getLookAngle();
+        float range = (float) player.getEntityReach();
+        int lifetime = 1;
+        int perTick = 20;
+        float r = 1f, g = 1f, b = 1f, a = 0.9f;
+        if (yamatoLevel > 0) {
+            lifetime = 6;
+            perTick = 8;
+            r = 0.1f; g = 0.2f; b = 0.9f; a = 0.8f;
+        }
+        float forwardOffset = player.getBbWidth() * 2.5f;
+
+        double spawnX = slash.getX() + look.x * forwardOffset;
+        double spawnY = slash.getY() + look.y * forwardOffset;
+        double spawnZ = slash.getZ() + look.z * forwardOffset;
+
+        serverLevel.sendParticles(
+                new SlashStrikeOptions(r, g, b, a,
+                        slash.angle, yaw, pitch,
+                        (float) look.x, (float) look.y, (float) look.z,
+                        lifetime, perTick,
+                        range),
+                spawnX, spawnY, spawnZ,
+                1,
+                0, 0, 0,
+                0.0);
+//        }
+//        else {
+//            double baseX = slash.getX();
+//            double baseY = slash.getY();
+//            double baseZ = slash.getZ();
+//
+//            float yawRad = (float) Math.toRadians(yaw);
+//            float pitchRad = (float) Math.toRadians(pitch);
+//
+//            float fx = -Mth.sin(yawRad) * Mth.cos(pitchRad);
+//            float fy = -Mth.sin(pitchRad);
+//            float fz = Mth.cos(yawRad) * Mth.cos(pitchRad);
+//
+//            float rx = Mth.cos(yawRad);
+//            float ry = 0f;
+//            float rz = Mth.sin(yawRad);
+//
+//            float ux = ry * fz - rz * fy;
+//            float uy = rz * fx - rx * fz;
+//            float uz = rx * fy - ry * fx;
+//
+//            float startLeft = player.getBbWidth() * 0.8f;
+//            float startDown = player.getBbHeight() * 0.2f;
+//            float startForward = player.getBbWidth() * 2.4f;
+//
+//            double spawnX = baseX + rx * startLeft + ux * startDown - fx * startForward;
+//            double spawnY = baseY + ry * startLeft + uy * startDown - fy * startForward;
+//            double spawnZ = baseZ + rz * startLeft + uz * startDown - fz * startForward;
+//
+//            float endRight = player.getBbWidth() * 8f * Mth.nextFloat(random, 0.6f, 1.4f);
+//            float endUp = player.getBbHeight() * 2f * Mth.nextFloat(random, 0.6f, 1.4f);
+//
+//            double dirX = look.x * range - rx * endRight - ux * endUp;
+//            double dirY = look.y * range - ry * endRight - uy * endUp;
+//            double dirZ = look.z * range - rz * endRight - uz * endUp;
+//
+//            serverLevel.sendParticles(
+//                    new SlashTrailOptions(1f, 0f, 0f, 0.8f,
+//                            (float) dirX, (float) dirY, (float) dirZ),
+//                    spawnX, spawnY, spawnZ,
+//                    1,
+//                    0, 0, 0,
+//                    0.0);
+//        }
     }
     public static EntityType<TriggerSlashEntity> getSlashType() {
-        return MomotinkerEntities.trigger_slash_a.get();
+        return MomotinkerEntities.trigger_slash.get();
     }
     public static float getSlashDamageMultiplier(ToolStack tool) {
         float b = RANDOM.nextInt((int) (tool.getStats().get(ACCURACY) * 100));
